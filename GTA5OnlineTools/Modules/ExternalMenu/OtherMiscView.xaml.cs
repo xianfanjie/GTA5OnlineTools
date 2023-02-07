@@ -1,6 +1,4 @@
-﻿using GTA5OnlineTools.Helper;
-using GTA5OnlineTools.GTA.SDK;
-using GTA5OnlineTools.GTA.Core;
+﻿using GTA5OnlineTools.GTA.SDK;
 using GTA5OnlineTools.GTA.Data;
 using GTA5OnlineTools.GTA.Client;
 
@@ -25,9 +23,6 @@ public partial class OtherMiscView : UserControl
             ListBox_PedModel.Items.Add(item.DisplayName);
         }
         ListBox_PedModel.SelectedIndex = 0;
-
-        long pCPlayerInfo = Globals.GetCPlayerInfo();
-        TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 20);
     }
 
     private void ExternalMenuWindow_WindowClosingEvent()
@@ -97,60 +92,5 @@ public partial class OtherMiscView : UserControl
     private void ListBox_PedModel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         Button_ModelChange_Click(null, null);
-    }
-
-
-    private void Button_ReadPlayerName_Click(object sender, RoutedEventArgs e)
-    {
-        long pCPlayerInfo = Globals.GetCPlayerInfo();
-        TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 64);
-    }
-
-    private void CheckBox_IngnoreInputRule_Click(object sender, RoutedEventArgs e)
-    {
-        TextBox_PlayerName.MaxLength = CheckBox_IngnoreInputRule.IsChecked == true ? 64 : 20;
-    }
-
-    private void Button_WritePlayerName_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            string playerName = TextBox_PlayerName.Text.Trim();
-            TextBox_PlayerName.Text = playerName;
-
-            if (CheckBox_IngnoreInputRule.IsChecked == false)
-            {
-                if (!Regex.IsMatch(playerName, "^[A-Za-z0-9_\\s-]{3,20}$"))
-                {
-                    NotifierHelper.Show(NotifierType.Warning, "玩家昵称不合法，规则：3到20位（字母，数字，下划线，减号，空格）");
-                    return;
-                }
-            }
-
-            long pCPlayerInfo = Globals.GetCPlayerInfo();
-            string name = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 64);
-
-            if (playerName.Equals(name))
-            {
-                NotifierHelper.Show(NotifierType.Information, "玩家昵称未改动，无需修改");
-                return;
-            }
-
-            playerName += "\0";
-
-            var pointers = Memory.FindPatterns(name);
-            foreach (var item in pointers)
-            {
-                Memory.WriteString(item, playerName);
-            }
-
-            Memory.WriteString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, playerName);
-
-            NotifierHelper.Show(NotifierType.Success, "修改玩家昵称成功，切换战局生效");
-        }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
-        }
     }
 }

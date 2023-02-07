@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevConsole", "DevConsole\DevConsole.csproj", "{8DDD60D7-1CA3-4840-8E1C-C3867106D24A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -26,6 +28,9 @@ Global
 		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Debug|x64.Build.0 = Debug|x64
 		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Release|x64.ActiveCfg = Release|x64
 		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Release|x64.Build.0 = Release|x64
+		{8DDD60D7-1CA3-4840-8E1C-C3867106D24A}.Debug|x64.ActiveCfg = Debug|x64
+		{8DDD60D7-1CA3-4840-8E1C-C3867106D24A}.Debug|x64.Build.0 = Debug|x64
+		{8DDD60D7-1CA3-4840-8E1C-C3867106D24A}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

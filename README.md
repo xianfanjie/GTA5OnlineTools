@@ -1,18 +1,18 @@
-# GTA5ÏßÉÏÐ¡ÖúÊÖ
+# GTA5çº¿ä¸Šå°åŠ©æ‰‹
 
-Ò»¸öÍêÈ«Ãâ·ÑµÄGTA5ÏßÉÏÄ£Ê½Ð¡¹¤¾ß
+ä¸€ä¸ªå®Œå…¨å…è´¹çš„GTA5çº¿ä¸Šæ¨¡å¼å°å·¥å…·
 
-## ÏÂÔØ
+## ä¸‹è½½
 
-[×îÐÂ°æ±¾·¢²¼µØÖ·](https://github.com/CrazyZhang666/GTA5OnlineTools/releases)  
+[æœ€æ–°ç‰ˆæœ¬å‘å¸ƒåœ°å€](https://github.com/CrazyZhang666/GTA5OnlineTools/releases)  
 
-## ±àÒë
+## ç¼–è¯‘
 
-* Windows 10 ×¨Òµ°æ 22H2 x64  
-* Visual Studio 2022 ÆóÒµ°æ  
+* Windows 10 ä¸“ä¸šç‰ˆ 22H2 x64  
+* Visual Studio 2022 ä¼ä¸šç‰ˆ  
 * .NET 6.0  
 
-## »·¾³
+## çŽ¯å¢ƒ
 
 * SDK
 > https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-6.0.405-windows-x64-installer
@@ -20,8 +20,12 @@
 * Runtime
 > https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-6.0.13-windows-x64-installer
 
-## ¼¼Êõ
+## æŠ€æœ¯
 
 * WPF
 * CSharp
 * MVVM
+
+## é¢„è§ˆ
+
+![image](https://user-images.githubusercontent.com/28080853/217190993-864c93b7-c89e-44a9-9be4-6d262f9a3b2a.png)

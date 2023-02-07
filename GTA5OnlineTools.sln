@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTA5OnlineTools", "GTA5OnlineTools\GTA5OnlineTools.csproj", "{A1AC736D-9146-4427-B067-7F6AC7F889BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5OnlineTools", "GTA5OnlineTools\GTA5OnlineTools.csproj", "{A1AC736D-9146-4427-B067-7F6AC7F889BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTA5OnlineTools.UI", "GTA5OnlineTools.UI\GTA5OnlineTools.UI.csproj", "{26DC76D1-2868-4370-8381-EC8E1E8DF537}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5OnlineTools.UI", "GTA5OnlineTools.UI\GTA5OnlineTools.UI.csproj", "{26DC76D1-2868-4370-8381-EC8E1E8DF537}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{3260C3B4-C7DF-4908-A128-DAB18FCE5205}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

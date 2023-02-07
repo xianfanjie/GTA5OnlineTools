@@ -181,6 +181,10 @@ public static class Vehicle
                 else
                     vector3.Z += z255;
 
+                Hacks.WriteGA(Offsets.oVMCreate + 7 + 0, vector3.X);    // 载具坐标x
+                Hacks.WriteGA(Offsets.oVMCreate + 7 + 1, vector3.Y);    // 载具坐标y
+                Hacks.WriteGA(Offsets.oVMCreate + 7 + 2, vector3.Z);    // 载具坐标z
+
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 66, hash);       // 载具哈希值
 
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 94, 2);          // personal car ownerflag  个人载具拥有者标志
@@ -188,10 +192,6 @@ public static class Vehicle
 
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 5, -1);          // primary -1 auto 159  主色调
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 6, -1);          // secondary -1 auto 159  副色调
-
-                Hacks.WriteGA(Offsets.oVMCreate + 7 + 0, vector3.X);    // 载具坐标x
-                Hacks.WriteGA(Offsets.oVMCreate + 7 + 1, vector3.Y);    // 载具坐标y
-                Hacks.WriteGA(Offsets.oVMCreate + 7 + 2, vector3.Z);    // 载具坐标z
 
                 Hacks.WriteGAString(Offsets.oVMCreate + 27 + 1, Guid.NewGuid().ToString()[..8]);    // License plate  车牌
 
@@ -216,7 +216,7 @@ public static class Vehicle
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 33, -1);     // wheel selection
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 69, -1);     // Wheel type
 
-                Hacks.WriteGA(Offsets.oVMCreate + 27 + 28, 1);
+                Hacks.WriteGA(Offsets.oVMCreate + 27 + 28, 1);      // Weaponised ownerflag
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 30, 1);
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 32, 1);
                 Hacks.WriteGA(Offsets.oVMCreate + 27 + 65, 1);

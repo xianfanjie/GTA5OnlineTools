@@ -27,8 +27,8 @@ internal class Program
 
         foreach (VehicleHash vEnum in vehicles)
         {
-            //Console.WriteLine($"{vEnum} 0x{Joaat(vEnum.ToString()):X8}");
-            Console.WriteLine($"{vEnum}");
+            Console.WriteLine($"{vEnum} 0x{Joaat(vEnum.ToString()):X8}");
+            //Console.WriteLine($"{vEnum}");
             //Console.WriteLine($"0x{Joaat(vEnum.ToString()):X8}");
 
             //Console.WriteLine($"{vEnum.ToString().ToUpper()} = 0x{Joaat(vEnum.ToString()):X8},");

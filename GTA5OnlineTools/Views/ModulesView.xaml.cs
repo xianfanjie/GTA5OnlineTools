@@ -17,6 +17,7 @@ public partial class ModulesView : UserControl
 
     private OutfitsEditWindow OutfitsEditWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
+    private SessionChatWindow SessionChatWindow = null;
     private SpeedMeterWindow SpeedMeterWindow = null;
 
     /// <summary>
@@ -59,6 +60,9 @@ public partial class ModulesView : UserControl
                     break;
                 case "StatScripts":
                     StatScriptsClick();
+                    break;
+                case "SessionChat":
+                    SessionChatClick();
                     break;
                 case "SpeedMeter":
                     SpeedMeterClick();
@@ -196,6 +200,30 @@ public partial class ModulesView : UserControl
         }
     }
 
+    private void SessionChatClick()
+    {
+        if (SessionChatWindow == null)
+        {
+            SessionChatWindow = new SessionChatWindow();
+            SessionChatWindow.Show();
+        }
+        else
+        {
+            if (SessionChatWindow.IsVisible)
+            {
+                SessionChatWindow.Topmost = true;
+                SessionChatWindow.Topmost = false;
+                SessionChatWindow.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                SessionChatWindow = null;
+                SessionChatWindow = new SessionChatWindow();
+                SessionChatWindow.Show();
+            }
+        }
+    }
+
     private void SpeedMeterClick()
     {
         if (SpeedMeterWindow == null)
@@ -258,6 +286,12 @@ public partial class ModulesView : UserControl
             {
                 StatScriptsWindow.Close();
                 StatScriptsWindow = null;
+            }
+
+            if (SessionChatWindow != null)
+            {
+                SessionChatWindow.Close();
+                SessionChatWindow = null;
             }
 
             if (SpeedMeterWindow != null)

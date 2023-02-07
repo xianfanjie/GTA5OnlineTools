@@ -78,8 +78,6 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_LocalWeather_Click(object sender, RoutedEventArgs e)
     {
-        
-
         var btnContent = (e.OriginalSource as Button).Content.ToString();
         var index = MiscData.LocalWeathers.FindIndex(t => t.Name == btnContent);
         if (index != -1)
@@ -90,56 +88,40 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_KillNPC_Click(object sender, RoutedEventArgs e)
     {
-        
-
         World.KillAllNPC(false);
     }
     private void Button_KillAllHostilityNPC_Click(object sender, RoutedEventArgs e)
     {
-        
-
         World.KillAllNPC(true);
     }
 
     private void Button_KillAllPolice_Click(object sender, RoutedEventArgs e)
     {
-        
-
         World.KillAllPolice();
     }
 
     private void Button_DestroyAllVehicles_Click(object sender, RoutedEventArgs e)
     {
-        
-
         World.DestroyAllVehicles();
     }
 
     private void Button_DestroyAllNPCVehicles_Click(object sender, RoutedEventArgs e)
     {
-        
-
         World.DestroyAllNPCVehicles(false);
     }
 
     private void Button_DestroyAllHostilityNPCVehicles_Click(object sender, RoutedEventArgs e)
     {
-        
-
         World.DestroyAllNPCVehicles(true);
     }
 
     private void Button_TPAllNPCToMe_Click(object sender, RoutedEventArgs e)
     {
-        
-
         World.TeleportAllNPCToMe(false);
     }
 
     private void Button_TPHostilityNPCToMe_Click(object sender, RoutedEventArgs e)
     {
-        
-
         World.TeleportAllNPCToMe(true);
     }
 
@@ -198,7 +180,7 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_AddCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         Vector3 vector3 = Teleport.GetPlayerPosition();
 
@@ -215,7 +197,7 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_EditCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         try
         {
@@ -261,7 +243,7 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_DeleteCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         int index1 = ComboBox_TeleportClass.SelectedIndex;
         int index2 = ListBox_TeleportInfo.SelectedIndex;
@@ -281,14 +263,14 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_ToWaypoint_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         Teleport.ToWaypoint();
     }
 
     private void Button_ToObjective_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         Teleport.ToObjective();
     }
@@ -300,14 +282,14 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_Teleport_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         Teleport.SetTeleportPosition(tempVector3);
     }
 
     private void Button_SaveCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         SaveConfig();
 
@@ -321,7 +303,7 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_MoveDistance_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         var btnContent = (e.OriginalSource as Button).Content.ToString();
         switch (btnContent)

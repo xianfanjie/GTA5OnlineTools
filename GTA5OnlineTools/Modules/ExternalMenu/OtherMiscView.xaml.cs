@@ -102,8 +102,6 @@ public partial class OtherMiscView : UserControl
 
     private void Button_ReadPlayerName_Click(object sender, RoutedEventArgs e)
     {
-
-
         long pCPlayerInfo = Globals.GetCPlayerInfo();
         TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 64);
     }
@@ -115,8 +113,6 @@ public partial class OtherMiscView : UserControl
 
     private void Button_WritePlayerName_Click(object sender, RoutedEventArgs e)
     {
-
-
         try
         {
             string playerName = TextBox_PlayerName.Text.Trim();

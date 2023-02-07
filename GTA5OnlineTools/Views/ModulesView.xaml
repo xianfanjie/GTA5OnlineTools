@@ -52,6 +52,14 @@
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
+            Title="Session Chat"
+            Command="{Binding ModelsClickCommand}"
+            CommandParameter="SessionChat"
+            Content="战局快捷聊天"
+            Icon="&#xe61f;"
+            Style="{StaticResource ButtonStyle_FuncModule}" />
+
+        <ui:ButtonIcon
             Title="Speed Meter"
             Command="{Binding ModelsClickCommand}"
             CommandParameter="SpeedMeter"

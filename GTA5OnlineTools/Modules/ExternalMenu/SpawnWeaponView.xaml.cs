@@ -1,5 +1,4 @@
-﻿using GTA5OnlineTools.Utils;
-using GTA5OnlineTools.GTA.SDK;
+﻿using GTA5OnlineTools.GTA.SDK;
 using GTA5OnlineTools.GTA.Data;
 using GTA5OnlineTools.GTA.Client;
 using GTA5OnlineTools.GTA.Settings;
@@ -95,8 +94,6 @@ public partial class SpawnWeaponView : UserControl
 
     private void Button_SpawnWeapon_Click(object sender, RoutedEventArgs e)
     {
-
-
         Hacks.CreateAmbientPickup(tempWeaponPickup);
     }
 
@@ -133,22 +130,16 @@ public partial class SpawnWeaponView : UserControl
 
     private void Button_NoRecoil_Click(object sender, RoutedEventArgs e)
     {
-
-
         Weapon.NoRecoil();
     }
 
     private void CheckBox_NoSpread_Click(object sender, RoutedEventArgs e)
     {
-
-
         Weapon.NoSpread();
     }
 
     private void CheckBox_Range_Click(object sender, RoutedEventArgs e)
     {
-
-
         Weapon.Range();
     }
 
@@ -168,15 +159,11 @@ public partial class SpawnWeaponView : UserControl
 
     private void Button_FillCurrentAmmo_Click(object sender, RoutedEventArgs e)
     {
-
-
         Weapon.FillCurrentAmmo();
     }
 
     private void Button_FillAllAmmo_Click(object sender, RoutedEventArgs e)
     {
-
-
         Weapon.FillAllAmmo();
     }
 }

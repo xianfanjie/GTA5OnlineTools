@@ -1,5 +1,4 @@
-﻿using GTA5OnlineTools.Utils;
-using GTA5OnlineTools.GTA.Core;
+﻿using GTA5OnlineTools.GTA.Core;
 
 using GTA5OnlineTools.Modules.SpeedMeter;
 
@@ -75,25 +74,11 @@ public partial class SpeedMeterWindow
 
     private void RadioButton_SpeedMeterPos_Center_Click(object sender, RoutedEventArgs e)
     {
-        if (RadioButton_SpeedMeterPos_Center.IsChecked == true)
-        {
-            DrawData.IsDrawCenter = true;
-        }
-        else
-        {
-            DrawData.IsDrawCenter = false;
-        }
+        DrawData.IsDrawCenter = RadioButton_SpeedMeterPos_Center.IsChecked == true;
     }
 
     private void RadioButton_SpeedMeterUnit_MPH_Click(object sender, RoutedEventArgs e)
     {
-        if (RadioButton_SpeedMeterUnit_MPH.IsChecked == true)
-        {
-            DrawData.IsShowMPH = true;
-        }
-        else
-        {
-            DrawData.IsShowMPH = false;
-        }
+        DrawData.IsShowMPH = RadioButton_SpeedMeterUnit_MPH.IsChecked == true;
     }
 }

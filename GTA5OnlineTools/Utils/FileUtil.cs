@@ -9,7 +9,7 @@ public static class FileUtil
     /// <summary>
     /// 资源路径
     /// </summary>
-    public const string ResFiles = "GTA5OnlineTools.Files";
+    public const string ResFiles = "GTA5OnlineTools.GTA.Files";
 
     public const string Dir_Kiddion = $"{Default}\\Kiddion";
     public const string Dir_Cache = $"{Default}\\Cache";

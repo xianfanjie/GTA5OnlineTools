@@ -98,12 +98,6 @@ public partial class LoadWindow
 
                 /////////////////////////////////////////////////////////////////////
 
-                // 尝试修复SSL崩溃问题
-                ServicePointManager.Expect100Continue = true;
-                ServicePointManager.DefaultConnectionLimit = 9999;
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-
                 this.Dispatcher.Invoke(() =>
                 {
                     var mainWindow = new MainWindow();

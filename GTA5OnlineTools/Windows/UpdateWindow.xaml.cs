@@ -77,18 +77,12 @@ public partial class UpdateWindow
         Button_Update.IsEnabled = false;
         Button_CancelUpdate.IsEnabled = true;
 
-        TextBlock_Info.Text = "下载开始";
+        TextBlock_DonloadInfo.Text = "下载开始";
         TextBlock_Percentage.Text = "0KB / 0MB";
 
         var index = ListBox_DownloadAddress.SelectedIndex;
         if (index != -1)
-        {
             CoreUtil.UpdateAddress = CoreUtil.UpdateInfo.Download[index].Url;
-        }
-        else
-        {
-            CoreUtil.UpdateAddress = "https://github.com/CrazyZhang666/GTA5OnlineTools/releases/download/update/GTA5onlineTools.exe";
-        }
 
         // 下载临时文件完整路径
         string OldPath = FileUtil.GetCurrFullPath(CoreUtil.HalfwayAppName);
@@ -118,7 +112,7 @@ public partial class UpdateWindow
 
         TaskbarItemInfo.ProgressValue = 0;
 
-        TextBlock_Info.Text = "下载取消";
+        TextBlock_DonloadInfo.Text = "下载取消";
         TextBlock_Percentage.Text = "0KB / 0MB";
     }
 
@@ -135,7 +129,7 @@ public partial class UpdateWindow
             ProgressBar_Update.Maximum = e.TotalBytesToReceive;
             ProgressBar_Update.Value = e.ReceivedBytesSize;
 
-            TextBlock_Info.Text = $"下载开始 文件大小 {e.TotalBytesToReceive / 1024.0f / 1024:0.0}MB";
+            TextBlock_DonloadInfo.Text = $"下载开始 文件大小 {e.TotalBytesToReceive / 1024.0f / 1024:0.0}MB";
 
             TextBlock_Percentage.Text = $"{LongToString(e.ReceivedBytesSize)}/{LongToString(e.TotalBytesToReceive)}";
 
@@ -160,7 +154,7 @@ public partial class UpdateWindow
 
                 TaskbarItemInfo.ProgressValue = 0;
 
-                TextBlock_Info.Text = $"下载失败 {e.Error.Message}";
+                TextBlock_DonloadInfo.Text = $"下载失败 {e.Error.Message}";
                 TextBlock_Percentage.Text = "0KB / 0MB";
             }
             else
@@ -181,7 +175,7 @@ public partial class UpdateWindow
                     // 旧版本小助手重命名
                     FileUtil.FileReName(FileUtil.Current_Path, FileUtil.GetCurrFullPath(oldFileName));
 
-                    TextBlock_Info.Text = "更新下载完成，程序将在3秒内重新启动";
+                    TextBlock_DonloadInfo.Text = "更新下载完成，程序将在3秒内重新启动";
 
                     App.AppMainMutex.Dispose();
                     Thread.Sleep(1000);

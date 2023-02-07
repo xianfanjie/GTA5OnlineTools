@@ -28,21 +28,35 @@ public partial class HomeView : UserControl
 
     private async void GetNoticeInfo()
     {
-        var notice = await HttpHelper.DownloadString("https://api.crazyzhang.cn/update/server/notice.txt");
+        try
+        {
+            var notice = await HttpHelper.DownloadString("https://api.crazyzhang.cn/update/server/notice.txt");
 
-        if (string.IsNullOrEmpty(notice))
-            TextBox_Notice.Text = content;
-        else
-            TextBox_Notice.Text = notice;
+            if (string.IsNullOrEmpty(notice))
+                TextBox_Notice.Text = content;
+            else
+                TextBox_Notice.Text = notice;
+        }
+        catch (Exception ex)
+        {
+            TextBox_Notice.Text = ex.Message;
+        }
     }
 
     private async void GetChangeInfo()
     {
-        var change = await HttpHelper.DownloadString("https://api.crazyzhang.cn/update/server/change.txt");
+        try
+        {
+            var change = await HttpHelper.DownloadString("https://api.crazyzhang.cn/update/server/change.txt");
 
-        if (string.IsNullOrEmpty(change))
-            TextBox_Change.Text = content;
-        else
-            TextBox_Change.Text = change;
+            if (string.IsNullOrEmpty(change))
+                TextBox_Change.Text = content;
+            else
+                TextBox_Change.Text = change;
+        }
+        catch (Exception ex)
+        {
+            TextBox_Change.Text = ex.Message;
+        }
     }
 }

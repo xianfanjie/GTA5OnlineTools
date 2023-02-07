@@ -36,21 +36,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Files\Cache\BincoHax.exe" />
-		<EmbeddedResource Include="Files\Cache\GTAHax.exe" />
-		<EmbeddedResource Include="Files\Inject\YimMenu.dll" />
-		<EmbeddedResource Include="Files\Kiddion\config.json" />
-		<EmbeddedResource Include="Files\Kiddion\config87.json" />
-		<EmbeddedResource Include="Files\Kiddion\Kiddion.exe" />
-		<EmbeddedResource Include="Files\Kiddion\KiddionChs.dll" />
-		<EmbeddedResource Include="Files\Kiddion\scripts\Readme.api" />
-		<EmbeddedResource Include="Files\Kiddion\teleports.json" />
-		<EmbeddedResource Include="Files\Kiddion\themes.json" />
-		<EmbeddedResource Include="Files\Kiddion\vehicles.json" />
-		<EmbeddedResource Include="Files\Cache\LSCHax.exe" />
-		<EmbeddedResource Include="Files\Cache\Notepad2.exe" />
-		<EmbeddedResource Include="Files\Other\SGTA50000" />
-		<EmbeddedResource Include="Files\Cache\stat.txt" />
+		<EmbeddedResource Include="GTA\Files\Cache\BincoHax.exe" />
+		<EmbeddedResource Include="GTA\Files\Cache\GTAHax.exe" />
+		<EmbeddedResource Include="GTA\Files\Inject\YimMenu.dll" />
+		<EmbeddedResource Include="GTA\Files\Kiddion\config.json" />
+		<EmbeddedResource Include="GTA\Files\Kiddion\config87.json" />
+		<EmbeddedResource Include="GTA\Files\Kiddion\Kiddion.exe" />
+		<EmbeddedResource Include="GTA\Files\Kiddion\KiddionChs.dll" />
+		<EmbeddedResource Include="GTA\Files\Kiddion\scripts\Readme.api" />
+		<EmbeddedResource Include="GTA\Files\Kiddion\teleports.json" />
+		<EmbeddedResource Include="GTA\Files\Kiddion\themes.json" />
+		<EmbeddedResource Include="GTA\Files\Kiddion\vehicles.json" />
+		<EmbeddedResource Include="GTA\Files\Cache\LSCHax.exe" />
+		<EmbeddedResource Include="GTA\Files\Cache\Notepad2.exe" />
+		<EmbeddedResource Include="GTA\Files\Other\SGTA50000" />
+		<EmbeddedResource Include="GTA\Files\Cache\stat.txt" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -70,7 +70,7 @@ public partial class SpawnWeaponView : UserControl
                                 {
                                     Id = name,
                                     Name = displayName,
-                                    Image = $"\\Assets\\Client\\Weapons\\{name}.png"
+                                    Image = $"\\Assets\\Weapons\\{name}.png"
                                 });
                             }
                         });

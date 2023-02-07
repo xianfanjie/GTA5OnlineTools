@@ -62,7 +62,7 @@ public partial class SpawnVehicleWindow
                                 {
                                     Id = name,
                                     Name = displayName,
-                                    Image = $"\\Assets\\Client\\Vehicles\\{name}.png"
+                                    Image = $"\\Assets\\Vehicles\\{name}.png"
                                 });
                             }
                         });

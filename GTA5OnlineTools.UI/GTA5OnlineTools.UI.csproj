@@ -20,12 +20,4 @@
 		<Resource Include="Fonts\iconfont.ttf" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <EditorConfigFiles Remove="E:\GTA5\GitHub\GTA5OnlineTools\GTA5OnlineTools.UI\.editorconfig" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="E:\GTA5\GitHub\GTA5OnlineTools\GTA5OnlineTools.UI\.editorconfig" />
-	</ItemGroup>
-
 </Project>

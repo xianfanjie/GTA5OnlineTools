@@ -1,7 +1,6 @@
 ﻿using GTA5.Data;
 using GTA5Core.Client;
 using GTA5Core.Feature;
-using GTA5Shared.Utils;
 using GTA5Shared.Helper;
 
 namespace GTA5.Views.ExternalMenu;
@@ -27,26 +26,26 @@ public partial class WorldFunctionView : UserControl
         this.DataContext = this;
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
-        // 如果配置文件不存在就创建
-        if (!File.Exists(FileUtil.File_Config_CustomTPList))
-        {
-            // 保存配置文件
-            SaveConfig();
-        }
+        //// 如果配置文件不存在就创建
+        //if (!File.Exists(FileUtil.File_Config_CustomTPList))
+        //{
+        //    // 保存配置文件
+        //    SaveConfig();
+        //}
 
-        // 如果配置文件存在就读取
-        if (File.Exists(FileUtil.File_Config_CustomTPList))
-        {
-            using var streamReader = new StreamReader(FileUtil.File_Config_CustomTPList);
-            List<TeleportData.TeleportInfo> teleportPreviews = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
+        //// 如果配置文件存在就读取
+        //if (File.Exists(FileUtil.File_Config_CustomTPList))
+        //{
+        //    using var streamReader = new StreamReader(FileUtil.File_Config_CustomTPList);
+        //    List<TeleportData.TeleportInfo> teleportPreviews = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
 
-            TeleportData.CustomTeleport.Clear();
+        //    TeleportData.CustomTeleport.Clear();
 
-            foreach (var item in teleportPreviews)
-            {
-                TeleportData.CustomTeleport.Add(item);
-            }
-        }
+        //    foreach (var item in teleportPreviews)
+        //    {
+        //        TeleportData.CustomTeleport.Add(item);
+        //    }
+        //}
 
         foreach (var item in TeleportData.TeleportClassData)
         {
@@ -69,11 +68,11 @@ public partial class WorldFunctionView : UserControl
     /// </summary>
     private void SaveConfig()
     {
-        if (Directory.Exists(FileUtil.Dir_Config))
-        {
-            // 写入到Json文件
-            File.WriteAllText(FileUtil.File_Config_CustomTPList, JsonHelper.JsonSeri(TeleportData.CustomTeleport));
-        }
+        //if (Directory.Exists(FileUtil.Dir_Config))
+        //{
+        //    // 写入到Json文件
+        //    File.WriteAllText(FileUtil.File_Config_CustomTPList, JsonHelper.JsonSeri(TeleportData.CustomTeleport));
+        //}
     }
 
     private void Button_LocalWeather_Click(object sender, RoutedEventArgs e)

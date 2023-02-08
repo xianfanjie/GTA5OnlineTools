@@ -43,7 +43,7 @@
                     FontWeight="Bold"
                     Text="GTA5线上小助手" />
             </StackPanel>
-            <!--  ************************  -->
+            <!--  //////////////////////////  -->
             <TextBlock
                 Margin="5"
                 HorizontalAlignment="Right"
@@ -54,7 +54,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Text="{Binding LoadModel.BuildDate, StringFormat='{}{0:yyyy/MM/dd HH:mm:ss}', FallbackValue='2022/01/01 00:00:00'}" />
-            <!--  ************************  -->
+            <!--  //////////////////////////  -->
             <StackPanel
                 Margin="0,20,0,0"
                 HorizontalAlignment="Center"

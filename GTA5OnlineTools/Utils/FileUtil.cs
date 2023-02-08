@@ -1,4 +1,4 @@
-﻿namespace GTA5Shared.Utils;
+﻿namespace GTA5OnlineTools.Utils;
 
 public static class FileUtil
 {
@@ -123,7 +123,7 @@ public static class FileUtil
     /// <summary>
     /// 从资源文件中抽取资源文件
     /// </summary>
-    /// <param name="resFileName">资源文件名称（资源文件名称必须包含目录，目录间用“.”隔开,最外层是项目默认命名空间）</param>
+    /// <param name="resFileName">资源文件路径</param>
     /// <param name="outputFile">输出文件</param>
     public static void ExtractResFile(string resFileName, string outputFile)
     {
@@ -132,8 +132,8 @@ public static class FileUtil
 
         try
         {
-            var asm = Assembly.GetExecutingAssembly();
-            inStream = new BufferedStream(asm.GetManifestResourceStream(resFileName));
+            var assembly = Assembly.GetExecutingAssembly();
+            inStream = new BufferedStream(assembly.GetManifestResourceStream(resFileName));
             outStream = new FileStream(outputFile, FileMode.Create, FileAccess.Write);
 
             var buffer = new byte[1024];

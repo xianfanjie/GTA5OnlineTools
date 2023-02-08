@@ -1,4 +1,4 @@
-﻿namespace GTA5Shared.Utils;
+﻿namespace GTA5Shared.Helper;
 
 public static class AudioUtil
 {

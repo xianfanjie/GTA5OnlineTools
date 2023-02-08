@@ -1,4 +1,6 @@
-﻿using GTA5Shared.Helper;
+﻿using GTA5OnlineTools.Utils;
+
+using GTA5Shared.Helper;
 
 namespace GTA5Shared.Utils;
 

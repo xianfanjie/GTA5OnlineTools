@@ -1,5 +1,5 @@
-﻿using GTA5OnlineTools.Data;
-using GTA5OnlineTools.GTA.Core;
+﻿using GTA5Core.Native;
+using GTA5OnlineTools.Data;
 
 namespace GTA5OnlineTools.Utils;
 
@@ -38,7 +38,7 @@ public static class CoreUtil
     /// <summary>
     /// 固定下载更新地址
     /// </summary>
-    public static string UpdateAddress = "https://github.com/CrazyZhang666/GTA5OnlineTools/releases/download/update/GTA5OnlineTools.exe";
+    public static string UpdateAddress = "https://github.com/CrazyZhang666/GTA5/releases/download/update/GTA5.exe";
 
     /// <summary>
     /// 更新完成后的文件名

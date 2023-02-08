@@ -1,6 +1,8 @@
 ﻿using GTA5OnlineTools.Utils;
-using GTA5OnlineTools.Helper;
 using GTA5OnlineTools.Windows;
+
+using GTA5Shared.Utils;
+using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
 

@@ -2,9 +2,11 @@
 using GTA5OnlineTools.Utils;
 using GTA5OnlineTools.Views;
 using GTA5OnlineTools.Models;
-using GTA5OnlineTools.Helper;
 using GTA5OnlineTools.Windows;
-using GTA5OnlineTools.GTA.Core;
+
+using GTA5Core.Native;
+using GTA5Shared.Utils;
+using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
 
@@ -234,10 +236,6 @@ public partial class MainWindow
     {
         try
         {
-            // 刷新DNS缓存
-            CoreUtil.FlushDNSCache();
-            LoggerHelper.Info("刷新DNS缓存成功");
-
             LoggerHelper.Info("正在检测版本更新...");
             this.Dispatcher.Invoke(() =>
             {

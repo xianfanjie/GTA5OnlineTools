@@ -1,5 +1,4 @@
-﻿using GTA5OnlineTools.Utils;
-using GTA5OnlineTools.GTA.Core;
+﻿using GTA5Core.Native;
 
 namespace GTA5OnlineTools.Windows;
 
@@ -54,8 +53,6 @@ public partial class InjectorWindow
     /// <param name="e"></param>
     private void Button_Inject_Click(object sender, RoutedEventArgs e)
     {
-        
-
         if (string.IsNullOrEmpty(InjectInfo.DLLPath))
         {
             TextBlock_Status.Text = "请选择DLL文件路径";
@@ -91,7 +88,7 @@ public partial class InjectorWindow
 
     private void Button_Refush_Click(object sender, RoutedEventArgs e)
     {
-        
+
 
         lock (this)
         {

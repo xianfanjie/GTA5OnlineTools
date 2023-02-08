@@ -1,5 +1,7 @@
 ﻿using GTA5OnlineTools.Utils;
 
+using GTA5Shared.Utils;
+
 namespace GTA5OnlineTools;
 
 /// <summary>

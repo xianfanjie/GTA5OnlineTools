@@ -1,4 +1,4 @@
-﻿namespace GTA5OnlineTools.UI.Controls.Attach;
+﻿namespace MetroSkin.Controls.Attach;
 
 /// <summary>
 /// 附加属性-图标

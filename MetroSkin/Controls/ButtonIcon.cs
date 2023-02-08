@@ -1,4 +1,4 @@
-﻿namespace GTA5OnlineTools.UI.Controls;
+﻿namespace MetroSkin.Controls;
 
 public class ButtonIcon : Button
 {

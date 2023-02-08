@@ -55,10 +55,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\GTA5OnlineTools.UI\GTA5OnlineTools.UI.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Resource Include="Assets\Vehicles\adder.png" />
 		<Resource Include="Assets\Vehicles\airbus.png" />
 		<Resource Include="Assets\Vehicles\airtug.png" />
@@ -986,6 +982,10 @@
 
 	<ItemGroup>
 	  <None Include="E:\GTA5\GitHub\GTA5OnlineTools\GTA5OnlineTools\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MetroSkin\MetroSkin.csproj" />
 	</ItemGroup>
 
 </Project>

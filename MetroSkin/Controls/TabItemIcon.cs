@@ -1,6 +1,6 @@
-﻿namespace GTA5OnlineTools.UI.Controls;
+﻿namespace MetroSkin.Controls;
 
-public class LabelIcon : Label
+public class TabItemIcon : TabItem
 {
     /// <summary>
     /// Icon图标
@@ -11,5 +11,5 @@ public class LabelIcon : Label
         set { SetValue(IconProperty, value); }
     }
     public static readonly DependencyProperty IconProperty =
-        DependencyProperty.Register("Icon", typeof(string), typeof(LabelIcon), new PropertyMetadata("\xe610"));
+        DependencyProperty.Register("Icon", typeof(string), typeof(TabItemIcon), new PropertyMetadata("\xe610"));
 }

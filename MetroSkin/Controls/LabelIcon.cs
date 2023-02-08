@@ -1,6 +1,6 @@
-﻿namespace GTA5OnlineTools.UI.Controls;
+﻿namespace MetroSkin.Controls;
 
-public class RadioButtonIcon : RadioButton
+public class LabelIcon : Label
 {
     /// <summary>
     /// Icon图标
@@ -11,5 +11,5 @@ public class RadioButtonIcon : RadioButton
         set { SetValue(IconProperty, value); }
     }
     public static readonly DependencyProperty IconProperty =
-        DependencyProperty.Register("Icon", typeof(string), typeof(RadioButtonIcon), new PropertyMetadata("\xe610"));
+        DependencyProperty.Register("Icon", typeof(string), typeof(LabelIcon), new PropertyMetadata("\xe610"));
 }

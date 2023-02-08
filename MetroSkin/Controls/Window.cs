@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace GTA5OnlineTools.UI.Controls;
+namespace MetroSkin.Controls;
 
 public class Window : System.Windows.Window
 {

@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:GTA5OnlineTools.UI.Controls">
+    xmlns:controls="clr-namespace:MetroSkin.Controls">
 
     <!--  小助手功能按钮样式  -->
     <Style x:Key="ButtonStyle_FuncModule" TargetType="{x:Type controls:ButtonIcon}">

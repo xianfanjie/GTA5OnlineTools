@@ -8,4 +8,10 @@
 		<Platforms>x64</Platforms>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\GTA5.Core\GTA5.Core.csproj" />
+	  <ProjectReference Include="..\GTA5.Share\GTA5.Share.csproj" />
+	  <ProjectReference Include="..\MetroSkin\MetroSkin.csproj" />
+	</ItemGroup>
+
 </Project>

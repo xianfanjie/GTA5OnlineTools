@@ -5,8 +5,6 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5OnlineTools", "GTA5OnlineTools\GTA5OnlineTools.csproj", "{A1AC736D-9146-4427-B067-7F6AC7F889BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5OnlineTools.UI", "GTA5OnlineTools.UI\GTA5OnlineTools.UI.csproj", "{26DC76D1-2868-4370-8381-EC8E1E8DF537}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{3260C3B4-C7DF-4908-A128-DAB18FCE5205}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -19,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTA5.Core", "GTA5.Core\GTA5.Core.csproj", "{A4F4CBC4-1E43-4090-9148-65B3F28818BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTA5.XConsole", "GTA5.XConsole\GTA5.XConsole.csproj", "{BB39F915-DD1F-4E8F-A756-B9E0B152396C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroSkin", "MetroSkin\MetroSkin.csproj", "{AA714CB5-D587-41AC-87C1-D6D87495E9DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +36,6 @@ Global
 		{A1AC736D-9146-4427-B067-7F6AC7F889BF}.Release|Any CPU.Build.0 = Release|x64
 		{A1AC736D-9146-4427-B067-7F6AC7F889BF}.Release|x64.ActiveCfg = Release|x64
 		{A1AC736D-9146-4427-B067-7F6AC7F889BF}.Release|x64.Build.0 = Release|x64
-		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Debug|Any CPU.Build.0 = Debug|x64
-		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Debug|x64.ActiveCfg = Debug|x64
-		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Debug|x64.Build.0 = Debug|x64
-		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Release|Any CPU.ActiveCfg = Release|x64
-		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Release|Any CPU.Build.0 = Release|x64
-		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Release|x64.ActiveCfg = Release|x64
-		{26DC76D1-2868-4370-8381-EC8E1E8DF537}.Release|x64.Build.0 = Release|x64
 		{06BED44C-2C82-42B5-A65D-0D006A2E4392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06BED44C-2C82-42B5-A65D-0D006A2E4392}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06BED44C-2C82-42B5-A65D-0D006A2E4392}.Debug|x64.ActiveCfg = Debug|x64
@@ -76,6 +68,14 @@ Global
 		{BB39F915-DD1F-4E8F-A756-B9E0B152396C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BB39F915-DD1F-4E8F-A756-B9E0B152396C}.Release|x64.ActiveCfg = Release|x64
 		{BB39F915-DD1F-4E8F-A756-B9E0B152396C}.Release|x64.Build.0 = Release|x64
+		{AA714CB5-D587-41AC-87C1-D6D87495E9DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA714CB5-D587-41AC-87C1-D6D87495E9DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA714CB5-D587-41AC-87C1-D6D87495E9DE}.Debug|x64.ActiveCfg = Debug|x64
+		{AA714CB5-D587-41AC-87C1-D6D87495E9DE}.Debug|x64.Build.0 = Debug|x64
+		{AA714CB5-D587-41AC-87C1-D6D87495E9DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA714CB5-D587-41AC-87C1-D6D87495E9DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA714CB5-D587-41AC-87C1-D6D87495E9DE}.Release|x64.ActiveCfg = Release|x64
+		{AA714CB5-D587-41AC-87C1-D6D87495E9DE}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

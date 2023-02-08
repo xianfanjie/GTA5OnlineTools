@@ -11,5 +11,5 @@
 [assembly: Guid("8e03fc95-6365-4dba-9896-22a9a0c69091")]
 
 [assembly: XmlnsPrefix("http://crazyzhang.cn/ui/2023/xaml", "ui")]
-[assembly: XmlnsDefinition("http://crazyzhang.cn/ui/2023/xaml", "GTA5OnlineTools.UI")]
-[assembly: XmlnsDefinition("http://crazyzhang.cn/ui/2023/xaml", "GTA5OnlineTools.UI.Controls")]
+[assembly: XmlnsDefinition("http://crazyzhang.cn/ui/2023/xaml", "MetroSkin")]
+[assembly: XmlnsDefinition("http://crazyzhang.cn/ui/2023/xaml", "MetroSkin.Controls")]

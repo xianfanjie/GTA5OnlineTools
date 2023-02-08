@@ -980,4 +980,12 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EditorConfigFiles Remove="E:\GTA5\GitHub\GTA5OnlineTools\GTA5OnlineTools\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="E:\GTA5\GitHub\GTA5OnlineTools\GTA5OnlineTools\.editorconfig" />
+	</ItemGroup>
+
 </Project>

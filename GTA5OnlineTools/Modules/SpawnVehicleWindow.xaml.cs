@@ -1,7 +1,6 @@
 ﻿using GTA5OnlineTools.GTA.SDK;
 using GTA5OnlineTools.GTA.Data;
 using GTA5OnlineTools.GTA.Client;
-using GTA5OnlineTools.Utils;
 
 namespace GTA5OnlineTools.Modules;
 

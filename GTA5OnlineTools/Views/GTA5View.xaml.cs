@@ -23,9 +23,9 @@ public partial class GTA5View : UserControl
     private SpeedMeterWindow SpeedMeterWindow = null;
 
     /// <summary>
-    /// 关闭全部第三方模块窗口委托
+    /// 关闭全部GTA5窗口委托
     /// </summary>
-    public static Action ActionCloseAllModulesWindow;
+    public static Action ActionCloseAllGTA5Window;
 
     public GTA5View()
     {
@@ -33,7 +33,7 @@ public partial class GTA5View : UserControl
         this.DataContext = this;
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
 
-        ActionCloseAllModulesWindow = CloseAllModulesWindow;
+        ActionCloseAllGTA5Window = CloseAllGTA5Window;
     }
 
     private void MainWindow_WindowClosingEvent()
@@ -267,11 +267,13 @@ public partial class GTA5View : UserControl
     ///////////////////////////////////////////////////////////////////
 
     /// <summary>
-    /// 关闭全部模块窗口
+    /// 关闭全部GTA5窗口
     /// </summary>
-    private void CloseAllModulesWindow()
+    private void CloseAllGTA5Window()
     {
-        this.Dispatcher.BeginInvoke(() =>
+        Memory.CloseHandle();
+
+        this.Dispatcher.Invoke(() =>
         {
             if (ExternalMenuWindow != null)
             {

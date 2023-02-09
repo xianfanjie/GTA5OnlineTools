@@ -126,7 +126,7 @@ public partial class MainWindow
         Memory.CloseHandle();
         LoggerHelper.Info("释放内存模块进程句柄成功");
 
-        GTA5View.ActionCloseAllModulesWindow();
+        GTA5View.ActionCloseAllGTA5Window();
         LoggerHelper.Info("关闭小助手功能窗口成功");
 
         ProcessUtil.CloseThirdProcess();
@@ -206,9 +206,7 @@ public partial class MainWindow
                 if (!isExecute)
                 {
                     isExecute = true;
-
-                    Memory.CloseHandle();
-                    GTA5View.ActionCloseAllModulesWindow();
+                    GTA5View.ActionCloseAllGTA5Window();
                 }
             }
 

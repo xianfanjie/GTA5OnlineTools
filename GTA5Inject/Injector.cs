@@ -87,7 +87,7 @@ public static class Injector
             Win32.CloseHandle(procHandle);
 
             if (isSetForeWin)
-                Win32.SetForegroundWindow(process.Handle);
+                Win32.SetForegroundWindow(process.MainWindowHandle);
 
             result.IsSuccess = true;
             result.Content = $"进程 {process.ProcessName} 注入 {dllName} 成功";

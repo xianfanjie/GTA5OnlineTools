@@ -7,11 +7,11 @@ using GTA5Shared.Helper;
 namespace GTA5OnlineTools.Windows;
 
 /// <summary>
-/// GTAHaxStatWindow.xaml 的交互逻辑
+/// GTAHaxWindow.xaml 的交互逻辑
 /// </summary>
-public partial class GTAHaxStatWindow
+public partial class GTAHaxWindow
 {
-    public GTAHaxStatWindow()
+    public GTAHaxWindow()
     {
         InitializeComponent();
     }

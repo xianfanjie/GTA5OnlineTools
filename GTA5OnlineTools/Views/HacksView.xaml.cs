@@ -17,7 +17,7 @@ namespace GTA5OnlineTools.Views;
 public partial class HacksView : UserControl
 {
     /// <summary>
-    /// Hacks 数据模型绑定
+    /// 数据模型绑定
     /// </summary>
     public HacksModel HacksModel { get; set; } = new();
 
@@ -27,7 +27,7 @@ public partial class HacksView : UserControl
     private readonly LSCHax LSCHax = new();
     private readonly YimMenu YimMenu = new();
 
-    private GTAHaxStatWindow GTAHaxWindow = null;
+    private GTAHaxWindow GTAHaxWindow = null;
 
     public HacksView()
     {
@@ -206,43 +206,42 @@ public partial class HacksView : UserControl
 
             Task.Run(async () =>
             {
-                if (HacksModel.KiddionIsRun)
-                {
-                    ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Kiddion_Kiddion);
-
-                    do
-                    {
-                        // 等待Kiddion启动
-                        if (ProcessUtil.IsAppRun("Kiddion"))
-                        {
-                            // 拿到Kiddion进程
-                            var pKiddion = Process.GetProcessesByName("Kiddion").ToList()[0];
-                            var result = Injector.DLLInjector(pKiddion.Id, FileUtil.File_Kiddion_KiddionChs, false);
-                            if (result.IsSuccess)
-                            {
-                                this.Dispatcher.Invoke(() =>
-                                {
-                                    NotifierHelper.Show(NotifierType.Success, "Kiddion汉化加载成功");
-                                });
-                            }
-                            else
-                            {
-                                this.Dispatcher.Invoke(() =>
-                                {
-                                    NotifierHelper.Show(NotifierType.Error, $"Kiddion汉化加载失败\n错误信息：{result.Content}");
-                                });
-                            }
-
-                            return;
-                        }
-
-                        await Task.Delay(250);
-                    } while (count++ > 10);
-                }
-                else
+                if (!HacksModel.KiddionIsRun)
                 {
                     ProcessUtil.CloseProcess("Kiddion");
+                    return;
                 }
+
+                ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Kiddion_Kiddion);
+
+                do
+                {
+                    // 等待Kiddion启动
+                    if (ProcessUtil.IsAppRun("Kiddion"))
+                    {
+                        // 拿到Kiddion进程
+                        var pKiddion = Process.GetProcessesByName("Kiddion").ToList()[0];
+                        var result = Injector.DLLInjector(pKiddion.Id, FileUtil.File_Kiddion_KiddionChs, false);
+                        if (result.IsSuccess)
+                        {
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                NotifierHelper.Show(NotifierType.Success, "Kiddion汉化加载成功");
+                            });
+                        }
+                        else
+                        {
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                NotifierHelper.Show(NotifierType.Error, $"Kiddion汉化加载失败\n错误信息：{result.Content}");
+                            });
+                        }
+
+                        return;
+                    }
+
+                    await Task.Delay(250);
+                } while (count++ > 10);
             });
         }
     }
@@ -416,7 +415,7 @@ public partial class HacksView : UserControl
     {
         if (GTAHaxWindow == null)
         {
-            GTAHaxWindow = new GTAHaxStatWindow();
+            GTAHaxWindow = new GTAHaxWindow();
             GTAHaxWindow.Show();
         }
         else
@@ -434,7 +433,7 @@ public partial class HacksView : UserControl
             else
             {
                 GTAHaxWindow = null;
-                GTAHaxWindow = new GTAHaxStatWindow();
+                GTAHaxWindow = new GTAHaxWindow();
                 GTAHaxWindow.Show();
             }
         }

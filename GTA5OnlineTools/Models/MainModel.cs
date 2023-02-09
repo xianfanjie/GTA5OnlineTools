@@ -2,23 +2,35 @@
 
 namespace GTA5OnlineTools.Models;
 
-public partial class MainModel : ObservableObject
+public class MainModel : ObservableObject
 {
+    private bool isGTA5Run;
     /// <summary>
     /// GTA5是否运行
     /// </summary>
-    [ObservableProperty]
-    private bool isGTA5Run;
+    public bool IsGTA5Run
+    {
+        get => isGTA5Run;
+        set => SetProperty(ref isGTA5Run, value);
+    }
 
+    private Version appVersion;
+    /// <summary>
+    /// 程序版本号
+    /// </summary>
+    public Version AppVersion
+    {
+        get => appVersion;
+        set => SetProperty(ref appVersion, value);
+    }
+
+    private string appRunTime;
     /// <summary>
     /// 程序运行时间
     /// </summary>
-    [ObservableProperty]
-    private string appRunTime;
-
-    /// <summary>
-    /// 程序版本
-    /// </summary>
-    [ObservableProperty]
-    private string appVersion;
+    public string AppRunTime
+    {
+        get => appRunTime;
+        set => SetProperty(ref appRunTime, value);
+    }
 }

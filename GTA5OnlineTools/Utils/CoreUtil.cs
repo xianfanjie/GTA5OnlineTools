@@ -4,6 +4,10 @@ namespace GTA5OnlineTools.Utils;
 
 public static class CoreUtil
 {
+    [DllImport("dnsapi.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool DnsFlushResolverCache();
+
     /// <summary>
     /// 主窗口标题
     /// </summary>
@@ -64,14 +68,6 @@ public static class CoreUtil
     /// </summary>
     public static void FlushDNSCache()
     {
-        var process = new Process();
-        var startInfo = new ProcessStartInfo
-        {
-            WindowStyle = ProcessWindowStyle.Hidden,
-            FileName = "cmd.exe",
-            Arguments = "/C ipconfig /flushdns"
-        };
-        process.StartInfo = startInfo;
-        process.Start();
+        DnsFlushResolverCache();
     }
 }

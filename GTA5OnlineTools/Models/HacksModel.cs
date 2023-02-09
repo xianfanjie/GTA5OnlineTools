@@ -2,47 +2,45 @@
 
 namespace GTA5OnlineTools.Models;
 
-public partial class HacksModel : ObservableObject
+public class HacksModel : ObservableObject
 {
+    private bool kiddionIsRun;
     /// <summary>
     /// Kiddion运行状态
     /// </summary>
-    [ObservableProperty]
-    private bool kiddionIsRun = false;
+    public bool KiddionIsRun
+    {
+        get => kiddionIsRun;
+        set => SetProperty(ref kiddionIsRun, value);
+    }
 
+    private bool gTAHaxIsRun;
     /// <summary>
     /// GTAHax运行状态
     /// </summary>
-    [ObservableProperty]
-    private bool gTAHaxIsRun = false;
+    public bool GTAHaxIsRun
+    {
+        get => gTAHaxIsRun;
+        set => SetProperty(ref gTAHaxIsRun, value);
+    }
 
+    private bool bincoHaxIsRun;
     /// <summary>
     /// BincoHax运行状态
     /// </summary>
-    [ObservableProperty]
-    private bool bincoHaxIsRun = false;
+    public bool BincoHaxIsRun
+    {
+        get => bincoHaxIsRun;
+        set => SetProperty(ref bincoHaxIsRun, value);
+    }
 
+    private bool lSCHaxIsRun;
     /// <summary>
     /// LSCHax运行状态
     /// </summary>
-    [ObservableProperty]
-    private bool lSCHaxIsRun = false;
-
-    /// <summary>
-    /// Frame的呈现内容
-    /// </summary>
-    [ObservableProperty]
-    private object frameContent;
-
-    /// <summary>
-    /// Frame的显示状态
-    /// </summary>
-    [ObservableProperty]
-    private Visibility frameState = Visibility.Collapsed;
-
-    /// <summary>
-    /// 是否使用Kiddion汉化
-    /// </summary>
-    [ObservableProperty]
-    private bool isUseKiddionChs = true;
+    public bool LSCHaxIsRun
+    {
+        get => lSCHaxIsRun;
+        set => SetProperty(ref lSCHaxIsRun, value);
+    }
 }

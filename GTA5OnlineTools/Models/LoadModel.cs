@@ -2,23 +2,35 @@
 
 namespace GTA5OnlineTools.Models;
 
-public partial class LoadModel : ObservableObject
+public class LoadModel : ObservableObject
 {
+    private string loadState;
     /// <summary>
     /// 程序加载状态
     /// </summary>
-    [ObservableProperty]
-    private string loadState;
+    public string LoadState
+    {
+        get => loadState;
+        set => SetProperty(ref loadState, value);
+    }
 
+    private Version versionInfo;
     /// <summary>
     /// 程序版本号
     /// </summary>
-    [ObservableProperty]
-    private Version versionInfo;
+    public Version VersionInfo
+    {
+        get => versionInfo;
+        set => SetProperty(ref versionInfo, value);
+    }
 
+    private DateTime buildDate;
     /// <summary>
     /// 程序最后编译时间
     /// </summary>
-    [ObservableProperty]
-    private DateTime buildDate;
+    public DateTime BuildDate
+    {
+        get => buildDate;
+        set => SetProperty(ref buildDate, value);
+    }
 }

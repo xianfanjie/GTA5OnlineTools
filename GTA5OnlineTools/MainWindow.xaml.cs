@@ -86,7 +86,7 @@ public partial class MainWindow
         this.Title = CoreUtil.MainAppWindowName + CoreUtil.ClientVersion;
 
         MainModel.AppRunTime = "00:00:00";
-        MainModel.AppVersion = $"{CoreUtil.ClientVersion}";
+        MainModel.AppVersion = CoreUtil.ClientVersion;
 
         // 更新主窗口UI线程
         new Thread(UpdateUiThread)

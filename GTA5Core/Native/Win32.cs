@@ -86,9 +86,6 @@ public static class Win32
 
     [DllImport("user32.dll")]
     public static extern int SetWindowLong(IntPtr hwnd, int nIndex, long dwNewLong);
-
-    [DllImport("dnsapi.dll")]
-    public static extern uint DnsFlushResolverCache();
 }
 
 [Flags]

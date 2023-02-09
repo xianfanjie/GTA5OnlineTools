@@ -199,18 +199,6 @@ public partial class MainWindow
             if (MainModel.IsGTA5Run)
             {
                 isExecute = false;
-
-                if (Memory.GTA5ProHandle == IntPtr.Zero)
-                {
-                    if (Memory.Initialize())
-                    {
-                        Memory.PatternInit();
-                    }
-                }
-                else
-                {
-                    Memory.PatternInit();
-                }
             }
             else
             {

@@ -1,6 +1,8 @@
 ﻿using GTA5OnlineTools.Utils;
 
 using GTA5.Views;
+using GTA5Core.Views;
+using GTA5Core.Native;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -15,7 +17,6 @@ public partial class GTA5View : UserControl
     private ExternalMenuWindow ExternalMenuWindow = null;
     private SpawnVehicleWindow SpawnVehicleWindow = null;
     private HeistsEditWindow HeistsEditWindow = null;
-
     private OutfitsEditWindow OutfitsEditWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
     private SessionChatWindow SessionChatWindow = null;
@@ -41,10 +42,21 @@ public partial class GTA5View : UserControl
     }
 
     [RelayCommand]
-    private void ModelsClick(string modelName)
+    private void GTA5ViewClick(string modelName)
     {
         if (ProcessUtil.IsGTA5Run())
         {
+            // GTA5内存模块初始化窗口
+            if (!Memory.IsInitialized)
+            {
+                var gTA5InitWindow = new GTA5InitWindow
+                {
+                    Owner = MainWindow.MainWindowInstance
+                };
+                if (gTA5InitWindow.ShowDialog() == false)
+                    return;
+            }
+
             switch (modelName)
             {
                 case "ExternalMenu":
@@ -75,6 +87,8 @@ public partial class GTA5View : UserControl
             NotifierHelper.Show(NotifierType.Warning, "未发现《GTA5》进程，请先运行《GTA5》游戏");
         }
     }
+
+    ///////////////////////////////////////////////////////////////////
 
     #region 第三方模块按钮点击事件
     private void ExternalMenuClick()

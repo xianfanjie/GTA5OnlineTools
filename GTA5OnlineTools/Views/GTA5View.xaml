@@ -13,7 +13,7 @@
     <WrapPanel>
         <ui:ButtonIcon
             Title="External Menu"
-            Command="{Binding ModelsClickCommand}"
+            Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="ExternalMenu"
             Content="小助手外置菜单"
             Icon="&#xe666;"
@@ -21,7 +21,7 @@
 
         <ui:ButtonIcon
             Title="Spawn Vehicle"
-            Command="{Binding ModelsClickCommand}"
+            Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="SpawnVehicle"
             Content="刷出线上载具"
             Icon="&#xe629;"
@@ -29,7 +29,7 @@
 
         <ui:ButtonIcon
             Title="Heists Edit"
-            Command="{Binding ModelsClickCommand}"
+            Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="HeistsEdit"
             Content="抢劫任务编辑器"
             Icon="&#xe63b;"
@@ -37,7 +37,7 @@
 
         <ui:ButtonIcon
             Title="Outfits Edit"
-            Command="{Binding ModelsClickCommand}"
+            Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="OutfitsEdit"
             Content="角色服装编辑器"
             Icon="&#xe8c7;"
@@ -45,7 +45,7 @@
 
         <ui:ButtonIcon
             Title="STAT Auto Scripts"
-            Command="{Binding ModelsClickCommand}"
+            Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="StatScripts"
             Content="STAT自动化脚本"
             Icon="&#xe636;"
@@ -53,7 +53,7 @@
 
         <ui:ButtonIcon
             Title="Session Chat"
-            Command="{Binding ModelsClickCommand}"
+            Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="SessionChat"
             Content="战局快捷聊天"
             Icon="&#xe61f;"
@@ -61,7 +61,7 @@
 
         <ui:ButtonIcon
             Title="Speed Meter"
-            Command="{Binding ModelsClickCommand}"
+            Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="SpeedMeter"
             Content="车速表"
             Icon="&#xeab4;"

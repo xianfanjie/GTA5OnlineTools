@@ -7,113 +7,40 @@ namespace GTA5Core.Native;
 public static class Memory
 {
     /// <summary>
+    /// 是否初始化成功
+    /// </summary>
+    public static bool IsInitialized { get; set; }
+
+    /// <summary>
     /// GTA5进程类
     /// </summary>
-    private static Process GTA5Process { get; set; } = null;
+    public static Process GTA5Process { get; set; } = null;
     /// <summary>
     /// GTA5窗口句柄
     /// </summary>
-    public static IntPtr GTA5WinHandle { get; private set; } = IntPtr.Zero;
+    public static IntPtr GTA5WinHandle { get; set; } = IntPtr.Zero;
     /// <summary>
     /// GTA5进程Id
     /// </summary>
-    public static int GTA5ProId { get; private set; } = 0;
+    public static int GTA5ProId { get; set; } = 0;
     /// <summary>
     /// GTA5主模块基址
     /// </summary>
-    public static long GTA5ProBaseAddress { get; private set; } = 0;
+    public static long GTA5ProBaseAddress { get; set; } = 0;
     /// <summary>
     /// GTA5进程句柄
     /// </summary>
-    public static IntPtr GTA5ProHandle { get; private set; } = IntPtr.Zero;
+    public static IntPtr GTA5ProHandle { get; set; } = IntPtr.Zero;
 
     /// <summary>
-    /// 初始化内存模块
-    /// </summary>
-    /// <returns></returns>
-    public static bool Initialize()
-    {
-        try
-        {
-            LoggerHelper.Info("开始初始化《GTA5》内存模块");
-            var pArray = Process.GetProcessesByName("GTA5");
-            if (pArray.Length > 0)
-            {
-                LoggerHelper.Info($"《GTA5》进程数量 {pArray.Length}");
-                foreach (var item in pArray)
-                {
-                    if (item.MainWindowHandle == IntPtr.Zero)
-                        continue;
-
-                    if (item.MainModule.FileVersionInfo.LegalCopyright == "Rockstar Games Inc. (C) 2005-2023 Take Two Interactive. All rights reserved.")
-                    {
-                        GTA5Process = item;
-                        break;
-                    }
-                }
-
-                if (GTA5Process == null)
-                {
-                    LoggerHelper.Error($"发生错误，未找到正确的《GTA5》进程");
-                    return false;
-                }
-
-                if (GTA5Process.MainWindowHandle == IntPtr.Zero)
-                {
-                    LoggerHelper.Error($"发生错误，《GTA5》窗口句柄为空");
-                    return false;
-                }
-                GTA5WinHandle = GTA5Process.MainWindowHandle;
-                LoggerHelper.Info($"《GTA5》程序窗口句柄 {GTA5WinHandle}");
-
-                if (GTA5Process.Id == 0)
-                {
-                    LoggerHelper.Error($"发生错误，《GTA5》程序进程ID为空");
-                    return false;
-                }
-                GTA5ProId = GTA5Process.Id;
-                LoggerHelper.Info($"《GTA5》程序进程ID {GTA5ProId}");
-
-                if (GTA5Process.MainModule != null)
-                {
-                    GTA5ProBaseAddress = GTA5Process.MainModule.BaseAddress.ToInt64();
-                    LoggerHelper.Info($"《GTA5》程序主模块基址 0x{GTA5ProBaseAddress:x}");
-
-                    GTA5ProHandle = Win32.OpenProcess(ProcessAccessFlags.All, false, GTA5ProId);
-                    if (GTA5ProHandle == IntPtr.Zero)
-                    {
-                        LoggerHelper.Error($"发生错误，《GTA5》程序进程句柄为空");
-                        return false;
-                    }
-                    LoggerHelper.Info($"《GTA5》程序进程句柄 {GTA5ProHandle}");
-                    return true;
-                }
-                else
-                {
-                    LoggerHelper.Error($"发生错误，《GTA5》程序主模块基址为空");
-                    return false;
-                }
-            }
-            else
-            {
-                LoggerHelper.Error($"发生错误，未发现《GTA5》进程");
-                return false;
-            }
-        }
-        catch (Exception ex)
-        {
-            LoggerHelper.Error("《GTA5》内存模块初始化异常", ex);
-            return false;
-        }
-    }
-
-    /// <summary>
-    /// 关闭GTA5进程句柄
+    /// 关闭GTA5进程句柄并清理资源
     /// </summary>
     public static void CloseHandle()
     {
         if (GTA5ProHandle != IntPtr.Zero)
         {
+            IsInitialized = false;
+
             Win32.CloseHandle(GTA5ProHandle);
 
             GTA5Process = null;
@@ -136,110 +63,6 @@ public static class Memory
             Pointers.UnkModelPTR = 0;
             Pointers.LocalScriptsPTR = 0;
             Pointers.UnkPTR = 0;
-        }
-    }
-
-    /// <summary>
-    /// GTA5特征码寻址
-    /// </summary>
-    public static void PatternInit()
-    {
-        if (Pointers.WorldPTR == 0)
-        {
-            Pointers.WorldPTR = FindPattern(Offsets.Mask.WorldMask);
-            Pointers.WorldPTR = Rip_37(Pointers.WorldPTR);
-            LoggerHelper.Info($"《GTA5》WorldPTR 0x{Pointers.WorldPTR:x}");
-        }
-
-        if (Pointers.BlipPTR == 0)
-        {
-            Pointers.BlipPTR = FindPattern(Offsets.Mask.BlipMask);
-            Pointers.BlipPTR = Rip_37(Pointers.BlipPTR);
-            LoggerHelper.Info($"《GTA5》BlipPTR 0x{Pointers.BlipPTR:x}");
-        }
-
-        if (Pointers.GlobalPTR == 0)
-        {
-            Pointers.GlobalPTR = FindPattern(Offsets.Mask.GlobalMask);
-            Pointers.GlobalPTR = Rip_37(Pointers.GlobalPTR);
-            LoggerHelper.Info($"《GTA5》GlobalPTR 0x{Pointers.GlobalPTR:x}");
-        }
-
-        if (Pointers.ReplayInterfacePTR == 0)
-        {
-            Pointers.ReplayInterfacePTR = FindPattern(Offsets.Mask.ReplayInterfaceMask);
-            Pointers.ReplayInterfacePTR = Rip_37(Pointers.ReplayInterfacePTR);
-            LoggerHelper.Info($"《GTA5》ReplayInterfacePTR 0x{Pointers.ReplayInterfacePTR:x}");
-        }
-
-        if (Pointers.NetworkPlayerMgrPTR == 0)
-        {
-            Pointers.NetworkPlayerMgrPTR = FindPattern(Offsets.Mask.NetworkPlayerMgrMask);
-            Pointers.NetworkPlayerMgrPTR = Rip_37(Pointers.NetworkPlayerMgrPTR);
-            LoggerHelper.Info($"《GTA5》NetworkPlayerMgrPTR 0x{Pointers.NetworkPlayerMgrPTR:x}");
-        }
-
-        if (Pointers.NetworkInfoPTR == 0)
-        {
-            Pointers.NetworkInfoPTR = FindPattern(Offsets.Mask.NetworkInfoMask);
-            Pointers.NetworkInfoPTR = Rip_37(Pointers.NetworkInfoPTR);
-            LoggerHelper.Info($"《GTA5》NetworkInfoPTR 0x{Pointers.NetworkInfoPTR:x}");
-        }
-
-        if (Pointers.ViewPortPTR == 0)
-        {
-            Pointers.ViewPortPTR = FindPattern(Offsets.Mask.ViewPortMask);
-            Pointers.ViewPortPTR = Rip_37(Pointers.ViewPortPTR);
-            LoggerHelper.Info($"《GTA5》ViewPortPTR 0x{Pointers.ViewPortPTR:x}");
-        }
-
-        if (Pointers.CCameraPTR == 0)
-        {
-            Pointers.CCameraPTR = FindPattern(Offsets.Mask.CCameraMask);
-            Pointers.CCameraPTR = Rip_37(Pointers.CCameraPTR);
-            LoggerHelper.Info($"《GTA5》CCameraPTR 0x{Pointers.CCameraPTR:x}");
-        }
-
-        if (Pointers.AimingPedPTR == 0)
-        {
-            Pointers.AimingPedPTR = FindPattern(Offsets.Mask.AimingPedMask);
-            Pointers.AimingPedPTR = Rip_37(Pointers.AimingPedPTR);
-            LoggerHelper.Info($"《GTA5》AimingPedPTR 0x{Pointers.AimingPedPTR:x}");
-        }
-
-        if (Pointers.WeatherPTR == 0)
-        {
-            Pointers.WeatherPTR = FindPattern(Offsets.Mask.WeatherMask);
-            Pointers.WeatherPTR = Rip_6A(Pointers.WeatherPTR);
-            LoggerHelper.Info($"《GTA5》WeatherPTR 0x{Pointers.WeatherPTR:x}");
-        }
-
-        if (Pointers.PickupDataPTR == 0)
-        {
-            Pointers.PickupDataPTR = FindPattern(Offsets.Mask.PickupDataMask);
-            Pointers.PickupDataPTR = Rip_37(Pointers.PickupDataPTR);
-            LoggerHelper.Info($"《GTA5》PickupDataPTR 0x{Pointers.PickupDataPTR:x}");
-        }
-
-        if (Pointers.UnkModelPTR == 0)
-        {
-            Pointers.UnkModelPTR = FindPattern(Offsets.Mask.UnkModelMask);
-            Pointers.UnkModelPTR = Rip_37(Pointers.UnkModelPTR);
-            LoggerHelper.Info($"《GTA5》UnkModelPTR 0x{Pointers.UnkModelPTR:x}");
-        }
-
-        if (Pointers.LocalScriptsPTR == 0)
-        {
-            Pointers.LocalScriptsPTR = FindPattern(Offsets.Mask.LocalScriptsMask);
-            Pointers.LocalScriptsPTR = Rip_37(Pointers.LocalScriptsPTR);
-            LoggerHelper.Info($"《GTA5》LocalScriptsPTR 0x{Pointers.LocalScriptsPTR:x}");
-        }
-
-        if (Pointers.UnkPTR == 0)
-        {
-            Pointers.UnkPTR = FindPattern(Offsets.Mask.UnkMask);
-            Pointers.UnkPTR = Rip_37(Pointers.UnkPTR);
-            LoggerHelper.Info($"《GTA5》UnkPTR 0x{Pointers.UnkPTR:x}");
         }
     }
 

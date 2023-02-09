@@ -7,6 +7,7 @@ public static class VehicleColor
     /// </summary>
     public static readonly Dictionary<int, string> Colors = new()
     {
+        { -1, "随机" },
         { 0, "Metallic Black" },
         { 1, "Metallic Graphite Black" },
         { 2, "Metallic Black Steal" },

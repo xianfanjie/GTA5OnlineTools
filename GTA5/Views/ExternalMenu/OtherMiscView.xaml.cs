@@ -51,7 +51,7 @@ public partial class OtherMiscView : UserControl
                     PerVehInfos.Add(new PerVehInfo()
                     {
                         Index = i,
-                        Name = Vehicle.FindVehicleDisplayName(hash, true),
+                        Name = Vehicle2.FindVehicleDisplayName(hash, true),
                         Hash = hash,
                         Plate = plate
                     });

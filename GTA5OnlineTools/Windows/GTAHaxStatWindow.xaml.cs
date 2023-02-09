@@ -4,7 +4,7 @@ using GTA5Core.Client;
 using GTA5Core.Native;
 using GTA5Shared.Helper;
 
-namespace GTA5OnlineTools.Windows.Cheats;
+namespace GTA5OnlineTools.Windows;
 
 /// <summary>
 /// GTAHaxStatWindow.xaml 的交互逻辑

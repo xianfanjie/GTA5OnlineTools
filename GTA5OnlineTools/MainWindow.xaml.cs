@@ -24,8 +24,8 @@ public partial class MainWindow
     ///////////////////////////////////////////////////////////////
 
     private readonly HomeView HomeView = new();
-    private readonly HacksView CheatsView = new();
-    private readonly ModulesView ModulesView = new();
+    private readonly HacksView HacksView = new();
+    private readonly GTA5View GTA5View = new();
     private readonly ToolsView ToolsView = new();
     private readonly AboutView AboutView = new();
 
@@ -126,7 +126,7 @@ public partial class MainWindow
         Memory.CloseHandle();
         LoggerHelper.Info("释放内存模块进程句柄成功");
 
-        ModulesView.ActionCloseAllModulesWindow();
+        GTA5View.ActionCloseAllModulesWindow();
         LoggerHelper.Info("关闭小助手功能窗口成功");
 
         ProcessUtil.CloseThirdProcess();
@@ -151,13 +151,13 @@ public partial class MainWindow
                 if (ContentControl_Main.Content != HomeView)
                     ContentControl_Main.Content = HomeView;
                 break;
-            case "CheatsView":
-                if (ContentControl_Main.Content != CheatsView)
-                    ContentControl_Main.Content = CheatsView;
+            case "HacksView":
+                if (ContentControl_Main.Content != HacksView)
+                    ContentControl_Main.Content = HacksView;
                 break;
-            case "ModulesView":
-                if (ContentControl_Main.Content != ModulesView)
-                    ContentControl_Main.Content = ModulesView;
+            case "GTA5View":
+                if (ContentControl_Main.Content != GTA5View)
+                    ContentControl_Main.Content = GTA5View;
                 break;
             case "ToolsView":
                 if (ContentControl_Main.Content != ToolsView)
@@ -220,7 +220,7 @@ public partial class MainWindow
                     isExecute = true;
 
                     Memory.CloseHandle();
-                    ModulesView.ActionCloseAllModulesWindow();
+                    GTA5View.ActionCloseAllModulesWindow();
                 }
             }
 

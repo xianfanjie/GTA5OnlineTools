@@ -64,12 +64,12 @@
                     IsChecked="True" />
                 <ui:RadioButtonIcon
                     Command="{Binding NavigateCommand}"
-                    CommandParameter="CheatsView"
+                    CommandParameter="HacksView"
                     Content="第三方"
                     Icon="&#xe691;" />
                 <ui:RadioButtonIcon
                     Command="{Binding NavigateCommand}"
-                    CommandParameter="ModulesView"
+                    CommandParameter="GTA5View"
                     Content="功能"
                     Icon="&#xe666;" />
                 <ui:RadioButtonIcon

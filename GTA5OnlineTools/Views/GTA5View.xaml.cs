@@ -8,9 +8,9 @@ using CommunityToolkit.Mvvm.Input;
 namespace GTA5OnlineTools.Views;
 
 /// <summary>
-/// ModulesView.xaml 的交互逻辑
+/// GTA5View.xaml 的交互逻辑
 /// </summary>
-public partial class ModulesView : UserControl
+public partial class GTA5View : UserControl
 {
     private ExternalMenuWindow ExternalMenuWindow = null;
     private SpawnVehicleWindow SpawnVehicleWindow = null;
@@ -26,7 +26,7 @@ public partial class ModulesView : UserControl
     /// </summary>
     public static Action ActionCloseAllModulesWindow;
 
-    public ModulesView()
+    public GTA5View()
     {
         InitializeComponent();
         this.DataContext = this;

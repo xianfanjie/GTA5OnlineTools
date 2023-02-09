@@ -174,7 +174,7 @@ public partial class UpdateWindow
                     // 下载完成后旧文件重命名
                     string oldFileName = $"[旧版本小助手请手动删除] {Guid.NewGuid()}.exe";
                     // 旧版本小助手重命名
-                    FileUtil.FileReName(FileUtil.Dir_MainApp, FileUtil.GetCurrFullPath(oldFileName));
+                    FileUtil.FileReName(FileUtil.File_MainApp, FileUtil.GetCurrFullPath(oldFileName));
 
                     TextBlock_DonloadInfo.Text = "更新下载完成，程序将在3秒内重新启动";
 

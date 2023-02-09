@@ -134,7 +134,7 @@ public partial class LoadWindow
                     Thread.Sleep(100);
 
                     App.AppMainMutex.Dispose();
-                    ProcessUtil.OpenProcess(FileUtil.Dir_MainApp);
+                    ProcessUtil.OpenProcess(FileUtil.File_MainApp);
                     Application.Current.Shutdown();
                 }
                 break;

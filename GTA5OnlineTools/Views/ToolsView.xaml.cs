@@ -125,7 +125,7 @@ public partial class ToolsView : UserControl
                 Thread.Sleep(100);
 
                 App.AppMainMutex.Dispose();
-                ProcessUtil.OpenProcess(FileUtil.Dir_MainApp);
+                ProcessUtil.OpenProcess(FileUtil.File_MainApp);
                 Application.Current.Shutdown();
             }
         }
@@ -142,7 +142,7 @@ public partial class ToolsView : UserControl
     {
         ProcessUtil.CloseThirdProcess();
         App.AppMainMutex.Dispose();
-        ProcessUtil.OpenProcess(FileUtil.Dir_MainApp);
+        ProcessUtil.OpenProcess(FileUtil.File_MainApp);
         Application.Current.Shutdown();
     }
 
@@ -186,14 +186,16 @@ public partial class ToolsView : UserControl
     {
         try
         {
-            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileUtil.Dir_MainApp);
-            if (fileNameWithoutExtension != (CoreUtil.MainAppWindowName + CoreUtil.ClientVersion))
+            string fileName = Path.GetFileName(FileUtil.File_MainApp);
+            var name = $"{CoreUtil.MainAppWindowName}{CoreUtil.ClientVersion}.exe";
+            if (fileName != name)
             {
-                FileUtil.FileReName(FileUtil.Dir_MainApp, FileUtil.GetCurrFullPath(CoreUtil.MainAppWindowName + CoreUtil.ClientVersion + ".exe"));
+                var fullPath = FileUtil.GetCurrFullPath(name);
+                FileUtil.FileReName(FileUtil.File_MainApp, fullPath);
 
                 ProcessUtil.CloseThirdProcess();
                 App.AppMainMutex.Dispose();
-                ProcessUtil.OpenProcess(FileUtil.GetCurrFullPath(CoreUtil.MainAppWindowName + CoreUtil.ClientVersion + ".exe"));
+                ProcessUtil.OpenProcess(fullPath);
                 Application.Current.Shutdown();
             }
             else
@@ -214,10 +216,10 @@ public partial class ToolsView : UserControl
     {
         try
         {
-            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileUtil.Dir_MainApp);
-            if (fileNameWithoutExtension != "GTA5OnlineTools")
+            string fileName = Path.GetFileName(FileUtil.File_MainApp);
+            if (fileName != "GTA5OnlineTools.exe")
             {
-                FileUtil.FileReName(FileUtil.Dir_MainApp, "GTA5OnlineTools.exe");
+                FileUtil.FileReName(FileUtil.File_MainApp, "GTA5OnlineTools.exe");
 
                 ProcessUtil.CloseThirdProcess();
                 App.AppMainMutex.Dispose();
@@ -240,14 +242,15 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void StoryModeArchiveClick()
     {
-        var path = Path.Combine(FileUtil.Dir_MyDocuments, @"Rockstar Games\GTA V\Profiles");
+        var path = $"{FileUtil.Dir_MyDocuments}\\Rockstar Games\\GTA V\\Profiles";
         if (!Directory.Exists(path))
         {
             NotifierHelper.Show(NotifierType.Error, "GTA5故事模式存档路径不存在，操作取消");
             return;
         }
 
-        if (MessageBox.Show("你确定替换GTA5故事模式存档吗？将替换GTA5正版故事模式默认存档（存档进度：100%）", "警告", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+        if (MessageBox.Show("你确定替换GTA5故事模式存档吗？将替换GTA5正版故事模式默认存档（存档进度：100%）",
+            "警告", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
         {
             try
             {

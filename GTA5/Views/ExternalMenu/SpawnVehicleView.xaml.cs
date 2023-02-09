@@ -10,8 +10,6 @@ namespace GTA5.Views.ExternalMenu;
 /// </summary>
 public partial class SpawnVehicleView : UserControl
 {
-    private VehicleSpawn VehicleSpawn = new();
-
     public SpawnVehicleView()
     {
         InitializeComponent();
@@ -63,12 +61,12 @@ public partial class SpawnVehicleView : UserControl
                         {
                             if (index == ComboBox_VehicleClass.SelectedIndex)
                             {
-                                ListBox_VehicleInfo.Items.Add(new ModelPreview()
-                                {
-                                    Id = name,
-                                    Name = displayName,
-                                    Image = $"\\Assets\\Vehicles\\{name}.png"
-                                });
+                                //ListBox_VehicleInfo.Items.Add(new VehicleInfo()
+                                //{
+                                //    Id = name,
+                                //    Name = displayName,
+                                //    Image = $"\\Assets\\Vehicles\\{name}.png"
+                                //});
                             }
                         });
                     }
@@ -79,28 +77,15 @@ public partial class SpawnVehicleView : UserControl
         }
     }
 
-    private void ListBox_VehicleInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        VehicleSpawn.VehicleHash = 0;
-
-        var index1 = ComboBox_VehicleClass.SelectedIndex;
-        var index2 = ListBox_VehicleInfo.SelectedIndex;
-        if (index1 != -1 && index2 != -1)
-        {
-            VehicleSpawn.VehicleHash = VehicleData.VehicleClassData[index1].VehicleInfo[index2].Hash;
-            VehicleSpawn.VehicleMod = VehicleData.VehicleClassData[index1].VehicleInfo[index2].Mod;
-        }
-    }
-
     private void Button_SpawnOnlineVehicleA_Click(object sender, RoutedEventArgs e)
     {
-        Vehicle.SpawnVehicle(VehicleSpawn.VehicleHash, -255.0f, 5, VehicleSpawn.VehicleMod);
+        //Vehicle.SpawnVehicle(VehicleSpawn.VehicleHash, -255.0f, 5, VehicleSpawn.VehicleMod);
         //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
     }
 
     private void Button_SpawnOnlineVehicleB_Click(object sender, RoutedEventArgs e)
     {
-        Vehicle.SpawnVehicle(VehicleSpawn.VehicleHash, 0.0f, 5, VehicleSpawn.VehicleMod);
+        //Vehicle.SpawnVehicle(VehicleSpawn.VehicleHash, 0.0f, 5, VehicleSpawn.VehicleMod);
         //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
     }
 

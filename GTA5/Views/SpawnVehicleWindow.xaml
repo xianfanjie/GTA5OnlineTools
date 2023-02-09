@@ -34,78 +34,6 @@
         </StackPanel>
     </ui:Window.TitleContent>
 
-    <Window.Resources>
-        <Style x:Key="ListBoxStyle_VehiclePreview" TargetType="{x:Type ListBox}">
-            <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
-            <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBox}">
-                        <ScrollViewer>
-                            <WrapPanel IsItemsHost="true" />
-                        </ScrollViewer>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="ItemContainerStyle">
-                <Setter.Value>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border
-                                        Name="border"
-                                        Width="200"
-                                        Height="160"
-                                        Margin="3"
-                                        BorderBrush="Gray"
-                                        BorderThickness="0.5"
-                                        FocusVisualStyle="{x:Null}"
-                                        SnapsToDevicePixels="True">
-                                        <ContentPresenter />
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#D9D9D9" />
-                                        </Trigger>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#FCAF17" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="ItemTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <DockPanel>
-                            <TextBlock
-                                Margin="10,3,5,5"
-                                DockPanel.Dock="Bottom"
-                                Text="{Binding Id}" />
-                            <TextBlock
-                                Margin="10,0,5,0"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                FontWeight="Bold"
-                                Text="{Binding Name}" />
-                            <Image
-                                Margin="5"
-                                DockPanel.Dock="Top"
-                                Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
-                                Style="{StaticResource ImageStyle_HighQuality}" />
-                        </DockPanel>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150" />
@@ -114,10 +42,10 @@
         </Grid.ColumnDefinitions>
         <!--  ###################  -->
         <ListBox
-            x:Name="ListBox_VehicleClass"
+            x:Name="ListBox_VehicleTypes"
             Grid.Column="0"
             Margin="5"
-            SelectionChanged="ListBox_VehicleClass_SelectionChanged">
+            SelectionChanged="ListBox_VehicleTypes_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">
                     <StackPanel Orientation="Horizontal">
@@ -136,20 +64,41 @@
             x:Name="ListBox_VehicleInfo"
             Grid.Column="1"
             Margin="0,5,5,5"
-            SelectionChanged="ListBox_VehicleInfo_SelectionChanged"
-            Style="{StaticResource ListBoxStyle_VehiclePreview}" />
+            Style="{StaticResource ListBoxStyle_VehiclePreview}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type ListBoxItem}">
+                    <DockPanel>
+                        <TextBlock
+                            Margin="10,3,5,5"
+                            DockPanel.Dock="Bottom"
+                            Text="{Binding Name}" />
+                        <TextBlock
+                            Margin="10,0,5,0"
+                            DockPanel.Dock="Bottom"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Text="{Binding DisplayName}" />
+                        <Image
+                            Margin="5"
+                            DockPanel.Dock="Top"
+                            Source="{Binding PreviewImage, Converter={StaticResource StringToImageSourceConverter}}"
+                            Style="{StaticResource ImageStyle_HighQuality}" />
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <!--  ###################  -->
         <StackPanel Grid.Column="2">
             <TextBlock
                 Margin="5"
                 FontWeight="Bold"
                 Text="载具名称" />
-            <TextBlock Margin="10,5,5,5" Text="{Binding ElementName=ListBox_VehicleInfo, Path=SelectedItem.Name}" />
+            <TextBlock Margin="10,5,5,5" Text="{Binding ElementName=ListBox_VehicleInfo, Path=SelectedItem.DisplayName}" />
             <TextBlock
                 Margin="5"
                 FontWeight="Bold"
                 Text="载具ID" />
-            <TextBlock Margin="10,5,5,5" Text="{Binding ElementName=ListBox_VehicleInfo, Path=SelectedItem.Id}" />
+            <TextBlock Margin="10,5,5,5" Text="{Binding ElementName=ListBox_VehicleInfo, Path=SelectedItem.Name}" />
             <TextBlock
                 Margin="5"
                 FontWeight="Bold"
@@ -158,9 +107,9 @@
                 Height="100"
                 Margin="10,5,5,5"
                 HorizontalAlignment="Left"
-                Source="{Binding ElementName=ListBox_VehicleInfo, Path=SelectedItem.Image}"
+                Source="{Binding ElementName=ListBox_VehicleInfo, Path=SelectedItem.PreviewImage}"
                 Style="{StaticResource ImageStyle_HighQuality}" />
-
+            <!--  //////////////////  -->
             <StackPanel Margin="5">
                 <Button
                     x:Name="Button_SpawnOnlineVehicleA"

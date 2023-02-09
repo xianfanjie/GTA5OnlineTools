@@ -64,15 +64,15 @@ public partial class SpawnWeaponView : UserControl
 
                         this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                         {
-                            if (index == ComboBox_WeaponClass.SelectedIndex)
-                            {
-                                ListBox_WeaponInfo.Items.Add(new ModelPreview()
-                                {
-                                    Id = name,
-                                    Name = displayName,
-                                    Image = $"\\Assets\\Weapons\\{name}.png"
-                                });
-                            }
+                            //if (index == ComboBox_WeaponClass.SelectedIndex)
+                            //{
+                            //    ListBox_WeaponInfo.Items.Add(new VehicleInfo()
+                            //    {
+                            //        Id = name,
+                            //        Name = displayName,
+                            //        Image = $"\\Assets\\Weapons\\{name}.png"
+                            //    });
+                            //}
                         });
                     }
                 });

@@ -9,69 +9,6 @@
     d:DesignWidth="900"
     mc:Ignorable="d">
 
-    <UserControl.Resources>
-        <Style x:Key="ListBoxStyle_WeaponPreview" TargetType="{x:Type ListBox}">
-            <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
-            <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBox}">
-                        <Border BorderBrush="#808080" BorderThickness="1">
-                            <ScrollViewer>
-                                <StackPanel IsItemsHost="true" />
-                            </ScrollViewer>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="ItemContainerStyle">
-                <Setter.Value>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Grid Height="40" Background="Transparent">
-                                        <Border Name="border" />
-                                        <Border>
-                                            <ContentPresenter VerticalAlignment="Center" />
-                                        </Border>
-                                    </Grid>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#CCCCCC" />
-                                            <Setter Property="TextElement.Foreground" Value="White" />
-                                        </Trigger>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#808080" />
-                                            <Setter Property="TextElement.Foreground" Value="White" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="ItemTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image
-                                Width="60"
-                                Margin="5,5,10,5"
-                                Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
-                                Stretch="Uniform"
-                                Style="{StaticResource ImageStyle_HighQuality}" />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
-
     <UniformGrid Columns="3">
         <!--  面板1  -->
         <DockPanel LastChildFill="True">
@@ -99,8 +36,21 @@
                 x:Name="ListBox_WeaponInfo"
                 Margin="5"
                 DockPanel.Dock="Bottom"
-                SelectionChanged="ListBox_WeaponInfo_SelectionChanged"
-                Style="{StaticResource ListBoxStyle_WeaponPreview}" />
+                Style="{StaticResource ListBoxStyle_WeaponInfo}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="60"
+                                Margin="5,5,10,5"
+                                Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
+                                Stretch="Uniform"
+                                Style="{StaticResource ImageStyle_HighQuality}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </DockPanel>
         <!--  面板2  -->
         <StackPanel>

@@ -1,6 +1,7 @@
 ﻿using GTA5.Data;
-using GTA5Core.Client;
-using GTA5Core.Feature;
+
+using GTA5Core.RAGE;
+using GTA5Core.RAGE.Vehicles;
 
 namespace GTA5.Views;
 
@@ -9,8 +10,6 @@ namespace GTA5.Views;
 /// </summary>
 public partial class SpawnVehicleWindow
 {
-    private VehicleSpawn vehicleSpawn = new();
-
     public SpawnVehicleWindow()
     {
         InitializeComponent();
@@ -19,15 +18,15 @@ public partial class SpawnVehicleWindow
     private void Window_SpawnVehicle_Loaded(object sender, RoutedEventArgs e)
     {
         // 载具分类列表
-        foreach (var vehicleClass in VehicleData.VehicleClassData)
+        foreach (var vTypes in VehicleHash.VehicleTypes)
         {
-            ListBox_VehicleClass.Items.Add(new IconMenu()
+            ListBox_VehicleTypes.Items.Add(new IconMenu()
             {
-                Icon = vehicleClass.Icon,
-                Title = vehicleClass.Name
+                Icon = "\xe610",
+                Title = vTypes.Key
             });
         }
-        ListBox_VehicleClass.SelectedIndex = 0;
+        ListBox_VehicleTypes.SelectedIndex = 0;
     }
 
     private void Window_SpawnVehicle_Closing(object sender, CancelEventArgs e)
@@ -35,33 +34,29 @@ public partial class SpawnVehicleWindow
 
     }
 
-    private void ListBox_VehicleClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ListBox_VehicleTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         lock (this)
         {
-            var index = ListBox_VehicleClass.SelectedIndex;
+            var index = ListBox_VehicleTypes.SelectedIndex;
             if (index != -1)
             {
                 ListBox_VehicleInfo.Items.Clear();
 
                 Task.Run(() =>
                 {
-                    var className = VehicleData.VehicleClassData[index].Name;
-
-                    for (int i = 0; i < VehicleData.VehicleClassData[index].VehicleInfo.Count; i++)
+                    var typeName = VehicleHash.VehicleTypes.ElementAt(index).Key;
+                    foreach (var item in VehicleHash.VehicleTypes[typeName])
                     {
-                        var name = VehicleData.VehicleClassData[index].VehicleInfo[i].Name;
-                        var displayName = VehicleData.VehicleClassData[index].VehicleInfo[i].Display;
-
                         this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                         {
-                            if (index == ListBox_VehicleClass.SelectedIndex)
+                            if (index == ListBox_VehicleTypes.SelectedIndex)
                             {
-                                ListBox_VehicleInfo.Items.Add(new ModelPreview()
+                                ListBox_VehicleInfo.Items.Add(new VehicleInfo()
                                 {
-                                    Id = name,
-                                    Name = displayName,
-                                    Image = $"\\Assets\\Vehicles\\{name}.png"
+                                    Name = item.Key,
+                                    DisplayName = item.Value,
+                                    PreviewImage = RAGEHelper.GetVehicleImage(item.Key)
                                 });
                             }
                         });
@@ -73,28 +68,21 @@ public partial class SpawnVehicleWindow
         }
     }
 
-    private void ListBox_VehicleInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        vehicleSpawn.VehicleHash = 0;
-
-        var index1 = ListBox_VehicleClass.SelectedIndex;
-        var index2 = ListBox_VehicleInfo.SelectedIndex;
-        if (index1 != -1 && index2 != -1)
-        {
-            vehicleSpawn.VehicleHash = VehicleData.VehicleClassData[index1].VehicleInfo[index2].Hash;
-            vehicleSpawn.VehicleMod = VehicleData.VehicleClassData[index1].VehicleInfo[index2].Mod;
-        }
-    }
-
     private void Button_SpawnOnlineVehicleA_Click(object sender, RoutedEventArgs e)
     {
-        Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f, 5, vehicleSpawn.VehicleMod);
-        //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
+        if (ListBox_VehicleInfo.SelectedItem is VehicleInfo info)
+        {
+            //Vehicle.SpawnVehicle(RAGEHelper.JOAAT(model.Name), -255.0f, 5);
+            //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
+        }
     }
 
     private void Button_SpawnOnlineVehicleB_Click(object sender, RoutedEventArgs e)
     {
-        Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, 0.0f, 5, vehicleSpawn.VehicleMod);
-        //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
+        if (ListBox_VehicleInfo.SelectedItem is VehicleInfo info)
+        {
+            //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f, 5);
+            //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
+        }
     }
 }

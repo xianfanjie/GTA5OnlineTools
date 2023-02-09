@@ -9,7 +9,7 @@ public static class RAGEHelper
     /// <returns></returns>
     public static string GetVehicleImage(string vehicleName)
     {
-        return $"pack://application:,,,/GTA5.Share;component/Assets/Vehicles/{vehicleName}.png";
+        return $"pack://application:,,,/GTA5Core;component/Assets/Vehicles/{vehicleName}.png";
     }
 
     /// <summary>
@@ -19,7 +19,7 @@ public static class RAGEHelper
     /// <returns></returns>
     public static string GetWeaponImage(string weaponName)
     {
-        return $"pack://application:,,,/GTA5.Share;component/Assets/Weapons/{weaponName}.png";
+        return $"pack://application:,,,/GTA5Core;component/Assets/Weapons/{weaponName}.png";
     }
 
     /// <summary>

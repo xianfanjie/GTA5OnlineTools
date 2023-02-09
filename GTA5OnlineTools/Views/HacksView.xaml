@@ -203,6 +203,11 @@
                                 CommandParameter="YimMenuDirectory"
                                 Content="配置目录" />
                             <Button
+                                Background="#34A853"
+                                Command="{Binding ExtraClickCommand}"
+                                CommandParameter="EditYimMenuConfig"
+                                Content="配置文件" />
+                            <Button
                                 Background="#EA4335"
                                 Command="{Binding ExtraClickCommand}"
                                 CommandParameter="ResetYimMenuConfig"

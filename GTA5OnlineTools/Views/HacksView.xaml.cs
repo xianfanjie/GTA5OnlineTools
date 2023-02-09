@@ -168,8 +168,12 @@ public partial class HacksView : UserControl
             case "DefaultGTAHaxStat":
                 DefaultGTAHaxStatClick();
                 break;
+            //////////////
             case "YimMenuDirectory":
                 YimMenuDirectoryClick();
+                break;
+            case "EditYimMenuConfig":
+                EditYimMenuConfigClick();
                 break;
             case "ResetYimMenuConfig":
                 ResetYimMenuConfigClick();
@@ -445,6 +449,14 @@ public partial class HacksView : UserControl
     private void YimMenuDirectoryClick()
     {
         ProcessUtil.OpenLink(FileUtil.Dir_BigBaseV2);
+    }
+
+    /// <summary>
+    /// YimMenu配置文件
+    /// </summary>
+    private void EditYimMenuConfigClick()
+    {
+        ProcessUtil.Notepad2EditTextFile(FileUtil.Dir_BigBaseV2 + "\\settings.json");
     }
 
     /// <summary>

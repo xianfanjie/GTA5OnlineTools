@@ -4,6 +4,7 @@ using GTA5OnlineTools.Windows;
 using GTA5OnlineTools.Views.ReadMe;
 
 using GTA5Inject;
+using GTA5Core.Views;
 using GTA5Core.Native;
 using GTA5Shared.Helper;
 
@@ -288,7 +289,27 @@ public partial class HacksView : UserControl
     /// </summary>
     private void YimMenuClick()
     {
-        var result = Injector.DLLInjector(Memory.GTA5ProId, FileUtil.File_Inject_YimMenu, true);
+        Process GTA5Process = null;
+
+        foreach (var item in Process.GetProcessesByName("GTA5"))
+        {
+            if (item.MainWindowHandle == IntPtr.Zero)
+                continue;
+
+            if (item.MainModule.FileVersionInfo.LegalCopyright.Contains("Rockstar Games Inc."))
+            {
+                GTA5Process = item;
+                break;
+            }
+        }
+
+        if (GTA5Process == null)
+        {
+            NotifierHelper.Show(NotifierType.Warning, "未发现正确的《GTA5》进程");
+            return;
+        }
+
+        var result = Injector.DLLInjector(GTA5Process.Id, FileUtil.File_Inject_YimMenu, true);
         if (result.IsSuccess)
             NotifierHelper.Show(NotifierType.Success, "YimMenu菜单注入成功");
         else

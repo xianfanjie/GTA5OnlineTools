@@ -1,6 +1,7 @@
 ﻿using GTA5OnlineTools.Utils;
 using GTA5OnlineTools.Windows;
 
+using GTA5Core.Views;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -77,6 +78,9 @@ public partial class ToolsView : UserControl
                 break;
             case "StoryModeArchive":
                 StoryModeArchiveClick();
+                break;
+            case "ReInitGTA5Mem":
+                ReInitGTA5MemClick();
                 break;
             case "ManualGC":
                 ManualGCClick();
@@ -262,6 +266,22 @@ public partial class ToolsView : UserControl
                 NotifierHelper.ShowException(ex);
             }
         }
+    }
+
+
+    /// <summary>
+    /// 重新初始化GTA5内存模块
+    /// </summary>
+    private void ReInitGTA5MemClick()
+    {
+        GTA5View.ActionCloseAllGTA5Window();
+
+        // GTA5内存模块初始化窗口
+        var gTA5InitWindow = new GTA5InitWindow(false)
+        {
+            Owner = MainWindow.MainWindowInstance
+        };
+        gTA5InitWindow.ShowDialog();
     }
 
     /// <summary>

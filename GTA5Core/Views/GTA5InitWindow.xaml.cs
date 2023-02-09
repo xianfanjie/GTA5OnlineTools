@@ -10,9 +10,14 @@ namespace GTA5Core.Views;
 /// </summary>
 public partial class GTA5InitWindow
 {
-    public GTA5InitWindow()
+    public bool IsAutoClose { get; }
+
+    public GTA5InitWindow(bool isAutoClose = true)
     {
         InitializeComponent();
+        this.DataContext = this;
+
+        IsAutoClose = isAutoClose;
     }
 
     private void Window_GTA5Init_Loaded(object sender, RoutedEventArgs e)
@@ -25,11 +30,17 @@ public partial class GTA5InitWindow
             {
                 if (PatternInit())
                 {
+                    Logger("《GTA5》相关模块初始化完毕");
                     Memory.IsInitialized = true;
-                    this.Dispatcher.Invoke(() =>
+
+                    if (IsAutoClose)
                     {
-                        this.Close();
-                    });
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            this.Close();
+                        });
+                    }
+
                     return;
                 }
             }
@@ -48,6 +59,7 @@ public partial class GTA5InitWindow
         this.Dispatcher.Invoke(() =>
         {
             TextBox_Logger.AppendText($"{log}\n");
+            TextBox_Logger.ScrollToEnd();
         });
     }
 
@@ -130,6 +142,8 @@ public partial class GTA5InitWindow
 
     private bool PatternInit()
     {
+        Logger("开始初始化《GTA5》特征码模块");
+
         Pointers.WorldPTR = Memory.FindPattern(Offsets.Mask.WorldMask);
         Pointers.WorldPTR = Memory.Rip_37(Pointers.WorldPTR);
         Logger($"《GTA5》WorldPTR 0x{Pointers.WorldPTR:x}");

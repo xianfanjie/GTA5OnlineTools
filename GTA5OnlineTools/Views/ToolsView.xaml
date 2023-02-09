@@ -62,7 +62,7 @@
                         Icon="&#xe675;"
                         Style="{StaticResource ButtonStyle_Tools}" />
                 </WrapPanel>
-                <!--  ##################################################  -->
+                <!--  //////////////////////////////////////////////  -->
                 <WrapPanel>
                     <ui:ButtonIcon
                         Command="{Binding ToolsButtonClickCommand}"
@@ -81,6 +81,12 @@
                         CommandParameter="StoryModeArchive"
                         Content="替换故事模式完美存档"
                         Icon="&#xe64d;"
+                        Style="{StaticResource ButtonStyle_Tools}" />
+                    <ui:ButtonIcon
+                        Command="{Binding ToolsButtonClickCommand}"
+                        CommandParameter="ReInitGTA5Mem"
+                        Content="重新初始化GTA5内存模块"
+                        Icon="&#xe978;"
                         Style="{StaticResource ButtonStyle_Tools}" />
                     <ui:ButtonIcon
                         Command="{Binding ToolsButtonClickCommand}"

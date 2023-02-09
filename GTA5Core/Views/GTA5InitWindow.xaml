@@ -11,7 +11,7 @@
     Height="350"
     Closing="Window_GTA5Init_Closing"
     Loaded="Window_GTA5Init_Loaded"
-    ResizeMode="CanMinimize"
+    ResizeMode="NoResize"
     Style="{StaticResource SystemWindowStyle}"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">

@@ -8,6 +8,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        //var process = Process.GetProcessById(12312);
+
+        Console.WriteLine("操作结束，按任意键继续！");
+        Console.ReadLine();
+    }
+
+    void Func()
+    {
         // 2023/02/07   793
         var vehicles = Enum.GetValues(typeof(VehicleHash));
         Console.WriteLine($"载具数量：{vehicles.Length}");
@@ -42,9 +50,6 @@ internal class Program
             //    Console.WriteLine($"{vEnum} {imgNames[index]}");
             //}
         }
-
-        Console.WriteLine("操作结束，按任意键继续！");
-        Console.ReadLine();
     }
 
     static uint Joaat(string input)

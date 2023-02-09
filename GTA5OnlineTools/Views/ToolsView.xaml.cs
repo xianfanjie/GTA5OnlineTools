@@ -12,8 +12,6 @@ namespace GTA5OnlineTools.Views;
 /// </summary>
 public partial class ToolsView : UserControl
 {
-    private InjectorWindow InjectorWindow = null;
-
     public ToolsView()
     {
         InitializeComponent();
@@ -59,9 +57,6 @@ public partial class ToolsView : UserControl
             case "RestartApp":
                 RestartAppClick();
                 break;
-            case "BaseInjector":
-                BaseInjectorClick();
-                break;
             case "OpenUpdateWindow":
                 OpenUpdateWindowClick();
                 break;
@@ -74,7 +69,6 @@ public partial class ToolsView : UserControl
             #endregion
             ////////////////////////////////////
             #region 分组2
-
             case "ReNameAppCN":
                 ReNameAppCNClick();
                 break;
@@ -87,10 +81,7 @@ public partial class ToolsView : UserControl
             case "ManualGC":
                 ManualGCClick();
                 break;
-            #endregion
-            ////////////////////////////////////
-            default:
-                break;
+                #endregion
         }
     }
 
@@ -149,33 +140,6 @@ public partial class ToolsView : UserControl
         App.AppMainMutex.Dispose();
         ProcessUtil.OpenProcess(FileUtil.Dir_MainApp);
         Application.Current.Shutdown();
-    }
-
-    /// <summary>
-    /// 基础DLL注入器
-    /// </summary>
-    private void BaseInjectorClick()
-    {
-        if (InjectorWindow == null)
-        {
-            InjectorWindow = new InjectorWindow();
-            InjectorWindow.Show();
-        }
-        else
-        {
-            if (InjectorWindow.IsVisible)
-            {
-                InjectorWindow.Topmost = true;
-                InjectorWindow.Topmost = false;
-                InjectorWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                InjectorWindow = null;
-                InjectorWindow = new InjectorWindow();
-                InjectorWindow.Show();
-            }
-        }
     }
 
     /// <summary>

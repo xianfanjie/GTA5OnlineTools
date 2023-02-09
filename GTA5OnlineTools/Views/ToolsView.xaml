@@ -45,12 +45,6 @@
                         Style="{StaticResource ButtonStyle_Tools}" />
                     <ui:ButtonIcon
                         Command="{Binding ToolsButtonClickCommand}"
-                        CommandParameter="BaseInjector"
-                        Content="基础DLL注入器"
-                        Icon="&#xe63d;"
-                        Style="{StaticResource ButtonStyle_Tools}" />
-                    <ui:ButtonIcon
-                        Command="{Binding ToolsButtonClickCommand}"
                         CommandParameter="OpenUpdateWindow"
                         Content="打开更新窗口"
                         Icon="&#xe652;"

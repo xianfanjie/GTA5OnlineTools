@@ -4,6 +4,7 @@ using GTA5OnlineTools.Views.ReadMe;
 using GTA5OnlineTools.Windows;
 using GTA5OnlineTools.Windows.Cheats;
 
+using GTA5Inject;
 using GTA5Core.Native;
 using GTA5Shared.Helper;
 
@@ -217,7 +218,22 @@ public partial class HacksView : UserControl
                         {
                             // 拿到Kiddion进程
                             var pKiddion = Process.GetProcessesByName("Kiddion").ToList()[0];
-                            BaseInjector.DLLInjector(pKiddion.Id, FileUtil.File_Kiddion_KiddionChs);
+                            var result = Injector.DLLInjector(pKiddion.Id, FileUtil.File_Kiddion_KiddionChs, false);
+                            if (result.IsSuccess)
+                            {
+                                this.Dispatcher.Invoke(() =>
+                                {
+                                    NotifierHelper.Show(NotifierType.Success, "Kiddion汉化加载成功");
+                                });
+                            }
+                            else
+                            {
+                                this.Dispatcher.Invoke(() =>
+                                {
+                                    NotifierHelper.Show(NotifierType.Error, $"Kiddion汉化加载失败\n错误信息：{result.Content}");
+                                });
+                            }
+
                             return;
                         }
 
@@ -270,31 +286,11 @@ public partial class HacksView : UserControl
     /// </summary>
     private void YimMenuClick()
     {
-        if (!File.Exists(FileUtil.File_Inject_YimMenu))
-        {
-            NotifierHelper.Show(NotifierType.Error, "发生异常，YimMenu菜单DLL文件不存在");
-            return;
-        }
-
-        foreach (ProcessModule module in Process.GetProcessById(Memory.GTA5ProId).Modules)
-        {
-            if (module.FileName == FileUtil.File_Inject_YimMenu)
-            {
-                NotifierHelper.Show(NotifierType.Warning, "该DLL已经被注入过了，请勿重复注入");
-                return;
-            }
-        }
-
-        try
-        {
-            BaseInjector.DLLInjector(Memory.GTA5ProId, FileUtil.File_Inject_YimMenu);
-            Memory.SetForegroundWindow();
-            NotifierHelper.Show(NotifierType.Success, "YimMenu注入成功，请前往游戏查看");
-        }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
-        }
+        var result = Injector.DLLInjector(Memory.GTA5ProId, FileUtil.File_Inject_YimMenu, true);
+        if (result.IsSuccess)
+            NotifierHelper.Show(NotifierType.Success, "YimMenu菜单注入成功");
+        else
+            NotifierHelper.Show(NotifierType.Error, $"YimMenu菜单注入\n错误信息：{result.Content}");
     }
     #endregion
 

@@ -5,6 +5,7 @@
     xmlns:cvt="clr-namespace:MetroSkin.Converters">
 
     <cvt:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
+    <cvt:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
 
     <Style TargetType="{x:Type controls:GroupBoxHack}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -36,15 +37,37 @@
                                 BorderBrush="Gray"
                                 BorderThickness="1"
                                 SnapsToDevicePixels="True">
-                                <Image
-                                    RenderOptions.BitmapScalingMode="HighQuality"
-                                    Source="{TemplateBinding Image,
-                                                             Converter={StaticResource StringToImageSourceConverter}}"
-                                    Stretch="UniformToFill">
-                                    <Image.ToolTip>
-                                        <Image Source="{TemplateBinding Image, Converter={StaticResource StringToImageSourceConverter}}" />
-                                    </Image.ToolTip>
-                                </Image>
+                                <Grid>
+                                    <Image
+                                        RenderOptions.BitmapScalingMode="HighQuality"
+                                        Source="{TemplateBinding Image,
+                                                                 Converter={StaticResource StringToImageSourceConverter}}"
+                                        Stretch="UniformToFill">
+                                        <Image.ToolTip>
+                                            <Image Source="{TemplateBinding Image, Converter={StaticResource StringToImageSourceConverter}}" />
+                                        </Image.ToolTip>
+                                    </Image>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="24"
+                                        FontWeight="Bold"
+                                        Foreground="Red"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        TextAlignment="Center"
+                                        Visibility="{TemplateBinding IsOutdated,
+                                                                     Converter={StaticResource BoolToVisibilityConverter}}">
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect
+                                                BlurRadius="5"
+                                                Direction="-45"
+                                                Opacity="1"
+                                                ShadowDepth="5"
+                                                Color="Black" />
+                                        </TextBlock.Effect>
+                                        已过期<LineBreak />
+                                        等待更新</TextBlock>
+                                </Grid>
                             </Border>
                             <!--  简介和功能  -->
                             <DockPanel Grid.Column="1" Margin="5">

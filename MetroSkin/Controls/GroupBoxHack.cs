@@ -14,6 +14,17 @@ public class GroupBoxHack : GroupBox
         DependencyProperty.Register("Image", typeof(string), typeof(GroupBoxHack), new PropertyMetadata(default));
 
     /// <summary>
+    /// Hack是否过期
+    /// </summary>
+    public bool IsOutdated
+    {
+        get { return (bool)GetValue(IsOutdatedProperty); }
+        set { SetValue(IsOutdatedProperty, value); }
+    }
+    public static readonly DependencyProperty IsOutdatedProperty =
+        DependencyProperty.Register("IsOutdated", typeof(bool), typeof(GroupBoxHack), new PropertyMetadata(false));
+
+    /// <summary>
     /// Hack标题
     /// </summary>
     public string Title

@@ -1,6 +1,6 @@
 ﻿namespace GTA5.Data;
 
-public class VehicleInfo
+public class ModelInfo
 {
     public string Name { get; set; }
     public string DisplayName { get; set; }

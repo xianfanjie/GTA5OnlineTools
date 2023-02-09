@@ -1,5 +1,6 @@
 ﻿using GTA5.Data;
 
+using GTA5Core.Feature;
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
 
@@ -18,12 +19,12 @@ public partial class SpawnVehicleWindow
     private void Window_SpawnVehicle_Loaded(object sender, RoutedEventArgs e)
     {
         // 载具分类列表
-        foreach (var vTypes in VehicleHash.VehicleTypes)
+        foreach (var vType in VehicleHash.VehicleTypes)
         {
             ListBox_VehicleTypes.Items.Add(new IconMenu()
             {
                 Icon = "\xe610",
-                Title = vTypes.Key
+                Title = vType.Key
             });
         }
         ListBox_VehicleTypes.SelectedIndex = 0;
@@ -110,7 +111,7 @@ public partial class SpawnVehicleWindow
                         {
                             if (index == ListBox_VehicleTypes.SelectedIndex)
                             {
-                                ListBox_VehicleInfo.Items.Add(new VehicleInfo()
+                                ListBox_VehicleInfo.Items.Add(new ModelInfo()
                                 {
                                     Name = item.Key,
                                     DisplayName = item.Value,
@@ -128,19 +129,17 @@ public partial class SpawnVehicleWindow
 
     private void Button_SpawnOnlineVehicleA_Click(object sender, RoutedEventArgs e)
     {
-        if (ListBox_VehicleInfo.SelectedItem is VehicleInfo info)
+        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            //Vehicle.SpawnVehicle(RAGEHelper.JOAAT(model.Name), -255.0f, 5);
-            //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
+            Vehicle2.SpawnVehicle(info.Name, -255.0f, 5, 0);
         }
     }
 
     private void Button_SpawnOnlineVehicleB_Click(object sender, RoutedEventArgs e)
     {
-        if (ListBox_VehicleInfo.SelectedItem is VehicleInfo info)
+        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f, 5);
-            //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
+            Vehicle2.SpawnVehicle(info.Name, 0.0f, 5, 0);
         }
     }
 }

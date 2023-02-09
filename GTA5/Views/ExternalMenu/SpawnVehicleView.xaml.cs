@@ -1,7 +1,10 @@
 ﻿using GTA5.Data;
+
 using GTA5Core.Client;
 using GTA5Core.Feature;
 using GTA5Core.Settings;
+using GTA5Core.RAGE;
+using GTA5Core.RAGE.Vehicles;
 
 namespace GTA5.Views.ExternalMenu;
 
@@ -17,15 +20,15 @@ public partial class SpawnVehicleView : UserControl
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // 载具列表
-        foreach (var item in VehicleData.VehicleClassData)
+        foreach (var vType in VehicleHash.VehicleTypes)
         {
-            ComboBox_VehicleClass.Items.Add(new IconMenu()
+            ComboBox_VehicleTypes.Items.Add(new IconMenu()
             {
-                Icon = item.Icon,
-                Title = item.Name
+                Icon = "\xe610",
+                Title = vType.Key
             });
         }
-        ComboBox_VehicleClass.SelectedIndex = 0;
+        ComboBox_VehicleTypes.SelectedIndex = 0;
 
         // 载具附加功能
         foreach (var item in MiscData.VehicleExtras)
@@ -39,34 +42,30 @@ public partial class SpawnVehicleView : UserControl
 
     }
 
-    private void ComboBox_VehicleClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ComboBox_VehicleTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         lock (this)
         {
-            var index = ComboBox_VehicleClass.SelectedIndex;
+            var index = ComboBox_VehicleTypes.SelectedIndex;
             if (index != -1)
             {
                 ListBox_VehicleInfo.Items.Clear();
 
                 Task.Run(() =>
                 {
-                    var className = VehicleData.VehicleClassData[index].Name;
-
-                    for (int i = 0; i < VehicleData.VehicleClassData[index].VehicleInfo.Count; i++)
+                    var typeName = VehicleHash.VehicleTypes.ElementAt(index).Key;
+                    foreach (var item in VehicleHash.VehicleTypes[typeName])
                     {
-                        var name = VehicleData.VehicleClassData[index].VehicleInfo[i].Name;
-                        var displayName = VehicleData.VehicleClassData[index].VehicleInfo[i].Display;
-
                         this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                         {
-                            if (index == ComboBox_VehicleClass.SelectedIndex)
+                            if (index == ComboBox_VehicleTypes.SelectedIndex)
                             {
-                                //ListBox_VehicleInfo.Items.Add(new VehicleInfo()
-                                //{
-                                //    Id = name,
-                                //    Name = displayName,
-                                //    Image = $"\\Assets\\Vehicles\\{name}.png"
-                                //});
+                                ListBox_VehicleInfo.Items.Add(new ModelInfo()
+                                {
+                                    Name = item.Key,
+                                    DisplayName = item.Value,
+                                    PreviewImage = RAGEHelper.GetVehicleImage(item.Key)
+                                });
                             }
                         });
                     }
@@ -79,14 +78,18 @@ public partial class SpawnVehicleView : UserControl
 
     private void Button_SpawnOnlineVehicleA_Click(object sender, RoutedEventArgs e)
     {
-        //Vehicle.SpawnVehicle(VehicleSpawn.VehicleHash, -255.0f, 5, VehicleSpawn.VehicleMod);
-        //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
+        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        {
+            Vehicle2.SpawnVehicle(info.Name, -255.0f, 5, 0);
+        }
     }
 
     private void Button_SpawnOnlineVehicleB_Click(object sender, RoutedEventArgs e)
     {
-        //Vehicle.SpawnVehicle(VehicleSpawn.VehicleHash, 0.0f, 5, VehicleSpawn.VehicleMod);
-        //Vehicle.SpawnVehicle(vehicleSpawn.VehicleHash, -255.0f);
+        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        {
+            Vehicle2.SpawnVehicle(info.Name, 0.0f, 5, 0);
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////

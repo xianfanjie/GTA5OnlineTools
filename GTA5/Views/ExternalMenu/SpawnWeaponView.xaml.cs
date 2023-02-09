@@ -1,7 +1,10 @@
 ﻿using GTA5.Data;
+
 using GTA5Core.Client;
 using GTA5Core.Feature;
 using GTA5Core.Settings;
+using GTA5Core.RAGE;
+using GTA5Core.RAGE.Weapons;
 
 namespace GTA5.Views.ExternalMenu;
 
@@ -10,11 +13,6 @@ namespace GTA5.Views.ExternalMenu;
 /// </summary>
 public partial class SpawnWeaponView : UserControl
 {
-    /// <summary>
-    /// 临时特殊字符串
-    /// </summary>
-    private string tempWeaponPickup = string.Empty;
-
     public SpawnWeaponView()
     {
         InitializeComponent();
@@ -22,15 +20,15 @@ public partial class SpawnWeaponView : UserControl
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // 武器列表
-        foreach (var item in WeaponData.WeaponClassData)
+        foreach (var wType in WeaponHash.WeaponTypes)
         {
-            ComboBox_WeaponClass.Items.Add(new IconMenu()
+            ComboBox_WeaponTypes.Items.Add(new IconMenu()
             {
-                Icon = item.Icon,
-                Title = item.Name
+                Icon = "\xe610",
+                Title = wType.Key
             });
         }
-        ComboBox_WeaponClass.SelectedIndex = 0;
+        ComboBox_WeaponTypes.SelectedIndex = 0;
 
         // 子弹类型
         foreach (var item in MiscData.ImpactExplosions)
@@ -44,35 +42,31 @@ public partial class SpawnWeaponView : UserControl
 
     }
 
-    private void ComboBox_WeaponClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ComboBox_WeaponTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         lock (this)
         {
-            var index = ComboBox_WeaponClass.SelectedIndex;
+            var index = ComboBox_WeaponTypes.SelectedIndex;
             if (index != -1)
             {
                 ListBox_WeaponInfo.Items.Clear();
 
                 Task.Run(() =>
                 {
-                    var className = WeaponData.WeaponClassData[index].Name;
-
-                    for (int i = 0; i < WeaponData.WeaponClassData[index].WeaponInfo.Count; i++)
+                    var typeName = WeaponHash.WeaponTypes.ElementAt(index).Key;
+                    foreach (var item in WeaponHash.WeaponTypes[typeName])
                     {
-                        var name = WeaponData.WeaponClassData[index].WeaponInfo[i].Name;
-                        var displayName = WeaponData.WeaponClassData[index].WeaponInfo[i].DisplayName;
-
                         this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                         {
-                            //if (index == ComboBox_WeaponClass.SelectedIndex)
-                            //{
-                            //    ListBox_WeaponInfo.Items.Add(new VehicleInfo()
-                            //    {
-                            //        Id = name,
-                            //        Name = displayName,
-                            //        Image = $"\\Assets\\Weapons\\{name}.png"
-                            //    });
-                            //}
+                            if (index == ComboBox_WeaponTypes.SelectedIndex)
+                            {
+                                ListBox_WeaponInfo.Items.Add(new ModelInfo()
+                                {
+                                    Name = item.Key,
+                                    DisplayName = item.Value,
+                                    PreviewImage = RAGEHelper.GetWeaponImage(item.Key)
+                                });
+                            }
                         });
                     }
                 });
@@ -82,19 +76,12 @@ public partial class SpawnWeaponView : UserControl
         }
     }
 
-    private void ListBox_WeaponInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var index1 = ComboBox_WeaponClass.SelectedIndex;
-        var index2 = ListBox_WeaponInfo.SelectedIndex;
-        if (index1 != -1 && index2 != -1)
-        {
-            tempWeaponPickup = "pickup_" + WeaponData.WeaponClassData[index1].WeaponInfo[index2].Name;
-        }
-    }
-
     private void Button_SpawnWeapon_Click(object sender, RoutedEventArgs e)
     {
-        Hacks.CreateAmbientPickup(tempWeaponPickup);
+        if (ListBox_WeaponInfo.SelectedItem is ModelInfo info)
+        {
+            Hacks.CreateAmbientPickup($"pickup_{info.Name}");
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////

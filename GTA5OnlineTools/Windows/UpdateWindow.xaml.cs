@@ -1,6 +1,5 @@
 ﻿using GTA5OnlineTools.Utils;
 
-using GTA5Shared.Utils;
 using GTA5Shared.Helper;
 
 using Downloader;
@@ -166,7 +165,7 @@ public partial class UpdateWindow
                     // 下载临时文件完整路径
                     string OldPath = FileUtil.GetCurrFullPath(CoreUtil.HalfwayAppName);
                     // 下载完成后文件真正路径
-                    string NewPath = FileUtil.GetCurrFullPath(CoreUtil.FinalAppName());
+                    string NewPath = FileUtil.GetCurrFullPath(CoreUtil.FullAppName());
                     // 下载完成后新文件重命名
                     FileUtil.FileReName(OldPath, NewPath);
 
@@ -175,7 +174,7 @@ public partial class UpdateWindow
                     // 下载完成后旧文件重命名
                     string oldFileName = $"[旧版本小助手请手动删除] {Guid.NewGuid()}.exe";
                     // 旧版本小助手重命名
-                    FileUtil.FileReName(FileUtil.Current_Path, FileUtil.GetCurrFullPath(oldFileName));
+                    FileUtil.FileReName(FileUtil.Dir_MainApp, FileUtil.GetCurrFullPath(oldFileName));
 
                     TextBlock_DonloadInfo.Text = "更新下载完成，程序将在3秒内重新启动";
 

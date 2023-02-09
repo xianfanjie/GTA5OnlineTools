@@ -5,7 +5,6 @@ using GTA5OnlineTools.Windows;
 using GTA5OnlineTools.Windows.Cheats;
 
 using GTA5Core.Native;
-using GTA5Shared.Utils;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -451,7 +450,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void YimMenuDirectoryClick()
     {
-        ProcessUtil.OpenLink(FileUtil.YimMenu_Path);
+        ProcessUtil.OpenLink(FileUtil.Dir_BigBaseV2);
     }
 
     /// <summary>
@@ -467,10 +466,10 @@ public partial class HacksView : UserControl
                 return;
             }
 
-            if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileUtil.YimMenu_Path}」文件夹，如有重要文件请提前备份",
+            if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileUtil.Dir_BigBaseV2}」文件夹，如有重要文件请提前备份",
                 "重置YimMenu配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                FileUtil.DelectDir(FileUtil.YimMenu_Path);
+                FileUtil.DelectDir(FileUtil.Dir_BigBaseV2);
 
                 NotifierHelper.Show(NotifierType.Success, "重置YimMenu配置文件成功");
             }

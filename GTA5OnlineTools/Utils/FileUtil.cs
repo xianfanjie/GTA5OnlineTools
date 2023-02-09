@@ -69,27 +69,27 @@ public static class FileUtil
     /// <summary>
     /// 获取当前运行文件完整路径
     /// </summary>
-    public static readonly string Current_Path = Environment.ProcessPath;
+    public static readonly string File_MainApp = Environment.ProcessPath;
 
     /// <summary>
     /// 获取当前文件目录，不加文件名及后缀
     /// </summary>
-    public static readonly string CurrentDirectory_Path = AppDomain.CurrentDomain.BaseDirectory;
+    public static readonly string Dir_MainApp = AppDomain.CurrentDomain.BaseDirectory;
 
     /// <summary>
     /// 我的文档完整路径
     /// </summary>
-    public static readonly string MyDocuments_Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+    public static readonly string Dir_MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
     /// <summary>
     /// AppData完整路径
     /// </summary>
-    public static readonly string AppData_Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+    public static readonly string Dir_AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
     /// <summary>
-    /// YimMenu配置文件路径
+    /// YimMenu配置文件路径（BigBaseV2）
     /// </summary>
-    public static readonly string YimMenu_Path = Path.Combine(AppData_Path, "BigBaseV2");
+    public static readonly string Dir_BigBaseV2 = Path.Combine(Dir_AppData, "BigBaseV2");
 
     /// <summary>
     /// 文件重命名
@@ -105,7 +105,7 @@ public static class FileUtil
     /// </summary>
     public static string GetCurrFullPath(string appName)
     {
-        return Path.Combine(CurrentDirectory_Path, appName);
+        return Path.Combine(Dir_MainApp, appName);
     }
 
     /// <summary>

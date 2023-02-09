@@ -40,32 +40,16 @@ public static class NotifierHelper
     /// <param name="message">通知消息字符串</param>
     public static void Show(NotifierType type, string message)
     {
-        string title;
-        switch (type)
+        string title = type switch
         {
-            case NotifierType.None:
-                title = "";
-                break;
-            case NotifierType.Information:
-                title = "信息";
-                break;
-            case NotifierType.Success:
-                title = "成功";
-                break;
-            case NotifierType.Warning:
-                title = "警告";
-                break;
-            case NotifierType.Error:
-                title = "错误";
-                break;
-            case NotifierType.Notification:
-                title = "通知";
-                break;
-            default:
-                title = "";
-                break;
-        }
-
+            NotifierType.None => "",
+            NotifierType.Information => "信息",
+            NotifierType.Success => "成功",
+            NotifierType.Warning => "警告",
+            NotifierType.Error => "错误",
+            NotifierType.Notification => "通知",
+            _ => "",
+        };
         var clickContent = new NotificationContent
         {
             Title = title,

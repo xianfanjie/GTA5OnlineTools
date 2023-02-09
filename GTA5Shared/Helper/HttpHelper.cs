@@ -20,7 +20,7 @@ public static class HttpHelper
     }
 
     /// <summary>
-    /// 获取url内容
+    /// 获取url内容字符串
     /// </summary>
     /// <param name="url"></param>
     /// <returns></returns>

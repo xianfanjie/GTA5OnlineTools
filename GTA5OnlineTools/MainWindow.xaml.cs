@@ -5,7 +5,6 @@ using GTA5OnlineTools.Models;
 using GTA5OnlineTools.Windows;
 
 using GTA5Core.Native;
-using GTA5Shared.Utils;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;

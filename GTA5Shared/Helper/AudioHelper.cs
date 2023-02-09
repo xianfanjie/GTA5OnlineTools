@@ -1,6 +1,6 @@
 ﻿namespace GTA5Shared.Helper;
 
-public static class AudioUtil
+public static class AudioHelper
 {
     public static SoundPlayer SP_Click_01 = new(Properties.Resources.Click_01);
     public static SoundPlayer SP_Click_02 = new(Properties.Resources.Click_02);

@@ -2,7 +2,6 @@
 
 using GTA5Core.Client;
 using GTA5Core.Native;
-using GTA5Shared.Utils;
 using GTA5Shared.Helper;
 
 namespace GTA5OnlineTools.Windows.Cheats;

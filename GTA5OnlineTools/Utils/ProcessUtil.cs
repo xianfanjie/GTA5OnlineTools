@@ -1,8 +1,6 @@
-﻿using GTA5OnlineTools.Utils;
+﻿using GTA5Shared.Helper;
 
-using GTA5Shared.Helper;
-
-namespace GTA5Shared.Utils;
+namespace GTA5OnlineTools.Utils;
 
 public static class ProcessUtil
 {

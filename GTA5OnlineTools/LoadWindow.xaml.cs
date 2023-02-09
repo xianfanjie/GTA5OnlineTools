@@ -1,7 +1,6 @@
 ﻿using GTA5OnlineTools.Utils;
 using GTA5OnlineTools.Models;
 
-using GTA5Shared.Utils;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -14,7 +13,7 @@ namespace GTA5OnlineTools;
 public partial class LoadWindow
 {
     /// <summary>
-    /// Load 数据模型绑定
+    /// 数据模型绑定
     /// </summary>
     public LoadModel LoadModel { get; set; } = new();
 
@@ -135,7 +134,7 @@ public partial class LoadWindow
                     Thread.Sleep(100);
 
                     App.AppMainMutex.Dispose();
-                    ProcessUtil.OpenProcess(FileUtil.Current_Path);
+                    ProcessUtil.OpenProcess(FileUtil.Dir_MainApp);
                     Application.Current.Shutdown();
                 }
                 break;

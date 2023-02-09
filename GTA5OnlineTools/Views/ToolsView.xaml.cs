@@ -1,7 +1,6 @@
 ﻿using GTA5OnlineTools.Utils;
 using GTA5OnlineTools.Windows;
 
-using GTA5Shared.Utils;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -103,7 +102,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void CurrentDirectoryClick()
     {
-        ProcessUtil.OpenLink(FileUtil.CurrentDirectory_Path);
+        ProcessUtil.OpenLink(FileUtil.Dir_MainApp);
     }
 
     /// <summary>
@@ -131,7 +130,7 @@ public partial class ToolsView : UserControl
                 Thread.Sleep(100);
 
                 App.AppMainMutex.Dispose();
-                ProcessUtil.OpenProcess(FileUtil.Current_Path);
+                ProcessUtil.OpenProcess(FileUtil.Dir_MainApp);
                 Application.Current.Shutdown();
             }
         }
@@ -148,7 +147,7 @@ public partial class ToolsView : UserControl
     {
         ProcessUtil.CloseThirdProcess();
         App.AppMainMutex.Dispose();
-        ProcessUtil.OpenProcess(FileUtil.Current_Path);
+        ProcessUtil.OpenProcess(FileUtil.Dir_MainApp);
         Application.Current.Shutdown();
     }
 
@@ -219,10 +218,10 @@ public partial class ToolsView : UserControl
     {
         try
         {
-            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileUtil.Current_Path);
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileUtil.Dir_MainApp);
             if (fileNameWithoutExtension != (CoreUtil.MainAppWindowName + CoreUtil.ClientVersion))
             {
-                FileUtil.FileReName(FileUtil.Current_Path, FileUtil.GetCurrFullPath(CoreUtil.MainAppWindowName + CoreUtil.ClientVersion + ".exe"));
+                FileUtil.FileReName(FileUtil.Dir_MainApp, FileUtil.GetCurrFullPath(CoreUtil.MainAppWindowName + CoreUtil.ClientVersion + ".exe"));
 
                 ProcessUtil.CloseThirdProcess();
                 App.AppMainMutex.Dispose();
@@ -247,10 +246,10 @@ public partial class ToolsView : UserControl
     {
         try
         {
-            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileUtil.Current_Path);
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileUtil.Dir_MainApp);
             if (fileNameWithoutExtension != "GTA5OnlineTools")
             {
-                FileUtil.FileReName(FileUtil.Current_Path, "GTA5OnlineTools.exe");
+                FileUtil.FileReName(FileUtil.Dir_MainApp, "GTA5OnlineTools.exe");
 
                 ProcessUtil.CloseThirdProcess();
                 App.AppMainMutex.Dispose();
@@ -273,7 +272,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void StoryModeArchiveClick()
     {
-        var path = Path.Combine(FileUtil.MyDocuments_Path, @"Rockstar Games\GTA V\Profiles");
+        var path = Path.Combine(FileUtil.Dir_MyDocuments, @"Rockstar Games\GTA V\Profiles");
         if (!Directory.Exists(path))
         {
             NotifierHelper.Show(NotifierType.Error, "GTA5故事模式存档路径不存在，操作取消");

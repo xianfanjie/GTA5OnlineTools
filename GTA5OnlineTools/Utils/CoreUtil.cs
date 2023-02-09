@@ -1,5 +1,4 @@
-﻿using GTA5Core.Native;
-using GTA5OnlineTools.Data;
+﻿using GTA5OnlineTools.Data;
 
 namespace GTA5OnlineTools.Utils;
 
@@ -38,15 +37,15 @@ public static class CoreUtil
     /// <summary>
     /// 固定下载更新地址
     /// </summary>
-    public static string UpdateAddress = "https://github.com/CrazyZhang666/GTA5/releases/download/update/GTA5.exe";
+    public static string UpdateAddress = "https://github.com/CrazyZhang666/GTA5/releases/download/update/GTA5OnlineTools.exe";
 
     /// <summary>
-    /// 更新完成后的文件名
+    /// 更新完成后的完整文件名
     /// </summary>
     /// <returns></returns>
-    public static string FinalAppName()
+    public static string FullAppName()
     {
-        return MainAppWindowName + ServerVersion + ".exe";
+        return $"{MainAppWindowName}{ServerVersion}.exe";
     }
 
     /// <summary>
@@ -65,6 +64,14 @@ public static class CoreUtil
     /// </summary>
     public static void FlushDNSCache()
     {
-        Win32.DnsFlushResolverCache();
+        var process = new Process();
+        var startInfo = new ProcessStartInfo
+        {
+            WindowStyle = ProcessWindowStyle.Hidden,
+            FileName = "cmd.exe",
+            Arguments = "/C ipconfig /flushdns"
+        };
+        process.StartInfo = startInfo;
+        process.Start();
     }
 }

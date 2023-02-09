@@ -1,8 +1,6 @@
 ﻿using GTA5Core.Native;
 using GTA5Core.Feature;
 
-using GTA5Shared.Helper;
-
 namespace GTA5Core.Views;
 
 /// <summary>

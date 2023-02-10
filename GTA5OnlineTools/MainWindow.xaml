@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:notifications="clr-namespace:Notification.Wpf.Controls;assembly=Notification.Wpf"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_Main"
     Title="GTA5线上小助手"
@@ -88,11 +87,6 @@
 
     <Grid>
         <ContentControl x:Name="ContentControl_Main" FocusVisualStyle="{x:Null}" />
-        <!--  ////////////////////////  -->
-        <notifications:NotificationArea
-            x:Name="WindowArea"
-            MaxItems="5"
-            Position="BottomCenter" />
     </Grid>
 
 </ui:Window>

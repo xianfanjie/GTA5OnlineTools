@@ -50,6 +50,7 @@ public static class NotifierHelper
             NotifierType.Notification => "通知",
             _ => "",
         };
+
         var clickContent = new NotificationContent
         {
             Title = title,
@@ -58,7 +59,9 @@ public static class NotifierHelper
             TrimType = NotificationTextTrimType.NoTrim,
         };
 
-        _NotificationManager.Show(clickContent, "WindowArea", ExpirationTime, null, null, true, false);
+        _NotificationManager.Show(clickContent, "", ExpirationTime, null, null, true, false);
+
+        HideAltTabWindow();
     }
 
     /// <summary>
@@ -75,8 +78,48 @@ public static class NotifierHelper
             TrimType = NotificationTextTrimType.NoTrim,
         };
 
-        _NotificationManager.Show(clickContent, "WindowArea", ExpirationTime, null, null, true, false);
+        _NotificationManager.Show(clickContent, "", ExpirationTime, null, null, true, false);
+
+        HideAltTabWindow();
     }
+
+    //////////////////////////////////////////////////////////////////////////
+
+    #region 隐藏 Alt+Tab 中的 ToastWindow 窗口
+
+    [Flags]
+    private enum GetWindowLongFields
+    {
+        // ...
+        GWL_EXSTYLE = -20,
+        // ...
+    }
+    [Flags]
+    private enum ExtendedWindowStyles
+    {
+        // ...
+        WS_EX_TOOLWINDOW = 0x00000080,
+        // ...
+    }
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetWindowLong(IntPtr hWnd, int nIndex);
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+    private static void HideAltTabWindow()
+    {
+        IntPtr handle = FindWindow(null, "ToastWindow");
+        int exStyle = (int)GetWindowLong(handle, (int)GetWindowLongFields.GWL_EXSTYLE);
+        exStyle |= (int)ExtendedWindowStyles.WS_EX_TOOLWINDOW;
+        SetWindowLongPtr(handle, (int)GetWindowLongFields.GWL_EXSTYLE, (IntPtr)exStyle);
+    }
+
+    #endregion
 }
 
 public enum NotifierType

@@ -160,8 +160,6 @@ public partial class CasinoView : UserControl
 
     private void Button_BuildGTAHax_Click(object sender, RoutedEventArgs e)
     {
-
-
         TextBox_PreviewGTAHax.Clear();
         TextBox_PreviewGTAHax.AppendText("INT32\n");
 

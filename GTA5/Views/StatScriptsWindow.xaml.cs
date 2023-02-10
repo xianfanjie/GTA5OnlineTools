@@ -1,5 +1,6 @@
 ﻿using GTA5Core.Client;
 using GTA5Core.Feature;
+using GTA5Core.RAGE.Stats;
 
 namespace GTA5.Views;
 

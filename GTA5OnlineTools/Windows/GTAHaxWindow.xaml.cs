@@ -1,5 +1,6 @@
 ﻿using GTA5.Utils;
 using GTA5Core.Client;
+using GTA5Core.RAGE.Stats;
 using GTA5Shared.Helper;
 
 namespace GTA5OnlineTools.Windows;

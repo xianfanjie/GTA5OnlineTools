@@ -4,7 +4,6 @@ using GTA5OnlineTools.Views;
 using GTA5OnlineTools.Models;
 using GTA5OnlineTools.Windows;
 
-using GTA5Core.Native;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -122,9 +121,6 @@ public partial class MainWindow
 
         WindowClosingEvent();
         LoggerHelper.Info("调用主窗口关闭事件成功");
-
-        Memory.CloseHandle();
-        LoggerHelper.Info("释放内存模块进程句柄成功");
 
         GTA5View.ActionCloseAllGTA5Window();
         LoggerHelper.Info("关闭小助手功能窗口成功");

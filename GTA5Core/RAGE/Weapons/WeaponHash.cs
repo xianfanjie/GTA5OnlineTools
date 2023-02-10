@@ -172,8 +172,8 @@ public static class WeaponHash
         { "weapon_petrolcan", "油桶" },
         { "gadget_parachute", "降落伞" },
         { "weapon_fireextinguisher", "灭火器" },
-        { "weapon_weapon_hazardcan", "危险的杰瑞罐" },
-        { "weapon_weapon_fertilizercan", "肥料罐" },
+        { "weapon_hazardcan", "危险的杰瑞罐" },
+        { "weapon_fertilizercan", "肥料罐" },
     };
 
     /// <summary>

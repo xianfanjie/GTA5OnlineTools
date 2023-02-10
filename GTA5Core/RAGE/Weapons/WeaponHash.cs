@@ -4,15 +4,15 @@ public static class WeaponHash
 {
     public class WeaponClass
     {
-        public string Icon;
-        public string Name;
-        public List<WeaponInfo> WeaponInfo;
+        public string Icon { get; set; }
+        public string Name { get; set; }
+        public List<WeaponInfo> WeaponInfos { get; set; }
     }
 
     public class WeaponInfo
     {
-        public string Name;
-        public string Value;
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 
     /// <summary>
@@ -194,15 +194,15 @@ public static class WeaponHash
     /// </summary>
     public static readonly List<WeaponClass> WeaponClasses = new()
     {
-        new WeaponClass(){ Icon="\xe63b", Name="近战", WeaponInfo=Melee },
-        new WeaponClass(){ Icon="\xe63b", Name="手枪", WeaponInfo=Handguns },
-        new WeaponClass(){ Icon="\xe63b", Name="冲锋枪", WeaponInfo=SubmachineGuns },
-        new WeaponClass(){ Icon="\xe63b", Name="霰弹枪", WeaponInfo=Shotguns },
-        new WeaponClass(){ Icon="\xe63b", Name="突击步枪", WeaponInfo=AssaultRifles },
-        new WeaponClass(){ Icon="\xe63b", Name="轻机枪", WeaponInfo=LightMachineGuns },
-        new WeaponClass(){ Icon="\xe63b", Name="狙击枪", WeaponInfo=SniperRifles },
-        new WeaponClass(){ Icon="\xe63b", Name="重武器", WeaponInfo=HeavyWeapons },
-        new WeaponClass(){ Icon="\xe63b", Name="投掷物", WeaponInfo=Throwables },
-        new WeaponClass(){ Icon="\xe63b", Name="杂项", WeaponInfo=Miscellaneous }
+        new WeaponClass(){ Icon="\xe63b", Name="近战", WeaponInfos=Melee },
+        new WeaponClass(){ Icon="\xe63b", Name="手枪", WeaponInfos=Handguns },
+        new WeaponClass(){ Icon="\xe63b", Name="冲锋枪", WeaponInfos=SubmachineGuns },
+        new WeaponClass(){ Icon="\xe63b", Name="霰弹枪", WeaponInfos=Shotguns },
+        new WeaponClass(){ Icon="\xe63b", Name="突击步枪", WeaponInfos=AssaultRifles },
+        new WeaponClass(){ Icon="\xe63b", Name="轻机枪", WeaponInfos=LightMachineGuns },
+        new WeaponClass(){ Icon="\xe63b", Name="狙击枪", WeaponInfos=SniperRifles },
+        new WeaponClass(){ Icon="\xe63b", Name="重武器", WeaponInfos=HeavyWeapons },
+        new WeaponClass(){ Icon="\xe63b", Name="投掷物", WeaponInfos=Throwables },
+        new WeaponClass(){ Icon="\xe63b", Name="杂项", WeaponInfos=Miscellaneous }
     };
 }

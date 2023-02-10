@@ -5,7 +5,7 @@ public static class StatData
     public class StatClass
     {
         public string Name { get; set; }
-        public List<StatInfo> StatInfo { get; set; }
+        public List<StatInfo> StatInfos { get; set; }
     }
 
     public class StatInfo
@@ -565,55 +565,55 @@ public static class StatData
     /// </summary>
     public static List<StatClass> StatDataClass = new()
     {
-        new StatClass(){ Name="玩家-护甲全满", StatInfo=_MP_CHAR_ARMOUR },
-        new StatClass(){ Name="玩家-零食全满", StatInfo=_NO_BOUGHT },
-        new StatClass(){ Name="玩家-属性全满", StatInfo=_SCRIPT_INCREASE },
-        new StatClass(){ Name="玩家-隐藏属性全满", StatInfo=_CHAR_ABILITY },
-        new StatClass(){ Name="玩家-性别修改（去重新捏脸）", StatInfo=_GENDER_CHANGE },
-        new StatClass(){ Name="玩家-修改等级为1", StatInfo=_CHAR_SET_RP1 },
-        new StatClass(){ Name="玩家-修改等级为30", StatInfo=_CHAR_SET_RP30 },
-        new StatClass(){ Name="玩家-修改等级为60", StatInfo=_CHAR_SET_RP60 },
-        new StatClass(){ Name="玩家-修改等级为90", StatInfo=_CHAR_SET_RP90 },
-        new StatClass(){ Name="玩家-修改等级为120", StatInfo=_CHAR_SET_RP120 },
+        new StatClass(){ Name="玩家-护甲全满", StatInfos=_MP_CHAR_ARMOUR },
+        new StatClass(){ Name="玩家-零食全满", StatInfos=_NO_BOUGHT },
+        new StatClass(){ Name="玩家-属性全满", StatInfos=_SCRIPT_INCREASE },
+        new StatClass(){ Name="玩家-隐藏属性全满", StatInfos=_CHAR_ABILITY },
+        new StatClass(){ Name="玩家-性别修改（去重新捏脸）", StatInfos=_GENDER_CHANGE },
+        new StatClass(){ Name="玩家-修改等级为1", StatInfos=_CHAR_SET_RP1 },
+        new StatClass(){ Name="玩家-修改等级为30", StatInfos=_CHAR_SET_RP30 },
+        new StatClass(){ Name="玩家-修改等级为60", StatInfos=_CHAR_SET_RP60 },
+        new StatClass(){ Name="玩家-修改等级为90", StatInfos=_CHAR_SET_RP90 },
+        new StatClass(){ Name="玩家-修改等级为120", StatInfos=_CHAR_SET_RP120 },
 
-        new StatClass(){ Name="资产-补满夜总会人气", StatInfo=_CLUB_POPULARITY },
-        new StatClass(){ Name="资产-修改车友会等级为1", StatInfo=_CAR_CLUB_REP },
+        new StatClass(){ Name="资产-补满夜总会人气", StatInfos=_CLUB_POPULARITY },
+        new StatClass(){ Name="资产-修改车友会等级为1", StatInfos=_CAR_CLUB_REP },
 
-        new StatClass(){ Name="佩里科岛抢劫-玩家x1/100%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x2）", StatInfo=_H4CNF_1 },
-        new StatClass(){ Name="佩里科岛抢劫-玩家x2/50%50%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x4）", StatInfo=_H4CNF_2 },
-        new StatClass(){ Name="佩里科岛抢劫-玩家x3/35%35%30%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x6）", StatInfo=_H4CNF_3 },
-        new StatClass(){ Name="佩里科岛抢劫-玩家x4/25%25%25%25%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x7）", StatInfo=_H4CNF_4 },
+        new StatClass(){ Name="佩里科岛抢劫-玩家x1/100%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x2）", StatInfos=_H4CNF_1 },
+        new StatClass(){ Name="佩里科岛抢劫-玩家x2/50%50%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x4）", StatInfos=_H4CNF_2 },
+        new StatClass(){ Name="佩里科岛抢劫-玩家x3/35%35%30%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x6）", StatInfos=_H4CNF_3 },
+        new StatClass(){ Name="佩里科岛抢劫-玩家x4/25%25%25%25%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x7）", StatInfos=_H4CNF_4 },
 
-        new StatClass(){ Name="抢劫任务-赌场抢劫面板重置", StatInfo=_H3OPT },
-        new StatClass(){ Name="抢劫任务-佩里克岛抢劫面板重置", StatInfo=_H4 },
-        new StatClass(){ Name="抢劫任务-跳过公寓抢劫准备任务", StatInfo=_HEIST_PLANNING_STAGE },
-        new StatClass(){ Name="抢劫任务-取消抢劫并重新开始", StatInfo=_CAS_HEIST_NOTS },
+        new StatClass(){ Name="抢劫任务-赌场抢劫面板重置", StatInfos=_H3OPT },
+        new StatClass(){ Name="抢劫任务-佩里克岛抢劫面板重置", StatInfos=_H4 },
+        new StatClass(){ Name="抢劫任务-跳过公寓抢劫准备任务", StatInfos=_HEIST_PLANNING_STAGE },
+        new StatClass(){ Name="抢劫任务-取消抢劫并重新开始", StatInfos=_CAS_HEIST_NOTS },
 
-        new StatClass(){ Name="末日抢劫-1数据泄露（M键-设施管理-关闭/开启策划大屏）", StatInfo=_GANGOPS_FLOW_MISSION_PROG1 },
-        new StatClass(){ Name="末日抢劫-2波格丹危机（M键-设施管理-关闭/开启策划大屏）", StatInfo=_GANGOPS_FLOW_MISSION_PROG2 },
-        new StatClass(){ Name="末日抢劫-3末日将至（M键-设施管理-关闭/开启策划大屏）", StatInfo=_GANGOPS_FLOW_MISSION_PROG3 },
+        new StatClass(){ Name="末日抢劫-1数据泄露（M键-设施管理-关闭/开启策划大屏）", StatInfos=_GANGOPS_FLOW_MISSION_PROG1 },
+        new StatClass(){ Name="末日抢劫-2波格丹危机（M键-设施管理-关闭/开启策划大屏）", StatInfos=_GANGOPS_FLOW_MISSION_PROG2 },
+        new StatClass(){ Name="末日抢劫-3末日将至（M键-设施管理-关闭/开启策划大屏）", StatInfos=_GANGOPS_FLOW_MISSION_PROG3 },
 
-        new StatClass(){ Name="解锁-CEO办公室满地钱和小金人", StatInfo=_LIFETIME_BUY_UNDERTAKEN },
-        new StatClass(){ Name="解锁-电话联系人", StatInfo=_FM_ACT_PHN },
-        new StatClass(){ Name="解锁-限定载具节日涂装", StatInfo=MPPLY_XMASLIVERIES0 },
-        new StatClass(){ Name="解锁-外星人纹身", StatInfo=_TATTOO_FM_CURRENT_32 },
-        new StatClass(){ Name="解锁-全部游艇任务", StatInfo=_YACHT_MISSION_PROG },
-        new StatClass(){ Name="解锁-载具金属质感喷漆与铬合金轮毂", StatInfo=_CHAR_FM_CARMOD_1_UNLCK },
+        new StatClass(){ Name="解锁-CEO办公室满地钱和小金人", StatInfos=_LIFETIME_BUY_UNDERTAKEN },
+        new StatClass(){ Name="解锁-电话联系人", StatInfos=_FM_ACT_PHN },
+        new StatClass(){ Name="解锁-限定载具节日涂装", StatInfos=MPPLY_XMASLIVERIES0 },
+        new StatClass(){ Name="解锁-外星人纹身", StatInfos=_TATTOO_FM_CURRENT_32 },
+        new StatClass(){ Name="解锁-全部游艇任务", StatInfos=_YACHT_MISSION_PROG },
+        new StatClass(){ Name="解锁-载具金属质感喷漆与铬合金轮毂", StatInfos=_CHAR_FM_CARMOD_1_UNLCK },
 
-        new StatClass(){ Name="解锁-竞技场-25级解锁出租车", StatInfo=_ARENAWARS_AP_TIER25 },
-        new StatClass(){ Name="解锁-竞技场-50级解锁推土机", StatInfo=_ARENAWARS_AP_TIER50 },
-        new StatClass(){ Name="解锁-竞技场-75级解锁小丑花车", StatInfo=_ARENAWARS_AP_TIER75 },
-        new StatClass(){ Name="解锁-竞技场-100级解锁垃圾大王", StatInfo=_ARENAWARS_AP_TIER100 },
-        new StatClass(){ Name="解锁-竞技场-200级解锁地霸王拖车", StatInfo=_ARENAWARS_AP_TIER200 },
-        new StatClass(){ Name="解锁-竞技场-300级解锁混凝土搅拌车", StatInfo=_ARENAWARS_AP_TIER300 },
-        new StatClass(){ Name="解锁-竞技场-500级解锁星际码头", StatInfo=_ARENAWARS_AP_TIER500 },
-        new StatClass(){ Name="解锁-竞技场-1000级解锁老式拖拉机", StatInfo=_ARENAWARS_AP_TIER1000 },
-        new StatClass(){ Name="解锁-竞技场-解锁冲冲猴旅行家购买权限", StatInfo=_ARENAWARS_SKILL_LEVEL },
+        new StatClass(){ Name="解锁-竞技场-25级解锁出租车", StatInfos=_ARENAWARS_AP_TIER25 },
+        new StatClass(){ Name="解锁-竞技场-50级解锁推土机", StatInfos=_ARENAWARS_AP_TIER50 },
+        new StatClass(){ Name="解锁-竞技场-75级解锁小丑花车", StatInfos=_ARENAWARS_AP_TIER75 },
+        new StatClass(){ Name="解锁-竞技场-100级解锁垃圾大王", StatInfos=_ARENAWARS_AP_TIER100 },
+        new StatClass(){ Name="解锁-竞技场-200级解锁地霸王拖车", StatInfos=_ARENAWARS_AP_TIER200 },
+        new StatClass(){ Name="解锁-竞技场-300级解锁混凝土搅拌车", StatInfos=_ARENAWARS_AP_TIER300 },
+        new StatClass(){ Name="解锁-竞技场-500级解锁星际码头", StatInfos=_ARENAWARS_AP_TIER500 },
+        new StatClass(){ Name="解锁-竞技场-1000级解锁老式拖拉机", StatInfos=_ARENAWARS_AP_TIER1000 },
+        new StatClass(){ Name="解锁-竞技场-解锁冲冲猴旅行家购买权限", StatInfos=_ARENAWARS_SKILL_LEVEL },
 
-        new StatClass(){ Name="解锁-解锁CEO特殊载具任务", StatInfo=_AT_FLOW_IMPEXP_NUM },
+        new StatClass(){ Name="解锁-解锁CEO特殊载具任务", StatInfos=_AT_FLOW_IMPEXP_NUM },
 
-        new StatClass(){ Name="其他-解决赌场侦察拍照问题", StatInfo=_H3OPT_ACCESSPOINTS },
-        new StatClass(){ Name="其他-清除举报（建议单人战局使用）", StatInfo=MPPLY_REPORT_STRENGTH },
+        new StatClass(){ Name="其他-解决赌场侦察拍照问题", StatInfos=_H3OPT_ACCESSPOINTS },
+        new StatClass(){ Name="其他-清除举报（建议单人战局使用）", StatInfos=MPPLY_REPORT_STRENGTH },
 
     };
 }

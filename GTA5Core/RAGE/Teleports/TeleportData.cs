@@ -6,7 +6,7 @@ public class TeleportData
     {
         public string Icon { get; set; }
         public string Name { get; set; }
-        public List<TeleportInfo> TeleportInfo { get; set; }
+        public List<TeleportInfo> TeleportInfos { get; set; }
     }
 
     public class TeleportInfo
@@ -20,7 +20,7 @@ public class TeleportData
         //new TeleportInfo(){ Name="坐标原点", Position=new Vector3 { X=0.000f, Y=0.000f, Z=72.0f } },
     };
 
-    public static List<TeleportInfo> Common = new()
+    public static readonly List<TeleportInfo> Common = new()
     {
         new TeleportInfo(){ Name="洛圣都改车王", Position=new Vector3 { X=-365.425f, Y=-131.809f, Z=-225.0f } },
         new TeleportInfo(){ Name="洛圣都机场", Position=new Vector3 { X=-1336.0f, Y=-3044.0f, Z=-225.0f } },
@@ -28,7 +28,7 @@ public class TeleportData
         new TeleportInfo(){ Name="乞力耶德山", Position=new Vector3 { X=489.979f, Y=5587.527f, Z=794.3f } },
     };
 
-    public static List<TeleportInfo> Indoor = new()
+    public static readonly List<TeleportInfo> Indoor = new()
     {
         new TeleportInfo(){ Name="FIB大楼楼顶", Position=new Vector3 { X=136.0f, Y=-750.0f, Z=262.0f } },
         new TeleportInfo(){ Name="服装厂", Position=new Vector3 { X=712.716f, Y=-962.906f, Z=30.6f } },
@@ -49,7 +49,7 @@ public class TeleportData
         new TeleportInfo(){ Name="矿井", Position=new Vector3 { X=-595.342f, Y=2086.008f, Z=131.6f } },
     };
 
-    public static List<TeleportInfo> Mission = new()
+    public static readonly List<TeleportInfo> Mission = new()
     {
         new TeleportInfo(){ Name="虎鲸内部座椅", Position=new Vector3 { X=1560.086f, Y=381.474f, Z=-49.685f } },
         new TeleportInfo(){ Name="海岛正门入口", Position=new Vector3 { X=4977.915f, Y=-5707.789f, Z=19.886f } },
@@ -58,11 +58,11 @@ public class TeleportData
         new TeleportInfo(){ Name="海洋安全场所", Position=new Vector3 { X=4771.792f, Y=-6166.055f, Z=-40.266f } },
     };
 
-    public static List<TeleportClass> TeleportClasses = new()
+    public static readonly List<TeleportClass> TeleportClasses = new()
     {
-        new TeleportClass(){ Icon="\xe63b", Name="自定义地点", TeleportInfo=Custom },
-        new TeleportClass(){ Icon="\xe63b", Name="预设-常用地点", TeleportInfo=Common },
-        new TeleportClass(){ Icon="\xe63b", Name="预设-室内场景", TeleportInfo=Indoor },
-        new TeleportClass(){ Icon="\xe63b", Name="预设-任务地点", TeleportInfo=Mission },
+        new TeleportClass(){ Icon="\xe63b", Name="自定义地点", TeleportInfos=Custom },
+        new TeleportClass(){ Icon="\xe63b", Name="预设-常用地点", TeleportInfos=Common },
+        new TeleportClass(){ Icon="\xe63b", Name="预设-室内场景", TeleportInfos=Indoor },
+        new TeleportClass(){ Icon="\xe63b", Name="预设-任务地点", TeleportInfos=Mission },
     };
 }

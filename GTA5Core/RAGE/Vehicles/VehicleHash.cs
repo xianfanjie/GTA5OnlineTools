@@ -3,6 +3,31 @@
 public static class VehicleHash
 {
     /// <summary>
+    /// -1 当前分类: 常用载具
+    /// </summary>
+    public static readonly Dictionary<string, string> Common = new()
+    {
+        { "oppressor2", "佩嘉西 暴君 Mk 2" },
+        { "kuruma2", "卡林 骷髅马（装甲版）" },
+        { "police3", "警用巡逻车" },
+        { "ambulance", "救护车" },
+        { "buzzard", "秃鹰攻击直升机" },
+        { "dodo", "巨象 嘟嘟鸟" },
+        { "sanchez", "麦霸子 桑切斯（涂装版）" },
+        { "rhino", "犀牛坦克" },
+        { "hydra", "巨象 九头蛇" },
+        { "lazer", "P-996 天煞" },
+        { "taxi", "出租车" },
+        { "thruster", "巨象 推进者" },
+        { "khanjali", "TM-02 可汗贾利" },
+        { "savage", "野蛮人" },
+        { "dinghy", "长崎 小艇" },
+        { "patrolboat", "库尔兹 31 巡逻艇" },
+        { "toreador", "佩嘉西 图拉尔多" },
+        { "deluxo", "英庞提 德罗索" },
+    };
+
+    /// <summary>
     /// 0 当前分类: 小型汽车
     /// </summary>
     public static readonly Dictionary<string, string> Compacts = new()
@@ -25,6 +50,7 @@ public static class VehicleHash
         { "prairie", "包洛坎 原野行者" },
         { "rhapsody", "绝致 狂想曲" },
         { "weevil", "毕福 象鼻虫" },
+        { "deluxo", "英庞提 德罗索" },
     };
 
     /// <summary>
@@ -986,6 +1012,7 @@ public static class VehicleHash
             21 当前分类: 火车
             22 当前分类: 开轮式
          */
+        { "常用载具", Common },
         { "小型汽车", Compacts },
         { "轿车", Sedans },
         { "SUV", SUVs },

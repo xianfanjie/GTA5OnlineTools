@@ -1,7 +1,5 @@
-﻿using GTA5OnlineTools.Utils;
-
+﻿using GTA5.Utils;
 using GTA5Core.Client;
-using GTA5Core.Native;
 using GTA5Shared.Helper;
 
 namespace GTA5OnlineTools.Windows;
@@ -73,73 +71,13 @@ public partial class GTAHaxWindow
 
     private void Button_ImportGTAHax_Click(object sender, RoutedEventArgs e)
     {
-        try
+        var stat = TextBox_PreviewGTAHax.Text;
+        if (string.IsNullOrWhiteSpace(stat))
         {
-            File.WriteAllText(FileUtil.File_Cache_Stat, TextBox_PreviewGTAHax.Text);
-        }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
+            NotifierHelper.Show(NotifierType.Warning, "stat代码不能为空，操作取消");
+            return;
         }
 
-        if (!ProcessUtil.IsAppRun("GTAHax"))
-            ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Cache_GTAHax);
-
-        Task.Run(() =>
-        {
-            bool isRun = false;
-            do
-            {
-                if (ProcessUtil.IsAppRun("GTAHax"))
-                {
-                    isRun = true;
-
-                    var pGTAHax = Process.GetProcessesByName("GTAHax").ToList()[0];
-
-                    bool isShow = false;
-                    do
-                    {
-                        IntPtr Menu_handle = pGTAHax.MainWindowHandle;
-                        IntPtr child_handle = Win32.FindWindowEx(Menu_handle, IntPtr.Zero, "Static", null);
-                        child_handle = Win32.FindWindowEx(Menu_handle, child_handle, "Static", null);
-                        child_handle = Win32.FindWindowEx(Menu_handle, child_handle, "Static", null);
-                        child_handle = Win32.FindWindowEx(Menu_handle, child_handle, "Static", null);
-
-                        child_handle = Win32.FindWindowEx(Menu_handle, child_handle, "Edit", null);
-                        child_handle = Win32.FindWindowEx(Menu_handle, child_handle, "Edit", null);
-
-                        child_handle = Win32.FindWindowEx(Menu_handle, child_handle, "Button", null);
-                        child_handle = Win32.FindWindowEx(Menu_handle, child_handle, "Button", null);
-
-                        child_handle = Win32.FindWindowEx(Menu_handle, child_handle, "Button", null);
-
-                        if (child_handle != IntPtr.Zero)
-                        {
-                            isShow = true;
-
-                            Win32.SendMessage(child_handle, Win32.WM_LBUTTONDOWN, IntPtr.Zero, null);
-                            Win32.SendMessage(child_handle, Win32.WM_LBUTTONUP, IntPtr.Zero, null);
-
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                NotifierHelper.Show(NotifierType.Success, "导入到GTAHax成功！代码正在执行，请返回GTAHax和GTA5游戏查看\n如果执行成功游戏内会出现大受好评奖章");
-                            });
-                        }
-                        else
-                        {
-                            isShow = false;
-                        }
-
-                        Task.Delay(100).Wait();
-                    } while (!isShow);
-                }
-                else
-                {
-                    isRun = false;
-                }
-
-                Task.Delay(100).Wait();
-            } while (!isRun);
-        });
+        GTAHaxUtil.ImportGTAHax(TextBox_PreviewGTAHax.Text);
     }
 }

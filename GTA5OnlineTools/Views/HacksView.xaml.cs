@@ -203,51 +203,38 @@ public partial class HacksView : UserControl
     /// <summary>
     /// Kiddion点击事件
     /// </summary>
-    private void KiddionClick()
+    private async void KiddionClick()
     {
-        lock (this)
+        if (!HacksModel.KiddionIsRun)
         {
-            int count = 0;
+            ProcessUtil.CloseProcess("Kiddion");
+            return;
+        }
 
-            Task.Run(async () =>
-            {
-                if (!HacksModel.KiddionIsRun)
-                {
-                    ProcessUtil.CloseProcess("Kiddion");
-                    return;
-                }
+        ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Kiddion_Kiddion);
 
-                ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Kiddion_Kiddion);
+        Process pKiddion = null;
+        for (int i = 0; i < 8; i++)
+        {
+            // 拿到Kiddion进程
+            var pArray = Process.GetProcessesByName("Kiddion");
+            if (pArray.Length > 0)
+                pKiddion = pArray[0];
 
-                do
-                {
-                    // 等待Kiddion启动
-                    if (ProcessUtil.IsAppRun("Kiddion"))
-                    {
-                        // 拿到Kiddion进程
-                        var pKiddion = Process.GetProcessesByName("Kiddion").ToList()[0];
-                        var result = Injector.DLLInjector(pKiddion.Id, FileUtil.File_Kiddion_KiddionChs, false);
-                        if (result.IsSuccess)
-                        {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                NotifierHelper.Show(NotifierType.Success, "Kiddion汉化加载成功");
-                            });
-                        }
-                        else
-                        {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                NotifierHelper.Show(NotifierType.Error, $"Kiddion汉化加载失败\n错误信息：{result.Content}");
-                            });
-                        }
+            if (pKiddion != null)
+                break;
 
-                        return;
-                    }
+            await Task.Delay(250);
+        }
 
-                    await Task.Delay(250);
-                } while (count++ > 10);
-            });
+        var result = Injector.DLLInjector(pKiddion.Id, FileUtil.File_Kiddion_KiddionChs, false);
+        if (result.IsSuccess)
+        {
+            NotifierHelper.Show(NotifierType.Success, "Kiddion汉化加载成功");
+        }
+        else
+        {
+            NotifierHelper.Show(NotifierType.Error, $"Kiddion汉化加载失败\n错误信息：{result.Content}");
         }
     }
 

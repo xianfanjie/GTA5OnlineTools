@@ -1,4 +1,5 @@
 ﻿using GTA5.Data;
+using GTA5.Utils;
 using GTA5Core.Client;
 using GTA5Core.Feature;
 using GTA5Shared.Helper;
@@ -26,26 +27,26 @@ public partial class WorldFunctionView : UserControl
         this.DataContext = this;
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
-        //// 如果配置文件不存在就创建
-        //if (!File.Exists(FileUtil.File_Config_CustomTPList))
-        //{
-        //    // 保存配置文件
-        //    SaveConfig();
-        //}
+        // 如果配置文件不存在就创建
+        if (!File.Exists(GTA5Util.File_Config_CustomTPList))
+        {
+            // 保存配置文件
+            SaveConfig();
+        }
 
-        //// 如果配置文件存在就读取
-        //if (File.Exists(FileUtil.File_Config_CustomTPList))
-        //{
-        //    using var streamReader = new StreamReader(FileUtil.File_Config_CustomTPList);
-        //    List<TeleportData.TeleportInfo> teleportPreviews = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
+        // 如果配置文件存在就读取
+        if (File.Exists(GTA5Util.File_Config_CustomTPList))
+        {
+            using var streamReader = new StreamReader(GTA5Util.File_Config_CustomTPList);
+            List<TeleportData.TeleportInfo> teleportPreviews = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
 
-        //    TeleportData.CustomTeleport.Clear();
+            TeleportData.CustomTeleport.Clear();
 
-        //    foreach (var item in teleportPreviews)
-        //    {
-        //        TeleportData.CustomTeleport.Add(item);
-        //    }
-        //}
+            foreach (var item in teleportPreviews)
+            {
+                TeleportData.CustomTeleport.Add(item);
+            }
+        }
 
         foreach (var item in TeleportData.TeleportClassData)
         {
@@ -68,11 +69,11 @@ public partial class WorldFunctionView : UserControl
     /// </summary>
     private void SaveConfig()
     {
-        //if (Directory.Exists(FileUtil.Dir_Config))
-        //{
-        //    // 写入到Json文件
-        //    File.WriteAllText(FileUtil.File_Config_CustomTPList, JsonHelper.JsonSeri(TeleportData.CustomTeleport));
-        //}
+        if (Directory.Exists(GTA5Util.Dir_Config))
+        {
+            // 写入到Json文件
+            File.WriteAllText(GTA5Util.File_Config_CustomTPList, JsonHelper.JsonSeri(TeleportData.CustomTeleport));
+        }
     }
 
     private void Button_LocalWeather_Click(object sender, RoutedEventArgs e)
@@ -196,8 +197,6 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_EditCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-
-
         try
         {
             var tempName = TextBox_CustomTeleportName.Text.Trim();
@@ -242,8 +241,6 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_DeleteCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-
-
         int index1 = ComboBox_TeleportClass.SelectedIndex;
         int index2 = ListBox_TeleportInfo.SelectedIndex;
         if (index1 == 0 && index2 != -1)
@@ -262,15 +259,11 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_ToWaypoint_Click(object sender, RoutedEventArgs e)
     {
-
-
         Teleport.ToWaypoint();
     }
 
     private void Button_ToObjective_Click(object sender, RoutedEventArgs e)
     {
-
-
         Teleport.ToObjective();
     }
 
@@ -281,15 +274,11 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_Teleport_Click(object sender, RoutedEventArgs e)
     {
-
-
         Teleport.SetTeleportPosition(tempVector3);
     }
 
     private void Button_SaveCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-
-
         SaveConfig();
 
         NotifierHelper.Show(NotifierType.Success, $"保存到自定义传送坐标文件成功");
@@ -302,8 +291,6 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_MoveDistance_Click(object sender, RoutedEventArgs e)
     {
-
-
         var btnContent = (e.OriginalSource as Button).Content.ToString();
         switch (btnContent)
         {

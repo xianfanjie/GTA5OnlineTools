@@ -31,7 +31,10 @@
                     Content="窗口置顶"
                     WindowChrome.IsHitTestVisibleInChrome="True" />
             </StackPanel>
-            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+            <StackPanel
+                HorizontalAlignment="Left"
+                DockPanel.Dock="Left"
+                Orientation="Horizontal">
                 <Image
                     Height="20"
                     Margin="5"

@@ -12,6 +12,8 @@ public static class GTA5Util
     public const string File_Cache_GTAHax = $"{Dir_Cache}\\GTAHax.exe";
     public const string File_Cache_Stat = $"{Dir_Cache}\\stat.txt";
 
+    public const string File_Config_CustomTPList = $"{Dir_Config}\\CustomTPList.json";
+
     /// <summary>
     /// 判断程序是否运行
     /// </summary>

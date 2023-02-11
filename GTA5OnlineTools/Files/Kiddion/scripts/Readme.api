@@ -3,7 +3,7 @@
 ---------------------------------------
 Integer joaat(String text)
 nil     sleep(Number seconds)
-nil     require_game_build(int build)
+nil     require_game_build(Integer build)
 
 
 ---------------------------------------
@@ -47,13 +47,33 @@ nil     menu.add_array_item(String name, Table items --[[ Integer-to-String tabl
 nil     menu.add_float_range(String name, float step, float min_value, float max_value,
                              function getter --[[ Number|nil function() ]],
                              function setter --[[ nil function(Number value) ]])
-nil     menu.add_int_range(String name, int step, int min_value, int  max_value,
+nil     menu.add_int_range(String name, Integer step, Integer min_value, Integer  max_value,
                            function getter --[[ Integer|nil function() ]],
                            function setter --[[ nil function(Integer value) ]])
 nil     menu.add_toggle(String name,
                         function getter --[[ bool|nil function() ]],
                         function setter --[[ nil function(bool value) ]])
 nil     menu.clear()
+Submenu menu.add_player_submenu(String name)
+Submenu menu.add_player_submenu(String name, function on_enter_function --[[ nil function() ]])
+nil     menu.add_player_action(String name,
+                               function action_function --[[ nil function(Integer player_index) ]])
+nil     menu.add_player_action(String name,
+                               function action_function --[[ nil function(Integer player_index) ]]
+                               function is_valid_function --[[ bool function(Integer player_index) ]])
+nil     menu.add_player_float_range(String name, float step, float min_value, float max_value,
+                                    function getter --[[ Number|nil function(Integer player_index) ]],
+                                    function setter --[[ nil function(Integer player_index, Number value) ]])
+nil     menu.add_player_int_range(String name, Integer step, Integer min_value, Integer max_value,
+                                  function getter --[[ Integer|nil function(Integer player_index) ]],
+                                  function setter --[[ nil function(Integer player_index, Integer value) ]])
+nil     menu.add_player_toggle(String name,
+                               function getter --[[ bool|nil function(Integer player_index) ]],
+                               function setter --[[ nil function(Integer player_index, bool value) ]])
+Integer menu.get_selected_player_index()
+nil     menu.player_clear()
+
+
 Lua_ref menu.register_hotkey(Integer keycode, function callback)
 Lua_ref menu.register_callback(String event, function callback) --[[
         Supported callback events:
@@ -328,7 +348,7 @@ nil     submenu:add_array_item(String name, Table items --[[ Integer-to-String t
 nil     submenu:add_float_range(String name, float step, float min_value, float max_value,
                                 function getter --[[ Number|nil function() ]],
                                 function setter --[[ nil function(Number value) ]])
-nil     submenu:add_int_range(String name, int step, int min_value, int  max_value,
+nil     submenu:add_int_range(String name, Integer step, Integer min_value, Integer  max_value,
                               function getter --[[ Integer|nil function() ]],
                               function setter --[[ nil function(Integer value) ]])
 nil     submenu:add_toggle(String name,

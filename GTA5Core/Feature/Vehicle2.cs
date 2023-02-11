@@ -144,7 +144,7 @@ public static class Vehicle2
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 74, 1);                      // Red Neon Amount 1-255 100%-0%
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 75, 1);                      // G
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 76, 0);                      // B
-            Hacks.WriteGA(Offsets.oVMCreate + 27 + 60, 4030726305);             // landinggear/vehstate
+            Hacks.WriteGA(Offsets.oVMCreate + 27 + 77, 4030726305);             // landinggear/vehstate
 
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 5, -1);                      // primary -1 auto 159  主色调
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 6, -1);                      // secondary -1 auto 159  副色调
@@ -166,10 +166,10 @@ public static class Vehicle2
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 25, 8);                      // Suspension (0-13)
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 19, -1);
 
-            Memory.Write(Hacks.GlobalAddress(Offsets.oVMCreate + 27 + 77) + 1, 2);    // 2:bulletproof 0:false
+            Memory.Write<byte>(Hacks.GlobalAddress(Offsets.oVMCreate + 27 + 77) + 1, 2);    // 2:bulletproof 0:false
 
             var weapon = 2;
-            var weapon2 = 1;
+            var weapon2 = 2;
 
             if (model == "oppressor2")
                 weapon = 2;

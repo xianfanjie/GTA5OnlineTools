@@ -1,6 +1,4 @@
-﻿using GTA5.Utils;
-using GTA5.Config;
-using GTA5.Models;
+﻿using GTA5.Models;
 
 using GTA5Core.Native;
 using GTA5Core.Feature;
@@ -18,11 +16,6 @@ public partial class SelfStateView : UserControl
     /// SelfState 的数据模型绑定
     /// </summary>
     public SelfStateModel SelfStateModel { get; set; } = new();
-
-    /// <summary>
-    /// Option配置文件集，以json格式保存到本地
-    /// </summary>
-    private SelfStateConfig SelfStateConfig { get; set; } = new();
 
     /////////////////////////////////////////////////////////
 
@@ -64,29 +57,34 @@ public partial class SelfStateView : UserControl
         HotKeys.AddKey(WinVK.Oem0);
         HotKeys.KeyDownEvent += HotKeys_KeyDownEvent;
 
-        // 如果配置文件不存在就创建
-        if (!File.Exists(GTA5Util.File_Config_SelfState))
-        {
-            // 保存配置文件
-            SaveConfig();
-        }
+        ///////////  读取配置文件  ///////////
 
-        // 如果配置文件存在就读取
-        if (File.Exists(GTA5Util.File_Config_SelfState))
-        {
-            using var streamReader = new StreamReader(GTA5Util.File_Config_SelfState);
-            SelfStateConfig = JsonHelper.JsonDese<SelfStateConfig>(streamReader.ReadToEnd());
+        var isHotKeyToWaypoint = IniHelper.ReadValue("ExternalMenu", "IsHotKeyToWaypoint");
+        var isHotKeyToObjective = IniHelper.ReadValue("ExternalMenu", "IsHotKeyToObjective");
+        var isHotKeyFillHealthArmor = IniHelper.ReadValue("ExternalMenu", "IsHotKeyFillHealthArmor");
+        var isHotKeyClearWanted = IniHelper.ReadValue("ExternalMenu", "IsHotKeyClearWanted");
 
-            SelfStateModel.IsHotKeyToWaypoint = SelfStateConfig.IsHotKeyToWaypoint;
-            SelfStateModel.IsHotKeyToObjective = SelfStateConfig.IsHotKeyToObjective;
-            SelfStateModel.IsHotKeyFillHealthArmor = SelfStateConfig.IsHotKeyFillHealthArmor;
-            SelfStateModel.IsHotKeyClearWanted = SelfStateConfig.IsHotKeyClearWanted;
+        var isHotKeyFillAllAmmo = IniHelper.ReadValue("ExternalMenu", "IsHotKeyFillAllAmmo");
+        var isHotKeyMovingFoward = IniHelper.ReadValue("ExternalMenu", "IsHotKeyMovingFoward");
 
-            SelfStateModel.IsHotKeyFillAllAmmo = SelfStateConfig.IsHotKeyFillAllAmmo;
-            SelfStateModel.IsHotKeyMovingFoward = SelfStateConfig.IsHotKeyMovingFoward;
+        var isHotKeyNoCollision = IniHelper.ReadValue("ExternalMenu", "IsHotKeyNoCollision");
 
-            SelfStateModel.IsHotKeyNoCollision = SelfStateConfig.IsHotKeyNoCollision;
-        }
+        if (!string.IsNullOrEmpty(isHotKeyToWaypoint))
+            SelfStateModel.IsHotKeyToWaypoint = isHotKeyToWaypoint == "1";
+        if (!string.IsNullOrEmpty(isHotKeyToObjective))
+            SelfStateModel.IsHotKeyToObjective = isHotKeyToObjective == "1";
+        if (!string.IsNullOrEmpty(isHotKeyFillHealthArmor))
+            SelfStateModel.IsHotKeyFillHealthArmor = isHotKeyFillHealthArmor == "1";
+        if (!string.IsNullOrEmpty(isHotKeyClearWanted))
+            SelfStateModel.IsHotKeyClearWanted = isHotKeyClearWanted == "1";
+
+        if (!string.IsNullOrEmpty(isHotKeyFillAllAmmo))
+            SelfStateModel.IsHotKeyFillAllAmmo = isHotKeyFillAllAmmo == "1";
+        if (!string.IsNullOrEmpty(isHotKeyMovingFoward))
+            SelfStateModel.IsHotKeyMovingFoward = isHotKeyMovingFoward == "1";
+
+        if (!string.IsNullOrEmpty(isHotKeyNoCollision))
+            SelfStateModel.IsHotKeyNoCollision = isHotKeyNoCollision == "1";
     }
 
     private void ExternalMenuWindow_WindowClosingEvent()
@@ -101,21 +99,15 @@ public partial class SelfStateView : UserControl
     /// </summary>
     private void SaveConfig()
     {
-        if (Directory.Exists(GTA5Util.Dir_Config))
-        {
-            SelfStateConfig.IsHotKeyToWaypoint = SelfStateModel.IsHotKeyToWaypoint;
-            SelfStateConfig.IsHotKeyToObjective = SelfStateModel.IsHotKeyToObjective;
-            SelfStateConfig.IsHotKeyFillHealthArmor = SelfStateModel.IsHotKeyFillHealthArmor;
-            SelfStateConfig.IsHotKeyClearWanted = SelfStateModel.IsHotKeyClearWanted;
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyToWaypoint", $"{Convert.ToInt32(SelfStateModel.IsHotKeyToWaypoint)}");
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyToObjective", $"{Convert.ToInt32(SelfStateModel.IsHotKeyToObjective)}");
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyFillHealthArmor", $"{Convert.ToInt32(SelfStateModel.IsHotKeyFillHealthArmor)}");
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyClearWanted", $"{Convert.ToInt32(SelfStateModel.IsHotKeyClearWanted)}");
 
-            SelfStateConfig.IsHotKeyFillAllAmmo = SelfStateModel.IsHotKeyFillAllAmmo;
-            SelfStateConfig.IsHotKeyMovingFoward = SelfStateModel.IsHotKeyMovingFoward;
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyFillAllAmmo", $"{Convert.ToInt32(SelfStateModel.IsHotKeyFillAllAmmo)}");
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyMovingFoward", $"{Convert.ToInt32(SelfStateModel.IsHotKeyMovingFoward)}");
 
-            SelfStateConfig.IsHotKeyNoCollision = SelfStateModel.IsHotKeyNoCollision;
-
-            // 写入到Json文件
-            File.WriteAllText(GTA5Util.File_Config_SelfState, JsonHelper.JsonSeri(SelfStateConfig));
-        }
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyNoCollision", $"{Convert.ToInt32(SelfStateModel.IsHotKeyNoCollision)}");
     }
 
     /// <summary>

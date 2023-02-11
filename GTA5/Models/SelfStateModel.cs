@@ -8,25 +8,25 @@ public partial class SelfStateModel : ObservableObject
     /// 热键状态 传送到导航点
     /// </summary>
     [ObservableProperty]
-    private bool isHotKeyToWaypoint = false;
+    private bool isHotKeyToWaypoint = true;
 
     /// <summary>
     /// 热键状态 传送到目标点
     /// </summary>
     [ObservableProperty]
-    private bool isHotKeyToObjective = false;
+    private bool isHotKeyToObjective = true;
 
     /// <summary>
     /// 热键状态 补满血量和护甲
     /// </summary>
     [ObservableProperty]
-    private bool isHotKeyFillHealthArmor = false;
+    private bool isHotKeyFillHealthArmor = true;
 
     /// <summary>
     /// 热键状态 消除警星
     /// </summary>
     [ObservableProperty]
-    private bool isHotKeyClearWanted = false;
+    private bool isHotKeyClearWanted = true;
 
     /// <summary>
     /// 热键状态 补满全部武器弹药

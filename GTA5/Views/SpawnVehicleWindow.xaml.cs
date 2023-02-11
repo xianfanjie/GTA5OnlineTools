@@ -130,7 +130,7 @@ public partial class SpawnVehicleWindow
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Name, -255.0f, 5, 0);
+            Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, 0);
         }
     }
 
@@ -138,7 +138,7 @@ public partial class SpawnVehicleWindow
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Name, 0.0f, 5, 0);
+            Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, 0);
         }
     }
 }

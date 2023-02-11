@@ -15,7 +15,6 @@
     Closing="Window_HeistPreps_Closing"
     Loaded="Window_HeistPreps_Loaded"
     Style="{StaticResource SystemWindowStyle}"
-    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>

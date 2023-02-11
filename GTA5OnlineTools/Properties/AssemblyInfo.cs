@@ -14,8 +14,8 @@
 [assembly: AssemblyTitle("GTA5线上小助手")]
 [assembly: AssemblyCompany("CrazyZhang")]
 [assembly: AssemblyProduct("GTA5线上小助手")]
-[assembly: AssemblyVersion("3.0.9.2")]
-[assembly: AssemblyFileVersion("3.0.9.2")]
+[assembly: AssemblyVersion("3.0.9.3")]
+[assembly: AssemblyFileVersion("3.0.9.3")]
 
 // 不重复
 [assembly: AssemblyDescription("https://github.com/CrazyZhang666/GTA5OnlineTools")]

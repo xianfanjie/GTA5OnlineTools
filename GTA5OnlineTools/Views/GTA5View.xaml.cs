@@ -98,7 +98,6 @@ public partial class GTA5View : UserControl
         if (ExternalMenuWindow == null)
         {
             ExternalMenuWindow = new ExternalMenuWindow();
-            ExternalMenuWindow.Owner = MainWindow.MainWindowInstance;
             ExternalMenuWindow.Show();
         }
         else
@@ -117,7 +116,6 @@ public partial class GTA5View : UserControl
             {
                 ExternalMenuWindow = null;
                 ExternalMenuWindow = new ExternalMenuWindow();
-                ExternalMenuWindow.Owner = MainWindow.MainWindowInstance;
                 ExternalMenuWindow.Show();
             }
         }
@@ -128,7 +126,6 @@ public partial class GTA5View : UserControl
         if (SpawnVehicleWindow == null)
         {
             SpawnVehicleWindow = new SpawnVehicleWindow();
-            SpawnVehicleWindow.Owner = MainWindow.MainWindowInstance;
             SpawnVehicleWindow.Show();
         }
         else
@@ -143,7 +140,6 @@ public partial class GTA5View : UserControl
             {
                 SpawnVehicleWindow = null;
                 SpawnVehicleWindow = new SpawnVehicleWindow();
-                SpawnVehicleWindow.Owner = MainWindow.MainWindowInstance;
                 SpawnVehicleWindow.Show();
             }
         }
@@ -154,7 +150,6 @@ public partial class GTA5View : UserControl
         if (HeistsEditWindow == null)
         {
             HeistsEditWindow = new HeistsEditWindow();
-            HeistsEditWindow.Owner = MainWindow.MainWindowInstance;
             HeistsEditWindow.Show();
         }
         else
@@ -169,7 +164,6 @@ public partial class GTA5View : UserControl
             {
                 HeistsEditWindow = null;
                 HeistsEditWindow = new HeistsEditWindow();
-                HeistsEditWindow.Owner = MainWindow.MainWindowInstance;
                 HeistsEditWindow.Show();
             }
         }
@@ -180,7 +174,6 @@ public partial class GTA5View : UserControl
         if (OutfitsEditWindow == null)
         {
             OutfitsEditWindow = new OutfitsEditWindow();
-            OutfitsEditWindow.Owner = MainWindow.MainWindowInstance;
             OutfitsEditWindow.Show();
         }
         else
@@ -195,7 +188,6 @@ public partial class GTA5View : UserControl
             {
                 OutfitsEditWindow = null;
                 OutfitsEditWindow = new OutfitsEditWindow();
-                OutfitsEditWindow.Owner = MainWindow.MainWindowInstance;
                 OutfitsEditWindow.Show();
             }
         }
@@ -206,7 +198,6 @@ public partial class GTA5View : UserControl
         if (StatScriptsWindow == null)
         {
             StatScriptsWindow = new StatScriptsWindow();
-            StatScriptsWindow.Owner = MainWindow.MainWindowInstance;
             StatScriptsWindow.Show();
         }
         else
@@ -221,7 +212,6 @@ public partial class GTA5View : UserControl
             {
                 StatScriptsWindow = null;
                 StatScriptsWindow = new StatScriptsWindow();
-                StatScriptsWindow.Owner = MainWindow.MainWindowInstance;
                 StatScriptsWindow.Show();
             }
         }
@@ -232,7 +222,6 @@ public partial class GTA5View : UserControl
         if (SessionChatWindow == null)
         {
             SessionChatWindow = new SessionChatWindow();
-            SessionChatWindow.Owner = MainWindow.MainWindowInstance;
             SessionChatWindow.Show();
         }
         else
@@ -247,7 +236,6 @@ public partial class GTA5View : UserControl
             {
                 SessionChatWindow = null;
                 SessionChatWindow = new SessionChatWindow();
-                SessionChatWindow.Owner = MainWindow.MainWindowInstance;
                 SessionChatWindow.Show();
             }
         }
@@ -258,7 +246,6 @@ public partial class GTA5View : UserControl
         if (SpeedMeterWindow == null)
         {
             SpeedMeterWindow = new SpeedMeterWindow();
-            SpeedMeterWindow.Owner = MainWindow.MainWindowInstance;
             SpeedMeterWindow.Show();
         }
         else
@@ -273,7 +260,6 @@ public partial class GTA5View : UserControl
             {
                 SpeedMeterWindow = null;
                 SpeedMeterWindow = new SpeedMeterWindow();
-                SpeedMeterWindow.Owner = MainWindow.MainWindowInstance;
                 SpeedMeterWindow.Show();
             }
         }

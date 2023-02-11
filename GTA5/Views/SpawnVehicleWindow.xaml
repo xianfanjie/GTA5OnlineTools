@@ -14,7 +14,6 @@
     Closing="Window_SpawnVehicle_Closing"
     Loaded="Window_SpawnVehicle_Loaded"
     Style="{StaticResource SystemWindowStyle}"
-    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>

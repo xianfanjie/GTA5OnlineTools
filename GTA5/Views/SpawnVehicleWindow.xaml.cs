@@ -32,35 +32,35 @@ public partial class SpawnVehicleWindow
         // 主色调
         foreach (var color in VehicleColor.Colors)
         {
-            ComboBox_Primary.Items.Add(color.Value);
+            ComboBox_Primary.Items.Add(color.Name);
         }
         ComboBox_Primary.SelectedIndex = 0;
 
         // 副色调
         foreach (var color in VehicleColor.Colors)
         {
-            ComboBox_Secondary.Items.Add(color.Value);
+            ComboBox_Secondary.Items.Add(color.Name);
         }
         ComboBox_Secondary.SelectedIndex = 0;
 
         // 珠光色
         foreach (var color in VehicleColor.Colors)
         {
-            ComboBox_Pearlescent.Items.Add(color.Value);
+            ComboBox_Pearlescent.Items.Add(color.Name);
         }
         ComboBox_Pearlescent.SelectedIndex = 0;
 
         // 大灯颜色
         foreach (var color in VehicleColor.Lights)
         {
-            ComboBox_ColoredLight.Items.Add(color.Value);
+            ComboBox_ColoredLight.Items.Add(color.Name);
         }
         ComboBox_ColoredLight.SelectedIndex = 0;
 
         // 喇叭
         foreach (var color in VehicleColor.Horns)
         {
-            ComboBox_Horn.Items.Add(color.Value);
+            ComboBox_Horn.Items.Add(color.Name);
         }
         ComboBox_Horn.SelectedIndex = 0;
 
@@ -76,14 +76,14 @@ public partial class SpawnVehicleWindow
         // 车轮颜色
         foreach (var color in VehicleColor.Colors)
         {
-            ComboBox_WheelColor.Items.Add(color.Value);
+            ComboBox_WheelColor.Items.Add(color.Name);
         }
         ComboBox_WheelColor.SelectedIndex = 0;
 
         // 班尼车轮
         foreach (var color in VehicleColor.Bennys)
         {
-            ComboBox_BennyWheel.Items.Add(color.Value);
+            ComboBox_BennyWheel.Items.Add(color.Name);
         }
         ComboBox_BennyWheel.SelectedIndex = 0;
     }

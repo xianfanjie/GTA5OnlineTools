@@ -5,6 +5,7 @@
 
     <cvt:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
     <cvt:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
+    <cvt:IndexToBoolConvertent x:Key="IndexToBoolConvertent" />
 
     <SolidColorBrush x:Key="BlueColor" Color="#2196F3" />
     <SolidColorBrush x:Key="PinkColor" Color="#E91E63" />

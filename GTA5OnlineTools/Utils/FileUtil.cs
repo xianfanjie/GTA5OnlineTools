@@ -63,7 +63,6 @@ public static class FileUtil
     public const string File_Inject_YimMenu = $"{Dir_Inject}\\YimMenu.dll";
 
     public const string File_Config_Option = $"{Dir_Config}\\OptionConfig.json";
-    public const string File_Config_SelfState = $"{Dir_Config}\\SelfStateConfig.json";
 
     /// <summary>
     /// 获取当前运行文件完整路径

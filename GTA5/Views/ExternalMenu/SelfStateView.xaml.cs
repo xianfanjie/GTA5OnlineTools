@@ -1,5 +1,7 @@
-﻿using GTA5.Config;
+﻿using GTA5.Utils;
+using GTA5.Config;
 using GTA5.Models;
+
 using GTA5Core.Native;
 using GTA5Core.Feature;
 using GTA5Core.Settings;
@@ -62,29 +64,29 @@ public partial class SelfStateView : UserControl
         HotKeys.AddKey(WinVK.Oem0);
         HotKeys.KeyDownEvent += HotKeys_KeyDownEvent;
 
-        //// 如果配置文件不存在就创建
-        //if (!File.Exists(FileUtil.File_Config_SelfState))
-        //{
-        //    // 保存配置文件
-        //    SaveConfig();
-        //}
+        // 如果配置文件不存在就创建
+        if (!File.Exists(GTA5Util.File_Config_SelfState))
+        {
+            // 保存配置文件
+            SaveConfig();
+        }
 
-        //// 如果配置文件存在就读取
-        //if (File.Exists(FileUtil.File_Config_SelfState))
-        //{
-        //    using var streamReader = new StreamReader(FileUtil.File_Config_SelfState);
-        //    SelfStateConfig = JsonHelper.JsonDese<SelfStateConfig>(streamReader.ReadToEnd());
+        // 如果配置文件存在就读取
+        if (File.Exists(GTA5Util.File_Config_SelfState))
+        {
+            using var streamReader = new StreamReader(GTA5Util.File_Config_SelfState);
+            SelfStateConfig = JsonHelper.JsonDese<SelfStateConfig>(streamReader.ReadToEnd());
 
-        //    SelfStateModel.IsHotKeyToWaypoint = SelfStateConfig.IsHotKeyToWaypoint;
-        //    SelfStateModel.IsHotKeyToObjective = SelfStateConfig.IsHotKeyToObjective;
-        //    SelfStateModel.IsHotKeyFillHealthArmor = SelfStateConfig.IsHotKeyFillHealthArmor;
-        //    SelfStateModel.IsHotKeyClearWanted = SelfStateConfig.IsHotKeyClearWanted;
+            SelfStateModel.IsHotKeyToWaypoint = SelfStateConfig.IsHotKeyToWaypoint;
+            SelfStateModel.IsHotKeyToObjective = SelfStateConfig.IsHotKeyToObjective;
+            SelfStateModel.IsHotKeyFillHealthArmor = SelfStateConfig.IsHotKeyFillHealthArmor;
+            SelfStateModel.IsHotKeyClearWanted = SelfStateConfig.IsHotKeyClearWanted;
 
-        //    SelfStateModel.IsHotKeyFillAllAmmo = SelfStateConfig.IsHotKeyFillAllAmmo;
-        //    SelfStateModel.IsHotKeyMovingFoward = SelfStateConfig.IsHotKeyMovingFoward;
+            SelfStateModel.IsHotKeyFillAllAmmo = SelfStateConfig.IsHotKeyFillAllAmmo;
+            SelfStateModel.IsHotKeyMovingFoward = SelfStateConfig.IsHotKeyMovingFoward;
 
-        //    SelfStateModel.IsHotKeyNoCollision = SelfStateConfig.IsHotKeyNoCollision;
-        //}
+            SelfStateModel.IsHotKeyNoCollision = SelfStateConfig.IsHotKeyNoCollision;
+        }
     }
 
     private void ExternalMenuWindow_WindowClosingEvent()
@@ -99,21 +101,21 @@ public partial class SelfStateView : UserControl
     /// </summary>
     private void SaveConfig()
     {
-        //if (Directory.Exists(FileUtil.Dir_Config))
-        //{
-        //    SelfStateConfig.IsHotKeyToWaypoint = SelfStateModel.IsHotKeyToWaypoint;
-        //    SelfStateConfig.IsHotKeyToObjective = SelfStateModel.IsHotKeyToObjective;
-        //    SelfStateConfig.IsHotKeyFillHealthArmor = SelfStateModel.IsHotKeyFillHealthArmor;
-        //    SelfStateConfig.IsHotKeyClearWanted = SelfStateModel.IsHotKeyClearWanted;
+        if (Directory.Exists(GTA5Util.Dir_Config))
+        {
+            SelfStateConfig.IsHotKeyToWaypoint = SelfStateModel.IsHotKeyToWaypoint;
+            SelfStateConfig.IsHotKeyToObjective = SelfStateModel.IsHotKeyToObjective;
+            SelfStateConfig.IsHotKeyFillHealthArmor = SelfStateModel.IsHotKeyFillHealthArmor;
+            SelfStateConfig.IsHotKeyClearWanted = SelfStateModel.IsHotKeyClearWanted;
 
-        //    SelfStateConfig.IsHotKeyFillAllAmmo = SelfStateModel.IsHotKeyFillAllAmmo;
-        //    SelfStateConfig.IsHotKeyMovingFoward = SelfStateModel.IsHotKeyMovingFoward;
+            SelfStateConfig.IsHotKeyFillAllAmmo = SelfStateModel.IsHotKeyFillAllAmmo;
+            SelfStateConfig.IsHotKeyMovingFoward = SelfStateModel.IsHotKeyMovingFoward;
 
-        //    SelfStateConfig.IsHotKeyNoCollision = SelfStateModel.IsHotKeyNoCollision;
+            SelfStateConfig.IsHotKeyNoCollision = SelfStateModel.IsHotKeyNoCollision;
 
-        //    // 写入到Json文件
-        //    File.WriteAllText(FileUtil.File_Config_SelfState, JsonHelper.JsonSeri(SelfStateConfig));
-        //}
+            // 写入到Json文件
+            File.WriteAllText(GTA5Util.File_Config_SelfState, JsonHelper.JsonSeri(SelfStateConfig));
+        }
     }
 
     /// <summary>

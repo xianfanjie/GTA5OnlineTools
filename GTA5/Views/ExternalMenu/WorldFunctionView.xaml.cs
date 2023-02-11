@@ -14,11 +14,6 @@ namespace GTA5.Views.ExternalMenu;
 public partial class WorldFunctionView : UserControl
 {
     /// <summary>
-    /// 临时传送坐标
-    /// </summary>
-    private Vector3 tempVector3 = Vector3.Zero;
-
-    /// <summary>
     /// 坐标微调距离
     /// </summary>
     private float Move_Distance = 1.5f;
@@ -30,26 +25,26 @@ public partial class WorldFunctionView : UserControl
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // 如果配置文件不存在就创建
-        if (!File.Exists(GTA5Util.File_Config_CustomTPList))
+        if (!File.Exists(GTA5Util.File_Config_Teleports))
         {
             // 保存配置文件
             SaveConfig();
         }
 
         // 如果配置文件存在就读取
-        if (File.Exists(GTA5Util.File_Config_CustomTPList))
+        if (File.Exists(GTA5Util.File_Config_Teleports))
         {
-            using var streamReader = new StreamReader(GTA5Util.File_Config_CustomTPList);
-            List<TeleportData.TeleportInfo> teleportPreviews = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
+            using var streamReader = new StreamReader(GTA5Util.File_Config_Teleports);
+            List<TeleportData.TeleportInfo> teleportInfos = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
 
             TeleportData.Custom.Clear();
-
-            foreach (var item in teleportPreviews)
+            foreach (var info in teleportInfos)
             {
-                TeleportData.Custom.Add(item);
+                TeleportData.Custom.Add(info);
             }
         }
 
+        // 加载传送分类目录
         foreach (var item in TeleportData.TeleportClasses)
         {
             ComboBox_TeleportClass.Items.Add(new IconMenu()
@@ -74,7 +69,7 @@ public partial class WorldFunctionView : UserControl
         if (Directory.Exists(GTA5Util.Dir_Config))
         {
             // 写入到Json文件
-            File.WriteAllText(GTA5Util.File_Config_CustomTPList, JsonHelper.JsonSeri(TeleportData.Custom));
+            File.WriteAllText(GTA5Util.File_Config_Teleports, JsonHelper.JsonSeri(TeleportData.Custom));
         }
     }
 
@@ -84,7 +79,7 @@ public partial class WorldFunctionView : UserControl
         var index = OnlineData.LocalWeathers.FindIndex(t => t.Name == btnContent);
         if (index != -1)
         {
-            World.Set_Local_Weather(OnlineData.LocalWeathers[index].Value);
+            World.SetLocalWeather(OnlineData.LocalWeathers[index].Value);
         }
     }
 
@@ -92,6 +87,7 @@ public partial class WorldFunctionView : UserControl
     {
         World.KillAllNPC(false);
     }
+
     private void Button_KillAllHostilityNPC_Click(object sender, RoutedEventArgs e)
     {
         World.KillAllNPC(true);
@@ -132,14 +128,14 @@ public partial class WorldFunctionView : UserControl
     #region 自定义传送
     private void UpdateCustonTeleportList()
     {
-        ListBox_TeleportInfo.Items.Clear();
+        ListBox_TeleportInfos.Items.Clear();
 
         foreach (var item in TeleportData.TeleportClasses[0].TeleportInfos)
         {
-            ListBox_TeleportInfo.Items.Add(item.Name);
+            ListBox_TeleportInfos.Items.Add(item.Name);
         }
 
-        ListBox_TeleportInfo.SelectedIndex = 0;
+        ListBox_TeleportInfos.SelectedIndex = 0;
     }
 
     private void ComboBox_TeleportClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -147,29 +143,29 @@ public partial class WorldFunctionView : UserControl
         var index = ComboBox_TeleportClass.SelectedIndex;
         if (index != -1)
         {
-            ListBox_TeleportInfo.Items.Clear();
+            ListBox_TeleportInfos.Items.Clear();
 
             foreach (var item in TeleportData.TeleportClasses[index].TeleportInfos)
             {
-                ListBox_TeleportInfo.Items.Add(item.Name);
+                ListBox_TeleportInfos.Items.Add(item.Name);
             }
 
-            ListBox_TeleportInfo.SelectedIndex = 0;
+            ListBox_TeleportInfos.SelectedIndex = 0;
         }
     }
 
     private void ListBox_TeleportInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var index1 = ComboBox_TeleportClass.SelectedIndex;
-        var index2 = ListBox_TeleportInfo.SelectedIndex;
+        var index2 = ListBox_TeleportInfos.SelectedIndex;
         if (index1 != -1 && index2 != -1)
         {
-            tempVector3 = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position;
+            var position = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position;
 
             TextBox_CustomTeleportName.Text = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Name;
-            TextBox_Position_X.Text = $"{tempVector3.X:0.000}";
-            TextBox_Position_Y.Text = $"{tempVector3.Y:0.000}";
-            TextBox_Position_Z.Text = $"{tempVector3.Z:0.000}";
+            TextBox_Position_X.Text = $"{position.X:0.000}";
+            TextBox_Position_Y.Text = $"{position.Y:0.000}";
+            TextBox_Position_Z.Text = $"{position.Z:0.000}";
         }
         else if (index2 == -1)
         {
@@ -182,7 +178,7 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_AddCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-        Vector3 vector3 = Teleport.GetPlayerPosition();
+        var vector3 = Teleport.GetPlayerPosition();
 
         TeleportData.Custom.Add(new TeleportData.TeleportInfo()
         {
@@ -192,7 +188,7 @@ public partial class WorldFunctionView : UserControl
 
         UpdateCustonTeleportList();
 
-        ListBox_TeleportInfo.SelectedIndex = ListBox_TeleportInfo.Items.Count - 1;
+        ListBox_TeleportInfos.SelectedIndex = ListBox_TeleportInfos.Items.Count - 1;
     }
 
     private void Button_EditCustomTeleport_Click(object sender, RoutedEventArgs e)
@@ -211,8 +207,8 @@ public partial class WorldFunctionView : UserControl
                 return;
             }
 
-            int index1 = ComboBox_TeleportClass.SelectedIndex;
-            int index2 = ListBox_TeleportInfo.SelectedIndex;
+            var index1 = ComboBox_TeleportClass.SelectedIndex;
+            var index2 = ListBox_TeleportInfos.SelectedIndex;
             if (index1 == 0 && index2 != -1)
             {
                 TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position = new Vector3()
@@ -226,7 +222,7 @@ public partial class WorldFunctionView : UserControl
 
                 UpdateCustonTeleportList();
 
-                ListBox_TeleportInfo.SelectedIndex = index2; ;
+                ListBox_TeleportInfos.SelectedIndex = index2; ;
             }
             else
             {
@@ -241,15 +237,15 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_DeleteCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-        int index1 = ComboBox_TeleportClass.SelectedIndex;
-        int index2 = ListBox_TeleportInfo.SelectedIndex;
+        var index1 = ComboBox_TeleportClass.SelectedIndex;
+        var index2 = ListBox_TeleportInfos.SelectedIndex;
         if (index1 == 0 && index2 != -1)
         {
             TeleportData.TeleportClasses[index1].TeleportInfos.Remove(TeleportData.TeleportClasses[index1].TeleportInfos[index2]);
 
             UpdateCustonTeleportList();
 
-            ListBox_TeleportInfo.SelectedIndex = ListBox_TeleportInfo.Items.Count - 1;
+            ListBox_TeleportInfos.SelectedIndex = ListBox_TeleportInfos.Items.Count - 1;
         }
         else
         {
@@ -274,7 +270,13 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_Teleport_Click(object sender, RoutedEventArgs e)
     {
-        Teleport.SetTeleportPosition(tempVector3);
+        var index1 = ComboBox_TeleportClass.SelectedIndex;
+        var index2 = ListBox_TeleportInfos.SelectedIndex;
+        if (index1 != -1 && index2 != -1)
+        {
+            var position = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position;
+            Teleport.SetTeleportPosition(position);
+        }
     }
 
     private void Button_SaveCustomTeleport_Click(object sender, RoutedEventArgs e)

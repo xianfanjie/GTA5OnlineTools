@@ -24,21 +24,21 @@ public static class World
     /// 12, Light Snow
     /// 14, Halloween
     /// </summary>
-    /// <param name="weatherID">天气ID</param>
-    public static void Set_Local_Weather(int weatherID)
+    /// <param name="weatherId">天气Id</param>
+    public static void SetLocalWeather(int weatherId)
     {
-        if (weatherID == -1)
+        if (weatherId == -1)
         {
             Memory.Write(Pointers.WeatherPTR + 0x24, -1);
             Memory.Write(Pointers.WeatherPTR + 0x104, 13);
         }
-        if (weatherID == 13)
+        if (weatherId == 13)
         {
             Memory.Write(Pointers.WeatherPTR + 0x24, 13);
             Memory.Write(Pointers.WeatherPTR + 0x104, 13);
         }
 
-        Memory.Write(Pointers.WeatherPTR + 0x104, weatherID);
+        Memory.Write(Pointers.WeatherPTR + 0x104, weatherId);
     }
 
     /// <summary>

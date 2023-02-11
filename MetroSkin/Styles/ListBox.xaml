@@ -3,21 +3,23 @@
     <!--  导航菜单ListBox样式  -->
     <Style x:Key="ListBoxStyle_NavMenu" TargetType="{x:Type ListBox}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
-        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Item" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
                     <Border
-                        BorderBrush="#D0D7DE"
+                        BorderBrush="#C2C3C9"
                         BorderThickness="0,0,1,0"
                         SnapsToDevicePixels="True">
                         <ScrollViewer
-                            Margin="0,0,5,0"
-                            HorizontalScrollBarVisibility="Hidden"
-                            VerticalScrollBarVisibility="Auto">
-                            <StackPanel IsItemsHost="True" />
+                            CanContentScroll="True"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto"
+                            VirtualizingPanel.IsVirtualizing="True"
+                            VirtualizingPanel.ScrollUnit="Item"
+                            VirtualizingPanel.VirtualizationMode="Recycling">
+                            <StackPanel Margin="0,0,5,0" IsItemsHost="True" />
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>
@@ -72,7 +74,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
                     <Border BorderBrush="#808080" BorderThickness="1">
-                        <ScrollViewer>
+                        <ScrollViewer
+                            CanContentScroll="True"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto"
+                            VirtualizingPanel.IsVirtualizing="True"
+                            VirtualizingPanel.ScrollUnit="Item"
+                            VirtualizingPanel.VirtualizationMode="Recycling">
                             <StackPanel IsItemsHost="true" />
                         </ScrollViewer>
                     </Border>

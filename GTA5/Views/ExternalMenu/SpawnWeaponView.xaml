@@ -14,10 +14,10 @@
         <DockPanel LastChildFill="True">
             <ui:LabelIcon Content="武器分类" DockPanel.Dock="Top" />
             <ComboBox
-                x:Name="ComboBox_WeaponTypes"
+                x:Name="ComboBox_WeaponClasses"
                 Margin="5"
                 DockPanel.Dock="Top"
-                SelectionChanged="ComboBox_WeaponTypes_SelectionChanged">
+                SelectionChanged="ComboBox_WeaponClasses_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type ListBoxItem}">
                         <StackPanel Orientation="Horizontal">
@@ -43,10 +43,10 @@
                             <Image
                                 Width="60"
                                 Margin="5,5,10,5"
-                                Source="{Binding PreviewImage, Converter={StaticResource StringToImageSourceConverter}}"
+                                Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
                                 Stretch="Uniform"
                                 Style="{StaticResource ImageStyle_HighQuality}" />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

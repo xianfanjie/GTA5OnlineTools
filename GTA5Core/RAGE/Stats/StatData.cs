@@ -563,7 +563,7 @@ public static class StatData
     /// <summary>
     /// Stat数据分类列表
     /// </summary>
-    public static List<StatClass> StatDataClass = new()
+    public static List<StatClass> StatClasses = new()
     {
         new StatClass(){ Name="玩家-护甲全满", StatInfos=_MP_CHAR_ARMOUR },
         new StatClass(){ Name="玩家-零食全满", StatInfos=_NO_BOUGHT },

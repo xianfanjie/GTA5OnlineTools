@@ -1,10 +1,10 @@
 ﻿using GTA5.Data;
 
-using GTA5Core.Client;
 using GTA5Core.Feature;
 using GTA5Core.Settings;
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
+using GTA5Core.RAGE.Onlines;
 
 namespace GTA5.Views.ExternalMenu;
 
@@ -20,18 +20,18 @@ public partial class SpawnVehicleView : UserControl
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // 载具列表
-        foreach (var vType in VehicleHash.VehicleTypes)
+        foreach (var vClass in VehicleHash.VehicleClasses)
         {
-            ComboBox_VehicleTypes.Items.Add(new IconMenu()
+            ComboBox_VehicleClasses.Items.Add(new IconMenu()
             {
-                Icon = "\xe610",
-                Title = vType.Key
+                Icon = vClass.Icon,
+                Title = vClass.Name
             });
         }
-        ComboBox_VehicleTypes.SelectedIndex = 0;
+        ComboBox_VehicleClasses.SelectedIndex = 0;
 
         // 载具附加功能
-        foreach (var item in MiscData.VehicleExtras)
+        foreach (var item in OnlineData.VehicleExtras)
         {
             ComboBox_VehicleExtras.Items.Add(item.Name);
         }
@@ -42,37 +42,36 @@ public partial class SpawnVehicleView : UserControl
 
     }
 
-    private void ComboBox_VehicleTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ComboBox_VehicleClasses_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         lock (this)
         {
-            var index = ComboBox_VehicleTypes.SelectedIndex;
-            if (index != -1)
+            var index = ComboBox_VehicleClasses.SelectedIndex;
+            if (index == -1)
+                return;
+
+            ListBox_VehicleInfo.Items.Clear();
+
+            Task.Run(() =>
             {
-                ListBox_VehicleInfo.Items.Clear();
-
-                Task.Run(() =>
+                foreach (var vInfo in VehicleHash.VehicleClasses[index].VehicleInfos)
                 {
-                    var typeName = VehicleHash.VehicleTypes.ElementAt(index).Key;
-                    foreach (var item in VehicleHash.VehicleTypes[typeName])
+                    this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                     {
-                        this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+                        if (index == ComboBox_VehicleClasses.SelectedIndex)
                         {
-                            if (index == ComboBox_VehicleTypes.SelectedIndex)
+                            ListBox_VehicleInfo.Items.Add(new ModelInfo()
                             {
-                                ListBox_VehicleInfo.Items.Add(new ModelInfo()
-                                {
-                                    Name = item.Key,
-                                    DisplayName = item.Value,
-                                    PreviewImage = RAGEHelper.GetVehicleImage(item.Key)
-                                });
-                            }
-                        });
-                    }
-                });
+                                Name = vInfo.Name,
+                                Value = vInfo.Value,
+                                Image = RAGEHelper.GetVehicleImage(vInfo.Value)
+                            });
+                        }
+                    });
+                }
+            });
 
-                ListBox_VehicleInfo.SelectedIndex = 0;
-            }
+            ListBox_VehicleInfo.SelectedIndex = 0;
         }
     }
 
@@ -80,7 +79,7 @@ public partial class SpawnVehicleView : UserControl
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Name, -255.0f, 5, 0);
+            Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, 0);
         }
     }
 
@@ -88,7 +87,7 @@ public partial class SpawnVehicleView : UserControl
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Name, 0.0f, 5, 0);
+            Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, 0);
         }
     }
 
@@ -136,7 +135,7 @@ public partial class SpawnVehicleView : UserControl
         var index = ComboBox_VehicleExtras.SelectedIndex;
         if (index != -1)
         {
-            Vehicle.Extras((short)MiscData.VehicleExtras[index].ID);
+            Vehicle.Extras((short)OnlineData.VehicleExtras[index].Value);
         }
     }
 

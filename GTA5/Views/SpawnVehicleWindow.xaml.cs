@@ -19,15 +19,15 @@ public partial class SpawnVehicleWindow
     private void Window_SpawnVehicle_Loaded(object sender, RoutedEventArgs e)
     {
         // 载具分类列表
-        foreach (var vType in VehicleHash.VehicleTypes)
+        foreach (var vClass in VehicleHash.VehicleClasses)
         {
-            ListBox_VehicleTypes.Items.Add(new IconMenu()
+            ListBox_VehicleClasses.Items.Add(new IconMenu()
             {
-                Icon = "\xe610",
-                Title = vType.Key
+                Icon = vClass.Icon,
+                Title = vClass.Name
             });
         }
-        ListBox_VehicleTypes.SelectedIndex = 0;
+        ListBox_VehicleClasses.SelectedIndex = 0;
 
         // 主色调
         foreach (var color in VehicleColor.Colors)
@@ -67,9 +67,9 @@ public partial class SpawnVehicleWindow
         ///////////////////////////////////////////////
 
         // 车轮类型
-        foreach (var wheel in VehicleWheel.WheelTypes)
+        foreach (var wClass in VehicleWheel.WheelClasses)
         {
-            ComboBox_WheelType.Items.Add(wheel.Key);
+            ComboBox_WheelType.Items.Add(wClass.Name);
         }
         ComboBox_WheelType.SelectedIndex = 0;
 
@@ -97,33 +97,32 @@ public partial class SpawnVehicleWindow
     {
         lock (this)
         {
-            var index = ListBox_VehicleTypes.SelectedIndex;
-            if (index != -1)
+            var index = ListBox_VehicleClasses.SelectedIndex;
+            if (index == -1)
+                return;
+
+            ListBox_VehicleInfo.Items.Clear();
+
+            Task.Run(() =>
             {
-                ListBox_VehicleInfo.Items.Clear();
-
-                Task.Run(() =>
+                foreach (var item in VehicleHash.VehicleClasses[index].VehicleInfos)
                 {
-                    var typeName = VehicleHash.VehicleTypes.ElementAt(index).Key;
-                    foreach (var item in VehicleHash.VehicleTypes[typeName])
+                    this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                     {
-                        this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+                        if (index == ListBox_VehicleClasses.SelectedIndex)
                         {
-                            if (index == ListBox_VehicleTypes.SelectedIndex)
+                            ListBox_VehicleInfo.Items.Add(new ModelInfo()
                             {
-                                ListBox_VehicleInfo.Items.Add(new ModelInfo()
-                                {
-                                    Name = item.Key,
-                                    DisplayName = item.Value,
-                                    PreviewImage = RAGEHelper.GetVehicleImage(item.Key)
-                                });
-                            }
-                        });
-                    }
-                });
+                                Name = item.Name,
+                                Value = item.Value,
+                                Image = RAGEHelper.GetVehicleImage(item.Value)
+                            });
+                        }
+                    });
+                }
+            });
 
-                ListBox_VehicleInfo.SelectedIndex = 0;
-            }
+            ListBox_VehicleInfo.SelectedIndex = 0;
         }
     }
 

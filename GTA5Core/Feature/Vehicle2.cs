@@ -1,6 +1,7 @@
 ﻿using GTA5Core.Data;
-using GTA5Core.Client;
 using GTA5Core.Native;
+using GTA5Core.RAGE;
+using GTA5Core.RAGE.Vehicles;
 
 namespace GTA5Core.Feature;
 
@@ -190,24 +191,18 @@ public static class Vehicle2
     }
 
     /// <summary>
-    /// 查找载具显示名称
+    /// 通过Hash值查找载具名称
     /// </summary>
     /// <param name="hash"></param>
-    /// <param name="isDisplay"></param>
     /// <returns></returns>
-    public static string FindVehicleDisplayName(long hash, bool isDisplay)
+    public static string FindVehicleNameByHash(long hash)
     {
-        foreach (var item in VehicleData.VehicleClassData)
+        foreach (var vClass in VehicleHash.VehicleClasses)
         {
-            foreach (var item0 in item.VehicleInfo)
+            foreach (var vInfo in vClass.VehicleInfos)
             {
-                if (item0.Hash == hash)
-                {
-                    if (isDisplay)
-                        return item0.Display;
-                    else
-                        return item0.Name;
-                }
+                if (RAGEHelper.JOAAT(vInfo.Value) == hash)
+                    return vInfo.Name;
             }
         }
 

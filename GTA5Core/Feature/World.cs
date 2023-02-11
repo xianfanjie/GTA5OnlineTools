@@ -1,5 +1,5 @@
 ﻿using GTA5Core.Native;
-using GTA5Core.Client;
+using GTA5Core.RAGE.Rage;
 
 namespace GTA5Core.Feature;
 
@@ -95,9 +95,9 @@ public static class World
             int ped_type = Memory.Read<int>(pCPed + Offsets.CPed_Ragdoll);
             ped_type = ped_type << 11 >> 25;
 
-            if (ped_type == (int)EnumData.PedTypes.COP ||
-                ped_type == (int)EnumData.PedTypes.SWAT ||
-                ped_type == (int)EnumData.PedTypes.ARMY)
+            if (ped_type == (int)PedType.COP ||
+                ped_type == (int)PedType.SWAT ||
+                ped_type == (int)PedType.ARMY)
             {
                 Memory.Write(pCPed + Offsets.CPed_Health, 0.0f);
             }

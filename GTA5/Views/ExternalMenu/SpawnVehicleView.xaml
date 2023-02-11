@@ -14,10 +14,10 @@
         <DockPanel LastChildFill="True">
             <ui:LabelIcon Content="载具分类" DockPanel.Dock="Top" />
             <ComboBox
-                x:Name="ComboBox_VehicleTypes"
+                x:Name="ComboBox_VehicleClasses"
                 Margin="5"
                 DockPanel.Dock="Top"
-                SelectionChanged="ComboBox_VehicleTypes_SelectionChanged">
+                SelectionChanged="ComboBox_VehicleClasses_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type ListBoxItem}">
                         <StackPanel Orientation="Horizontal">
@@ -43,9 +43,9 @@
                             <Image
                                 Width="60"
                                 Margin="5,5,10,5"
-                                Source="{Binding PreviewImage, Converter={StaticResource StringToImageSourceConverter}}"
+                                Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
                                 Style="{StaticResource ImageStyle_HighQuality}" />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -113,8 +113,8 @@
             <TextBlock Margin="5,5,5,10" DockPanel.Dock="Bottom">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{}{0} - {1}">
-                        <Binding ElementName="ListBox_VehicleInfo" Path="SelectedItem.DisplayName" />
                         <Binding ElementName="ListBox_VehicleInfo" Path="SelectedItem.Name" />
+                        <Binding ElementName="ListBox_VehicleInfo" Path="SelectedItem.Value" />
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
@@ -122,7 +122,7 @@
                 Margin="5"
                 HorizontalAlignment="Left"
                 DockPanel.Dock="Bottom"
-                Source="{Binding ElementName=ListBox_VehicleInfo, Path=SelectedItem.PreviewImage}"
+                Source="{Binding ElementName=ListBox_VehicleInfo, Path=SelectedItem.Image}"
                 Style="{StaticResource ImageStyle_HighQuality}" />
         </DockPanel>
         <!--  面板3  -->

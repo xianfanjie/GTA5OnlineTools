@@ -1,6 +1,6 @@
 ﻿using GTA5.Data;
-using GTA5Core.Client;
 using GTA5Core.Feature;
+using GTA5Core.RAGE.Peds;
 
 namespace GTA5.Views.ExternalMenu;
 
@@ -18,9 +18,9 @@ public partial class OtherMiscView : UserControl
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // Ped列表
-        foreach (var item in PedData.PedDataClass)
+        foreach (var item in PedHash.PedHashData)
         {
-            ListBox_PedModel.Items.Add(item.DisplayName);
+            ListBox_PedModel.Items.Add(item.Name);
         }
         ListBox_PedModel.SelectedIndex = 0;
     }
@@ -51,7 +51,7 @@ public partial class OtherMiscView : UserControl
                     PerVehInfos.Add(new PerVehInfo()
                     {
                         Index = i,
-                        Name = Vehicle2.FindVehicleDisplayName(hash, true),
+                        Name = Vehicle2.FindVehicleNameByHash(hash),
                         Hash = hash,
                         Plate = plate
                     });
@@ -86,7 +86,7 @@ public partial class OtherMiscView : UserControl
     {
         var index = ListBox_PedModel.SelectedIndex;
         if (index != -1)
-            Online.ModelChange(PedData.PedDataClass[index].Hash);
+            Online.ModelChange(Hacks.Joaat(PedHash.PedHashData[index].Value));
     }
 
     private void ListBox_PedModel_MouseDoubleClick(object sender, MouseButtonEventArgs e)

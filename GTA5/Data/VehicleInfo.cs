@@ -3,6 +3,6 @@
 public class ModelInfo
 {
     public string Name { get; set; }
-    public string DisplayName { get; set; }
-    public string PreviewImage { get; set; }
+    public string Value { get; set; }
+    public string Image { get; set; }
 }

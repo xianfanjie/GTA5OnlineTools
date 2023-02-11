@@ -1,5 +1,5 @@
-﻿using GTA5Core.Client;
-using GTA5Core.Feature;
+﻿using GTA5Core.Feature;
+using GTA5Core.RAGE.Onlines;
 
 namespace GTA5.Views.ExternalMenu;
 
@@ -49,11 +49,11 @@ public partial class JobHelperView : UserControl
     {
         var btnContent = (e.OriginalSource as Button).Content.ToString();
 
-        int index = MiscData.CEOCargos.FindIndex(t => t.Name == btnContent);
+        var index = OnlineData.CEOCargos.FindIndex(t => t.Name == btnContent);
         if (index != -1)
         {
             Online.CEOSpecialCargo(false);
-            Online.CEOCargoType(MiscData.CEOCargos[index].ID);
+            Online.CEOCargoType(OnlineData.CEOCargos[index].Value);
         }
     }
 
@@ -61,12 +61,12 @@ public partial class JobHelperView : UserControl
     {
         var btnContent = (e.OriginalSource as Button).Content.ToString();
 
-        int index = MiscData.CEOSpecialCargos.FindIndex(t => t.Name == btnContent);
+        var index = OnlineData.CEOSpecialCargos.FindIndex(t => t.Name == btnContent);
         if (index != -1)
         {
             // They are in gb_contraband_buy at func_915, for future updates.
             Online.CEOSpecialCargo(true);
-            Online.CEOCargoType(MiscData.CEOSpecialCargos[index].ID);
+            Online.CEOCargoType(OnlineData.CEOSpecialCargos[index].Value);
         }
     }
 

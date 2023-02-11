@@ -1,5 +1,4 @@
 ﻿using GTA5.Utils;
-using GTA5Core.Client;
 using GTA5Core.RAGE.Stats;
 using GTA5Shared.Helper;
 
@@ -20,7 +19,7 @@ public partial class GTAHaxWindow
         TextBox_PreviewGTAHax.Text = "INT32\n";
 
         // STAT列表
-        foreach (var item in StatData.StatDataClass)
+        foreach (var item in StatData.StatClasses)
         {
             ListBox_GTAHaxClass.Items.Add(item.Name);
         }
@@ -47,16 +46,16 @@ public partial class GTAHaxWindow
     private void ListBox_GTAHaxClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var statClassName = ListBox_GTAHaxClass.SelectedItem.ToString();
-        int index = StatData.StatDataClass.FindIndex(t => t.Name == statClassName);
+        int index = StatData.StatClasses.FindIndex(t => t.Name == statClassName);
         if (index != -1)
         {
             TextBox_PreviewGTAHax.Clear();
             TextBox_PreviewGTAHax.AppendText("INT32\n");
 
-            for (int i = 0; i < StatData.StatDataClass[index].StatInfo.Count; i++)
+            for (int i = 0; i < StatData.StatClasses[index].StatInfos.Count; i++)
             {
-                var hash = StatData.StatDataClass[index].StatInfo[i].Hash;
-                var value = StatData.StatDataClass[index].StatInfo[i].Value;
+                var hash = StatData.StatClasses[index].StatInfos[i].Hash;
+                var value = StatData.StatClasses[index].StatInfos[i].Value;
 
                 if (hash.IndexOf("_") == 0)
                 {

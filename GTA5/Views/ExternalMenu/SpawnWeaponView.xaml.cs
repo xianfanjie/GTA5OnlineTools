@@ -1,10 +1,10 @@
 ﻿using GTA5.Data;
 
-using GTA5Core.Client;
 using GTA5Core.Feature;
 using GTA5Core.Settings;
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Weapons;
+using GTA5Core.RAGE.Onlines;
 
 namespace GTA5.Views.ExternalMenu;
 
@@ -20,18 +20,18 @@ public partial class SpawnWeaponView : UserControl
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // 武器列表
-        foreach (var wType in WeaponHash.WeaponTypes)
+        foreach (var wClass in WeaponHash.WeaponClasses)
         {
-            ComboBox_WeaponTypes.Items.Add(new IconMenu()
+            ComboBox_WeaponClasses.Items.Add(new IconMenu()
             {
-                Icon = "\xe610",
-                Title = wType.Key
+                Icon = wClass.Icon,
+                Title = wClass.Name
             });
         }
-        ComboBox_WeaponTypes.SelectedIndex = 0;
+        ComboBox_WeaponClasses.SelectedIndex = 0;
 
         // 子弹类型
-        foreach (var item in MiscData.ImpactExplosions)
+        foreach (var item in OnlineData.ImpactExplosions)
         {
             ComboBox_ImpactExplosion.Items.Add(item.Name);
         }
@@ -42,37 +42,36 @@ public partial class SpawnWeaponView : UserControl
 
     }
 
-    private void ComboBox_WeaponTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ComboBox_WeaponClasses_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         lock (this)
         {
-            var index = ComboBox_WeaponTypes.SelectedIndex;
-            if (index != -1)
+            var index = ComboBox_WeaponClasses.SelectedIndex;
+            if (index == -1)
+                return;
+
+            ListBox_WeaponInfo.Items.Clear();
+
+            Task.Run(() =>
             {
-                ListBox_WeaponInfo.Items.Clear();
-
-                Task.Run(() =>
+                foreach (var item in WeaponHash.WeaponClasses[index].WeaponInfos)
                 {
-                    var typeName = WeaponHash.WeaponTypes.ElementAt(index).Key;
-                    foreach (var item in WeaponHash.WeaponTypes[typeName])
+                    this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                     {
-                        this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+                        if (index == ComboBox_WeaponClasses.SelectedIndex)
                         {
-                            if (index == ComboBox_WeaponTypes.SelectedIndex)
+                            ListBox_WeaponInfo.Items.Add(new ModelInfo()
                             {
-                                ListBox_WeaponInfo.Items.Add(new ModelInfo()
-                                {
-                                    Name = item.Key,
-                                    DisplayName = item.Value,
-                                    PreviewImage = RAGEHelper.GetWeaponImage(item.Key)
-                                });
-                            }
-                        });
-                    }
-                });
+                                Name = item.Name,
+                                Value = item.Value,
+                                Image = RAGEHelper.GetWeaponImage(item.Value)
+                            });
+                        }
+                    });
+                }
+            });
 
-                ListBox_WeaponInfo.SelectedIndex = 0;
-            }
+            ListBox_WeaponInfo.SelectedIndex = 0;
         }
     }
 
@@ -140,7 +139,7 @@ public partial class SpawnWeaponView : UserControl
             else
                 Weapon.ImpactType(5);
 
-            Weapon.ImpactExplosion(MiscData.ImpactExplosions[index].ID);
+            Weapon.ImpactExplosion(OnlineData.ImpactExplosions[index].Value);
         }
     }
 

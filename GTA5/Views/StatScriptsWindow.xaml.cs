@@ -1,5 +1,4 @@
-﻿using GTA5Core.Client;
-using GTA5Core.Feature;
+﻿using GTA5Core.Feature;
 using GTA5Core.RAGE.Stats;
 
 namespace GTA5.Views;
@@ -17,7 +16,7 @@ public partial class StatScriptsWindow
     private void Window_StatScripts_Loaded(object sender, RoutedEventArgs e)
     {
         // STAT列表
-        foreach (var item in StatData.StatDataClass)
+        foreach (var item in StatData.StatClasses)
         {
             ListBox_STATList.Items.Add(item.Name);
         }
@@ -56,24 +55,24 @@ public partial class StatScriptsWindow
     {
         TextBox_Logger.Clear();
 
-        Task.Run(() =>
+        Task.Run(async () =>
         {
             try
             {
-                var index = StatData.StatDataClass.FindIndex(t => t.Name == statClassName);
+                var index = StatData.StatClasses.FindIndex(t => t.Name == statClassName);
                 if (index != -1)
                 {
-                    AppendTextBox($"正在执行 {StatData.StatDataClass[index].Name} 脚本代码");
+                    AppendTextBox($"正在执行 {StatData.StatClasses[index].Name} 脚本代码");
 
-                    for (int i = 0; i < StatData.StatDataClass[index].StatInfo.Count; i++)
+                    for (int i = 0; i < StatData.StatClasses[index].StatInfos.Count; i++)
                     {
-                        AppendTextBox($"正在执行 第 {i + 1}/{StatData.StatDataClass[index].StatInfo.Count} 条代码");
+                        AppendTextBox($"正在执行 第 {i + 1}/{StatData.StatClasses[index].StatInfos.Count} 条代码");
 
-                        Hacks.STATS_WriteInt(StatData.StatDataClass[index].StatInfo[i].Hash, StatData.StatDataClass[index].StatInfo[i].Value);
-                        Task.Delay(500).Wait();
+                        Hacks.STATS_WriteInt(StatData.StatClasses[index].StatInfos[i].Hash, StatData.StatClasses[index].StatInfos[i].Value);
+                        await Task.Delay(500);
                     }
 
-                    AppendTextBox($"{StatData.StatDataClass[index].Name} 脚本代码执行完毕");
+                    AppendTextBox($"{StatData.StatClasses[index].Name} 脚本代码执行完毕");
                 }
             }
             catch (Exception ex)

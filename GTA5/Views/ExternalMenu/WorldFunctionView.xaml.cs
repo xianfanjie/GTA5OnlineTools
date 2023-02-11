@@ -1,7 +1,8 @@
 ﻿using GTA5.Data;
 using GTA5.Utils;
-using GTA5Core.Client;
+
 using GTA5Core.Feature;
+using GTA5Core.RAGE.Onlines;
 using GTA5Core.RAGE.Teleports;
 using GTA5Shared.Helper;
 
@@ -41,15 +42,15 @@ public partial class WorldFunctionView : UserControl
             using var streamReader = new StreamReader(GTA5Util.File_Config_CustomTPList);
             List<TeleportData.TeleportInfo> teleportPreviews = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
 
-            TeleportData.CustomTeleport.Clear();
+            TeleportData.Custom.Clear();
 
             foreach (var item in teleportPreviews)
             {
-                TeleportData.CustomTeleport.Add(item);
+                TeleportData.Custom.Add(item);
             }
         }
 
-        foreach (var item in TeleportData.TeleportClassData)
+        foreach (var item in TeleportData.TeleportClasses)
         {
             ComboBox_TeleportClass.Items.Add(new IconMenu()
             {
@@ -73,17 +74,17 @@ public partial class WorldFunctionView : UserControl
         if (Directory.Exists(GTA5Util.Dir_Config))
         {
             // 写入到Json文件
-            File.WriteAllText(GTA5Util.File_Config_CustomTPList, JsonHelper.JsonSeri(TeleportData.CustomTeleport));
+            File.WriteAllText(GTA5Util.File_Config_CustomTPList, JsonHelper.JsonSeri(TeleportData.Custom));
         }
     }
 
     private void Button_LocalWeather_Click(object sender, RoutedEventArgs e)
     {
         var btnContent = (e.OriginalSource as Button).Content.ToString();
-        var index = MiscData.LocalWeathers.FindIndex(t => t.Name == btnContent);
+        var index = OnlineData.LocalWeathers.FindIndex(t => t.Name == btnContent);
         if (index != -1)
         {
-            World.Set_Local_Weather(MiscData.LocalWeathers[index].ID);
+            World.Set_Local_Weather(OnlineData.LocalWeathers[index].Value);
         }
     }
 
@@ -133,7 +134,7 @@ public partial class WorldFunctionView : UserControl
     {
         ListBox_TeleportInfo.Items.Clear();
 
-        foreach (var item in TeleportData.TeleportClassData[0].TeleportInfo)
+        foreach (var item in TeleportData.TeleportClasses[0].TeleportInfos)
         {
             ListBox_TeleportInfo.Items.Add(item.Name);
         }
@@ -148,7 +149,7 @@ public partial class WorldFunctionView : UserControl
         {
             ListBox_TeleportInfo.Items.Clear();
 
-            foreach (var item in TeleportData.TeleportClassData[index].TeleportInfo)
+            foreach (var item in TeleportData.TeleportClasses[index].TeleportInfos)
             {
                 ListBox_TeleportInfo.Items.Add(item.Name);
             }
@@ -163,9 +164,9 @@ public partial class WorldFunctionView : UserControl
         var index2 = ListBox_TeleportInfo.SelectedIndex;
         if (index1 != -1 && index2 != -1)
         {
-            tempVector3 = TeleportData.TeleportClassData[index1].TeleportInfo[index2].Position;
+            tempVector3 = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position;
 
-            TextBox_CustomTeleportName.Text = TeleportData.TeleportClassData[index1].TeleportInfo[index2].Name;
+            TextBox_CustomTeleportName.Text = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Name;
             TextBox_Position_X.Text = $"{tempVector3.X:0.000}";
             TextBox_Position_Y.Text = $"{tempVector3.Y:0.000}";
             TextBox_Position_Z.Text = $"{tempVector3.Z:0.000}";
@@ -181,11 +182,9 @@ public partial class WorldFunctionView : UserControl
 
     private void Button_AddCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-
-
         Vector3 vector3 = Teleport.GetPlayerPosition();
 
-        TeleportData.CustomTeleport.Add(new TeleportData.TeleportInfo()
+        TeleportData.Custom.Add(new TeleportData.TeleportInfo()
         {
             Name = $"保存点 : {DateTime.Now:yyyyMMdd_HHmmss_ffff}",
             Position = vector3
@@ -216,14 +215,14 @@ public partial class WorldFunctionView : UserControl
             int index2 = ListBox_TeleportInfo.SelectedIndex;
             if (index1 == 0 && index2 != -1)
             {
-                TeleportData.TeleportClassData[index1].TeleportInfo[index2].Position = new Vector3()
+                TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position = new Vector3()
                 {
                     X = Convert.ToSingle(tempX),
                     Y = Convert.ToSingle(tempY),
                     Z = Convert.ToSingle(tempZ)
                 };
 
-                TeleportData.TeleportClassData[index1].TeleportInfo[index2].Name = tempName;
+                TeleportData.TeleportClasses[index1].TeleportInfos[index2].Name = tempName;
 
                 UpdateCustonTeleportList();
 
@@ -246,7 +245,7 @@ public partial class WorldFunctionView : UserControl
         int index2 = ListBox_TeleportInfo.SelectedIndex;
         if (index1 == 0 && index2 != -1)
         {
-            TeleportData.TeleportClassData[index1].TeleportInfo.Remove(TeleportData.TeleportClassData[index1].TeleportInfo[index2]);
+            TeleportData.TeleportClasses[index1].TeleportInfos.Remove(TeleportData.TeleportClasses[index1].TeleportInfos[index2]);
 
             UpdateCustonTeleportList();
 

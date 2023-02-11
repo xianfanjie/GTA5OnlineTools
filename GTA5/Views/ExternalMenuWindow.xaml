@@ -15,6 +15,7 @@
     Loaded="Window_ExternalMenu_Loaded"
     ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"
+    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>

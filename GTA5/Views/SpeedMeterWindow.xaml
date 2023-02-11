@@ -13,6 +13,7 @@
     Loaded="Window_SpeedMeter_Loaded"
     ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"
+    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>

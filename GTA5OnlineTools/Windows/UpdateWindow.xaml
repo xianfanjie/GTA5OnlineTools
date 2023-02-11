@@ -11,8 +11,9 @@
     Height="400"
     Closing="Window_Update_Closing"
     Loaded="Window_Update_Loaded"
-    ResizeMode="CanMinimize"
+    ResizeMode="NoResize"
     Style="{StaticResource SystemWindowStyle}"
+    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>

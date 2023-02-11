@@ -26,23 +26,14 @@ public partial class ToolsView : UserControl
     }
 
     /// <summary>
-    /// 超链接请求导航事件
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-    {
-        ProcessUtil.OpenLink(e.Uri.OriginalString);
-        e.Handled = true;
-    }
-
-    /// <summary>
     /// 工具按钮点击
     /// </summary>
     /// <param name="name"></param>
     [RelayCommand]
     private void ToolsButtonClick(string name)
     {
+        AudioHelper.PlayClickSound();
+
         switch (name)
         {
             #region 分组1

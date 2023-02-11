@@ -34,12 +34,18 @@ public partial class HacksView : UserControl
     {
         InitializeComponent();
         this.DataContext = this;
+        MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
 
         new Thread(CheckCheatsIsRun)
         {
             Name = "CheckCheatsIsRun",
             IsBackground = true
         }.Start();
+    }
+
+    private void MainWindow_WindowClosingEvent()
+    {
+
     }
 
     /// <summary>
@@ -69,6 +75,8 @@ public partial class HacksView : UserControl
     [RelayCommand]
     private void CheatsClick(string hackName)
     {
+        AudioHelper.PlayClickSound();
+
         if (ProcessUtil.IsGTA5Run())
         {
             switch (hackName)
@@ -103,6 +111,8 @@ public partial class HacksView : UserControl
     [RelayCommand]
     private void ReadMeClick(string Name)
     {
+        AudioHelper.PlayClickSound();
+
         switch (Name)
         {
             case "Kiddion":
@@ -130,6 +140,8 @@ public partial class HacksView : UserControl
     [RelayCommand]
     private void ExtraClick(string funcName)
     {
+        AudioHelper.PlayClickSound();
+
         switch (funcName)
         {
             #region Kiddion额外功能

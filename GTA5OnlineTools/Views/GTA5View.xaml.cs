@@ -44,6 +44,8 @@ public partial class GTA5View : UserControl
     [RelayCommand]
     private void GTA5ViewClick(string modelName)
     {
+        AudioHelper.PlayClickSound();
+
         if (ProcessUtil.IsGTA5Run())
         {
             // GTA5内存模块初始化窗口

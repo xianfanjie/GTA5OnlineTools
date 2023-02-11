@@ -37,12 +37,12 @@ public partial class LoadWindow
 
                 LoggerHelper.Info("开始初始化程序...");
                 LoggerHelper.Info($"当前程序版本号 {CoreUtil.ClientVersion}");
-                LoggerHelper.Info($"当前程序最后编译时间 {CoreUtil.BuildTime}");
+                LoggerHelper.Info($"当前程序最后编译时间 {CoreUtil.BuildDate}");
 
                 // 客户端程序版本号
                 LoadModel.VersionInfo = CoreUtil.ClientVersion;
                 // 最后编译时间
-                LoadModel.BuildDate = CoreUtil.BuildTime;
+                LoadModel.BuildDate = CoreUtil.BuildDate;
 
                 /////////////////////////////////////////////////////////////////////
 

@@ -11,10 +11,6 @@
     mc:Ignorable="d">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
         <!--  主体功能区  -->
         <ScrollViewer Margin="5">
             <StackPanel>
@@ -98,70 +94,6 @@
 
             </StackPanel>
         </ScrollViewer>
-        <!--  次要功能区  -->
-        <StackPanel
-            Grid.Row="1"
-            Margin="5"
-            HorizontalAlignment="Right"
-            Orientation="Horizontal">
-            <UniformGrid Rows="2">
-                <TextBlock
-                    Margin="5"
-                    FontWeight="Black"
-                    Text="Discord加速" />
-                <TextBlock Margin="5">
-                    <Hyperlink
-                        NavigateUri="https://steampp.net"
-                        RequestNavigate="Hyperlink_RequestNavigate"
-                        ToolTip="https://steampp.net">
-                        Steam++
-                    </Hyperlink>
-                </TextBlock>
-            </UniformGrid>
-            <UniformGrid Rows="2">
-                <TextBlock
-                    Margin="5"
-                    FontWeight="Black"
-                    Text="Discord聊天" />
-                <TextBlock Margin="5">
-                    <Hyperlink
-                        NavigateUri="https://discord.com"
-                        RequestNavigate="Hyperlink_RequestNavigate"
-                        ToolTip="https://discord.com">
-                        Discord
-                    </Hyperlink>
-                </TextBlock>
-            </UniformGrid>
-            <UniformGrid Rows="2">
-                <TextBlock
-                    Margin="5"
-                    FontWeight="Black"
-                    Text="Snipaste截图" />
-                <TextBlock Margin="5">
-                    <Hyperlink
-                        NavigateUri="https://zh.snipaste.com"
-                        RequestNavigate="Hyperlink_RequestNavigate"
-                        ToolTip="https://zh.snipaste.com">
-                        Snipaste
-                    </Hyperlink>
-                </TextBlock>
-            </UniformGrid>
-            <UniformGrid Rows="2">
-                <TextBlock
-                    Margin="5"
-                    FontWeight="Black"
-                    Text="免费加速器" />
-                <TextBlock Margin="5">
-                    <Hyperlink
-                        NavigateUri="https://www.nn.com"
-                        RequestNavigate="Hyperlink_RequestNavigate"
-                        ToolTip="https://www.nn.com">
-                        NN游戏加速器
-                    </Hyperlink>
-                </TextBlock>
-            </UniformGrid>
-        </StackPanel>
-
     </Grid>
 
 </UserControl>

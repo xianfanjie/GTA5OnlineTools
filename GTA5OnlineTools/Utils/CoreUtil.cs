@@ -26,7 +26,7 @@ public static class CoreUtil
     /// <summary>
     /// 程序客户端最后编译时间
     /// </summary>
-    public static readonly DateTime BuildTime = File.GetLastWriteTime(Environment.ProcessPath);
+    public static readonly DateTime BuildDate = File.GetLastWriteTime(Environment.ProcessPath);
 
     /// <summary>
     /// 检查更新相关信息

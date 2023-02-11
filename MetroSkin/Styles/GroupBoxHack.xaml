@@ -20,11 +20,12 @@
                     <Border
                         Width="600"
                         Height="200"
-                        Margin="5,5,0,0"
+                        Margin="5,5,1,1"
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
                         SnapsToDevicePixels="True">
                         <Grid>
                             <Grid.ColumnDefinitions>

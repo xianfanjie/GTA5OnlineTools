@@ -26,6 +26,7 @@ public partial class MainWindow
     private readonly HacksView HacksView = new();
     private readonly GTA5View GTA5View = new();
     private readonly ToolsView ToolsView = new();
+    private readonly OptionsView OptionsView = new();
     private readonly AboutView AboutView = new();
 
     ///////////////////////////////////////////////////////////////
@@ -158,6 +159,10 @@ public partial class MainWindow
             case "ToolsView":
                 if (ContentControl_Main.Content != ToolsView)
                     ContentControl_Main.Content = ToolsView;
+                break;
+            case "OptionsView":
+                if (ContentControl_Main.Content != OptionsView)
+                    ContentControl_Main.Content = OptionsView;
                 break;
             case "AboutView":
                 if (ContentControl_Main.Content != AboutView)

@@ -62,6 +62,12 @@
                         x:Name="Button_SpawnOnlineVehicleB"
                         Click="Button_SpawnOnlineVehicleB_Click"
                         Content="刷出线上载具（室内）" />
+                    <TextBlock
+                        Margin="5"
+                        Style="{StaticResource TextBlockStyle_Hint}"
+                        TextWrapping="Wrap">
+                        提示：载具自定义功能目前尚未完工
+                    </TextBlock>
                 </StackPanel>
             </StackPanel>
             <!--  ///////////  -->

@@ -190,8 +190,12 @@
                         </TextBlock>
                         <Button
                             Command="{Binding CheatsClickCommand}"
+                            CommandParameter="YimMenuChs"
+                            Content="汉化版DLL" />
+                        <Button
+                            Command="{Binding CheatsClickCommand}"
                             CommandParameter="YimMenu"
-                            Content="注入DLL" />
+                            Content="原版DLL" />
                     </StackPanel>
                 </ui:GroupBoxHack.TitleContent>
                 <ui:GroupBoxHack.DescriptionContent>

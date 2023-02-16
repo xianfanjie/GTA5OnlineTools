@@ -96,6 +96,9 @@ public partial class HacksView : UserControl
                 case "YimMenu":
                     YimMenuClick();
                     break;
+                case "YimMenuChs":
+                    YimMenuChsClick();
+                    break;
             }
         }
         else
@@ -313,6 +316,38 @@ public partial class HacksView : UserControl
             NotifierHelper.Show(NotifierType.Success, "YimMenu菜单注入成功");
         else
             NotifierHelper.Show(NotifierType.Error, $"YimMenu菜单注入\n错误信息：{result.Content}");
+    }
+
+    /// <summary>
+    /// YimMenu汉化版点击事件
+    /// </summary>
+    private void YimMenuChsClick()
+    {
+        Process GTA5Process = null;
+
+        foreach (var item in Process.GetProcessesByName("GTA5"))
+        {
+            if (item.MainWindowHandle == IntPtr.Zero)
+                continue;
+
+            if (item.MainModule.FileVersionInfo.LegalCopyright.Contains("Rockstar Games Inc."))
+            {
+                GTA5Process = item;
+                break;
+            }
+        }
+
+        if (GTA5Process == null)
+        {
+            NotifierHelper.Show(NotifierType.Warning, "未发现正确的《GTA5》进程");
+            return;
+        }
+
+        var result = Injector.DLLInjector(GTA5Process.Id, FileUtil.File_Inject_YimMenuChs, true);
+        if (result.IsSuccess)
+            NotifierHelper.Show(NotifierType.Success, "YimMenu汉化版菜单注入成功");
+        else
+            NotifierHelper.Show(NotifierType.Error, $"YimMenu汉化版菜单注入\n错误信息：{result.Content}");
     }
     #endregion
 

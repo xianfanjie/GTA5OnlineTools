@@ -62,6 +62,9 @@ public static class FileUtil
     public const string Res_Inject_YimMenu = $"{ResFiles}.Inject.YimMenu.dll";
     public const string File_Inject_YimMenu = $"{Dir_Inject}\\YimMenu.dll";
 
+    public const string Res_Inject_YimMenuChs = $"{ResFiles}.Inject.YimMenuChs.dll";
+    public const string File_Inject_YimMenuChs = $"{Dir_Inject}\\YimMenuChs.dll";
+
     public const string File_Config_Option = $"{Dir_Config}\\OptionConfig.json";
 
     /// <summary>

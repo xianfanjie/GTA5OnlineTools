@@ -97,6 +97,16 @@ public partial class LoadWindow
                         FileUtil.ExtractResFile(FileUtil.Res_Inject_YimMenu, FileUtil.File_Inject_YimMenu);
                 }
 
+                if (!File.Exists(FileUtil.File_Inject_YimMenuChs))
+                {
+                    FileUtil.ExtractResFile(FileUtil.Res_Inject_YimMenuChs, FileUtil.File_Inject_YimMenuChs);
+                }
+                else
+                {
+                    if (!FileUtil.IsOccupied(FileUtil.File_Inject_YimMenuChs))
+                        FileUtil.ExtractResFile(FileUtil.Res_Inject_YimMenuChs, FileUtil.File_Inject_YimMenuChs);
+                }
+
                 /////////////////////////////////////////////////////////////////////
 
                 this.Dispatcher.Invoke(() =>

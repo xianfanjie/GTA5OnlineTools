@@ -19,4 +19,4 @@
 
 // 不重复
 [assembly: AssemblyDescription("https://github.com/CrazyZhang666/GTA5OnlineTools")]
-[assembly: AssemblyCopyright("Copyright © 2022-2023")]
+[assembly: AssemblyCopyright("Copyright © 2018-2023")]

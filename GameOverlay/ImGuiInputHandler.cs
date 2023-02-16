@@ -1,4 +1,4 @@
-﻿using GameOverlay.Win32;
+﻿using GameOverlay.Native;
 
 using ImGuiNET;
 

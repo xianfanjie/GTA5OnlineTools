@@ -4,8 +4,6 @@ using GTA5OnlineTools.Windows;
 using GTA5OnlineTools.Views.ReadMe;
 
 using GTA5Inject;
-using GTA5Core.Views;
-using GTA5Core.Native;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -96,9 +94,6 @@ public partial class HacksView : UserControl
                 case "YimMenu":
                     YimMenuClick();
                     break;
-                case "YimMenuChs":
-                    YimMenuChsClick();
-                    break;
             }
         }
         else
@@ -160,6 +155,9 @@ public partial class HacksView : UserControl
             case "KiddionScriptsDirectory":
                 KiddionScriptsDirectoryClick();
                 break;
+            case "KiddionScriptsManage":
+                KiddionScriptsManageClick();
+                break;
             case "EditKiddionConfig":
                 EditKiddionConfigClick();
                 break;
@@ -190,6 +188,9 @@ public partial class HacksView : UserControl
                 break;
             case "EditYimMenuConfig":
                 EditYimMenuConfigClick();
+                break;
+            case "Xenos64Injector":
+                Xenos64InjectorClick();
                 break;
             case "ResetYimMenuConfig":
                 ResetYimMenuConfigClick();
@@ -317,38 +318,6 @@ public partial class HacksView : UserControl
         else
             NotifierHelper.Show(NotifierType.Error, $"YimMenu菜单注入\n错误信息：{result.Content}");
     }
-
-    /// <summary>
-    /// YimMenu汉化版点击事件
-    /// </summary>
-    private void YimMenuChsClick()
-    {
-        Process GTA5Process = null;
-
-        foreach (var item in Process.GetProcessesByName("GTA5"))
-        {
-            if (item.MainWindowHandle == IntPtr.Zero)
-                continue;
-
-            if (item.MainModule.FileVersionInfo.LegalCopyright.Contains("Rockstar Games Inc."))
-            {
-                GTA5Process = item;
-                break;
-            }
-        }
-
-        if (GTA5Process == null)
-        {
-            NotifierHelper.Show(NotifierType.Warning, "未发现正确的《GTA5》进程");
-            return;
-        }
-
-        var result = Injector.DLLInjector(GTA5Process.Id, FileUtil.File_Inject_YimMenuChs, true);
-        if (result.IsSuccess)
-            NotifierHelper.Show(NotifierType.Success, "YimMenu汉化版菜单注入成功");
-        else
-            NotifierHelper.Show(NotifierType.Error, $"YimMenu汉化版菜单注入\n错误信息：{result.Content}");
-    }
     #endregion
 
     #region Kiddion额外功能
@@ -386,6 +355,18 @@ public partial class HacksView : UserControl
     private void KiddionScriptsDirectoryClick()
     {
         ProcessUtil.OpenLink(FileUtil.Dir_Kiddion_Scripts);
+    }
+
+    /// <summary>
+    /// Kiddion LUA脚本管理
+    /// </summary>
+    private void KiddionScriptsManageClick()
+    {
+        var kiddionWindow = new KiddionWindow
+        {
+            Owner = MainWindow.MainWindowInstance
+        };
+        kiddionWindow.ShowDialog();
     }
 
     /// <summary>
@@ -434,7 +415,7 @@ public partial class HacksView : UserControl
                 ProcessUtil.CloseProcess("Notepad2");
                 Thread.Sleep(100);
 
-                FileUtil.DelectDir(FileUtil.Dir_Kiddion);
+                FileUtil.ClearDirectory(FileUtil.Dir_Kiddion);
                 Directory.CreateDirectory(FileUtil.Dir_Kiddion_Scripts);
                 Thread.Sleep(100);
 
@@ -515,6 +496,14 @@ public partial class HacksView : UserControl
     }
 
     /// <summary>
+    /// Xenos64注入器
+    /// </summary>
+    private void Xenos64InjectorClick()
+    {
+        ProcessUtil.OpenProcess(FileUtil.File_Cache_Xenos64);
+    }
+
+    /// <summary>
     /// 重置YimMenu配置文件
     /// </summary>
     private void ResetYimMenuConfigClick()
@@ -530,7 +519,7 @@ public partial class HacksView : UserControl
             if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileUtil.Dir_BigBaseV2}」文件夹，如有重要文件请提前备份",
                 "重置YimMenu配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                FileUtil.DelectDir(FileUtil.Dir_BigBaseV2);
+                FileUtil.ClearDirectory(FileUtil.Dir_BigBaseV2);
 
                 NotifierHelper.Show(NotifierType.Success, "重置YimMenu配置文件成功");
             }

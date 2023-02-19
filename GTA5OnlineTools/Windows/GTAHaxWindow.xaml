@@ -5,15 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
-    x:Name="Window_GTAHaxStat"
+    x:Name="Window_GTAHax"
     Title="GTA5线上小助手 - GTAHax预设代码"
     Width="1000"
     Height="600"
-    Closing="Window_GTAHaxStat_Closing"
-    Loaded="Window_GTAHaxStat_Loaded"
+    Closing="Window_GTAHax_Closing"
+    Loaded="Window_GTAHax_Loaded"
     ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"
-    WindowStartupLocation="CenterOwner"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>
@@ -27,7 +27,7 @@
                 VerticalAlignment="Center"
                 FontSize="14"
                 FontWeight="Bold"
-                Text="{Binding ElementName=Window_GTAHaxStat, Path=Title}" />
+                Text="{Binding ElementName=Window_GTAHax, Path=Title}" />
         </StackPanel>
     </ui:Window.TitleContent>
 

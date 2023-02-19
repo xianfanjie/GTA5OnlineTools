@@ -58,7 +58,7 @@ public partial class LoadWindow
                 Directory.CreateDirectory(FileUtil.Dir_Log);
 
                 // 清空缓存文件夹
-                FileUtil.DelectDir(FileUtil.Dir_Cache);
+                FileUtil.ClearDirectory(FileUtil.Dir_Cache);
 
                 // 释放必要文件
                 FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Kiddion, FileUtil.File_Kiddion_Kiddion);
@@ -86,6 +86,9 @@ public partial class LoadWindow
 
                 FileUtil.ExtractResFile(FileUtil.Res_Cache_Notepad2, FileUtil.File_Cache_Notepad2);
 
+                FileUtil.ExtractResFile(FileUtil.Res_Cache_Xenos64, FileUtil.File_Cache_Xenos64);
+                FileUtil.ExtractResFile(FileUtil.Res_Cache_Xenos64Profile, FileUtil.File_Cache_Xenos64Profile);
+
                 // 判断DLL文件是否存在以及是否被占用
                 if (!File.Exists(FileUtil.File_Inject_YimMenu))
                 {
@@ -95,16 +98,6 @@ public partial class LoadWindow
                 {
                     if (!FileUtil.IsOccupied(FileUtil.File_Inject_YimMenu))
                         FileUtil.ExtractResFile(FileUtil.Res_Inject_YimMenu, FileUtil.File_Inject_YimMenu);
-                }
-
-                if (!File.Exists(FileUtil.File_Inject_YimMenuChs))
-                {
-                    FileUtil.ExtractResFile(FileUtil.Res_Inject_YimMenuChs, FileUtil.File_Inject_YimMenuChs);
-                }
-                else
-                {
-                    if (!FileUtil.IsOccupied(FileUtil.File_Inject_YimMenuChs))
-                        FileUtil.ExtractResFile(FileUtil.Res_Inject_YimMenuChs, FileUtil.File_Inject_YimMenuChs);
                 }
 
                 /////////////////////////////////////////////////////////////////////
@@ -140,7 +133,7 @@ public partial class LoadWindow
         {
             case "InitDefaultPath":
                 {
-                    FileUtil.DelectDir(FileUtil.Default);
+                    FileUtil.ClearDirectory(FileUtil.Default);
                     Thread.Sleep(100);
 
                     App.AppMainMutex.Dispose();

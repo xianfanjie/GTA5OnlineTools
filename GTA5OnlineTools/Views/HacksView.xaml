@@ -55,7 +55,12 @@
                             Background="#00AE9D"
                             Command="{Binding ExtraClickCommand}"
                             CommandParameter="KiddionScriptsDirectory"
-                            Content="LUA脚本目录" />
+                            Content="脚本目录" />
+                        <Button
+                            Background="#CA64EA"
+                            Command="{Binding ExtraClickCommand}"
+                            CommandParameter="KiddionScriptsManage"
+                            Content="LUA脚本管理" />
                         <!--  /////////////////  -->
                         <Button
                             Background="#34A853"
@@ -190,12 +195,8 @@
                         </TextBlock>
                         <Button
                             Command="{Binding CheatsClickCommand}"
-                            CommandParameter="YimMenuChs"
-                            Content="汉化版DLL" />
-                        <Button
-                            Command="{Binding CheatsClickCommand}"
                             CommandParameter="YimMenu"
-                            Content="原版DLL" />
+                            Content="注入DLL" />
                     </StackPanel>
                 </ui:GroupBoxHack.TitleContent>
                 <ui:GroupBoxHack.DescriptionContent>
@@ -211,6 +212,11 @@
                                 Command="{Binding ExtraClickCommand}"
                                 CommandParameter="EditYimMenuConfig"
                                 Content="配置文件" />
+                            <Button
+                                Background="#009AD6"
+                                Command="{Binding ExtraClickCommand}"
+                                CommandParameter="Xenos64Injector"
+                                Content="Xenos64注入器" />
                             <Button
                                 Background="#EA4335"
                                 Command="{Binding ExtraClickCommand}"

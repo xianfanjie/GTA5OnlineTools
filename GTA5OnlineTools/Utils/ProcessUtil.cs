@@ -108,5 +108,6 @@ public static class ProcessUtil
         CloseProcess("BincoHax");
         CloseProcess("LSCHax");
         CloseProcess("Notepad2");
+        CloseProcess("Xenos64");
     }
 }

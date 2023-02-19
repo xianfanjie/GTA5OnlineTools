@@ -59,13 +59,14 @@ public static class FileUtil
     public const string Res_Cache_Stat = $"{ResFiles}.Cache.stat.txt";
     public const string File_Cache_Stat = $"{Dir_Cache}\\stat.txt";
 
+    public const string Res_Cache_Xenos64 = $"{ResFiles}.Cache.Xenos64.exe";
+    public const string File_Cache_Xenos64 = $"{Dir_Cache}\\Xenos64.exe";
+
+    public const string Res_Cache_Xenos64Profile = $"{ResFiles}.Cache.XenosCurrentProfile.xpr";
+    public const string File_Cache_Xenos64Profile = $"{Dir_Cache}\\XenosCurrentProfile.xpr";
+
     public const string Res_Inject_YimMenu = $"{ResFiles}.Inject.YimMenu.dll";
     public const string File_Inject_YimMenu = $"{Dir_Inject}\\YimMenu.dll";
-
-    public const string Res_Inject_YimMenuChs = $"{ResFiles}.Inject.YimMenuChs.dll";
-    public const string File_Inject_YimMenuChs = $"{Dir_Inject}\\YimMenuChs.dll";
-
-    public const string File_Config_Option = $"{Dir_Config}\\OptionConfig.json";
 
     /// <summary>
     /// 获取当前运行文件完整路径
@@ -180,7 +181,7 @@ public static class FileUtil
     /// 清空指定文件夹下的文件及文件夹
     /// </summary>
     /// <param name="srcPath">文件夹路径</param>
-    public static void DelectDir(string srcPath)
+    public static void ClearDirectory(string srcPath)
     {
         try
         {

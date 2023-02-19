@@ -31,12 +31,14 @@
 	<ItemGroup>
 		<EmbeddedResource Include="Files\Cache\BincoHax.exe" />
 		<EmbeddedResource Include="Files\Cache\GTAHax.exe" />
+		<EmbeddedResource Include="Files\Cache\Xenos64.exe" />
+		<EmbeddedResource Include="Files\Cache\XenosCurrentProfile.xpr" />
 		<EmbeddedResource Include="Files\Inject\YimMenu.dll" />
-		<EmbeddedResource Include="Files\Inject\YimMenuChs.dll" />
 		<EmbeddedResource Include="Files\Kiddion\config.json" />
 		<EmbeddedResource Include="Files\Kiddion\config87.json" />
 		<EmbeddedResource Include="Files\Kiddion\Kiddion.exe" />
 		<EmbeddedResource Include="Files\Kiddion\KiddionChs.dll" />
+		<EmbeddedResource Include="Files\Kiddion\scripts\AliceLua.zip" />
 		<EmbeddedResource Include="Files\Kiddion\scripts\Readme.api" />
 		<EmbeddedResource Include="Files\Kiddion\teleports.json" />
 		<EmbeddedResource Include="Files\Kiddion\themes.json" />

@@ -112,7 +112,7 @@ public partial class ToolsView : UserControl
             {
                 ProcessUtil.CloseThirdProcess();
                 Thread.Sleep(100);
-                FileUtil.DelectDir(FileUtil.Default);
+                FileUtil.ClearDirectory(FileUtil.Default);
                 Thread.Sleep(100);
 
                 App.AppMainMutex.Dispose();

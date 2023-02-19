@@ -14,7 +14,7 @@ public partial class GTAHaxWindow
         InitializeComponent();
     }
 
-    private void Window_GTAHaxStat_Loaded(object sender, RoutedEventArgs e)
+    private void Window_GTAHax_Loaded(object sender, RoutedEventArgs e)
     {
         TextBox_PreviewGTAHax.Text = "INT32\n";
 
@@ -26,7 +26,7 @@ public partial class GTAHaxWindow
         ListBox_GTAHaxClass.SelectedIndex = 0;
     }
 
-    private void Window_GTAHaxStat_Closing(object sender, CancelEventArgs e)
+    private void Window_GTAHax_Closing(object sender, CancelEventArgs e)
     {
 
     }

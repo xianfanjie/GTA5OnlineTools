@@ -1,5 +1,6 @@
 ﻿global using System;
 global using System.IO;
+global using System.IO.Compression;
 global using System.Text;
 global using System.Reflection;
 global using System.Diagnostics;

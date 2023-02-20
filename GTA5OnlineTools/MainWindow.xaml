@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tb="http://www.hardcodet.net/taskbar"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_Main"
     Title="GTA5线上小助手"
@@ -100,8 +101,35 @@
         </DockPanel>
     </ui:Window.TitleContent>
 
+    <ui:Window.Resources>
+        <!--  托盘菜单  -->
+        <ContextMenu x:Key="SysTrayMenu">
+            <MenuItem
+                Command="{Binding TaskbarMenuCommand}"
+                CommandParameter="ShowWindow"
+                Header="显示窗口" />
+            <MenuItem
+                Command="{Binding TaskbarMenuCommand}"
+                CommandParameter="HideWindow"
+                Header="隐藏到托盘" />
+            <Separator />
+            <MenuItem
+                Command="{Binding TaskbarMenuCommand}"
+                CommandParameter="ExitApp"
+                Header="退出" />
+        </ContextMenu>
+
+    </ui:Window.Resources>
+
     <Grid>
         <ContentControl x:Name="ContentControl_Main" FocusVisualStyle="{x:Null}" />
+        <!--  托盘图标  -->
+        <tb:TaskbarIcon
+            x:Name="TaskbarIcon_Main"
+            ContextMenu="{StaticResource SysTrayMenu}"
+            DoubleClickCommand="{Binding ShowWindowCommand}"
+            IconSource="/Assets/Favicon.ico"
+            ToolTipText="GTA5线上小助手" />
     </Grid>
 
 </ui:Window>

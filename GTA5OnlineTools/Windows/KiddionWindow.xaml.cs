@@ -3,6 +3,7 @@
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
+using GTA5.Models;
 
 namespace GTA5OnlineTools.Windows;
 
@@ -19,12 +20,14 @@ public partial class KiddionWindow
 
     private void Window_Kiddion_Loaded(object sender, RoutedEventArgs e)
     {
-
+        var isClearScriptDir = IniHelper.ReadValue("Kiddion", "IsClearScriptDir");
+        if (!string.IsNullOrEmpty(isClearScriptDir))
+            CheckBox_IsClearScriptDir.IsChecked = isClearScriptDir == "1";
     }
 
     private void Window_Kiddion_Closing(object sender, CancelEventArgs e)
     {
-
+        IniHelper.WriteValue("Kiddion", "IsClearScriptDir", $"{Convert.ToInt32(CheckBox_IsClearScriptDir.IsChecked == true)}");
     }
 
     /// <summary>

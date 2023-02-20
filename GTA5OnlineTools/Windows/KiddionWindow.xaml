@@ -39,10 +39,7 @@
         <!--  ///////////////////////  -->
         <DockPanel>
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                <CheckBox
-                    x:Name="CheckBox_IsClearScriptDir"
-                    Content="清空脚本目录"
-                    IsChecked="True" />
+                <CheckBox x:Name="CheckBox_IsClearScriptDir" Content="清空脚本目录" />
                 <Button
                     Background="#00AE9D"
                     Command="{Binding LuaScriptClickCommand}"

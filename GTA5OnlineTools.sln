@@ -22,8 +22,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5Inject", "GTA5Inject\GTA5Inject.csproj", "{3E066EF2-BB7F-48E6-B853-E87825CE0060}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOverlay", "GameOverlay\GameOverlay.csproj", "{3A782F0C-807C-4A0E-813C-0084604F2104}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -58,10 +56,6 @@ Global
 		{3E066EF2-BB7F-48E6-B853-E87825CE0060}.Debug|x64.Build.0 = Debug|x64
 		{3E066EF2-BB7F-48E6-B853-E87825CE0060}.Release|x64.ActiveCfg = Release|x64
 		{3E066EF2-BB7F-48E6-B853-E87825CE0060}.Release|x64.Build.0 = Release|x64
-		{3A782F0C-807C-4A0E-813C-0084604F2104}.Debug|x64.ActiveCfg = Debug|x64
-		{3A782F0C-807C-4A0E-813C-0084604F2104}.Debug|x64.Build.0 = Debug|x64
-		{3A782F0C-807C-4A0E-813C-0084604F2104}.Release|x64.ActiveCfg = Release|x64
-		{3A782F0C-807C-4A0E-813C-0084604F2104}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

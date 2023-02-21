@@ -190,7 +190,7 @@ public class Overlay : IDisposable
                 //if (!Memory.IsValid(m_player_info))
                 //    continue;
 
-                string pedName = Memory.ReadString(m_player_info + 0xA4, 20);
+                string pedName = Memory.ReadString(m_player_info + 0x104, 20);
 
                 // 绘制玩家
                 if (!MenuSetting.Overlay.ESP_Player)

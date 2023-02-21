@@ -33,7 +33,6 @@ public partial class ExternalMenuWindow
     private readonly PlayerListView PlayerListView = new();
     private readonly SpawnVehicleView SpawnVehicleView = new();
     private readonly SpawnWeaponView SpawnWeaponView = new();
-    private readonly ExternalOverlayView ExternalOverlayView = new();
     private readonly JobHelperView JobHelperView = new();
     private readonly OtherMiscView OtherMiscView = new();
 
@@ -169,9 +168,6 @@ public partial class ExternalMenuWindow
                 break;
             case "SpawnWeaponView":
                 ContentControl_Main.Content = SpawnWeaponView;
-                break;
-            case "ExternalOverlayView":
-                ContentControl_Main.Content = ExternalOverlayView;
                 break;
             case "JobHelperView":
                 ContentControl_Main.Content = JobHelperView;

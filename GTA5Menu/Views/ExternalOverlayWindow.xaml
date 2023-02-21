@@ -1,0 +1,45 @@
+﻿<ui:Window
+    x:Class="GTA5Menu.Views.ExternalOverlayWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
+    x:Name="Window_ExternalOverlay"
+    Title="GTA5线上小助手 - 外置ESP覆盖"
+    Width="450"
+    Height="300"
+    CaptionHeight="30"
+    Closing="Window_ExternalOverlay_Closing"
+    Loaded="Window_ExternalOverlay_Loaded"
+    ResizeMode="CanMinimize"
+    Style="{StaticResource SystemWindowStyle}"
+    mc:Ignorable="d">
+
+    <ui:Window.TitleContent>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <Image
+                Height="20"
+                Margin="5"
+                Source="/Assets/Favicon.ico"
+                Style="{StaticResource ImageStyle_HighQuality}" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="14"
+                FontWeight="Bold"
+                Text="{Binding ElementName=Window_ExternalOverlay, Path=Title}" />
+        </StackPanel>
+    </ui:Window.TitleContent>
+
+    <StackPanel VerticalAlignment="Center">
+        <Button
+            Width="200"
+            Command="{Binding RunOverlayCommand}"
+            Content="启动ESP覆盖" />
+        <Button
+            Width="200"
+            Command="{Binding CloseOverlayCommand}"
+            Content="关闭ESP覆盖" />
+    </StackPanel>
+
+</ui:Window>

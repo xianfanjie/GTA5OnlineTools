@@ -20,6 +20,7 @@ public partial class GTA5View : UserControl
     private OutfitsEditWindow OutfitsEditWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
     private SessionChatWindow SessionChatWindow = null;
+    private ExternalOverlayWindow ExternalOverlayWindow = null;
     private SpeedMeterWindow SpeedMeterWindow = null;
 
     /// <summary>
@@ -78,6 +79,9 @@ public partial class GTA5View : UserControl
                     break;
                 case "SessionChat":
                     SessionChatClick();
+                    break;
+                case "ExternalOverlay":
+                    ExternalOverlayClick();
                     break;
                 case "SpeedMeter":
                     SpeedMeterClick();
@@ -237,6 +241,30 @@ public partial class GTA5View : UserControl
                 SessionChatWindow = null;
                 SessionChatWindow = new SessionChatWindow();
                 SessionChatWindow.Show();
+            }
+        }
+    }
+
+    private void ExternalOverlayClick()
+    {
+        if (ExternalOverlayWindow == null)
+        {
+            ExternalOverlayWindow = new ExternalOverlayWindow();
+            ExternalOverlayWindow.Show();
+        }
+        else
+        {
+            if (ExternalOverlayWindow.IsVisible)
+            {
+                ExternalOverlayWindow.Topmost = true;
+                ExternalOverlayWindow.Topmost = false;
+                ExternalOverlayWindow.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                ExternalOverlayWindow = null;
+                ExternalOverlayWindow = new ExternalOverlayWindow();
+                ExternalOverlayWindow.Show();
             }
         }
     }

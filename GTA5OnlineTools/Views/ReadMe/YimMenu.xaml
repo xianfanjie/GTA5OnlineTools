@@ -44,13 +44,6 @@
                     如果发生崩溃问题，请清空配置目录全部文件后重新注入，然后按照提示在线上模式更新游戏缓存
                 </Paragraph>
 
-                <Paragraph Style="{StaticResource ParagraphStyle_Title}">
-                    修改中文
-                </Paragraph>
-                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    最新版本YimMenu已内置官方中文（还在完善中），切换方法：YimMenu->Settings->Translation->languages->Chinese (CN)
-                </Paragraph>
-
             </FlowDocument>
         </RichTextBox>
         <!--  ##########  -->

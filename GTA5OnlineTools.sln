@@ -22,7 +22,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTA5HotKey", "GTA5HotKey\GTA5HotKey.csproj", "{4B7591AB-2408-4645-941D-5C51D516BCA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5HotKey", "GTA5HotKey\GTA5HotKey.csproj", "{4B7591AB-2408-4645-941D-5C51D516BCA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOverlay", "GameOverlay\GameOverlay.csproj", "{206FEE5B-B0AC-40A6-AC9E-D7095B912699}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{4B7591AB-2408-4645-941D-5C51D516BCA4}.Debug|x64.Build.0 = Debug|x64
 		{4B7591AB-2408-4645-941D-5C51D516BCA4}.Release|x64.ActiveCfg = Release|x64
 		{4B7591AB-2408-4645-941D-5C51D516BCA4}.Release|x64.Build.0 = Release|x64
+		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Debug|x64.ActiveCfg = Debug|x64
+		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Debug|x64.Build.0 = Debug|x64
+		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Release|x64.ActiveCfg = Release|Any CPU
+		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

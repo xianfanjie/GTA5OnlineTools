@@ -1,0 +1,12 @@
+﻿global using System;
+global using System.IO;
+global using System.Linq;
+global using System.Buffers;
+global using System.Drawing;
+global using System.Numerics;
+global using System.Threading;
+global using System.Diagnostics;
+global using System.Collections.Generic;
+global using System.Runtime.CompilerServices;
+global using System.Threading.Tasks;
+global using System.Runtime.InteropServices;

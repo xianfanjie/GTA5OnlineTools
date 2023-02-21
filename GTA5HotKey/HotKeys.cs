@@ -21,7 +21,7 @@ public static class HotKeys
     /// <summary>
     /// 热键字典集合
     /// </summary>
-    private static readonly Dictionary<int, WinKey> HotKeyDirts = new();
+    private static readonly Dictionary<int, KeyInfo> HotKeyDirts = new();
 
     /// <summary>
     /// 按键弹起事件
@@ -53,7 +53,7 @@ public static class HotKeys
         var keyId = (int)key;
         if (!HotKeyDirts.ContainsKey(keyId))
         {
-            HotKeyDirts.Add(keyId, new WinKey() { Key = key });
+            HotKeyDirts.Add(keyId, new KeyInfo() { Key = key });
         }
     }
 
@@ -106,10 +106,10 @@ public static class HotKeys
         {
             if (HotKeyDirts.Count > 0)
             {
-                var keysData = new List<WinKey>(HotKeyDirts.Values);
+                var keysData = new List<KeyInfo>(HotKeyDirts.Values);
                 if (keysData != null && keysData.Count > 0)
                 {
-                    foreach (WinKey key in keysData)
+                    foreach (KeyInfo key in keysData)
                     {
                         if (Convert.ToBoolean(GetAsyncKeyState((int)key.Key) & KEY_PRESSED))
                         {

@@ -29,6 +29,7 @@ public partial class GTA5InitWindow
                 if (PatternInit())
                 {
                     Logger("《GTA5》相关模块初始化完毕");
+                    Logger("请关闭此初始化窗口");
                     Memory.IsInitialized = true;
 
                     if (IsAutoClose)

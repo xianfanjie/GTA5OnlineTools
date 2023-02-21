@@ -1,6 +1,6 @@
 ﻿using GTA5OnlineTools.Utils;
 
-using GTA5.Views;
+using GTA5Menu.Views;
 using GTA5Core.Views;
 using GTA5Core.Native;
 using GTA5Shared.Helper;

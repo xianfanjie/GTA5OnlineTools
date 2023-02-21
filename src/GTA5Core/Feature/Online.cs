@@ -162,7 +162,7 @@ public static class Online
     {
         Hacks.WriteGA(Offsets.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
         if (isEnable)
-            Hacks.WriteGA(Offsets.oNETTimeHelp + 56, Hacks.GetNetworkTime() + 3600000);
+            Hacks.WriteGA(Offsets.oNETTimeHelp + 57, Hacks.GetNetworkTime() + 3600000);
         Hacks.WriteGA(Offsets.oVMYCar + 4660, isEnable ? 3 : 0);
     }
 
@@ -174,7 +174,7 @@ public static class Online
     {
         Hacks.WriteGA(Offsets.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
         if (isEnable)
-            Hacks.WriteGA(Offsets.oNETTimeHelp + 56, Hacks.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
+            Hacks.WriteGA(Offsets.oNETTimeHelp + 57, Hacks.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
         Hacks.WriteGA(Offsets.oVMYCar + 4660, isEnable ? 4 : 0);
     }
 
@@ -207,7 +207,7 @@ public static class Online
     public static void RevealPlayers(bool isEnable)
     {
         Hacks.WriteGA(Offsets.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 213, isEnable ? 1 : 0);
-        Hacks.WriteGA(Offsets.oNETTimeHelp + 57, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
+        Hacks.WriteGA(Offsets.oNETTimeHelp + 58, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
     }
 
     /// <summary>
@@ -251,12 +251,12 @@ public static class Online
     public static void InstantBullShark(bool isEnable)
     {
         if (isEnable)
-            Hacks.WriteGA(Offsets.oNETTimeHelp + 3689, 1);
+            Hacks.WriteGA(Offsets.oNETTimeHelp + 3690, 1);
         else
         {
-            int temp = Hacks.ReadGA<int>(Offsets.oNETTimeHelp + 3689);
+            int temp = Hacks.ReadGA<int>(Offsets.oNETTimeHelp + 3690);
             if (temp != 0)
-                Hacks.WriteGA(Offsets.oNETTimeHelp + 3689, 5);
+                Hacks.WriteGA(Offsets.oNETTimeHelp + 3690, 5);
         }
     }
 

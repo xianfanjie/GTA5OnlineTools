@@ -15,10 +15,10 @@
 ## 环境
 
 * SDK
-> https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-6.0.405-windows-x64-installer
+> https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-6.0.406-windows-x64-installer
 
 * Runtime
-> https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-6.0.13-windows-x64-installer
+> https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-6.0.14-windows-x64-installer
 
 ## 技术
 
@@ -28,4 +28,4 @@
 
 ## 预览
 
-![image](https://user-images.githubusercontent.com/28080853/217190993-864c93b7-c89e-44a9-9be4-6d262f9a3b2a.png)
+![image](https://user-images.githubusercontent.com/28080853/220241995-cb85fdab-b5e0-4c30-a242-7482a234688b.png)

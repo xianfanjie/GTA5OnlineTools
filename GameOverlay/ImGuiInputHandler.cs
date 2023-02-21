@@ -92,7 +92,7 @@ internal class ImGuiInputHandler
                 io.AddInputCharacterUTF16((ushort)wParam);
                 break;
             case WindowMessage.SetCursor:
-                if (Utils.Loword((int)(long)lParam) == 1)
+                if (Misc.Loword((int)(long)lParam) == 1)
                 {
                     var mouseCursor = io.MouseDrawCursor ? ImGuiMouseCursor.None : ImGui.GetMouseCursor();
                     lastCursor = mouseCursor;
@@ -217,7 +217,7 @@ internal class ImGuiInputHandler
 
     private static readonly float WHEEL_DELTA = 120;
 
-    private static int GET_WHEEL_DELTA_WPARAM(UIntPtr wParam) => Utils.Hiword((int)wParam);
+    private static int GET_WHEEL_DELTA_WPARAM(UIntPtr wParam) => Misc.Hiword((int)wParam);
 
-    private static int GET_XBUTTON_WPARAM(UIntPtr wParam) => Utils.Hiword((int)wParam);
+    private static int GET_XBUTTON_WPARAM(UIntPtr wParam) => Misc.Hiword((int)wParam);
 }

@@ -38,7 +38,7 @@ public abstract class Overlay : IDisposable
     private volatile bool overlayIsReady;
 
     private bool replaceFont = false;
-    private ushort[]? fontCustomGlyphRange;
+    private ushort[] fontCustomGlyphRange;
     private string fontPathName;
     private float fontSize;
     private FontGlyphRangeType fontLanguage;
@@ -220,6 +220,7 @@ public abstract class Overlay : IDisposable
 
     /// <summary>
     /// Gets or sets the size of the overlay window.
+    /// <para>获取或设置覆盖窗口的大小</para>
     /// </summary>
     public Size Size
     {
@@ -359,6 +360,7 @@ public abstract class Overlay : IDisposable
 
     /// <summary>
     /// Steps to execute after the overlay has fully initialized.
+    /// <para>在覆盖完全初始化后执行的步骤</para>
     /// </summary>
     protected virtual Task PostInitialized()
     {
@@ -381,7 +383,7 @@ public abstract class Overlay : IDisposable
             deltaTime = stopwatch.ElapsedTicks / (float)Stopwatch.Frequency;
             stopwatch.Restart();
             this.window.PumpEvents();
-            Utils.SetOverlayClickable(this.window.Handle, this.inputhandler.Update());
+            Misc.SetOverlayClickable(this.window.Handle, this.inputhandler.Update());
             this.renderer.Update(deltaTime, () => { Render(); });
             this.deviceContext.OMSetRenderTargets(renderView);
             this.deviceContext.ClearRenderTargetView(renderView, clearColor);
@@ -489,7 +491,7 @@ public abstract class Overlay : IDisposable
         this.overlayIsReady = true;
         await this.PostInitialized();
         User32.ShowWindow(this.window.Handle, ShowWindowCommand.ShowMaximized);
-        Utils.InitTransparency(this.window.Handle);
+        Misc.InitTransparency(this.window.Handle);
     }
 
     private bool ProcessMessage(WindowMessage msg, UIntPtr wParam, IntPtr lParam)
@@ -502,8 +504,8 @@ public abstract class Overlay : IDisposable
                     case SizeMessage.SIZE_RESTORED:
                     case SizeMessage.SIZE_MAXIMIZED:
                         var lp = (int)lParam;
-                        this.window.Dimensions.Width = Utils.Loword(lp);
-                        this.window.Dimensions.Height = Utils.Hiword(lp);
+                        this.window.Dimensions.Width = Misc.Loword(lp);
+                        this.window.Dimensions.Height = Misc.Hiword(lp);
                         this.OnResize();
                         break;
                     default:

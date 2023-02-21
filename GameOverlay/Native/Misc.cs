@@ -1,6 +1,6 @@
 ﻿namespace GameOverlay.Native;
 
-public static class Utils
+public static class Misc
 {
     public static int Loword(int number) => number & 0x0000FFFF;
     public static int Hiword(int number) => number >> 16;

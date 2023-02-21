@@ -2,6 +2,7 @@
 using GTA5Core.Settings;
 using GTA5Core.Native;
 using GTA5Shared.Helper;
+using GTA5HotKey;
 
 namespace GTA5.Views.ExternalMenu;
 

@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.Native;
+﻿namespace GTA5HotKey;
 
 public enum WinVK
 {

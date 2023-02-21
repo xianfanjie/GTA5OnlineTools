@@ -1,12 +1,36 @@
-﻿namespace GTA5Core.Native;
+﻿using System;
+using System.Threading;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
+namespace GTA5HotKey;
 
 public static class HotKeys
 {
-    private static Dictionary<int, WinKey> WinHotKeys = new();
+    [DllImport("user32.dll")]
+    public static extern int GetAsyncKeyState(int vKey);
 
-    public delegate void KeyHandler(WinVK vK);
-    public static event KeyHandler KeyUpEvent;
-    public static event KeyHandler KeyDownEvent;
+    [DllImport("user32.dll", EntryPoint = "keybd_event")]
+    public static extern void Keybd_Event(WinVK bVk, uint bScan, uint dwFlags, uint dwExtraInfo);
+
+    [DllImport("user32.dll")]
+    public static extern uint MapVirtualKey(WinVK uCode, uint uMapType);
+
+    public const int KEY_PRESSED = 0x8000;
+
+    /// <summary>
+    /// 热键字典集合
+    /// </summary>
+    private static readonly Dictionary<int, WinKey> HotKeyDirts = new();
+
+    /// <summary>
+    /// 按键弹起事件
+    /// </summary>
+    public static event Action<WinVK> KeyUpEvent;
+    /// <summary>
+    /// 按键按下事件
+    /// </summary>
+    public static event Action<WinVK> KeyDownEvent;
 
     /// <summary>
     /// 初始化
@@ -26,28 +50,38 @@ public static class HotKeys
     /// <param name="key"></param>
     public static void AddKey(WinVK key)
     {
-        int keyId = (int)key;
-        if (!WinHotKeys.ContainsKey(keyId))
+        var keyId = (int)key;
+        if (!HotKeyDirts.ContainsKey(keyId))
         {
-            WinHotKeys.Add(keyId, new WinKey() { Key = key });
+            HotKeyDirts.Add(keyId, new WinKey() { Key = key });
         }
     }
 
     /// <summary>
-    /// 清空全部快捷键
+    /// 移除快捷键
+    /// </summary>
+    /// <param name="key"></param>
+    public static void RemoveKey(WinVK key)
+    {
+        var keyId = (int)key;
+        if (HotKeyDirts.ContainsKey(keyId))
+        {
+            HotKeyDirts.Remove(keyId);
+        }
+    }
+
+    /// <summary>
+    /// 清空快捷键
     /// </summary>
     public static void ClearKeys()
     {
-        WinHotKeys.Clear();
-        KeyUpEvent = null;
-        KeyDownEvent = null;
+        HotKeyDirts.Clear();
     }
 
     /// <summary>
     /// 按键按下
     /// </summary>
-    /// <param name="Id"></param>
-    /// <param name="Name"></param>
+    /// <param name="vK"></param>
     private static void OnKeyDown(WinVK vK)
     {
         KeyDownEvent?.Invoke(vK);
@@ -56,8 +90,7 @@ public static class HotKeys
     /// <summary>
     /// 按键弹起
     /// </summary>
-    /// <param name="Id"></param>
-    /// <param name="Name"></param>
+    /// <param name="vK"></param>
     private static void OnKeyUp(WinVK vK)
     {
         KeyUpEvent?.Invoke(vK);
@@ -71,14 +104,14 @@ public static class HotKeys
     {
         while (true)
         {
-            if (WinHotKeys.Count > 0)
+            if (HotKeyDirts.Count > 0)
             {
-                var keysData = new List<WinKey>(WinHotKeys.Values);
+                var keysData = new List<WinKey>(HotKeyDirts.Values);
                 if (keysData != null && keysData.Count > 0)
                 {
                     foreach (WinKey key in keysData)
                     {
-                        if (Convert.ToBoolean(Win32.GetAsyncKeyState((int)key.Key) & Win32.KEY_PRESSED))
+                        if (Convert.ToBoolean(GetAsyncKeyState((int)key.Key) & KEY_PRESSED))
                         {
                             if (!key.IsKeyDown)
                             {
@@ -101,10 +134,4 @@ public static class HotKeys
             Thread.Sleep(20);
         }
     }
-}
-
-public class WinKey
-{
-    public WinVK Key { get; set; }
-    public bool IsKeyDown { get; set; }
 }

@@ -6,6 +6,8 @@ using GTA5Core.Feature;
 using GTA5Core.Settings;
 using GTA5Core.RAGE.Rage;
 
+using GTA5HotKey;
+
 using CommunityToolkit.Mvvm.Input;
 
 namespace GTA5.Views;
@@ -38,15 +40,9 @@ public partial class ExternalMenuWindow
     ///////////////////////////////////////////////////////////////
 
     /// <summary>
-    /// 主窗口关闭委托
-    /// </summary>
-    public delegate void WindowClosingDelegate();
-    /// <summary>
     /// 主窗口关闭事件
     /// </summary>
-    public static event WindowClosingDelegate WindowClosingEvent;
-
-    ///////////////////////////////////////////////////////////////
+    public static event Action WindowClosingEvent;
 
     /// <summary>
     /// 主窗口 鼠标坐标数据
@@ -114,11 +110,13 @@ public partial class ExternalMenuWindow
         WindowClosingEvent();
 
         IsAppRunning = false;
+
         MenuSetting.Player.Reset();
         MenuSetting.Vehicle.Reset();
         MenuSetting.Weapon.Reset();
         MenuSetting.Auto.Reset();
         MenuSetting.Overlay.Reset();
+
         HotKeys.ClearKeys();
     }
 

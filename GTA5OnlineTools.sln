@@ -5,11 +5,6 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5OnlineTools", "GTA5OnlineTools\GTA5OnlineTools.csproj", "{A1AC736D-9146-4427-B067-7F6AC7F889BF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{3260C3B4-C7DF-4908-A128-DAB18FCE5205}"
-	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroSkin", "MetroSkin\MetroSkin.csproj", "{AA714CB5-D587-41AC-87C1-D6D87495E9DE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5Shared", "GTA5Shared\GTA5Shared.csproj", "{D654AF42-33F6-4EBE-94F0-BE3BF857BDAA}"
@@ -21,6 +16,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5Inject", "GTA5Inject\GTA5Inject.csproj", "{3E066EF2-BB7F-48E6-B853-E87825CE0060}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{86788F13-9FF1-4DB8-90DF-4262B4861157}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{D2113643-34EC-46C1-B1C3-EC087811A865}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTA5HotKey", "GTA5HotKey\GTA5HotKey.csproj", "{4B7591AB-2408-4645-941D-5C51D516BCA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,10 @@ Global
 		{86788F13-9FF1-4DB8-90DF-4262B4861157}.Debug|x64.Build.0 = Debug|x64
 		{86788F13-9FF1-4DB8-90DF-4262B4861157}.Release|x64.ActiveCfg = Release|x64
 		{86788F13-9FF1-4DB8-90DF-4262B4861157}.Release|x64.Build.0 = Release|x64
+		{4B7591AB-2408-4645-941D-5C51D516BCA4}.Debug|x64.ActiveCfg = Debug|x64
+		{4B7591AB-2408-4645-941D-5C51D516BCA4}.Debug|x64.Build.0 = Debug|x64
+		{4B7591AB-2408-4645-941D-5C51D516BCA4}.Release|x64.ActiveCfg = Release|x64
+		{4B7591AB-2408-4645-941D-5C51D516BCA4}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

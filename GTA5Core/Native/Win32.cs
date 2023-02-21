@@ -43,12 +43,6 @@ public static class Win32
     public static extern int SetForegroundWindow(IntPtr hwnd);
 
     [DllImport("user32.dll")]
-    public static extern int GetKeyState(int nVirtKey);
-
-    [DllImport("user32.dll")]
-    public static extern int GetAsyncKeyState(int vKey);
-
-    [DllImport("user32.dll")]
     public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
 
     [DllImport("user32.dll")]
@@ -62,12 +56,6 @@ public static class Win32
 
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
     public static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int Width, int Height, int flags);
-
-    [DllImport("user32.dll", EntryPoint = "keybd_event")]
-    public static extern void Keybd_Event(WinVK bVk, uint bScan, uint dwFlags, uint dwExtraInfo);
-
-    [DllImport("user32.dll")]
-    public static extern uint MapVirtualKey(WinVK uCode, uint uMapType);
 
     [DllImport("User32")]
     public extern static void SetCursorPos(int x, int y);

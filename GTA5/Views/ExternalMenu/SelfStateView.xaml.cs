@@ -5,6 +5,8 @@ using GTA5Core.Feature;
 using GTA5Core.Settings;
 using GTA5Shared.Helper;
 
+using GTA5HotKey;
+
 namespace GTA5.Views.ExternalMenu;
 
 /// <summary>

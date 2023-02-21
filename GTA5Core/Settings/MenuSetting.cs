@@ -1,4 +1,4 @@
-﻿using GTA5Core.Native;
+﻿using GTA5HotKey;
 
 namespace GTA5Core.Settings;
 

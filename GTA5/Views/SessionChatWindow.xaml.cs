@@ -3,6 +3,7 @@ using GTA5Core.Feature;
 
 using GTA5Shared.API;
 using GTA5Shared.Helper;
+using GTA5HotKey;
 
 using Chinese;
 
@@ -91,9 +92,9 @@ public partial class SessionChatWindow
     private void KeyPress(WinVK winVK)
     {
         Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
-        Win32.Keybd_Event(winVK, Win32.MapVirtualKey(winVK, 0), 0, 0);
+        HotKeys.Keybd_Event(winVK, HotKeys.MapVirtualKey(winVK, 0), 0, 0);
         Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
-        Win32.Keybd_Event(winVK, Win32.MapVirtualKey(winVK, 0), 2, 0);
+        HotKeys.Keybd_Event(winVK, HotKeys.MapVirtualKey(winVK, 0), 2, 0);
         Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
     }
 

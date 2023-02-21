@@ -12,7 +12,7 @@ public static class Injector
     /// </summary>
     /// <param name="pid">目标进程id</param>
     /// <param name="dllPath">dll路径</param>
-    /// <param name="isSetForeWin">注入成功后是否置前窗口</param>
+    /// <param name="isSetForeWin">注入成功后是否窗口置前</param>
     public static InjectResult DLLInjector(int pid, string dllPath, bool isSetForeWin)
     {
         var result = new InjectResult
@@ -87,7 +87,7 @@ public static class Injector
             Win32.CloseHandle(procHandle);
 
             if (isSetForeWin)
-                Win32.SetForegroundWindow(process.MainWindowHandle);
+                _ = Win32.SetForegroundWindow(process.MainWindowHandle);
 
             result.IsSuccess = true;
             result.Content = $"进程 {process.ProcessName} 注入 {dllName} 成功";

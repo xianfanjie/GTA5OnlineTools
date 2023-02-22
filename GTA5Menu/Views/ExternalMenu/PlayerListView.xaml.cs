@@ -47,28 +47,6 @@ public partial class PlayerListView : UserControl
                 if (!Memory.IsValid(pCPed))
                     continue;
 
-                byte[] relayIP = new byte[4];
-                byte[] externalIP = new byte[4];
-                byte[] internalIP = new byte[4];
-
-                for (int j = 0; j < 4; j++)
-                {
-                    relayIP[j] = Memory.Read<byte>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_RelayIP + j);
-                }
-                short relayPort = Memory.Read<short>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_RelayPort);
-
-                for (int j = 0; j < 4; j++)
-                {
-                    externalIP[j] = Memory.Read<byte>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_ExternalIP + j);
-                }
-                short externalPort = Memory.Read<short>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_ExternalPort);
-
-                for (int j = 0; j < 4; j++)
-                {
-                    internalIP[j] = Memory.Read<byte>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_InternalIP + j);
-                }
-                short internalPort = Memory.Read<short>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_InternalPort);
-
                 ////////////////////////////////////////////
 
                 var god = Memory.Read<byte>(pCPed + Offsets.CPed_God);
@@ -106,22 +84,15 @@ public partial class PlayerListView : UserControl
 
                     ClanName = Memory.ReadString(pCNetGamePlayer + Offsets.CNetworkPlayerMgr_CNetGamePlayer_ClanName, 20),
                     ClanTag = Memory.ReadString(pCNetGamePlayer + Offsets.CNetworkPlayerMgr_CNetGamePlayer_ClanTag, 20),
-
-                    RelayIP = $"{relayIP[3]}.{relayIP[2]}.{relayIP[1]}.{relayIP[0]} : {relayPort}",
-                    ExternalIP = $"{externalIP[3]}.{externalIP[2]}.{externalIP[1]}.{externalIP[0]} : {externalPort}",
-                    InternalIP = $"{internalIP[3]}.{internalIP[2]}.{internalIP[1]}.{internalIP[0]} : {internalPort}",
-
                 });
             }
 
             foreach (var item in NetPlayerDatas)
             {
-                var url = "https://prod.cloud.rockstargames.com/members/sc/5605/" + item.RockstarId + "/publish/gta5/mpchars/0.png";
-
                 ListBox_NetPlayer.Items.Add(new NetPlayer()
                 {
                     Rank = item.Rank,
-                    Avatar = url,
+                    Avatar = "\xe6d2",
                     Name = string.IsNullOrEmpty(item.ClanTag) ? item.PlayerName : $"{item.PlayerName} [{item.ClanTag}]",
                     RID = item.RockstarId,
                     GodMode = item.GodMode ? "无敌" : ""
@@ -201,12 +172,6 @@ public partial class PlayerListView : UserControl
             PlayerInfoAppend("游泳速度", $"{item.SwimSpeed:0.0}");
             PlayerInfoAppend("与我距离", $"{item.Distance:0.000}");
             PlayerInfoAppend("坐标数据", $"{item.Position.X:0.000}, {item.Position.Y:0.000}, {item.Position.Z:0.000}");
-            PlayerInfoAppend();
-
-            PlayerInfoAppend("中继IP地址", $"{item.RelayIP}");
-            PlayerInfoAppend("外部IP地址", $"{item.ExternalIP}");
-            PlayerInfoAppend("内部IP地址", $"{item.InternalIP}");
-
         }
     }
 }

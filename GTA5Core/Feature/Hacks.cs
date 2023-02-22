@@ -151,39 +151,42 @@ public static class Hacks
     /// </summary>
     public static void CreateAmbientPickup(string pickup)
     {
-        if (string.IsNullOrEmpty(pickup))
-            return;
-
-        uint pickupHash = Joaat(pickup);
-
-        Vector3 vector3 = Teleport.GetPlayerPosition();
-
-        WriteGA(2764232 + 3, vector3.X);
-        WriteGA(2764232 + 4, vector3.Y);
-        WriteGA(2764232 + 5, vector3.Z + 3.0f);
-        WriteGA(2764232 + 1, 9999);
-
-        WriteGA(4535172 + 1 + ReadGA<int>(2764232) * 85 + 66 + 2, 2);
-        WriteGA(2764232 + 6, 1);
-
-        Thread.Sleep(200);
-
-        long pReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-        long pCPickupInterface = Memory.Read<long>(pReplayInterface + 0x20);    // pCPickupInterface
-
-        long oPickupNum = Memory.Read<long>(pCPickupInterface + 0x110);         // oPickupNum
-        long pPickupList = Memory.Read<long>(pCPickupInterface + 0x100);        // pPickupList
-
-        for (long i = 0; i < oPickupNum; i++)
+        Task.Run(async () =>
         {
-            long dwpPickup = Memory.Read<long>(pPickupList + i * 0x10);
-            uint dwPickupHash = Memory.Read<uint>(dwpPickup + 0x468);
+            if (string.IsNullOrEmpty(pickup))
+                return;
 
-            if (dwPickupHash == 4263048111)
+            uint pickupHash = Joaat(pickup);
+
+            Vector3 vector3 = Teleport.GetPlayerPosition();
+
+            WriteGA(2764232 + 3, vector3.X);
+            WriteGA(2764232 + 4, vector3.Y);
+            WriteGA(2764232 + 5, vector3.Z + 3.0f);
+            WriteGA(2764232 + 1, 9999);
+
+            WriteGA(4535172 + 1 + ReadGA<int>(2764232) * 85 + 66 + 2, 2);
+            WriteGA(2764232 + 6, 1);
+
+            await Task.Delay(200);
+
+            long pReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
+            long pCPickupInterface = Memory.Read<long>(pReplayInterface + 0x20);    // pCPickupInterface
+
+            long oPickupNum = Memory.Read<long>(pCPickupInterface + 0x110);         // oPickupNum
+            long pPickupList = Memory.Read<long>(pCPickupInterface + 0x100);        // pPickupList
+
+            for (long i = 0; i < oPickupNum; i++)
             {
-                Memory.Write(dwpPickup + 0x468, pickupHash);
-                break;
+                long dwpPickup = Memory.Read<long>(pPickupList + i * 0x10);
+                uint dwPickupHash = Memory.Read<uint>(dwpPickup + 0x468);
+
+                if (dwPickupHash == 4263048111)
+                {
+                    Memory.Write(dwpPickup + 0x468, pickupHash);
+                    break;
+                }
             }
-        }
+        });
     }
 }

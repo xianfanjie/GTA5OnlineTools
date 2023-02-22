@@ -93,7 +93,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <Grid Height="30" Background="Transparent">
+                                <Grid MinHeight="35" Background="Transparent">
                                     <Border Name="border" />
                                     <Border Padding="10,0,10,0">
                                         <ContentPresenter VerticalAlignment="Center" />

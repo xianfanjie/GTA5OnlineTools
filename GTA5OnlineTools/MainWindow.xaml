@@ -111,19 +111,10 @@
             ToolTipText="GTA5线上小助手">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem
-                        Command="{Binding TaskbarMenuCommand}"
-                        CommandParameter="ShowWindow"
-                        Header="显示窗口" />
-                    <MenuItem
-                        Command="{Binding TaskbarMenuCommand}"
-                        CommandParameter="HideWindow"
-                        Header="隐藏到托盘" />
+                    <MenuItem Click="TaskbarIcon_MenuItem_Click " Header="显示窗口" />
+                    <MenuItem Click="TaskbarIcon_MenuItem_Click " Header="隐藏到托盘" />
                     <Separator />
-                    <MenuItem
-                        Command="{Binding TaskbarMenuCommand}"
-                        CommandParameter="ExitApp"
-                        Header="退出" />
+                    <MenuItem Click="TaskbarIcon_MenuItem_Click " Header="退出" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>

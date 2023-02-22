@@ -78,7 +78,7 @@ public partial class SpawnWeaponView : UserControl
     {
         if (ListBox_WeaponInfo.SelectedItem is ModelInfo info)
         {
-            Hacks.CreateAmbientPickup($"pickup_{info.Name}");
+            Hacks.CreateAmbientPickup($"pickup_{info.Value}");
         }
     }
 

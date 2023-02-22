@@ -296,27 +296,29 @@ public partial class MainWindow
         this.Topmost = false;
     }
 
-    [RelayCommand]
-    private void TaskbarMenu(string cmdArg)
-    {
-        switch (cmdArg)
-        {
-            case "ShowWindow":
-                ShowWindow();
-                break;
-            case "HideWindow":
-                HideWindow();
-                break;
-            case "ExitApp":
-                this.Close();
-                break;
-        }
-    }
-
     private void HideWindow()
     {
         this.WindowState = WindowState.Minimized;
         this.ShowInTaskbar = false;
         TaskbarIcon_Main.ShowBalloonTip("提示", "小助手已最小化到系统托盘", BalloonIcon.Info);
+    }
+
+    private void TaskbarIcon_MenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        if (e.Source is MenuItem menu)
+        {
+            switch (menu.Header.ToString())
+            {
+                case "显示窗口":
+                    ShowWindow();
+                    break;
+                case "隐藏到托盘":
+                    HideWindow();
+                    break;
+                case "退出":
+                    this.Close();
+                    break;
+            }
+        }
     }
 }

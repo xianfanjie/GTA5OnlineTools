@@ -1,12 +1,11 @@
 ﻿using GTA5Menu.Data;
 using GTA5Menu.Views.ExternalMenu;
 
+using GTA5HotKey;
 using GTA5Core.Native;
 using GTA5Core.Feature;
 using GTA5Core.Settings;
 using GTA5Core.RAGE.Rage;
-
-using GTA5HotKey;
 
 using CommunityToolkit.Mvvm.Input;
 
@@ -33,6 +32,7 @@ public partial class ExternalMenuWindow
     private readonly PlayerListView PlayerListView = new();
     private readonly SpawnVehicleView SpawnVehicleView = new();
     private readonly SpawnWeaponView SpawnWeaponView = new();
+    private readonly ExternalOverlayView ExternalOverlayView = new();
     private readonly JobHelperView JobHelperView = new();
     private readonly OtherMiscView OtherMiscView = new();
 
@@ -168,6 +168,9 @@ public partial class ExternalMenuWindow
                 break;
             case "SpawnWeaponView":
                 ContentControl_Main.Content = SpawnWeaponView;
+                break;
+            case "ExternalOverlayView":
+                ContentControl_Main.Content = ExternalOverlayView;
                 break;
             case "JobHelperView":
                 ContentControl_Main.Content = JobHelperView;

@@ -62,14 +62,6 @@
         <ui:ButtonIcon
             Title="Speed Meter"
             Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="ExternalOverlay"
-            Content="外部ESP覆盖"
-            Icon="&#xe688;"
-            Style="{StaticResource ButtonStyle_FuncModule}" />
-
-        <ui:ButtonIcon
-            Title="Speed Meter"
-            Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="SpeedMeter"
             Content="车速表"
             Icon="&#xeab4;"

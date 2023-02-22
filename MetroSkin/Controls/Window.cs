@@ -82,7 +82,7 @@ public class Window : System.Windows.Window
         set { SetValue(CaptionBackgroundProperty, value); }
     }
     public static readonly DependencyProperty CaptionBackgroundProperty =
-        DependencyProperty.Register("CaptionBackground", typeof(Brush), typeof(Window), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(245, 245, 245))));
+        DependencyProperty.Register("CaptionBackground", typeof(Brush), typeof(Window), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(234, 234, 234))));
 
     /// <summary>
     /// 标题栏的内容

@@ -62,10 +62,12 @@
                         Click="Button_SpawnOnlineVehicleB_Click"
                         Content="刷出线上载具（室内）" />
                     <TextBlock
+                        Width="120"
                         Margin="5"
+                        HorizontalAlignment="Left"
                         Style="{StaticResource TextBlockStyle_Hint}"
                         TextWrapping="Wrap">
-                        提示：载具自定义功能目前尚未完工
+                        提示：载具自定义功能目前尚未完工，刷出的载具为初始版本
                     </TextBlock>
                 </StackPanel>
             </StackPanel>

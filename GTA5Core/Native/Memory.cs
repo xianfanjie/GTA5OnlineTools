@@ -1,7 +1,5 @@
 ﻿using GTA5Core.Feature;
 
-using GTA5Shared.Helper;
-
 namespace GTA5Core.Native;
 
 public static class Memory

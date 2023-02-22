@@ -1,17 +1,16 @@
 ﻿using System;
 
-namespace GameOverlay.PInvoke
+namespace GameOverlay.PInvoke;
+
+internal static class DwmApi
 {
-    internal static class DwmApi
+    public delegate void DwmExtendFrameIntoClientAreaDelegate(IntPtr hWnd, ref NativeMargin pMargins);
+    public static readonly DwmExtendFrameIntoClientAreaDelegate DwmExtendFrameIntoClientArea;
+
+    static DwmApi()
     {
-        public delegate void DwmExtendFrameIntoClientAreaDelegate(IntPtr hWnd, ref NativeMargin pMargins);
-        public static readonly DwmExtendFrameIntoClientAreaDelegate DwmExtendFrameIntoClientArea;
+        IntPtr library = DynamicImport.ImportLibrary("dwmapi.dll");
 
-        static DwmApi()
-        {
-            IntPtr library = DynamicImport.ImportLibrary("dwmapi.dll");
-
-            DwmExtendFrameIntoClientArea = DynamicImport.Import<DwmExtendFrameIntoClientAreaDelegate>(library, "DwmExtendFrameIntoClientArea");
-        }
+        DwmExtendFrameIntoClientArea = DynamicImport.Import<DwmExtendFrameIntoClientAreaDelegate>(library, "DwmExtendFrameIntoClientArea");
     }
 }

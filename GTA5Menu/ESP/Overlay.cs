@@ -1,6 +1,6 @@
-﻿using GTA5Core.Native;
+﻿using GTA5HotKey;
+using GTA5Core.Native;
 using GTA5Core.Settings;
-using GTA5HotKey;
 
 using GameOverlay.Drawing;
 using GameOverlay.Windows;

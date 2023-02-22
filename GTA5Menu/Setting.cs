@@ -1,8 +1,8 @@
 ﻿using GTA5HotKey;
 
-namespace GTA5Core.Settings;
+namespace GTA5Menu;
 
-public static class MenuSetting
+public static class Setting
 {
     public static class Player
     {

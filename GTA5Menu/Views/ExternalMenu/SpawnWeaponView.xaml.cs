@@ -1,7 +1,6 @@
 ﻿using GTA5Menu.Data;
 
 using GTA5Core.Feature;
-using GTA5Core.Settings;
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Weapons;
 using GTA5Core.RAGE.Onlines;
@@ -89,22 +88,22 @@ public partial class SpawnWeaponView : UserControl
     {
         if (RadioButton_AmmoModifier_None.IsChecked == true)
         {
-            MenuSetting.Weapon.AmmoModifierFlag = 0;
+            Setting.Weapon.AmmoModifierFlag = 0;
             Weapon.AmmoModifier(0);
         }
         else if (RadioButton_AmmoModifier_AMMO.IsChecked == true)
         {
-            MenuSetting.Weapon.AmmoModifierFlag = 1;
+            Setting.Weapon.AmmoModifierFlag = 1;
             Weapon.AmmoModifier(1);
         }
         else if (RadioButton_AmmoModifier_CLIP.IsChecked == true)
         {
-            MenuSetting.Weapon.AmmoModifierFlag = 2;
+            Setting.Weapon.AmmoModifierFlag = 2;
             Weapon.AmmoModifier(2);
         }
         else if (RadioButton_AmmoModifier_Both.IsChecked == true)
         {
-            MenuSetting.Weapon.AmmoModifierFlag = 3;
+            Setting.Weapon.AmmoModifierFlag = 3;
             Weapon.AmmoModifier(3);
         }
     }

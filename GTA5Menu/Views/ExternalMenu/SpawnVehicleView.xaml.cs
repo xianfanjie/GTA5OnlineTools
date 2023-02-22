@@ -1,7 +1,6 @@
 ﻿using GTA5Menu.Data;
 
 using GTA5Core.Feature;
-using GTA5Core.Settings;
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
 using GTA5Core.RAGE.Onlines;
@@ -95,13 +94,13 @@ public partial class SpawnVehicleView : UserControl
 
     private void CheckBox_VehicleGodMode_Click(object sender, RoutedEventArgs e)
     {
-        MenuSetting.Vehicle.GodMode = CheckBox_VehicleGodMode.IsChecked == true;
+        Setting.Vehicle.GodMode = CheckBox_VehicleGodMode.IsChecked == true;
         Vehicle.GodMode(CheckBox_VehicleGodMode.IsChecked == true);
     }
 
     private void CheckBox_VehicleSeatbelt_Click(object sender, RoutedEventArgs e)
     {
-        MenuSetting.Vehicle.Seatbelt = CheckBox_VehicleSeatbelt.IsChecked == true;
+        Setting.Vehicle.Seatbelt = CheckBox_VehicleSeatbelt.IsChecked == true;
         Vehicle.Seatbelt(CheckBox_VehicleSeatbelt.IsChecked == true);
     }
 

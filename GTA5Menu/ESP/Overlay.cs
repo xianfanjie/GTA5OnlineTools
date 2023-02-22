@@ -1,11 +1,11 @@
 ﻿using GTA5HotKey;
 using GTA5Core.Native;
-using GTA5Core.Settings;
+using GTA5Core.Feature;
 
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
 
-namespace GTA5Core.Feature;
+namespace GTA5Menu.ESP;
 
 public class Overlay : IDisposable
 {
@@ -36,7 +36,7 @@ public class Overlay : IDisposable
 
         var gfx = new Graphics()
         {
-            VSync = MenuSetting.Overlay.VSync,
+            VSync = Setting.Overlay.VSync,
             MeasureFPS = true,
             PerPrimitiveAntiAliasing = true,
             TextAntiAliasing = true,
@@ -45,7 +45,7 @@ public class Overlay : IDisposable
 
         _window = new GraphicsWindow(windowData.Left, windowData.Top, windowData.Width, windowData.Height, gfx)
         {
-            FPS = MenuSetting.Overlay.FPS,
+            FPS = Setting.Overlay.FPS,
             IsTopmost = true,
             IsVisible = true
         };
@@ -71,7 +71,7 @@ public class Overlay : IDisposable
     {
         while (isRun)
         {
-            if (MenuSetting.Overlay.NoTOPMostHide)
+            if (Setting.Overlay.NoTOPMostHide)
                 isDraw = Memory.IsForegroundWindow();
             else
                 isDraw = true;
@@ -157,7 +157,7 @@ public class Overlay : IDisposable
             long pAimingPedPTR = Memory.Read<long>(Pointers.AimingPedPTR);
             bool isAimPed = Memory.Read<long>(pAimingPedPTR + 0x280) > 0;
 
-            if (MenuSetting.Overlay.ESP_Crosshair)
+            if (Setting.Overlay.ESP_Crosshair)
             {
                 // 当玩家按住右键准心对准敌人，准心变成粉红色，否则为绿色
                 if (isAimPed && Convert.ToBoolean(HotKeys.GetAsyncKeyState((int)WinVK.RBUTTON) & Win32.KEY_PRESSED))
@@ -194,12 +194,12 @@ public class Overlay : IDisposable
                 string pedName = Memory.ReadString(m_player_info + 0x104, 20);
 
                 // 绘制玩家
-                if (!MenuSetting.Overlay.ESP_Player)
+                if (!Setting.Overlay.ESP_Player)
                     if (pedName != "")
                         continue;
 
                 // 绘制Ped
-                if (!MenuSetting.Overlay.ESP_NPC)
+                if (!Setting.Overlay.ESP_NPC)
                     if (pedName == "")
                         continue;
 
@@ -224,7 +224,7 @@ public class Overlay : IDisposable
                     Y = Memory.Read<float>(m_navigation + 0x30)
                 };
 
-                if (MenuSetting.Overlay.ESP_3DBox)
+                if (Setting.Overlay.ESP_3DBox)
                 {
                     if (pedName != "")
                     {
@@ -249,15 +249,15 @@ public class Overlay : IDisposable
 
                     if (pedName != "")
                     {
-                        if (MenuSetting.Overlay.ESP_2DBox)
+                        if (Setting.Overlay.ESP_2DBox)
                         {
                             // 2D方框
                             Draw2DBox(gfx, _brushes["red"], pedPosV2, pedBoxV2, 0.7f);
                         }
 
-                        if (MenuSetting.Overlay.ESP_2DLine)
+                        if (Setting.Overlay.ESP_2DLine)
                         {
-                            if (MenuSetting.Overlay.ESP_2DBox)
+                            if (Setting.Overlay.ESP_2DBox)
                             {
                                 // 2DBox射线
                                 Draw2DLine(gfx, _brushes["red"], pedPosV2, pedBoxV2, 0.7f);
@@ -269,9 +269,9 @@ public class Overlay : IDisposable
                             }
                         }
 
-                        if (MenuSetting.Overlay.ESP_2DHealthBar)
+                        if (Setting.Overlay.ESP_2DHealthBar)
                         {
-                            if (MenuSetting.Overlay.ESP_2DBox)
+                            if (Setting.Overlay.ESP_2DBox)
                             {
                                 // 2DBox血条
                                 Draw2DHealthBar(gfx, _brushes["green"], pedPosV2, pedBoxV2, ped_HPPercentage, 0.7f);
@@ -283,9 +283,9 @@ public class Overlay : IDisposable
                             }
                         }
 
-                        if (MenuSetting.Overlay.ESP_HealthText)
+                        if (Setting.Overlay.ESP_HealthText)
                         {
-                            if (MenuSetting.Overlay.ESP_2DBox)
+                            if (Setting.Overlay.ESP_2DBox)
                             {
                                 // 2DBox血量数字
                                 Draw2DHealthText(gfx, _brushes["red"], pedPosV2, pedBoxV2, ped_Health, ped_MaxHealth, i);
@@ -297,9 +297,9 @@ public class Overlay : IDisposable
                             }
                         }
 
-                        if (MenuSetting.Overlay.ESP_NameText)
+                        if (Setting.Overlay.ESP_NameText)
                         {
-                            if (MenuSetting.Overlay.ESP_2DBox)
+                            if (Setting.Overlay.ESP_2DBox)
                             {
                                 // 2DBox玩家名称
                                 Draw2DNameText(gfx, _brushes["red"], pedPosV2, pedBoxV2, pedName, myToPedDistance);
@@ -313,15 +313,15 @@ public class Overlay : IDisposable
                     }
                     else
                     {
-                        if (MenuSetting.Overlay.ESP_2DBox)
+                        if (Setting.Overlay.ESP_2DBox)
                         {
                             // 2D方框
                             Draw2DBox(gfx, _brushes["white"], pedPosV2, pedBoxV2, 0.7f);
                         }
 
-                        if (MenuSetting.Overlay.ESP_2DLine)
+                        if (Setting.Overlay.ESP_2DLine)
                         {
-                            if (MenuSetting.Overlay.ESP_2DBox)
+                            if (Setting.Overlay.ESP_2DBox)
                             {
                                 // 2DBox射线
                                 Draw2DLine(gfx, _brushes["white"], pedPosV2, pedBoxV2, 0.7f);
@@ -333,9 +333,9 @@ public class Overlay : IDisposable
                             }
                         }
 
-                        if (MenuSetting.Overlay.ESP_2DHealthBar)
+                        if (Setting.Overlay.ESP_2DHealthBar)
                         {
-                            if (MenuSetting.Overlay.ESP_2DBox)
+                            if (Setting.Overlay.ESP_2DBox)
                             {
                                 // 2DBox血条
                                 Draw2DHealthBar(gfx, _brushes["green"], pedPosV2, pedBoxV2, ped_HPPercentage, 0.7f);
@@ -347,9 +347,9 @@ public class Overlay : IDisposable
                             }
                         }
 
-                        if (MenuSetting.Overlay.ESP_HealthText)
+                        if (Setting.Overlay.ESP_HealthText)
                         {
-                            if (MenuSetting.Overlay.ESP_2DBox)
+                            if (Setting.Overlay.ESP_2DBox)
                             {
                                 // 2DBox血量数字
                                 Draw2DHealthText(gfx, _brushes["white"], pedPosV2, pedBoxV2, ped_Health, ped_MaxHealth, i);
@@ -361,9 +361,9 @@ public class Overlay : IDisposable
                             }
                         }
 
-                        if (MenuSetting.Overlay.ESP_NameText)
+                        if (Setting.Overlay.ESP_NameText)
                         {
-                            if (MenuSetting.Overlay.ESP_2DBox)
+                            if (Setting.Overlay.ESP_2DBox)
                             {
                                 // 2DBox玩家名称
                                 Draw2DNameText(gfx, _brushes["white"], pedPosV2, pedBoxV2, pedName, myToPedDistance);
@@ -387,7 +387,7 @@ public class Overlay : IDisposable
                     //    $"Type : {pedEntityType}");
                 }
 
-                if (MenuSetting.Overlay.ESP_Bone)
+                if (Setting.Overlay.ESP_Bone)
                 {
                     // 骨骼
                     DrawBone(gfx, m_ped_list, 0, 7);
@@ -424,9 +424,9 @@ public class Overlay : IDisposable
     {
         while (isRun)
         {
-            if (MenuSetting.Overlay.AimBot_Enabled)
+            if (Setting.Overlay.AimBot_Enabled)
             {
-                float aimBot_Min_Distance = MenuSetting.Overlay.AimBot_Fov;
+                float aimBot_Min_Distance = Setting.Overlay.AimBot_Fov;
                 Vector3 aimBot_ViewAngles = new() { X = 0, Y = 0, Z = 0 };
                 Vector3 teleW_pedCoords = new() { X = 0, Y = 0, Z = 0 };
 
@@ -477,7 +477,7 @@ public class Overlay : IDisposable
                     string pedName = Memory.ReadString(ped_offset_1 + 0xA4, 20);
 
                     // 绘制玩家
-                    if (!MenuSetting.Overlay.ESP_Player)
+                    if (!Setting.Overlay.ESP_Player)
                     {
                         if (pedName != "")
                         {
@@ -486,7 +486,7 @@ public class Overlay : IDisposable
                     }
 
                     // 绘制Ped
-                    if (!MenuSetting.Overlay.ESP_NPC)
+                    if (!Setting.Overlay.ESP_NPC)
                     {
                         if (pedName == "")
                         {
@@ -503,16 +503,16 @@ public class Overlay : IDisposable
                     if (aimBot_Distance < aimBot_Min_Distance)
                     {
                         aimBot_Min_Distance = aimBot_Distance;
-                        aimBot_ViewAngles = GetCCameraViewAngles(cameraV3Pos, GetBonePosition(ped_offset_0, MenuSetting.Overlay.AimBot_BoneIndex));
+                        aimBot_ViewAngles = GetCCameraViewAngles(cameraV3Pos, GetBonePosition(ped_offset_0, Setting.Overlay.AimBot_BoneIndex));
                         teleW_pedCoords = pedV3Pos;
                     }
                 }
 
                 // 玩家处于载具或者掩护状态中不启用自瞄，无目标取消自瞄
-                if (oInVehicle != 0x01 && aimBot_Min_Distance != MenuSetting.Overlay.AimBot_Fov)
+                if (oInVehicle != 0x01 && aimBot_Min_Distance != Setting.Overlay.AimBot_Fov)
                 {
                     // 默认按住Ctrl键自瞄
-                    if (Convert.ToBoolean(HotKeys.GetAsyncKeyState((int)MenuSetting.Overlay.AimBot_Key) & Win32.KEY_PRESSED))
+                    if (Convert.ToBoolean(HotKeys.GetAsyncKeyState((int)Setting.Overlay.AimBot_Key) & Win32.KEY_PRESSED))
                     {
                         if (isFPP == 0)
                         {

@@ -1,5 +1,4 @@
 ﻿using GTA5Core.Feature;
-using GTA5Core.Settings;
 using GTA5Core.RAGE.Onlines;
 
 namespace GTA5Menu.Views.ExternalMenu;
@@ -109,7 +108,7 @@ public partial class OnlineOptionView : UserControl
 
     private void CheckBox_AllowSellOnNonPublic_Click(object sender, RoutedEventArgs e)
     {
-        MenuSetting.Online.AllowSellOnNonPublic = CheckBox_AllowSellOnNonPublic.IsChecked == true;
+        Setting.Online.AllowSellOnNonPublic = CheckBox_AllowSellOnNonPublic.IsChecked == true;
         Online.AllowSellOnNonPublic(CheckBox_AllowSellOnNonPublic.IsChecked == true);
     }
 

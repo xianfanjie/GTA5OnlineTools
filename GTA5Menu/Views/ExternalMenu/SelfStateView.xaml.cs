@@ -2,7 +2,6 @@
 
 using GTA5Core.Native;
 using GTA5Core.Feature;
-using GTA5Core.Settings;
 using GTA5Shared.Helper;
 
 using GTA5HotKey;
@@ -163,7 +162,7 @@ public partial class SelfStateView : UserControl
                     Toggle_NoCollision = !Toggle_NoCollision;
 
                     Player.NoCollision(Toggle_NoCollision);
-                    MenuSetting.Player.NoCollision = Toggle_NoCollision;
+                    Setting.Player.NoCollision = Toggle_NoCollision;
 
                     if (Toggle_NoCollision)
                         Console.Beep(600, 75);
@@ -263,19 +262,19 @@ public partial class SelfStateView : UserControl
 
     private void CheckBox_PlayerGodMode_Click(object sender, RoutedEventArgs e)
     {
-        MenuSetting.Player.GodMode = CheckBox_PlayerGodMode.IsChecked == true;
+        Setting.Player.GodMode = CheckBox_PlayerGodMode.IsChecked == true;
         Player.GodMode(CheckBox_PlayerGodMode.IsChecked == true);
     }
 
     private void CheckBox_AntiAFK_Click(object sender, RoutedEventArgs e)
     {
-        MenuSetting.Player.AntiAFK = CheckBox_AntiAFK.IsChecked == true;
+        Setting.Player.AntiAFK = CheckBox_AntiAFK.IsChecked == true;
         Online.AntiAFK(CheckBox_AntiAFK.IsChecked == true);
     }
 
     private void CheckBox_NoRagdoll_Click(object sender, RoutedEventArgs e)
     {
-        MenuSetting.Player.NoRagdoll = CheckBox_NoRagdoll.IsChecked == true;
+        Setting.Player.NoRagdoll = CheckBox_NoRagdoll.IsChecked == true;
         Player.NoRagdoll(CheckBox_NoRagdoll.IsChecked == true);
     }
 
@@ -312,25 +311,25 @@ public partial class SelfStateView : UserControl
     private void CheckBox_AutoClearWanted_Click(object sender, RoutedEventArgs e)
     {
         Player.WantedLevel(0x00);
-        MenuSetting.Auto.ClearWanted = CheckBox_AutoClearWanted.IsChecked == true;
+        Setting.Auto.ClearWanted = CheckBox_AutoClearWanted.IsChecked == true;
     }
 
     private void CheckBox_AutoKillNPC_Click(object sender, RoutedEventArgs e)
     {
         World.KillAllNPC(false);
-        MenuSetting.Auto.KillNPC = CheckBox_AutoKillNPC.IsChecked == true;
+        Setting.Auto.KillNPC = CheckBox_AutoKillNPC.IsChecked == true;
     }
 
     private void CheckBox_AutoKillHostilityNPC_Click(object sender, RoutedEventArgs e)
     {
         World.KillAllNPC(true);
-        MenuSetting.Auto.KillHostilityNPC = CheckBox_AutoKillHostilityNPC.IsChecked == true;
+        Setting.Auto.KillHostilityNPC = CheckBox_AutoKillHostilityNPC.IsChecked == true;
     }
 
     private void CheckBox_AutoKillPolice_Click(object sender, RoutedEventArgs e)
     {
         World.KillAllPolice();
-        MenuSetting.Auto.KillPolice = CheckBox_AutoKillPolice.IsChecked == true;
+        Setting.Auto.KillPolice = CheckBox_AutoKillPolice.IsChecked == true;
     }
 
     private void Button_ToWaypoint_Click(object sender, RoutedEventArgs e)
@@ -408,7 +407,7 @@ public partial class SelfStateView : UserControl
         Toggle_NoCollision = SelfStateModel.IsHotKeyNoCollision;
 
         Player.NoCollision(Toggle_NoCollision);
-        MenuSetting.Player.NoCollision = Toggle_NoCollision;
+        Setting.Player.NoCollision = Toggle_NoCollision;
     }
 
     private void Button_ToWaypoint_Super_Click(object sender, RoutedEventArgs e)

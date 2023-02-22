@@ -4,7 +4,6 @@ using GTA5Menu.Views.ExternalMenu;
 using GTA5HotKey;
 using GTA5Core.Native;
 using GTA5Core.Feature;
-using GTA5Core.Settings;
 using GTA5Core.RAGE.Rage;
 
 using CommunityToolkit.Mvvm.Input;
@@ -110,11 +109,11 @@ public partial class ExternalMenuWindow
 
         IsAppRunning = false;
 
-        MenuSetting.Player.Reset();
-        MenuSetting.Vehicle.Reset();
-        MenuSetting.Weapon.Reset();
-        MenuSetting.Auto.Reset();
-        MenuSetting.Overlay.Reset();
+        Setting.Player.Reset();
+        Setting.Vehicle.Reset();
+        Setting.Weapon.Reset();
+        Setting.Auto.Reset();
+        Setting.Overlay.Reset();
 
         HotKeys.ClearKeys();
     }
@@ -255,28 +254,28 @@ public partial class ExternalMenuWindow
             ////////////////////////////////////////////////////////////////
 
             // 玩家无敌
-            if (MenuSetting.Player.GodMode)
+            if (Setting.Player.GodMode)
             {
                 if (oGod != 0x01)
                     Memory.Write<byte>(pCPed + Offsets.CPed_God, 0x01);
             }
 
             // 挂机防踢
-            if (MenuSetting.Player.AntiAFK)
+            if (Setting.Player.AntiAFK)
             {
                 if (Hacks.ReadGA<int>(262145 + 87) != 99999999)
                     Online.AntiAFK(true);
             }
 
             // 无布娃娃
-            if (MenuSetting.Player.NoRagdoll)
+            if (Setting.Player.NoRagdoll)
             {
                 if (oRagdoll != 0x01)
                     Memory.Write<byte>(pCPed + Offsets.CPed_Ragdoll, 0x01);
             }
 
             // 玩家无碰撞体积
-            if (MenuSetting.Player.NoCollision)
+            if (Setting.Player.NoCollision)
             {
                 long pointer = Memory.Read<long>(pCNavigation + 0x10);
                 pointer = Memory.Read<long>(pointer + 0x20);
@@ -286,21 +285,21 @@ public partial class ExternalMenuWindow
             }
 
             // 安全带
-            if (MenuSetting.Vehicle.Seatbelt)
+            if (Setting.Vehicle.Seatbelt)
             {
                 if (oSeatbelt != 0xC9)
                     Memory.Write<byte>(pCPed + Offsets.CPed_Seatbelt, 0xC9);
             }
 
             // 弹药编辑
-            if (MenuSetting.Weapon.AmmoModifierFlag != 0)
+            if (Setting.Weapon.AmmoModifierFlag != 0)
             {
                 long pCPedInventory = Memory.Read<long>(pCPed + Offsets.CPed_CPedInventory);
-                Memory.Write(pCPedInventory + Offsets.CPed_CPedInventory_AmmoModifier, MenuSetting.Weapon.AmmoModifierFlag);
+                Memory.Write(pCPedInventory + Offsets.CPed_CPedInventory_AmmoModifier, Setting.Weapon.AmmoModifierFlag);
             }
 
             // 非公开战局运货
-            if (MenuSetting.Online.AllowSellOnNonPublic)
+            if (Setting.Online.AllowSellOnNonPublic)
                 Online.AllowSellOnNonPublic(true);
 
             ////////////////////////////////////////////////////////////////
@@ -311,7 +310,7 @@ public partial class ExternalMenuWindow
                 byte oVehicleGod = Memory.Read<byte>(pCVehicle + Offsets.CPed_CVehicle_God);
 
                 // 载具无敌
-                if (MenuSetting.Vehicle.GodMode)
+                if (Setting.Vehicle.GodMode)
                 {
                     if (oVehicleGod != 0x01)
                         Memory.Write<byte>(pCVehicle + Offsets.CPed_CVehicle_God, 0x01);
@@ -327,7 +326,7 @@ public partial class ExternalMenuWindow
         while (IsAppRunning)
         {
             // 自动消星
-            if (MenuSetting.Auto.ClearWanted)
+            if (Setting.Auto.ClearWanted)
                 Player.WantedLevel(0x00);
 
             long pCPedList = Globals.GetCPedList();
@@ -344,11 +343,11 @@ public partial class ExternalMenuWindow
                     continue;
 
                 // 自动击杀NPC
-                if (MenuSetting.Auto.KillNPC)
+                if (Setting.Auto.KillNPC)
                     Memory.Write(pCPed + Offsets.CPed_Health, 0.0f);
 
                 // 自动击杀敌对NPC
-                if (MenuSetting.Auto.KillHostilityNPC)
+                if (Setting.Auto.KillHostilityNPC)
                 {
                     byte oHostility = Memory.Read<byte>(pCPed + Offsets.CPed_Hostility);
                     if (oHostility > 0x01)
@@ -358,7 +357,7 @@ public partial class ExternalMenuWindow
                 }
 
                 // 自动击杀警察
-                if (MenuSetting.Auto.KillPolice)
+                if (Setting.Auto.KillPolice)
                 {
                     int ped_type = Memory.Read<int>(pCPed + Offsets.CPed_Ragdoll);
                     ped_type = ped_type << 11 >> 25;

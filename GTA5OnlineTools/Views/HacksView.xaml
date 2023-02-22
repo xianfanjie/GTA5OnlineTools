@@ -88,6 +88,11 @@
                             Command="{Binding ExtraClickCommand}"
                             CommandParameter="ResetKiddionConfig"
                             Content="重置Kiddion配置文件" />
+                        <Button
+                            Background="#2397DA"
+                            Command="{Binding ExtraClickCommand}"
+                            CommandParameter="KiddionChsPolish"
+                            Content="汉化修正" />
                     </WrapPanel>
                 </ui:GroupBoxHack.DescriptionContent>
             </ui:GroupBoxHack>

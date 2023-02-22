@@ -37,17 +37,20 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <!--  ///////////////////////  -->
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+        <DockPanel Margin="5,5,5,0">
+            <StackPanel
+                Margin="5,0,5,0"
+                DockPanel.Dock="Right"
+                Orientation="Horizontal">
                 <CheckBox x:Name="CheckBox_IsClearScriptDir" Content="清空脚本目录" />
                 <Button
-                    Background="#00AE9D"
+                    Background="#E6B428"
                     Command="{Binding LuaScriptClickCommand}"
                     CommandParameter="LuaScriptDirectory"
                     Content="脚本目录" />
             </StackPanel>
             <TextBlock
-                Margin="10,0,10,0"
+                Margin="5,0,5,0"
                 VerticalAlignment="Center"
                 FontSize="20"
                 FontWeight="Bold"

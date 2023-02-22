@@ -26,6 +26,7 @@ public partial class HacksView : UserControl
     private readonly LSCHax LSCHax = new();
     private readonly YimMenu YimMenu = new();
 
+    private Kiddion2Window Kiddion2Window = null;
     private GTAHaxWindow GTAHaxWindow = null;
 
     public HacksView()
@@ -172,6 +173,9 @@ public partial class HacksView : UserControl
                 break;
             case "ResetKiddionConfig":
                 ResetKiddionConfigClick();
+                break;
+            case "KiddionChsPolish":
+                KiddionChsPolishClick();
                 break;
             #endregion
             ////////////////////////////////////
@@ -435,6 +439,37 @@ public partial class HacksView : UserControl
         catch (Exception ex)
         {
             NotifierHelper.ShowException(ex);
+        }
+    }
+
+    /// <summary>
+    /// Kiddion汉化修正
+    /// </summary>
+    private void KiddionChsPolishClick()
+    {
+        if (Kiddion2Window == null)
+        {
+            Kiddion2Window = new Kiddion2Window();
+            Kiddion2Window.Show();
+        }
+        else
+        {
+            if (Kiddion2Window.IsVisible)
+            {
+                if (!Kiddion2Window.Topmost)
+                {
+                    Kiddion2Window.Topmost = true;
+                    Kiddion2Window.Topmost = false;
+                }
+
+                Kiddion2Window.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                Kiddion2Window = null;
+                Kiddion2Window = new Kiddion2Window();
+                Kiddion2Window.Show();
+            }
         }
     }
     #endregion

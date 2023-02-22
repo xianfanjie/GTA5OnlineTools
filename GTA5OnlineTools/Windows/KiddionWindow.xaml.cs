@@ -3,7 +3,6 @@
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
-using GTA5Menu.Models;
 
 namespace GTA5OnlineTools.Windows;
 

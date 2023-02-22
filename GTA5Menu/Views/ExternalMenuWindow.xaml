@@ -10,7 +10,6 @@
     Title="GTA5线上小助手 - 外置菜单"
     Width="1000"
     Height="600"
-    CaptionHeight="30"
     Closing="Window_ExternalMenu_Closing"
     Loaded="Window_ExternalMenu_Loaded"
     ResizeMode="CanMinimize"

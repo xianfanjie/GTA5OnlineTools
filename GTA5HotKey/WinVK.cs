@@ -1,6 +1,6 @@
 ﻿namespace GTA5HotKey;
 
-public enum WinVK
+public enum WinVK : int
 {
     LBUTTON = 0x01,     // 鼠标左键
     RBUTTON = 0x02,     // 鼠标右键

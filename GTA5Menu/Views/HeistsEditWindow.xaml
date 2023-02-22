@@ -8,12 +8,11 @@
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_HeistsEdit"
     Title="GTA5线上小助手 - 抢劫任务编辑器"
-    Width="1200"
+    Width="1260"
     Height="700"
-    MinWidth="1200"
-    MinHeight="700"
     Closing="Window_HeistPreps_Closing"
     Loaded="Window_HeistPreps_Loaded"
+    ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"
     mc:Ignorable="d">
 

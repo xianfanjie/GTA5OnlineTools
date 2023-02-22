@@ -7,12 +7,11 @@
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_StatScripts"
     Title="GTA5线上小助手 - STAT自动化脚本"
-    Width="1200"
+    Width="1260"
     Height="700"
-    MinWidth="1200"
-    MinHeight="700"
     Closing="Window_StatScripts_Closing"
     Loaded="Window_StatScripts_Loaded"
+    ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"
     mc:Ignorable="d">
 

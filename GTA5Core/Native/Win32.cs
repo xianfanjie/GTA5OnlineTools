@@ -7,8 +7,6 @@ public static class Win32
     public const int PROCESS_VM_OPERATION = 0x0008;
     public const int PAGE_READWRITE = 0x0004;
 
-    public const int KEY_PRESSED = 0x8000;
-
     public const int WM_SETTEXT = 0x0C;
     public const int WM_LBUTTONDOWN = 0x0201;
     public const int WM_LBUTTONUP = 0x0202;

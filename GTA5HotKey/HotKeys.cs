@@ -1,23 +1,11 @@
 ﻿using System;
 using System.Threading;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace GTA5HotKey;
 
 public static class HotKeys
 {
-    [DllImport("user32.dll")]
-    public static extern int GetAsyncKeyState(int vKey);
-
-    [DllImport("user32.dll", EntryPoint = "keybd_event")]
-    public static extern void Keybd_Event(WinVK bVk, uint bScan, uint dwFlags, uint dwExtraInfo);
-
-    [DllImport("user32.dll")]
-    public static extern uint MapVirtualKey(WinVK uCode, uint uMapType);
-
-    public const int KEY_PRESSED = 0x8000;
-
     /// <summary>
     /// 热键字典集合
     /// </summary>
@@ -111,7 +99,7 @@ public static class HotKeys
                 {
                     foreach (KeyInfo key in keysData)
                     {
-                        if (Convert.ToBoolean(GetAsyncKeyState((int)key.Key) & KEY_PRESSED))
+                        if (KeyHelper.IsKeyPressed(key.Key))
                         {
                             if (!key.IsKeyDown)
                             {

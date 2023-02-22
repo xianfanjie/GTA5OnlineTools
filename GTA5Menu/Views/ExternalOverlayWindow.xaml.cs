@@ -31,7 +31,7 @@ public partial class ExternalOverlayWindow
     {
         if (GTA5Overlay == null)
         {
-            GTA5Overlay = new GTA5Overlay();
+            GTA5Overlay = new GTA5Overlay("GTA5线上小助手");
             await GTA5Overlay.Run();
         }
         else

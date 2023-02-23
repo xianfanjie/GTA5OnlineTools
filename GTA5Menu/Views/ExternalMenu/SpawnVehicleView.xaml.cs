@@ -1,9 +1,9 @@
 ﻿using GTA5Menu.Data;
 
-using GTA5Core.Feature;
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
 using GTA5Core.RAGE.Onlines;
+using GTA5Core.Feature;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -63,7 +63,8 @@ public partial class SpawnVehicleView : UserControl
                             {
                                 Name = vInfo.Name,
                                 Value = vInfo.Value,
-                                Image = RAGEHelper.GetVehicleImage(vInfo.Value)
+                                Image = RAGEHelper.GetVehicleImage(vInfo.Value),
+                                Mod = vInfo.Mod
                             });
                         }
                     });
@@ -78,7 +79,7 @@ public partial class SpawnVehicleView : UserControl
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, 0);
+            Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
         }
     }
 
@@ -86,7 +87,7 @@ public partial class SpawnVehicleView : UserControl
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, 0);
+            Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
         }
     }
 

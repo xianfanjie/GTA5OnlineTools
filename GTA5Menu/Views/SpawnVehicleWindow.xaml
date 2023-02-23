@@ -32,35 +32,13 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="160" />
         </Grid.ColumnDefinitions>
         <!--  ////////////////////////////////////  -->
         <ListBox
-            x:Name="ListBox_VehicleClasses"
-            Grid.Column="0"
-            Width="140"
-            Margin="5"
-            SelectionChanged="ListBox_VehicleTypes_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type ListBoxItem}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock
-                            Margin="0,0,5,0"
-                            FontSize="16"
-                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
-                            Text="{Binding Icon}" />
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <!--  ////////////////////////////////////  -->
-        <ListBox
             x:Name="ListBox_VehicleInfo"
-            Grid.Column="1"
-            Margin="0,5,0,5"
+            Margin="5,5,0,5"
             Style="{StaticResource ListBoxStyle_VehiclePreview}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">
@@ -85,24 +63,37 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <!--  ////////////////////////////////////  -->
-        <StackPanel Grid.Column="2" Margin="5">
-            <Button
-                x:Name="Button_SpawnOnlineVehicleA"
-                Click="Button_SpawnOnlineVehicleA_Click"
-                Content="刷出线上载具（空地）" />
-            <Button
-                x:Name="Button_SpawnOnlineVehicleB"
-                Click="Button_SpawnOnlineVehicleB_Click"
-                Content="刷出线上载具（室内）" />
-            <TextBlock
-                Width="120"
-                Margin="5"
-                HorizontalAlignment="Left"
-                Style="{StaticResource TextBlockStyle_Hint}"
-                TextWrapping="Wrap">
-                提示：载具自定义功能目前尚未完工，刷出的载具为初始版本
-            </TextBlock>
-        </StackPanel>
+        <DockPanel Grid.Column="1">
+            <StackPanel Margin="5" DockPanel.Dock="Top">
+                <Button
+                    x:Name="Button_SpawnOnlineVehicleA"
+                    Click="Button_SpawnOnlineVehicleA_Click"
+                    Content="刷出线上载具（空地）" />
+                <Button
+                    x:Name="Button_SpawnOnlineVehicleB"
+                    Click="Button_SpawnOnlineVehicleB_Click"
+                    Content="刷出线上载具（室内）" />
+            </StackPanel>
+            <!--  ///////////////////////  -->
+            <ListBox
+                x:Name="ListBox_VehicleClasses"
+                Margin="5,0,5,5"
+                DockPanel.Dock="Bottom"
+                SelectionChanged="ListBox_VehicleTypes_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type ListBoxItem}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                FontSize="16"
+                                Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                                Text="{Binding Icon}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
     </Grid>
 
 </ui:Window>

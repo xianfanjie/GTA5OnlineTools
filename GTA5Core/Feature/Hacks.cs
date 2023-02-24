@@ -88,6 +88,15 @@ public static class Hacks
     }
 
     /// <summary>
+    /// 获取玩家角色索引
+    /// </summary>
+    /// <returns></returns>
+    public static int GetPlayerIndex()
+    {
+        return ReadGA<int>(1574918);
+    }
+
+    /// <summary>
     /// 获取游戏内产业索引
     /// </summary>
     /// <param name="ID">范围：0~5</param>
@@ -125,23 +134,25 @@ public static class Hacks
     /// <summary>
     /// 写入stat值，只支持int类型
     /// </summary>
-    public static void STATS_WriteInt(string hash, int value)
+    public static async Task WriteIntStat(string hash, int value)
     {
-        if (hash.IndexOf("_") == 0)
+        await Task.Run(async () =>
         {
-            int stat_MP = ReadGA<int>(1574918);
-            hash = $"MP{stat_MP}{hash}";
-        }
+            if (hash.IndexOf("_") == 0)
+                hash = $"MP{GetPlayerIndex()}{hash}";
 
-        uint oldhash = ReadGA<uint>(1665454 + 4);
-        int oldvalue = ReadGA<int>(1010831 + 5525);
+            uint oldhash = ReadGA<uint>(1665454 + 4);
+            int oldvalue = ReadGA<int>(1010831 + 5525);
 
-        WriteGA(1665454 + 4, Joaat(hash));
-        WriteGA(1010831 + 5525, value);
-        WriteGA(1653913 + 1139, -1);
-        Thread.Sleep(1000);
-        WriteGA(1665454 + 4, oldhash);
-        WriteGA(1010831 + 5525, oldvalue);
+            WriteGA(1665454 + 4, Joaat(hash));
+            WriteGA(1010831 + 5525, value);
+            WriteGA(1653913 + 1139, -1);
+
+            await Task.Delay(1000);
+
+            WriteGA(1665454 + 4, oldhash);
+            WriteGA(1010831 + 5525, oldvalue);
+        });
     }
 
     /////////////////////////////////////////
@@ -149,9 +160,9 @@ public static class Hacks
     /// <summary>
     /// 掉落物品
     /// </summary>
-    public static void CreateAmbientPickup(string pickup)
+    public static async Task CreateAmbientPickup(string pickup)
     {
-        Task.Run(async () =>
+        await Task.Run(async () =>
         {
             if (string.IsNullOrEmpty(pickup))
                 return;

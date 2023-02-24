@@ -62,13 +62,9 @@ public partial class ContractView : UserControl
         }
     }
 
-    private void WriteStatWithDelay(string hash, int value)
+    private async void WriteStatWithDelay(string hash, int value)
     {
-        Task.Run(() =>
-        {
-            Hacks.STATS_WriteInt(hash, value);
-            Task.Delay(1000).Wait();
-        });
+        await Hacks.WriteIntStat(hash, value);
     }
 
     private void Button_FIXER_GENERAL_BS_Click(object sender, RoutedEventArgs e)

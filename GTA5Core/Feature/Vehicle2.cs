@@ -36,18 +36,15 @@ public static class Vehicle2
             else
                 vector3.Z += z255;
 
-            Hacks.WriteGA(Offsets.oVMCreate + 27 + 66, Hacks.Joaat(model));     // 载具哈希值
+            Hacks.WriteGA(Offsets.oVMCreate + 7 + 0, vector3.X);        // 载具坐标x
+            Hacks.WriteGA(Offsets.oVMCreate + 7 + 1, vector3.Y);        // 载具坐标y
+            Hacks.WriteGA(Offsets.oVMCreate + 7 + 2, vector3.Z);        // 载具坐标z
 
-            Hacks.WriteGA(Offsets.oVMCreate + 27 + 95, 14);     // Ownerflag  拥有者标志
-            Hacks.WriteGA(Offsets.oVMCreate + 27 + 94, 2);      // Personal car ownerflag  个人载具拥有者标志
+            Hacks.WriteGA(Offsets.oVMCreate + 27 + 66, Hacks.Joaat(model));     // 载具哈希值
 
             Hacks.WriteGA(Offsets.oVMCreate + 3, 0);            // pegasus
             Hacks.WriteGA(Offsets.oVMCreate + 5, 1);            // can spawn flag must be odd
             Hacks.WriteGA(Offsets.oVMCreate + 2, 1);            // spawn toggle gets reset to 0 on car spawn
-
-            Hacks.WriteGA(Offsets.oVMCreate + 7 + 0, vector3.X);        // 载具坐标x
-            Hacks.WriteGA(Offsets.oVMCreate + 7 + 1, vector3.Y);        // 载具坐标y
-            Hacks.WriteGA(Offsets.oVMCreate + 7 + 2, vector3.Z);        // 载具坐标z
 
             Hacks.WriteGAString(Offsets.oVMCreate + 27 + 1, Guid.NewGuid().ToString()[..8]);    // License plate  车牌
 
@@ -99,6 +96,48 @@ public static class Vehicle2
 
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 77, 0xF0400200);   // vehstate 4030726305  载具状态 没有这个载具起落架是收起状态
 
+            Hacks.WriteGA(Offsets.oVMCreate + 27 + 95, 14);     // Ownerflag  拥有者标志
+            Hacks.WriteGA(Offsets.oVMCreate + 27 + 94, 2);      // Personal car ownerflag  个人载具拥有者标志
+        });
+    }
+
+    /// <summary>
+    /// 另一种生成线上载具的方式
+    /// </summary>
+    /// <param name="model"></param>
+    /// <param name="z255"></param>
+    /// <param name="dist"></param>
+    /// <returns></returns>
+    public async static Task SpawnVehicle(string model, float z255, int dist)
+    {
+        await Task.Run(() =>
+        {
+            if (string.IsNullOrEmpty(model))
+                return;
+
+            long pCPed = Globals.GetCPed();
+            Vector3 vector3 = Memory.Read<Vector3>(pCPed + Offsets.CPed_VisualX);
+
+            long pCNavigation = Memory.Read<long>(pCPed + Offsets.CPed_CNavigation);
+
+            float sin = Memory.Read<float>(pCNavigation + Offsets.CPed_CNavigation_RightX);
+            float cos = Memory.Read<float>(pCNavigation + Offsets.CPed_CNavigation_ForwardX);
+
+            vector3.X += cos * dist;
+            vector3.Y += sin * dist;
+
+            if (z255 == -255.0f)
+                vector3.Z = z255;
+            else
+                vector3.Z += z255;
+
+            Hacks.WriteGA(2639783 + 46, Hacks.Joaat(model));    // 载具哈希值
+
+            Hacks.WriteGA(2639783 + 42 + 0, vector3.X);         // 载具坐标x
+            Hacks.WriteGA(2639783 + 42 + 1, vector3.Y);         // 载具坐标y
+            Hacks.WriteGA(2639783 + 42 + 2, vector3.Z);         // 载具坐标z
+
+            Hacks.WriteGA(2639783 + 41, true);            // trigger
         });
     }
 

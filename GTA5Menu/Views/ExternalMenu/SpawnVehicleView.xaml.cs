@@ -75,19 +75,19 @@ public partial class SpawnVehicleView : UserControl
         }
     }
 
-    private void Button_SpawnOnlineVehicleA_Click(object sender, RoutedEventArgs e)
+    private async void Button_SpawnOnlineVehicleA_Click(object sender, RoutedEventArgs e)
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
         }
     }
 
-    private void Button_SpawnOnlineVehicleB_Click(object sender, RoutedEventArgs e)
+    private async void Button_SpawnOnlineVehicleB_Click(object sender, RoutedEventArgs e)
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
         }
     }
 
@@ -120,9 +120,9 @@ public partial class SpawnVehicleView : UserControl
         Vehicle.FillHealth();
     }
 
-    private void Button_RepairVehicle_Click(object sender, RoutedEventArgs e)
+    private async void Button_RepairVehicle_Click(object sender, RoutedEventArgs e)
     {
-        Vehicle.FixVehicleByBST();
+        await Vehicle.FixVehicleByBST();
     }
 
     private void Button_TurnOffBST_Click(object sender, RoutedEventArgs e)

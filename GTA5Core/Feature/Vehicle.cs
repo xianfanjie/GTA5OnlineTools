@@ -93,14 +93,12 @@ public static class Vehicle
     /// <summary>
     /// 修复载具外观
     /// </summary>
-    public static void FixVehicleByBST()
+    public static async Task FixVehicleByBST()
     {
-        Task.Run(async () =>
+        await Task.Run(async () =>
         {
             if (Globals.GetCVehicle(out long pCVehicle))
             {
-                var offset = Memory.Read<long>(Pointers.GlobalPTR + 0x08 * 0x0A);
-
                 Hacks.WriteGA(Offsets.oVMYCar + 894, 1);
 
                 await Task.Delay(1000);
@@ -140,13 +138,15 @@ public static class Vehicle
 
                         await Task.Delay(10);
 
-                        Memory.Write(dwpPickup + 0x90, vehicleV3);
-                        Memory.Write(pCVehicle + 0x9D8, 0.0f);
+                        Memory.Write(dwpPickup + 0x90, vehicleV3);      // oVPositionX
+                        Memory.Write(pCVehicle + 0x9D8, 0.0f);          // oVDirt  float  Wash Vehicle
                     }
                 }
 
-                if (Memory.Read<int>(offset + 0x6AF10) != 0)
-                    Memory.Write(offset + 0x6AF10, -1);
+                await Task.Delay(1000);
+
+                if (Hacks.ReadGA<int>(Offsets.oNETTimeHelp + 3690) != 0)
+                    Hacks.WriteGA(Offsets.oNETTimeHelp + 3690, -1);
             }
         });
     }

@@ -405,13 +405,9 @@ public partial class CasinoView : UserControl
     #endregion
 
     #region 赌场抢劫 - 高级
-    private void WriteStatWithDelay(string hash, int value)
+    private async void WriteStatWithDelay(string hash, int value)
     {
-        Task.Run(() =>
-        {
-            Hacks.STATS_WriteInt(hash, value);
-            Task.Delay(1000).Wait();
-        });
+        await Hacks.WriteIntStat(hash, value);
     }
 
     ////////////////////////////////////////////////////

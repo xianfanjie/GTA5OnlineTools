@@ -33,11 +33,11 @@ public partial class StatScriptsWindow
         Online.LoadSession(11);
     }
 
-    private void AppendTextBox(string str)
+    private void AppendTextBox(string log)
     {
         this.Dispatcher.Invoke(() =>
         {
-            TextBox_Logger.AppendText($"[{DateTime.Now:T}] {str}\n");
+            TextBox_Logger.AppendText($"[{DateTime.Now:T}] {log}\n");
             TextBox_Logger.ScrollToEnd();
         });
     }
@@ -68,8 +68,7 @@ public partial class StatScriptsWindow
                     {
                         AppendTextBox($"正在执行 第 {i + 1}/{StatData.StatClasses[index].StatInfos.Count} 条代码");
 
-                        Hacks.STATS_WriteInt(StatData.StatClasses[index].StatInfos[i].Hash, StatData.StatClasses[index].StatInfos[i].Value);
-                        await Task.Delay(500);
+                        await Hacks.WriteIntStat(StatData.StatClasses[index].StatInfos[i].Hash, StatData.StatClasses[index].StatInfos[i].Value);
                     }
 
                     AppendTextBox($"{StatData.StatClasses[index].Name} 脚本代码执行完毕");

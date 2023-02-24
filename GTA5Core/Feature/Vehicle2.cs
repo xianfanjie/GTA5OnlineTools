@@ -55,23 +55,22 @@ public static class Vehicle2
             if (model != "issi8" && model != "entity3")
             {
                 // 最大化升级载具
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 48; i++)
                 {
                     if (i < 17)
                     {
                         Hacks.WriteGA(Offsets.oVMCreate + 27 + 10 + i, mod[i]);
                     }
-                    else if (i > 22 && i < 48)
+                    else if (i > 22)
                     {
                         Hacks.WriteGA(Offsets.oVMCreate + 27 + 10 + 6 + i, mod[i]);
                     }
-                    else if (i == 48 && mod[48] > 0)
-                    {
-                        // 随机涂装
-                        Hacks.WriteGA(Offsets.oVMCreate + 27 + 10 + 48, new Random().Next(0, mod[48] + 1));
-                    }
                 }
             }
+
+            // 随机涂装
+            if (mod[48] > 0)
+                Hacks.WriteGA(Offsets.oVMCreate + 27 + 10 + 48, new Random().Next(0, mod[48] + 1));
 
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 5, -1);      // primary -1 auto 159  主色调
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 6, -1);      // secondary -1 auto 159  副色调

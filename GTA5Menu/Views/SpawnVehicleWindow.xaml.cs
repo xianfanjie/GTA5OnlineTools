@@ -52,7 +52,7 @@ public partial class SpawnVehicleWindow
             {
                 foreach (var item in VehicleHash.VehicleClasses[index].VehicleInfos)
                 {
-                    this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+                    this.Dispatcher.Invoke(() =>
                     {
                         if (index == ListBox_VehicleClasses.SelectedIndex)
                         {
@@ -63,6 +63,10 @@ public partial class SpawnVehicleWindow
                                 Image = RAGEHelper.GetVehicleImage(item.Value),
                                 Mod = item.Mod
                             });
+                        }
+                        else
+                        {
+                            return;
                         }
                     });
                 }

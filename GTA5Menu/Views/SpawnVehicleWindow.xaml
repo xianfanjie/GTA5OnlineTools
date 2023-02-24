@@ -65,14 +65,8 @@
         <!--  ////////////////////////////////////  -->
         <DockPanel Grid.Column="1">
             <StackPanel Margin="5" DockPanel.Dock="Top">
-                <Button
-                    x:Name="Button_SpawnOnlineVehicleA"
-                    Click="Button_SpawnOnlineVehicleA_Click"
-                    Content="刷出线上载具（空地）" />
-                <Button
-                    x:Name="Button_SpawnOnlineVehicleB"
-                    Click="Button_SpawnOnlineVehicleB_Click"
-                    Content="刷出线上载具（室内）" />
+                <Button Command="{Binding SpawnVehicleACommand}" Content="刷出线上载具（空地）" />
+                <Button Command="{Binding SpawnVehicleBCommand}" Content="刷出线上载具（室内）" />
             </StackPanel>
             <!--  ///////////////////////  -->
             <ListBox

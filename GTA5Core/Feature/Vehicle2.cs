@@ -13,13 +13,13 @@ public static class Vehicle2
     /// <param name="z255">高度</param>
     /// <param name="dist">距离</param>
     /// <param name="mod">Mod</param>
-    public static void SpawnVehicle(string model, float z255, int dist, int[] mod)
+    public static async Task SpawnVehicle(string model, float z255, int dist, int[] mod)
     {
-        if (string.IsNullOrEmpty(model))
-            return;
-
-        Task.Run(() =>
+        await Task.Run(() =>
         {
+            if (string.IsNullOrEmpty(model))
+                return;
+
             long pCPed = Globals.GetCPed();
             Vector3 vector3 = Memory.Read<Vector3>(pCPed + Offsets.CPed_VisualX);
 
@@ -41,9 +41,9 @@ public static class Vehicle2
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 95, 14);     // Ownerflag  拥有者标志
             Hacks.WriteGA(Offsets.oVMCreate + 27 + 94, 2);      // Personal car ownerflag  个人载具拥有者标志
 
-            Hacks.WriteGA(Offsets.oVMCreate + 3, 0);        // pegasus
-            Hacks.WriteGA(Offsets.oVMCreate + 5, 1);        // can spawn flag must be odd
-            Hacks.WriteGA(Offsets.oVMCreate + 2, 1);        // spawn toggle gets reset to 0 on car spawn
+            Hacks.WriteGA(Offsets.oVMCreate + 3, 0);            // pegasus
+            Hacks.WriteGA(Offsets.oVMCreate + 5, 1);            // can spawn flag must be odd
+            Hacks.WriteGA(Offsets.oVMCreate + 2, 1);            // spawn toggle gets reset to 0 on car spawn
 
             Hacks.WriteGA(Offsets.oVMCreate + 7 + 0, vector3.X);        // 载具坐标x
             Hacks.WriteGA(Offsets.oVMCreate + 7 + 1, vector3.Y);        // 载具坐标y

@@ -4,6 +4,8 @@ using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
 using GTA5Core.Feature;
 
+using CommunityToolkit.Mvvm.Input;
+
 namespace GTA5Menu.Views;
 
 /// <summary>
@@ -14,6 +16,7 @@ public partial class SpawnVehicleWindow
     public SpawnVehicleWindow()
     {
         InitializeComponent();
+        this.DataContext = this;
     }
 
     private void Window_SpawnVehicle_Loaded(object sender, RoutedEventArgs e)
@@ -69,19 +72,21 @@ public partial class SpawnVehicleWindow
         }
     }
 
-    private void Button_SpawnOnlineVehicleA_Click(object sender, RoutedEventArgs e)
+    [RelayCommand]
+    private async void SpawnVehicleA()
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
         }
     }
 
-    private void Button_SpawnOnlineVehicleB_Click(object sender, RoutedEventArgs e)
+    [RelayCommand]
+    private async void SpawnVehicleB()
     {
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
-            Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
         }
     }
 }

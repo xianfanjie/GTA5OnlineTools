@@ -4,6 +4,8 @@ using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
 using GTA5Core.RAGE.Onlines;
 using GTA5Core.Feature;
+using GTA5Menu.Utils;
+using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -12,11 +14,43 @@ namespace GTA5Menu.Views.ExternalMenu;
 /// </summary>
 public partial class SpawnVehicleView : UserControl
 {
+    private List<VehicleData> MyVehicles = new();
+
     public SpawnVehicleView()
     {
         InitializeComponent();
         this.DataContext = this;
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+
+        // 如果配置文件存在就读取
+        if (File.Exists(GTA5Util.File_Config_Vehicles))
+        {
+            using var streamReader = new StreamReader(GTA5Util.File_Config_Vehicles);
+            MyVehicles = JsonHelper.JsonDese<List<VehicleData>>(streamReader.ReadToEnd());
+        }
+
+        // 清理缓存
+        VehicleHash.VehicleClasses[0].VehicleInfos.Clear();
+
+        // 填充数据
+        foreach (var item in MyVehicles)
+        {
+            var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
+            if (classes != null)
+            {
+                var info = classes.VehicleInfos.Find(v => v.Value == item.Value);
+                if (info != null)
+                {
+                    VehicleHash.VehicleClasses[0].VehicleInfos.Add(new()
+                    {
+                        Name = info.Name,
+                        Value = info.Value,
+                        Mod = info.Mod
+                    });
+                    continue;
+                }
+            }
+        }
 
         // 载具列表
         foreach (var vClass in VehicleHash.VehicleClasses)
@@ -53,19 +87,24 @@ public partial class SpawnVehicleView : UserControl
 
             Task.Run(() =>
             {
-                foreach (var vInfo in VehicleHash.VehicleClasses[index].VehicleInfos)
+                foreach (var item in VehicleHash.VehicleClasses[index].VehicleInfos)
                 {
-                    this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+                    this.Dispatcher.Invoke(() =>
                     {
                         if (index == ComboBox_VehicleClasses.SelectedIndex)
                         {
                             ListBox_VehicleInfo.Items.Add(new ModelInfo()
                             {
-                                Name = vInfo.Name,
-                                Value = vInfo.Value,
-                                Image = RAGEHelper.GetVehicleImage(vInfo.Value),
-                                Mod = vInfo.Mod
+                                Class = VehicleHash.VehicleClasses[index].Name,
+                                Name = item.Name,
+                                Value = item.Value,
+                                Image = RAGEHelper.GetVehicleImage(item.Value),
+                                Mod = item.Mod
                             });
+                        }
+                        else
+                        {
+                            return;
                         }
                     });
                 }

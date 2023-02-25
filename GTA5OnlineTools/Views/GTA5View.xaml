@@ -28,6 +28,14 @@
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
+            Title="Custom Teleport"
+            Command="{Binding GTA5ViewClickCommand}"
+            CommandParameter="CustomTeleport"
+            Content="自定义传送"
+            Icon="&#xe65d;"
+            Style="{StaticResource ButtonStyle_FuncModule}" />
+
+        <ui:ButtonIcon
             Title="Heists Edit"
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="HeistsEdit"

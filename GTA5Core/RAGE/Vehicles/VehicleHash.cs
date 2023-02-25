@@ -17,28 +17,11 @@ public static class VehicleHash
     }
 
     /// <summary>
-    /// -1 当前分类: 常用载具
+    /// -1 当前分类: 我的收藏
     /// </summary>
-    public static readonly List<VehicleInfo> Common = new()
+    public static readonly List<VehicleInfo> Favorites = new()
     {
-        new VehicleInfo(){ Name="佩嘉西 暴君 Mk 2", Value="oppressor2", Mod=new int[50]{ 0,0,0,0,0,1,2,0,0,0,2,4,3,0,0,0,5,0,0,0,0,1,0,72,72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0 } },
-        new VehicleInfo(){ Name="卡林 骷髅马（装甲版）", Value="kuruma2", Mod=new int[50]{ 5,3,0,6,3,1,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0 } },
-        new VehicleInfo(){ Name="警用巡逻车", Value="police3", Mod=new int[50]{ 2,2,2,2,1,2,0,2,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="救护车", Value="ambulance", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="秃鹰攻击直升机", Value="buzzard", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="巨象 嘟嘟鸟", Value="dodo", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="麦霸子 桑切斯（涂装版）", Value="sanchez", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,0,5,0,0,0,0,1,0,72,72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="犀牛坦克", Value="rhino", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="巨象 九头蛇", Value="hydra", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="P-996 天煞", Value="lazer", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="出租车", Value="taxi", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="巨象 推进者", Value="thruster", Mod=new int[50]{ 0,2,0,0,1,0,0,0,0,0,2,4,3,0,0,0,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0 } },
-        new VehicleInfo(){ Name="TM-02 可汗贾利", Value="khanjali", Mod=new int[50]{ 0,0,0,0,0,1,0,0,0,1,1,4,3,0,58,0,5,0,0,0,0,1,0,50,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0 } },
-        new VehicleInfo(){ Name="野蛮人", Value="savage", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="长崎 小艇", Value="dinghy", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="库尔兹 31 巡逻艇", Value="patrolboat", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
-        new VehicleInfo(){ Name="佩嘉西 图拉尔多", Value="toreador", Mod=new int[50]{ 10,9,9,0,0,0,10,0,0,0,2,4,3,3,58,2,5,0,0,0,0,1,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0 } },
-        new VehicleInfo(){ Name="英庞提 德罗索", Value="deluxo", Mod=new int[50]{ 8,3,0,2,3,0,9,4,0,0,1,4,3,3,58,4,5,0,0,0,0,1,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
+
     };
 
     /// <summary>
@@ -1025,7 +1008,7 @@ public static class VehicleHash
             21 当前分类: 火车
             22 当前分类: 开轮式
          */
-        new VehicleClass(){ Icon="\xe610", Name="常用载具", VehicleInfos=Common },
+        new VehicleClass(){ Icon="\xe610", Name="我的收藏", VehicleInfos=Favorites },
         new VehicleClass(){ Icon="\xe610", Name="小型汽车", VehicleInfos=Compacts },
         new VehicleClass(){ Icon="\xe610", Name="轿车", VehicleInfos=Sedans },
         new VehicleClass(){ Icon="\xe610", Name="SUV", VehicleInfos=SUVs },

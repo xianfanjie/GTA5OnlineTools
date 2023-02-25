@@ -16,6 +16,7 @@ public partial class GTA5View : UserControl
 {
     private ExternalMenuWindow ExternalMenuWindow = null;
     private SpawnVehicleWindow SpawnVehicleWindow = null;
+    private CustomTeleportWindow CustomTeleportWindow = null;
     private HeistsEditWindow HeistsEditWindow = null;
     private OutfitsEditWindow OutfitsEditWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
@@ -66,6 +67,9 @@ public partial class GTA5View : UserControl
                     break;
                 case "SpawnVehicle":
                     SpawnVehicleClick();
+                    break;
+                case "CustomTeleport":
+                    CustomTeleportClick();
                     break;
                 case "HeistsEdit":
                     HeistsEditClick();
@@ -141,6 +145,30 @@ public partial class GTA5View : UserControl
                 SpawnVehicleWindow = null;
                 SpawnVehicleWindow = new SpawnVehicleWindow();
                 SpawnVehicleWindow.Show();
+            }
+        }
+    }
+
+    private void CustomTeleportClick()
+    {
+        if (CustomTeleportWindow == null)
+        {
+            CustomTeleportWindow = new CustomTeleportWindow();
+            CustomTeleportWindow.Show();
+        }
+        else
+        {
+            if (CustomTeleportWindow.IsVisible)
+            {
+                CustomTeleportWindow.Topmost = true;
+                CustomTeleportWindow.Topmost = false;
+                CustomTeleportWindow.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                CustomTeleportWindow = null;
+                CustomTeleportWindow = new CustomTeleportWindow();
+                CustomTeleportWindow.Show();
             }
         }
     }

@@ -31,6 +31,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <!--  ////////////////////////  -->
             <ui:LabelIcon Content="载具列表" DockPanel.Dock="Top" />
             <ListBox
                 x:Name="ListBox_VehicleInfo"

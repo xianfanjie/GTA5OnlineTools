@@ -19,10 +19,6 @@ public partial class ExternalMenuWindow
     /// 导航菜单
     /// </summary>
     public List<NavMenu> NavMenus { get; set; } = new();
-    /// <summary>
-    /// 导航命令
-    /// </summary>
-    public RelayCommand<NavMenu> NavigateCommand { get; private set; }
 
     private readonly ReadMeView ReadMeView = new();
     private readonly SelfStateView SelfStateView = new();
@@ -74,9 +70,7 @@ public partial class ExternalMenuWindow
         this.DataContext = this;
 
         // 创建菜单
-        CreateMenuBar();
-        // 绑定菜单切换命令
-        NavigateCommand = new(Navigate);
+        CreateNavMenus();
         // 设置主页
         ContentControl_Main.Content = SelfStateView;
 
@@ -121,7 +115,7 @@ public partial class ExternalMenuWindow
     /// <summary>
     /// 创建导航菜单
     /// </summary>
-    private void CreateMenuBar()
+    private void CreateNavMenus()
     {
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "自身属性", ViewName = "SelfStateView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "世界功能", ViewName = "WorldFunctionView" });
@@ -137,9 +131,10 @@ public partial class ExternalMenuWindow
     }
 
     /// <summary>
-    /// 页面导航（重复点击不会重复触发）
+    /// 页面导航
     /// </summary>
     /// <param name="menu"></param>
+    [RelayCommand]
     private void Navigate(NavMenu menu)
     {
         if (menu == null || string.IsNullOrEmpty(menu.ViewName))

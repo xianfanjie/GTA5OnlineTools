@@ -1,8 +1,5 @@
 ﻿using GTA5Menu.Data;
-
-using GTA5Core.RAGE;
-using GTA5Core.RAGE.Vehicles;
-using GTA5Core.Feature;
+using GTA5Menu.Views.SpawnVehicle;
 
 using CommunityToolkit.Mvvm.Input;
 
@@ -13,84 +10,66 @@ namespace GTA5Menu.Views;
 /// </summary>
 public partial class SpawnVehicleWindow
 {
+    /// <summary>
+    /// 导航菜单
+    /// </summary>
+    public List<NavMenu> NavMenus { get; set; } = new();
+
+    private readonly MyVehicleView MyVehicleView = new();
+    private readonly AllVehicleView AllVehicleView = new();
+
+    /// <summary>
+    /// 主窗口关闭事件
+    /// </summary>
+    public static event Action WindowClosingEvent;
+
     public SpawnVehicleWindow()
     {
         InitializeComponent();
-        this.DataContext = this;
     }
 
     private void Window_SpawnVehicle_Loaded(object sender, RoutedEventArgs e)
     {
-        // 载具分类列表
-        foreach (var vClass in VehicleHash.VehicleClasses)
-        {
-            ListBox_VehicleClasses.Items.Add(new IconMenu()
-            {
-                Icon = vClass.Icon,
-                Title = vClass.Name
-            });
-        }
-        ListBox_VehicleClasses.SelectedIndex = 0;
+        this.DataContext = this;
+
+        // 创建菜单
+        CreateNavMenus();
+        // 设置主页
+        ContentControl_Main.Content = MyVehicleView;
     }
 
     private void Window_SpawnVehicle_Closing(object sender, CancelEventArgs e)
     {
-
+        WindowClosingEvent();
     }
 
-    private void ListBox_VehicleTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    /// <summary>
+    /// 创建导航菜单
+    /// </summary>
+    private void CreateNavMenus()
     {
-        lock (this)
-        {
-            var index = ListBox_VehicleClasses.SelectedIndex;
-            if (index == -1)
-                return;
-
-            ListBox_VehicleInfo.Items.Clear();
-
-            Task.Run(() =>
-            {
-                foreach (var item in VehicleHash.VehicleClasses[index].VehicleInfos)
-                {
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        if (index == ListBox_VehicleClasses.SelectedIndex)
-                        {
-                            ListBox_VehicleInfo.Items.Add(new ModelInfo()
-                            {
-                                Name = item.Name,
-                                Value = item.Value,
-                                Image = RAGEHelper.GetVehicleImage(item.Value),
-                                Mod = item.Mod
-                            });
-                        }
-                        else
-                        {
-                            return;
-                        }
-                    });
-                }
-            });
-
-            ListBox_VehicleInfo.SelectedIndex = 0;
-        }
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "我的收藏", ViewName = "MyVehicleView" });
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "全部载具", ViewName = "AllVehicleView" });
     }
 
+    /// <summary>
+    /// 页面导航
+    /// </summary>
+    /// <param name="menu"></param>
     [RelayCommand]
-    private async void SpawnVehicleA()
+    private void Navigate(NavMenu menu)
     {
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
-        {
-            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
-        }
-    }
+        if (menu == null || string.IsNullOrEmpty(menu.ViewName))
+            return;
 
-    [RelayCommand]
-    private async void SpawnVehicleB()
-    {
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        switch (menu.ViewName)
         {
-            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
+            case "AllVehicleView":
+                ContentControl_Main.Content = AllVehicleView;
+                break;
+            case "MyVehicleView":
+                ContentControl_Main.Content = MyVehicleView;
+                break;
         }
     }
 }

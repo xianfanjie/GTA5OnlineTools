@@ -11,18 +11,20 @@
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
                     <Border
                         Name="Border"
-                        MinWidth="150"
-                        Margin="0,0,3,3"
+                        MinWidth="170"
+                        Margin="0,0,5,5"
+                        Padding="3"
                         Background="#FFFFFF"
                         BorderBrush="#ABADB3"
                         BorderThickness="1"
                         SnapsToDevicePixels="True">
                         <Border.Effect>
                             <DropShadowEffect
-                                BlurRadius="3"
-                                Opacity="0.7"
-                                ShadowDepth="3"
-                                Color="Gray" />
+                                BlurRadius="5"
+                                Direction="315"
+                                Opacity="0.6"
+                                ShadowDepth="5"
+                                Color="Black" />
                         </Border.Effect>
                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                     </Border>
@@ -38,12 +40,12 @@
 
     <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="Margin" Value="0,3,0,3" />
+        <Setter Property="Margin" Value="0,2,0,2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
                     <Border
-                        BorderBrush="#DADCE0"
+                        BorderBrush="#DADADA"
                         BorderThickness="0,1,0,0"
                         SnapsToDevicePixels="True" />
                 </ControlTemplate>
@@ -62,6 +64,7 @@
                 <ControlTemplate TargetType="{x:Type MenuItem}">
                     <Border
                         x:Name="Border"
+                        MinHeight="24"
                         Margin="{TemplateBinding Margin}"
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"

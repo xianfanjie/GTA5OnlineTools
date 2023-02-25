@@ -24,18 +24,11 @@ public partial class WorldFunctionView : UserControl
         this.DataContext = this;
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
-        // 如果配置文件不存在就创建
-        if (!File.Exists(GTA5Util.File_Config_Teleports))
-        {
-            // 保存配置文件
-            SaveConfig();
-        }
-
         // 如果配置文件存在就读取
         if (File.Exists(GTA5Util.File_Config_Teleports))
         {
             using var streamReader = new StreamReader(GTA5Util.File_Config_Teleports);
-            List<TeleportData.TeleportInfo> teleportInfos = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
+            var teleportInfos = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
 
             TeleportData.Custom.Clear();
             foreach (var info in teleportInfos)
@@ -58,19 +51,7 @@ public partial class WorldFunctionView : UserControl
 
     private void ExternalMenuWindow_WindowClosingEvent()
     {
-        SaveConfig();
-    }
 
-    /// <summary>
-    /// 保存配置文件
-    /// </summary>
-    private void SaveConfig()
-    {
-        if (Directory.Exists(GTA5Util.Dir_Config))
-        {
-            // 写入到Json文件
-            File.WriteAllText(GTA5Util.File_Config_Teleports, JsonHelper.JsonSeri(TeleportData.Custom));
-        }
     }
 
     private void Button_LocalWeather_Click(object sender, RoutedEventArgs e)
@@ -125,134 +106,6 @@ public partial class WorldFunctionView : UserControl
 
     /////////////////////////////////////////////////////////////////////////////
 
-    #region 自定义传送
-    private void UpdateCustonTeleportList()
-    {
-        ListBox_TeleportInfos.Items.Clear();
-
-        foreach (var item in TeleportData.TeleportClasses[0].TeleportInfos)
-        {
-            ListBox_TeleportInfos.Items.Add(item.Name);
-        }
-
-        ListBox_TeleportInfos.SelectedIndex = 0;
-    }
-
-    private void ComboBox_TeleportClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var index = ComboBox_TeleportClass.SelectedIndex;
-        if (index != -1)
-        {
-            ListBox_TeleportInfos.Items.Clear();
-
-            foreach (var item in TeleportData.TeleportClasses[index].TeleportInfos)
-            {
-                ListBox_TeleportInfos.Items.Add(item.Name);
-            }
-
-            ListBox_TeleportInfos.SelectedIndex = 0;
-        }
-    }
-
-    private void ListBox_TeleportInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var index1 = ComboBox_TeleportClass.SelectedIndex;
-        var index2 = ListBox_TeleportInfos.SelectedIndex;
-        if (index1 != -1 && index2 != -1)
-        {
-            var position = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position;
-
-            TextBox_CustomTeleportName.Text = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Name;
-            TextBox_Position_X.Text = $"{position.X:0.000}";
-            TextBox_Position_Y.Text = $"{position.Y:0.000}";
-            TextBox_Position_Z.Text = $"{position.Z:0.000}";
-        }
-        else if (index2 == -1)
-        {
-            TextBox_CustomTeleportName.Clear();
-            TextBox_Position_X.Clear();
-            TextBox_Position_Y.Clear();
-            TextBox_Position_Z.Clear();
-        }
-    }
-
-    private void Button_AddCustomTeleport_Click(object sender, RoutedEventArgs e)
-    {
-        var vector3 = Teleport.GetPlayerPosition();
-
-        TeleportData.Custom.Add(new TeleportData.TeleportInfo()
-        {
-            Name = $"保存点 : {DateTime.Now:yyyyMMdd_HHmmss_ffff}",
-            Position = vector3
-        });
-
-        UpdateCustonTeleportList();
-
-        ListBox_TeleportInfos.SelectedIndex = ListBox_TeleportInfos.Items.Count - 1;
-    }
-
-    private void Button_EditCustomTeleport_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            var tempName = TextBox_CustomTeleportName.Text.Trim();
-            var tempX = TextBox_Position_X.Text.Trim();
-            var tempY = TextBox_Position_Y.Text.Trim();
-            var tempZ = TextBox_Position_Z.Text.Trim();
-
-            if (string.IsNullOrEmpty(tempName) ||
-                string.IsNullOrEmpty(tempX) || string.IsNullOrEmpty(tempY) || string.IsNullOrEmpty(tempZ))
-            {
-                NotifierHelper.Show(NotifierType.Warning, "部分坐标数据不能为空");
-                return;
-            }
-
-            var index1 = ComboBox_TeleportClass.SelectedIndex;
-            var index2 = ListBox_TeleportInfos.SelectedIndex;
-            if (index1 == 0 && index2 != -1)
-            {
-                TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position = new Vector3()
-                {
-                    X = Convert.ToSingle(tempX),
-                    Y = Convert.ToSingle(tempY),
-                    Z = Convert.ToSingle(tempZ)
-                };
-
-                TeleportData.TeleportClasses[index1].TeleportInfos[index2].Name = tempName;
-
-                UpdateCustonTeleportList();
-
-                ListBox_TeleportInfos.SelectedIndex = index2; ;
-            }
-            else
-            {
-                NotifierHelper.Show(NotifierType.Warning, "当前自定义传送坐标选中项为空");
-            }
-        }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
-        }
-    }
-
-    private void Button_DeleteCustomTeleport_Click(object sender, RoutedEventArgs e)
-    {
-        var index1 = ComboBox_TeleportClass.SelectedIndex;
-        var index2 = ListBox_TeleportInfos.SelectedIndex;
-        if (index1 == 0 && index2 != -1)
-        {
-            TeleportData.TeleportClasses[index1].TeleportInfos.Remove(TeleportData.TeleportClasses[index1].TeleportInfos[index2]);
-
-            UpdateCustonTeleportList();
-
-            ListBox_TeleportInfos.SelectedIndex = ListBox_TeleportInfos.Items.Count - 1;
-        }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "当前自定义传送坐标选中项为空");
-        }
-    }
-
     private void Button_ToWaypoint_Click(object sender, RoutedEventArgs e)
     {
         Teleport.ToWaypoint();
@@ -263,9 +116,21 @@ public partial class WorldFunctionView : UserControl
         Teleport.ToObjective();
     }
 
-    private void ListBox_TeleportInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    #region 自定义传送
+    private void ComboBox_TeleportClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        Button_Teleport_Click(null, null);
+        var index = ComboBox_TeleportClass.SelectedIndex;
+        if (index != -1)
+        {
+            ListBox_TeleportInfos.Items.Clear();
+
+            foreach (var item in TeleportData.TeleportClasses[index].TeleportInfos)
+            {
+                ListBox_TeleportInfos.Items.Add(item);
+            }
+
+            ListBox_TeleportInfos.SelectedIndex = 0;
+        }
     }
 
     private void Button_Teleport_Click(object sender, RoutedEventArgs e)
@@ -274,17 +139,22 @@ public partial class WorldFunctionView : UserControl
         var index2 = ListBox_TeleportInfos.SelectedIndex;
         if (index1 != -1 && index2 != -1)
         {
-            var position = TeleportData.TeleportClasses[index1].TeleportInfos[index2].Position;
-            Teleport.SetTeleportPosition(position);
+            var position = TeleportData.TeleportClasses[index1].TeleportInfos[index2];
+            Teleport.SetTeleportPosition(new()
+            {
+                X = position.X,
+                Y = position.Y,
+                Z = position.Z
+            });
         }
     }
 
-    private void Button_SaveCustomTeleport_Click(object sender, RoutedEventArgs e)
+    private void ListBox_TeleportInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
-        SaveConfig();
-
-        NotifierHelper.Show(NotifierType.Success, $"保存到自定义传送坐标文件成功");
+        Button_Teleport_Click(null, null);
     }
+
+    /////////////////////////////////////////////////////////////////////////////
 
     private void Slider_MoveDistance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {

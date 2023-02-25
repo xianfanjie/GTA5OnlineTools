@@ -12,8 +12,8 @@ public static class GTA5Util
     public const string File_Cache_GTAHax = $"{Dir_Cache}\\GTAHax.exe";
     public const string File_Cache_Stat = $"{Dir_Cache}\\stat.txt";
 
-    public const string File_Config_SelfState = $"{Dir_Config}\\SelfStateConfig.json";
     public const string File_Config_Teleports = $"{Dir_Config}\\Teleports.json";
+    public const string File_Config_Vehicles = $"{Dir_Config}\\Vehicles.json";
 
     /// <summary>
     /// 判断程序是否运行

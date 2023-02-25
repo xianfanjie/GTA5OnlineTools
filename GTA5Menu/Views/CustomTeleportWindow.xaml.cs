@@ -1,4 +1,5 @@
 ﻿using GTA5Menu.Utils;
+using GTA5Menu.Config;
 
 using GTA5Core.Feature;
 using GTA5Core.RAGE.Teleports;
@@ -11,11 +12,6 @@ namespace GTA5Menu.Views;
 /// </summary>
 public partial class CustomTeleportWindow
 {
-    /// <summary>
-    /// 坐标微调距离
-    /// </summary>
-    private float Move_Distance = 1.5f;
-
     public CustomTeleportWindow()
     {
         InitializeComponent();
@@ -23,6 +19,8 @@ public partial class CustomTeleportWindow
 
     private void Window_CustomTeleport_Loaded(object sender, RoutedEventArgs e)
     {
+        this.DataContext = this;
+
         // 如果配置文件不存在就创建
         if (!File.Exists(GTA5Util.File_Config_Teleports))
         {
@@ -34,13 +32,18 @@ public partial class CustomTeleportWindow
         if (File.Exists(GTA5Util.File_Config_Teleports))
         {
             using var streamReader = new StreamReader(GTA5Util.File_Config_Teleports);
-            List<TeleportData.TeleportInfo> teleportInfos = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
+            var teleports = JsonHelper.JsonDese<Teleports>(streamReader.ReadToEnd());
 
-            TeleportData.Custom.Clear();
-            foreach (var info in teleportInfos)
+            // 加载读取的配置文件到UI中，由于Json结构不一样，需要转换
+            foreach (var custom in teleports.CustomLocations)
             {
-                TeleportData.Custom.Add(info);
-                ListBox_TeleportInfos.Items.Add(info);
+                ListBox_Teleports.Items.Add(new TeleportInfo()
+                {
+                    Name = custom.Name,
+                    X = custom.X,
+                    Y = custom.Y,
+                    Z = custom.Z
+                });
             }
         }
     }
@@ -57,22 +60,26 @@ public partial class CustomTeleportWindow
     {
         if (Directory.Exists(GTA5Util.Dir_Config))
         {
-            TeleportData.Custom.Clear();
-            foreach (TeleportData.TeleportInfo info in ListBox_TeleportInfos.Items)
+            var teleports = new Teleports
             {
-                TeleportData.Custom.Add(info);
+                CustomLocations = new()
+            };
+            // 加载到配置文件
+            foreach (TeleportInfo info in ListBox_Teleports.Items)
+            {
+                teleports.CustomLocations.Add(new()
+                {
+                    Name = info.Name,
+                    X = info.X,
+                    Y = info.Y,
+                    Z = info.Z,
+                    Pitch = 0.0f,
+                    Yaw = 0.0f,
+                    Roll = 0.0f,
+                });
             }
             // 写入到Json文件
-            File.WriteAllText(GTA5Util.File_Config_Teleports, JsonHelper.JsonSeri(TeleportData.Custom));
-        }
-    }
-
-    private void UpdateCustonTeleportList()
-    {
-        ListBox_TeleportInfos.Items.Clear();
-        foreach (var item in TeleportData.Custom)
-        {
-            ListBox_TeleportInfos.Items.Add(item);
+            File.WriteAllText(GTA5Util.File_Config_Teleports, JsonHelper.JsonSeri(teleports));
         }
     }
 
@@ -80,7 +87,7 @@ public partial class CustomTeleportWindow
     {
         var vector3 = Teleport.GetPlayerPosition();
 
-        TeleportData.Custom.Add(new TeleportData.TeleportInfo()
+        ListBox_Teleports.Items.Add(new TeleportInfo()
         {
             Name = $"保存点 : {DateTime.Now:yyyyMMdd_HHmmss_ffff}",
             X = vector3.X,
@@ -88,61 +95,38 @@ public partial class CustomTeleportWindow
             Z = vector3.Z
         });
 
-        UpdateCustonTeleportList();
-
-        ListBox_TeleportInfos.SelectedIndex = ListBox_TeleportInfos.Items.Count - 1;
+        ListBox_Teleports.SelectedIndex = ListBox_Teleports.Items.Count - 1;
     }
 
     private void Button_EditCustomTeleport_Click(object sender, RoutedEventArgs e)
     {
-        try
+        var tempName = TextBox_CustomName.Text.Trim();
+        var tempX = TextBox_Position_X.Text.Trim();
+        var tempY = TextBox_Position_Y.Text.Trim();
+        var tempZ = TextBox_Position_Z.Text.Trim();
+
+        if (string.IsNullOrEmpty(tempName))
         {
-            var tempName = TextBox_CustomName.Text.Trim();
-            var tempX = TextBox_Position_X.Text.Trim();
-            var tempY = TextBox_Position_Y.Text.Trim();
-            var tempZ = TextBox_Position_Z.Text.Trim();
-
-            if (string.IsNullOrEmpty(tempName) ||
-                string.IsNullOrEmpty(tempX) ||
-                string.IsNullOrEmpty(tempY) ||
-                string.IsNullOrEmpty(tempZ))
-            {
-                NotifierHelper.Show(NotifierType.Warning, "部分坐标数据不能为空");
-                return;
-            }
-
-            var index = ListBox_TeleportInfos.SelectedIndex;
-            if (index != -1)
-            {
-                TeleportData.Custom[index].Name = tempName;
-
-                TeleportData.Custom[index].X = Convert.ToSingle(tempX);
-                TeleportData.Custom[index].Y = Convert.ToSingle(tempY);
-                TeleportData.Custom[index].Z = Convert.ToSingle(tempZ);
-
-                UpdateCustonTeleportList();
-
-                ListBox_TeleportInfos.SelectedIndex = index;
-            }
-            else
-            {
-                NotifierHelper.Show(NotifierType.Warning, "当前自定义传送坐标选中项为空");
-            }
+            NotifierHelper.Show(NotifierType.Warning, "坐标名称不能为空，操作取消");
+            return;
         }
-        catch (Exception ex)
+
+        if (!float.TryParse(tempX, out float x) ||
+            !float.TryParse(tempY, out float y) ||
+            !float.TryParse(tempZ, out float z))
         {
-            NotifierHelper.ShowException(ex);
+            NotifierHelper.Show(NotifierType.Warning, "坐标数据不合法，操作取消");
+            return;
         }
-    }
 
-    private void Button_DeleteCustomTeleport_Click(object sender, RoutedEventArgs e)
-    {
-        var index = ListBox_TeleportInfos.SelectedIndex;
-        if (index != -1)
+        if (ListBox_Teleports.SelectedItem is TeleportInfo item)
         {
-            TeleportData.Custom.RemoveAt(index);
+            item.Name = tempName;
+            item.X = x;
+            item.Y = y;
+            item.Z = z;
 
-            UpdateCustonTeleportList();
+            ListBox_Teleports.SelectedItem = item;
         }
         else
         {
@@ -150,31 +134,38 @@ public partial class CustomTeleportWindow
         }
     }
 
-    private void ListBox_TeleportInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private void Button_DeleteCustomTeleport_Click(object sender, RoutedEventArgs e)
+    {
+        if (ListBox_Teleports.SelectedItem is TeleportInfo item)
+        {
+            ListBox_Teleports.Items.Remove(item);
+        }
+        else
+        {
+            NotifierHelper.Show(NotifierType.Warning, "当前自定义传送坐标选中项为空");
+        }
+    }
+
+    private void ListBox_Teleports_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         Button_Teleport_Click(null, null);
     }
 
     private void Button_Teleport_Click(object sender, RoutedEventArgs e)
     {
-        var index = ListBox_TeleportInfos.SelectedIndex;
-        if (index != -1)
+        if (ListBox_Teleports.SelectedItem is TeleportInfo item)
         {
-            var position = TeleportData.Custom[index];
             Teleport.SetTeleportPosition(new()
             {
-                X = position.X,
-                Y = position.Y,
-                Z = position.Z
+                X = item.X,
+                Y = item.Y,
+                Z = item.Z
             });
         }
-    }
-
-    private void Button_SaveCustomTeleport_Click(object sender, RoutedEventArgs e)
-    {
-        SaveConfig();
-
-        NotifierHelper.Show(NotifierType.Success, $"保存到自定义传送坐标文件成功");
+        else
+        {
+            NotifierHelper.Show(NotifierType.Warning, "当前自定义传送坐标选中项为空");
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -191,33 +182,30 @@ public partial class CustomTeleportWindow
 
     /////////////////////////////////////////////////////////////////////////////
 
-    private void Slider_MoveDistance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    {
-        Move_Distance = (float)Slider_MoveDistance.Value;
-    }
-
     private void Button_MoveDistance_Click(object sender, RoutedEventArgs e)
     {
+        var moveDistance = (float)Slider_MoveDistance.Value;
+
         var btnContent = (e.OriginalSource as Button).Content.ToString();
         switch (btnContent)
         {
             case "向前":
-                Teleport.MoveFoward(Move_Distance);
+                Teleport.MoveFoward(moveDistance);
                 break;
             case "向后":
-                Teleport.MoveBack(Move_Distance);
+                Teleport.MoveBack(moveDistance);
                 break;
             case "向左":
-                Teleport.MoveLeft(Move_Distance);
+                Teleport.MoveLeft(moveDistance);
                 break;
             case "向右":
-                Teleport.MoveRight(Move_Distance);
+                Teleport.MoveRight(moveDistance);
                 break;
             case "向上":
-                Teleport.MoveUp(Move_Distance);
+                Teleport.MoveUp(moveDistance);
                 break;
             case "向下":
-                Teleport.MoveDown(Move_Distance);
+                Teleport.MoveDown(moveDistance);
                 break;
         }
     }

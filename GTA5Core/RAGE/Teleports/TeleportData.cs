@@ -2,24 +2,9 @@
 
 public class TeleportData
 {
-    public class TeleportClass
-    {
-        public string Icon { get; set; }
-        public string Name { get; set; }
-        public List<TeleportInfo> TeleportInfos { get; set; }
-    }
-
-    public class TeleportInfo
-    {
-        public string Name { get; set; }
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Z { get; set; }
-    }
-
     public static readonly List<TeleportInfo> Custom = new()
     {
-        //new TeleportInfo(){ Name="坐标原点", X=0.000f, Y=0.000f, Z=72.0f },
+
     };
 
     public static readonly List<TeleportInfo> Common = new()
@@ -67,4 +52,19 @@ public class TeleportData
         new TeleportClass(){ Icon="\xe610", Name="预设-室内场景", TeleportInfos=Indoor },
         new TeleportClass(){ Icon="\xe610", Name="预设-任务地点", TeleportInfos=Mission },
     };
+}
+
+public class TeleportClass
+{
+    public string Icon { get; set; }
+    public string Name { get; set; }
+    public List<TeleportInfo> TeleportInfos { get; set; }
+}
+
+public class TeleportInfo
+{
+    public string Name { get; set; }
+    public float X { get; set; }
+    public float Y { get; set; }
+    public float Z { get; set; }
 }

@@ -1,5 +1,6 @@
 ﻿using GTA5Menu.Data;
 using GTA5Menu.Utils;
+using GTA5Menu.Config;
 
 using GTA5Core.Feature;
 using GTA5Core.RAGE.Onlines;
@@ -13,11 +14,6 @@ namespace GTA5Menu.Views.ExternalMenu;
 /// </summary>
 public partial class WorldFunctionView : UserControl
 {
-    /// <summary>
-    /// 坐标微调距离
-    /// </summary>
-    private float Move_Distance = 1.5f;
-
     public WorldFunctionView()
     {
         InitializeComponent();
@@ -28,12 +24,20 @@ public partial class WorldFunctionView : UserControl
         if (File.Exists(GTA5Util.File_Config_Teleports))
         {
             using var streamReader = new StreamReader(GTA5Util.File_Config_Teleports);
-            var teleportInfos = JsonHelper.JsonDese<List<TeleportData.TeleportInfo>>(streamReader.ReadToEnd());
+            var teleports = JsonHelper.JsonDese<Teleports>(streamReader.ReadToEnd());
 
             TeleportData.Custom.Clear();
-            foreach (var info in teleportInfos)
+
+            // 加载读取的配置文件到UI中，由于Json结构不一样，需要转换
+            foreach (var custom in teleports.CustomLocations)
             {
-                TeleportData.Custom.Add(info);
+                TeleportData.Custom.Add(new TeleportInfo()
+                {
+                    Name = custom.Name,
+                    X = custom.X,
+                    Y = custom.Y,
+                    Z = custom.Z
+                });
             }
         }
 
@@ -156,33 +160,30 @@ public partial class WorldFunctionView : UserControl
 
     /////////////////////////////////////////////////////////////////////////////
 
-    private void Slider_MoveDistance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    {
-        Move_Distance = (float)Slider_MoveDistance.Value;
-    }
-
     private void Button_MoveDistance_Click(object sender, RoutedEventArgs e)
     {
+        var moveDistance = (float)Slider_MoveDistance.Value;
+
         var btnContent = (e.OriginalSource as Button).Content.ToString();
         switch (btnContent)
         {
             case "向前":
-                Teleport.MoveFoward(Move_Distance);
+                Teleport.MoveFoward(moveDistance);
                 break;
             case "向后":
-                Teleport.MoveBack(Move_Distance);
+                Teleport.MoveBack(moveDistance);
                 break;
             case "向左":
-                Teleport.MoveLeft(Move_Distance);
+                Teleport.MoveLeft(moveDistance);
                 break;
             case "向右":
-                Teleport.MoveRight(Move_Distance);
+                Teleport.MoveRight(moveDistance);
                 break;
             case "向上":
-                Teleport.MoveUp(Move_Distance);
+                Teleport.MoveUp(moveDistance);
                 break;
             case "向下":
-                Teleport.MoveDown(Move_Distance);
+                Teleport.MoveDown(moveDistance);
                 break;
         }
     }

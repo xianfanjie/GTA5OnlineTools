@@ -15,7 +15,7 @@ public static class VehicleWheel
     }
 
     /// <summary>
-    /// Sport
+    /// Sport 运动跑车
     /// </summary>
     public static readonly List<WheelInfo> Sport = new()
     {
@@ -47,7 +47,7 @@ public static class VehicleWheel
     };
 
     /// <summary>
-    /// Muscle
+    /// Muscle 肌肉车
     /// </summary>
     public static readonly List<WheelInfo> Muscle = new()
     {
@@ -65,7 +65,7 @@ public static class VehicleWheel
     };
 
     /// <summary>
-    /// Lowrider
+    /// Lowrider 低底盘车
     /// </summary>
     public static readonly List<WheelInfo> Lowrider = new()
     {
@@ -113,7 +113,7 @@ public static class VehicleWheel
     };
 
     /// <summary>
-    /// Offroad
+    /// Offroad 越野车
     /// </summary>
     public static readonly List<WheelInfo> Offroad = new()
     {
@@ -181,7 +181,7 @@ public static class VehicleWheel
     };
 
     /// <summary>
-    /// High End
+    /// High End 高档车
     /// </summary>
     public static readonly List<WheelInfo> High = new()
     {
@@ -208,7 +208,7 @@ public static class VehicleWheel
     };
 
     /// <summary>
-    /// Benny's Original
+    /// Benny's Original 班尼原厂
     /// </summary>
     public static readonly List<WheelInfo> Original = new()
     {
@@ -246,7 +246,7 @@ public static class VehicleWheel
     };
 
     /// <summary>
-    /// Benny's Bespoke
+    /// Benny's Bespoke 班尼定制
     /// </summary>
     public static readonly List<WheelInfo> Bespoke = new()
     {
@@ -311,7 +311,7 @@ public static class VehicleWheel
     };
 
     /// <summary>
-    /// Street
+    /// Street 街头
     /// </summary>
     public static readonly List<WheelInfo> Street = new()
     {
@@ -348,7 +348,7 @@ public static class VehicleWheel
     };
 
     /// <summary>
-    /// Track
+    /// Track 赛道
     /// </summary>
     public static readonly List<WheelInfo> Track = new()
     {

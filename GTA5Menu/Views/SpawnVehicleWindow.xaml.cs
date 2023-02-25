@@ -16,6 +16,7 @@ public partial class SpawnVehicleWindow
     public List<NavMenu> NavMenus { get; set; } = new();
 
     private readonly MyVehicleView MyVehicleView = new();
+    private readonly FindVehicleView FindVehicleView = new();
     private readonly AllVehicleView AllVehicleView = new();
 
     /// <summary>
@@ -49,6 +50,7 @@ public partial class SpawnVehicleWindow
     private void CreateNavMenus()
     {
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "我的收藏", ViewName = "MyVehicleView" });
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "搜索载具", ViewName = "FindVehicleView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "全部载具", ViewName = "AllVehicleView" });
     }
 
@@ -64,11 +66,14 @@ public partial class SpawnVehicleWindow
 
         switch (menu.ViewName)
         {
-            case "AllVehicleView":
-                ContentControl_Main.Content = AllVehicleView;
-                break;
             case "MyVehicleView":
                 ContentControl_Main.Content = MyVehicleView;
+                break;
+            case "FindVehicleView":
+                ContentControl_Main.Content = FindVehicleView;
+                break;
+            case "AllVehicleView":
+                ContentControl_Main.Content = AllVehicleView;
                 break;
         }
     }

@@ -102,7 +102,7 @@ public partial class ToolsView : UserControl
     /// <summary>
     /// 初始化配置文件夹
     /// </summary>
-    private void InitCPDPathClick()
+    private async void InitCPDPathClick()
     {
         try
         {
@@ -111,9 +111,9 @@ public partial class ToolsView : UserControl
                 "初始化配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 ProcessUtil.CloseThirdProcess();
-                Thread.Sleep(100);
+                await Task.Delay(100);
                 FileUtil.ClearDirectory(FileUtil.Default);
-                Thread.Sleep(100);
+                await Task.Delay(100);
 
                 App.AppMainMutex.Dispose();
                 ProcessUtil.OpenProcess(FileUtil.File_MainApp);
@@ -173,7 +173,7 @@ public partial class ToolsView : UserControl
     /// <summary>
     /// 重命名小助手为中文
     /// </summary>
-    private void ReNameAppCNClick()
+    private async void ReNameAppCNClick()
     {
         try
         {
@@ -183,6 +183,7 @@ public partial class ToolsView : UserControl
             {
                 var fullPath = FileUtil.GetCurrFullPath(name);
                 FileUtil.FileReName(FileUtil.File_MainApp, fullPath);
+                await Task.Delay(100);
 
                 ProcessUtil.CloseThirdProcess();
                 App.AppMainMutex.Dispose();
@@ -203,7 +204,7 @@ public partial class ToolsView : UserControl
     /// <summary>
     /// 重命名小助手为英文
     /// </summary>
-    private void ReNameAppENClick()
+    private async void ReNameAppENClick()
     {
         try
         {
@@ -211,6 +212,7 @@ public partial class ToolsView : UserControl
             if (fileName != "GTA5OnlineTools.exe")
             {
                 FileUtil.FileReName(FileUtil.File_MainApp, "GTA5OnlineTools.exe");
+                await Task.Delay(100);
 
                 ProcessUtil.CloseThirdProcess();
                 App.AppMainMutex.Dispose();

@@ -44,12 +44,28 @@
             dd:DragDrop.IsDragSource="True"
             dd:DragDrop.IsDropTarget="True"
             dd:DragDrop.UseDefaultDragAdorner="True"
-            DockPanel.Dock="Bottom"
             MouseDoubleClick="ListBox_TeleportInfo_MouseDoubleClick"
+            Style="{StaticResource ListBoxStyle_TeleportInfo}"
             ToolTip="双击选中项即可快捷传送">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">
-                    <TextBlock Text="{Binding Name}" />
+                    <Border
+                        Margin="0,0,0,1"
+                        BorderBrush="Gray"
+                        BorderThickness="0,0,0,1">
+                        <StackPanel Margin="0,5,0,5" VerticalAlignment="Center">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Text="{Binding Name}" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="90" Text="{Binding X, StringFormat='X: {0:0.000}'}" />
+                                <TextBlock Width="90" Text="{Binding Y, StringFormat='Y: {0:0.000}'}" />
+                                <TextBlock Width="90" Text="{Binding Z, StringFormat='Z: {0:0.000}'}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

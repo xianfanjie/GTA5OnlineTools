@@ -11,13 +11,13 @@
 
     <!--  载具详细信息  -->
     <ListBox
-        x:Name="ListBox_VehicleInfo"
+        x:Name="ListBox_Vehicles"
         Margin="5"
         dd:DragDrop.IsDragSource="True"
         dd:DragDrop.IsDropTarget="True"
         dd:DragDrop.UseDefaultDragAdorner="True"
         ItemsSource="{Binding MyFavorites}"
-        MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
+        MouseDoubleClick="ListBox_Vehicles_MouseDoubleClick"
         Style="{StaticResource ListBoxStyle_VehiclePreview2}">
         <dd:DragDrop.DropTargetAdornerPen>
             <Pen

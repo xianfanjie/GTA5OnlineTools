@@ -1,5 +1,6 @@
 ﻿using GTA5Menu.Data;
 using GTA5Menu.Utils;
+using GTA5Menu.Config;
 
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
@@ -14,8 +15,6 @@ namespace GTA5Menu.Views.SpawnVehicle;
 public partial class MyVehicleView : UserControl
 {
     public ObservableCollection<ModelInfo> MyFavorites { get; private set; } = new();
-
-    private List<VehicleData> MyVehicles = new();
 
     public static Action<ModelInfo> ActionAddMyFavorite;
 
@@ -38,27 +37,27 @@ public partial class MyVehicleView : UserControl
         if (File.Exists(GTA5Util.File_Config_Vehicles))
         {
             using var streamReader = new StreamReader(GTA5Util.File_Config_Vehicles);
-            MyVehicles = JsonHelper.JsonDese<List<VehicleData>>(streamReader.ReadToEnd());
-        }
+            var vehicles = JsonHelper.JsonDese<List<Vehicles>>(streamReader.ReadToEnd());
 
-        // 填充数据
-        foreach (var item in MyVehicles)
-        {
-            var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
-            if (classes != null)
+            // 填充数据
+            foreach (var item in vehicles)
             {
-                var info = classes.VehicleInfos.Find(v => v.Value == item.Value);
-                if (info != null)
+                var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
+                if (classes != null)
                 {
-                    MyFavorites.Add(new()
+                    var info = classes.VehicleInfos.Find(v => v.Value == item.Value);
+                    if (info != null)
                     {
-                        Class = classes.Name,
-                        Name = info.Name,
-                        Value = info.Value,
-                        Image = RAGEHelper.GetVehicleImage(info.Value),
-                        Mod = info.Mod
-                    });
-                    continue;
+                        MyFavorites.Add(new()
+                        {
+                            Class = classes.Name,
+                            Name = info.Name,
+                            Value = info.Value,
+                            Image = RAGEHelper.GetVehicleImage(info.Value),
+                            Mod = info.Mod
+                        });
+                        continue;
+                    }
                 }
             }
         }
@@ -76,10 +75,10 @@ public partial class MyVehicleView : UserControl
     {
         if (Directory.Exists(GTA5Util.Dir_Config))
         {
-            MyVehicles.Clear();
-            foreach (ModelInfo info in ListBox_VehicleInfo.Items)
+            var vehicles = new List<Vehicles>();
+            foreach (ModelInfo info in ListBox_Vehicles.Items)
             {
-                MyVehicles.Add(new()
+                vehicles.Add(new()
                 {
                     Class = info.Class,
                     Name = info.Name,
@@ -87,7 +86,7 @@ public partial class MyVehicleView : UserControl
                 });
             }
             // 写入到Json文件
-            File.WriteAllText(GTA5Util.File_Config_Vehicles, JsonHelper.JsonSeri(MyVehicles));
+            File.WriteAllText(GTA5Util.File_Config_Vehicles, JsonHelper.JsonSeri(vehicles));
         }
     }
 
@@ -96,12 +95,6 @@ public partial class MyVehicleView : UserControl
         if (!MyFavorites.Contains(model))
         {
             MyFavorites.Add(model);
-            MyVehicles.Add(new()
-            {
-                Class = model.Class,
-                Name = model.Name,
-                Value = model.Value,
-            });
 
             NotifierHelper.Show(NotifierType.Success, $"添加载具 {model.Name} 到我的收藏成功");
         }
@@ -115,7 +108,7 @@ public partial class MyVehicleView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_Vehicles.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
         }
@@ -129,7 +122,7 @@ public partial class MyVehicleView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_Vehicles.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
         }
@@ -143,10 +136,9 @@ public partial class MyVehicleView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_Vehicles.SelectedItem is ModelInfo info)
         {
             MyFavorites.Remove(info);
-            MyVehicles.Remove(MyVehicles.Find(v => v.Value == info.Value));
 
             NotifierHelper.Show(NotifierType.Success, $"从我的收藏删除载具 {info.Name} 成功");
         }
@@ -156,7 +148,7 @@ public partial class MyVehicleView : UserControl
         }
     }
 
-    private void ListBox_VehicleInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private void ListBox_Vehicles_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         MenuItem_SpawnVehicleA_Click(null, null);
     }

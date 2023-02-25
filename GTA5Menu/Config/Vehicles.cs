@@ -1,6 +1,6 @@
-﻿namespace GTA5Menu.Data;
+﻿namespace GTA5Menu.Config;
 
-public class VehicleData
+public class Vehicles
 {
     public string Class { get; set; }
     public string Name { get; set; }

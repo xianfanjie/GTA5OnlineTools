@@ -50,6 +50,7 @@ public partial class AllVehicleView : UserControl
 
             Task.Run(() =>
             {
+                // 这里要跳过第一个分类
                 foreach (var item in VehicleHash.VehicleClasses[index + 1].VehicleInfos)
                 {
                     this.Dispatcher.Invoke(() =>
@@ -58,7 +59,7 @@ public partial class AllVehicleView : UserControl
                         {
                             ListBox_VehicleInfo.Items.Add(new ModelInfo()
                             {
-                                Class = VehicleHash.VehicleClasses[index].Name,
+                                Class = VehicleHash.VehicleClasses[index + 1].Name,
                                 Name = item.Name,
                                 Value = item.Value,
                                 Image = RAGEHelper.GetVehicleImage(item.Value),

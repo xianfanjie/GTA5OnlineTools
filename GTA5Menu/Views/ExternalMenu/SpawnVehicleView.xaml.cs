@@ -1,9 +1,10 @@
 ﻿using GTA5Menu.Data;
 using GTA5Menu.Utils;
+using GTA5Menu.Config;
 
 using GTA5Core.RAGE;
-using GTA5Core.RAGE.Vehicles;
 using GTA5Core.RAGE.Onlines;
+using GTA5Core.RAGE.Vehicles;
 using GTA5Core.Feature;
 using GTA5Shared.Helper;
 
@@ -14,8 +15,6 @@ namespace GTA5Menu.Views.ExternalMenu;
 /// </summary>
 public partial class SpawnVehicleView : UserControl
 {
-    private List<VehicleData> MyVehicles = new();
-
     public SpawnVehicleView()
     {
         InitializeComponent();
@@ -26,28 +25,28 @@ public partial class SpawnVehicleView : UserControl
         if (File.Exists(GTA5Util.File_Config_Vehicles))
         {
             using var streamReader = new StreamReader(GTA5Util.File_Config_Vehicles);
-            MyVehicles = JsonHelper.JsonDese<List<VehicleData>>(streamReader.ReadToEnd());
-        }
+            var vehicles = JsonHelper.JsonDese<List<Vehicles>>(streamReader.ReadToEnd());
 
-        // 清理缓存
-        VehicleHash.VehicleClasses[0].VehicleInfos.Clear();
+            // 清理缓存
+            VehicleHash.Favorites.Clear();
 
-        // 填充数据
-        foreach (var item in MyVehicles)
-        {
-            var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
-            if (classes != null)
+            // 填充数据
+            foreach (var item in vehicles)
             {
-                var info = classes.VehicleInfos.Find(v => v.Value == item.Value);
-                if (info != null)
+                var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
+                if (classes != null)
                 {
-                    VehicleHash.VehicleClasses[0].VehicleInfos.Add(new()
+                    var info = classes.VehicleInfos.Find(v => v.Value == item.Value);
+                    if (info != null)
                     {
-                        Name = info.Name,
-                        Value = info.Value,
-                        Mod = info.Mod
-                    });
-                    continue;
+                        VehicleHash.Favorites.Add(new()
+                        {
+                            Name = info.Name,
+                            Value = info.Value,
+                            Mod = info.Mod
+                        });
+                        continue;
+                    }
                 }
             }
         }

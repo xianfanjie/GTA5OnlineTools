@@ -17,6 +17,7 @@
         <ListBox
             x:Name="ListBox_VehicleInfo"
             Margin="5"
+            MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
             Style="{StaticResource ListBoxStyle_VehiclePreview}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">

@@ -17,6 +17,7 @@
         dd:DragDrop.IsDropTarget="True"
         dd:DragDrop.UseDefaultDragAdorner="True"
         ItemsSource="{Binding MyFavorites}"
+        MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
         Style="{StaticResource ListBoxStyle_VehiclePreview2}">
         <dd:DragDrop.DropTargetAdornerPen>
             <Pen

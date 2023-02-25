@@ -1,10 +1,10 @@
 ﻿using GTA5Menu.Data;
+using GTA5Menu.Utils;
 
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
 using GTA5Core.RAGE.Onlines;
 using GTA5Core.Feature;
-using GTA5Menu.Utils;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
@@ -116,6 +116,8 @@ public partial class SpawnVehicleView : UserControl
 
     private async void Button_SpawnOnlineVehicleA_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
@@ -124,10 +126,17 @@ public partial class SpawnVehicleView : UserControl
 
     private async void Button_SpawnOnlineVehicleB_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
         }
+    }
+
+    private void ListBox_VehicleInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        Button_SpawnOnlineVehicleA_Click(null, null);
     }
 
     /////////////////////////////////////////////////////////////////////////////////

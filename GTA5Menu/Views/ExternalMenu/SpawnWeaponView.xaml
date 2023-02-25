@@ -36,6 +36,7 @@
                 x:Name="ListBox_WeaponInfo"
                 Margin="5"
                 DockPanel.Dock="Bottom"
+                MouseDoubleClick="ListBox_WeaponInfo_MouseDoubleClick"
                 Style="{StaticResource ListBoxStyle_WeaponInfo}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>

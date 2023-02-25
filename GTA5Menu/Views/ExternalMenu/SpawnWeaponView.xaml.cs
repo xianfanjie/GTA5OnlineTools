@@ -4,6 +4,7 @@ using GTA5Core.Feature;
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Weapons;
 using GTA5Core.RAGE.Onlines;
+using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -74,12 +75,19 @@ public partial class SpawnWeaponView : UserControl
         }
     }
 
-    private void Button_SpawnWeapon_Click(object sender, RoutedEventArgs e)
+    private async void Button_SpawnWeapon_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (ListBox_WeaponInfo.SelectedItem is ModelInfo info)
         {
-            Hacks.CreateAmbientPickup($"pickup_{info.Value}");
+            await Hacks.CreateAmbientPickup($"pickup_{info.Value}");
         }
+    }
+
+    private void ListBox_WeaponInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        Button_SpawnWeapon_Click(null, null);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////

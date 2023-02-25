@@ -50,7 +50,7 @@ public partial class AllVehicleView : UserControl
 
             Task.Run(() =>
             {
-                foreach (var item in VehicleHash.VehicleClasses[index].VehicleInfos)
+                foreach (var item in VehicleHash.VehicleClasses[index + 1].VehicleInfos)
                 {
                     this.Dispatcher.Invoke(() =>
                     {
@@ -117,5 +117,10 @@ public partial class AllVehicleView : UserControl
         {
             NotifierHelper.Show(NotifierType.Warning, "请选择正确的载具，操作取消");
         }
+    }
+
+    private void ListBox_VehicleInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        MenuItem_SpawnVehicleA_Click(null, null);
     }
 }

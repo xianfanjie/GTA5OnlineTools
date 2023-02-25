@@ -37,6 +37,7 @@
                 x:Name="ListBox_VehicleInfo"
                 Margin="5"
                 DockPanel.Dock="Bottom"
+                MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
                 Style="{StaticResource ListBoxStyle_VehicleInfo}">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type ListBoxItem}">

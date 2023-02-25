@@ -8,8 +8,6 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //var process = Process.GetProcessById(12312);
-
         Console.WriteLine("操作结束，按任意键继续！");
         Console.ReadLine();
     }

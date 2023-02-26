@@ -3,6 +3,7 @@ global using System.IO;
 global using System.Net;
 global using System.Text;
 global using System.Media;
+global using System.Reflection;
 global using System.Diagnostics;
 global using System.Threading.Tasks;
 global using System.Windows;

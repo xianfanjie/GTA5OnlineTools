@@ -1,8 +1,6 @@
-﻿using GTA5Shared.Helper;
+﻿namespace GTA5Shared.Helper;
 
-namespace GTA5OnlineTools.Utils;
-
-public static class ProcessUtil
+public static class ProcessHelper
 {
     /// <summary>
     /// 判断程序是否运行
@@ -84,7 +82,7 @@ public static class ProcessUtil
     /// <param name="args"></param>
     public static void Notepad2EditTextFile(string args)
     {
-        OpenProcess(FileUtil.File_Cache_Notepad2, args);
+        OpenProcess(FileHelper.File_Cache_Notepad2, args);
     }
 
     /// <summary>

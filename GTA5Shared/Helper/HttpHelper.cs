@@ -4,6 +4,10 @@ namespace GTA5Shared.Helper;
 
 public static class HttpHelper
 {
+    [DllImport("dnsapi.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool DnsFlushResolverCache();
+
     private static readonly RestClient client;
 
     static HttpHelper()
@@ -33,5 +37,13 @@ public static class HttpHelper
             return response.Content;
 
         return string.Empty;
+    }
+
+    /// <summary>
+    /// 刷新DNS缓存
+    /// </summary>
+    public static void FlushDNSCache()
+    {
+        DnsFlushResolverCache();
     }
 }

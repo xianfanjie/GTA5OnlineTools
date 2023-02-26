@@ -36,7 +36,7 @@ public partial class Kiddion2Window
     /// <param name="e"></param>
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        ProcessUtil.OpenLink(e.Uri.OriginalString);
+        ProcessHelper.OpenLink(e.Uri.OriginalString);
         e.Handled = true;
     }
 
@@ -82,7 +82,7 @@ public partial class Kiddion2Window
     {
         AudioHelper.PlayClickSound();
 
-        if (!ProcessUtil.IsAppRun("Kiddion"))
+        if (!ProcessHelper.IsAppRun("Kiddion"))
         {
             NotifierHelper.Show(NotifierType.Warning, "未发现《Kiddion》进程，请先运行《Kiddion》程序");
             return;
@@ -104,7 +104,7 @@ public partial class Kiddion2Window
     {
         AudioHelper.PlayClickSound();
 
-        if (!ProcessUtil.IsAppRun("Kiddion"))
+        if (!ProcessHelper.IsAppRun("Kiddion"))
         {
             NotifierHelper.Show(NotifierType.Warning, "未发现《Kiddion》进程，请先运行《Kiddion》程序");
             return;

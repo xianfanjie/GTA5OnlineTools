@@ -75,7 +75,7 @@ public partial class OptionsView : UserControl
     /// <param name="e"></param>
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        ProcessUtil.OpenLink(e.Uri.OriginalString);
+        ProcessHelper.OpenLink(e.Uri.OriginalString);
         e.Handled = true;
     }
 

@@ -1,4 +1,4 @@
-﻿using GTA5OnlineTools.Utils;
+﻿using GTA5Shared.Helper;
 
 namespace GTA5OnlineTools.Views;
 
@@ -26,7 +26,7 @@ public partial class AboutView : UserControl
     /// <param name="e"></param>
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        ProcessUtil.OpenLink(e.Uri.OriginalString);
+        ProcessHelper.OpenLink(e.Uri.OriginalString);
         e.Handled = true;
     }
 }

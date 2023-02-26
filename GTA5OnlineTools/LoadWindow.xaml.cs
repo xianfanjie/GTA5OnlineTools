@@ -31,7 +31,7 @@ public partial class LoadWindow
             try
             {
                 // 关闭第三方进程
-                ProcessUtil.CloseThirdProcess();
+                ProcessHelper.CloseThirdProcess();
 
                 LoadModel.LoadState = "正在初始化工具...";
 
@@ -50,54 +50,54 @@ public partial class LoadWindow
                 LoggerHelper.Info("正在初始化配置文件...");
 
                 // 创建指定文件夹，用于释放必要文件和更新软件（如果已存在则不会创建）
-                Directory.CreateDirectory(FileUtil.Dir_Cache);
-                Directory.CreateDirectory(FileUtil.Dir_Config);
-                Directory.CreateDirectory(FileUtil.Dir_Kiddion);
-                Directory.CreateDirectory(FileUtil.Dir_Kiddion_Scripts);
-                Directory.CreateDirectory(FileUtil.Dir_Inject);
-                Directory.CreateDirectory(FileUtil.Dir_Log);
+                Directory.CreateDirectory(FileHelper.Dir_Cache);
+                Directory.CreateDirectory(FileHelper.Dir_Config);
+                Directory.CreateDirectory(FileHelper.Dir_Kiddion);
+                Directory.CreateDirectory(FileHelper.Dir_Kiddion_Scripts);
+                Directory.CreateDirectory(FileHelper.Dir_Inject);
+                Directory.CreateDirectory(FileHelper.Dir_Log);
 
                 // 清空缓存文件夹
-                FileUtil.ClearDirectory(FileUtil.Dir_Cache);
+                FileHelper.ClearDirectory(FileHelper.Dir_Cache);
 
                 // 释放必要文件
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Kiddion, FileUtil.File_Kiddion_Kiddion);
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_KiddionChs, FileUtil.File_Kiddion_KiddionChs);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Kiddion, FileHelper.File_Kiddion_Kiddion);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_KiddionChs, FileHelper.File_Kiddion_KiddionChs);
 
                 // 释放前先判断，防止覆盖配置文件
-                if (!File.Exists(FileUtil.File_Kiddion_Config))
-                    FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Config, FileUtil.File_Kiddion_Config);
-                if (!File.Exists(FileUtil.File_Kiddion_Themes))
-                    FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Themes, FileUtil.File_Kiddion_Themes);
-                if (!File.Exists(FileUtil.File_Kiddion_Teleports))
-                    FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Teleports, FileUtil.File_Kiddion_Teleports);
-                if (!File.Exists(FileUtil.File_Kiddion_Vehicles))
-                    FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Vehicles, FileUtil.File_Kiddion_Vehicles);
+                if (!File.Exists(FileHelper.File_Kiddion_Config))
+                    FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Config, FileHelper.File_Kiddion_Config);
+                if (!File.Exists(FileHelper.File_Kiddion_Themes))
+                    FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Themes, FileHelper.File_Kiddion_Themes);
+                if (!File.Exists(FileHelper.File_Kiddion_Teleports))
+                    FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Teleports, FileHelper.File_Kiddion_Teleports);
+                if (!File.Exists(FileHelper.File_Kiddion_Vehicles))
+                    FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Vehicles, FileHelper.File_Kiddion_Vehicles);
 
                 // Kiddion Lua脚本
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Scripts_Readme, FileUtil.File_Kiddion_Scripts_Readme);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
 
                 /////////////////////////////////////////////////////////////////////
 
-                FileUtil.ExtractResFile(FileUtil.Res_Cache_GTAHax, FileUtil.File_Cache_GTAHax);
-                FileUtil.ExtractResFile(FileUtil.Res_Cache_BincoHax, FileUtil.File_Cache_BincoHax);
-                FileUtil.ExtractResFile(FileUtil.Res_Cache_LSCHax, FileUtil.File_Cache_LSCHax);
-                FileUtil.ExtractResFile(FileUtil.Res_Cache_Stat, FileUtil.File_Cache_Stat);
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_GTAHax, FileHelper.File_Cache_GTAHax);
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_BincoHax, FileHelper.File_Cache_BincoHax);
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_LSCHax, FileHelper.File_Cache_LSCHax);
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_Stat, FileHelper.File_Cache_Stat);
 
-                FileUtil.ExtractResFile(FileUtil.Res_Cache_Notepad2, FileUtil.File_Cache_Notepad2);
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_Notepad2, FileHelper.File_Cache_Notepad2);
 
-                FileUtil.ExtractResFile(FileUtil.Res_Cache_Xenos64, FileUtil.File_Cache_Xenos64);
-                FileUtil.ExtractResFile(FileUtil.Res_Cache_Xenos64Profile, FileUtil.File_Cache_Xenos64Profile);
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64, FileHelper.File_Cache_Xenos64);
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64Profile, FileHelper.File_Cache_Xenos64Profile);
 
                 // 判断DLL文件是否存在以及是否被占用
-                if (!File.Exists(FileUtil.File_Inject_YimMenu))
+                if (!File.Exists(FileHelper.File_Inject_YimMenu))
                 {
-                    FileUtil.ExtractResFile(FileUtil.Res_Inject_YimMenu, FileUtil.File_Inject_YimMenu);
+                    FileHelper.ExtractResFile(FileHelper.Res_Inject_YimMenu, FileHelper.File_Inject_YimMenu);
                 }
                 else
                 {
-                    if (!FileUtil.IsOccupied(FileUtil.File_Inject_YimMenu))
-                        FileUtil.ExtractResFile(FileUtil.Res_Inject_YimMenu, FileUtil.File_Inject_YimMenu);
+                    if (!FileHelper.IsOccupied(FileHelper.File_Inject_YimMenu))
+                        FileHelper.ExtractResFile(FileHelper.Res_Inject_YimMenu, FileHelper.File_Inject_YimMenu);
                 }
 
                 /////////////////////////////////////////////////////////////////////
@@ -133,16 +133,16 @@ public partial class LoadWindow
         {
             case "InitDefaultPath":
                 {
-                    FileUtil.ClearDirectory(FileUtil.Dir_Default);
+                    FileHelper.ClearDirectory(FileHelper.Dir_Default);
                     Thread.Sleep(100);
 
                     App.AppMainMutex.Dispose();
-                    ProcessUtil.OpenProcess(FileUtil.File_MainApp);
+                    ProcessHelper.OpenProcess(FileUtil.File_MainApp);
                     Application.Current.Shutdown();
                 }
                 break;
             case "OpenDefaultPath":
-                ProcessUtil.OpenProcess(FileUtil.Dir_Default);
+                ProcessHelper.OpenProcess(FileHelper.Dir_Default);
                 break;
             case "ExitAPP":
                 Application.Current.Shutdown();

@@ -127,7 +127,7 @@ public partial class MainWindow
         GTA5View.ActionCloseAllGTA5Window();
         LoggerHelper.Info("关闭小助手功能窗口成功");
 
-        ProcessUtil.CloseThirdProcess();
+        ProcessHelper.CloseThirdProcess();
         LoggerHelper.Info("关闭第三方进程成功");
 
         TaskbarIcon_Main?.Dispose();
@@ -199,7 +199,7 @@ public partial class MainWindow
         while (IsAppRunning)
         {
             // 判断 GTA5 是否运行
-            MainModel.IsGTA5Run = ProcessUtil.IsGTA5Run();
+            MainModel.IsGTA5Run = ProcessHelper.IsGTA5Run();
 
             if (MainModel.IsGTA5Run)
             {

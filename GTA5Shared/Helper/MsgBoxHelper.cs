@@ -1,6 +1,6 @@
-﻿namespace GTA5OnlineTools.Utils;
+﻿namespace GTA5Shared.Helper;
 
-public static class MsgBoxUtil
+public static class MsgBoxHelper
 {
     /// <summary>
     /// 通用信息弹窗，Information

@@ -1,5 +1,7 @@
 ﻿using GTA5OnlineTools.Utils;
 
+using GTA5Shared.Helper;
+
 namespace GTA5OnlineTools;
 
 /// <summary>
@@ -30,7 +32,7 @@ public partial class App : Application
         }
         else
         {
-            MsgBoxUtil.Warning($"请不要重复打开，程序已经运行\n如果一直提示，请到\"任务管理器-详细信息（win7为进程）\"里\n强制结束 \"{AppName}.exe\" 程序"
+            MsgBoxHelper.Warning($"请不要重复打开，程序已经运行\n如果一直提示，请到\"任务管理器-详细信息（win7为进程）\"里\n强制结束 \"{AppName}.exe\" 程序"
                 , "重复运行警告");
             Current.Shutdown();
         }
@@ -59,7 +61,7 @@ public partial class App : Application
     private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
         var msg = GetExceptionInfo(e.Exception, e.ToString());
-        FileUtil.SaveCrashLog(msg);
+        FileHelper.SaveCrashLog(msg);
     }
 
     /// <summary>
@@ -70,7 +72,7 @@ public partial class App : Application
     private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
         var msg = GetExceptionInfo(e.ExceptionObject as Exception, e.ToString());
-        FileUtil.SaveCrashLog(msg);
+        FileHelper.SaveCrashLog(msg);
     }
 
     /// <summary>
@@ -81,7 +83,7 @@ public partial class App : Application
     private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
     {
         var msg = GetExceptionInfo(e.Exception, e.ToString());
-        FileUtil.SaveCrashLog(msg);
+        FileHelper.SaveCrashLog(msg);
     }
 
     /// <summary>

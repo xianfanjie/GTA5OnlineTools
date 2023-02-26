@@ -88,7 +88,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void CurrentDirectoryClick()
     {
-        ProcessUtil.OpenLink(FileUtil.Dir_MainApp);
+        ProcessHelper.OpenLink(FileUtil.Dir_MainApp);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void ReleaseDirectoryClick()
     {
-        ProcessUtil.OpenLink(FileUtil.Dir_Default);
+        ProcessHelper.OpenLink(FileHelper.Dir_Default);
     }
 
     /// <summary>
@@ -107,16 +107,16 @@ public partial class ToolsView : UserControl
         try
         {
             if (MessageBox.Show("你确定要初始化配置文件吗？将恢复小助手全部配置文件为默认版本，对于修复崩溃问题很有帮助\n\n" +
-                "程序会自动重置此文件夹：「C:\\ProgramData\\GTA5OnlineTools\\」\n\n",
+                $"程序会自动重置此文件夹：\n{FileHelper.Dir_Default}",
                 "初始化配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                ProcessUtil.CloseThirdProcess();
+                ProcessHelper.CloseThirdProcess();
                 await Task.Delay(100);
-                FileUtil.ClearDirectory(FileUtil.Dir_Default);
+                FileHelper.ClearDirectory(FileHelper.Dir_Default);
                 await Task.Delay(100);
 
                 App.AppMainMutex.Dispose();
-                ProcessUtil.OpenProcess(FileUtil.File_MainApp);
+                ProcessHelper.OpenProcess(FileUtil.File_MainApp);
                 Application.Current.Shutdown();
             }
         }
@@ -131,9 +131,9 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void RestartAppClick()
     {
-        ProcessUtil.CloseThirdProcess();
+        ProcessHelper.CloseThirdProcess();
         App.AppMainMutex.Dispose();
-        ProcessUtil.OpenProcess(FileUtil.File_MainApp);
+        ProcessHelper.OpenProcess(FileUtil.File_MainApp);
         Application.Current.Shutdown();
     }
 
@@ -154,7 +154,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void RefreshDNSCacheClick()
     {
-        CoreUtil.FlushDNSCache();
+        HttpHelper.FlushDNSCache();
         NotifierHelper.Show(NotifierType.Success, "成功刷新DNS解析程序缓存");
     }
 
@@ -163,7 +163,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void EditHostsClick()
     {
-        ProcessUtil.Notepad2EditTextFile(@"C:\windows\system32\drivers\etc\hosts");
+        ProcessHelper.Notepad2EditTextFile(@"C:\windows\system32\drivers\etc\hosts");
     }
     #endregion
 
@@ -185,9 +185,9 @@ public partial class ToolsView : UserControl
                 FileUtil.FileReName(FileUtil.File_MainApp, fullPath);
                 await Task.Delay(100);
 
-                ProcessUtil.CloseThirdProcess();
+                ProcessHelper.CloseThirdProcess();
                 App.AppMainMutex.Dispose();
-                ProcessUtil.OpenProcess(fullPath);
+                ProcessHelper.OpenProcess(fullPath);
                 Application.Current.Shutdown();
             }
             else
@@ -214,9 +214,9 @@ public partial class ToolsView : UserControl
                 FileUtil.FileReName(FileUtil.File_MainApp, "GTA5OnlineTools.exe");
                 await Task.Delay(100);
 
-                ProcessUtil.CloseThirdProcess();
+                ProcessHelper.CloseThirdProcess();
                 App.AppMainMutex.Dispose();
-                ProcessUtil.OpenProcess(FileUtil.GetCurrFullPath("GTA5OnlineTools.exe"));
+                ProcessHelper.OpenProcess(FileUtil.GetCurrFullPath("GTA5OnlineTools.exe"));
                 Application.Current.Shutdown();
             }
             else
@@ -235,7 +235,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void StoryModeArchiveClick()
     {
-        var path = $"{FileUtil.Dir_MyDocuments}\\Rockstar Games\\GTA V\\Profiles";
+        var path = $"{FileHelper.Dir_MyDocuments}\\Rockstar Games\\GTA V\\Profiles";
         if (!Directory.Exists(path))
         {
             NotifierHelper.Show(NotifierType.Error, "GTA5故事模式存档路径不存在，操作取消");
@@ -252,7 +252,7 @@ public partial class ToolsView : UserControl
                 {
                     var dirIf = new DirectoryInfo(dir);
                     string fullName = Path.Combine(dirIf.FullName, "SGTA50000");
-                    FileUtil.ExtractResFile(FileUtil.Res_Other_SGTA50000, fullName);
+                    FileHelper.ExtractResFile(FileHelper.Res_Other_SGTA50000, fullName);
                 }
 
                 NotifierHelper.Show(NotifierType.Success, $"GTA5故事模式存档替换成功\n{path}");

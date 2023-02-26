@@ -9,10 +9,10 @@ public static class GTAHaxUtil
     {
         try
         {
-            File.WriteAllText(GTA5Util.File_Cache_Stat, statTxt);
+            File.WriteAllText(FileHelper.File_Cache_Stat, statTxt);
 
-            if (!GTA5Util.IsAppRun("GTAHax"))
-                GTA5Util.OpenProcessWithWorkDir(GTA5Util.File_Cache_GTAHax);
+            if (!ProcessHelper.IsAppRun("GTAHax"))
+                ProcessHelper.OpenProcessWithWorkDir(FileHelper.File_Cache_GTAHax);
 
             Process pGTAHax = null;
             for (int i = 0; i < 8; i++)

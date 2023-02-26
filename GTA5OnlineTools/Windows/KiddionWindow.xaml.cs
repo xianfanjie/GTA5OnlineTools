@@ -43,7 +43,7 @@ public partial class KiddionWindow
             switch (Name)
             {
                 case "LuaScriptDirectory":
-                    ProcessUtil.OpenLink(FileUtil.Dir_Kiddion_Scripts);
+                    ProcessHelper.OpenLink(FileHelper.Dir_Kiddion_Scripts);
                     break;
                 case "AliceLua":
                     AliceLuaClick();
@@ -61,10 +61,10 @@ public partial class KiddionWindow
     /// </summary>
     private void ClearScriptDir()
     {
-        ProcessUtil.CloseProcess("Kiddion");
+        ProcessHelper.CloseProcess("Kiddion");
 
         if (CheckBox_IsClearScriptDir.IsChecked == true)
-            FileUtil.ClearDirectory(FileUtil.Dir_Kiddion_Scripts);
+            FileHelper.ClearDirectory(FileHelper.Dir_Kiddion_Scripts);
     }
 
     /// <summary>
@@ -74,14 +74,14 @@ public partial class KiddionWindow
     {
         ClearScriptDir();
 
-        var lua = $"{FileUtil.ResFiles}.Kiddion.scripts.AliceLua.zip";
-        var file = $"{FileUtil.Dir_Kiddion_Scripts}\\AliceLua.zip";
+        var lua = $"{FileHelper.ResFiles}.Kiddion.scripts.AliceLua.zip";
+        var file = $"{FileHelper.Dir_Kiddion_Scripts}\\AliceLua.zip";
 
-        FileUtil.ExtractResFile(lua, file);
-        FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Scripts_Readme, FileUtil.File_Kiddion_Scripts_Readme);
+        FileHelper.ExtractResFile(lua, file);
+        FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
 
         using var archive = ZipFile.OpenRead(file);
-        archive.ExtractToDirectory(FileUtil.Dir_Kiddion_Scripts);
+        archive.ExtractToDirectory(FileHelper.Dir_Kiddion_Scripts);
         archive.Dispose();
 
         File.Delete(file);

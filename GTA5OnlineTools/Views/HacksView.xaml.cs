@@ -55,13 +55,13 @@ public partial class HacksView : UserControl
         while (MainWindow.IsAppRunning)
         {
             // 判断 Kiddion 是否运行
-            HacksModel.KiddionIsRun = ProcessUtil.IsAppRun("Kiddion");
+            HacksModel.KiddionIsRun = ProcessHelper.IsAppRun("Kiddion");
             // 判断 GTAHax 是否运行
-            HacksModel.GTAHaxIsRun = ProcessUtil.IsAppRun("GTAHax");
+            HacksModel.GTAHaxIsRun = ProcessHelper.IsAppRun("GTAHax");
             // 判断 BincoHax 是否运行
-            HacksModel.BincoHaxIsRun = ProcessUtil.IsAppRun("BincoHax");
+            HacksModel.BincoHaxIsRun = ProcessHelper.IsAppRun("BincoHax");
             // 判断 LSCHax 是否运行
-            HacksModel.LSCHaxIsRun = ProcessUtil.IsAppRun("LSCHax");
+            HacksModel.LSCHaxIsRun = ProcessHelper.IsAppRun("LSCHax");
 
             Thread.Sleep(1000);
         }
@@ -76,7 +76,7 @@ public partial class HacksView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ProcessUtil.IsGTA5Run())
+        if (ProcessHelper.IsGTA5Run())
         {
             switch (hackName)
             {
@@ -227,11 +227,11 @@ public partial class HacksView : UserControl
     {
         if (!HacksModel.KiddionIsRun)
         {
-            ProcessUtil.CloseProcess("Kiddion");
+            ProcessHelper.CloseProcess("Kiddion");
             return;
         }
 
-        ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Kiddion_Kiddion);
+        ProcessHelper.OpenProcessWithWorkDir(FileHelper.File_Kiddion_Kiddion);
 
         Process pKiddion = null;
         for (int i = 0; i < 8; i++)
@@ -247,7 +247,7 @@ public partial class HacksView : UserControl
             await Task.Delay(250);
         }
 
-        var result = Injector.DLLInjector(pKiddion.Id, FileUtil.File_Kiddion_KiddionChs, false);
+        var result = Injector.DLLInjector(pKiddion.Id, FileHelper.File_Kiddion_KiddionChs, false);
         if (result.IsSuccess)
         {
             NotifierHelper.Show(NotifierType.Success, "Kiddion汉化加载成功");
@@ -264,9 +264,9 @@ public partial class HacksView : UserControl
     private void GTAHaxClick()
     {
         if (HacksModel.GTAHaxIsRun)
-            ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Cache_GTAHax);
+            ProcessHelper.OpenProcessWithWorkDir(FileHelper.File_Cache_GTAHax);
         else
-            ProcessUtil.CloseProcess("GTAHax");
+            ProcessHelper.CloseProcess("GTAHax");
     }
 
     /// <summary>
@@ -275,9 +275,9 @@ public partial class HacksView : UserControl
     private void BincoHaxClick()
     {
         if (HacksModel.BincoHaxIsRun)
-            ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Cache_BincoHax);
+            ProcessHelper.OpenProcessWithWorkDir(FileHelper.File_Cache_BincoHax);
         else
-            ProcessUtil.CloseProcess("BincoHax");
+            ProcessHelper.CloseProcess("BincoHax");
     }
 
     /// <summary>
@@ -286,9 +286,9 @@ public partial class HacksView : UserControl
     private void LSCHaxClick()
     {
         if (HacksModel.LSCHaxIsRun)
-            ProcessUtil.OpenProcessWithWorkDir(FileUtil.File_Cache_LSCHax);
+            ProcessHelper.OpenProcessWithWorkDir(FileHelper.File_Cache_LSCHax);
         else
-            ProcessUtil.CloseProcess("LSCHax");
+            ProcessHelper.CloseProcess("LSCHax");
     }
 
     /// <summary>
@@ -316,7 +316,7 @@ public partial class HacksView : UserControl
             return;
         }
 
-        var result = Injector.DLLInjector(GTA5Process.Id, FileUtil.File_Inject_YimMenu, true);
+        var result = Injector.DLLInjector(GTA5Process.Id, FileHelper.File_Inject_YimMenu, true);
         if (result.IsSuccess)
             NotifierHelper.Show(NotifierType.Success, "YimMenu菜单注入成功");
         else
@@ -330,8 +330,8 @@ public partial class HacksView : UserControl
     /// </summary>
     private void KiddionKey104Click()
     {
-        ProcessUtil.CloseProcess("Kiddion");
-        FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Config, FileUtil.File_Kiddion_Config);
+        ProcessHelper.CloseProcess("Kiddion");
+        FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Config, FileHelper.File_Kiddion_Config);
         NotifierHelper.Show(NotifierType.Success, "切换到《Kiddion [104键]》成功");
     }
 
@@ -340,8 +340,8 @@ public partial class HacksView : UserControl
     /// </summary>
     private void KiddionKey87Click()
     {
-        ProcessUtil.CloseProcess("Kiddion");
-        FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Config87, FileUtil.File_Kiddion_Config);
+        ProcessHelper.CloseProcess("Kiddion");
+        FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Config87, FileHelper.File_Kiddion_Config);
         NotifierHelper.Show(NotifierType.Success, "切换到《Kiddion [87键]》成功");
     }
 
@@ -350,7 +350,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void KiddionConfigDirectoryClick()
     {
-        ProcessUtil.OpenLink(FileUtil.Dir_Kiddion);
+        ProcessHelper.OpenLink(FileHelper.Dir_Kiddion);
     }
 
     /// <summary>
@@ -358,7 +358,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void KiddionScriptsDirectoryClick()
     {
-        ProcessUtil.OpenLink(FileUtil.Dir_Kiddion_Scripts);
+        ProcessHelper.OpenLink(FileHelper.Dir_Kiddion_Scripts);
     }
 
     /// <summary>
@@ -378,7 +378,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void EditKiddionConfigClick()
     {
-        ProcessUtil.Notepad2EditTextFile(FileUtil.File_Kiddion_Config);
+        ProcessHelper.Notepad2EditTextFile(FileHelper.File_Kiddion_Config);
     }
 
     /// <summary>
@@ -386,7 +386,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void EditKiddionThemeClick()
     {
-        ProcessUtil.Notepad2EditTextFile(FileUtil.File_Kiddion_Themes);
+        ProcessHelper.Notepad2EditTextFile(FileHelper.File_Kiddion_Themes);
     }
 
     /// <summary>
@@ -394,7 +394,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void EditKiddionTPClick()
     {
-        ProcessUtil.Notepad2EditTextFile(FileUtil.File_Kiddion_Teleports);
+        ProcessHelper.Notepad2EditTextFile(FileHelper.File_Kiddion_Teleports);
     }
 
     /// <summary>
@@ -402,36 +402,37 @@ public partial class HacksView : UserControl
     /// </summary>
     private void EditKiddionVCClick()
     {
-        ProcessUtil.Notepad2EditTextFile(FileUtil.File_Kiddion_Vehicles);
+        ProcessHelper.Notepad2EditTextFile(FileHelper.File_Kiddion_Vehicles);
     }
 
     /// <summary>
     /// 重置Kiddion配置文件
     /// </summary>
-    private void ResetKiddionConfigClick()
+    private async void ResetKiddionConfigClick()
     {
         try
         {
-            if (MessageBox.Show("你确定要重置Kiddion配置文件吗？\n\n将清空「C:\\ProgramData\\GTA5OnlineTools\\Kiddion」文件夹，如有重要文件请提前备份",
+            if (MessageBox.Show("你确定要重置Kiddion配置文件吗？如有重要文件请提前备份\n\n" +
+                $"程序会自动重置此文件夹：\n{FileHelper.Dir_Kiddion}",
                 "重置Kiddion配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                ProcessUtil.CloseProcess("Kiddion");
-                ProcessUtil.CloseProcess("Notepad2");
-                Thread.Sleep(100);
+                ProcessHelper.CloseProcess("Kiddion");
+                ProcessHelper.CloseProcess("Notepad2");
+                await Task.Delay(100);
 
-                FileUtil.ClearDirectory(FileUtil.Dir_Kiddion);
-                Directory.CreateDirectory(FileUtil.Dir_Kiddion_Scripts);
-                Thread.Sleep(100);
+                FileHelper.ClearDirectory(FileHelper.Dir_Kiddion);
+                Directory.CreateDirectory(FileHelper.Dir_Kiddion_Scripts);
+                await Task.Delay(100);
 
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Kiddion, FileUtil.File_Kiddion_Kiddion);
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_KiddionChs, FileUtil.File_Kiddion_KiddionChs);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Kiddion, FileHelper.File_Kiddion_Kiddion);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_KiddionChs, FileHelper.File_Kiddion_KiddionChs);
 
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Config, FileUtil.File_Kiddion_Config);
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Themes, FileUtil.File_Kiddion_Themes);
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Teleports, FileUtil.File_Kiddion_Teleports);
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Vehicles, FileUtil.File_Kiddion_Vehicles);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Config, FileHelper.File_Kiddion_Config);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Themes, FileHelper.File_Kiddion_Themes);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Teleports, FileHelper.File_Kiddion_Teleports);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Vehicles, FileHelper.File_Kiddion_Vehicles);
 
-                FileUtil.ExtractResFile(FileUtil.Res_Kiddion_Scripts_Readme, FileUtil.File_Kiddion_Scripts_Readme);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
 
                 NotifierHelper.Show(NotifierType.Success, "重置Kiddion配置文件成功");
             }
@@ -480,7 +481,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void EditGTAHaxStatClick()
     {
-        ProcessUtil.Notepad2EditTextFile(FileUtil.File_Cache_Stat);
+        ProcessHelper.Notepad2EditTextFile(FileHelper.File_Cache_Stat);
     }
 
     /// <summary>
@@ -519,7 +520,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void YimMenuDirectoryClick()
     {
-        ProcessUtil.OpenLink(FileUtil.Dir_BigBaseV2);
+        ProcessHelper.OpenLink(FileHelper.Dir_BigBaseV2);
     }
 
     /// <summary>
@@ -527,7 +528,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void EditYimMenuConfigClick()
     {
-        ProcessUtil.Notepad2EditTextFile(FileUtil.Dir_BigBaseV2 + "\\settings.json");
+        ProcessHelper.Notepad2EditTextFile(FileHelper.Dir_BigBaseV2 + "\\settings.json");
     }
 
     /// <summary>
@@ -535,7 +536,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void Xenos64InjectorClick()
     {
-        ProcessUtil.OpenProcess(FileUtil.File_Cache_Xenos64);
+        ProcessHelper.OpenProcess(FileHelper.File_Cache_Xenos64);
     }
 
     /// <summary>
@@ -545,16 +546,16 @@ public partial class HacksView : UserControl
     {
         try
         {
-            if (FileUtil.IsOccupied(FileUtil.File_Inject_YimMenu))
+            if (FileHelper.IsOccupied(FileHelper.File_Inject_YimMenu))
             {
                 NotifierHelper.Show(NotifierType.Warning, "YimMenu被占用，请先卸载YimMenu菜单后再执行操作");
                 return;
             }
 
-            if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileUtil.Dir_BigBaseV2}」文件夹，如有重要文件请提前备份",
+            if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileHelper.Dir_BigBaseV2}」文件夹，如有重要文件请提前备份",
                 "重置YimMenu配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                FileUtil.ClearDirectory(FileUtil.Dir_BigBaseV2);
+                FileHelper.ClearDirectory(FileHelper.Dir_BigBaseV2);
 
                 NotifierHelper.Show(NotifierType.Success, "重置YimMenu配置文件成功");
             }

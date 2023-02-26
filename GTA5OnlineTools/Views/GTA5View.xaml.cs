@@ -47,7 +47,7 @@ public partial class GTA5View : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ProcessUtil.IsGTA5Run())
+        if (ProcessHelper.IsGTA5Run())
         {
             // GTA5内存模块初始化窗口
             if (!Memory.IsInitialized)

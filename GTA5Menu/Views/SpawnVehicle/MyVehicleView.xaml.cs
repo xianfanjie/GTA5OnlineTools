@@ -73,7 +73,7 @@ public partial class MyVehicleView : UserControl
     /// </summary>
     private void SaveConfig()
     {
-        if (Directory.Exists(GTA5Util.Dir_Config))
+        if (Directory.Exists(FileHelper.Dir_Config))
         {
             var vehicles = new List<Vehicles>();
             foreach (ModelInfo info in ListBox_Vehicles.Items)

@@ -5,13 +5,18 @@ public static class IniHelper
     /// <summary>
     /// 默认配置文件路径
     /// </summary>
-    private const string IniPath = "C:\\ProgramData\\GTA5OnlineTools\\Config\\Config.ini";
+    private static string IniPath { get; }
 
     [DllImport("kernel32", CharSet = CharSet.Unicode)]
     private static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retVal, int size, string filePath);
 
     [DllImport("kernel32", CharSet = CharSet.Unicode)]
     private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
+
+    static IniHelper()
+    {
+        IniPath = Path.Combine(FileHelper.Dir_Config, "Config.ini");
+    }
 
     /// <summary>
     /// 读取节点值

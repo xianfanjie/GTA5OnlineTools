@@ -58,7 +58,7 @@ public partial class CustomTeleportWindow
     /// </summary>
     private void SaveConfig()
     {
-        if (Directory.Exists(GTA5Util.Dir_Config))
+        if (Directory.Exists(FileHelper.Dir_Config))
         {
             var teleports = new Teleports
             {

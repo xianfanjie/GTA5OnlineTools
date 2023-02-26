@@ -64,7 +64,7 @@ public partial class UpdateWindow
     /// <param name="e"></param>
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        ProcessUtil.OpenLink(e.Uri.OriginalString);
+        ProcessHelper.OpenLink(e.Uri.OriginalString);
         e.Handled = true;
     }
 
@@ -180,7 +180,7 @@ public partial class UpdateWindow
 
                     App.AppMainMutex.Dispose();
                     Thread.Sleep(1000);
-                    ProcessUtil.OpenProcess(NewPath);
+                    ProcessHelper.OpenProcess(NewPath);
                     Application.Current.Shutdown();
                 }
                 catch (Exception ex)

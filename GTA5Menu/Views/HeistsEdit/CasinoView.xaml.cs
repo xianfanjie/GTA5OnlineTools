@@ -18,7 +18,7 @@ public partial class CasinoView : UserControl
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        GTA5Util.OpenLink(e.Uri.OriginalString);
+        ProcessHelper.OpenLink(e.Uri.OriginalString);
         e.Handled = true;
     }
 

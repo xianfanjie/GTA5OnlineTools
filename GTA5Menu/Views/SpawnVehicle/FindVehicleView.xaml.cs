@@ -46,11 +46,10 @@ public partial class FindVehicleView : UserControl
 
     }
 
-    private void Button_FindVehicle_Click(object sender, RoutedEventArgs e)
+    private void FindVehiclesByModeName()
     {
-        AudioHelper.PlayClickSound();
-
-        FindVehicles.Clear();
+        if (FindVehicles.Count != 0)
+            FindVehicles.Clear();
 
         var name = TextBox_ModelName.Text;
         if (string.IsNullOrWhiteSpace(name))
@@ -58,10 +57,7 @@ public partial class FindVehicleView : UserControl
 
         var result = AllVehicles.FindAll(v => v.Name.Contains(name));
         if (result.Count == 0)
-        {
-            NotifierHelper.Show(NotifierType.Warning, "未搜索到任何载具");
             return;
-        }
 
         foreach (var item in result)
         {
@@ -69,12 +65,9 @@ public partial class FindVehicleView : UserControl
         }
     }
 
-    private void TextBox_ModelName_KeyDown(object sender, KeyEventArgs e)
+    private void TextBox_ModelName_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (e.Key == Key.Enter)
-        {
-            Button_FindVehicle_Click(null, null);
-        }
+        FindVehiclesByModeName();
     }
 
     private async void MenuItem_SpawnVehicleA_Click(object sender, RoutedEventArgs e)

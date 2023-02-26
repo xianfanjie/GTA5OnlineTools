@@ -15,22 +15,13 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <!--  ///////////////////  -->
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <ui:TextBoxHint
-                x:Name="TextBox_ModelName"
-                Width="200"
-                Margin="5,5,0,5"
-                Hint="请输入载具名称"
-                InputLanguageManager.InputLanguage="zh-CN"
-                KeyDown="TextBox_ModelName_KeyDown"
-                ToolTip="按回车键可快速搜索" />
-            <ui:ButtonIcon
-                x:Name="Button_FindVehicle"
-                Click="Button_FindVehicle_Click"
-                Content="搜索"
-                Icon="&#xe8d6;"
-                IsEnabled="{Binding ElementName=TextBox_ModelName, Path=Text, Converter={StaticResource IsNullOrEmpty2Converter}}" />
-        </StackPanel>
+        <ui:TextBoxHint
+            x:Name="TextBox_ModelName"
+            Width="260"
+            Margin="5,5,0,5"
+            Hint="请输入载具名称"
+            InputLanguageManager.InputLanguage="zh-CN"
+            TextChanged="TextBox_ModelName_TextChanged" />
         <!--  ///////////////////  -->
         <ListBox
             x:Name="ListBox_VehicleInfo"

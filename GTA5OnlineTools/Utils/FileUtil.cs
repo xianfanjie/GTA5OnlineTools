@@ -2,96 +2,130 @@
 
 public static class FileUtil
 {
-    /// <summary>
-    /// 默认路径
-    /// </summary>
-    public const string Default = "C:\\ProgramData\\GTA5OnlineTools";
-    /// <summary>
-    /// 资源路径
-    /// </summary>
     public const string ResFiles = "GTA5OnlineTools.Files";
 
-    public const string Dir_Kiddion = $"{Default}\\Kiddion";
-    public const string Dir_Cache = $"{Default}\\Cache";
-    public const string Dir_Config = $"{Default}\\Config";
-    public const string Dir_Inject = $"{Default}\\Inject";
-    public const string Dir_Log = $"{Default}\\Log";
+    public const string Res_Kiddion_Kiddion = $"{ResFiles}.Kiddion.Kiddion.exe";
+    public const string Res_Kiddion_KiddionChs = $"{ResFiles}.Kiddion.KiddionChs.dll";
+    public const string Res_Kiddion_Config = $"{ResFiles}.Kiddion.config.json";
+    public const string Res_Kiddion_Themes = $"{ResFiles}.Kiddion.themes.json";
+    public const string Res_Kiddion_Teleports = $"{ResFiles}.Kiddion.teleports.json";
+    public const string Res_Kiddion_Vehicles = $"{ResFiles}.Kiddion.vehicles.json";
 
-    public const string Dir_Kiddion_Scripts = $"{Dir_Kiddion}\\scripts";
+    public const string Res_Kiddion_Scripts_Readme = $"{ResFiles}.Kiddion.scripts.Readme.api";
+
+    public const string Res_Cache_BincoHax = $"{ResFiles}.Cache.BincoHax.exe";
+    public const string Res_Kiddion_Config87 = $"{ResFiles}.Kiddion.config87.json";
+    public const string Res_Cache_GTAHax = $"{ResFiles}.Cache.GTAHax.exe";
+    public const string Res_Cache_LSCHax = $"{ResFiles}.Cache.LSCHax.exe";
+    public const string Res_Cache_Notepad2 = $"{ResFiles}.Cache.Notepad2.exe";
+    public const string Res_Cache_Stat = $"{ResFiles}.Cache.stat.txt";
+    public const string Res_Cache_Xenos64Profile = $"{ResFiles}.Cache.XenosCurrentProfile.xpr";
+    public const string Res_Cache_Xenos64 = $"{ResFiles}.Cache.Xenos64.exe";
+
+    public const string Res_Inject_YimMenu = $"{ResFiles}.Inject.YimMenu.dll";
 
     public const string Res_Other_SGTA50000 = $"{ResFiles}.Other.SGTA50000";
 
-    public const string Res_Kiddion_Kiddion = $"{ResFiles}.Kiddion.Kiddion.exe";
-    public const string File_Kiddion_Kiddion = $"{Dir_Kiddion}\\Kiddion.exe";
+    //////////////////////////////////////////////////////////////////
 
-    public const string Res_Kiddion_KiddionChs = $"{ResFiles}.Kiddion.KiddionChs.dll";
-    public const string File_Kiddion_KiddionChs = $"{Dir_Kiddion}\\KiddionChs.dll";
+    public static string Dir_MyDocuments { get; private set; }
 
-    public const string Res_Kiddion_Config = $"{ResFiles}.Kiddion.config.json";
-    public const string File_Kiddion_Config = $"{Dir_Kiddion}\\config.json";
+    public static string Dir_Default { get; private set; }
 
-    public const string Res_Kiddion_Config87 = $"{ResFiles}.Kiddion.config87.json";
+    public static string Dir_Kiddion { get; private set; }
+    public static string Dir_Cache { get; private set; }
+    public static string Dir_Config { get; private set; }
+    public static string Dir_Inject { get; private set; }
+    public static string Dir_Log { get; private set; }
 
-    public const string Res_Kiddion_Themes = $"{ResFiles}.Kiddion.themes.json";
-    public const string File_Kiddion_Themes = $"{Dir_Kiddion}\\themes.json";
+    public static string Dir_Kiddion_Scripts { get; private set; }
 
-    public const string Res_Kiddion_Teleports = $"{ResFiles}.Kiddion.teleports.json";
-    public const string File_Kiddion_Teleports = $"{Dir_Kiddion}\\teleports.json";
+    public static string Dir_Log_Crash { get; private set; }
+    public static string Dir_Log_NLog { get; private set; }
 
-    public const string Res_Kiddion_Vehicles = $"{ResFiles}.Kiddion.vehicles.json";
-    public const string File_Kiddion_Vehicles = $"{Dir_Kiddion}\\vehicles.json";
+    public static string File_Kiddion_Kiddion { get; private set; }
+    public static string File_Kiddion_KiddionChs { get; private set; }
+    public static string File_Kiddion_Config { get; private set; }
+    public static string File_Kiddion_Themes { get; private set; }
+    public static string File_Kiddion_Teleports { get; private set; }
+    public static string File_Kiddion_Vehicles { get; private set; }
 
-    public const string Res_Kiddion_Scripts_Readme = $"{ResFiles}.Kiddion.scripts.Readme.api";
-    public const string File_Kiddion_Scripts_Readme = $"{Dir_Kiddion_Scripts}\\Readme.api";
+    public static string File_Kiddion_Scripts_Readme { get; private set; }
 
-    public const string Res_Cache_BincoHax = $"{ResFiles}.Cache.BincoHax.exe";
-    public const string File_Cache_BincoHax = $"{Dir_Cache}\\BincoHax.exe";
+    public static string File_Cache_BincoHax { get; private set; }
+    public static string File_Cache_GTAHax { get; private set; }
+    public static string File_Cache_LSCHax { get; private set; }
+    public static string File_Cache_Notepad2 { get; private set; }
+    public static string File_Cache_Stat { get; private set; }
+    public static string File_Cache_Xenos64 { get; private set; }
+    public static string File_Cache_Xenos64Profile { get; private set; }
 
-    public const string Res_Cache_GTAHax = $"{ResFiles}.Cache.GTAHax.exe";
-    public const string File_Cache_GTAHax = $"{Dir_Cache}\\GTAHax.exe";
+    public static string File_Inject_YimMenu { get; private set; }
 
-    public const string Res_Cache_LSCHax = $"{ResFiles}.Cache.LSCHax.exe";
-    public const string File_Cache_LSCHax = $"{Dir_Cache}\\LSCHax.exe";
-
-    public const string Res_Cache_Notepad2 = $"{ResFiles}.Cache.Notepad2.exe";
-    public const string File_Cache_Notepad2 = $"{Dir_Cache}\\Notepad2.exe";
-
-    public const string Res_Cache_Stat = $"{ResFiles}.Cache.stat.txt";
-    public const string File_Cache_Stat = $"{Dir_Cache}\\stat.txt";
-
-    public const string Res_Cache_Xenos64 = $"{ResFiles}.Cache.Xenos64.exe";
-    public const string File_Cache_Xenos64 = $"{Dir_Cache}\\Xenos64.exe";
-
-    public const string Res_Cache_Xenos64Profile = $"{ResFiles}.Cache.XenosCurrentProfile.xpr";
-    public const string File_Cache_Xenos64Profile = $"{Dir_Cache}\\XenosCurrentProfile.xpr";
-
-    public const string Res_Inject_YimMenu = $"{ResFiles}.Inject.YimMenu.dll";
-    public const string File_Inject_YimMenu = $"{Dir_Inject}\\YimMenu.dll";
+    //////////////////////////////////////////////////////////////////
 
     /// <summary>
     /// 获取当前运行文件完整路径
     /// </summary>
-    public static readonly string File_MainApp = Environment.ProcessPath;
+    public static string File_MainApp { get; private set; }
 
     /// <summary>
     /// 获取当前文件目录，不加文件名及后缀
     /// </summary>
-    public static readonly string Dir_MainApp = AppDomain.CurrentDomain.BaseDirectory;
-
-    /// <summary>
-    /// 我的文档完整路径
-    /// </summary>
-    public static readonly string Dir_MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+    public static string Dir_MainApp { get; private set; }
 
     /// <summary>
     /// AppData完整路径
     /// </summary>
-    public static readonly string Dir_AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+    public static string Dir_AppData { get; private set; }
 
     /// <summary>
     /// YimMenu配置文件路径（BigBaseV2）
     /// </summary>
-    public static readonly string Dir_BigBaseV2 = Path.Combine(Dir_AppData, "BigBaseV2");
+    public static string Dir_BigBaseV2 { get; private set; }
+
+    static FileUtil()
+    {
+        File_MainApp = Environment.ProcessPath;
+        Dir_MainApp = AppDomain.CurrentDomain.BaseDirectory;
+
+        Dir_AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        Dir_MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+        Dir_Default = Path.Combine(Dir_MyDocuments, "GTA5OnlineTools");
+
+        Dir_Kiddion = Path.Combine(Dir_Default, "Kiddion");
+        Dir_Cache = Path.Combine(Dir_Default, "Cache");
+        Dir_Config = Path.Combine(Dir_Default, "Config");
+        Dir_Inject = Path.Combine(Dir_Default, "Inject");
+        Dir_Log = Path.Combine(Dir_Default, "Log");
+
+        Dir_Kiddion_Scripts = Path.Combine(Dir_Kiddion, "scripts");
+
+        Dir_Log_Crash = Path.Combine(Dir_Log, "Crash");
+        Dir_Log_NLog = Path.Combine(Dir_Log, "NLog");
+
+        File_Kiddion_Kiddion = Path.Combine(Dir_Kiddion, "Kiddion.exe");
+        File_Kiddion_KiddionChs = Path.Combine(Dir_Kiddion, "KiddionChs.dll");
+        File_Kiddion_Config = Path.Combine(Dir_Kiddion, "config.json");
+        File_Kiddion_Themes = Path.Combine(Dir_Kiddion, "themes.json");
+        File_Kiddion_Teleports = Path.Combine(Dir_Kiddion, "teleports.json");
+        File_Kiddion_Vehicles = Path.Combine(Dir_Kiddion, "vehicles.json");
+
+        File_Kiddion_Scripts_Readme = Path.Combine(Dir_Kiddion_Scripts, "Readme.api");
+
+        File_Cache_BincoHax = Path.Combine(Dir_Cache, "BincoHax.exe");
+        File_Cache_GTAHax = Path.Combine(Dir_Cache, "GTAHax.exe");
+        File_Cache_LSCHax = Path.Combine(Dir_Cache, "LSCHax.exe");
+        File_Cache_Notepad2 = Path.Combine(Dir_Cache, "Notepad2.exe");
+        File_Cache_Stat = Path.Combine(Dir_Cache, "stat.txt");
+        File_Cache_Xenos64 = Path.Combine(Dir_Cache, "Xenos64.exe");
+        File_Cache_Xenos64Profile = Path.Combine(Dir_Cache, "XenosCurrentProfile.xpr");
+
+        File_Inject_YimMenu = Path.Combine(Dir_Inject, "YimMenu.dll");
+
+        Dir_BigBaseV2 = Path.Combine(Dir_AppData, "BigBaseV2");
+    }
 
     /// <summary>
     /// 文件重命名
@@ -116,7 +150,7 @@ public static class FileUtil
     /// <param name="log">日志内容</param>
     public static void SaveCrashLog(string log)
     {
-        var path = Dir_Log + @"\Crash";
+        var path = Dir_Log_Crash;
         Directory.CreateDirectory(path);
         path += $@"\#Crash#{DateTime.Now:yyyyMMdd_HH-mm-ss_ffff}.log";
         File.WriteAllText(path, log);

@@ -96,7 +96,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void ReleaseDirectoryClick()
     {
-        ProcessUtil.OpenLink(FileUtil.Default);
+        ProcessUtil.OpenLink(FileUtil.Dir_Default);
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ public partial class ToolsView : UserControl
             {
                 ProcessUtil.CloseThirdProcess();
                 await Task.Delay(100);
-                FileUtil.ClearDirectory(FileUtil.Default);
+                FileUtil.ClearDirectory(FileUtil.Dir_Default);
                 await Task.Delay(100);
 
                 App.AppMainMutex.Dispose();

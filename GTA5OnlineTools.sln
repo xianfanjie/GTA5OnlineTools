@@ -24,7 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5HotKey", "GTA5HotKey\GTA5HotKey.csproj", "{4B7591AB-2408-4645-941D-5C51D516BCA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOverlay", "GameOverlay\GameOverlay.csproj", "{206FEE5B-B0AC-40A6-AC9E-D7095B912699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameOverlay", "GameOverlay\GameOverlay.csproj", "{206FEE5B-B0AC-40A6-AC9E-D7095B912699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatConverter", "FormatConverter\FormatConverter.csproj", "{3A372EA6-09BE-489E-B10A-D5D5884AD32B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{A204EFD3-F872-493B-8671-39CA58D5D064}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,9 +72,17 @@ Global
 		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Debug|x64.Build.0 = Debug|x64
 		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Release|x64.ActiveCfg = Release|x64
 		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Release|x64.Build.0 = Release|x64
+		{3A372EA6-09BE-489E-B10A-D5D5884AD32B}.Debug|x64.ActiveCfg = Debug|x64
+		{3A372EA6-09BE-489E-B10A-D5D5884AD32B}.Debug|x64.Build.0 = Debug|x64
+		{3A372EA6-09BE-489E-B10A-D5D5884AD32B}.Release|x64.ActiveCfg = Release|x64
+		{3A372EA6-09BE-489E-B10A-D5D5884AD32B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{86788F13-9FF1-4DB8-90DF-4262B4861157} = {A204EFD3-F872-493B-8671-39CA58D5D064}
+		{3A372EA6-09BE-489E-B10A-D5D5884AD32B} = {A204EFD3-F872-493B-8671-39CA58D5D064}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65D92033-0449-42C0-BB75-25E8DD89383E}

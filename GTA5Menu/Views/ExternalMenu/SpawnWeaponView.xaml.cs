@@ -1,9 +1,9 @@
 ﻿using GTA5Menu.Data;
 
-using GTA5Core.Feature;
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Weapons;
 using GTA5Core.RAGE.Onlines;
+using GTA5Core.Feature;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;

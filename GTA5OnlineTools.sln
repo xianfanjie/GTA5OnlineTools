@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5Inject", "GTA5Inject\GT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{86788F13-9FF1-4DB8-90DF-4262B4861157}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{D2113643-34EC-46C1-B1C3-EC087811A865}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root", "Root", "{D2113643-34EC-46C1-B1C3-EC087811A865}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection

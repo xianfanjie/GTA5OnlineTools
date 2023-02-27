@@ -55,7 +55,7 @@ public partial class FindVehicleView : UserControl
         if (string.IsNullOrWhiteSpace(name))
             return;
 
-        var result = AllVehicles.FindAll(v => v.Name.Contains(name));
+        var result = AllVehicles.FindAll(v => v.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase));
         if (result.Count == 0)
             return;
 

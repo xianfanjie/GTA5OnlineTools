@@ -23,9 +23,9 @@ public static class Teleport
     /// <summary>
     /// 传送到Blips
     /// </summary>
-    public static void ToBlips(int blipID)
+    public static void ToBlips(int blipId)
     {
-        SetTeleportPosition(GetBilpPosition(new int[] { blipID }));
+        SetTeleportPosition(GetBilpPosition(new int[] { blipId }));
     }
 
     /// <summary>

@@ -36,6 +36,7 @@ public static class Injector
             }
 
             var dllName = Path.GetFileName(dllPath);
+            var bytes = Encoding.Unicode.GetBytes(dllPath);
 
             var process = Process.GetProcessById(pid);
 
@@ -52,15 +53,18 @@ public static class Injector
                 return result;
             }
 
-            var dllSpace = Win32.VirtualAllocEx(procHandle, IntPtr.Zero, (IntPtr)dllPath.Length, AllocationType.Reserve | AllocationType.Commit, MemoryProtection.ExecuteReadWrite);
+            var dllSpace = Win32.VirtualAllocEx(procHandle, IntPtr.Zero, (IntPtr)bytes.Length, AllocationType.Reserve | AllocationType.Commit, MemoryProtection.ExecuteReadWrite);
             if (dllSpace == IntPtr.Zero)
             {
-                result.Content = $"为进程 {process.ProcessName} 申请内存空间 {dllPath.Length} 失败";
+                result.Content = $"为进程 {process.ProcessName} 申请内存空间 {bytes.Length} 失败";
                 return result;
             }
 
-            var bytes = Encoding.ASCII.GetBytes(dllPath);
-            Win32.WriteProcessMemory(procHandle, dllSpace, bytes, bytes.Length, out _);
+            if (!Win32.WriteProcessMemory(procHandle, dllSpace, bytes, bytes.Length, out _))
+            {
+                result.Content = $"进程 {process.ProcessName} 写入DLL失败";
+                return result;
+            }
 
             var kernel32Handle = Win32.GetModuleHandle("Kernel32.dll");
             if (kernel32Handle == IntPtr.Zero)
@@ -69,10 +73,10 @@ public static class Injector
                 return result;
             }
 
-            var loadLibraryAAddress = Win32.GetProcAddress(kernel32Handle, "LoadLibraryA");
+            var loadLibraryAAddress = Win32.GetProcAddress(kernel32Handle, "LoadLibraryW");
             if (loadLibraryAAddress == IntPtr.Zero)
             {
-                result.Content = $"获取进程 {process.ProcessName}  LoadLibraryA 函数入口地址失败";
+                result.Content = $"获取进程 {process.ProcessName}  LoadLibraryW 函数入口地址失败";
                 return result;
             }
 

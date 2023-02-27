@@ -26,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5HotKey", "GTA5HotKey\GT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameOverlay", "GameOverlay\GameOverlay.csproj", "{206FEE5B-B0AC-40A6-AC9E-D7095B912699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatConverter", "FormatConverter\FormatConverter.csproj", "{3A372EA6-09BE-489E-B10A-D5D5884AD32B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormatConverter", "FormatConverter\FormatConverter.csproj", "{3A372EA6-09BE-489E-B10A-D5D5884AD32B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{A204EFD3-F872-493B-8671-39CA58D5D064}"
 EndProject

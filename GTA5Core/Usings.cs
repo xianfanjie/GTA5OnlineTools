@@ -1,5 +1,6 @@
 ﻿global using System;
 global using System.Text;
+global using System.Linq;
 global using System.Windows;
 global using System.Numerics;
 global using System.Diagnostics;

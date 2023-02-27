@@ -28,6 +28,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="游戏厅", Value=740 },
         new OnlineInfo(){ Name="虎鲸", Value=760 },
         new OnlineInfo(){ Name="车友会", Value=777 },
+        new OnlineInfo(){ Name="改装铺", Value=779 },
         new OnlineInfo(){ Name="事务所", Value=826 },
     };
 

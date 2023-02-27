@@ -25,7 +25,7 @@ public static class Teleport
     /// </summary>
     public static void ToBlips(int blipID)
     {
-        SetTeleportPosition(CustomObjectivePosition(blipID));
+        SetTeleportPosition(GetBilpPosition(new int[] { blipID }));
     }
 
     /// <summary>
@@ -66,32 +66,70 @@ public static class Teleport
     }
 
     /// <summary>
-    /// 获取导航点坐标
+    /// 获取Bilp坐标
     /// </summary>
-    public static Vector3 WaypointPosition()
+    public static Vector3 GetBilpPosition(int[] blipIds, bool isUser = false)
     {
-        Vector3 vector3 = Vector3.Zero;
-        int dwIcon, dwColor;
-
-        for (int i = 2000; i > 1; i--)
+        for (int i = 1; i <= 2000; i++)
         {
             long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
-            if (pBlip <= 0)
+            if (!Memory.IsValid(pBlip))
                 continue;
 
-            dwIcon = Memory.Read<int>(pBlip + 0x40);
-            dwColor = Memory.Read<int>(pBlip + 0x48);
+            var dwIcon = Memory.Read<int>(pBlip + 0x40);
 
-            if (dwIcon == 8 && dwColor == 84)
+            if (blipIds.Contains(dwIcon))
             {
-                vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-                vector3.Z = vector3.Z == 20.0f ? -225.0f : vector3.Z + 1.0f;
+                var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
+
+                if (isUser)
+                    vector3.Z = vector3.Z == 20.0f ? -225.0f : vector3.Z + 1.0f;
+                else
+                    vector3.Z += +1.0f;
 
                 return vector3;
             }
         }
 
-        return vector3;
+        return Vector3.Zero;
+    }
+
+    /// <summary>
+    /// 获取Bilp坐标
+    /// </summary>
+    public static Vector3 GetBilpPosition(int[] blipIds, byte[] blipColors, bool isUser = false)
+    {
+        for (int i = 1; i <= 2000; i++)
+        {
+            long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
+            if (!Memory.IsValid(pBlip))
+                continue;
+
+            var dwIcon = Memory.Read<int>(pBlip + 0x40);
+            var dwColor = Memory.Read<byte>(pBlip + 0x48);
+
+            if (blipIds.Contains(dwIcon) && blipColors.Contains(dwColor))
+            {
+                var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
+
+                if (isUser)
+                    vector3.Z = vector3.Z == 20.0f ? -225.0f : vector3.Z + 1.0f;
+                else
+                    vector3.Z += +1.0f;
+
+                return vector3;
+            }
+        }
+
+        return Vector3.Zero;
+    }
+
+    /// <summary>
+    /// 获取导航点坐标
+    /// </summary>
+    public static Vector3 WaypointPosition()
+    {
+        return GetBilpPosition(new int[] { 8 }, new byte[] { 84 }, true);
     }
 
     /// <summary>
@@ -99,85 +137,19 @@ public static class Teleport
     /// </summary>
     public static Vector3 ObjectivePosition()
     {
-        Vector3 vector3 = Vector3.Zero;
-        int dwIcon, dwColor;
+        Vector3 vector3;
 
-        for (int i = 2000; i > 1; i--)
-        {
-            long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
+        vector3 = GetBilpPosition(new int[] { 1 }, new byte[] { 5, 60, 66 });
+        if (vector3 != Vector3.Zero)
+            return vector3;
 
-            dwIcon = Memory.Read<int>(pBlip + 0x40);
-            dwColor = Memory.Read<int>(pBlip + 0x48);
+        vector3 = GetBilpPosition(new int[] { 1, 225, 427, 478, 501, 523, 556 }, new byte[] { 1, 2, 3, 54, 78 });
+        if (vector3 != Vector3.Zero)
+            return vector3;
 
-            if (dwIcon == 1 &&
-                (dwColor == 5 || dwColor == 60 || dwColor == 66))
-            {
-                vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-                vector3.Z += +1.0f;
-
-                return vector3;
-            }
-        }
-
-        for (int i = 2000; i > 1; i--)
-        {
-            long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
-
-            dwIcon = Memory.Read<int>(pBlip + 0x40);
-            dwColor = Memory.Read<int>(pBlip + 0x48);
-
-            if ((dwIcon == 1 || dwIcon == 225 || dwIcon == 427 || dwIcon == 478 || dwIcon == 501 || dwIcon == 523 || dwIcon == 556) &&
-                (dwColor == 1 || dwColor == 2 || dwColor == 3 || dwColor == 54 || dwColor == 78))
-            {
-                vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-                vector3.Z += +1.0f;
-
-                return vector3;
-            }
-        }
-
-        for (int i = 2000; i > 1; i--)
-        {
-            long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
-
-            dwIcon = Memory.Read<int>(pBlip + 0x40);
-            dwColor = Memory.Read<int>(pBlip + 0x48);
-
-            if ((dwIcon == 432 || dwIcon == 443) &&
-                dwColor == 59)
-            {
-                vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-                vector3.Z += +1.0f;
-
-                return vector3;
-            }
-        }
-
-        return vector3;
-    }
-
-    /// <summary>
-    /// 获取自定义目标点坐标
-    /// </summary>
-    public static Vector3 CustomObjectivePosition(int blipID)
-    {
-        Vector3 vector3 = Vector3.Zero;
-        int dwIcon;
-
-        for (int i = 2000; i > 1; i--)
-        {
-            long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
-
-            dwIcon = Memory.Read<int>(pBlip + 0x40);
-
-            if (dwIcon == blipID)
-            {
-                vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-                vector3.Z = vector3.Z == 20.0f ? -225.0f : vector3.Z + 1.0f;
-
-                return vector3;
-            }
-        }
+        vector3 = GetBilpPosition(new int[] { 432, 443 }, new byte[] { 59 });
+        if (vector3 != Vector3.Zero)
+            return vector3;
 
         return vector3;
     }
@@ -185,7 +157,6 @@ public static class Teleport
     /// <summary>
     /// 坐标向前微调
     /// </summary>
-    /// <param name="distance">微调距离</param>
     public static void MoveFoward(float distance)
     {
         long pCPed = Globals.GetCPed();
@@ -287,7 +258,7 @@ public static class Teleport
     /// <summary>
     /// 传送到导航点（精准）
     /// </summary>
-    public static void ToWaypointSuper()
+    public static async void ToWaypointSuper()
     {
         Vector3 coords = WaypointPosition();
         if (coords != Vector3.Zero)
@@ -310,7 +281,7 @@ public static class Teleport
                         break;
                     }
 
-                    Thread.Sleep(100);
+                    await Task.Delay(100);
                 }
 
                 if (!isFindGround)

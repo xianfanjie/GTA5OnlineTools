@@ -9,10 +9,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var bytes1 = Encoding.UTF8.GetBytes("F:\\Downloads\\新建文件夹\\YimMenu.dll");
-        Console.WriteLine(bytes1.Length);
-        var bytes2 = Encoding.UTF8.GetBytes("F:\\Downloads\\YimMenu.dll");
-        Console.WriteLine(bytes2.Length);
+        //var bytes1 = Encoding.Unicode.GetBytes("F:\\Downloads\\新建文件夹\\YimMenu.dll");
+        //Console.WriteLine(bytes1.Length);
+        //var bytes2 = Encoding.Unicode.GetBytes("F:\\Downloads\\YimMenu.dll");
+        //Console.WriteLine(bytes2.Length);
 
         Console.WriteLine("操作结束，按任意键继续！");
         Console.ReadLine();

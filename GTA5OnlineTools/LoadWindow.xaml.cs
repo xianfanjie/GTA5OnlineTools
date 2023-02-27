@@ -85,7 +85,6 @@ public partial class LoadWindow
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Stat, FileHelper.File_Cache_Stat);
 
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Notepad2, FileHelper.File_Cache_Notepad2);
-
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64, FileHelper.File_Cache_Xenos64);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64Profile, FileHelper.File_Cache_Xenos64Profile);
 
@@ -127,14 +126,14 @@ public partial class LoadWindow
     }
 
     [RelayCommand]
-    private void ButtonClick(string name)
+    private async void ButtonClick(string name)
     {
         switch (name)
         {
             case "InitDefaultPath":
                 {
                     FileHelper.ClearDirectory(FileHelper.Dir_Default);
-                    Thread.Sleep(100);
+                    await Task.Delay(100);
 
                     App.AppMainMutex.Dispose();
                     ProcessHelper.OpenProcess(FileUtil.File_MainApp);

@@ -17,8 +17,8 @@ public static class FileHelper
     public const string Res_Kiddion_Config87 = $"{ResFiles}.Kiddion.config87.json";
     public const string Res_Cache_GTAHax = $"{ResFiles}.Cache.GTAHax.exe";
     public const string Res_Cache_LSCHax = $"{ResFiles}.Cache.LSCHax.exe";
-    public const string Res_Cache_Notepad2 = $"{ResFiles}.Cache.Notepad2.exe";
     public const string Res_Cache_Stat = $"{ResFiles}.Cache.stat.txt";
+    public const string Res_Cache_Notepad2 = $"{ResFiles}.Cache.Notepad2.exe";
     public const string Res_Cache_Xenos64Profile = $"{ResFiles}.Cache.XenosCurrentProfile.xpr";
     public const string Res_Cache_Xenos64 = $"{ResFiles}.Cache.Xenos64.exe";
 
@@ -55,8 +55,8 @@ public static class FileHelper
     public static string File_Cache_BincoHax { get; private set; }
     public static string File_Cache_GTAHax { get; private set; }
     public static string File_Cache_LSCHax { get; private set; }
-    public static string File_Cache_Notepad2 { get; private set; }
     public static string File_Cache_Stat { get; private set; }
+    public static string File_Cache_Notepad2 { get; private set; }
     public static string File_Cache_Xenos64 { get; private set; }
     public static string File_Cache_Xenos64Profile { get; private set; }
 
@@ -98,8 +98,8 @@ public static class FileHelper
         File_Cache_BincoHax = Path.Combine(Dir_Cache, "BincoHax.exe");
         File_Cache_GTAHax = Path.Combine(Dir_Cache, "GTAHax.exe");
         File_Cache_LSCHax = Path.Combine(Dir_Cache, "LSCHax.exe");
-        File_Cache_Notepad2 = Path.Combine(Dir_Cache, "Notepad2.exe");
         File_Cache_Stat = Path.Combine(Dir_Cache, "stat.txt");
+        File_Cache_Notepad2 = Path.Combine(Dir_Cache, "Notepad2.exe");
         File_Cache_Xenos64 = Path.Combine(Dir_Cache, "Xenos64.exe");
         File_Cache_Xenos64Profile = Path.Combine(Dir_Cache, "XenosCurrentProfile.xpr");
 
@@ -158,6 +158,9 @@ public static class FileHelper
     /// <returns></returns>
     public static bool IsOccupied(string filePath)
     {
+        if (!File.Exists(filePath))
+            return false;
+
         FileStream stream = null;
 
         try

@@ -8,7 +8,7 @@
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_CustomTeleport"
     Title="GTA5线上小助手 - 自定义坐标传送"
-    Width="700"
+    Width="1000"
     Height="600"
     Closing="Window_CustomTeleport_Closing"
     Loaded="Window_CustomTeleport_Loaded"
@@ -34,7 +34,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
         <!--  //////////////////////  -->
         <ListBox
@@ -49,23 +49,18 @@
             ToolTip="双击选中项即可快捷传送">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">
-                    <Border
-                        Margin="0,0,0,1"
-                        BorderBrush="Gray"
-                        BorderThickness="0,0,0,1">
-                        <StackPanel Margin="0,5,0,5" VerticalAlignment="Center">
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                FontSize="14"
-                                FontWeight="Bold"
-                                Text="{Binding Name}" />
-                            <UniformGrid Columns="3">
-                                <TextBlock Text="{Binding X, StringFormat='X: {0:0.000}'}" />
-                                <TextBlock Text="{Binding X, StringFormat='Y: {0:0.000}'}" />
-                                <TextBlock Text="{Binding X, StringFormat='Z: {0:0.000}'}" />
-                            </UniformGrid>
+                    <StackPanel Margin="5" VerticalAlignment="Center">
+                        <TextBlock
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Text="{Binding Name}"
+                            TextTrimming="CharacterEllipsis" />
+                        <StackPanel Margin="0,5,0,0" TextElement.FontSize="10">
+                            <TextBlock Text="{Binding X, StringFormat='X: {0:0.000}'}" />
+                            <TextBlock Margin="0,3,0,3" Text="{Binding Y, StringFormat='Y: {0:0.000}'}" />
+                            <TextBlock Text="{Binding Z, StringFormat='Z: {0:0.000}'}" />
                         </StackPanel>
-                    </Border>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

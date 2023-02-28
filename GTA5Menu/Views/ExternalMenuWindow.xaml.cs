@@ -125,9 +125,9 @@ public partial class ExternalMenuWindow
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上选项", ViewName = "OnlineOptionView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上载具", ViewName = "SpawnVehicleView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上武器", ViewName = "SpawnWeaponView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "随身技工", ViewName = "DriverButlerView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "自定传送", ViewName = "CustomTeleportView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "Blip传送", ViewName = "BlipTeleportView" });
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "随身技工", ViewName = "DriverButlerView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "任务帮手", ViewName = "JobHelperView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "外部ESP", ViewName = "ExternalOverlayView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "玩家列表", ViewName = "PlayerListView" });
@@ -162,14 +162,14 @@ public partial class ExternalMenuWindow
             case "SpawnWeaponView":
                 ContentControl_Main.Content = SpawnWeaponView;
                 break;
-            case "DriverButlerView":
-                ContentControl_Main.Content = DriverButlerView;
-                break;
             case "CustomTeleportView":
                 ContentControl_Main.Content = CustomTeleportView;
                 break;
             case "BlipTeleportView":
                 ContentControl_Main.Content = BlipTeleportView;
+                break;
+            case "DriverButlerView":
+                ContentControl_Main.Content = DriverButlerView;
                 break;
             case "JobHelperView":
                 ContentControl_Main.Content = JobHelperView;

@@ -31,7 +31,7 @@
             Title="Custom Teleport"
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="CustomTeleport"
-            Content="自定义传送"
+            Content="自定义坐标传送"
             Icon="&#xe65d;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
@@ -39,7 +39,7 @@
             Title="Custom Blip"
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="CustomBlip"
-            Content="自定义Blip"
+            Content="自定义Blip传送"
             Icon="&#xe627;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 

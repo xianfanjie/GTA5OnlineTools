@@ -1,0 +1,58 @@
+﻿<UserControl
+    x:Class="GTA5Menu.Views.ExternalMenu.DriverButlerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
+    d:DesignHeight="600"
+    d:DesignWidth="900"
+    mc:Ignorable="d">
+
+    <DockPanel>
+        <StackPanel
+            Margin="5"
+            DockPanel.Dock="Top"
+            Orientation="Horizontal">
+            <Button
+                x:Name="Button_RefushPersonalVehicleList"
+                Click="Button_RefushPersonalVehicleList_Click"
+                Content="刷新列表" />
+            <Button
+                x:Name="Button_SpawnPersonalVehicle"
+                Click="Button_SpawnPersonalVehicle_Click"
+                Content="呼叫个人载具" />
+            <Button
+                x:Name="Button_GetInOnlinePV"
+                Click="Button_GetInOnlinePV_Click"
+                Content="坐进个人载具" />
+        </StackPanel>
+        <!--  //////////////////  -->
+        <ListBox
+            x:Name="ListBox_PersonalVehicle"
+            Margin="5,0,5,5"
+            DockPanel.Dock="Bottom"
+            ItemsSource="{Binding PerVehInfos}"
+            MouseDoubleClick="ListBox_PersonalVehicle_MouseDoubleClick"
+            Style="{StaticResource ListBoxStyle_PerVehPreview}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type ListBoxItem}">
+                    <DockPanel>
+                        <Image
+                            Height="50"
+                            Margin="5,5,10,5"
+                            DockPanel.Dock="Left"
+                            Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
+                            Stretch="Uniform"
+                            Style="{StaticResource ImageStyle_HighQuality}" />
+                        <StackPanel VerticalAlignment="Center" DockPanel.Dock="Right">
+                            <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Margin="0,5,0,0" Text="{Binding Plate}" />
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+
+</UserControl>

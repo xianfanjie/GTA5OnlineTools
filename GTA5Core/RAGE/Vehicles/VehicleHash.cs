@@ -2,18 +2,23 @@
 
 public static class VehicleHash
 {
-    public class VehicleClass
+    static VehicleHash()
     {
-        public string Icon { get; set; }
-        public string Name { get; set; }
-        public List<VehicleInfo> VehicleInfos { get; set; }
-    }
+        // 填充全部载具
+        foreach (var vClass in VehicleHash.VehicleClasses)
+        {
+            if (vClass.Name == "我的收藏")
+                continue;
 
-    public class VehicleInfo
-    {
-        public string Name { get; set; }
-        public string Value { get; set; }
-        public int[] Mod { get; set; }
+            foreach (var info in vClass.VehicleInfos)
+            {
+                info.Class = vClass.Name;
+                info.Hash = RAGEHelper.JOAAT(info.Value);
+                info.Image = RAGEHelper.GetVehicleImage(info.Value);
+
+                AllVehicles.Add(info);
+            }
+        }
     }
 
     /// <summary>
@@ -27,7 +32,7 @@ public static class VehicleHash
     /// <summary>
     /// 0 当前分类: 小型汽车
     /// </summary>
-    public static List<VehicleInfo> Compacts = new()
+    public static readonly List<VehicleInfo> Compacts = new()
     {
         new VehicleInfo(){ Name="麦克斯韦 反社会", Value="asbo", Mod=new int[50]{ 15,6,0,12,8,4,2,11,4,4,6,4,3,3,58,4,5,0,0,0,0,1,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0 } },
         new VehicleInfo(){ Name="丁卡 旅行家", Value="blista", Mod=new int[50]{ 0,1,1,1,1,0,0,1,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -52,7 +57,7 @@ public static class VehicleHash
     /// <summary>
     /// 1 当前分类: 轿车
     /// </summary>
-    public static List<VehicleInfo> Sedans = new()
+    public static readonly List<VehicleInfo> Sedans = new()
     {
         new VehicleInfo(){ Name="绝致 海致", Value="asea", Mod=new int[50]{ 1,4,0,0,1,0,0,3,1,1,2,4,3,3,58,4,5,0,0,0,0,1,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="绝致 海致", Value="asea2", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -97,7 +102,7 @@ public static class VehicleHash
     /// <summary>
     /// 2 当前分类: SUV
     /// </summary>
-    public static List<VehicleInfo> SUVs = new()
+    public static readonly List<VehicleInfo> SUVs = new()
     {
         new VehicleInfo(){ Name="菲斯特 宇航", Value="astron", Mod=new int[50]{ 9,8,8,9,5,15,3,15,2,0,2,5,4,4,58,3,5,0,0,0,0,1,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0 } },
         new VehicleInfo(){ Name="悠游 行者", Value="baller", Mod=new int[50]{ 0,2,1,1,1,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -144,7 +149,7 @@ public static class VehicleHash
     /// <summary>
     /// 3 当前分类: 轿跑车
     /// </summary>
-    public static List<VehicleInfo> Coupes = new()
+    public static readonly List<VehicleInfo> Coupes = new()
     {
         new VehicleInfo(){ Name="埃努斯 至尊慧眼敞篷版", Value="cogcabrio", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="浪子 典范", Value="exemplar", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -168,7 +173,7 @@ public static class VehicleHash
     /// <summary>
     /// 4 当前分类: 肌肉车
     /// </summary>
-    public static List<VehicleInfo> Muscle = new()
+    public static readonly List<VehicleInfo> Muscle = new()
     {
         new VehicleInfo(){ Name="威皮 刀锋", Value="blade", Mod=new int[50]{ 2,1,1,0,1,1,1,4,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="卡拉斯科 百老汇", Value="broadway", Mod=new int[50]{ 0,6,5,5,4,4,0,6,5,3,2,4,3,3,58,5,5,0,0,0,0,1,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0 } },
@@ -257,7 +262,7 @@ public static class VehicleHash
     /// <summary>
     /// 5 当前分类: 经典跑车
     /// </summary>
-    public static List<VehicleInfo> SportsClassics = new()
+    public static readonly List<VehicleInfo> SportsClassics = new()
     {
         new VehicleInfo(){ Name="欧斯洛 炽焰", Value="ardent", Mod=new int[50]{ 3,5,1,0,1,0,0,6,2,0,6,4,3,4,58,3,5,0,0,0,0,1,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0 } },
         new VehicleInfo(){ Name="亚班尼 罗斯福", Value="btype", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -309,7 +314,7 @@ public static class VehicleHash
     /// <summary>
     /// 6 当前分类: 跑车
     /// </summary>
-    public static List<VehicleInfo> Sports = new()
+    public static readonly List<VehicleInfo> Sports = new()
     {
         new VehicleInfo(){ Name="亚班尼 阿尔法", Value="alpha", Mod=new int[50]{ 4,1,0,1,2,0,0,2,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="冒险家 女妖", Value="banshee", Mod=new int[50]{ 5,1,0,0,2,0,0,2,0,0,0,5,4,4,58,5,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,4,0,1,0,0,0,0,0,0,0,0,0,0,0,17,0 } },
@@ -417,7 +422,7 @@ public static class VehicleHash
     /// <summary>
     /// 7 当前分类: 超级跑车
     /// </summary>
-    public static List<VehicleInfo> Super = new()
+    public static readonly List<VehicleInfo> Super = new()
     {
         new VehicleInfo(){ Name="特卢菲 灵蛇", Value="adder", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="傲弗拉 独裁者", Value="autarch", Mod=new int[50]{ 16,11,2,4,7,0,0,8,1,5,0,4,3,3,58,4,5,0,0,0,0,1,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -479,7 +484,7 @@ public static class VehicleHash
     /// <summary>
     /// 8 当前分类: 摩托车
     /// </summary>
-    public static List<VehicleInfo> Motorcycles = new()
+    public static readonly List<VehicleInfo> Motorcycles = new()
     {
         new VehicleInfo(){ Name="丁卡 街头恶魔", Value="akuma", Mod=new int[50]{ 0,0,0,0,2,0,0,0,0,0,0,4,3,3,58,0,5,0,0,0,0,1,0,72,72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="LCC 阿瓦鲁斯", Value="avarus", Mod=new int[50]{ 12,2,2,8,3,3,1,0,1,0,5,4,3,3,58,0,5,0,0,0,0,1,0,72,72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0 } },
@@ -544,7 +549,7 @@ public static class VehicleHash
     /// <summary>
     /// 9 当前分类: 越野车
     /// </summary>
-    public static List<VehicleInfo> OffRoad = new()
+    public static readonly List<VehicleInfo> OffRoad = new()
     {
         new VehicleInfo(){ Name="毕福 沙丘征服者", Value="bfinjection", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="毕福 必浮塔", Value="bifta", Mod=new int[50]{ 3,0,0,1,3,1,0,0,0,0,2,4,3,3,58,0,5,0,0,0,0,1,0,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -613,7 +618,7 @@ public static class VehicleHash
     /// <summary>
     /// 10 当前分类: 工业用车
     /// </summary>
-    public static List<VehicleInfo> Industrial = new()
+    public static readonly List<VehicleInfo> Industrial = new()
     {
         new VehicleInfo(){ Name="HVY 推土机", Value="bulldozer", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="HVY 钻洞机", Value="cutter", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -631,7 +636,7 @@ public static class VehicleHash
     /// <summary>
     /// 11 当前分类: 公共事业用车
     /// </summary>
-    public static List<VehicleInfo> Utility = new()
+    public static readonly List<VehicleInfo> Utility = new()
     {
         new VehicleInfo(){ Name="行李拖车", Value="airtug", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="军用拖车", Value="armytanker", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -682,7 +687,7 @@ public static class VehicleHash
     /// <summary>
     /// 12 当前分类: 厢型车
     /// </summary>
-    public static List<VehicleInfo> Vans = new()
+    public static readonly List<VehicleInfo> Vans = new()
     {
         new VehicleInfo(){ Name="冒险家 野牛", Value="bison", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="冒险家 野牛", Value="bison2", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -727,7 +732,7 @@ public static class VehicleHash
     /// <summary>
     /// 13 当前分类: 自行车
     /// </summary>
-    public static List<VehicleInfo> Cycles = new()
+    public static readonly List<VehicleInfo> Cycles = new()
     {
         new VehicleInfo(){ Name="BMX", Value="bmx", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="巡航者", Value="cruiser", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -741,7 +746,7 @@ public static class VehicleHash
     /// <summary>
     /// 14 当前分类: 船
     /// </summary>
-    public static List<VehicleInfo> Boats = new()
+    public static readonly List<VehicleInfo> Boats = new()
     {
         new VehicleInfo(){ Name="海怪 阿维萨", Value="avisa", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="长崎 小艇", Value="dinghy", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -774,7 +779,7 @@ public static class VehicleHash
     /// <summary>
     /// 15 当前分类: 直升机
     /// </summary>
-    public static List<VehicleInfo> Helicopters = new()
+    public static readonly List<VehicleInfo> Helicopters = new()
     {
         new VehicleInfo(){ Name="阿库拉", Value="akula", Mod=new int[50]{ 0,0,0,0,0,2,0,0,0,4,1,4,3,0,0,0,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0 } },
         new VehicleInfo(){ Name="歼灭者", Value="annihilator", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -809,7 +814,7 @@ public static class VehicleHash
     /// <summary>
     /// 16 当前分类: 飞机
     /// </summary>
-    public static List<VehicleInfo> Planes = new()
+    public static readonly List<VehicleInfo> Planes = new()
     {
         new VehicleInfo(){ Name="RO-86 阿尔科诺斯特", Value="alkonost", Mod=new int[50]{ 0,2,0,0,0,0,0,0,0,4,0,4,3,0,0,0,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0 } },
         new VehicleInfo(){ Name="白金汉 阿尔法-Z1", Value="alphaz1", Mod=new int[50]{ 0,2,0,0,0,0,0,0,0,0,0,4,3,0,0,0,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0 } },
@@ -856,7 +861,7 @@ public static class VehicleHash
     /// <summary>
     /// 17 当前分类: 服务用车
     /// </summary>
-    public static List<VehicleInfo> Service = new()
+    public static readonly List<VehicleInfo> Service = new()
     {
         new VehicleInfo(){ Name="机场巴士", Value="airbus", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="MTL 布里凯德", Value="brickade", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -876,7 +881,7 @@ public static class VehicleHash
     /// <summary>
     /// 18 当前分类: 特种车
     /// </summary>
-    public static List<VehicleInfo> Emergency = new()
+    public static readonly List<VehicleInfo> Emergency = new()
     {
         new VehicleInfo(){ Name="救护车", Value="ambulance", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="FIB", Value="fbi", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,4,3,3,58,4,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -902,7 +907,7 @@ public static class VehicleHash
     /// <summary>
     /// 19 当前分类: 军用车
     /// </summary>
-    public static List<VehicleInfo> Military = new()
+    public static readonly List<VehicleInfo> Military = new()
     {
         new VehicleInfo(){ Name="HVY APC", Value="apc", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,1,1,4,3,3,58,0,5,0,0,0,0,1,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0 } },
         new VehicleInfo(){ Name="地霸王", Value="barracks", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -926,7 +931,7 @@ public static class VehicleHash
     /// <summary>
     /// 20 当前分类: 商用车
     /// </summary>
-    public static List<VehicleInfo> Commercial = new()
+    public static readonly List<VehicleInfo> Commercial = new()
     {
         new VehicleInfo(){ Name="威皮 班森", Value="benson", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="HVY 倾卸车", Value="biff", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -954,7 +959,7 @@ public static class VehicleHash
     /// <summary>
     /// 21 当前分类: 火车
     /// </summary>
-    public static List<VehicleInfo> Trains = new()
+    public static readonly List<VehicleInfo> Trains = new()
     {
         new VehicleInfo(){ Name="缆车", Value="cablecar", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
         new VehicleInfo(){ Name="货运列车", Value="freight", Mod=new int[50]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } },
@@ -970,7 +975,7 @@ public static class VehicleHash
     /// <summary>
     /// 22 当前分类: 开轮式
     /// </summary>
-    public static List<VehicleInfo> OpenWheel = new()
+    public static readonly List<VehicleInfo> OpenWheel = new()
     {
         new VehicleInfo(){ Name="培罗 PR4", Value="formula", Mod=new int[50]{ 12,6,0,7,1,0,5,0,0,0,0,4,4,4,58,0,5,0,0,0,0,1,0,140,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0 } },
         new VehicleInfo(){ Name="欧斯洛 R88", Value="formula2", Mod=new int[50]{ 9,7,0,5,0,0,0,0,0,0,3,4,4,4,58,0,5,0,0,0,0,1,0,140,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0 } },
@@ -1033,4 +1038,29 @@ public static class VehicleHash
         new VehicleClass(){ Icon="\xe610", Name="火车", VehicleInfos=Trains },
         new VehicleClass(){ Icon="\xe610", Name="开轮式", VehicleInfos=OpenWheel }
     };
+
+    /// <summary>
+    /// 全部载具数据
+    /// </summary>
+    public static readonly List<VehicleInfo> AllVehicles = new()
+    {
+
+    };
+}
+
+public class VehicleClass
+{
+    public string Icon { get; set; }
+    public string Name { get; set; }
+    public List<VehicleInfo> VehicleInfos { get; set; }
+}
+
+public class VehicleInfo
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public int[] Mod { get; set; }
+    public string Class { get; set; }
+    public uint Hash { get; set; }
+    public string Image { get; set; }
 }

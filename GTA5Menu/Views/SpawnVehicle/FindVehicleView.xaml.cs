@@ -22,22 +22,16 @@ public partial class FindVehicleView : UserControl
         SpawnVehicleWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
 
         // 填充全部载具
-        foreach (var vClass in VehicleHash.VehicleClasses)
+        foreach (var info in VehicleHash.AllVehicles)
         {
-            if (vClass.Name == "我的收藏")
-                continue;
-
-            foreach (var info in vClass.VehicleInfos)
+            AllVehicles.Add(new()
             {
-                AllVehicles.Add(new()
-                {
-                    Class = vClass.Name,
-                    Name = info.Name,
-                    Value = info.Value,
-                    Image = RAGEHelper.GetVehicleImage(info.Value),
-                    Mod = info.Mod
-                });
-            }
+                Class = info.Class,
+                Name = info.Name,
+                Value = info.Value,
+                Image = RAGEHelper.GetVehicleImage(info.Value),
+                Mod = info.Mod
+            });
         }
     }
 

@@ -142,21 +142,16 @@ public static class Vehicle2
     }
 
     /// <summary>
-    /// 通过Hash值查找载具名称
+    /// 通过Hash值查找载具信息
     /// </summary>
     /// <param name="hash"></param>
     /// <returns></returns>
-    public static string FindVehicleNameByHash(long hash)
+    public static VehicleInfo FindVehicleNameByHash(long hash)
     {
-        foreach (var vClass in VehicleHash.VehicleClasses)
-        {
-            foreach (var vInfo in vClass.VehicleInfos)
-            {
-                if (RAGEHelper.JOAAT(vInfo.Value) == hash)
-                    return vInfo.Name;
-            }
-        }
+        var result = VehicleHash.AllVehicles.Find(v => v.Hash == hash);
+        if (result != null)
+            return result;
 
-        return string.Empty;
+        return null;
     }
 }

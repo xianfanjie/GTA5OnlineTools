@@ -26,12 +26,6 @@
             FontSize="14"
             Text="Copyright© 2018-2023 DS By CrazyZhang" />
 
-        <TextBlock Margin="5" HorizontalAlignment="Center">
-            <Hyperlink NavigateUri="https://crazyzhang.cn" RequestNavigate="Hyperlink_RequestNavigate">
-                支持作者，帮作者点一点小助手网站上的谷歌广告，感谢大家的支持
-            </Hyperlink>
-        </TextBlock>
-
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <StackPanel.Resources>
                 <Style BasedOn="{StaticResource TextBlockStyle_IconFontVerCen}" TargetType="{x:Type TextBlock}">
@@ -56,10 +50,51 @@
             </TextBlock>
             <TextBlock ToolTip="小助手官方网站">
                 <Hyperlink NavigateUri="https://crazyzhang.cn" RequestNavigate="Hyperlink_RequestNavigate">
-                    &#xe65b;
+                    &#xe975;
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock ToolTip="小助手邮箱">
+                <Hyperlink NavigateUri="mailto:crazyzhang_cn@163.com" RequestNavigate="Hyperlink_RequestNavigate">
+                    &#xe6df;
                 </Hyperlink>
             </TextBlock>
         </StackPanel>
+
+        <StackPanel
+            HorizontalAlignment="Center"
+            Background="Transparent"
+            Cursor="Hand"
+            MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"
+            TextElement.Foreground="#8563dd"
+            ToolTip="https://afdian.net/@crazyzhang">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock
+                    Padding="0,0,10,0"
+                    VerticalAlignment="Center"
+                    Cursor="Hand"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Text="捐赠作者" />
+                <Image
+                    Height="50"
+                    Cursor="Hand"
+                    Source="/Assets/Afdian.png"
+                    Style="{StaticResource ImageStyle_HighQuality}" />
+                <TextBlock
+                    Padding="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Cursor="Hand"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Text="爱发电" />
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Center">
+                如果您觉得小助手这个软件对你有帮助<LineBreak />
+                可以使用《爱发电》捐赠作者<LineBreak />
+                以帮助作者把这个软件做的更好<LineBreak />
+                感谢大家的支持</TextBlock>
+        </StackPanel>
+
     </StackPanel>
 
 </UserControl>

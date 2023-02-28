@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5Core", "GTA5Core\GTA5Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5Inject", "GTA5Inject\GTA5Inject.csproj", "{3E066EF2-BB7F-48E6-B853-E87825CE0060}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{86788F13-9FF1-4DB8-90DF-4262B4861157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "Misc\TestConsole\TestConsole.csproj", "{86788F13-9FF1-4DB8-90DF-4262B4861157}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root", "Root", "{D2113643-34EC-46C1-B1C3-EC087811A865}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5HotKey", "GTA5HotKey\GT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameOverlay", "GameOverlay\GameOverlay.csproj", "{206FEE5B-B0AC-40A6-AC9E-D7095B912699}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormatConverter", "FormatConverter\FormatConverter.csproj", "{3A372EA6-09BE-489E-B10A-D5D5884AD32B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormatConverter", "Misc\FormatConverter\FormatConverter.csproj", "{3A372EA6-09BE-489E-B10A-D5D5884AD32B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{A204EFD3-F872-493B-8671-39CA58D5D064}"
 EndProject

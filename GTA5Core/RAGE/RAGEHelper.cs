@@ -25,21 +25,21 @@ public static class RAGEHelper
     /// <summary>
     /// 获取Bilp模型预览图
     /// </summary>
-    /// <param name="modelName"></param>
+    /// <param name="index"></param>
     /// <returns></returns>
-    public static string GetBilpModelImage(string modelName)
+    public static string GetBilpModelImage(int index)
     {
-        return $"pack://application:,,,/GTA5Core;component/Assets/Blips/Models/{modelName}.png";
+        return $"pack://application:,,,/GTA5Core;component/Assets/Blips/Models/Blip_{index}.png";
     }
 
     /// <summary>
     /// 获取Bilp颜色预览图
     /// </summary>
-    /// <param name="colorName"></param>
+    /// <param name="index"></param>
     /// <returns></returns>
-    public static string GetBilpColorImage(string colorName)
+    public static string GetBilpColorImage(int index)
     {
-        return $"pack://application:,,,/GTA5Core;component/Assets/Blips/Colors/{colorName}.png";
+        return $"pack://application:,,,/GTA5Core;component/Assets/Blips/Colors/Blip_colour_{index}.png";
     }
 
     /// <summary>

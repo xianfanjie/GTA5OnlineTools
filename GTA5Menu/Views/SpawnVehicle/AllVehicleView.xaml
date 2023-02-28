@@ -15,9 +15,9 @@
         </Grid.ColumnDefinitions>
         <!--  载具详细信息  -->
         <ListBox
-            x:Name="ListBox_VehicleInfo"
+            x:Name="ListBox_VehicleInfos"
             Margin="5"
-            MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
+            MouseDoubleClick="ListBox_VehicleInfos_MouseDoubleClick"
             Style="{StaticResource ListBoxStyle_VehiclePreview}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">

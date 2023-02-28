@@ -1,0 +1,61 @@
+﻿<UserControl
+    x:Class="GTA5Menu.Views.CustonBilp.MyBilpView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dd="urn:gong-wpf-dragdrop"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="700"
+    d:DesignWidth="1260"
+    mc:Ignorable="d">
+
+    <ListBox
+        x:Name="ListBox_BilpModels"
+        Margin="5"
+        dd:DragDrop.IsDragSource="True"
+        dd:DragDrop.IsDropTarget="True"
+        dd:DragDrop.UseDefaultDragAdorner="True"
+        ItemsSource="{Binding MyFavorites}"
+        MouseDoubleClick="ListBox_BilpModels_MouseDoubleClick"
+        Style="{StaticResource ListBoxStyle_BilpPreview}">
+        <dd:DragDrop.DropTargetAdornerPen>
+            <Pen
+                Brush="DodgerBlue"
+                DashCap="Round"
+                Thickness="4" />
+        </dd:DragDrop.DropTargetAdornerPen>
+        <ListBox.ItemTemplate>
+            <DataTemplate DataType="{x:Type ListBoxItem}">
+                <DockPanel>
+                    <TextBlock
+                        Margin="5,0,5,5"
+                        HorizontalAlignment="Center"
+                        DockPanel.Dock="Bottom"
+                        FontWeight="Bold"
+                        Text="{Binding Name}"
+                        TextAlignment="Center" />
+                    <Image
+                        Margin="5"
+                        DockPanel.Dock="Top"
+                        Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
+                        Stretch="Uniform"
+                        Style="{StaticResource ImageStyle_HighQuality}" />
+                </DockPanel>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+        <ListBox.ContextMenu>
+            <ContextMenu>
+                <MenuItem
+                    x:Name="MenuItem_SpawnVehicleA"
+                    Click="MenuItem_TeleportToBlips_Click"
+                    Header="刷出线上载具（空地）" />
+                <Separator />
+                <MenuItem
+                    x:Name="MenuItem_DeleteMyFavorite"
+                    Click="MenuItem_DeleteMyFavorite_Click"
+                    Header="从我的收藏删除" />
+            </ContextMenu>
+        </ListBox.ContextMenu>
+    </ListBox>
+
+</UserControl>

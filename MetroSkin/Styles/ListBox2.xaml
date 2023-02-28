@@ -325,4 +325,67 @@
         </Setter>
     </Style>
 
+    <Style x:Key="ListBoxStyle_BilpPreview" TargetType="{x:Type ListBox}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                            <vwp:VirtualizingWrapPanel
+                                IsItemsHost="True"
+                                MouseWheelDelta="1"
+                                MouseWheelDeltaItem="1"
+                                Orientation="Vertical"
+                                ScrollLineDelta="1"
+                                ScrollLineDeltaItem="1"
+                                SpacingMode="None"
+                                VirtualizingPanel.CacheLength="1,1"
+                                VirtualizingPanel.CacheLengthUnit="Item"
+                                VirtualizingPanel.IsVirtualizing="True"
+                                VirtualizingPanel.ScrollUnit="Item"
+                                VirtualizingPanel.VirtualizationMode="Recycling" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Border
+                                    Name="border"
+                                    Width="60"
+                                    Height="60"
+                                    Margin="5,5,0,0"
+                                    Background="#F8F9FA"
+                                    BorderBrush="Gray"
+                                    BorderThickness="1"
+                                    FocusVisualStyle="{x:Null}"
+                                    SnapsToDevicePixels="True">
+                                    <ContentPresenter />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#D9D9D9" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#FCAF17" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

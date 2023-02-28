@@ -1,6 +1,4 @@
-﻿using GTA5OnlineTools.Utils;
-
-using GTA5Menu.Views;
+﻿using GTA5Menu.Views;
 using GTA5Core.Views;
 using GTA5Core.Native;
 using GTA5Shared.Helper;
@@ -17,6 +15,7 @@ public partial class GTA5View : UserControl
     private ExternalMenuWindow ExternalMenuWindow = null;
     private SpawnVehicleWindow SpawnVehicleWindow = null;
     private CustomTeleportWindow CustomTeleportWindow = null;
+    private CustomBilpWindow CustomBilpWindow = null;
     private HeistsEditWindow HeistsEditWindow = null;
     private OutfitsEditWindow OutfitsEditWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
@@ -70,6 +69,9 @@ public partial class GTA5View : UserControl
                     break;
                 case "CustomTeleport":
                     CustomTeleportClick();
+                    break;
+                case "CustomBlip":
+                    CustomBilpClick();
                     break;
                 case "HeistsEdit":
                     HeistsEditClick();
@@ -169,6 +171,30 @@ public partial class GTA5View : UserControl
                 CustomTeleportWindow = null;
                 CustomTeleportWindow = new CustomTeleportWindow();
                 CustomTeleportWindow.Show();
+            }
+        }
+    }
+
+    private void CustomBilpClick()
+    {
+        if (CustomBilpWindow == null)
+        {
+            CustomBilpWindow = new CustomBilpWindow();
+            CustomBilpWindow.Show();
+        }
+        else
+        {
+            if (CustomBilpWindow.IsVisible)
+            {
+                CustomBilpWindow.Topmost = true;
+                CustomBilpWindow.Topmost = false;
+                CustomBilpWindow.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                CustomBilpWindow = null;
+                CustomBilpWindow = new CustomBilpWindow();
+                CustomBilpWindow.Show();
             }
         }
     }

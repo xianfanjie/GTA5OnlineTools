@@ -46,7 +46,7 @@ public partial class AllVehicleView : UserControl
             if (index == -1)
                 return;
 
-            ListBox_VehicleInfo.Items.Clear();
+            ListBox_VehicleInfos.Items.Clear();
 
             Task.Run(() =>
             {
@@ -57,7 +57,7 @@ public partial class AllVehicleView : UserControl
                     {
                         if (index == ListBox_VehicleClasses.SelectedIndex)
                         {
-                            ListBox_VehicleInfo.Items.Add(new ModelInfo()
+                            ListBox_VehicleInfos.Items.Add(new ModelInfo()
                             {
                                 Class = VehicleHash.VehicleClasses[index + 1].Name,
                                 Name = item.Name,
@@ -74,7 +74,7 @@ public partial class AllVehicleView : UserControl
                 }
             });
 
-            ListBox_VehicleInfo.SelectedIndex = 0;
+            ListBox_VehicleInfos.SelectedIndex = 0;
         }
     }
 
@@ -82,7 +82,7 @@ public partial class AllVehicleView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
         }
@@ -96,7 +96,7 @@ public partial class AllVehicleView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
         }
@@ -110,7 +110,7 @@ public partial class AllVehicleView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             MyVehicleView.ActionAddMyFavorite(info);
         }
@@ -120,7 +120,7 @@ public partial class AllVehicleView : UserControl
         }
     }
 
-    private void ListBox_VehicleInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private void ListBox_VehicleInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         MenuItem_SpawnVehicleA_Click(null, null);
     }

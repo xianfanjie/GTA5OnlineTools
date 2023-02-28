@@ -36,6 +36,14 @@
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
+            Title="Custom Blip"
+            Command="{Binding GTA5ViewClickCommand}"
+            CommandParameter="CustomBlip"
+            Content="自定义Blip"
+            Icon="&#xe627;"
+            Style="{StaticResource ButtonStyle_FuncModule}" />
+
+        <ui:ButtonIcon
             Title="Heists Edit"
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="HeistsEdit"

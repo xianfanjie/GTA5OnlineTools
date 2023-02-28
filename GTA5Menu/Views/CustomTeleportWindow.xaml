@@ -51,7 +51,6 @@
                 <DataTemplate DataType="{x:Type ListBoxItem}">
                     <StackPanel Margin="5" VerticalAlignment="Center">
                         <TextBlock
-                            FontSize="14"
                             FontWeight="Bold"
                             Text="{Binding Name}"
                             TextTrimming="CharacterEllipsis" />

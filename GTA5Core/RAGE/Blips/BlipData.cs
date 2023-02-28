@@ -519,8 +519,9 @@ public static class BlipData
         838,
     };
 
-    public static readonly int[] BlipColors = new int[]
+    public static readonly byte[] BlipColors = new byte[]
     {
+        0,
         1,
         2,
         3,

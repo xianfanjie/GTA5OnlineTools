@@ -15,7 +15,7 @@ public partial class GTA5View : UserControl
     private ExternalMenuWindow ExternalMenuWindow = null;
     private SpawnVehicleWindow SpawnVehicleWindow = null;
     private CustomTeleportWindow CustomTeleportWindow = null;
-    private CustomBilpWindow CustomBilpWindow = null;
+    private CustomBlipWindow CustomBlipWindow = null;
     private HeistsEditWindow HeistsEditWindow = null;
     private OutfitsEditWindow OutfitsEditWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
@@ -71,7 +71,7 @@ public partial class GTA5View : UserControl
                     CustomTeleportClick();
                     break;
                 case "CustomBlip":
-                    CustomBilpClick();
+                    CustomBlipClick();
                     break;
                 case "HeistsEdit":
                     HeistsEditClick();
@@ -175,26 +175,26 @@ public partial class GTA5View : UserControl
         }
     }
 
-    private void CustomBilpClick()
+    private void CustomBlipClick()
     {
-        if (CustomBilpWindow == null)
+        if (CustomBlipWindow == null)
         {
-            CustomBilpWindow = new CustomBilpWindow();
-            CustomBilpWindow.Show();
+            CustomBlipWindow = new CustomBlipWindow();
+            CustomBlipWindow.Show();
         }
         else
         {
-            if (CustomBilpWindow.IsVisible)
+            if (CustomBlipWindow.IsVisible)
             {
-                CustomBilpWindow.Topmost = true;
-                CustomBilpWindow.Topmost = false;
-                CustomBilpWindow.WindowState = WindowState.Normal;
+                CustomBlipWindow.Topmost = true;
+                CustomBlipWindow.Topmost = false;
+                CustomBlipWindow.WindowState = WindowState.Normal;
             }
             else
             {
-                CustomBilpWindow = null;
-                CustomBilpWindow = new CustomBilpWindow();
-                CustomBilpWindow.Show();
+                CustomBlipWindow = null;
+                CustomBlipWindow = new CustomBlipWindow();
+                CustomBlipWindow.Show();
             }
         }
     }

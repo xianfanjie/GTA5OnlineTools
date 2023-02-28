@@ -3,5 +3,5 @@
 public class Blips
 {
     public int Value { get; set; }
-    public int Color { get; set; }
+    public byte Color { get; set; }
 }

@@ -1,17 +1,17 @@
 ﻿<ui:Window
-    x:Class="GTA5Menu.Views.CustomBilpWindow"
+    x:Class="GTA5Menu.Views.CustomBlipWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
-    x:Name="Window_CustonBilp"
-    Title="GTA5线上小助手 - 自定义Bilp传送"
+    x:Name="Window_CustonBlip"
+    Title="GTA5线上小助手 - 自定义Blip传送"
     Width="1260"
     Height="700"
-    Closing="Window_CustonBilp_Closing"
-    Loaded="Window_CustonBilp_Loaded"
+    Closing="Window_CustonBlip_Closing"
+    Loaded="Window_CustonBlip_Loaded"
     ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"
     mc:Ignorable="d">
@@ -27,7 +27,7 @@
                 VerticalAlignment="Center"
                 FontSize="14"
                 FontWeight="Bold"
-                Text="{Binding ElementName=Window_CustonBilp, Path=Title}" />
+                Text="{Binding ElementName=Window_CustonBlip, Path=Title}" />
         </StackPanel>
     </ui:Window.TitleContent>
 

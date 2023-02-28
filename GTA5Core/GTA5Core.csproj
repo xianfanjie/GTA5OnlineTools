@@ -30,6 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Assets\Blips\Colors\Blip_colour_0.png" />
 		<Resource Include="Assets\Blips\Colors\Blip_colour_1.png" />
 		<Resource Include="Assets\Blips\Colors\Blip_colour_10.png" />
 		<Resource Include="Assets\Blips\Colors\Blip_colour_11.png" />

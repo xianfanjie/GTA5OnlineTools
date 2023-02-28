@@ -6,22 +6,22 @@ using GTA5Core.RAGE;
 using GTA5Core.Feature;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Views.CustonBilp;
+namespace GTA5Menu.Views.CustonBlip;
 
 /// <summary>
-/// MyBilpView.xaml 的交互逻辑
+/// MyBlipView.xaml 的交互逻辑
 /// </summary>
-public partial class MyBilpView : UserControl
+public partial class MyBlipView : UserControl
 {
-    public ObservableCollection<BlipInfo> MyFavorites { get; private set; } = new();
+    public ObservableCollection<BlipInfo2> MyFavorites { get; private set; } = new();
 
-    public static Action<BlipInfo> ActionAddMyFavorite;
+    public static Action<BlipInfo2> ActionAddMyFavorite;
 
-    public MyBilpView()
+    public MyBlipView()
     {
         InitializeComponent();
         this.DataContext = this;
-        CustomBilpWindow.WindowClosingEvent += CustomBilpWindow_WindowClosingEvent;
+        CustomBlipWindow.WindowClosingEvent += CustomBlipWindow_WindowClosingEvent;
 
         ActionAddMyFavorite = AddMyFavorite;
 
@@ -36,23 +36,23 @@ public partial class MyBilpView : UserControl
         if (File.Exists(GTA5Util.File_Config_Blips))
         {
             using var streamReader = new StreamReader(GTA5Util.File_Config_Blips);
-            var bilps = JsonHelper.JsonDese<List<Blips>>(streamReader.ReadToEnd());
+            var blips = JsonHelper.JsonDese<List<Blips>>(streamReader.ReadToEnd());
 
             // 填充数据
-            foreach (var info in bilps)
+            foreach (var info in blips)
             {
                 MyFavorites.Add(new()
                 {
-                    Name = $"ID: {info.Value}",
                     Value = info.Value,
                     Color = info.Color,
-                    Image = RAGEHelper.GetBilpModelImage(info.Value),
+                    Image = RAGEHelper.GetBlipModelImage(info.Value),
+                    Image2 = RAGEHelper.GetBlipColorImage(info.Color)
                 });
             }
         }
     }
 
-    private void CustomBilpWindow_WindowClosingEvent()
+    private void CustomBlipWindow_WindowClosingEvent()
     {
         SaveConfig();
     }
@@ -64,31 +64,31 @@ public partial class MyBilpView : UserControl
     {
         if (Directory.Exists(FileHelper.Dir_Config))
         {
-            var bilps = new List<Blips>();
-            foreach (BlipInfo info in ListBox_BilpModels.Items)
+            var blips = new List<Blips>();
+            foreach (BlipInfo2 info in ListBox_BlipModels.Items)
             {
-                bilps.Add(new()
+                blips.Add(new()
                 {
                     Value = info.Value,
                     Color = info.Color,
                 });
             }
             // 写入到Json文件
-            File.WriteAllText(GTA5Util.File_Config_Blips, JsonHelper.JsonSeri(bilps));
+            File.WriteAllText(GTA5Util.File_Config_Blips, JsonHelper.JsonSeri(blips));
         }
     }
 
-    private void AddMyFavorite(BlipInfo info)
+    private void AddMyFavorite(BlipInfo2 info)
     {
         if (!MyFavorites.Contains(info))
         {
             MyFavorites.Add(info);
 
-            NotifierHelper.Show(NotifierType.Success, $"添加Blip {info.Name} 到我的收藏成功");
+            NotifierHelper.Show(NotifierType.Success, $"添加Blip {info.Value} 到我的收藏成功");
         }
         else
         {
-            NotifierHelper.Show(NotifierType.Warning, $"Blip {info.Name} 已存在，请勿重复添加");
+            NotifierHelper.Show(NotifierType.Warning, $"Blip {info.Value} 已存在，请勿重复添加");
         }
     }
 
@@ -96,9 +96,9 @@ public partial class MyBilpView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_BilpModels.SelectedItem is BlipInfo info)
+        if (ListBox_BlipModels.SelectedItem is BlipInfo2 info)
         {
-            Teleport.ToBlips(info.Value);
+            Teleport.ToBlips(info.Value, info.Color);
         }
         else
         {
@@ -110,11 +110,11 @@ public partial class MyBilpView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_BilpModels.SelectedItem is BlipInfo info)
+        if (ListBox_BlipModels.SelectedItem is BlipInfo2 info)
         {
             MyFavorites.Remove(info);
 
-            NotifierHelper.Show(NotifierType.Success, $"从我的收藏删除Blip {info.Name} 成功");
+            NotifierHelper.Show(NotifierType.Success, $"从我的收藏删除Blip {info.Value} 成功");
         }
         else
         {
@@ -122,7 +122,7 @@ public partial class MyBilpView : UserControl
         }
     }
 
-    private void ListBox_BilpModels_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private void ListBox_BlipModels_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         MenuItem_TeleportToBlips_Click(null, null);
     }

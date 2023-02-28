@@ -1,44 +1,44 @@
 ﻿using GTA5Menu.Data;
-using GTA5Menu.Views.CustonBilp;
+using GTA5Menu.Views.CustonBlip;
 
 using CommunityToolkit.Mvvm.Input;
 
 namespace GTA5Menu.Views;
 
 /// <summary>
-/// CustomBilpWindow.xaml 的交互逻辑
+/// CustomBlipWindow.xaml 的交互逻辑
 /// </summary>
-public partial class CustomBilpWindow
+public partial class CustomBlipWindow
 {
     /// <summary>
     /// 导航菜单
     /// </summary>
     public List<NavMenu> NavMenus { get; set; } = new();
 
-    private readonly MyBilpView MyBilpView = new();
-    private readonly AllBilpView AllBilpView = new();
+    private readonly MyBlipView MyBlipView = new();
+    private readonly AllBlipView AllBlipView = new();
 
     /// <summary>
     /// 主窗口关闭事件
     /// </summary>
     public static event Action WindowClosingEvent;
 
-    public CustomBilpWindow()
+    public CustomBlipWindow()
     {
         InitializeComponent();
     }
 
-    private void Window_CustonBilp_Loaded(object sender, RoutedEventArgs e)
+    private void Window_CustonBlip_Loaded(object sender, RoutedEventArgs e)
     {
         this.DataContext = this;
 
         // 创建菜单
         CreateNavMenus();
         // 设置主页
-        ContentControl_Main.Content = MyBilpView;
+        ContentControl_Main.Content = MyBlipView;
     }
 
-    private void Window_CustonBilp_Closing(object sender, CancelEventArgs e)
+    private void Window_CustonBlip_Closing(object sender, CancelEventArgs e)
     {
         WindowClosingEvent();
     }
@@ -48,8 +48,8 @@ public partial class CustomBilpWindow
     /// </summary>
     private void CreateNavMenus()
     {
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "我的收藏", ViewName = "MyBilpView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "全部Bilp", ViewName = "AllBilpView" });
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "我的收藏", ViewName = "MyBlipView" });
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "全部Blip", ViewName = "AllBlipView" });
     }
 
     /// <summary>
@@ -64,11 +64,11 @@ public partial class CustomBilpWindow
 
         switch (menu.ViewName)
         {
-            case "MyBilpView":
-                ContentControl_Main.Content = MyBilpView;
+            case "MyBlipView":
+                ContentControl_Main.Content = MyBlipView;
                 break;
-            case "AllBilpView":
-                ContentControl_Main.Content = AllBilpView;
+            case "AllBlipView":
+                ContentControl_Main.Content = AllBlipView;
                 break;
         }
     }

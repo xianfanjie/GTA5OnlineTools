@@ -80,7 +80,7 @@ public partial class MyBlipView : UserControl
 
     private void AddMyFavorite(BlipInfo2 info)
     {
-        if (!MyFavorites.Contains(info))
+        if (!MyFavorites.Any(f => f.Value == info.Value && f.Color == info.Color))
         {
             MyFavorites.Add(info);
 

@@ -6,7 +6,7 @@ namespace GTA5Shared.Helper;
 
 public static class NotifierHelper
 {
-    private static readonly NotificationManager _NotificationManager = new();
+    private static readonly NotificationManager _notificationManager = new();
 
     private static readonly TimeSpan ExpirationTime = TimeSpan.FromSeconds(2);
 
@@ -59,7 +59,7 @@ public static class NotifierHelper
             TrimType = NotificationTextTrimType.NoTrim,
         };
 
-        _NotificationManager.Show(clickContent, "", ExpirationTime, null, null, true, false);
+        _notificationManager.Show(clickContent, string.Empty, ExpirationTime, null, null, true, false);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public static class NotifierHelper
             TrimType = NotificationTextTrimType.NoTrim,
         };
 
-        _NotificationManager.Show(clickContent, "", ExpirationTime, null, null, true, false);
+        _notificationManager.Show(clickContent, string.Empty, ExpirationTime, null, null, true, false);
     }
 }
 

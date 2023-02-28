@@ -38,13 +38,9 @@ public partial class MainWindow
     public static bool IsAppRunning = true;
 
     /// <summary>
-    /// 主窗口关闭委托
-    /// </summary>
-    public delegate void WindowClosingDelegate();
-    /// <summary>
     /// 主窗口关闭事件
     /// </summary>
-    public static event WindowClosingDelegate WindowClosingEvent;
+    public static event Action WindowClosingEvent;
 
     /// <summary>
     /// 用于向外暴露主窗口实例

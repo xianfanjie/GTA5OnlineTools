@@ -52,15 +52,6 @@ public partial class ToolsView : UserControl
             case "OpenUpdateWindow":
                 OpenUpdateWindowClick();
                 break;
-            case "RefreshDNSCache":
-                RefreshDNSCacheClick();
-                break;
-            case "EditHosts":
-                EditHostsClick();
-                break;
-            #endregion
-            ////////////////////////////////////
-            #region 分组2
             case "ReNameAppCN":
                 ReNameAppCNClick();
                 break;
@@ -75,6 +66,18 @@ public partial class ToolsView : UserControl
                 break;
             case "ManualGC":
                 ManualGCClick();
+                break;
+            #endregion
+            ////////////////////////////////////
+            #region 分组2
+            case "RefreshDNSCache":
+                RefreshDNSCacheClick();
+                break;
+            case "EditHosts":
+                EditHostsClick();
+                break;
+            case "OpenWFMSC":
+                OpenWFMSCClick();
                 break;
                 #endregion
         }
@@ -150,27 +153,6 @@ public partial class ToolsView : UserControl
     }
 
     /// <summary>
-    /// 刷新DNS缓存
-    /// </summary>
-    private void RefreshDNSCacheClick()
-    {
-        HttpHelper.FlushDNSCache();
-        NotifierHelper.Show(NotifierType.Success, "成功刷新DNS解析程序缓存");
-    }
-
-    /// <summary>
-    /// 编辑Hosts文件
-    /// </summary>
-    private void EditHostsClick()
-    {
-        ProcessHelper.Notepad2EditTextFile(@"C:\windows\system32\drivers\etc\hosts");
-    }
-    #endregion
-
-    ////////////////////////////////////////////////////////////////////////
-
-    #region 分组2
-    /// <summary>
     /// 重命名小助手为中文
     /// </summary>
     private async void ReNameAppCNClick()
@@ -235,7 +217,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void StoryModeArchiveClick()
     {
-        var path = $"{FileHelper.Dir_MyDocuments}\\Rockstar Games\\GTA V\\Profiles";
+        var path = Path.Combine(FileHelper.Dir_MyDocuments, "\\Rockstar Games\\GTA V\\Profiles");
         if (!Directory.Exists(path))
         {
             NotifierHelper.Show(NotifierType.Error, "GTA5故事模式存档路径不存在，操作取消");
@@ -264,7 +246,6 @@ public partial class ToolsView : UserControl
         }
     }
 
-
     /// <summary>
     /// 重新初始化GTA5内存模块
     /// </summary>
@@ -288,6 +269,35 @@ public partial class ToolsView : UserControl
         GC.Collect();
         GC.WaitForPendingFinalizers();
         NotifierHelper.Show(NotifierType.Notification, "执行GC垃圾回收成功");
+    }
+    #endregion
+
+    ////////////////////////////////////////////////////////////////////////
+
+    #region 分组2
+    /// <summary>
+    /// 刷新DNS缓存
+    /// </summary>
+    private void RefreshDNSCacheClick()
+    {
+        HttpHelper.FlushDNSCache();
+        NotifierHelper.Show(NotifierType.Success, "成功刷新DNS解析程序缓存");
+    }
+
+    /// <summary>
+    /// 编辑Hosts文件
+    /// </summary>
+    private void EditHostsClick()
+    {
+        ProcessHelper.Notepad2EditTextFile(@"C:\windows\system32\drivers\etc\hosts");
+    }
+
+    /// <summary>
+    /// 打开防火墙高级设置
+    /// </summary>
+    private void OpenWFMSCClick()
+    {
+        ProcessHelper.OpenLink("wf.msc");
     }
     #endregion
 }

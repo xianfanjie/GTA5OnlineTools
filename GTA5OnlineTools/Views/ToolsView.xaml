@@ -47,21 +47,6 @@
                         Style="{StaticResource ButtonStyle_Tools}" />
                     <ui:ButtonIcon
                         Command="{Binding ToolsButtonClickCommand}"
-                        CommandParameter="RefreshDNSCache"
-                        Content="刷新DNS缓存"
-                        Icon="&#xe62c;"
-                        Style="{StaticResource ButtonStyle_Tools}" />
-                    <ui:ButtonIcon
-                        Command="{Binding ToolsButtonClickCommand}"
-                        CommandParameter="EditHosts"
-                        Content="编辑Hosts文件"
-                        Icon="&#xe675;"
-                        Style="{StaticResource ButtonStyle_Tools}" />
-                </WrapPanel>
-                <!--  //////////////////////////////////////////////  -->
-                <WrapPanel>
-                    <ui:ButtonIcon
-                        Command="{Binding ToolsButtonClickCommand}"
                         CommandParameter="ReNameAppCN"
                         Content="重命名小助手中文"
                         Icon="&#xe667;"
@@ -91,7 +76,27 @@
                         Icon="&#xe651;"
                         Style="{StaticResource ButtonStyle_Tools}" />
                 </WrapPanel>
-
+                <!--  //////////////////////////////////////////////  -->
+                <WrapPanel>
+                    <ui:ButtonIcon
+                        Command="{Binding ToolsButtonClickCommand}"
+                        CommandParameter="RefreshDNSCache"
+                        Content="刷新DNS缓存"
+                        Icon="&#xe62c;"
+                        Style="{StaticResource ButtonStyle_Tools}" />
+                    <ui:ButtonIcon
+                        Command="{Binding ToolsButtonClickCommand}"
+                        CommandParameter="EditHosts"
+                        Content="编辑Hosts文件"
+                        Icon="&#xe675;"
+                        Style="{StaticResource ButtonStyle_Tools}" />
+                    <ui:ButtonIcon
+                        Command="{Binding ToolsButtonClickCommand}"
+                        CommandParameter="OpenWFMSC"
+                        Content="打开防火墙高级设置"
+                        Icon="&#xe6d6;"
+                        Style="{StaticResource ButtonStyle_Tools}" />
+                </WrapPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -92,27 +92,13 @@ public partial class SpawnWeaponView : UserControl
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    private void RadioButton_AmmoModifier_None_Click(object sender, RoutedEventArgs e)
+    private void ComboBox_AmmoModifier_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (RadioButton_AmmoModifier_None.IsChecked == true)
+        var index = ComboBox_AmmoModifier.SelectedIndex;
+        if (index != -1)
         {
-            Setting.Weapon.AmmoModifierFlag = 0;
-            Weapon.AmmoModifier(0);
-        }
-        else if (RadioButton_AmmoModifier_AMMO.IsChecked == true)
-        {
-            Setting.Weapon.AmmoModifierFlag = 1;
-            Weapon.AmmoModifier(1);
-        }
-        else if (RadioButton_AmmoModifier_CLIP.IsChecked == true)
-        {
-            Setting.Weapon.AmmoModifierFlag = 2;
-            Weapon.AmmoModifier(2);
-        }
-        else if (RadioButton_AmmoModifier_Both.IsChecked == true)
-        {
-            Setting.Weapon.AmmoModifierFlag = 3;
-            Weapon.AmmoModifier(3);
+            Setting.Weapon.AmmoModifierFlag = index;
+            Weapon.AmmoModifier((byte)index);
         }
     }
 

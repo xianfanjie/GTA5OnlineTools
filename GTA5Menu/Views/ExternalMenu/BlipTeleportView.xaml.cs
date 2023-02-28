@@ -3,31 +3,23 @@ using GTA5Menu.Utils;
 using GTA5Menu.Config;
 
 using GTA5Core.RAGE;
-using GTA5Core.RAGE.Peds;
 using GTA5Core.Feature;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
 /// <summary>
-/// OtherMiscView.xaml 的交互逻辑
+/// BlipTeleportView.xaml 的交互逻辑
 /// </summary>
-public partial class OtherMiscView : UserControl
+public partial class BlipTeleportView : UserControl
 {
     public List<BlipInfo2> MyFavorites { get; private set; } = new();
 
-    public OtherMiscView()
+    public BlipTeleportView()
     {
         InitializeComponent();
         this.DataContext = this;
         ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
-
-        // Ped列表
-        foreach (var item in PedHash.PedHashData)
-        {
-            ListBox_PedModel.Items.Add(item.Name);
-        }
-        ListBox_PedModel.SelectedIndex = 0;
 
         // 如果配置文件存在就读取
         if (File.Exists(GTA5Util.File_Config_Blips))
@@ -56,22 +48,10 @@ public partial class OtherMiscView : UserControl
 
     ////////////////////////////////////////////////////////////////////////////////
 
-    private void Button_ModelChange_Click(object sender, RoutedEventArgs e)
-    {
-        var index = ListBox_PedModel.SelectedIndex;
-        if (index != -1)
-            Online.ModelChange(Hacks.Joaat(PedHash.PedHashData[index].Value));
-    }
-
-    private void ListBox_PedModel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-        Button_ModelChange_Click(null, null);
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////
-
     private void Button_BlipTeleport_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (ListBox_BlipModels.SelectedItem is BlipInfo2 info)
         {
             Teleport.ToBlips(info.Value, info.Color);

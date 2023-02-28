@@ -25,11 +25,12 @@ public partial class ExternalMenuWindow
     private readonly OnlineOptionView OnlineOptionView = new();
     private readonly SpawnVehicleView SpawnVehicleView = new();
     private readonly SpawnWeaponView SpawnWeaponView = new();
-    private readonly JobHelperView JobHelperView = new();
+    private readonly CustomTeleportView CustomTeleportView = new();
     private readonly DriverButlerView DriverButlerView = new();
+    private readonly BlipTeleportView BlipTeleportView = new();
+    private readonly JobHelperView JobHelperView = new();
     private readonly ExternalOverlayView ExternalOverlayView = new();
     private readonly PlayerListView PlayerListView = new();
-    private readonly OtherMiscView OtherMiscView = new();
 
     private readonly ReadMeView ReadMeView = new();
 
@@ -124,11 +125,12 @@ public partial class ExternalMenuWindow
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上选项", ViewName = "OnlineOptionView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上载具", ViewName = "SpawnVehicleView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上武器", ViewName = "SpawnWeaponView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "任务帮手", ViewName = "JobHelperView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "随身技工", ViewName = "DriverButlerView" });
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "自定传送", ViewName = "CustomTeleportView" });
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "Blip传送", ViewName = "BlipTeleportView" });
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "任务帮手", ViewName = "JobHelperView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "外部ESP", ViewName = "ExternalOverlayView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "玩家列表", ViewName = "PlayerListView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "其他杂项", ViewName = "OtherMiscView" });
 
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "README", ViewName = "ReadMeView" });
     }
@@ -160,20 +162,23 @@ public partial class ExternalMenuWindow
             case "SpawnWeaponView":
                 ContentControl_Main.Content = SpawnWeaponView;
                 break;
-            case "JobHelperView":
-                ContentControl_Main.Content = JobHelperView;
-                break;
             case "DriverButlerView":
                 ContentControl_Main.Content = DriverButlerView;
+                break;
+            case "CustomTeleportView":
+                ContentControl_Main.Content = CustomTeleportView;
+                break;
+            case "BlipTeleportView":
+                ContentControl_Main.Content = BlipTeleportView;
+                break;
+            case "JobHelperView":
+                ContentControl_Main.Content = JobHelperView;
                 break;
             case "ExternalOverlayView":
                 ContentControl_Main.Content = ExternalOverlayView;
                 break;
             case "PlayerListView":
                 ContentControl_Main.Content = PlayerListView;
-                break;
-            case "OtherMiscView":
-                ContentControl_Main.Content = OtherMiscView;
                 break;
             case "ReadMeView":
                 ContentControl_Main.Content = ReadMeView;

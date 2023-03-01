@@ -29,7 +29,7 @@ public partial class FindVehicleView : UserControl
                 Class = info.Class,
                 Name = info.Name,
                 Value = info.Value,
-                Image = RAGEHelper.GetVehicleImage(info.Value),
+                Image = info.Image,
                 Mod = info.Mod
             });
         }

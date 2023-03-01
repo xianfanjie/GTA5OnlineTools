@@ -22,16 +22,11 @@
                 Margin="5"
                 DockPanel.Dock="Bottom"
                 MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
-                Style="{StaticResource ListBoxStyle_VehicleInfo}">
+                Style="{StaticResource ListBoxStyle_VehicleInfo}"
+                ToolTip="双击选中项可快捷刷出">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type ListBoxItem}">
-                        <DockPanel>
-                            <DockPanel.ToolTip>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Class}" />
-                                    <TextBlock Text="{Binding Name}" />
-                                </StackPanel>
-                            </DockPanel.ToolTip>
+                        <DockPanel ToolTip="{Binding Name}">
                             <Image
                                 Width="80"
                                 Margin="5"
@@ -77,6 +72,9 @@
                     x:Name="Button_SpawnOnlineVehicleB"
                     Click="Button_SpawnOnlineVehicleB_Click"
                     Content="刷出线上载具（室内）" />
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：双击选中项可快捷刷出
+                </TextBlock>
             </StackPanel>
             <!--  ////////////////  -->
             <ui:LabelIcon Content="一般选项" />

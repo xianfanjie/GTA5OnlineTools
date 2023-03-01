@@ -49,7 +49,10 @@
             ToolTip="双击选中项即可快捷传送">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">
-                    <StackPanel Margin="5" VerticalAlignment="Center">
+                    <StackPanel
+                        Margin="5"
+                        VerticalAlignment="Center"
+                        ToolTip="{Binding Name}">
                         <TextBlock
                             FontWeight="Bold"
                             Text="{Binding Name}"
@@ -122,6 +125,9 @@
                         Background="#34A853"
                         Click="Button_Teleport_Click"
                         Content="传送到选中位置" />
+                    <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockStyle_Hint}">
+                        提示：双击选中项可快捷传送
+                    </TextBlock>
                 </WrapPanel>
             </StackPanel>
             <!--  //////////////////////////  -->

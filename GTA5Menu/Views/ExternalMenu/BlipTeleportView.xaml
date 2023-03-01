@@ -18,6 +18,9 @@
                 x:Name="Button_BlipTeleport"
                 Click="Button_BlipTeleport_Click"
                 Content="传送到选中Blip位置" />
+            <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockStyle_Hint}">
+                提示：双击选中项可快捷传送
+            </TextBlock>
         </StackPanel>
         <!--  ///////////////  -->
         <ListBox
@@ -26,7 +29,8 @@
             DockPanel.Dock="Bottom"
             ItemsSource="{Binding MyFavorites}"
             MouseDoubleClick="ListBox_BlipModels_MouseDoubleClick"
-            Style="{StaticResource ListBoxStyle_BlipPreview2}">
+            Style="{StaticResource ListBoxStyle_BlipPreview2}"
+            ToolTip="双击选中项可快捷传送">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">
                     <DockPanel>

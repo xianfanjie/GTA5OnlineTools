@@ -59,10 +59,10 @@ public partial class AllVehicleView : UserControl
                         {
                             ListBox_VehicleInfos.Items.Add(new ModelInfo()
                             {
-                                Class = VehicleHash.VehicleClasses[index + 1].Name,
+                                Class = item.Class,
                                 Name = item.Name,
                                 Value = item.Value,
-                                Image = RAGEHelper.GetVehicleImage(item.Value),
+                                Image = item.Image,
                                 Mod = item.Mod
                             });
                         }

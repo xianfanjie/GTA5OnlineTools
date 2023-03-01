@@ -22,10 +22,11 @@
                 Margin="5"
                 DockPanel.Dock="Bottom"
                 MouseDoubleClick="ListBox_WeaponInfo_MouseDoubleClick"
-                Style="{StaticResource ListBoxStyle_WeaponInfo}">
+                Style="{StaticResource ListBoxStyle_WeaponInfo}"
+                ToolTip="双击选中项可快捷刷出">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" ToolTip="{Binding Name}">
                             <Image
                                 Width="60"
                                 Margin="5"
@@ -64,6 +65,9 @@
                     x:Name="Button_SpawnWeapon"
                     Click="Button_SpawnWeapon_Click"
                     Content="刷出线上武器" />
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：双击选中项可快捷刷出
+                </TextBlock>
             </StackPanel>
             <!--  ////////////////  -->
             <ui:LabelIcon Content="弹药编辑" />

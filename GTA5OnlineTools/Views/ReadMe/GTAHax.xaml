@@ -40,10 +40,8 @@
                     ● 比如我们要修改角色的属性值-体力，如果角色是角色1为MP0，角色2为MP1，对应的函数为SCRIPT_INCREASE_STAM，赋值范围为0~100，则最终组合字符串为
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    $MP0_SCRIPT_INCREASE_STAM
-                    <LineBreak />
-                    100
-                </Paragraph>
+                    $MP0_SCRIPT_INCREASE_STAM<LineBreak />
+                    100</Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
                     ● 这样就代表我们修改了角色1的属性值体力为100，也就是加满了体力
                 </Paragraph>

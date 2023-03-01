@@ -26,9 +26,6 @@
                     提示
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 先启动外置辅助，等待辅助菜单加载出来后再启用汉化，否则汉化会无法显示
-                </Paragraph>
-                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
                     ● 如果外置辅助按键不受控制，按Shift+对应按键（出问题的按键）解决。如果是点num-显示菜单就自动隐藏，你就按Shift+num-，如果是菜单一直向下滑动，你就按Shift+num2，其他的依次类推（要多按几次）
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
@@ -41,14 +38,17 @@
                     配置文件
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● Kiddion配置文件目录：C:\ProgramData\GTA5OnlineTools\Kiddion\，该目录内的配置文件不会随着小助手重启而更新，如果需要初始化配置文件，请使用 工具->初始化配置文件夹
+                    ● Kiddion配置文件目录：我的文档\GTA5OnlineTools\Kiddion\，该目录内的配置文件不会随着小助手重启而更新，如果需要初始化配置文件，请使用 工具->初始化配置文件夹
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     Lua脚本
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● Kiddion脚本目录：C:\ProgramData\GTA5OnlineTools\Kiddion\scripts，把lua格式脚本放到这个目录，然后重新启动Kiddion即可加载
+                    ● Kiddion脚本目录：我的文档\GTA5OnlineTools\Kiddion\scripts，把lua格式脚本放到这个目录，然后重新启动Kiddion即可加载
+                </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    ● Lua脚本也是需要更新的，如果脚本使用异常，玩家记得手动更新脚本
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
@@ -59,40 +59,28 @@
                     快捷键
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    【F5】传送至导航点
-                    <LineBreak />
-                    【F6】传送至目标点
-                    <LineBreak />
-                    【F7】治疗玩家
-                    <LineBreak />
-                    【F8】消除警星
-                </Paragraph>
+                    【F5】传送至导航点<LineBreak />
+                    【F6】传送至目标点<LineBreak />
+                    【F7】治疗玩家<LineBreak />
+                    【F8】消除警星</Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     104按键
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    【小键盘-】显示/隐藏菜单
-                    <LineBreak />
-                    【小键盘8】和【小键盘2】上下选择
-                    <LineBreak />
-                    【小键盘4】和【小键盘6】左右选择
-                    <LineBreak />
-                    【小键盘5】确定，【小键盘0】返回
-                </Paragraph>
+                    【小键盘-】显示/隐藏菜单<LineBreak />
+                    【小键盘8】和【小键盘2】上下选择<LineBreak />
+                    【小键盘4】和【小键盘6】左右选择<LineBreak />
+                    【小键盘5】确定，【小键盘0】返回</Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     87按键
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    【P键】显示/隐藏菜单
-                    <LineBreak />
-                    【I键】和【K键】上下选择
-                    <LineBreak />
-                    【J键】和【L键】左右选择
-                    <LineBreak />
-                    【U键】确定，【O键】返回
-                </Paragraph>
+                    【P键】显示/隐藏菜单<LineBreak />
+                    【I键】和【K键】上下选择<LineBreak />
+                    【J键】和【L键】左右选择<LineBreak />
+                    【U键】确定，【O键】返回</Paragraph>
             </FlowDocument>
         </RichTextBox>
     </UniformGrid>

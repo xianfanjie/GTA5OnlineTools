@@ -1,6 +1,4 @@
-﻿using GTA5OnlineTools.Utils;
-
-using GTA5Shared.Helper;
+﻿using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
 
@@ -19,14 +17,12 @@ public partial class KiddionWindow
 
     private void Window_Kiddion_Loaded(object sender, RoutedEventArgs e)
     {
-        var isClearScriptDir = IniHelper.ReadValue("Kiddion", "IsClearScriptDir");
-        if (!string.IsNullOrEmpty(isClearScriptDir))
-            CheckBox_IsClearScriptDir.IsChecked = isClearScriptDir == "1";
+
     }
 
     private void Window_Kiddion_Closing(object sender, CancelEventArgs e)
     {
-        IniHelper.WriteValue("Kiddion", "IsClearScriptDir", $"{Convert.ToInt32(CheckBox_IsClearScriptDir.IsChecked == true)}");
+
     }
 
     /// <summary>
@@ -42,11 +38,17 @@ public partial class KiddionWindow
 
             switch (Name)
             {
-                case "LuaScriptDirectory":
+                case "LuaScriptDir":
                     ProcessHelper.OpenLink(FileHelper.Dir_Kiddion_Scripts);
+                    break;
+                case "ClearScriptDir":
+                    ClearScriptDirClick();
                     break;
                 case "AliceLua":
                     AliceLuaClick();
+                    break;
+                case "IdeaLua":
+                    IdeaLuaClick();
                     break;
             }
         }
@@ -59,12 +61,31 @@ public partial class KiddionWindow
     /// <summary>
     /// 是否清空脚本目录
     /// </summary>
-    private void ClearScriptDir()
+    private void ClearScriptDirClick()
     {
         ProcessHelper.CloseProcess("Kiddion");
+        FileHelper.ClearDirectory(FileHelper.Dir_Kiddion_Scripts);
 
-        if (CheckBox_IsClearScriptDir.IsChecked == true)
-            FileHelper.ClearDirectory(FileHelper.Dir_Kiddion_Scripts);
+        FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
+        NotifierHelper.Show(NotifierType.Success, "清空Kiddion Lua脚本文件夹成功");
+    }
+
+    /// <summary>
+    /// 释放Lua脚本
+    /// </summary>
+    private void ReleaseLua(string luaName)
+    {
+        var lua = $"{FileHelper.ResFiles}.Kiddion.scripts.{luaName}.zip";
+        var file = $"{FileHelper.Dir_Kiddion_Scripts}\\{luaName}.zip";
+
+        FileHelper.ExtractResFile(lua, file);
+
+        using var archive = ZipFile.OpenRead(file);
+        archive.ExtractToDirectory(FileHelper.Dir_Kiddion_Scripts);
+        archive.Dispose();
+
+        File.Delete(file);
+        NotifierHelper.Show(NotifierType.Success, "脚本替换成功，请重新启动Kiddion查看");
     }
 
     /// <summary>
@@ -72,19 +93,14 @@ public partial class KiddionWindow
     /// </summary>
     private void AliceLuaClick()
     {
-        ClearScriptDir();
+        ReleaseLua("AliceLua");
+    }
 
-        var lua = $"{FileHelper.ResFiles}.Kiddion.scripts.AliceLua.zip";
-        var file = $"{FileHelper.Dir_Kiddion_Scripts}\\AliceLua.zip";
-
-        FileHelper.ExtractResFile(lua, file);
-        FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
-
-        using var archive = ZipFile.OpenRead(file);
-        archive.ExtractToDirectory(FileHelper.Dir_Kiddion_Scripts);
-        archive.Dispose();
-
-        File.Delete(file);
-        NotifierHelper.Show(NotifierType.Success, "Alice Lua脚本替换成功，请重新启动Kiddion查看");
+    /// <summary>
+    /// 释放 Idea Lua脚本
+    /// </summary>
+    private void IdeaLuaClick()
+    {
+        ReleaseLua("IdealLua");
     }
 }

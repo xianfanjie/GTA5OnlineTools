@@ -29,19 +29,27 @@
                     配置文件
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    默认配置文件路径：C:\Users\用户名\AppData\Roaming\BigBaseV2
-                    <LineBreak />
-                    如果你不小心修改了某些设置导致Yim无法正常使用，请先卸载注入，到这个文件夹清理里面内容，然后重新注入Yim即可恢复默认设置
-                </Paragraph>
+                    默认配置文件路径：C:\Users\用户名\AppData\Roaming\BigBaseV2<LineBreak />
+                    如果你不小心修改了某些设置导致Yim无法正常使用，请先卸载注入，到这个文件夹清理里面内容，然后重新注入Yim即可恢复默认设置</Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     注意事项
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    最新版本YimMenu文件使用了游戏缓存来获取载具、Ped等数据，第一次使用（若游戏更新同理）请先清空BigBaseV2目录的旧版配置文件，然后进入线上模式后注入YimMenu，让其更新缓存，否则可能会导致游戏崩溃
+                    现版本YimMenu文件使用了游戏缓存来获取载具、Ped等数据，这个是导致崩溃的主要原因
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    如果发生崩溃问题，请清空配置目录全部文件后重新注入，然后按照提示在线上模式更新游戏缓存
+                    YimMenu建议在线上模式注入，推荐邀请战局（因为他需要读取Social Club相关信息，如果读取不到就会导致崩溃）
+                </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    小助手汉化版本YimMenu默认关闭全部功能，YimMenu官方英文版本会默认开启部分功能，如果两则都使用，注意配置文件
+                </Paragraph>
+
+                <Paragraph Style="{StaticResource ParagraphStyle_Title}">
+                    崩溃问题
+                </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    如果注入后立刻就崩溃，这一般是缓存导致的，请重启游戏，并清空YimMenu配置文件（就是那个BigBaseV2文件夹），然后进入邀请战局（不要去公共战局），这时再注入YimMney，然后按照提示在线上模式更新游戏缓存即可
                 </Paragraph>
 
             </FlowDocument>
@@ -53,7 +61,7 @@
                     按钮
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    注入成功了，按Ins键显示/隐藏菜单，鼠标点击操作
+                    注入成功了，按Insert键（就是Home键左边的那个）显示/隐藏菜单，使用鼠标操作
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
                     如果鼠标卡在屏幕中心不动，请在游戏中按ESC-》设置-》键盘/鼠标-》鼠标输入方法，改成原始输入即可
@@ -61,12 +69,6 @@
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     提示
-                </Paragraph>
-                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    建议大家进入故事模式后再注入游戏，不要直接在线上模式注入，注入成功后再进入线上模式
-                </Paragraph>
-                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    如果要使用防护功能，建议大家在线下开启后再进入线上模式，直接在线上开启防护可能会导致防护失效
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
                     注入成功后，会出现一个YimMenu的控制台窗口，这个不要关闭，否则游戏会跟着一起关闭，如果要卸载注入，点击菜单左上角的卸载按钮即可

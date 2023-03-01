@@ -42,7 +42,7 @@
                     批量导入
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 批量导入文件目录：C:\ProgramData\GTA5OnlineTools\Cache\stat.txt，如果你要导入多个代码，可以把stat代码粘贴到这个文件内并保存，然后再GTAHax中点击导入按钮
+                    ● 批量导入文件目录：我的文档\GTA5OnlineTools\Cache\stat.txt，如果你要导入多个代码，可以把stat代码粘贴到这个文件内并保存，然后再GTAHax中点击导入按钮
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>

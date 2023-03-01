@@ -530,11 +530,11 @@ public static class Online
     /// <summary>
     /// 断开战局连接
     /// </summary>
-    public static void Disconnect()
+    public static async void Disconnect()
     {
         Hacks.WriteGA(32441, 1);        // NETWORK::NETWORK_BAIL(1, 0, 0)
-        Thread.Sleep(200);              // return NETWORK::NETWORK_CAN_ACCESS_MULTIPLAYER
-        Hacks.WriteGA(32441, 0);
+        await Task.Delay(200);
+        Hacks.WriteGA(32441, 0);        // return NETWORK::NETWORK_CAN_ACCESS_MULTIPLAYER
     }
 
     /// <summary>
@@ -542,7 +542,7 @@ public static class Online
     /// </summary>
     public static void StopCutscene()
     {
-        Hacks.WriteGA(2766500 + 3, 1);      // return MISC::GET_HASH_KEY("AVISA")
+        Hacks.WriteGA(2766502 + 3, 1);      // return MISC::GET_HASH_KEY("AVISA")
         Hacks.WriteGA(1575060, 1);          // HUD::SET_FRONTEND_ACTIVE(false)
     }
 

@@ -53,10 +53,7 @@ public partial class FindVehicleView : UserControl
         if (result.Count == 0)
             return;
 
-        foreach (var item in result)
-        {
-            FindVehicles.Add(item);
-        }
+        result.ForEach(v => FindVehicles.Add(v));
     }
 
     private void TextBox_ModelName_TextChanged(object sender, TextChangedEventArgs e)

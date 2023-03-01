@@ -10,26 +10,39 @@
     mc:Ignorable="d">
 
     <DockPanel>
-        <StackPanel
-            Margin="5"
-            DockPanel.Dock="Top"
-            Orientation="Horizontal">
-            <Button
-                x:Name="Button_RefushPersonalVehicleList"
-                Click="Button_RefushPersonalVehicleList_Click"
-                Content="刷新列表" />
-            <Button
-                x:Name="Button_SpawnPersonalVehicle"
-                Click="Button_SpawnPersonalVehicle_Click"
-                Content="呼叫个人载具" />
-            <Button
-                x:Name="Button_GetInOnlinePV"
-                Click="Button_GetInOnlinePV_Click"
-                Content="坐进个人载具" />
-            <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockStyle_Hint}">
-                提示：双击选中项可快捷呼叫
-            </TextBlock>
-        </StackPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <StackPanel DockPanel.Dock="Right">
+                <ui:TextBoxHint
+                    x:Name="TextBox_ModelName"
+                    Width="200"
+                    Margin="5"
+                    Hint="请输入载具名称"
+                    InputLanguageManager.InputLanguage="zh-CN"
+                    TextChanged="TextBox_ModelName_TextChanged" />
+            </StackPanel>
+            <!--  //////////////////  -->
+            <StackPanel
+                Margin="5"
+                DockPanel.Dock="Left"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="Button_RefushPersonalVehicleList"
+                    Click="Button_RefushPersonalVehicleList_Click"
+                    Content="刷新列表" />
+                <Button
+                    x:Name="Button_SpawnPersonalVehicle"
+                    Click="Button_SpawnPersonalVehicle_Click"
+                    Content="呼叫个人载具" />
+                <Button
+                    x:Name="Button_GetInOnlinePV"
+                    Click="Button_GetInOnlinePV_Click"
+                    Content="坐进个人载具" />
+                <!--  //////////////////  -->
+                <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：双击选中项可快捷呼叫
+                </TextBlock>
+            </StackPanel>
+        </DockPanel>
         <!--  //////////////////  -->
         <ListBox
             x:Name="ListBox_PersonalVehicle"

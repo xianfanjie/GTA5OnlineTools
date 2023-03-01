@@ -2,7 +2,8 @@
 
 public class PerVehInfo
 {
-    public int Index { set; get; }
+    public int Id { set; get; }
+    public string Class { set; get; }
     public string Name { set; get; }
     public long Hash { set; get; }
     public string Plate { set; get; }

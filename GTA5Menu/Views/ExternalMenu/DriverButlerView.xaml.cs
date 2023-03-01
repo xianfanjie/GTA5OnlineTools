@@ -10,7 +10,8 @@ namespace GTA5Menu.Views.ExternalMenu;
 /// </summary>
 public partial class DriverButlerView : UserControl
 {
-    public ObservableCollection<PerVehInfo> PerVehInfos { get; set; } = new();
+    private List<PerVehInfo> _perVehInfos = new();
+    public ObservableCollection<PerVehInfo> PerVehInfos { get; private set; } = new();
 
     public DriverButlerView()
     {
@@ -28,6 +29,7 @@ public partial class DriverButlerView : UserControl
     {
         AudioHelper.PlayClickSound();
 
+        _perVehInfos.Clear();
         PerVehInfos.Clear();
 
         await Task.Run(() =>
@@ -45,16 +47,19 @@ public partial class DriverButlerView : UserControl
                 if (vInfo == null)
                     continue;
 
+                var preVInfo = new PerVehInfo()
+                {
+                    Id = i,
+                    Name = vInfo.Name,
+                    Hash = hash,
+                    Plate = plate,
+                    Image = vInfo.Image
+                };
+
                 this.Dispatcher.Invoke(() =>
                 {
-                    PerVehInfos.Add(new()
-                    {
-                        Index = i,
-                        Name = vInfo.Name,
-                        Hash = hash,
-                        Plate = plate,
-                        Image = vInfo.Image
-                    });
+                    _perVehInfos.Add(preVInfo);
+                    PerVehInfos.Add(preVInfo);
                 });
             }
         });
@@ -65,7 +70,7 @@ public partial class DriverButlerView : UserControl
         AudioHelper.PlayClickSound();
 
         if (ListBox_PersonalVehicle.SelectedItem is PerVehInfo info)
-            Vehicle.RequestPersonalVehicle(info.Index);
+            Vehicle.RequestPersonalVehicle(info.Id);
     }
 
     private void Button_GetInOnlinePV_Click(object sender, RoutedEventArgs e)
@@ -77,6 +82,31 @@ public partial class DriverButlerView : UserControl
 
     private void ListBox_PersonalVehicle_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
-        Button_SpawnPersonalVehicle_Click(null,null);
+        Button_SpawnPersonalVehicle_Click(null, null);
+    }
+
+    private void TextBox_ModelName_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        FindVehiclesByModeName();
+    }
+
+    private void FindVehiclesByModeName()
+    {
+        if (PerVehInfos.Count != 0)
+            PerVehInfos.Clear();
+
+        var name = TextBox_ModelName.Text;
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            PerVehInfos.Clear();
+            _perVehInfos.ForEach(v => PerVehInfos.Add(v));
+            return;
+        }
+
+        var result = _perVehInfos.FindAll(v => v.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase));
+        if (result.Count == 0)
+            return;
+
+        result.ForEach(v => PerVehInfos.Add(v));
     }
 }

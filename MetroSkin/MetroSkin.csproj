@@ -16,8 +16,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
-	  <PackageReference Include="VirtualizingWrapPanel" Version="1.5.7" />
+		<PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Vendor\VirtualizingWrapPanel\VirtualizingWrapPanel.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

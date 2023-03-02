@@ -3,10 +3,9 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
-		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<StartupObject>TestConsole.Program</StartupObject>
 		<Platforms>x64</Platforms>
+		<StartupObject>TestConsole.Program</StartupObject>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

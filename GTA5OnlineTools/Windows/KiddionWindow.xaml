@@ -71,8 +71,8 @@
             <Button
                 Background="#4285F4"
                 Command="{Binding LuaScriptClickCommand}"
-                CommandParameter="IdeaLua"
-                Content="Idea Lua脚本" />
+                CommandParameter="IdealLua"
+                Content="Ideal Lua脚本" />
         </WrapPanel>
         <!--  ///////////////////////  -->
         <StackPanel Grid.Row="2" Margin="5">

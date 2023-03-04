@@ -194,8 +194,8 @@
                             <ControlTemplate TargetType="{x:Type ListBoxItem}">
                                 <Border
                                     Name="border"
-                                    Width="115"
-                                    Height="80"
+                                    Width="120"
+                                    Height="60"
                                     Margin="5,5,0,0"
                                     Background="White"
                                     BorderBrush="Gray"

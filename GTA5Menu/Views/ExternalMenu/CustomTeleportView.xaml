@@ -27,19 +27,19 @@
                 ToolTip="双击选中项可快捷传送">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type ListBoxItem}">
-                        <StackPanel
-                            Margin="5"
-                            VerticalAlignment="Center"
-                            ToolTip="{Binding Name}">
+                        <StackPanel Margin="5" VerticalAlignment="Center">
+                            <StackPanel.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Margin="0,0,0,5" Text="{Binding Name}" />
+                                    <TextBlock Text="{Binding X, StringFormat='X: {0:0.000}'}" />
+                                    <TextBlock Margin="0,3,0,3" Text="{Binding Y, StringFormat='Y: {0:0.000}'}" />
+                                    <TextBlock Text="{Binding Z, StringFormat='Z: {0:0.000}'}" />
+                                </StackPanel>
+                            </StackPanel.ToolTip>
                             <TextBlock
-                                FontWeight="Bold"
                                 Text="{Binding Name}"
-                                TextTrimming="CharacterEllipsis" />
-                            <StackPanel Margin="0,5,0,0" TextElement.FontSize="10">
-                                <TextBlock Text="{Binding X, StringFormat='X: {0:0.000}'}" />
-                                <TextBlock Margin="0,3,0,3" Text="{Binding Y, StringFormat='Y: {0:0.000}'}" />
-                                <TextBlock Text="{Binding Z, StringFormat='Z: {0:0.000}'}" />
-                            </StackPanel>
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

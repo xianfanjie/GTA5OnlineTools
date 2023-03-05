@@ -21,6 +21,7 @@
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
                     ● 可以获取男、女警服等限制服装（虽然不能保存）
                 </Paragraph>
+
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     提示
                 </Paragraph>
@@ -31,9 +32,17 @@
                     ● 进入黑名单的衣服是不能保存的，但是可以穿在身上
                 </Paragraph>
 
+                <Paragraph Style="{StaticResource ParagraphStyle_Title}">
+                    更多
+                </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    ● 详细使用教程，请前往小助手官方网站查看
+                    <Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                </Paragraph>
+
             </FlowDocument>
         </RichTextBox>
-        <!--  ##########  -->
+        <!--  ////////////////////  -->
         <RichTextBox Margin="2.5,5,5,5" Style="{StaticResource RichTextBoxStyle_Page}">
             <FlowDocument>
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">

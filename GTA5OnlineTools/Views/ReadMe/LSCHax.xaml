@@ -44,9 +44,18 @@
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
                     ● 批量导入文件目录：我的文档\GTA5OnlineTools\Cache\stat.txt，如果你要导入多个代码，可以把stat代码粘贴到这个文件内并保存，然后再GTAHax中点击导入按钮
                 </Paragraph>
+
+                <Paragraph Style="{StaticResource ParagraphStyle_Title}">
+                    更多
+                </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    ● 详细使用教程，请前往小助手官方网站查看
+                    <Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                </Paragraph>
+
             </FlowDocument>
         </RichTextBox>
-        <!--  ##########  -->
+        <!--  ////////////////////  -->
         <RichTextBox Margin="2.5,5,5,5" Style="{StaticResource RichTextBoxStyle_Page}">
             <FlowDocument>
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">

@@ -61,7 +61,6 @@
         </StackPanel>
 
         <StackPanel
-            HorizontalAlignment="Center"
             Background="Transparent"
             Cursor="Hand"
             MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"

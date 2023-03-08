@@ -99,6 +99,12 @@ public partial class LoadWindow
                         FileHelper.ExtractResFile(FileHelper.Res_Inject_YimMenu, FileHelper.File_Inject_YimMenu);
                 }
 
+                var xmlDoc = new XmlDocument();
+                xmlDoc.Load(FileHelper.File_Cache_Xenos64Profile);
+                var xmlRoot = xmlDoc.DocumentElement;
+                xmlRoot.SelectSingleNode("imagePath").InnerText = FileHelper.File_Inject_YimMenu;
+                xmlDoc.Save(FileHelper.File_Cache_Xenos64Profile);
+
                 /////////////////////////////////////////////////////////////////////
 
                 this.Dispatcher.Invoke(() =>
@@ -114,7 +120,7 @@ public partial class LoadWindow
             }
             catch (Exception ex)
             {
-                LoadModel.LoadState = $"初始化错误，发生了未知异常！\n\n{ex.Message}\n\n提示：请关闭杀毒软件并尝试清空默认配置文件夹全部文件后重试";
+                LoadModel.LoadState = $"初始化错误，发生了未知异常！\n{ex.Message}";
                 LoggerHelper.Error("初始化错误，发生了未知异常", ex);
 
                 this.Dispatcher.Invoke(() =>
@@ -126,20 +132,10 @@ public partial class LoadWindow
     }
 
     [RelayCommand]
-    private async void ButtonClick(string name)
+    private void ButtonClick(string name)
     {
         switch (name)
         {
-            case "InitDefaultPath":
-                {
-                    FileHelper.ClearDirectory(FileHelper.Dir_Default);
-                    await Task.Delay(100);
-
-                    App.AppMainMutex.Dispose();
-                    ProcessHelper.OpenProcess(FileUtil.File_MainApp);
-                    Application.Current.Shutdown();
-                }
-                break;
             case "OpenDefaultPath":
                 ProcessHelper.OpenProcess(FileHelper.Dir_Default);
                 break;

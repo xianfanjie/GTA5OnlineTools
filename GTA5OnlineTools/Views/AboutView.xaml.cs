@@ -29,9 +29,4 @@ public partial class AboutView : UserControl
         ProcessHelper.OpenLink(e.Uri.OriginalString);
         e.Handled = true;
     }
-
-    private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-    {
-        ProcessHelper.OpenLink("https://afdian.net/@crazyzhang");
-    }
 }

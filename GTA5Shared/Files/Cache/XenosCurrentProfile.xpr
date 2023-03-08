@@ -1,5 +1,5 @@
 <XenosConfig>
-	<imagePath>C:\ProgramData\GTA5OnlineTools\Inject\YimMenu.dll</imagePath>
+	<imagePath></imagePath>
 	<manualMapFlags>0</manualMapFlags>
 	<procName>GTA5.exe</procName>
 	<hijack>0</hijack>

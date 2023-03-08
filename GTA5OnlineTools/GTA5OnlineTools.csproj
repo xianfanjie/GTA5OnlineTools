@@ -31,7 +31,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="Assets\Afdian.png" />
 		<Resource Include="Assets\Favicon.ico" />
 		<Resource Include="Assets\Hacks\BincoHax.png" />
 		<Resource Include="Assets\Hacks\GTAHax.png" />

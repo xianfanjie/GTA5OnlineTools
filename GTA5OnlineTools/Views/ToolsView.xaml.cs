@@ -217,7 +217,8 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void StoryModeArchiveClick()
     {
-        var path = Path.Combine(FileHelper.Dir_MyDocuments, "\\Rockstar Games\\GTA V\\Profiles");
+        Debug.WriteLine(FileHelper.Dir_MyDocuments);
+        var path = Path.Combine(FileHelper.Dir_MyDocuments, "Rockstar Games\\GTA V\\Profiles");
         if (!Directory.Exists(path))
         {
             NotifierHelper.Show(NotifierType.Error, "GTA5故事模式存档路径不存在，操作取消");

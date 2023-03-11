@@ -68,6 +68,11 @@
                     快捷键
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    【F3】补满全部弹药
+                    <LineBreak />
+                    【F4】坐标向前微调
+                    <LineBreak />
+                    <LineBreak />
                     【F5】传送至导航点
                     <LineBreak />
                     【F6】传送至目标点
@@ -75,6 +80,11 @@
                     【F7】治疗玩家
                     <LineBreak />
                     【F8】消除警星
+                    <LineBreak />
+                    <LineBreak />
+                    【F9】修复载具
+                    <LineBreak />
+                    【F10】跳过过场动画
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">

@@ -25,19 +25,6 @@
       "ItemHeight": 20,
       "ItemWidth": 350,
       "ItemSpacing": 3
-    },
-    {
-      "Name": "Kiddion默认",
-      "FontName": "Microsoft YaHei",
-      "ItemColor": "093145",
-      "TextColor": "F2F3F4",
-      "SelectedItemColor": "EFD469",
-      "SelectedTextColor": "373D3F",
-      "BackgroundColor": "F2F3F4",
-      "TransparencyColorKey": "000000",
-      "ItemHeight": 20,
-      "ItemWidth": 350,
-      "ItemSpacing": 0
     }
   ]
 }

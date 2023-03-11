@@ -1,6 +1,14 @@
 {
   "Hotkeys": [
     {
+      "Action": "MaxAllAmmo",
+      "VirtualKey": 114
+    },
+    {
+      "Action": "TeleportForward",
+      "VirtualKey": 115
+    },
+    {
       "Action": "TeleportToWaypoint",
       "VirtualKey": 116
     },
@@ -15,6 +23,14 @@
     {
       "Action": "ClearWantedLevel",
       "VirtualKey": 119
+    },
+    {
+      "Action": "HealVehicle",
+      "VirtualKey": 120
+    },
+    {
+      "Action": "EndCutscene",
+      "VirtualKey": 121
     }
   ],
   "Menu": {

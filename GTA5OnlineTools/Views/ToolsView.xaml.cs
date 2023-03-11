@@ -217,7 +217,6 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void StoryModeArchiveClick()
     {
-        Debug.WriteLine(FileHelper.Dir_MyDocuments);
         var path = Path.Combine(FileHelper.Dir_MyDocuments, "Rockstar Games\\GTA V\\Profiles");
         if (!Directory.Exists(path))
         {

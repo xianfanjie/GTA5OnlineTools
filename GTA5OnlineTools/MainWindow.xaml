@@ -48,11 +48,6 @@
                     Background="#808080"
                     SnapsToDevicePixels="True" />
                 <TextBlock Margin="5" Text="{Binding MainModel.AppRunTime, FallbackValue='00:00:00'}" />
-                <Border
-                    Width="2"
-                    Margin="5"
-                    Background="#808080"
-                    SnapsToDevicePixels="True" />
                 <TextBlock
                     Margin="5"
                     VerticalAlignment="Center"

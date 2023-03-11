@@ -38,11 +38,6 @@ public partial class OnlineOptionView : UserControl
         Online.Disconnect();
     }
 
-    private void Button_StopCutscene_Click(object sender, RoutedEventArgs e)
-    {
-        Online.StopCutscene();
-    }
-
     private void CheckBox_FreeChangeAppearance_Click(object sender, RoutedEventArgs e)
     {
         Online.FreeChangeAppearance(CheckBox_FreeChangeAppearance.IsChecked == true);

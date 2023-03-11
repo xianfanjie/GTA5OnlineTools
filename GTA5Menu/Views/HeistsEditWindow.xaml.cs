@@ -15,6 +15,7 @@ public partial class HeistsEditWindow
     /// </summary>
     public List<NavMenu> NavMenus { get; set; } = new();
 
+    private readonly ReadMeView ReadMeView = new();
     private readonly ContractView ContractView = new();
     private readonly PericoView PericoView = new();
     private readonly CasinoView CasinoView = new();
@@ -35,7 +36,7 @@ public partial class HeistsEditWindow
         // 创建菜单
         CreateMenuBar();
         // 设置主页
-        ContentControl_Main.Content = ContractView;
+        ContentControl_Main.Content = ReadMeView;
 
         ///////////////////////////////////////////////////////////////;
     }
@@ -50,6 +51,7 @@ public partial class HeistsEditWindow
     /// </summary>
     private void CreateMenuBar()
     {
+        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "使用说明", ViewName = "ReadMeView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "事所合约", ViewName = "ContractView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "佩里克岛", ViewName = "PericoView" });
         NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "赌场抢劫", ViewName = "CasinoView" });
@@ -69,6 +71,9 @@ public partial class HeistsEditWindow
 
         switch (menu.ViewName)
         {
+            case "ReadMeView":
+                ContentControl_Main.Content = ReadMeView;
+                break;
             case "ContractView":
                 ContentControl_Main.Content = ContractView;
                 break;

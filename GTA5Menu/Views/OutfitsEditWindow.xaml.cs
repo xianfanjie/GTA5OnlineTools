@@ -82,8 +82,6 @@ public partial class OutfitsEditWindow
 
             Outfits.WRIST = Convert.ToInt32(TextBox_WRIST.Text);
             Outfits.WRIST_TEX = Convert.ToInt32(TextBox_WRIST_TEX.Text);
-
-            NotifierHelper.Show(NotifierType.Success, $"槽位{ComboBox_OutfitIndex.SelectedIndex} 数据写入成功");
         }
         catch (Exception ex)
         {
@@ -145,8 +143,6 @@ public partial class OutfitsEditWindow
 
             TextBox_WRIST.Text = Outfits.WRIST.ToString();
             TextBox_WRIST_TEX.Text = Outfits.WRIST_TEX.ToString();
-
-            NotifierHelper.Show(NotifierType.Success, $"槽位{ComboBox_OutfitIndex.SelectedIndex} 数据读取成功");
         }
         catch (Exception ex)
         {

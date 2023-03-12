@@ -40,9 +40,7 @@ public static class HotKeys
     {
         var keyId = (int)key;
         if (!HotKeyDirts.ContainsKey(keyId))
-        {
             HotKeyDirts.Add(keyId, new KeyInfo() { Key = key });
-        }
     }
 
     /// <summary>
@@ -53,9 +51,7 @@ public static class HotKeys
     {
         var keyId = (int)key;
         if (HotKeyDirts.ContainsKey(keyId))
-        {
             HotKeyDirts.Remove(keyId);
-        }
     }
 
     /// <summary>
@@ -94,10 +90,10 @@ public static class HotKeys
         {
             if (HotKeyDirts.Count > 0)
             {
-                var keysData = new List<KeyInfo>(HotKeyDirts.Values);
-                if (keysData != null && keysData.Count > 0)
+                var keyInfos = new List<KeyInfo>(HotKeyDirts.Values);
+                if (keyInfos != null && keyInfos.Count > 0)
                 {
-                    foreach (KeyInfo key in keysData)
+                    foreach (var key in keyInfos)
                     {
                         if (KeyHelper.IsKeyPressed(key.Key))
                         {

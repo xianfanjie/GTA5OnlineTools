@@ -9,42 +9,10 @@
     d:DesignWidth="900"
     mc:Ignorable="d">
 
-    <UserControl.Resources>
-        <Style x:Key="RichTextBoxStyle_ReadMe" TargetType="{x:Type RichTextBox}">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="Background" Value="White" />
-            <Setter Property="IsReadOnly" Value="True" />
-            <Setter Property="IsDocumentEnabled" Value="True" />
-            <Setter Property="Cursor" Value="Arrow" />
-            <Setter Property="Padding" Value="5" />
-            <Setter Property="BorderBrush" Value="Black" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
-            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
-        </Style>
-
-        <Style x:Key="Title" TargetType="{x:Type Paragraph}">
-            <Setter Property="FontSize" Value="18" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="LineHeight" Value="10" />
-        </Style>
-
-        <Style x:Key="Head1" TargetType="{x:Type Paragraph}">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="LineHeight" Value="10" />
-        </Style>
-
-        <Style TargetType="{x:Type Paragraph}">
-            <Setter Property="LineHeight" Value="10" />
-        </Style>
-    </UserControl.Resources>
-
     <UniformGrid Columns="2">
         <RichTextBox Style="{StaticResource RichTextBoxStyle_ReadMe}">
             <FlowDocument>
-                <Paragraph Style="{StaticResource Title}">
+                <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     传送说明
                 </Paragraph>
                 <Paragraph>
@@ -64,13 +32,13 @@
                     ● 如何近距离精确传送？我们打开大地图，然后在附件你需要传送的地方点击导航点（不能太远），
                     然后就按下F5键，不要退出地图，因为距离太近了退出地图导航点会消失
                 </Paragraph>
-                <Paragraph Style="{StaticResource Head1}">
+                <Paragraph Style="{StaticResource ParagraphStyle_Head1}">
                     单人传送
                 </Paragraph>
                 <Paragraph>
                     ● 我们先保持静止状态，载具请停下来，然后在地图上点击导航点，使用快捷键F5传送即可，F6是传送到系统生成的图标出
                 </Paragraph>
-                <Paragraph Style="{StaticResource Head1}">
+                <Paragraph Style="{StaticResource ParagraphStyle_Head1}">
                     多人传送
                 </Paragraph>
                 <Paragraph>
@@ -83,7 +51,7 @@
 
         <RichTextBox Style="{StaticResource RichTextBoxStyle_ReadMe}">
             <FlowDocument>
-                <Paragraph Style="{StaticResource Title}">
+                <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     功能说明
                 </Paragraph>
                 <Paragraph>

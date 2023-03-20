@@ -4,8 +4,6 @@
 // 将 ComVisible 设置为 false 会使此程序集中的类型对 COM 组件不可见。如果需要从 COM 访问此程序集中的类型，请将该类型的 ComVisible
 // 属性设置为 true。
 
-using System.Reflection;
-
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于 typelib 的 ID。
@@ -16,9 +14,9 @@ using System.Reflection;
 [assembly: AssemblyTitle("GTA5线上小助手")]
 [assembly: AssemblyCompany("https://crazyzhang.cn")]
 [assembly: AssemblyProduct("GTA5线上小助手")]
-[assembly: AssemblyVersion("3.1.1.0")]
-[assembly: AssemblyFileVersion("3.1.1.0")]
-[assembly: AssemblyInformationalVersion("3.1.1.0")]
+[assembly: AssemblyVersion("3.1.1.1")]
+[assembly: AssemblyFileVersion("3.1.1.1")]
+[assembly: AssemblyInformationalVersion("3.1.1.1")]
 
 // 不重复
 [assembly: AssemblyDescription("https://github.com/CrazyZhang666/GTA5OnlineTools")]

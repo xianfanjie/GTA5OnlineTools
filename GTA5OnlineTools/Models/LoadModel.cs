@@ -33,4 +33,14 @@ public class LoadModel : ObservableObject
         get => buildDate;
         set => SetProperty(ref buildDate, value);
     }
+
+    private bool isInitError;
+    /// <summary>
+    /// 是否初始化发生错误
+    /// </summary>
+    public bool IsInitError
+    {
+        get => isInitError;
+        set => SetProperty(ref isInitError, value);
+    }
 }

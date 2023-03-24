@@ -121,12 +121,8 @@ public partial class LoadWindow
             catch (Exception ex)
             {
                 LoadModel.LoadState = $"初始化错误，发生了未知异常！\n{ex.Message}";
+                LoadModel.IsInitError = true;
                 LoggerHelper.Error("初始化错误，发生了未知异常", ex);
-
-                this.Dispatcher.Invoke(() =>
-                {
-                    WrapPanel_ExceptionState.Visibility = Visibility.Visible;
-                });
             }
         });
     }

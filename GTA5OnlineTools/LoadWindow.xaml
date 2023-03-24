@@ -71,23 +71,28 @@
                     HorizontalAlignment="Center"
                     Text="{Binding LoadModel.LoadState, FallbackValue='正在初始化工具...'}"
                     TextWrapping="Wrap" />
-                <WrapPanel
-                    x:Name="WrapPanel_ExceptionState"
+                <StackPanel
                     Margin="0,10,0,0"
                     HorizontalAlignment="Center"
                     d:Visibility="Visible"
-                    Visibility="Collapsed">
-                    <Button
-                        Background="#4285F4"
-                        Command="{Binding ButtonClickCommand}"
-                        CommandParameter="OpenDefaultPath"
-                        Content="打开配置文件夹" />
-                    <Button
-                        Background="#EA4335"
-                        Command="{Binding ButtonClickCommand}"
-                        CommandParameter="ExitAPP"
-                        Content="退出程序" />
-                </WrapPanel>
+                    Visibility="{Binding LoadModel.IsInitError, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button
+                            Background="#4285F4"
+                            Command="{Binding ButtonClickCommand}"
+                            CommandParameter="OpenDefaultPath"
+                            Content="打开配置文件夹" />
+                        <Button
+                            Background="#EA4335"
+                            Command="{Binding ButtonClickCommand}"
+                            CommandParameter="ExitAPP"
+                            Content="退出程序" />
+                    </StackPanel>
+                    <TextBlock Margin="10,5,10,5" Style="{StaticResource TextBlockStyle_Hint}">
+                        提示：一般初始化异常，大部分原因都是小助手部分文件被杀毒占用或者删除导致的。
+                        可以尝试暂时关闭杀毒软件后重试
+                    </TextBlock>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>

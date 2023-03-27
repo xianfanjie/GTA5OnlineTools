@@ -14,8 +14,7 @@ public static class WebAPI
     {
         var options = new RestClientOptions()
         {
-            MaxTimeout = 5000,
-            ThrowOnAnyError = true
+            MaxTimeout = 5000
         };
         client = new RestClient(options);
     }

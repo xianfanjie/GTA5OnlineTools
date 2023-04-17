@@ -24,7 +24,12 @@ public static class Offsets
         public const string LocalScriptsMask = "48 8B 05 ?? ?? ?? ?? 8B CF 48 8B 0C C8 39 59 68";
 
         public const string UnkMask = "48 39 3D ?? ?? ?? ?? 75 2D";
+
+        public const string HeightMask = "80 3F 00 00 80 41 ?? ?? ?? 3C ?? ?? ?? 42 ?? ?? ?? 42 ?? ?? ?? 42 ?? ?? ?? 42";
     }
+    ////////////////////////////////////////////////////////////////////
+    /// Height
+    public const int GroundHeight = 0xA;
 
     ////////////////////////////////////////////////////////////////////
 
@@ -194,5 +199,4 @@ public static class Offsets
     public const int CNetworkPlayerMgr_CNetGamePlayer_IsRockStarDev = 0x199;
     public const int CNetworkPlayerMgr_CNetGamePlayer_IsRockStarQA = 0x19A;
     public const int CNetworkPlayerMgr_CNetGamePlayer_IsCheater = 0x19B;
-
 }

@@ -22,4 +22,6 @@ public static class Pointers
     public static long LocalScriptsPTR = 0;
 
     public static long UnkPTR = 0;
+
+    public static long HeightPTR = 0;
 }

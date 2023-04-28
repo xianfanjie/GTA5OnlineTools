@@ -335,6 +335,14 @@ public static class Teleport
     /// </summary>
     public static float GetGroundZCoord()
     {
-        return Memory.Read<float>(Memory.GTA5ProBaseAddress + 0x26E9ED4);
+        if (Pointers.HeightPTR == 0x0)
+        {
+            Pointers.HeightPTR = Memory.FindPattern(Offsets.Mask.HeightMask);
+            if (Pointers.HeightPTR == 0x0)
+            {
+                return -225.0f;
+            }
+        }
+        return Memory.Read<float>(Pointers.HeightPTR + Offsets.GroundHeight);
     }
 }

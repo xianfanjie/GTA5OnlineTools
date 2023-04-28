@@ -86,6 +86,7 @@
     "NoPTFX": false,
     "NoRemoteControl": false,
     "NoRemoteRagdoll": false,
+    "NoRemoteSound": false,
     "NoRemoteTeleport": false,
     "NoRemoveAllWeapons": false,
     "NoRemoveWeapon": false,
@@ -96,6 +97,7 @@
   },
   "Tunables": {
     "APMultiplier": 1.000000,
+    "DisableOutOfBoundsDeath": false,
     "ExtendBunkerTimers": false,
     "ExtendExportTimers": false,
     "ExtendMCTimers": false,

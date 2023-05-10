@@ -15,12 +15,37 @@
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     使用说明
                 </Paragraph>
-                <Paragraph>
-                    ● 部分跳前置功能可能不太好用，推荐使用Kiddion脚本中的Alice脚本，更加方便快捷
+                <Paragraph FontStyle="Italic" Foreground="Red">
+                    ● 部分跳前置功能可能已过期或者不好用，推荐使用Kiddion脚本中的Alice脚本，更加方便快捷
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 详细使用教程，请前往小助手官方网站查看
-                    <Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                    ● 详细使用教程，请前往小助手官方网站查看<Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                </Paragraph>
+
+                <Paragraph Style="{StaticResource ParagraphStyle_Title}">
+                    Alice脚本教程
+                </Paragraph>
+                <Paragraph>
+                    ● 先打开小助手中Kiddion脚本管理器
+                    <Border
+                        Height="200"
+                        Margin="3"
+                        Padding="3"
+                        BorderBrush="Gray"
+                        BorderThickness="1">
+                        <Image Source="pack://application:,,,/GTA5Menu;component/Assets/Alice/01.png" />
+                    </Border>
+                    <LineBreak />
+                    ● 然后释放Alice脚本，记得看底部绿色文字使用提示
+                    <Border
+                        Height="280"
+                        Margin="3"
+                        Padding="3"
+                        BorderBrush="Gray"
+                        BorderThickness="1">
+                        <Image Source="pack://application:,,,/GTA5Menu;component/Assets/Alice/02.png" />
+                    </Border>
+
                 </Paragraph>
 
             </FlowDocument>
@@ -29,7 +54,37 @@
         <RichTextBox Style="{StaticResource RichTextBoxStyle_ReadMe}">
             <FlowDocument>
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}" />
-                <Paragraph />
+                <Paragraph>
+                    ● 然后打开Kiddion，选择主菜单倒数第二项 脚本
+                    <WrapPanel>
+                        <Border
+                            Height="260"
+                            Margin="3"
+                            Padding="3"
+                            BorderBrush="Gray"
+                            BorderThickness="1">
+                            <Image Source="pack://application:,,,/GTA5Menu;component/Assets/Alice/03.png" />
+                        </Border>
+                        <Border
+                            Height="260"
+                            Margin="3"
+                            Padding="3"
+                            BorderBrush="Gray"
+                            BorderThickness="1">
+                            <Image Source="pack://application:,,,/GTA5Menu;component/Assets/Alice/05.png" />
+                        </Border>
+                    </WrapPanel>
+                    <LineBreak />
+                    ● 按照图片提示使用即可
+                    <Border
+                        Height="180"
+                        Margin="3"
+                        Padding="3"
+                        BorderBrush="Gray"
+                        BorderThickness="1">
+                        <Image Source="pack://application:,,,/GTA5Menu;component/Assets/Alice/04.png" />
+                    </Border>
+                </Paragraph>
 
             </FlowDocument>
         </RichTextBox>

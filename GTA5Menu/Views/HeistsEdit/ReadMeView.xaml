@@ -15,7 +15,11 @@
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     使用说明
                 </Paragraph>
-                <Paragraph FontStyle="Italic" Foreground="Red">
+                <Paragraph
+                    FontSize="14"
+                    FontStyle="Italic"
+                    FontWeight="Bold"
+                    Foreground="Red">
                     ● 部分跳前置功能可能已过期或者不好用，推荐使用Kiddion脚本中的Alice脚本，更加方便快捷
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
@@ -38,7 +42,7 @@
                     <LineBreak />
                     ● 然后释放Alice脚本，记得看底部绿色文字使用提示
                     <Border
-                        Height="280"
+                        Height="270"
                         Margin="3"
                         Padding="3"
                         BorderBrush="Gray"

@@ -29,10 +29,8 @@
                     配置文件
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    默认配置文件路径：C:\Users\用户名\AppData\Roaming\BigBaseV2
-                    <LineBreak />
-                    如果你不小心修改了某些设置导致Yim无法正常使用，请先卸载注入，到这个文件夹清理里面内容，然后重新注入Yim即可恢复默认设置
-                </Paragraph>
+                    默认配置文件路径：C:\Users\用户名\AppData\Roaming\BigBaseV2<LineBreak />
+                    如果你不小心修改了某些设置导致Yim无法正常使用，请先卸载注入，到这个文件夹清理里面内容，然后重新注入Yim即可恢复默认设置</Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     注意事项
@@ -51,15 +49,14 @@
                     崩溃问题
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    如果注入后立刻就崩溃，这一般是缓存导致的，请重启游戏，并清空YimMenu配置文件（就是那个BigBaseV2文件夹），然后进入邀请战局（不要去公共战局），这时再注入YimMney，然后按照提示在线上模式更新游戏缓存即可
+                    如果注入后立刻就崩溃，这一般是缓存导致的，请重启游戏，并清空YimMenu配置文件（就是那个BigBaseV2文件夹），然后进入邀请战局（不要去公共战局），这时再注入YimMenu，然后按照提示在线上模式更新游戏缓存即可
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     更多
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 详细使用教程，请前往小助手官方网站查看
-                    <Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                    ● 详细使用教程，请前往小助手官方网站查看<Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
                 </Paragraph>
 
             </FlowDocument>

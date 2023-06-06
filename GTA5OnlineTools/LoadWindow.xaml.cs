@@ -81,10 +81,11 @@ public partial class LoadWindow
 
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_GTAHax, FileHelper.File_Cache_GTAHax);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_BincoHax, FileHelper.File_Cache_BincoHax);
-                FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.File_Cache_index);
-                FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.File_Cache_zhcn);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_LSCHax, FileHelper.File_Cache_LSCHax);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Stat, FileHelper.File_Cache_Stat);
+
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
+                FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
 
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Notepad2, FileHelper.File_Cache_Notepad2);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64, FileHelper.File_Cache_Xenos64);

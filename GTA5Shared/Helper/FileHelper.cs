@@ -14,6 +14,8 @@ public static class FileHelper
     public const string Res_Kiddion_Scripts_Readme = $"{ResFiles}.Kiddion.scripts.Readme.api";
 
     public const string Res_Cache_BincoHax = $"{ResFiles}.Cache.BincoHax.exe";
+    public const string Res_Cache_zhcn = $"{ResFiles}.Cache.zh_CN.json";
+    public const string Res_Cache_index = $"{ResFiles}.Cache.index.json";
     public const string Res_Kiddion_Config87 = $"{ResFiles}.Kiddion.config87.json";
     public const string Res_Cache_GTAHax = $"{ResFiles}.Cache.GTAHax.exe";
     public const string Res_Cache_LSCHax = $"{ResFiles}.Cache.LSCHax.exe";
@@ -53,6 +55,8 @@ public static class FileHelper
     public static string File_Kiddion_Scripts_Readme { get; private set; }
 
     public static string File_Cache_BincoHax { get; private set; }
+    public static string File_Cache_index { get; private set; }
+    public static string File_Cache_zhcn { get; private set; }
     public static string File_Cache_GTAHax { get; private set; }
     public static string File_Cache_LSCHax { get; private set; }
     public static string File_Cache_Stat { get; private set; }
@@ -96,6 +100,8 @@ public static class FileHelper
         File_Kiddion_Scripts_Readme = Path.Combine(Dir_Kiddion_Scripts, "Readme.api");
 
         File_Cache_BincoHax = Path.Combine(Dir_Cache, "BincoHax.exe");
+        File_Cache_index = Path.Combine(Dir_Cache, "index.json");
+        File_Cache_zhcn = Path.Combine(Dir_Cache, "zh_CN.json");
         File_Cache_GTAHax = Path.Combine(Dir_Cache, "GTAHax.exe");
         File_Cache_LSCHax = Path.Combine(Dir_Cache, "LSCHax.exe");
         File_Cache_Stat = Path.Combine(Dir_Cache, "stat.txt");

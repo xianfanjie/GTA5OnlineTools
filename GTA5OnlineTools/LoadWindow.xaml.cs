@@ -83,10 +83,38 @@ public partial class LoadWindow
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_BincoHax, FileHelper.File_Cache_BincoHax);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_LSCHax, FileHelper.File_Cache_LSCHax);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Stat, FileHelper.File_Cache_Stat);
+                try
+                {
 
-                FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
-                FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
 
+                    if (Directory.Exists(FileHelper.Dir_BigBaseV2))
+                    {
+                        if (Directory.Exists(FileHelper.Dir_BigBaseV2 + "\\translations"))
+                        {
+                            FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
+                            FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(FileHelper.Dir_BigBaseV2 + "\\translations");
+                            FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
+                            FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
+
+                        }
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(FileHelper.Dir_BigBaseV2);
+                        Directory.CreateDirectory(FileHelper.Dir_BigBaseV2 + "\\translations");
+                        FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
+                        FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
+
+                    }
+                }
+                catch
+                {
+
+                }
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Notepad2, FileHelper.File_Cache_Notepad2);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64, FileHelper.File_Cache_Xenos64);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64Profile, FileHelper.File_Cache_Xenos64Profile);

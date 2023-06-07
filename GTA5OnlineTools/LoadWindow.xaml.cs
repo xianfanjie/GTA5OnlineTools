@@ -83,38 +83,44 @@ public partial class LoadWindow
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_BincoHax, FileHelper.File_Cache_BincoHax);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_LSCHax, FileHelper.File_Cache_LSCHax);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Stat, FileHelper.File_Cache_Stat);
+
+                //释放Yimmenu官中语言文件
                 try
                 {
-
-
                     if (Directory.Exists(FileHelper.Dir_BigBaseV2))
                     {
                         if (Directory.Exists(FileHelper.Dir_BigBaseV2 + "\\translations"))
                         {
+                            LoggerHelper.Info("Translations文件夹存在,正在释放Yimmenu汉化文件");
                             FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
                             FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
+                            LoggerHelper.Info("Yimmenu汉化文件已释放");
                         }
                         else
                         {
+                            LoggerHelper.Info("Translations文件夹不存在,正在新建文件夹并释放Yimmenu汉化文件");
                             Directory.CreateDirectory(FileHelper.Dir_BigBaseV2 + "\\translations");
                             FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
                             FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
-
+                            LoggerHelper.Info("Yimmenu汉化文件已释放");
                         }
                     }
                     else
                     {
+                        LoggerHelper.Info("BigBaseV2文件夹不存在,正在新建文件夹并释放Yimmenu汉化文件");
                         Directory.CreateDirectory(FileHelper.Dir_BigBaseV2);
                         Directory.CreateDirectory(FileHelper.Dir_BigBaseV2 + "\\translations");
                         FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
                         FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
-
+                        LoggerHelper.Info("Yimmenu汉化文件已释放");
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    LoggerHelper.Error("Yimmenu汉化文件释放失败");
+                    LoggerHelper.Error(ex.Message);
                 }
+
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Notepad2, FileHelper.File_Cache_Notepad2);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64, FileHelper.File_Cache_Xenos64);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64Profile, FileHelper.File_Cache_Xenos64Profile);

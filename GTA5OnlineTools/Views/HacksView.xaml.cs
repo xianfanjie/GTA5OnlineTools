@@ -423,7 +423,6 @@ public partial class HacksView : UserControl
                 Directory.CreateDirectory(FileHelper.Dir_Kiddion_Scripts);
                 await Task.Delay(100);
 
-                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Kiddion, FileHelper.File_Kiddion_Kiddion);
                 FileHelper.ExtractResFile(FileHelper.Res_Kiddion_KiddionChs, FileHelper.File_Kiddion_KiddionChs);
 
                 FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Config, FileHelper.File_Kiddion_Config);

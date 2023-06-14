@@ -4,6 +4,7 @@ public static class FileHelper
 {
     public const string ResFiles = "GTA5Shared.Files";
 
+    public const string Res_Kiddion_Kiddion = $"{ResFiles}.Kiddion.Kiddion.exe";
     public const string Res_Kiddion_KiddionChs = $"{ResFiles}.Kiddion.KiddionChs.dll";
     public const string Res_Kiddion_Config = $"{ResFiles}.Kiddion.config.json";
     public const string Res_Kiddion_Themes = $"{ResFiles}.Kiddion.themes.json";
@@ -89,6 +90,7 @@ public static class FileHelper
         Dir_Log_Crash = Path.Combine(Dir_Log, "Crash");
         Dir_Log_NLog = Path.Combine(Dir_Log, "NLog");
 
+        File_Kiddion_Kiddion = Path.Combine(Dir_Kiddion, "Kiddion.exe");
         File_Kiddion_KiddionChs = Path.Combine(Dir_Kiddion, "KiddionChs.dll");
         File_Kiddion_Config = Path.Combine(Dir_Kiddion, "config.json");
         File_Kiddion_Themes = Path.Combine(Dir_Kiddion, "themes.json");

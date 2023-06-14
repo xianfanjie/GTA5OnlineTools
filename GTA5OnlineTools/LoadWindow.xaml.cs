@@ -61,6 +61,8 @@ public partial class LoadWindow
                 FileHelper.ClearDirectory(FileHelper.Dir_Cache);
 
                 // 释放必要文件
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Kiddion, FileHelper.File_Kiddion_Kiddion);
+                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_KiddionChs, FileHelper.File_Kiddion_KiddionChs);
 
                 // 释放前先判断，防止覆盖配置文件
                 if (!File.Exists(FileHelper.File_Kiddion_Config))

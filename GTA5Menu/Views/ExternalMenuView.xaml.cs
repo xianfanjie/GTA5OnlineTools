@@ -1,5 +1,4 @@
-﻿using GTA5Menu.Data;
-using GTA5Menu.Views.ExternalMenu;
+﻿using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
 
@@ -11,97 +10,50 @@ namespace GTA5Menu.Views;
 public partial class ExternalMenuView : UserControl
 {
     /// <summary>
-    /// 导航菜单
+    /// 导航字典
     /// </summary>
-    public List<NavMenu> NavMenus { get; set; } = new();
-
-    private readonly SelfStateView SelfStateView = new();
-    private readonly WorldFunctionView WorldFunctionView = new();
-    private readonly OnlineOptionView OnlineOptionView = new();
-    private readonly SpawnVehicleView SpawnVehicleView = new();
-    private readonly SpawnWeaponView SpawnWeaponView = new();
-    private readonly CustomTeleportView CustomTeleportView = new();
-    private readonly DriverButlerView DriverButlerView = new();
-    private readonly JobHelperView JobHelperView = new();
-    private readonly ExternalOverlayView ExternalOverlayView = new();
-    private readonly PlayerListView PlayerListView = new();
-
-    private readonly ReadMeView ReadMeView = new();
+    private readonly Dictionary<string, UserControl> NavDictionary = new();
 
     public ExternalMenuView()
     {
         InitializeComponent();
 
-        // 创建菜单
-        CreateNavMenus();
-        // 设置主页
-        ContentControl_Main.Content = SelfStateView;
+        CreateView();
+
+        Navigate(NavDictionary.First().Key);
     }
 
     /// <summary>
-    /// 创建导航菜单
+    /// 创建页面
     /// </summary>
-    private void CreateNavMenus()
+    private void CreateView()
     {
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "自身属性", ViewName = "SelfStateView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "世界功能", ViewName = "WorldFunctionView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上选项", ViewName = "OnlineOptionView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上载具", ViewName = "SpawnVehicleView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "线上武器", ViewName = "SpawnWeaponView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "自定传送", ViewName = "CustomTeleportView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "随身技工", ViewName = "DriverButlerView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "任务帮手", ViewName = "JobHelperView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "外部ESP", ViewName = "ExternalOverlayView" });
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "玩家列表", ViewName = "PlayerListView" });
+        foreach (var item in ControlHelper.GetControls(Grid_NavMenu).Cast<RadioButton>())
+        {
+            var viewName = item.CommandParameter.ToString();
 
-        NavMenus.Add(new NavMenu() { Icon = "\xe610", Title = "README", ViewName = "ReadMeView" });
+            if (!NavDictionary.ContainsKey(viewName))
+            {
+                var type = Type.GetType($"GTA5Menu.Views.ExternalMenu.{viewName}");
+                if (type == null)
+                    continue;
+
+                NavDictionary.Add(viewName, Activator.CreateInstance(type) as UserControl);
+            }
+        }
     }
 
     /// <summary>
-    /// 页面导航
+    /// View页面导航
     /// </summary>
-    /// <param name="menu"></param>
+    /// <param name="viewName"></param>
     [RelayCommand]
-    private void Navigate(NavMenu menu)
+    private void Navigate(string viewName)
     {
-        if (menu == null || string.IsNullOrEmpty(menu.ViewName))
+        if (!NavDictionary.ContainsKey(viewName))
             return;
 
-        switch (menu.ViewName)
-        {
-            case "SelfStateView":
-                ContentControl_Main.Content = SelfStateView;
-                break;
-            case "WorldFunctionView":
-                ContentControl_Main.Content = WorldFunctionView;
-                break;
-            case "OnlineOptionView":
-                ContentControl_Main.Content = OnlineOptionView;
-                break;
-            case "SpawnVehicleView":
-                ContentControl_Main.Content = SpawnVehicleView;
-                break;
-            case "SpawnWeaponView":
-                ContentControl_Main.Content = SpawnWeaponView;
-                break;
-            case "CustomTeleportView":
-                ContentControl_Main.Content = CustomTeleportView;
-                break;
-            case "DriverButlerView":
-                ContentControl_Main.Content = DriverButlerView;
-                break;
-            case "JobHelperView":
-                ContentControl_Main.Content = JobHelperView;
-                break;
-            case "ExternalOverlayView":
-                ContentControl_Main.Content = ExternalOverlayView;
-                break;
-            case "PlayerListView":
-                ContentControl_Main.Content = PlayerListView;
-                break;
-            case "ReadMeView":
-                ContentControl_Main.Content = ReadMeView;
-                break;
-        }
+        if (ContentControl_NavRegion.Content != NavDictionary[viewName])
+            ContentControl_NavRegion.Content = NavDictionary[viewName];
     }
 }

@@ -63,20 +63,17 @@
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
                         CommandParameter="ExternalMenuView"
-                        GroupName="NavMenu"
                         Hint="外置菜单"
                         Icon="&#xe666;"
                         IsChecked="True" />
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
                         CommandParameter="SessionChatView"
-                        GroupName="NavMenu"
                         Hint="战局聊天"
                         Icon="&#xe61f;" />
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
                         CommandParameter="NavMenu"
-                        GroupName="NavMenu"
                         Hint="NavMenu"
                         Icon="&#xe610;" />
                 </StackPanel>

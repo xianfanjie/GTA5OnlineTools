@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vendor", "Vendor", "{E602CB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualizingWrapPanel", "Vendor\VirtualizingWrapPanel\VirtualizingWrapPanel.csproj", "{75346AB5-1A44-4D10-8DB4-E31FC816C41F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsSendKeys", "FormsSendKeys\FormsSendKeys.csproj", "{60D184AA-F649-42C4-865A-6814BAB9EEAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -84,6 +86,10 @@ Global
 		{75346AB5-1A44-4D10-8DB4-E31FC816C41F}.Debug|x64.Build.0 = Debug|x64
 		{75346AB5-1A44-4D10-8DB4-E31FC816C41F}.Release|x64.ActiveCfg = Release|x64
 		{75346AB5-1A44-4D10-8DB4-E31FC816C41F}.Release|x64.Build.0 = Release|x64
+		{60D184AA-F649-42C4-865A-6814BAB9EEAF}.Debug|x64.ActiveCfg = Debug|x64
+		{60D184AA-F649-42C4-865A-6814BAB9EEAF}.Debug|x64.Build.0 = Debug|x64
+		{60D184AA-F649-42C4-865A-6814BAB9EEAF}.Release|x64.ActiveCfg = Release|x64
+		{60D184AA-F649-42C4-865A-6814BAB9EEAF}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

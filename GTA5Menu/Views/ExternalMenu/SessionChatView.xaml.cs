@@ -3,12 +3,11 @@ using GTA5Core.Feature;
 using GTA5HotKey;
 using GTA5Shared.API;
 using GTA5Shared.Helper;
+using FormsSendKeys;
 
 using Chinese;
 
-using Forms = System.Windows.Forms;
-
-namespace GTA5Menu.Views;
+namespace GTA5Menu.Views.ExternalMenu;
 
 /// <summary>
 /// SessionChatView.xaml 的交互逻辑
@@ -106,11 +105,11 @@ public partial class SessionChatView : UserControl
             KeyPress(WinVK.Y);
 
         Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep1.Value));
-        Forms.SendKeys.Flush();
+        SendKeys.Flush();
         Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
-        Forms.SendKeys.SendWait(str);
+        SendKeys.SendWait(str);
         Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
-        Forms.SendKeys.Flush();
+        SendKeys.Flush();
         Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep1.Value));
 
         KeyPress(WinVK.RETURN);

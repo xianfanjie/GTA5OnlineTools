@@ -17,33 +17,88 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <!--  /////////////////////////  -->
-        <ListBox
-            x:Name="MenuBar"
-            Margin="5,5,0,5"
-            DockPanel.Dock="Bottom"
-            ItemsSource="{Binding NavMenus}"
-            SelectedIndex="0"
-            Style="{StaticResource ListBoxStyle_NavMenu}">
-            <b:Interaction.Triggers>
-                <b:EventTrigger EventName="SelectionChanged">
-                    <b:InvokeCommandAction Command="{Binding NavigateCommand}" CommandParameter="{Binding ElementName=MenuBar, Path=SelectedItem}" />
-                </b:EventTrigger>
-            </b:Interaction.Triggers>
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type ListBoxItem}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock
-                            Margin="8,0,5,0"
-                            FontSize="16"
-                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
-                            Text="{Binding Icon}" />
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Border
+            Padding="5"
+            BorderBrush="#C2C3C9"
+            BorderThickness="0,0,1,0">
+            <StackPanel x:Name="Grid_NavMenu">
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="SelfStateView"
+                    Content="自身属性"
+                    Icon="&#xe610;"
+                    IsChecked="True"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="WorldFunctionView"
+                    Content="世界功能"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="OnlineOptionView"
+                    Content="线上选项"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="SpawnVehicleView"
+                    Content="线上载具"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="SpawnWeaponView"
+                    Content="线上武器"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="CustomTeleportView"
+                    Content="自定传送"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="DriverButlerView"
+                    Content="随身技工"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="JobHelperView"
+                    Content="任务帮手"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="SessionChatView"
+                    Content="战局聊天"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="ExternalOverlayView"
+                    Content="外部ESP"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="PlayerListView"
+                    Content="玩家列表"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="ReadMeView"
+                    Content="README"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+            </StackPanel>
+        </Border>
         <!--  /////////////////////////  -->
-        <ContentControl x:Name="ContentControl_Main" Grid.Column="1" />
+        <ContentControl x:Name="ContentControl_NavRegion" Grid.Column="1" />
     </Grid>
 
 </UserControl>

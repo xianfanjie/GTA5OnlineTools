@@ -60,4 +60,48 @@
         </Setter>
     </Style>
 
+    <Style x:Key="NavMenuStyle_Normal" TargetType="{x:Type controls:NavMenu}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NavMenu}">
+                    <Grid Margin="0,0,0,1" Background="Transparent">
+                        <Border x:Name="borderHeader" />
+                        <Border x:Name="border" />
+                        <StackPanel Orientation="Horizontal">
+                            <controls:IconFont
+                                Margin="8,0,5,0"
+                                FontSize="16"
+                                Icon="{TemplateBinding Icon}" />
+                            <ContentPresenter VerticalAlignment="Center" Focusable="False" />
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="borderHeader" Property="BorderThickness" Value="4,0,0,0" />
+                            <Setter TargetName="borderHeader" Property="BorderBrush" Value="#6CB5FE" />
+                            <Setter TargetName="borderHeader" Property="Margin" Value="0,8,0,8" />
+                            <Setter TargetName="border" Property="Background" Value="#6CB5FE" />
+                            <Setter TargetName="border" Property="Opacity" Value="0.2" />
+                            <Setter TargetName="border" Property="CornerRadius" Value="3" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsChecked" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="border" Property="Background" Value="Gray" />
+                            <Setter TargetName="border" Property="Opacity" Value="0.2" />
+                            <Setter TargetName="border" Property="CornerRadius" Value="3" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

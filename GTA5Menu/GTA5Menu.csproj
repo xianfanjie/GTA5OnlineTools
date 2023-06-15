@@ -4,7 +4,6 @@
 		<TargetFramework>net6.0-windows</TargetFramework>
 		<Nullable>disable</Nullable>
 		<UseWPF>true</UseWPF>
-		<UseWindowsForms>True</UseWindowsForms>
         <Platforms>x64</Platforms>
         <PlatformTarget>x64</PlatformTarget>
 	</PropertyGroup>
@@ -22,6 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\FormsSendKeys\FormsSendKeys.csproj" />
 		<ProjectReference Include="..\GTA5Core\GTA5Core.csproj" />
 		<ProjectReference Include="..\GTA5HotKey\GTA5HotKey.csproj" />
 		<ProjectReference Include="..\GTA5Shared\GTA5Shared.csproj" />

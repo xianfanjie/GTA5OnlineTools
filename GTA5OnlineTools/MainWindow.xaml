@@ -14,6 +14,7 @@
     MinHeight="720"
     CaptionHeight="40"
     Closing="Window_Main_Closing"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_Main_Loaded"
     Style="{StaticResource SystemWindowStyle}"
     mc:Ignorable="d">
@@ -58,6 +59,7 @@
             </StackPanel>
             <!--  ################################  -->
             <StackPanel
+                x:Name="StackPanel_NavMenu"
                 DockPanel.Dock="Left"
                 Orientation="Horizontal"
                 WindowChrome.IsHitTestVisibleInChrome="True">
@@ -65,39 +67,45 @@
                     Command="{Binding NavigateCommand}"
                     CommandParameter="HomeView"
                     Content="主页"
+                    GroupName="NavMenu"
                     Icon="&#xe734;"
                     IsChecked="True" />
                 <ui:RadioButtonIcon
                     Command="{Binding NavigateCommand}"
                     CommandParameter="HacksView"
                     Content="第三方"
+                    GroupName="NavMenu"
                     Icon="&#xe691;" />
                 <ui:RadioButtonIcon
                     Command="{Binding NavigateCommand}"
                     CommandParameter="GTA5View"
                     Content="功能"
+                    GroupName="NavMenu"
                     Icon="&#xe666;" />
                 <ui:RadioButtonIcon
                     Command="{Binding NavigateCommand}"
                     CommandParameter="ToolsView"
                     Content="工具"
+                    GroupName="NavMenu"
                     Icon="&#xe606;" />
                 <ui:RadioButtonIcon
                     Command="{Binding NavigateCommand}"
                     CommandParameter="OptionsView"
                     Content="选项"
+                    GroupName="NavMenu"
                     Icon="&#xe78e;" />
                 <ui:RadioButtonIcon
                     Command="{Binding NavigateCommand}"
                     CommandParameter="AboutView"
                     Content="关于"
+                    GroupName="NavMenu"
                     Icon="&#xe625;" />
             </StackPanel>
         </DockPanel>
     </ui:Window.TitleContent>
 
     <Grid>
-        <ContentControl x:Name="ContentControl_Main" FocusVisualStyle="{x:Null}" />
+        <ContentControl x:Name="ContentControl_NavRegion" FocusVisualStyle="{x:Null}" />
         <!--  托盘图标  -->
         <tb:TaskbarIcon
             x:Name="TaskbarIcon_Main"

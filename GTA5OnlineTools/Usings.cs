@@ -1,8 +1,9 @@
 ﻿global using System;
 global using System.IO;
 global using System.IO.Compression;
-global using System.Text;
 global using System.Xml;
+global using System.Text;
+global using System.Linq;
 global using System.Reflection;
 global using System.Diagnostics;
 global using System.ComponentModel;

@@ -31,7 +31,6 @@ public partial class HacksView : UserControl
     public HacksView()
     {
         InitializeComponent();
-        this.DataContext = this;
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
 
         new Thread(CheckCheatsIsRun)

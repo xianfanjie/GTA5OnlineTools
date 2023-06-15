@@ -7,12 +7,11 @@ namespace GTA5OnlineTools.Views;
 /// </summary>
 public partial class HomeView : UserControl
 {
-    private StringBuilder builder = new();
+    private readonly StringBuilder builder = new();
 
     public HomeView()
     {
         InitializeComponent();
-        this.DataContext = this;
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
 
         builder = new StringBuilder();

@@ -10,7 +10,6 @@ public partial class AboutView : UserControl
     public AboutView()
     {
         InitializeComponent();
-        this.DataContext = this;
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
     }
 

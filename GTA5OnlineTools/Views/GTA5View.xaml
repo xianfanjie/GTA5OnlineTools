@@ -7,6 +7,7 @@
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     d:DesignHeight="720"
     d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Style="{StaticResource UserControlStyle_Loaded}"
     mc:Ignorable="d">
 
@@ -41,14 +42,6 @@
             CommandParameter="StatScripts"
             Content="STAT自动化脚本"
             Icon="&#xe636;"
-            Style="{StaticResource ButtonStyle_FuncModule}" />
-
-        <ui:ButtonIcon
-            Title="Speed Meter"
-            Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="SpeedMeter"
-            Content="车速表"
-            Icon="&#xeab4;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
     </WrapPanel>

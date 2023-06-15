@@ -12,7 +12,6 @@ public partial class OptionsView : UserControl
     public OptionsView()
     {
         InitializeComponent();
-        this.DataContext = this;
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
 
         var clickAudio = IniHelper.ReadValue("Options", "ClickAudio");

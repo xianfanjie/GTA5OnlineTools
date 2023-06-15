@@ -44,16 +44,11 @@ public static class Online
     }
 
     /// <summary>
-    /// 空战局（原理：暂停GTA5进程10秒钟）
+    /// 空战局
     /// </summary>
     public static void EmptySession()
     {
-        Task.Run(async () =>
-        {
-            ProcessMgr.SuspendProcess(Memory.GTA5ProId);
-            await Task.Delay(10000);
-            ProcessMgr.ResumeProcess(Memory.GTA5ProId);
-        });
+
     }
 
     /// <summary>

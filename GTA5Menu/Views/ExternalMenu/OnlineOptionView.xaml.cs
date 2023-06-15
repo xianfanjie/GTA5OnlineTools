@@ -28,11 +28,6 @@ public partial class OnlineOptionView : UserControl
             Online.LoadSession(OnlineData.Sessions[index].Value);
     }
 
-    private void Button_EmptySession_Click(object sender, RoutedEventArgs e)
-    {
-        Online.EmptySession();
-    }
-
     private void Button_Disconnect_Click(object sender, RoutedEventArgs e)
     {
         Online.Disconnect();

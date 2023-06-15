@@ -75,23 +75,9 @@
                         Icon="&#xe61f;" />
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
+                        CommandParameter="NavMenu"
                         GroupName="NavMenu"
-                        Hint="外置菜单"
-                        Icon="&#xe610;" />
-                    <ui:NavMenu
-                        Command="{Binding NavigateCommand}"
-                        GroupName="NavMenu"
-                        Hint="外置菜单"
-                        Icon="&#xe610;" />
-                    <ui:NavMenu
-                        Command="{Binding NavigateCommand}"
-                        GroupName="NavMenu"
-                        Hint="外置菜单"
-                        Icon="&#xe610;" />
-                    <ui:NavMenu
-                        Command="{Binding NavigateCommand}"
-                        GroupName="NavMenu"
-                        Hint="外置菜单"
+                        Hint="NavMenu"
                         Icon="&#xe610;" />
                 </StackPanel>
             </Grid>

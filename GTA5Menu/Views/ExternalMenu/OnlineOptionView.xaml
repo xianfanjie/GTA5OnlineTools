@@ -29,10 +29,6 @@
             <ui:LabelIcon Content="特殊功能" />
             <WrapPanel Margin="5,0,5,0">
                 <Button
-                    x:Name="Button_EmptySession"
-                    Click="Button_EmptySession_Click"
-                    Content="空战局" />
-                <Button
                     x:Name="Button_Disconnect"
                     Click="Button_Disconnect_Click"
                     Content="断开战局连接" />

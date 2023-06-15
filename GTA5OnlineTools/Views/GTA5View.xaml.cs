@@ -1,6 +1,5 @@
 ﻿using GTA5Menu;
 using GTA5Menu.Views;
-using GTA5Core.Views;
 using GTA5Core.Native;
 using GTA5Shared.Helper;
 
@@ -18,7 +17,6 @@ public partial class GTA5View : UserControl
     private SpawnVehicleWindow SpawnVehicleWindow = null;
     private CustomTeleportWindow CustomTeleportWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
-    private SpeedMeterWindow SpeedMeterWindow = null;
 
     /// <summary>
     /// 关闭全部GTA5窗口委托
@@ -28,7 +26,6 @@ public partial class GTA5View : UserControl
     public GTA5View()
     {
         InitializeComponent();
-        this.DataContext = this;
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
 
         ActionCloseAllGTA5Window = CloseAllGTA5Window;
@@ -49,11 +46,11 @@ public partial class GTA5View : UserControl
             // GTA5内存模块初始化窗口
             if (!Memory.IsInitialized)
             {
-                var gTA5InitWindow = new GTA5InitWindow
+                var gta5InitWindow = new GTA5InitWindow
                 {
                     Owner = MainWindow.MainWindowInstance
                 };
-                if (gTA5InitWindow.ShowDialog() == false)
+                if (gta5InitWindow.ShowDialog() == false)
                     return;
             }
 
@@ -70,9 +67,6 @@ public partial class GTA5View : UserControl
                     break;
                 case "StatScripts":
                     StatScriptsClick();
-                    break;
-                case "SpeedMeter":
-                    SpeedMeterClick();
                     break;
             }
         }
@@ -184,30 +178,6 @@ public partial class GTA5View : UserControl
             }
         }
     }
-
-    private void SpeedMeterClick()
-    {
-        if (SpeedMeterWindow == null)
-        {
-            SpeedMeterWindow = new SpeedMeterWindow();
-            SpeedMeterWindow.Show();
-        }
-        else
-        {
-            if (SpeedMeterWindow.IsVisible)
-            {
-                SpeedMeterWindow.Topmost = true;
-                SpeedMeterWindow.Topmost = false;
-                SpeedMeterWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                SpeedMeterWindow = null;
-                SpeedMeterWindow = new SpeedMeterWindow();
-                SpeedMeterWindow.Show();
-            }
-        }
-    }
     #endregion
 
     ///////////////////////////////////////////////////////////////////
@@ -237,12 +207,6 @@ public partial class GTA5View : UserControl
             {
                 StatScriptsWindow.Close();
                 StatScriptsWindow = null;
-            }
-
-            if (SpeedMeterWindow != null)
-            {
-                SpeedMeterWindow.Close();
-                SpeedMeterWindow = null;
             }
         });
     }

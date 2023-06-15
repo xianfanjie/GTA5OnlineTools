@@ -1,7 +1,7 @@
 ﻿using GTA5Core.Native;
 using GTA5Core.Feature;
 
-namespace GTA5Core.Views;
+namespace GTA5Menu;
 
 /// <summary>
 /// GTA5InitWindow.xaml 的交互逻辑
@@ -13,7 +13,6 @@ public partial class GTA5InitWindow
     public GTA5InitWindow(bool isAutoClose = true)
     {
         InitializeComponent();
-        this.DataContext = this;
 
         IsAutoClose = isAutoClose;
     }

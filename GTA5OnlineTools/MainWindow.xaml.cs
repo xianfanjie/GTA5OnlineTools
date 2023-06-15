@@ -23,12 +23,10 @@ public partial class MainWindow
 
     ///////////////////////////////////////////////////////////////
 
-    private readonly HomeView HomeView = new();
-    private readonly HacksView HacksView = new();
-    private readonly GTA5View GTA5View = new();
-    private readonly ToolsView ToolsView = new();
-    private readonly OptionsView OptionsView = new();
-    private readonly AboutView AboutView = new();
+    /// <summary>
+    /// 导航字典
+    /// </summary>
+    private readonly Dictionary<string, UserControl> NavDictionary = new();
 
     ///////////////////////////////////////////////////////////////
 
@@ -57,6 +55,8 @@ public partial class MainWindow
     public MainWindow()
     {
         InitializeComponent();
+
+        CreateView();
     }
 
     /// <summary>
@@ -66,13 +66,11 @@ public partial class MainWindow
     /// <param name="e"></param>
     private void Window_Main_Loaded(object sender, RoutedEventArgs e)
     {
-        // 设置当前上下文数据
-        this.DataContext = this;
         // 向外暴露主窗口实例
         MainWindowInstance = this;
 
         // 首页导航
-        Navigate("HomeView");
+        Navigate(NavDictionary.First().Key);
 
         // 获取当前时间，存储到对于变量中
         OriginDateTime = DateTime.Now;
@@ -136,39 +134,37 @@ public partial class MainWindow
     ///////////////////////////////////////////////////////////////
 
     /// <summary>
+    /// 创建页面
+    /// </summary>
+    private void CreateView()
+    {
+        foreach (var item in ControlHelper.GetControls(StackPanel_NavMenu).Cast<RadioButton>())
+        {
+            var viewName = item.CommandParameter.ToString();
+
+            if (!NavDictionary.ContainsKey(viewName))
+            {
+                var type = Type.GetType($"GTA5OnlineTools.Views.{viewName}");
+                if (type == null)
+                    continue;
+
+                NavDictionary.Add(viewName, Activator.CreateInstance(type) as UserControl);
+            }
+        }
+    }
+
+    /// <summary>
     /// View页面导航
     /// </summary>
     /// <param name="viewName"></param>
     [RelayCommand]
     private void Navigate(string viewName)
     {
-        switch (viewName)
-        {
-            case "HomeView":
-                if (ContentControl_Main.Content != HomeView)
-                    ContentControl_Main.Content = HomeView;
-                break;
-            case "HacksView":
-                if (ContentControl_Main.Content != HacksView)
-                    ContentControl_Main.Content = HacksView;
-                break;
-            case "GTA5View":
-                if (ContentControl_Main.Content != GTA5View)
-                    ContentControl_Main.Content = GTA5View;
-                break;
-            case "ToolsView":
-                if (ContentControl_Main.Content != ToolsView)
-                    ContentControl_Main.Content = ToolsView;
-                break;
-            case "OptionsView":
-                if (ContentControl_Main.Content != OptionsView)
-                    ContentControl_Main.Content = OptionsView;
-                break;
-            case "AboutView":
-                if (ContentControl_Main.Content != AboutView)
-                    ContentControl_Main.Content = AboutView;
-                break;
-        }
+        if (!NavDictionary.ContainsKey(viewName))
+            return;
+
+        if (ContentControl_NavRegion.Content != NavDictionary[viewName])
+            ContentControl_NavRegion.Content = NavDictionary[viewName];
     }
 
     /// <summary>

@@ -1,7 +1,7 @@
 ﻿using GTA5OnlineTools.Utils;
 using GTA5OnlineTools.Windows;
 
-using GTA5Core.Views;
+using GTA5Menu;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -16,7 +16,6 @@ public partial class ToolsView : UserControl
     public ToolsView()
     {
         InitializeComponent();
-        this.DataContext = this;
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
     }
 
@@ -254,11 +253,11 @@ public partial class ToolsView : UserControl
         GTA5View.ActionCloseAllGTA5Window();
 
         // GTA5内存模块初始化窗口
-        var gTA5InitWindow = new GTA5InitWindow(false)
+        var gta5InitWindow = new GTA5InitWindow(false)
         {
             Owner = MainWindow.MainWindowInstance
         };
-        gTA5InitWindow.ShowDialog();
+        gta5InitWindow.ShowDialog();
     }
 
     /// <summary>

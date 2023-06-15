@@ -91,9 +91,6 @@ public partial class GTA5MenuWindow
     {
         foreach (var item in ControlHelper.GetControls(Grid_NavMenu).Cast<RadioButton>())
         {
-            if (item.CommandParameter == null)
-                continue;
-
             var viewName = item.CommandParameter.ToString();
 
             if (!NavDictionary.ContainsKey(viewName))

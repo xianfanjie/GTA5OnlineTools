@@ -15,8 +15,8 @@ public static class NotifierHelper
         NotificationConstants.MessagePosition = NotificationPosition.BottomCenter;
         NotificationConstants.NotificationsOverlayWindowMaxCount = 5;
 
-        NotificationConstants.MinWidth = 500D;
-        NotificationConstants.MaxWidth = 500D;
+        NotificationConstants.MinWidth = 400D;
+        NotificationConstants.MaxWidth = 400D;
 
         NotificationConstants.FontName = "微软雅黑";
         NotificationConstants.TitleSize = 14;

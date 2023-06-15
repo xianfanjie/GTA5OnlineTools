@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6.0-windows</TargetFramework>
-		<Nullable>disable</Nullable>
-		<UseWPF>true</UseWPF>
-		<Platforms>x64</Platforms>
-		<StartupObject>GTA5OnlineTools.App</StartupObject>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <UseWPF>true</UseWPF>
+        <Platforms>x64</Platforms>
+        <PlatformTarget>x64</PlatformTarget>
+        <OutputType>WinExe</OutputType>
+        <StartupObject>GTA5OnlineTools.App</StartupObject>
 		<ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
 	</PropertyGroup>

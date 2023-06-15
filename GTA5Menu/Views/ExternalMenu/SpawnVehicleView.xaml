@@ -13,41 +13,38 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
-        <!--  面板1  -->
-        <DockPanel LastChildFill="True">
-            <ui:LabelIcon Content="载具列表" DockPanel.Dock="Top" />
-            <ListBox
-                x:Name="ListBox_VehicleInfo"
-                Margin="5"
-                DockPanel.Dock="Bottom"
-                MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
-                Style="{StaticResource ListBoxStyle_VehicleInfo}"
-                ToolTip="双击选中项可快捷刷出">
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type ListBoxItem}">
-                        <DockPanel ToolTip="{Binding Name}">
-                            <Image
-                                Width="80"
-                                Margin="5"
-                                DockPanel.Dock="Left"
-                                Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
-                                Stretch="Uniform"
-                                Style="{StaticResource ImageStyle_HighQuality}" />
-                            <StackPanel
-                                Margin="5,0,5,0"
-                                VerticalAlignment="Center"
-                                DockPanel.Dock="Right">
-                                <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
-                                <TextBlock Margin="0,5,0,0" Text="{Binding Value}" />
-                            </StackPanel>
-                        </DockPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </DockPanel>
-        <!--  面板2  -->
+        <!--  ////////////////////  -->
+        <ListBox
+            x:Name="ListBox_VehicleInfo"
+            Margin="5"
+            DockPanel.Dock="Bottom"
+            MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
+            Style="{StaticResource ListBoxStyle_VehicleInfo}"
+            ToolTip="双击选中项可快捷刷出">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type ListBoxItem}">
+                    <DockPanel ToolTip="{Binding Name}">
+                        <Image
+                            Width="80"
+                            Margin="5"
+                            DockPanel.Dock="Left"
+                            Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
+                            Stretch="Uniform"
+                            Style="{StaticResource ImageStyle_HighQuality}" />
+                        <StackPanel
+                            Margin="5,0,5,0"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Right">
+                            <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Margin="0,5,0,0" Text="{Binding Value}" />
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <!--  ////////////////////  -->
         <StackPanel Grid.Column="1">
             <ui:LabelIcon Content="载具分类" />
             <ComboBox x:Name="ComboBox_VehicleClasses" SelectionChanged="ComboBox_VehicleClasses_SelectionChanged">
@@ -77,57 +74,6 @@
                     提示：双击选中项可快捷刷出
                 </TextBlock>
             </StackPanel>
-            <!--  ////////////////  -->
-            <ui:LabelIcon Content="一般选项" />
-            <StackPanel>
-                <WrapPanel Margin="5,0,5,0">
-                    <CheckBox
-                        x:Name="CheckBox_VehicleGodMode"
-                        Click="CheckBox_VehicleGodMode_Click"
-                        Content="载具无敌 ★" />
-                    <CheckBox
-                        x:Name="CheckBox_VehicleSeatbelt"
-                        Click="CheckBox_VehicleSeatbelt_Click"
-                        Content="载具安全带 ★" />
-                    <CheckBox
-                        x:Name="CheckBox_VehicleParachute"
-                        Click="CheckBox_VehicleParachute_Click"
-                        Content="载具降落伞" />
-                    <CheckBox
-                        x:Name="CheckBox_VehicleInvisibility"
-                        Click="CheckBox_VehicleInvisibility_Click"
-                        Content="载具隐身（虚假）" />
-                </WrapPanel>
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_FillVehicleHealth"
-                        Click="Button_FillVehicleHealth_Click"
-                        Content="补满血量" />
-                    <Button
-                        x:Name="Button_RepairVehicle"
-                        Click="Button_RepairVehicle_Click"
-                        Content="修复外观" />
-                    <Button
-                        x:Name="Button_TurnOffBST"
-                        Click="Button_TurnOffBST_Click"
-                        Content="移除牛鲨睾酮效果" />
-                </WrapPanel>
-            </StackPanel>
-            <!--  ////////////////  -->
-            <ui:LabelIcon Content="附加功能" />
-            <ComboBox x:Name="ComboBox_VehicleExtras" SelectionChanged="ComboBox_VehicleExtras_SelectionChanged" />
-            <!--  ////////////////  -->
-            <ui:LabelIcon Content="高级" />
-            <WrapPanel Margin="5,0,5,0">
-                <CheckBox
-                    x:Name="CheckBox_TriggerRCBandito"
-                    Click="CheckBox_TriggerRCBandito_Click"
-                    Content="进入RC匪徒" />
-                <CheckBox
-                    x:Name="CheckBox_TriggerMiniTank"
-                    Click="CheckBox_TriggerMiniTank_Click"
-                    Content="进入迷你坦克" />
-            </WrapPanel>
         </StackPanel>
     </Grid>
 

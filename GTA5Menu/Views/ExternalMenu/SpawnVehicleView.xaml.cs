@@ -3,7 +3,6 @@ using GTA5Menu.Utils;
 using GTA5Menu.Config;
 
 using GTA5Core.RAGE;
-using GTA5Core.RAGE.Onlines;
 using GTA5Core.RAGE.Vehicles;
 using GTA5Core.Feature;
 using GTA5Shared.Helper;
@@ -60,18 +59,14 @@ public partial class SpawnVehicleView : UserControl
             });
         }
         ComboBox_VehicleClasses.SelectedIndex = 0;
-
-        // 载具附加功能
-        foreach (var item in OnlineData.VehicleExtras)
-        {
-            ComboBox_VehicleExtras.Items.Add(item.Name);
-        }
     }
 
     private void ExternalMenuWindow_WindowClosingEvent()
     {
 
     }
+
+    /////////////////////////////////////////////////
 
     private void ComboBox_VehicleClasses_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -135,63 +130,5 @@ public partial class SpawnVehicleView : UserControl
     private void ListBox_VehicleInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         Button_SpawnOnlineVehicleA_Click(null, null);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////
-
-    private void CheckBox_VehicleGodMode_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.Vehicle.GodMode = CheckBox_VehicleGodMode.IsChecked == true;
-        Vehicle.GodMode(CheckBox_VehicleGodMode.IsChecked == true);
-    }
-
-    private void CheckBox_VehicleSeatbelt_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.Vehicle.Seatbelt = CheckBox_VehicleSeatbelt.IsChecked == true;
-        Vehicle.Seatbelt(CheckBox_VehicleSeatbelt.IsChecked == true);
-    }
-
-    private void CheckBox_VehicleParachute_Click(object sender, RoutedEventArgs e)
-    {
-        Vehicle.Parachute(CheckBox_VehicleParachute.IsChecked == true);
-    }
-
-    private void CheckBox_VehicleInvisibility_Click(object sender, RoutedEventArgs e)
-    {
-        Vehicle.Invisible(CheckBox_VehicleInvisibility.IsChecked == true);
-    }
-
-    private void Button_FillVehicleHealth_Click(object sender, RoutedEventArgs e)
-    {
-        Vehicle.FillHealth();
-    }
-
-    private async void Button_RepairVehicle_Click(object sender, RoutedEventArgs e)
-    {
-        await Vehicle.FixVehicleByBST();
-    }
-
-    private void Button_TurnOffBST_Click(object sender, RoutedEventArgs e)
-    {
-        Online.InstantBullShark(false);
-    }
-
-    private void ComboBox_VehicleExtras_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var index = ComboBox_VehicleExtras.SelectedIndex;
-        if (index != -1)
-        {
-            Vehicle.Extras((short)OnlineData.VehicleExtras[index].Value);
-        }
-    }
-
-    private void CheckBox_TriggerRCBandito_Click(object sender, RoutedEventArgs e)
-    {
-        Online.TriggerRCBandito(CheckBox_TriggerRCBandito.IsChecked == true);
-    }
-
-    private void CheckBox_TriggerMiniTank_Click(object sender, RoutedEventArgs e)
-    {
-        Online.TriggerMiniTank(CheckBox_TriggerMiniTank.IsChecked == true);
     }
 }

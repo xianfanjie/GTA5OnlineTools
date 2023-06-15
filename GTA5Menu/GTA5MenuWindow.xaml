@@ -55,7 +55,8 @@
         </Grid.ColumnDefinitions>
         <!--  导航区域  -->
         <Border
-            Padding="5"
+            Margin="0,5,0,5"
+            Padding="5,0,5,0"
             BorderBrush="#C2C3C9"
             BorderThickness="0,0,1,0">
             <Grid x:Name="Grid_NavMenu">

@@ -74,6 +74,7 @@
                         <Border x:Name="border" />
                         <StackPanel Orientation="Horizontal">
                             <controls:IconFont
+                                Width="18"
                                 Margin="8,0,5,0"
                                 FontSize="16"
                                 Icon="{TemplateBinding Icon}" />

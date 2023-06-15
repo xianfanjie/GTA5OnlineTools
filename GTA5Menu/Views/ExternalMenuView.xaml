@@ -18,7 +18,8 @@
         </Grid.ColumnDefinitions>
         <!--  /////////////////////////  -->
         <Border
-            Padding="5"
+            Margin="0,5,0,5"
+            Padding="5,0,5,0"
             BorderBrush="#C2C3C9"
             BorderThickness="0,0,1,0">
             <StackPanel x:Name="Grid_NavMenu">
@@ -44,13 +45,25 @@
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="SpawnVehicleView"
-                    Content="线上载具"
+                    Content="刷出载具"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="VehicleOptionView"
+                    Content="载具设置"
                     Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="SpawnWeaponView"
-                    Content="线上武器"
+                    Content="刷出武器"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="WeaponOptionView"
+                    Content="武器设置"
                     Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
@@ -75,7 +88,7 @@
                     Command="{Binding NavigateCommand}"
                     CommandParameter="SessionChatView"
                     Content="战局聊天"
-                    Icon="&#xe610;"
+                    Icon="&#xe61f;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"

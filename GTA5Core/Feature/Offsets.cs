@@ -42,15 +42,15 @@ public static class Offsets
     public const int oMaxPeds = 256;
 
     // Vehicle Menus Globals
-    public const int oVMCreate = 2694562;       // Create any vehicle.
-    public const int oVMYCar = 2793046;         // Get my car.
-    public const int oVGETIn = 2639783;         // Spawn into vehicle.
-    public const int oVMSlots = 1586468;        // Get vehicle slots.
+    public const int oVMCreate = 2694613;       // Create any vehicle. STREAMING::REQUEST_MODEL(Global_2694562.f_27.f_66);
+    public const int oVMYCar = 2794162;         // Get my car. HUD::HIDE_HUD_AND_RADAR_THIS_FRAME();
+    public const int oVGETIn = 2639889;         // Spawn into vehicle. if (SCRIPT::IS_THREAD_ACTIVE(Global_
+    public const int oVMSlots = 1586488;        // Get vehicle slots. if (!NETWORK::NETWORK_DOES_NETWORK_ID_EXIST
 
     // Some Player / Network times associated Globals
-    public const int oNETTimeHelp = 2672505;
-    public const int oPlayerIDHelp = 2657589;
-    public const int oPlayerGA = 2672505;
+    public const int oNETTimeHelp = 2672524;    // if (NETWORK::NETWORK_IS_PLAYER_ACTIVE(player))
+    public const int oPlayerIDHelp = 2657704;
+    public const int oPlayerGA = 2672524;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

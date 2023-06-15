@@ -130,7 +130,7 @@ public static class Offsets
     public const int CPed_CPlayerInfo_ExternalPort = 0xD0;
     public const int CPed_CPlayerInfo_InternalIP = 0xD4;
     public const int CPed_CPlayerInfo_InternalPort = 0xD8;
-    public const int CPed_CPlayerInfo_Name = 0x104;                         // string[20]
+    public const int CPed_CPlayerInfo_Name = 0xFC;                         // string[20]
     public const int CPed_CPlayerInfo_HostToken = 0xE0;                     // int64
     public const int CPed_CPlayerInfo_RockstarID = 0xF0;
     public const int CPed_CPlayerInfo_SwimSpeed = 0x1C8;                    // float

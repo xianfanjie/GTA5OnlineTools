@@ -141,17 +141,17 @@ public static class Hacks
             if (hash.IndexOf("_") == 0)
                 hash = $"MP{GetPlayerIndex()}{hash}";
 
-            uint oldhash = ReadGA<uint>(1665454 + 4);
-            int oldvalue = ReadGA<int>(1010831 + 5525);
+            uint oldhash = ReadGA<uint>(1665476 + 4);       // if (STATS::STAT_GET_INT(statHash,
+            int oldvalue = ReadGA<int>(980531 + 5525);
 
-            WriteGA(1665454 + 4, Joaat(hash));
-            WriteGA(1010831 + 5525, value);
-            WriteGA(1653913 + 1139, -1);
+            WriteGA(1665476 + 4, Joaat(hash));
+            WriteGA(980531 + 5525, value);
+            WriteGA(1654054 + 1139, -1);
 
             await Task.Delay(1000);
 
-            WriteGA(1665454 + 4, oldhash);
-            WriteGA(1010831 + 5525, oldvalue);
+            WriteGA(1665476 + 4, oldhash);
+            WriteGA(980531 + 5525, oldvalue);
         });
     }
 
@@ -171,13 +171,13 @@ public static class Hacks
 
             Vector3 vector3 = Teleport.GetPlayerPosition();
 
-            WriteGA(2764232 + 3, vector3.X);
-            WriteGA(2764232 + 4, vector3.Y);
-            WriteGA(2764232 + 5, vector3.Z + 3.0f);
-            WriteGA(2764232 + 1, 9999);
+            WriteGA(2764405 + 3, vector3.X);
+            WriteGA(2764405 + 4, vector3.Y);
+            WriteGA(2764405 + 5, vector3.Z + 3.0f);
+            WriteGA(2764405 + 1, 9999);
 
-            WriteGA(4535172 + 1 + ReadGA<int>(2764232) * 85 + 66 + 2, 2);
-            WriteGA(2764232 + 6, 1);
+            WriteGA(4535172 + 1 + ReadGA<int>(2764405) * 85 + 66 + 2, 2);
+            WriteGA(2764405 + 6, 1);
 
             await Task.Delay(200);
 

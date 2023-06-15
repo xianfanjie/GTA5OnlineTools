@@ -157,7 +157,7 @@ public static class Vehicle
     /// <param name="index"></param>
     public static void RequestPersonalVehicle(int index)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 986, index);
-        Hacks.WriteGA(Offsets.oVMYCar + 983, 1);
+        Hacks.WriteGA(Offsets.oVMYCar + 992, index);
+        Hacks.WriteGA(Offsets.oVMYCar + 989, 1);
     }
 }

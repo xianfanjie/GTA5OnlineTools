@@ -16,7 +16,6 @@ public partial class ExternalOverlayView : UserControl
     public ExternalOverlayView()
     {
         InitializeComponent();
-        this.DataContext = this;
         GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
     }
 

@@ -18,7 +18,6 @@ public partial class SpawnVehicleView : UserControl
     public SpawnVehicleView()
     {
         InitializeComponent();
-        this.DataContext = this;
         GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // 如果配置文件存在就读取

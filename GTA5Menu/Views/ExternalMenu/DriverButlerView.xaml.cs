@@ -16,7 +16,6 @@ public partial class DriverButlerView : UserControl
     public DriverButlerView()
     {
         InitializeComponent();
-        this.DataContext = this;
         GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
     }
 

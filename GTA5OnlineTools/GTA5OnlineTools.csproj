@@ -45,11 +45,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\GTA5Core\GTA5Core.csproj" />
 		<ProjectReference Include="..\GTA5Inject\GTA5Inject.csproj" />
 		<ProjectReference Include="..\GTA5Menu\GTA5Menu.csproj" />
-		<ProjectReference Include="..\GTA5Shared\GTA5Shared.csproj" />
-		<ProjectReference Include="..\MetroSkin\MetroSkin.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -16,7 +16,6 @@ public partial class SpawnWeaponView : UserControl
     public SpawnWeaponView()
     {
         InitializeComponent();
-        this.DataContext = this;
         GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // 武器列表

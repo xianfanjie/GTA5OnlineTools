@@ -15,7 +15,6 @@ public partial class PlayerListView : UserControl
     public PlayerListView()
     {
         InitializeComponent();
-        this.DataContext = this;
         GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
     }
 

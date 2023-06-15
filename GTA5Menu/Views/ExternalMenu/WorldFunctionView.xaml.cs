@@ -12,7 +12,6 @@ public partial class WorldFunctionView : UserControl
     public WorldFunctionView()
     {
         InitializeComponent();
-        this.DataContext = this;
         GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // Ped列表

@@ -11,7 +11,6 @@ public partial class OnlineOptionView : UserControl
     public OnlineOptionView()
     {
         InitializeComponent();
-        this.DataContext = this;
         GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
     }
 

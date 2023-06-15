@@ -17,6 +17,8 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Files\Cache\BincoHax.exe" />
+		<EmbeddedResource Include="Files\Cache\zh_CN.json" />
+		<EmbeddedResource Include="Files\Cache\index.json" />
 		<EmbeddedResource Include="Files\Cache\GTAHax.exe" />
 		<EmbeddedResource Include="Files\Cache\LSCHax.exe" />
 		<EmbeddedResource Include="Files\Cache\Notepad2.exe" />

@@ -13,7 +13,7 @@ public partial class WorldFunctionView : UserControl
     {
         InitializeComponent();
         this.DataContext = this;
-        ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // Ped列表
         foreach (var item in PedHash.PedHashData)

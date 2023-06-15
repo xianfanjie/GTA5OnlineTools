@@ -36,43 +36,11 @@
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
-            Title="Custom Blip"
-            Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="CustomBlip"
-            Content="自定义Blip传送"
-            Icon="&#xe627;"
-            Style="{StaticResource ButtonStyle_FuncModule}" />
-
-        <ui:ButtonIcon
-            Title="Heists Edit"
-            Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="HeistsEdit"
-            Content="抢劫任务编辑器"
-            Icon="&#xe63b;"
-            Style="{StaticResource ButtonStyle_FuncModule}" />
-
-        <ui:ButtonIcon
-            Title="Outfits Edit"
-            Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="OutfitsEdit"
-            Content="角色服装编辑器"
-            Icon="&#xe8c7;"
-            Style="{StaticResource ButtonStyle_FuncModule}" />
-
-        <ui:ButtonIcon
             Title="STAT Auto Scripts"
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="StatScripts"
             Content="STAT自动化脚本"
             Icon="&#xe636;"
-            Style="{StaticResource ButtonStyle_FuncModule}" />
-
-        <ui:ButtonIcon
-            Title="Session Chat"
-            Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="SessionChat"
-            Content="战局快捷聊天"
-            Icon="&#xe61f;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon

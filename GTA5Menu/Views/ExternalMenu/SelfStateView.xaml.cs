@@ -41,7 +41,7 @@ public partial class SelfStateView : UserControl
     {
         InitializeComponent();
         this.DataContext = this;
-        ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         new Thread(SelfStateUpdateThread)
         {

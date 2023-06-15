@@ -1,6 +1,5 @@
 ﻿using GTA5Core.Native;
 using GTA5Core.Feature;
-
 using GTA5HotKey;
 using GTA5Shared.API;
 using GTA5Shared.Helper;
@@ -12,27 +11,20 @@ using Forms = System.Windows.Forms;
 namespace GTA5Menu.Views;
 
 /// <summary>
-/// SessionChatWindow.xaml 的交互逻辑
+/// SessionChatView.xaml 的交互逻辑
 /// </summary>
-public partial class SessionChatWindow
+public partial class SessionChatView : UserControl
 {
-    public SessionChatWindow()
+    public SessionChatView()
     {
         InitializeComponent();
-    }
 
-    private void Window_SessionChat_Loaded(object sender, RoutedEventArgs e)
-    {
         TextBox_InputMessage.Text = "测试文本: 请把游戏中聊天输入法调成英文,否则会漏掉文字.Hello1234,漏掉文字了吗?";
 
         long pCPlayerInfo = Globals.GetCPlayerInfo();
         TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 20);
     }
 
-    private void Window_SessionChat_Closing(object sender, CancelEventArgs e)
-    {
-
-    }
 
     private void Button_Translate_Click(object sender, RoutedEventArgs e)
     {

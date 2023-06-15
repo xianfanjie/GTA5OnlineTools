@@ -1,34 +1,14 @@
-﻿<ui:Window
-    x:Class="GTA5Menu.Views.SessionChatWindow"
+﻿<UserControl
+    x:Class="GTA5Menu.Views.SessionChatView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
-    x:Name="Window_SessionChat"
-    Title="GTA5线上小助手 - 战局快捷聊天"
-    Width="900"
-    Height="600"
-    Closing="Window_SessionChat_Closing"
-    Loaded="Window_SessionChat_Loaded"
-    ResizeMode="CanMinimize"
-    Style="{StaticResource SystemWindowStyle}"
+    d:DesignHeight="600"
+    d:DesignWidth="1000"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
-
-    <ui:Window.TitleContent>
-        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-            <Image
-                Height="20"
-                Margin="5"
-                Source="/Assets/Favicon.ico"
-                Style="{StaticResource ImageStyle_HighQuality}" />
-            <TextBlock
-                VerticalAlignment="Center"
-                FontSize="14"
-                FontWeight="Bold"
-                Text="{Binding ElementName=Window_SessionChat, Path=Title}" />
-        </StackPanel>
-    </ui:Window.TitleContent>
 
     <UniformGrid Columns="2">
         <!--  面板1  -->
@@ -156,4 +136,4 @@
 
     </UniformGrid>
 
-</ui:Window>
+</UserControl>

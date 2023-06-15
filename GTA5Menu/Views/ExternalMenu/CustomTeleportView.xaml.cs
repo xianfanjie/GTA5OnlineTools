@@ -17,7 +17,7 @@ public partial class CustomTeleportView : UserControl
     {
         InitializeComponent();
         this.DataContext = this;
-        ExternalMenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
 
         // 如果配置文件存在就读取
         if (File.Exists(GTA5Util.File_Config_Teleports))

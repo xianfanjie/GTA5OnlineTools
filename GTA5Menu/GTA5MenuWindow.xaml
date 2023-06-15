@@ -1,0 +1,103 @@
+﻿<ui:Window
+    x:Class="GTA5Menu.GTA5MenuWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
+    x:Name="Window_Main"
+    Title="GTA5线上小助手 - 外置菜单"
+    Width="1100"
+    Height="600"
+    Closing="Window_Main_Closing"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    Loaded="Window_Main_Loaded"
+    ResizeMode="CanMinimize"
+    Style="{StaticResource SystemWindowStyle}"
+    mc:Ignorable="d">
+
+    <ui:Window.TitleContent>
+        <DockPanel>
+            <StackPanel
+                VerticalAlignment="Center"
+                DockPanel.Dock="Right"
+                Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="Delete键 显示/隐藏" />
+                <CheckBox
+                    x:Name="CheckBox_IsTopMost"
+                    Margin="10,0,10,0"
+                    Click="CheckBox_IsTopMost_Click"
+                    Content="窗口置顶"
+                    WindowChrome.IsHitTestVisibleInChrome="True" />
+            </StackPanel>
+            <StackPanel
+                HorizontalAlignment="Left"
+                DockPanel.Dock="Left"
+                Orientation="Horizontal">
+                <Image
+                    Height="20"
+                    Margin="5"
+                    Source="/Assets/Favicon.ico"
+                    Style="{StaticResource ImageStyle_HighQuality}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Text="{Binding ElementName=Window_Main, Path=Title}" />
+            </StackPanel>
+        </DockPanel>
+    </ui:Window.TitleContent>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--  导航区域  -->
+        <Border
+            Padding="5"
+            BorderBrush="#C2C3C9"
+            BorderThickness="0,0,1,0">
+            <Grid x:Name="Grid_NavMenu">
+                <StackPanel>
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="ExternalMenuView"
+                        GroupName="NavMenu"
+                        Hint="外置菜单"
+                        Icon="&#xe666;"
+                        IsChecked="True" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="SessionChatView"
+                        GroupName="NavMenu"
+                        Hint="战局聊天"
+                        Icon="&#xe61f;" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        GroupName="NavMenu"
+                        Hint="外置菜单"
+                        Icon="&#xe610;" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        GroupName="NavMenu"
+                        Hint="外置菜单"
+                        Icon="&#xe610;" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        GroupName="NavMenu"
+                        Hint="外置菜单"
+                        Icon="&#xe610;" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        GroupName="NavMenu"
+                        Hint="外置菜单"
+                        Icon="&#xe610;" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!--  内容显示区域  -->
+        <ContentControl x:Name="ContentControl_NavRegion" Grid.Column="1" />
+    </Grid>
+
+</ui:Window>

@@ -8,6 +8,7 @@ global using System.Diagnostics;
 global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Media;
+global using System.Windows.Controls;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
 global using System.Text.Unicode;

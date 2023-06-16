@@ -77,7 +77,10 @@
                         CornerRadius="0"
                         SnapsToDevicePixels="True">
                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                            <controls:IconFont Margin="0,0,5,0" Icon="{TemplateBinding Icon}" />
+                            <controls:IconFont
+                                Margin="0,0,5,0"
+                                Foreground="{TemplateBinding Foreground}"
+                                Icon="{TemplateBinding Icon}" />
                             <ContentPresenter VerticalAlignment="Center" />
                         </StackPanel>
                     </Border>
@@ -87,7 +90,7 @@
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="border" Property="BorderBrush" Value="#2196F3" />
-                            <Setter Property="TextElement.Foreground" Value="#2196F3" />
+                            <Setter Property="Foreground" Value="#2196F3" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

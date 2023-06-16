@@ -1,6 +1,6 @@
 ﻿using GTA5Menu.Data;
 using GTA5Core.Native;
-using GTA5Core.Feature;
+using GTA5Core.Features;
 using GTA5Core.Offsets;
 
 namespace GTA5Menu.Views.ExternalMenu;

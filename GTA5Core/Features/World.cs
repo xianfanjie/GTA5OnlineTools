@@ -2,7 +2,7 @@
 using GTA5Core.Offsets;
 using GTA5Core.RAGE.Rage;
 
-namespace GTA5Core.Feature;
+namespace GTA5Core.Features;
 
 public static class World
 {

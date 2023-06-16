@@ -2,7 +2,7 @@
 
 using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
-using GTA5Core.Feature;
+using GTA5Core.Features;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.SpawnVehicle;

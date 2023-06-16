@@ -1,6 +1,6 @@
 ﻿using GTA5HotKey;
 using GTA5Core.Native;
-using GTA5Core.Feature;
+using GTA5Core.Features;
 using GTA5Core.RAGE.Rage;
 using GTA5Shared.Helper;
 

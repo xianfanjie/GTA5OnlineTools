@@ -2,7 +2,7 @@
 using GTA5Menu.Options;
 
 using GTA5Core.Native;
-using GTA5Core.Feature;
+using GTA5Core.Features;
 using GTA5Shared.Helper;
 
 using GTA5HotKey;

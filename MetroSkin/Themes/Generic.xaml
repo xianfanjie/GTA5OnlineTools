@@ -22,7 +22,6 @@
 
         <ResourceDictionary Source="/MetroSkin;component/Styles/LabelIcon.xaml" />
         <ResourceDictionary Source="/MetroSkin;component/Styles/ButtonIcon.xaml" />
-        <ResourceDictionary Source="/MetroSkin;component/Styles/RadioButtonIcon.xaml" />
         <ResourceDictionary Source="/MetroSkin;component/Styles/TextBoxHint.xaml" />
         <ResourceDictionary Source="/MetroSkin;component/Styles/GroupBoxHack.xaml" />
 

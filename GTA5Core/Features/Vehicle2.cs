@@ -2,7 +2,7 @@
 using GTA5Core.Offsets;
 using GTA5Core.RAGE.Vehicles;
 
-namespace GTA5Core.Feature;
+namespace GTA5Core.Features;
 
 public static class Vehicle2
 {

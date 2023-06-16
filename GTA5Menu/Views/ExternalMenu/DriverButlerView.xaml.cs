@@ -1,7 +1,7 @@
 ﻿using GTA5Menu.Data;
 
 using GTA5Core.Offsets;
-using GTA5Core.Feature;
+using GTA5Core.Features;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;

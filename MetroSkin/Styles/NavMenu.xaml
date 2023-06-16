@@ -60,6 +60,41 @@
         </Setter>
     </Style>
 
+    <Style x:Key="NavMenuStyle_Main" TargetType="{x:Type controls:NavMenu}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NavMenu}">
+                    <Border
+                        x:Name="border"
+                        Margin="3,0,0,0"
+                        Padding="5,7,5,3"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0,0,0,4"
+                        CornerRadius="0"
+                        SnapsToDevicePixels="True">
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <controls:IconFont Margin="0,0,5,0" Icon="{TemplateBinding Icon}" />
+                            <ContentPresenter VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#B4B4B4" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#2196F3" />
+                            <Setter Property="TextElement.Foreground" Value="#2196F3" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="NavMenuStyle_Normal" TargetType="{x:Type controls:NavMenu}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />

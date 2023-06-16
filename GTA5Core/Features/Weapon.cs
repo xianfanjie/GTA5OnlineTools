@@ -1,7 +1,7 @@
 ﻿using GTA5Core.Native;
 using GTA5Core.Offsets;
 
-namespace GTA5Core.Feature;
+namespace GTA5Core.Features;
 
 public static class Weapon
 {

@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.Feature;
+﻿namespace GTA5Core.Features;
 
 public static class Outfits
 {

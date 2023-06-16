@@ -1,4 +1,4 @@
-﻿using GTA5Core.Feature;
+﻿using GTA5Core.Offsets;
 
 namespace GTA5Core.Native;
 

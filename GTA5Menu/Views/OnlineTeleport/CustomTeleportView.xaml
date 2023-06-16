@@ -1,35 +1,15 @@
-﻿<ui:Window
-    x:Class="GTA5Menu.Views.CustomTeleportWindow"
+﻿<UserControl
+    x:Class="GTA5Menu.Views.OnlineTeleport.CustomTeleportView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:dd="urn:gong-wpf-dragdrop"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
-    x:Name="Window_CustomTeleport"
-    Title="GTA5线上小助手 - 自定义坐标传送"
-    Width="1000"
-    Height="600"
-    Closing="Window_CustomTeleport_Closing"
-    Loaded="Window_CustomTeleport_Loaded"
-    ResizeMode="CanMinimize"
-    Style="{StaticResource SystemWindowStyle}"
+    d:DesignHeight="600"
+    d:DesignWidth="900"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
-
-    <ui:Window.TitleContent>
-        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-            <Image
-                Height="20"
-                Margin="5"
-                Source="/Assets/Favicon.ico"
-                Style="{StaticResource ImageStyle_HighQuality}" />
-            <TextBlock
-                VerticalAlignment="Center"
-                FontSize="14"
-                FontWeight="Bold"
-                Text="{Binding ElementName=Window_CustomTeleport, Path=Title}" />
-        </StackPanel>
-    </ui:Window.TitleContent>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -208,4 +188,4 @@
         </StackPanel>
     </Grid>
 
-</ui:Window>
+</UserControl>

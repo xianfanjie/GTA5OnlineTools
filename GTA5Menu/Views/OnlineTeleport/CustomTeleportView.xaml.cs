@@ -5,21 +5,17 @@ using GTA5Core.Features;
 using GTA5Core.RAGE.Teleports;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Views;
+namespace GTA5Menu.Views.OnlineTeleport;
 
 /// <summary>
-/// CustomTeleportWindow.xaml 的交互逻辑
+/// CustomTeleportView.xaml 的交互逻辑
 /// </summary>
-public partial class CustomTeleportWindow
+public partial class CustomTeleportView : UserControl
 {
-    public CustomTeleportWindow()
+    public CustomTeleportView()
     {
         InitializeComponent();
-    }
-
-    private void Window_CustomTeleport_Loaded(object sender, RoutedEventArgs e)
-    {
-        this.DataContext = this;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         // 如果配置文件不存在就创建
         if (!File.Exists(GTA5Util.File_Config_Teleports))
@@ -48,7 +44,7 @@ public partial class CustomTeleportWindow
         }
     }
 
-    private void Window_CustomTeleport_Closing(object sender, CancelEventArgs e)
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
         SaveConfig();
     }

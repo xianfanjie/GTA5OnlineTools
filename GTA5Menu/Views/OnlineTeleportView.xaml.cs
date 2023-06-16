@@ -5,16 +5,16 @@ using CommunityToolkit.Mvvm.Input;
 namespace GTA5Menu.Views;
 
 /// <summary>
-/// ExternalMenuView.xaml 的交互逻辑
+/// OnlineTeleportView.xaml 的交互逻辑
 /// </summary>
-public partial class ExternalMenuView : UserControl
+public partial class OnlineTeleportView : UserControl
 {
     /// <summary>
     /// 导航字典
     /// </summary>
     private readonly Dictionary<string, UserControl> NavDictionary = new();
 
-    public ExternalMenuView()
+    public OnlineTeleportView()
     {
         InitializeComponent();
 
@@ -33,7 +33,7 @@ public partial class ExternalMenuView : UserControl
 
             if (!NavDictionary.ContainsKey(viewName))
             {
-                var type = Type.GetType($"GTA5Menu.Views.ExternalMenu.{viewName}");
+                var type = Type.GetType($"GTA5Menu.Views.OnlineTeleport.{viewName}");
                 if (type == null)
                     continue;
 

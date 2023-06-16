@@ -5,7 +5,7 @@ using GTA5Core.RAGE.Vehicles;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Views.SpawnVehicle;
+namespace GTA5Menu.Views.OnlineVehicle;
 
 /// <summary>
 /// AllVehicleView.xaml 的交互逻辑
@@ -16,7 +16,7 @@ public partial class AllVehicleView : UserControl
     {
         InitializeComponent();
         this.DataContext = this;
-        SpawnVehicleWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
 
         // 载具分类列表
         foreach (var vClass in VehicleHash.VehicleClasses)

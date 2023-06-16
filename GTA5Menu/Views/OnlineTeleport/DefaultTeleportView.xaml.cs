@@ -6,14 +6,14 @@ using GTA5Core.Features;
 using GTA5Core.RAGE.Teleports;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Views.ExternalMenu;
+namespace GTA5Menu.Views.OnlineTeleport;
 
 /// <summary>
-/// CustomTeleportView.xaml 的交互逻辑
+/// DefaultTeleportView.xaml 的交互逻辑
 /// </summary>
-public partial class CustomTeleportView : UserControl
+public partial class DefaultTeleportView : UserControl
 {
-    public CustomTeleportView()
+    public DefaultTeleportView()
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;

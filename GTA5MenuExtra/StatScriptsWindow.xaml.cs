@@ -1,7 +1,7 @@
 ﻿using GTA5Core.Features;
 using GTA5Core.RAGE.Stats;
 
-namespace GTA5Menu.Views;
+namespace GTA5MenuExtra; 
 
 /// <summary>
 /// StatScriptsWindow.xaml 的交互逻辑

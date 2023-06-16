@@ -69,14 +69,14 @@
                         IsChecked="True" />
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
-                        CommandParameter="NavMenu"
-                        Hint="功能预留位置"
-                        Icon="&#xe610;" />
+                        CommandParameter="OnlineVehicleView"
+                        Hint="线上载具"
+                        Icon="&#xe629;" />
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
-                        CommandParameter="NavMenu"
-                        Hint="功能预留位置"
-                        Icon="&#xe610;" />
+                        CommandParameter="OnlineTeleportView"
+                        Hint="线上传送"
+                        Icon="&#xe65d;" />
                 </StackPanel>
             </Grid>
         </Border>

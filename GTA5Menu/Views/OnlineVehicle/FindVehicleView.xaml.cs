@@ -5,7 +5,7 @@ using GTA5Core.RAGE.Vehicles;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Views.SpawnVehicle;
+namespace GTA5Menu.Views.OnlineVehicle;
 
 /// <summary>
 /// FindVehicleView.xaml 的交互逻辑
@@ -18,8 +18,7 @@ public partial class FindVehicleView : UserControl
     public FindVehicleView()
     {
         InitializeComponent();
-        this.DataContext = this;
-        SpawnVehicleWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
 
         // 填充全部载具
         foreach (var info in VehicleHash.AllVehicles)

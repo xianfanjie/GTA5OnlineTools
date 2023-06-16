@@ -1,5 +1,5 @@
 ﻿using GTA5Menu;
-using GTA5Menu.Views;
+using GTA5MenuExtra;
 using GTA5Core.Native;
 using GTA5Shared.Helper;
 
@@ -14,8 +14,6 @@ public partial class GTA5View : UserControl
 {
     private GTA5MenuWindow GTA5MenuWindow = null;
 
-    private SpawnVehicleWindow SpawnVehicleWindow = null;
-    private CustomTeleportWindow CustomTeleportWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
 
     /// <summary>
@@ -59,12 +57,6 @@ public partial class GTA5View : UserControl
                 case "ExternalMenu":
                     ExternalMenuClick();
                     break;
-                case "SpawnVehicle":
-                    SpawnVehicleClick();
-                    break;
-                case "CustomTeleport":
-                    CustomTeleportClick();
-                    break;
                 case "StatScripts":
                     StatScriptsClick();
                     break;
@@ -103,54 +95,6 @@ public partial class GTA5View : UserControl
                 GTA5MenuWindow = null;
                 GTA5MenuWindow = new GTA5MenuWindow();
                 GTA5MenuWindow.Show();
-            }
-        }
-    }
-
-    private void SpawnVehicleClick()
-    {
-        if (SpawnVehicleWindow == null)
-        {
-            SpawnVehicleWindow = new SpawnVehicleWindow();
-            SpawnVehicleWindow.Show();
-        }
-        else
-        {
-            if (SpawnVehicleWindow.IsVisible)
-            {
-                SpawnVehicleWindow.Topmost = true;
-                SpawnVehicleWindow.Topmost = false;
-                SpawnVehicleWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                SpawnVehicleWindow = null;
-                SpawnVehicleWindow = new SpawnVehicleWindow();
-                SpawnVehicleWindow.Show();
-            }
-        }
-    }
-
-    private void CustomTeleportClick()
-    {
-        if (CustomTeleportWindow == null)
-        {
-            CustomTeleportWindow = new CustomTeleportWindow();
-            CustomTeleportWindow.Show();
-        }
-        else
-        {
-            if (CustomTeleportWindow.IsVisible)
-            {
-                CustomTeleportWindow.Topmost = true;
-                CustomTeleportWindow.Topmost = false;
-                CustomTeleportWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                CustomTeleportWindow = null;
-                CustomTeleportWindow = new CustomTeleportWindow();
-                CustomTeleportWindow.Show();
             }
         }
     }
@@ -195,12 +139,6 @@ public partial class GTA5View : UserControl
             {
                 GTA5MenuWindow.Close();
                 GTA5MenuWindow = null;
-            }
-
-            if (SpawnVehicleWindow != null)
-            {
-                SpawnVehicleWindow.Close();
-                SpawnVehicleWindow = null;
             }
 
             if (StatScriptsWindow != null)

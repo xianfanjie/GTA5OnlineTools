@@ -21,22 +21,6 @@
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
-            Title="Spawn Vehicle"
-            Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="SpawnVehicle"
-            Content="刷出线上载具"
-            Icon="&#xe629;"
-            Style="{StaticResource ButtonStyle_FuncModule}" />
-
-        <ui:ButtonIcon
-            Title="Custom Teleport"
-            Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="CustomTeleport"
-            Content="自定义坐标传送"
-            Icon="&#xe65d;"
-            Style="{StaticResource ButtonStyle_FuncModule}" />
-
-        <ui:ButtonIcon
             Title="STAT Auto Scripts"
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="StatScripts"

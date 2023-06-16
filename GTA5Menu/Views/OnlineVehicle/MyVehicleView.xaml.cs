@@ -7,7 +7,7 @@ using GTA5Core.RAGE.Vehicles;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Views.SpawnVehicle;
+namespace GTA5Menu.Views.OnlineVehicle;
 
 /// <summary>
 /// MyVehicleView.xaml 的交互逻辑
@@ -21,8 +21,7 @@ public partial class MyVehicleView : UserControl
     public MyVehicleView()
     {
         InitializeComponent();
-        this.DataContext = this;
-        SpawnVehicleWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
 
         ActionAddMyFavorite = AddMyFavorite;
 

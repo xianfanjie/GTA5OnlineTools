@@ -47,6 +47,12 @@
                     Content="载具设置"
                     Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="DriverButlerView"
+                    Content="随身技工"
+                    Icon="&#xe610;"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>
         </Border>
         <!--  /////////////////////////  -->

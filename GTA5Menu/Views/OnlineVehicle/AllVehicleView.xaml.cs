@@ -15,7 +15,6 @@ public partial class AllVehicleView : UserControl
     public AllVehicleView()
     {
         InitializeComponent();
-        this.DataContext = this;
         GTA5MenuWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
 
         // 载具分类列表

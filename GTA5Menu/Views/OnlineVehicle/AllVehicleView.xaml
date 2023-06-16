@@ -13,7 +13,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="130" />
+            <ColumnDefinition Width="120" />
         </Grid.ColumnDefinitions>
         <!--  载具详细信息  -->
         <ListBox

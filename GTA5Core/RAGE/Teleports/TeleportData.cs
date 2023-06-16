@@ -47,10 +47,10 @@ public class TeleportData
 
     public static readonly List<TeleportClass> TeleportClasses = new()
     {
-        new TeleportClass(){ Icon="\xe610", Name="自定义地点", TeleportInfos=Custom },
-        new TeleportClass(){ Icon="\xe610", Name="预设-常用地点", TeleportInfos=Common },
-        new TeleportClass(){ Icon="\xe610", Name="预设-室内场景", TeleportInfos=Indoor },
-        new TeleportClass(){ Icon="\xe610", Name="预设-任务地点", TeleportInfos=Mission },
+        new TeleportClass(){ Icon="\xe610", Name="自定义", TeleportInfos=Custom },
+        new TeleportClass(){ Icon="\xe610", Name="常用地点", TeleportInfos=Common },
+        new TeleportClass(){ Icon="\xe610", Name="室内场景", TeleportInfos=Indoor },
+        new TeleportClass(){ Icon="\xe610", Name="任务地点", TeleportInfos=Mission },
     };
 }
 

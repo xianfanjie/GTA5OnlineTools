@@ -79,69 +79,6 @@ public partial class CustomTeleportView : UserControl
         }
     }
 
-    private void Button_AddCustomTeleport_Click(object sender, RoutedEventArgs e)
-    {
-        var vector3 = Teleport.GetPlayerPosition();
-
-        ListBox_Teleports.Items.Add(new TeleportInfo()
-        {
-            Name = $"保存点 : {DateTime.Now:yyyyMMdd_HHmmss_ffff}",
-            X = vector3.X,
-            Y = vector3.Y,
-            Z = vector3.Z
-        });
-
-        ListBox_Teleports.SelectedIndex = ListBox_Teleports.Items.Count - 1;
-    }
-
-    private void Button_EditCustomTeleport_Click(object sender, RoutedEventArgs e)
-    {
-        var tempName = TextBox_CustomName.Text.Trim();
-        var tempX = TextBox_Position_X.Text.Trim();
-        var tempY = TextBox_Position_Y.Text.Trim();
-        var tempZ = TextBox_Position_Z.Text.Trim();
-
-        if (string.IsNullOrEmpty(tempName))
-        {
-            NotifierHelper.Show(NotifierType.Warning, "坐标名称不能为空，操作取消");
-            return;
-        }
-
-        if (!float.TryParse(tempX, out float x) ||
-            !float.TryParse(tempY, out float y) ||
-            !float.TryParse(tempZ, out float z))
-        {
-            NotifierHelper.Show(NotifierType.Warning, "坐标数据不合法，操作取消");
-            return;
-        }
-
-        if (ListBox_Teleports.SelectedItem is TeleportInfo item)
-        {
-            item.Name = tempName;
-            item.X = x;
-            item.Y = y;
-            item.Z = z;
-
-            ListBox_Teleports.SelectedItem = item;
-        }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "当前自定义传送坐标选中项为空");
-        }
-    }
-
-    private void Button_DeleteCustomTeleport_Click(object sender, RoutedEventArgs e)
-    {
-        if (ListBox_Teleports.SelectedItem is TeleportInfo item)
-        {
-            ListBox_Teleports.Items.Remove(item);
-        }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "当前自定义传送坐标选中项为空");
-        }
-    }
-
     private void ListBox_Teleports_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         Button_Teleport_Click(null, null);

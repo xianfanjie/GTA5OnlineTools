@@ -4,7 +4,7 @@ using GTA5Core.Offsets;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Views.ExternalMenu;
+namespace GTA5Menu.Views.OnlineVehicle;
 
 /// <summary>
 /// DriverButlerView.xaml 的交互逻辑

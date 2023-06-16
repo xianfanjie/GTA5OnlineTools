@@ -13,13 +13,12 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="120" />
         </Grid.ColumnDefinitions>
-        <!--  ////////////////  -->
+        <!--  传送详细信息  -->
         <ListBox
             x:Name="ListBox_TeleportInfos"
             Margin="5"
-            DockPanel.Dock="Bottom"
             MouseDoubleClick="ListBox_TeleportInfo_MouseDoubleClick"
             Style="{StaticResource ListBoxStyle_TeleportInfo}"
             ToolTip="双击选中项可快捷传送">
@@ -42,96 +41,25 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <!--  ////////////////  -->
-        <StackPanel Grid.Column="1">
-            <ui:LabelIcon Content="传送分类" />
-            <ComboBox x:Name="ComboBox_TeleportClass" SelectionChanged="ComboBox_TeleportClass_SelectionChanged">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type ListBoxItem}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,5,0"
-                                FontSize="16"
-                                Style="{StaticResource TextBlockStyle_IconFontVerCen}"
-                                Text="{Binding Icon}" />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <StackPanel Margin="5,0,5,0">
-                <Button
-                    x:Name="Button_Teleport"
-                    Click="Button_Teleport_Click"
-                    Content="传送到选中位置" />
-                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：双击选中项可快捷传送
-                </TextBlock>
-            </StackPanel>
-            <!--  /////////////////////  -->
-            <ui:LabelIcon Content="坐标微调" />
-            <StackPanel Margin="5,0,5,0">
-                <DockPanel>
-                    <TextBlock
-                        Margin="5"
-                        DockPanel.Dock="Left"
-                        Text="{Binding ElementName=Slider_MoveDistance, Path=Value, StringFormat=微调距离 : {0:0.0}}" />
-                    <Slider
-                        Name="Slider_MoveDistance"
-                        VerticalAlignment="Center"
-                        DockPanel.Dock="Right"
-                        Maximum="5.0"
-                        Minimum="0.5"
-                        TickFrequency="0.5"
-                        Value="1.5" />
-                </DockPanel>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="0.5*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Click="Button_MoveDistance_Click"
-                            Content="向前" />
-                        <Button
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Click="Button_MoveDistance_Click"
-                            Content="向后" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Click="Button_MoveDistance_Click"
-                            Content="向左" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="2"
-                            Click="Button_MoveDistance_Click"
-                            Content="向右" />
-                    </Grid>
-                    <StackPanel
-                        Grid.Column="1"
-                        Margin="5"
-                        VerticalAlignment="Center">
-                        <Button Click="Button_MoveDistance_Click" Content="向上" />
-                        <Button Click="Button_MoveDistance_Click" Content="向下" />
+        <!--  传送分类信息  -->
+        <ListBox
+            x:Name="ListBox_TeleportClasses"
+            Grid.Column="1"
+            Margin="0,5,5,5"
+            SelectionChanged="ListBox_TeleportClasses_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type ListBoxItem}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0,0,5,0"
+                            FontSize="16"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="{Binding Icon}" />
+                        <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
                     </StackPanel>
-                </Grid>
-            </StackPanel>
-        </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 
 </UserControl>

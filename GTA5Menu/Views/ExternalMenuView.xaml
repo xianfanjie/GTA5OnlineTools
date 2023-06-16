@@ -55,12 +55,6 @@
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
-                    CommandParameter="DriverButlerView"
-                    Content="随身技工"
-                    Icon="&#xe610;"
-                    Style="{StaticResource NavMenuStyle_Normal}" />
-                <ui:NavMenu
-                    Command="{Binding NavigateCommand}"
                     CommandParameter="JobHelperView"
                     Content="任务帮手"
                     Icon="&#xe610;"

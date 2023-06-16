@@ -52,7 +52,7 @@ public partial class GTA5MenuWindow
         CreateView();
     }
 
-    private void Window_Main_Loaded(object sender, RoutedEventArgs e)
+    private void Window_GTA5Menu_Loaded(object sender, RoutedEventArgs e)
     {
         Navigate(NavDictionary.First().Key);
 
@@ -72,7 +72,7 @@ public partial class GTA5MenuWindow
         }.Start();
     }
 
-    private void Window_Main_Closing(object sender, CancelEventArgs e)
+    private void Window_GTA5Menu_Closing(object sender, CancelEventArgs e)
     {
         WindowClosingEvent();
 

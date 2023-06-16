@@ -1,6 +1,7 @@
 ﻿using GTA5Menu.Data;
 using GTA5Core.Native;
 using GTA5Core.Feature;
+using GTA5Core.Offsets;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -34,22 +35,22 @@ public partial class PlayerListView : UserControl
 
             for (int i = 0; i < 32; i++)
             {
-                long pCNetGamePlayer = Memory.Read<long>(pCNetworkPlayerMgr + Offsets.CNetworkPlayerMgr_CNetGamePlayer + i * 0x08);
+                long pCNetGamePlayer = Memory.Read<long>(pCNetworkPlayerMgr + CNetworkPlayerMgr.CNetGamePlayer.__Offset__ + i * 0x08);
                 if (!Memory.IsValid(pCNetGamePlayer))
                     continue;
 
-                long pCPlayerInfo = Memory.Read<long>(pCNetGamePlayer + Offsets.CNetworkPlayerMgr_CNetGamePlayer_CPlayerInfo);
+                long pCPlayerInfo = Memory.Read<long>(pCNetGamePlayer + CNetworkPlayerMgr.CNetGamePlayer.CPlayerInfo);
                 if (!Memory.IsValid(pCPlayerInfo))
                     continue;
 
-                long pCPed = Memory.Read<long>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_CPed);
+                long pCPed = Memory.Read<long>(pCPlayerInfo + CPed.CPlayerInfo.CPed);
                 if (!Memory.IsValid(pCPed))
                     continue;
 
                 ////////////////////////////////////////////
 
-                var god = Memory.Read<byte>(pCPed + Offsets.CPed_God);
-                var position = Memory.Read<Vector3>(pCPed + Offsets.CPed_VisualX);
+                var god = Memory.Read<byte>(pCPed + CPed.God);
+                var position = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
                 var money = Hacks.ReadGA<long>(1853910 + 1 + i * 862 + 205 + 56);
                 var cash = Hacks.ReadGA<long>(1853910 + 1 + i * 862 + 205 + 3);
@@ -60,29 +61,29 @@ public partial class PlayerListView : UserControl
                 {
                     Rank = Hacks.ReadGA<int>(1853910 + 1 + i * 862 + 205 + 6),
 
-                    RockstarId = Memory.Read<long>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_RockstarID),
-                    PlayerName = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 20),
+                    RockstarId = Memory.Read<long>(pCPlayerInfo + CPed.CPlayerInfo.RockstarID),
+                    PlayerName = Memory.ReadString(pCPlayerInfo + CPed.CPlayerInfo.Name, 20),
 
                     Money = money,
                     Cash = cash,
                     Bank = money - cash,
 
-                    Health = Memory.Read<float>(pCPed + Offsets.CPed_Health),
-                    MaxHealth = Memory.Read<float>(pCPed + Offsets.CPed_HealthMax),
-                    Armor = Memory.Read<float>(pCPed + Offsets.CPed_Armor),
+                    Health = Memory.Read<float>(pCPed + CPed.Health),
+                    MaxHealth = Memory.Read<float>(pCPed + CPed.HealthMax),
+                    Armor = Memory.Read<float>(pCPed + CPed.Armor),
                     GodMode = (god & 1) == 1,
-                    NoRagdoll = Memory.Read<byte>(pCPed + Offsets.CPed_Ragdoll) != 0x20,
+                    NoRagdoll = Memory.Read<byte>(pCPed + CPed.Ragdoll) != 0x20,
 
                     Distance = GetDistance(Teleport.GetPlayerPosition(), position),
                     Position = position,
 
-                    WantedLevel = Memory.Read<byte>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_WantedLevel),
-                    WalkSpeed = Memory.Read<float>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_WalkSpeed),
-                    RunSpeed = Memory.Read<float>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_RunSpeed),
-                    SwimSpeed = Memory.Read<float>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_SwimSpeed),
+                    WantedLevel = Memory.Read<byte>(pCPlayerInfo + CPed.CPlayerInfo.WantedLevel),
+                    WalkSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.WalkSpeed),
+                    RunSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.RunSpeed),
+                    SwimSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.SwimSpeed),
 
-                    ClanName = Memory.ReadString(pCNetGamePlayer + Offsets.CNetworkPlayerMgr_CNetGamePlayer_ClanName, 20),
-                    ClanTag = Memory.ReadString(pCNetGamePlayer + Offsets.CNetworkPlayerMgr_CNetGamePlayer_ClanTag, 20),
+                    ClanName = Memory.ReadString(pCNetGamePlayer + CNetworkPlayerMgr.CNetGamePlayer.ClanName, 20),
+                    ClanTag = Memory.ReadString(pCNetGamePlayer + CNetworkPlayerMgr.CNetGamePlayer.ClanTag, 20),
                 });
             }
 

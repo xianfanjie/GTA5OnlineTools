@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5Core.Offsets;
 using GTA5Core.RAGE.Rage;
 
 namespace GTA5Core.Feature;
@@ -48,28 +49,28 @@ public static class World
     {
         long pCPedList = Globals.GetCPedList();
 
-        for (int i = 0; i < Offsets.oMaxPeds; i++)
+        for (int i = 0; i < Base.oMaxPeds; i++)
         {
             long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + Offsets.CPed_CPlayerInfo);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
             if (isOnlyKillHostility)
             {
-                byte oHostility = Memory.Read<byte>(pCPed + Offsets.CPed_Hostility);
+                byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
-                    Memory.Write(pCPed + Offsets.CPed_Health, 0.0f);
+                    Memory.Write(pCPed + CPed.Health, 0.0f);
                 }
             }
             else
             {
-                Memory.Write(pCPed + Offsets.CPed_Health, 0.0f);
+                Memory.Write(pCPed + CPed.Health, 0.0f);
             }
         }
     }
@@ -81,25 +82,25 @@ public static class World
     {
         long pCPedList = Globals.GetCPedList();
 
-        for (int i = 0; i < Offsets.oMaxPeds; i++)
+        for (int i = 0; i < Base.oMaxPeds; i++)
         {
             long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + Offsets.CPed_CPlayerInfo);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            int ped_type = Memory.Read<int>(pCPed + Offsets.CPed_Ragdoll);
+            int ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
             ped_type = ped_type << 11 >> 25;
 
             if (ped_type == (int)PedType.COP ||
                 ped_type == (int)PedType.SWAT ||
                 ped_type == (int)PedType.ARMY)
             {
-                Memory.Write(pCPed + Offsets.CPed_Health, 0.0f);
+                Memory.Write(pCPed + CPed.Health, 0.0f);
             }
         }
     }
@@ -111,38 +112,38 @@ public static class World
     {
         long pCPedList = Globals.GetCPedList();
 
-        for (int i = 0; i < Offsets.oMaxPeds; i++)
+        for (int i = 0; i < Base.oMaxPeds; i++)
         {
             long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + Offsets.CPed_CPlayerInfo);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            long pCVehicle = Memory.Read<long>(pCPed + Offsets.CPed_CVehicle);
+            long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle.__Offset__);
             if (!Memory.IsValid(pCVehicle))
                 continue;
 
             if (isOnlyKillHostility)
             {
-                byte oHostility = Memory.Read<byte>(pCPed + Offsets.CPed_Hostility);
+                byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
-                    Memory.Write(pCVehicle + Offsets.CPed_CVehicle_Health, -1.0f);
-                    Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthBody, -1.0f);
-                    Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthPetrolTank, -1.0f);
-                    Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthEngine, -1.0f);
+                    Memory.Write(pCVehicle + CPed.CVehicle.Health, -1.0f);
+                    Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, -1.0f);
+                    Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, -1.0f);
+                    Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, -1.0f);
                 }
             }
             else
             {
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_Health, -1.0f);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthBody, -1.0f);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthPetrolTank, -1.0f);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthEngine, -1.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.Health, -1.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, -1.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, -1.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, -1.0f);
             }
         }
     }
@@ -154,16 +155,16 @@ public static class World
     {
         long pCVehicleList = Globals.GetCVehicleList();
 
-        for (int i = 0; i < Offsets.oMaxPeds; i++)
+        for (int i = 0; i < Base.oMaxPeds; i++)
         {
             long pCVehicle = Memory.Read<long>(pCVehicleList + i * 0x10);
             if (!Memory.IsValid(pCVehicle))
                 continue;
 
-            Memory.Write(pCVehicle + Offsets.CPed_CVehicle_Health, -1.0f);
-            Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthBody, -1.0f);
-            Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthPetrolTank, -1.0f);
-            Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthEngine, -1.0f);
+            Memory.Write(pCVehicle + CPed.CVehicle.Health, -1.0f);
+            Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, -1.0f);
+            Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, -1.0f);
+            Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, -1.0f);
         }
     }
 
@@ -176,34 +177,34 @@ public static class World
 
         long pCPedList = Globals.GetCPedList();
 
-        for (int i = 0; i < Offsets.oMaxPeds; i++)
+        for (int i = 0; i < Base.oMaxPeds; i++)
         {
             long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + Offsets.CPed_CPlayerInfo);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            long pCNavigation = Memory.Read<long>(pCPed + Offsets.CPed_CNavigation);
+            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
             if (!Memory.IsValid(pCNavigation))
                 continue;
 
             if (isOnlyHostility)
             {
-                byte oHostility = Memory.Read<byte>(pCPed + Offsets.CPed_Hostility);
+                byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
-                    Memory.Write(pCPed + Offsets.CPed_CVehicle_VisualX, v3MyPos);
-                    Memory.Write(pCNavigation + Offsets.CPed_CVehicle_CNavigation_PositionX, v3MyPos);
+                    Memory.Write(pCPed + CPed.CVehicle.VisualX, v3MyPos);
+                    Memory.Write(pCNavigation + CPed.CVehicle.CNavigation.PositionX, v3MyPos);
                 }
             }
             else
             {
-                Memory.Write(pCPed + Offsets.CPed_CVehicle_VisualX, v3MyPos);
-                Memory.Write(pCNavigation + Offsets.CPed_CVehicle_CNavigation_PositionX, v3MyPos);
+                Memory.Write(pCPed + CPed.CVehicle.VisualX, v3MyPos);
+                Memory.Write(pCNavigation + CPed.CVehicle.CNavigation.PositionX, v3MyPos);
             }
         }
     }

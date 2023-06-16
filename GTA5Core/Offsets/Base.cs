@@ -1,6 +1,6 @@
 ﻿namespace GTA5Core.Offsets;
 
-public struct Globals
+public struct Base
 {
     public const int GroundHeight = 0xA;
 

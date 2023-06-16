@@ -6,6 +6,7 @@ using GTA5Menu.Options;
 
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
+using GTA5Core.Offsets;
 
 namespace GTA5Menu.ESP;
 
@@ -433,12 +434,12 @@ public class Overlay : IDisposable
                 Vector3 teleW_pedCoords = new() { X = 0, Y = 0, Z = 0 };
 
                 long pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-                long pCPed = Memory.Read<long>(pCPedFactory + Offsets.CPed);
-                byte oInVehicle = Memory.Read<byte>(pCPed + Offsets.CPed_InVehicle);
-                long pCPlayerInfo = Memory.Read<long>(pCPed + Offsets.CPed_CPlayerInfo);
+                long pCPed = Memory.Read<long>(pCPedFactory + CPed.__Offset__);
+                byte oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
+                long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
 
                 // 玩家自己RID
-                long myRID = Memory.Read<long>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_RockstarID);
+                long myRID = Memory.Read<long>(pCPlayerInfo + CPed.CPlayerInfo.RockstarID);
 
                 // 相机坐标
                 long pCCameraPTR = Memory.Read<long>(Pointers.CCameraPTR);

@@ -3,6 +3,7 @@ using GTA5Shared.API;
 using GTA5Shared.Helper;
 using GTA5Core.Native;
 using GTA5Core.Feature;
+using GTA5Core.Offsets;
 
 using WinFormLib;
 
@@ -20,7 +21,7 @@ public partial class SessionChatView : UserControl
         TextBox_InputMessage.Text = "测试文本: 请把游戏中聊天输入法调成英文,否则会漏掉文字.Hello1234,漏掉文字了吗?";
 
         long pCPlayerInfo = Globals.GetCPlayerInfo();
-        TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 20);
+        TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + CPed.CPlayerInfo.Name, 20);
     }
 
 
@@ -159,7 +160,7 @@ public partial class SessionChatView : UserControl
     private void Button_ReadPlayerName_Click(object sender, RoutedEventArgs e)
     {
         long pCPlayerInfo = Globals.GetCPlayerInfo();
-        TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 64);
+        TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + CPed.CPlayerInfo.Name, 64);
     }
 
     private void CheckBox_IngnoreInputRule_Click(object sender, RoutedEventArgs e)
@@ -184,7 +185,7 @@ public partial class SessionChatView : UserControl
             }
 
             long pCPlayerInfo = Globals.GetCPlayerInfo();
-            string name = Memory.ReadString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, 64);
+            string name = Memory.ReadString(pCPlayerInfo + CPed.CPlayerInfo.Name, 64);
 
             if (playerName.Equals(name))
             {
@@ -200,7 +201,7 @@ public partial class SessionChatView : UserControl
                 Memory.WriteString(item, playerName);
             }
 
-            Memory.WriteString(pCPlayerInfo + Offsets.CPed_CPlayerInfo_Name, playerName);
+            Memory.WriteString(pCPlayerInfo + CPed.CPlayerInfo.Name, playerName);
 
             NotifierHelper.Show(NotifierType.Success, "修改玩家昵称成功，切换战局生效");
         }

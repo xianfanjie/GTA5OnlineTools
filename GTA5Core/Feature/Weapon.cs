@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5Core.Offsets;
 
 namespace GTA5Core.Feature;
 
@@ -10,9 +11,9 @@ public static class Weapon
     public static void FillCurrentAmmo()
     {
         long pCPed = Globals.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + Offsets.CPed_CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + Offsets.CPed_CPedWeaponManager_CWeaponInfo);
-        long pCAmmoInfo = Memory.Read<long>(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_CAmmoInfo);
+        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager.__Offset__);
+        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPed.CPedWeaponManager.CWeaponInfo.__Offset__);
+        long pCAmmoInfo = Memory.Read<long>(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.CAmmoInfo);
         if (!Memory.IsValid(pCAmmoInfo))
             return;
 
@@ -42,7 +43,7 @@ public static class Weapon
     public static void FillAllAmmo()
     {
         long pCPed = Globals.GetCPed();
-        long pCPedInventory = Memory.Read<long>(pCPed + Offsets.CPed_CPedInventory);
+        long pCPedInventory = Memory.Read<long>(pCPed + CPed.CPedInventory.__Offset__);
         long pWeapon = Memory.Read<long>(pCPedInventory + 0x48);
         if (!Memory.IsValid(pWeapon))
             return;
@@ -115,9 +116,9 @@ public static class Weapon
     public static void AmmoModifier(byte flag)
     {
         long pCPed = Globals.GetCPed();
-        long pCPedInventory = Memory.Read<long>(pCPed + Offsets.CPed_CPedInventory);
+        long pCPedInventory = Memory.Read<long>(pCPed + CPed.CPedInventory.__Offset__);
 
-        Memory.Write(pCPedInventory + Offsets.CPed_CPedInventory_AmmoModifier, flag);
+        Memory.Write(pCPedInventory + CPed.CPedInventory.AmmoModifier, flag);
     }
 
     /// <summary>
@@ -126,10 +127,10 @@ public static class Weapon
     public static void NoRecoil()
     {
         long pCPed = Globals.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + Offsets.CPed_CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + Offsets.CPed_CPedWeaponManager_CWeaponInfo);
+        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager.__Offset__);
+        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPed.CPedWeaponManager.CWeaponInfo.__Offset__);
 
-        Memory.Write(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_Recoil, 0.0f);
+        Memory.Write(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.Recoil, 0.0f);
     }
 
     /// <summary>
@@ -138,10 +139,10 @@ public static class Weapon
     public static void NoSpread()
     {
         long pCPed = Globals.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + Offsets.CPed_CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + Offsets.CPed_CPedWeaponManager_CWeaponInfo);
+        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager.__Offset__);
+        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPed.CPedWeaponManager.CWeaponInfo.__Offset__);
 
-        Memory.Write(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_Spread, 0.0f);
+        Memory.Write(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.Spread, 0.0f);
     }
 
     /// <summary>
@@ -150,10 +151,10 @@ public static class Weapon
     public static void ImpactType(byte type)
     {
         long pCPed = Globals.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + Offsets.CPed_CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + Offsets.CPed_CPedWeaponManager_CWeaponInfo);
+        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager.__Offset__);
+        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPed.CPedWeaponManager.CWeaponInfo.__Offset__);
 
-        Memory.Write(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_ImpactType, type);
+        Memory.Write(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.ImpactType, type);
     }
 
     /// <summary>
@@ -162,10 +163,10 @@ public static class Weapon
     public static void ImpactExplosion(int id)
     {
         long pCPed = Globals.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + Offsets.CPed_CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + Offsets.CPed_CPedWeaponManager_CWeaponInfo);
+        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager.__Offset__);
+        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPed.CPedWeaponManager.CWeaponInfo.__Offset__);
 
-        Memory.Write(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_ImpactExplosion, id);
+        Memory.Write(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.ImpactExplosion, id);
     }
 
     /// <summary>
@@ -174,11 +175,11 @@ public static class Weapon
     public static void Range()
     {
         long pCPed = Globals.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + Offsets.CPed_CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + Offsets.CPed_CPedWeaponManager_CWeaponInfo);
+        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager.__Offset__);
+        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPed.CPedWeaponManager.CWeaponInfo.__Offset__);
 
-        Memory.Write(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_LockRange, 1000.0f);
-        Memory.Write(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_Range, 2000.0f);
+        Memory.Write(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.LockRange, 1000.0f);
+        Memory.Write(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.Range, 2000.0f);
     }
 
     /// <summary>
@@ -187,12 +188,12 @@ public static class Weapon
     public static void ReloadMult(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + Offsets.CPed_CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + Offsets.CPed_CPedWeaponManager_CWeaponInfo);
+        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager.__Offset__);
+        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPed.CPedWeaponManager.CWeaponInfo.__Offset__);
 
         if (isEnable)
-            Memory.Write(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_ReloadMult, 4.0f);
+            Memory.Write(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.ReloadMult, 4.0f);
         else
-            Memory.Write(pCWeaponInfo + Offsets.CPed_CPedWeaponManager_CWeaponInfo_ReloadMult, 1.0f);
+            Memory.Write(pCWeaponInfo + CPed.CPedWeaponManager.CWeaponInfo.ReloadMult, 1.0f);
     }
 }

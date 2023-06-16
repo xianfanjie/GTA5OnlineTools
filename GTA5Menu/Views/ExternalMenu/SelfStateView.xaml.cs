@@ -6,6 +6,7 @@ using GTA5Core.Feature;
 using GTA5Shared.Helper;
 
 using GTA5HotKey;
+using GTA5Core.Offsets;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -178,17 +179,17 @@ public partial class SelfStateView : UserControl
         while (IsAppRunning)
         {
             long pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-            long pCPed = Memory.Read<long>(pCPedFactory + Offsets.CPed);
-            long pCPlayerInfo = Memory.Read<long>(pCPed + Offsets.CPed_CPlayerInfo);
+            long pCPed = Memory.Read<long>(pCPedFactory + CPed.__Offset__);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
 
-            float oHealth = Memory.Read<float>(pCPed + Offsets.CPed_Health);
-            float oHealthMax = Memory.Read<float>(pCPed + Offsets.CPed_HealthMax);
-            float oArmor = Memory.Read<float>(pCPed + Offsets.CPed_Armor);
+            float oHealth = Memory.Read<float>(pCPed + CPed.Health);
+            float oHealthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
+            float oArmor = Memory.Read<float>(pCPed + CPed.Armor);
 
-            byte oWantedLevel = Memory.Read<byte>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_WantedLevel);
-            float oWalkSpeed = Memory.Read<float>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_WalkSpeed);
-            float oRunSpeed = Memory.Read<float>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_RunSpeed);
-            float oSwimSpeed = Memory.Read<float>(pCPlayerInfo + Offsets.CPed_CPlayerInfo_SwimSpeed);
+            byte oWantedLevel = Memory.Read<byte>(pCPlayerInfo + CPed.CPlayerInfo.WantedLevel);
+            float oWalkSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.WalkSpeed);
+            float oRunSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.RunSpeed);
+            float oSwimSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.SwimSpeed);
 
             ////////////////////////////////////////////////////////////////
 

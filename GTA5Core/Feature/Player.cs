@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5Core.Offsets;
 
 namespace GTA5Core.Feature;
 
@@ -10,7 +11,7 @@ public static class Player
     public static void GodMode(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_God, (byte)(isEnable ? 0x01 : 0x00));
+        Memory.Write(pCPed + CPed.God, (byte)(isEnable ? 0x01 : 0x00));
     }
 
     /// <summary>
@@ -20,7 +21,7 @@ public static class Player
     public static void Health(float value)
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_Health, value);
+        Memory.Write(pCPed + CPed.Health, value);
     }
 
     /// <summary>
@@ -30,7 +31,7 @@ public static class Player
     public static void HealthMax(float value)
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_HealthMax, value);
+        Memory.Write(pCPed + CPed.HealthMax, value);
     }
 
     /// <summary>
@@ -40,7 +41,7 @@ public static class Player
     public static void Armor(float value)
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_Armor, value);
+        Memory.Write(pCPed + CPed.Armor, value);
     }
 
     /// <summary>
@@ -49,7 +50,7 @@ public static class Player
     public static void WantedLevel(byte level)
     {
         long pCPlayerInfo = Globals.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + Offsets.CPed_CPlayerInfo_WantedLevel, level);
+        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.WantedLevel, level);
     }
 
     /// <summary>
@@ -59,7 +60,7 @@ public static class Player
     public static void RunSpeed(float value)
     {
         long pCPlayerInfo = Globals.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + Offsets.CPed_CPlayerInfo_RunSpeed, value);
+        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.RunSpeed, value);
     }
 
     /// <summary>
@@ -69,7 +70,7 @@ public static class Player
     public static void SwimSpeed(float value)
     {
         long pCPlayerInfo = Globals.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + Offsets.CPed_CPlayerInfo_SwimSpeed, value);
+        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.SwimSpeed, value);
     }
 
     /// <summary>
@@ -79,7 +80,7 @@ public static class Player
     public static void WalkSpeed(float value)
     {
         long pCPlayerInfo = Globals.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + Offsets.CPed_CPlayerInfo_WalkSpeed, value);
+        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.WalkSpeed, value);
     }
 
     /// <summary>
@@ -88,7 +89,7 @@ public static class Player
     public static void NoRagdoll(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_Ragdoll, (byte)(isEnable ? 0x01 : 0x20));
+        Memory.Write(pCPed + CPed.Ragdoll, (byte)(isEnable ? 0x01 : 0x20));
     }
 
     /// <summary>
@@ -97,7 +98,7 @@ public static class Player
     public static void Invisible(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_Invisible, (byte)(isEnable ? 0x01 : 0x27));
+        Memory.Write(pCPed + CPed.Invisible, (byte)(isEnable ? 0x01 : 0x27));
     }
 
     /// <summary>
@@ -107,12 +108,12 @@ public static class Player
     {
         long pCPed = Globals.GetCPed();
 
-        float oHealth = Memory.Read<float>(pCPed + Offsets.CPed_Health);
-        float oHealthMax = Memory.Read<float>(pCPed + Offsets.CPed_HealthMax);
+        float oHealth = Memory.Read<float>(pCPed + CPed.Health);
+        float oHealthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
         if (oHealth <= oHealthMax)
-            Memory.Write(pCPed + Offsets.CPed_Health, oHealthMax);
+            Memory.Write(pCPed + CPed.Health, oHealthMax);
         else
-            Memory.Write(pCPed + Offsets.CPed_Health, 328.0f);
+            Memory.Write(pCPed + CPed.Health, 328.0f);
     }
 
     /// <summary>
@@ -121,7 +122,7 @@ public static class Player
     public static void FillArmor()
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_Armor, Hacks.IsOnlineMode() ? 50.0f : 100.0f);
+        Memory.Write(pCPed + CPed.Armor, Hacks.IsOnlineMode() ? 50.0f : 100.0f);
     }
 
     /// <summary>
@@ -130,7 +131,7 @@ public static class Player
     public static void Suicide()
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_Health, 1.0f);
+        Memory.Write(pCPed + CPed.Health, 1.0f);
     }
 
     /// <summary>
@@ -139,7 +140,7 @@ public static class Player
     public static void UndeadOffRadar(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_HealthMax, isEnable ? 0.0f : 328.0f);
+        Memory.Write(pCPed + CPed.HealthMax, isEnable ? 0.0f : 328.0f);
     }
 
     /// <summary>
@@ -148,7 +149,7 @@ public static class Player
     public static void WantedCanChange(bool isEnable)
     {
         long pCPlayerInfo = Globals.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + Offsets.CPed_CPlayerInfo_WantedCanChange, isEnable ? 1.0f : 0.0f);
+        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.WantedCanChange, isEnable ? 1.0f : 0.0f);
     }
 
     /// <summary>
@@ -158,7 +159,7 @@ public static class Player
     public static void NPCIgnore(int value)
     {
         long pCPlayerInfo = Globals.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + Offsets.CPed_CPlayerInfo_NPCIgnore, value);
+        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.NPCIgnore, value);
     }
 
     /// <summary>
@@ -168,7 +169,7 @@ public static class Player
     {
         long pCPed = Globals.GetCPed();
 
-        long pCNavigation = Memory.Read<long>(pCPed + Offsets.CPed_CNavigation);
+        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
         long pointer = Memory.Read<long>(pCNavigation + 0x10);
         pointer = Memory.Read<long>(pointer + 0x20);
         pointer = Memory.Read<long>(pointer + 0x70);
@@ -183,10 +184,10 @@ public static class Player
     public static void ProofBullet(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 4 : (uint)(oProof & ~(1 << 4));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 
     /// <summary>
@@ -195,10 +196,10 @@ public static class Player
     public static void ProofFire(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 5 : (uint)(oProof & ~(1 << 5));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 
     /// <summary>
@@ -207,10 +208,10 @@ public static class Player
     public static void ProofCollision(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 6 : (uint)(oProof & ~(1 << 6));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 
     /// <summary>
@@ -219,10 +220,10 @@ public static class Player
     public static void ProofMelee(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 7 : (uint)(oProof & ~(1 << 7));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 
     /// <summary>
@@ -231,10 +232,10 @@ public static class Player
     public static void ProofGod(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 8 : (uint)(oProof & ~(1 << 8));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 
     /// <summary>
@@ -243,10 +244,10 @@ public static class Player
     public static void ProofExplosion(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 11 : (uint)(oProof & ~(1 << 11));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 
     /// <summary>
@@ -255,10 +256,10 @@ public static class Player
     public static void ProofSteam(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 15 : (uint)(oProof & ~(1 << 15));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 
     /// <summary>
@@ -267,10 +268,10 @@ public static class Player
     public static void ProofDrown(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 16 : (uint)(oProof & ~(1 << 16));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 
     /// <summary>
@@ -279,9 +280,9 @@ public static class Player
     public static void ProofWater(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + Offsets.CPed_Proof);
+        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 24 : (uint)(oProof & ~(1 << 24));
-        Memory.Write(pCPed + Offsets.CPed_Proof, oProof);
+        Memory.Write(pCPed + CPed.Proof, oProof);
     }
 }

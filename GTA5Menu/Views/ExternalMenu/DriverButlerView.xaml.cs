@@ -1,5 +1,6 @@
 ﻿using GTA5Menu.Data;
 
+using GTA5Core.Offsets;
 using GTA5Core.Feature;
 using GTA5Shared.Helper;
 
@@ -33,14 +34,14 @@ public partial class DriverButlerView : UserControl
 
         await Task.Run(() =>
         {
-            int max_slots = Hacks.ReadGA<int>(Offsets.oVMSlots);
+            int max_slots = Hacks.ReadGA<int>(Base.oVMSlots);
             for (int i = 0; i < max_slots; i++)
             {
-                long hash = Hacks.ReadGA<long>(Offsets.oVMSlots + 1 + (i * 142) + 66);
+                long hash = Hacks.ReadGA<long>(Base.oVMSlots + 1 + (i * 142) + 66);
                 if (hash == 0)
                     continue;
 
-                string plate = Hacks.ReadGAString(Offsets.oVMSlots + 1 + (i * 142) + 1);
+                string plate = Hacks.ReadGAString(Base.oVMSlots + 1 + (i * 142) + 1);
 
                 var vInfo = Vehicle2.FindVehicleNameByHash(hash);
                 if (vInfo == null)

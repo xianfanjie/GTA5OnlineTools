@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5Core.Offsets;
 
 namespace GTA5Core.Feature;
 
@@ -84,7 +85,7 @@ public static class Hacks
     /// <returns></returns>
     public static int GetPlayerID()
     {
-        return ReadGA<int>(Offsets.oPlayerGA);
+        return ReadGA<int>(Base.oPlayerGA);
     }
 
     /// <summary>

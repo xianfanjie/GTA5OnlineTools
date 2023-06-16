@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5Core.Offsets;
 
 namespace GTA5Core.Feature;
 
@@ -46,7 +47,7 @@ public static class Teleport
     public static Vector3 GetPlayerPosition()
     {
         long pCPed = Globals.GetCPed();
-        return Memory.Read<Vector3>(pCPed + Offsets.CPed_VisualX);
+        return Memory.Read<Vector3>(pCPed + CPed.VisualX);
     }
 
     /// <summary>
@@ -58,20 +59,20 @@ public static class Teleport
         {
             long pCPed = Globals.GetCPed();
 
-            if (Memory.Read<int>(pCPed + Offsets.CPed_InVehicle) == 0)
+            if (Memory.Read<int>(pCPed + CPed.InVehicle) == 0)
             {
                 // 玩家不在载具
-                long pCNavigation = Memory.Read<long>(pCPed + Offsets.CPed_CNavigation);
-                Memory.Write(pCPed + Offsets.CPed_VisualX, vector3);
-                Memory.Write(pCNavigation + Offsets.CPed_CNavigation_PositionX, vector3);
+                long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
+                Memory.Write(pCPed + CPed.VisualX, vector3);
+                Memory.Write(pCNavigation + CPed.CNavigation.PositionX, vector3);
             }
             else
             {
                 // 玩家在载具
-                long pCVehicle = Memory.Read<long>(pCPed + Offsets.CPed_CVehicle);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_VisualX, vector3);
-                long pCNavigation = Memory.Read<long>(pCVehicle + Offsets.CPed_CVehicle_CNavigation);
-                Memory.Write(pCNavigation + Offsets.CPed_CVehicle_CNavigation_PositionX, vector3);
+                long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle.__Offset__);
+                Memory.Write(pCVehicle + CPed.CVehicle.VisualX, vector3);
+                long pCNavigation = Memory.Read<long>(pCVehicle + CPed.CVehicle.CNavigation.__Offset__);
+                Memory.Write(pCNavigation + CPed.CVehicle.CNavigation.PositionX, vector3);
             }
         }
     }
@@ -198,12 +199,12 @@ public static class Teleport
     public static void MoveFoward(float distance)
     {
         long pCPed = Globals.GetCPed();
-        long pCNavigation = Memory.Read<long>(pCPed + Offsets.CPed_CNavigation);
+        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
-        float head = Memory.Read<float>(pCNavigation + Offsets.CPed_CNavigation_RightX);
-        float head2 = Memory.Read<float>(pCNavigation + Offsets.CPed_CNavigation_RightY);
+        float head = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightX);
+        float head2 = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightY);
 
-        Vector3 vector3 = Memory.Read<Vector3>(pCPed + Offsets.CPed_VisualX);
+        Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
         vector3.X -= head2 * distance;
         vector3.Y += head * distance;
@@ -218,12 +219,12 @@ public static class Teleport
     public static void MoveBack(float distance)
     {
         long pCPed = Globals.GetCPed();
-        long pCNavigation = Memory.Read<long>(pCPed + Offsets.CPed_CNavigation);
+        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
-        float head = Memory.Read<float>(pCNavigation + Offsets.CPed_CNavigation_RightX);
-        float head2 = Memory.Read<float>(pCNavigation + Offsets.CPed_CNavigation_RightY);
+        float head = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightX);
+        float head2 = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightY);
 
-        Vector3 vector3 = Memory.Read<Vector3>(pCPed + Offsets.CPed_VisualX);
+        Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
         vector3.X += head2 * distance;
         vector3.Y -= head * distance;
@@ -238,11 +239,11 @@ public static class Teleport
     public static void MoveLeft(float distance)
     {
         long pCPed = Globals.GetCPed();
-        long pCNavigation = Memory.Read<long>(pCPed + Offsets.CPed_CNavigation);
+        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
-        float head2 = Memory.Read<float>(pCNavigation + Offsets.CPed_CNavigation_RightY);
+        float head2 = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightY);
 
-        Vector3 vector3 = Memory.Read<Vector3>(pCPed + Offsets.CPed_VisualX);
+        Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
         vector3.X += distance;
         vector3.Y -= head2 * distance;
@@ -257,11 +258,11 @@ public static class Teleport
     public static void MoveRight(float distance)
     {
         long pCPed = Globals.GetCPed();
-        long pCNavigation = Memory.Read<long>(pCPed + Offsets.CPed_CNavigation);
+        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
-        float head2 = Memory.Read<float>(pCNavigation + Offsets.CPed_CNavigation_RightY);
+        float head2 = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightY);
 
-        Vector3 vector3 = Memory.Read<Vector3>(pCPed + Offsets.CPed_VisualX);
+        Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
         vector3.X -= distance;
         vector3.Y += head2 * distance;
@@ -337,12 +338,12 @@ public static class Teleport
     {
         if (Pointers.HeightPTR == 0x0)
         {
-            Pointers.HeightPTR = Memory.FindPattern(Offsets.Mask.HeightMask);
+            Pointers.HeightPTR = Memory.FindPattern(Mask.HeightMask);
             if (Pointers.HeightPTR == 0x0)
             {
                 return -225.0f;
             }
         }
-        return Memory.Read<float>(Pointers.HeightPTR + Offsets.GroundHeight);
+        return Memory.Read<float>(Pointers.HeightPTR + Base.GroundHeight);
     }
 }

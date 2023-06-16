@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5Core.Offsets;
 
 namespace GTA5Core.Feature;
 
@@ -28,18 +29,18 @@ public static class Online
             if (sessionID == -1)
             {
                 // 离开线上模式需要特殊处理
-                Hacks.WriteGA(Offsets.InitSessionCache, -1);
+                Hacks.WriteGA(Base.InitSessionCache, -1);
             }
             else
             {
                 // 正常切换战局，修改战局类型
-                Hacks.WriteGA(Offsets.InitSessionType, sessionID);
+                Hacks.WriteGA(Base.InitSessionType, sessionID);
             }
 
             // 切换战局状态
-            Hacks.WriteGA(Offsets.InitSessionState, 1);
+            Hacks.WriteGA(Base.InitSessionState, 1);
             await Task.Delay(200);
-            Hacks.WriteGA(Offsets.InitSessionState, 0);
+            Hacks.WriteGA(Base.InitSessionState, 0);
         });
     }
 
@@ -85,10 +86,10 @@ public static class Online
     public static void ModelChange(long hash)
     {
         // else if (!PED::HAS_PED_HEAD_BLEND_FINISHED(PLAYER::PLAYER_PED_ID())
-        Hacks.WriteGA(Offsets.oVGETIn + 61, 1);                 // triggerModelChange   Global_2671449.f_59
-        Hacks.WriteGA(Offsets.oVGETIn + 48, hash);              // modelChangeHash      Global_2671449.f_46
+        Hacks.WriteGA(Base.oVGETIn + 61, 1);                 // triggerModelChange   Global_2671449.f_59
+        Hacks.WriteGA(Base.oVGETIn + 48, hash);              // modelChangeHash      Global_2671449.f_46
         Thread.Sleep(10);
-        Hacks.WriteGA(Offsets.oVGETIn + 61, 0);
+        Hacks.WriteGA(Base.oVGETIn + 61, 0);
     }
 
     /// <summary>
@@ -117,7 +118,7 @@ public static class Online
     public static void SuicideCooldown(bool isEnable)
     {
         if (isEnable)
-            Hacks.WriteGA(Offsets.oVMYCar + 6899, 0);
+            Hacks.WriteGA(Base.oVMYCar + 6899, 0);
 
         Hacks.WriteGA(262145 + 28408, isEnable ? 3 : 300000);
         Hacks.WriteGA(262145 + 28409, isEnable ? 3 : 60000);
@@ -137,7 +138,7 @@ public static class Online
     /// </summary>
     public static void GetInOnlinePV()
     {
-        Hacks.WriteGA(Offsets.oVGETIn + 8, 1);
+        Hacks.WriteGA(Base.oVGETIn + 8, 1);
     }
 
     /// <summary>
@@ -155,10 +156,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void OffRadar(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
         if (isEnable)
-            Hacks.WriteGA(Offsets.oNETTimeHelp + 57, Hacks.GetNetworkTime() + 3600000);
-        Hacks.WriteGA(Offsets.oVMYCar + 4660, isEnable ? 3 : 0);
+            Hacks.WriteGA(Base.oNETTimeHelp + 57, Hacks.GetNetworkTime() + 3600000);
+        Hacks.WriteGA(Base.oVMYCar + 4660, isEnable ? 3 : 0);
     }
 
     /// <summary>
@@ -167,10 +168,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void GhostOrganization(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
         if (isEnable)
-            Hacks.WriteGA(Offsets.oNETTimeHelp + 57, Hacks.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
-        Hacks.WriteGA(Offsets.oVMYCar + 4660, isEnable ? 4 : 0);
+            Hacks.WriteGA(Base.oNETTimeHelp + 57, Hacks.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
+        Hacks.WriteGA(Base.oVMYCar + 4660, isEnable ? 4 : 0);
     }
 
     /// <summary>
@@ -179,9 +180,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void BribeOrBlindCops(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 4654 + 1, isEnable ? 1 : 0);
-        Hacks.WriteGA(Offsets.oVMYCar + 4654 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
-        Hacks.WriteGA(Offsets.oVMYCar + 4654, isEnable ? 5 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4654 + 1, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4654 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4654, isEnable ? 5 : 0);
     }
 
     /// <summary>
@@ -190,9 +191,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void BribeAuthorities(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 4654 + 1, isEnable ? 1 : 0);
-        Hacks.WriteGA(Offsets.oVMYCar + 4654 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
-        Hacks.WriteGA(Offsets.oVMYCar + 4654, isEnable ? 21 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4654 + 1, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4654 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4654, isEnable ? 21 : 0);
     }
 
     /// <summary>
@@ -201,8 +202,8 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void RevealPlayers(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 213, isEnable ? 1 : 0);
-        Hacks.WriteGA(Offsets.oNETTimeHelp + 58, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
+        Hacks.WriteGA(Base.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 213, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oNETTimeHelp + 58, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
     }
 
     /// <summary>
@@ -246,12 +247,12 @@ public static class Online
     public static void InstantBullShark(bool isEnable)
     {
         if (isEnable)
-            Hacks.WriteGA(Offsets.oNETTimeHelp + 3690, 1);
+            Hacks.WriteGA(Base.oNETTimeHelp + 3690, 1);
         else
         {
-            int temp = Hacks.ReadGA<int>(Offsets.oNETTimeHelp + 3690);
+            int temp = Hacks.ReadGA<int>(Base.oNETTimeHelp + 3690);
             if (temp != 0)
-                Hacks.WriteGA(Offsets.oNETTimeHelp + 3690, 5);
+                Hacks.WriteGA(Base.oNETTimeHelp + 3690, 5);
         }
     }
 
@@ -261,7 +262,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CallBackupHeli(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 4484, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4484, isEnable ? 1 : 0);
     }
 
     /// <summary>
@@ -270,7 +271,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CallAirstrike(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 4485, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4485, isEnable ? 1 : 0);
     }
 
     /// <summary>
@@ -507,7 +508,7 @@ public static class Online
     /// <param name="serverId"></param>
     public static void MerryWeatherServices(int serverId)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + serverId, 1);
+        Hacks.WriteGA(Base.oVMYCar + serverId, 1);
     }
 
     /// <summary>
@@ -588,8 +589,8 @@ public static class Online
     /// <param name="index"></param>
     public static void DeliverPersonalVehicle(int index)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 965, index);
-        Hacks.WriteGA(Offsets.oVMYCar + 962, 1);
+        Hacks.WriteGA(Base.oVMYCar + 965, index);
+        Hacks.WriteGA(Base.oVMYCar + 962, 1);
     }
 
     /// <summary>
@@ -639,7 +640,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void TriggerRCBandito(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 6874, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 6874, isEnable ? 1 : 0);
     }
 
     /// <summary>
@@ -648,6 +649,6 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void TriggerMiniTank(bool isEnable)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 6875, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 6875, isEnable ? 1 : 0);
     }
 }

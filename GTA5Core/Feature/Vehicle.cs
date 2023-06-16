@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5Core.Offsets;
 
 namespace GTA5Core.Feature;
 
@@ -10,7 +11,7 @@ public static class Vehicle
     public static bool IsInVehicle()
     {
         long pCPed = Globals.GetCPed();
-        return Memory.Read<byte>(pCPed + Offsets.CPed_InVehicle) == 0x01;
+        return Memory.Read<byte>(pCPed + CPed.InVehicle) == 0x01;
     }
 
     /// <summary>
@@ -19,7 +20,7 @@ public static class Vehicle
     public static void GodMode(bool isEnable)
     {
         if (Globals.GetCVehicle(out long pCVehicle))
-            Memory.Write(pCVehicle + Offsets.CPed_CVehicle_God, (byte)(isEnable ? 0x01 : 0x00));
+            Memory.Write(pCVehicle + CPed.CVehicle.God, (byte)(isEnable ? 0x01 : 0x00));
     }
 
     /// <summary>
@@ -28,7 +29,7 @@ public static class Vehicle
     public static void Seatbelt(bool isEnable)
     {
         long pCPed = Globals.GetCPed();
-        Memory.Write(pCPed + Offsets.CPed_Seatbelt, (byte)(isEnable ? 0xC9 : 0xC8));
+        Memory.Write(pCPed + CPed.Seatbelt, (byte)(isEnable ? 0xC9 : 0xC8));
     }
 
     /// <summary>
@@ -37,7 +38,7 @@ public static class Vehicle
     public static void Invisible(bool isEnable)
     {
         if (Globals.GetCVehicle(out long pCVehicle))
-            Memory.Write(pCVehicle + Offsets.CPed_CVehicle_Invisible, (byte)(isEnable ? 0x01 : 0x27));
+            Memory.Write(pCVehicle + CPed.CVehicle.Invisible, (byte)(isEnable ? 0x01 : 0x27));
     }
 
     /// <summary>
@@ -47,8 +48,8 @@ public static class Vehicle
     {
         if (Globals.GetCVehicle(out long pCVehicle))
         {
-            long pCModelInfo = Memory.Read<long>(pCVehicle + Offsets.CPed_CVehicle_CModelInfo);
-            Memory.Write(pCModelInfo + Offsets.CPed_CVehicle_CModelInfo_Extras, flag);
+            long pCModelInfo = Memory.Read<long>(pCVehicle + CPed.CVehicle.CModelInfo.__Offset__);
+            Memory.Write(pCModelInfo + CPed.CVehicle.CModelInfo.Extras, flag);
         }
     }
 
@@ -59,8 +60,8 @@ public static class Vehicle
     {
         if (Globals.GetCVehicle(out long pCVehicle))
         {
-            long pCModelInfo = Memory.Read<long>(pCVehicle + Offsets.CPed_CVehicle_CModelInfo);
-            Memory.Write(pCModelInfo + Offsets.CPed_CVehicle_CModelInfo_Parachute, (byte)(isEnable ? 0x01 : 0x00));
+            long pCModelInfo = Memory.Read<long>(pCVehicle + CPed.CVehicle.CModelInfo.__Offset__);
+            Memory.Write(pCModelInfo + CPed.CVehicle.CModelInfo.Parachute, (byte)(isEnable ? 0x01 : 0x00));
         }
     }
 
@@ -71,21 +72,21 @@ public static class Vehicle
     {
         if (Globals.GetCVehicle(out long pCVehicle))
         {
-            float oVHealth = Memory.Read<float>(pCVehicle + Offsets.CPed_CVehicle_Health);
-            float oVHealthMax = Memory.Read<float>(pCVehicle + Offsets.CPed_CVehicle_HealthMax);
+            float oVHealth = Memory.Read<float>(pCVehicle + CPed.CVehicle.Health);
+            float oVHealthMax = Memory.Read<float>(pCVehicle + CPed.CVehicle.HealthMax);
             if (oVHealth <= oVHealthMax)
             {
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_Health, oVHealthMax);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthBody, oVHealthMax);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthPetrolTank, oVHealthMax);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthEngine, oVHealthMax);
+                Memory.Write(pCVehicle + CPed.CVehicle.Health, oVHealthMax);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, oVHealthMax);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, oVHealthMax);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, oVHealthMax);
             }
             else
             {
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_Health, 1000.0f);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthBody, 1000.0f);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthPetrolTank, 1000.0f);
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_HealthEngine, 1000.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.Health, 1000.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, 1000.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, 1000.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, 1000.0f);
             }
         }
     }
@@ -99,7 +100,7 @@ public static class Vehicle
         {
             if (Globals.GetCVehicle(out long pCVehicle))
             {
-                Hacks.WriteGA(Offsets.oVMYCar + 894, 1);
+                Hacks.WriteGA(Base.oVMYCar + 894, 1);
 
                 await Task.Delay(1000);
 
@@ -107,10 +108,10 @@ public static class Vehicle
                 long FixVehValue = Memory.Read<long>(pCPickupData + 0x230);       // pFixVeh
                 long BSTValue = Memory.Read<long>(pCPickupData + 0x160);          // pBST
 
-                Memory.Write(pCVehicle + Offsets.CPed_CVehicle_Health, 999.0f);
+                Memory.Write(pCVehicle + CPed.CVehicle.Health, 999.0f);
 
                 long pCPickupInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-                long pCReplayInterface_CPickupInterface = Memory.Read<long>(pCPickupInterface + Offsets.CReplayInterface_CPickupInterface);
+                long pCReplayInterface_CPickupInterface = Memory.Read<long>(pCPickupInterface + CReplayInterface.CPickupInterface.__Offset__);
 
                 long mPickupCount = Memory.Read<int>(pCReplayInterface_CPickupInterface + 0x110);       // oPickupNum
                 long pPickupList = Memory.Read<long>(pCReplayInterface_CPickupInterface + 0x100);       // pPickupList
@@ -134,7 +135,7 @@ public static class Vehicle
                         await Task.Delay(10);
 
                         Vector3 dwpPickupV3 = Memory.Read<Vector3>(dwpPickup + 0x90);
-                        Vector3 vehicleV3 = Memory.Read<Vector3>(pCVehicle + Offsets.CPed_CVehicle_VisualX);
+                        Vector3 vehicleV3 = Memory.Read<Vector3>(pCVehicle + CPed.CVehicle.VisualX);
 
                         await Task.Delay(10);
 
@@ -145,8 +146,8 @@ public static class Vehicle
 
                 await Task.Delay(1000);
 
-                if (Hacks.ReadGA<int>(Offsets.oNETTimeHelp + 3690) != 0)
-                    Hacks.WriteGA(Offsets.oNETTimeHelp + 3690, -1);
+                if (Hacks.ReadGA<int>(Base.oNETTimeHelp + 3690) != 0)
+                    Hacks.WriteGA(Base.oNETTimeHelp + 3690, -1);
             }
         });
     }
@@ -157,7 +158,7 @@ public static class Vehicle
     /// <param name="index"></param>
     public static void RequestPersonalVehicle(int index)
     {
-        Hacks.WriteGA(Offsets.oVMYCar + 992, index);
-        Hacks.WriteGA(Offsets.oVMYCar + 989, 1);
+        Hacks.WriteGA(Base.oVMYCar + 992, index);
+        Hacks.WriteGA(Base.oVMYCar + 989, 1);
     }
 }

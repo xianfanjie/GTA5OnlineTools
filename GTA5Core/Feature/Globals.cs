@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5Core.Offsets;
 
 namespace GTA5Core.Feature;
 
@@ -11,7 +12,7 @@ public static class Globals
     public static long GetCPed()
     {
         long pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-        return Memory.Read<long>(pCPedFactory + Offsets.CPed);
+        return Memory.Read<long>(pCPedFactory + CPed.__Offset__);
     }
 
     /// <summary>
@@ -21,7 +22,7 @@ public static class Globals
     public static long GetCPlayerInfo()
     {
         long pCPed = GetCPed();
-        return Memory.Read<long>(pCPed + Offsets.CPed_CPlayerInfo);
+        return Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
     }
 
     /// <summary>
@@ -32,11 +33,11 @@ public static class Globals
     public static bool GetCVehicle(out long pCVehicle)
     {
         long pCPed = GetCPed();
-        byte oInVehicle = Memory.Read<byte>(pCPed + Offsets.CPed_InVehicle);
+        byte oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
 
         if (oInVehicle == 0x01)
         {
-            pCVehicle = Memory.Read<long>(pCPed + Offsets.CPed_CVehicle);
+            pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle.__Offset__);
             return true;
         }
 
@@ -51,8 +52,8 @@ public static class Globals
     public static long GetCPedList()
     {
         long pCReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-        long pCPedInterface = Memory.Read<long>(pCReplayInterface + Offsets.CReplayInterface_CPedInterface);
-        return Memory.Read<long>(pCPedInterface + Offsets.CReplayInterface_CPedInterface_CPedList);
+        long pCPedInterface = Memory.Read<long>(pCReplayInterface + CReplayInterface.CPedInterface.__Offset__);
+        return Memory.Read<long>(pCPedInterface + CReplayInterface.CPedInterface.CPedList);
     }
 
     /// <summary>
@@ -62,7 +63,7 @@ public static class Globals
     public static long GetCVehicleList()
     {
         long pCReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-        long pCVehicleInterface = Memory.Read<long>(pCReplayInterface + Offsets.CReplayInterface_CVehicleInterface);
-        return Memory.Read<long>(pCVehicleInterface + Offsets.CReplayInterface_CVehicleInterface_CVehicleList);
+        long pCVehicleInterface = Memory.Read<long>(pCReplayInterface + CReplayInterface.CVehicleInterface.__Offset__);
+        return Memory.Read<long>(pCVehicleInterface + CReplayInterface.CVehicleInterface.CVehicleList);
     }
 }

@@ -70,8 +70,8 @@ public struct CPed  // 0x08
         public const int HealthEngine = 0x8E8;
         public const int Passenger = 0xC42;       // byte 载具座位人数
     }
-    public const int CPed_InVehicle = 0xE32;    // int 0:false 1:true
-    public const int CPed_Ragdoll = 0x1098;
+    public const int InVehicle = 0xE32;    // int 0:false 1:true
+    public const int Ragdoll = 0x1098;
     public struct CPlayerInfo  // 0x10A8
     {
         public const int __Offset__ = 0x10A8;
@@ -131,6 +131,6 @@ public struct CPed  // 0x08
             public const int Recoil = 0x2F4;
         }
     }
-    public const int CPed_Seatbelt = 0x143C;        // byte 55:false 56:true
-    public const int CPed_Armor = 0x150C;           // float, 50:Online 100:Story Mode
+    public const int Seatbelt = 0x143C;        // byte 55:false 56:true
+    public const int Armor = 0x150C;           // float, 50:Online 100:Story Mode
 }

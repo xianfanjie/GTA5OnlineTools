@@ -35,33 +35,33 @@ public static class Memory
     /// </summary>
     public static void CloseHandle()
     {
-        if (GTA5ProHandle != IntPtr.Zero)
-        {
-            IsInitialized = false;
+        if (GTA5ProHandle == IntPtr.Zero)
+            return;
 
-            Win32.CloseHandle(GTA5ProHandle);
+        IsInitialized = false;
 
-            GTA5Process = null;
-            GTA5WinHandle = IntPtr.Zero;
-            GTA5ProId = 0;
-            GTA5ProBaseAddress = 0;
-            GTA5ProHandle = IntPtr.Zero;
+        Win32.CloseHandle(GTA5ProHandle);
 
-            Pointers.WorldPTR = 0;
-            Pointers.BlipPTR = 0;
-            Pointers.GlobalPTR = 0;
-            Pointers.NetworkPlayerMgrPTR = 0;
-            Pointers.ReplayInterfacePTR = 0;
-            Pointers.NetworkInfoPTR = 0;
-            Pointers.ViewPortPTR = 0;
-            Pointers.CCameraPTR = 0;
-            Pointers.AimingPedPTR = 0;
-            Pointers.WeatherPTR = 0;
-            Pointers.PickupDataPTR = 0;
-            Pointers.UnkModelPTR = 0;
-            Pointers.LocalScriptsPTR = 0;
-            Pointers.UnkPTR = 0;
-        }
+        GTA5Process = null;
+        GTA5WinHandle = IntPtr.Zero;
+        GTA5ProId = 0;
+        GTA5ProBaseAddress = 0;
+        GTA5ProHandle = IntPtr.Zero;
+
+        Pointers.WorldPTR = 0;
+        Pointers.BlipPTR = 0;
+        Pointers.GlobalPTR = 0;
+        Pointers.NetworkPlayerMgrPTR = 0;
+        Pointers.ReplayInterfacePTR = 0;
+        Pointers.NetworkInfoPTR = 0;
+        Pointers.ViewPortPTR = 0;
+        Pointers.CCameraPTR = 0;
+        Pointers.AimingPedPTR = 0;
+        Pointers.WeatherPTR = 0;
+        Pointers.PickupDataPTR = 0;
+        Pointers.UnkModelPTR = 0;
+        Pointers.LocalScriptsPTR = 0;
+        Pointers.UnkPTR = 0;
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public static class Memory
     /// </summary>
     public static void SetForegroundWindow()
     {
-        Win32.SetForegroundWindow(GTA5WinHandle);
+        _ = Win32.SetForegroundWindow(GTA5WinHandle);
     }
 
     /// <summary>
@@ -86,9 +86,9 @@ public static class Memory
     public static void TopMostProcess(bool isTopMost)
     {
         if (isTopMost)
-            Win32.SetWindowPos(GTA5WinHandle, -1, 0, 0, 0, 0, 1 | 2);
+            _ = Win32.SetWindowPos(GTA5WinHandle, -1, 0, 0, 0, 0, 1 | 2);
         else
-            Win32.SetWindowPos(GTA5WinHandle, -2, 0, 0, 0, 0, 1 | 2);
+            _ = Win32.SetWindowPos(GTA5WinHandle, -2, 0, 0, 0, 0, 1 | 2);
     }
 
     /// <summary>
@@ -98,8 +98,8 @@ public static class Memory
     public static WindowData GetGameWindowData()
     {
         // 获取指定窗口句柄的窗口矩形数据和客户区矩形数据
-        Win32.GetWindowRect(GTA5WinHandle, out W32RECT windowRect);
-        Win32.GetClientRect(GTA5WinHandle, out W32RECT clientRect);
+        _ = Win32.GetWindowRect(GTA5WinHandle, out W32RECT windowRect);
+        _ = Win32.GetClientRect(GTA5WinHandle, out W32RECT clientRect);
 
         // 计算窗口区的宽和高
         var windowWidth = windowRect.Right - windowRect.Left;
@@ -199,7 +199,7 @@ public static class Memory
     /// <exception cref="Exception"></exception>
     public static List<long> FindPatterns(string pattern)
     {
-        List<long> address = new();
+        var address = new List<long>();
 
         var patternByteArray = Encoding.ASCII.GetBytes(pattern);
 

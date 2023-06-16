@@ -43,7 +43,7 @@
                     VerticalAlignment="Center"
                     FontSize="14"
                     FontWeight="Bold"
-                    Text="{Binding ElementName=Window_GTA5Menu, Path=Title}" />
+                    Text="{Binding ElementName=Window_GTA5Menu, Path=Title, FallbackValue='GTA5线上小助手 - 外置菜单'}" />
             </StackPanel>
         </DockPanel>
     </ui:Window.TitleContent>

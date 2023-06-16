@@ -17,9 +17,6 @@ public partial class DefaultTeleportView : UserControl
         // 传送分类列表
         foreach (var tClass in TeleportData.TeleportClasses)
         {
-            if (tClass.Name == "自定义")
-                continue;
-
             ListBox_TeleportClasses.Items.Add(new IconMenu()
             {
                 Icon = tClass.Icon,
@@ -46,8 +43,7 @@ public partial class DefaultTeleportView : UserControl
 
             ListBox_TeleportInfos.Items.Clear();
 
-            // 这里要跳过第一个分类
-            foreach (var item in TeleportData.TeleportClasses[index + 1].TeleportInfos)
+            foreach (var item in TeleportData.TeleportClasses[index].TeleportInfos)
             {
                 this.Dispatcher.Invoke(DispatcherPriority.Background, () =>
                 {

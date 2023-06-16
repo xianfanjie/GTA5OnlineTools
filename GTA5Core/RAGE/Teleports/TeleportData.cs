@@ -1,12 +1,7 @@
 ﻿namespace GTA5Core.RAGE.Teleports;
 
-public class TeleportData
+public static class TeleportData
 {
-    public static readonly List<TeleportInfo> Custom = new()
-    {
-
-    };
-
     public static readonly List<TeleportInfo> Common = new()
     {
         new TeleportInfo(){ Name="洛圣都改车王", X=-365.425f, Y=-131.809f, Z=-225.0f },
@@ -47,7 +42,6 @@ public class TeleportData
 
     public static readonly List<TeleportClass> TeleportClasses = new()
     {
-        new TeleportClass(){ Icon="\xe610", Name="自定义", TeleportInfos=Custom },
         new TeleportClass(){ Icon="\xe610", Name="常用地点", TeleportInfos=Common },
         new TeleportClass(){ Icon="\xe610", Name="室内场景", TeleportInfos=Indoor },
         new TeleportClass(){ Icon="\xe610", Name="任务地点", TeleportInfos=Mission },

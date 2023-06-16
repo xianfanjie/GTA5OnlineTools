@@ -14,7 +14,7 @@ namespace GTA5Menu.Views.OnlineVehicle;
 /// </summary>
 public partial class MyVehicleView : UserControl
 {
-    public ObservableCollection<ModelInfo> MyFavorites { get; private set; } = new();
+    public ObservableCollection<ModelInfo> MyFavorites { get; set; } = new();
 
     public static Action<ModelInfo> ActionAddMyFavorite;
 
@@ -25,18 +25,10 @@ public partial class MyVehicleView : UserControl
 
         ActionAddMyFavorite = AddMyFavorite;
 
-        // 如果配置文件不存在就创建
-        if (!File.Exists(GTA5Util.File_Config_Vehicles))
-        {
-            // 保存配置文件
-            SaveConfig();
-        }
-
         // 如果配置文件存在就读取
         if (File.Exists(GTA5Util.File_Config_Vehicles))
         {
-            using var streamReader = new StreamReader(GTA5Util.File_Config_Vehicles);
-            var vehicles = JsonHelper.JsonDese<List<Vehicles>>(streamReader.ReadToEnd());
+            var vehicles = JsonHelper.ReadFile<List<Vehicles>>(GTA5Util.File_Config_Vehicles);
 
             // 填充数据
             foreach (var item in vehicles)
@@ -85,7 +77,7 @@ public partial class MyVehicleView : UserControl
                 });
             }
             // 写入到Json文件
-            File.WriteAllText(GTA5Util.File_Config_Vehicles, JsonHelper.JsonSeri(vehicles));
+            JsonHelper.WriteFile(GTA5Util.File_Config_Vehicles, vehicles);
         }
     }
 

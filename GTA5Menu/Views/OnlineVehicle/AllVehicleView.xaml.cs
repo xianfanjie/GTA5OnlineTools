@@ -1,6 +1,5 @@
 ﻿using GTA5Menu.Data;
 
-using GTA5Core.RAGE;
 using GTA5Core.RAGE.Vehicles;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
@@ -20,9 +19,6 @@ public partial class AllVehicleView : UserControl
         // 载具分类列表
         foreach (var vClass in VehicleHash.VehicleClasses)
         {
-            if (vClass.Name == "我的收藏")
-                continue;
-
             ListBox_VehicleClasses.Items.Add(new IconMenu()
             {
                 Icon = vClass.Icon,
@@ -47,31 +43,27 @@ public partial class AllVehicleView : UserControl
 
             ListBox_VehicleInfos.Items.Clear();
 
-            Task.Run(() =>
+            foreach (var item in VehicleHash.VehicleClasses[index].VehicleInfos)
             {
-                // 这里要跳过第一个分类
-                foreach (var item in VehicleHash.VehicleClasses[index + 1].VehicleInfos)
+                this.Dispatcher.Invoke(DispatcherPriority.Background, () =>
                 {
-                    this.Dispatcher.Invoke(() =>
+                    if (index == ListBox_VehicleClasses.SelectedIndex)
                     {
-                        if (index == ListBox_VehicleClasses.SelectedIndex)
+                        ListBox_VehicleInfos.Items.Add(new ModelInfo()
                         {
-                            ListBox_VehicleInfos.Items.Add(new ModelInfo()
-                            {
-                                Class = item.Class,
-                                Name = item.Name,
-                                Value = item.Value,
-                                Image = item.Image,
-                                Mod = item.Mod
-                            });
-                        }
-                        else
-                        {
-                            return;
-                        }
-                    });
-                }
-            });
+                            Class = item.Class,
+                            Name = item.Name,
+                            Value = item.Value,
+                            Image = item.Image,
+                            Mod = item.Mod
+                        });
+                    }
+                    else
+                    {
+                        return;
+                    }
+                });
+            }
 
             ListBox_VehicleInfos.SelectedIndex = 0;
         }

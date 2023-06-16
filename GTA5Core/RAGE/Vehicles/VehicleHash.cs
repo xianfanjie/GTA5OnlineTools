@@ -7,9 +7,6 @@ public static class VehicleHash
         // 填充全部载具
         foreach (var vClass in VehicleHash.VehicleClasses)
         {
-            if (vClass.Name == "我的收藏")
-                continue;
-
             foreach (var info in vClass.VehicleInfos)
             {
                 info.Class = vClass.Name;
@@ -20,14 +17,6 @@ public static class VehicleHash
             }
         }
     }
-
-    /// <summary>
-    /// -1 当前分类: 我的收藏
-    /// </summary>
-    public static readonly List<VehicleInfo> Favorites = new()
-    {
-
-    };
 
     /// <summary>
     /// 0 当前分类: 小型汽车
@@ -1013,7 +1002,6 @@ public static class VehicleHash
             21 当前分类: 火车
             22 当前分类: 开轮式
          */
-        new VehicleClass(){ Icon="\xe610", Name="我的收藏", VehicleInfos=Favorites },
         new VehicleClass(){ Icon="\xe610", Name="小型汽车", VehicleInfos=Compacts },
         new VehicleClass(){ Icon="\xe610", Name="轿车", VehicleInfos=Sedans },
         new VehicleClass(){ Icon="\xe610", Name="SUV", VehicleInfos=SUVs },

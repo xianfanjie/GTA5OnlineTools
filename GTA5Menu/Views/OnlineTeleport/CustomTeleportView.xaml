@@ -18,13 +18,16 @@
         </Grid.ColumnDefinitions>
         <!--  //////////////////////  -->
         <ListBox
-            x:Name="ListBox_Teleports"
+            x:Name="ListBox_CustomTeleports"
             Margin="5"
             dd:DragDrop.DropTargetAdornerBrush="DodgerBlue"
             dd:DragDrop.IsDragSource="True"
             dd:DragDrop.IsDropTarget="True"
             dd:DragDrop.UseDefaultDragAdorner="True"
-            MouseDoubleClick="ListBox_Teleports_MouseDoubleClick"
+            DockPanel.Dock="Bottom"
+            ItemsSource="{Binding CustomTeleports}"
+            MouseDoubleClick="ListBox_CustomTeleports_MouseDoubleClick"
+            SelectionChanged="ListBox_CustomTeleports_SelectionChanged"
             Style="{StaticResource ListBoxStyle_TeleportInfo}"
             ToolTip="双击选中项即可快捷传送，按鼠标右键弹出菜单，按住鼠标左键可拖拽排序">
             <ListBox.ItemTemplate>
@@ -48,7 +51,64 @@
         </ListBox>
         <!--  //////////////////////  -->
         <StackPanel Grid.Column="1">
-            <ui:LabelIcon Content="自定义传送" />
+            <ui:LabelIcon Content="坐标数据" />
+            <StackPanel Margin="5,0,5,0">
+                <!--  坐标名称  -->
+                <DockPanel Margin="5,0,0,0">
+                    <TextBlock
+                        Width="50"
+                        VerticalAlignment="Center"
+                        Text="坐标名称" />
+                    <TextBox x:Name="TextBox_CustomName" Text="{Binding ElementName=ListBox_Teleports, Path=SelectedItem.Name}" />
+                </DockPanel>
+                <!--  X坐标  -->
+                <DockPanel Margin="5,0,0,0">
+                    <TextBlock
+                        Width="50"
+                        VerticalAlignment="Center"
+                        Text="X坐标" />
+                    <TextBox x:Name="TextBox_Position_X" Text="{Binding ElementName=ListBox_Teleports, Path=SelectedItem.X, StringFormat='{}{0:0.000}'}" />
+                </DockPanel>
+                <!--  Y坐标  -->
+                <DockPanel Margin="5,0,0,0">
+                    <TextBlock
+                        Width="50"
+                        VerticalAlignment="Center"
+                        Text="Y坐标" />
+                    <TextBox x:Name="TextBox_Position_Y" Text="{Binding ElementName=ListBox_Teleports, Path=SelectedItem.Y, StringFormat='{}{0:0.000}'}" />
+                </DockPanel>
+                <!--  Z坐标  -->
+                <DockPanel Margin="5,0,0,0">
+                    <TextBlock
+                        Width="50"
+                        VerticalAlignment="Center"
+                        Text="Z坐标" />
+                    <TextBox x:Name="TextBox_Position_Z" Text="{Binding ElementName=ListBox_Teleports, Path=SelectedItem.Z, StringFormat='{}{0:0.000}'}" />
+                </DockPanel>
+                <WrapPanel>
+                    <Button
+                        x:Name="Button_AddCustomTeleport"
+                        Click="Button_AddCustomTeleport_Click"
+                        Content="添加" />
+                    <Button
+                        x:Name="Button_EditCustomTeleport"
+                        Click="Button_EditCustomTeleport_Click"
+                        Content="修改" />
+                    <Button
+                        x:Name="Button_DeleteCustomTeleport"
+                        Background="#EA4335"
+                        Click="Button_DeleteCustomTeleport_Click"
+                        Content="删除" />
+                    <Button
+                        x:Name="Button_Teleport"
+                        Background="#34A853"
+                        Click="Button_Teleport_Click"
+                        Content="传送" />
+                    <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockStyle_Hint}">
+                        提示：双击选中项可快捷传送
+                    </TextBlock>
+                </WrapPanel>
+            </StackPanel>
             <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_ToWaypoint"

@@ -1,11 +1,11 @@
-﻿using GTA5HotKey;
+﻿using GTA5Menu.Options;
+
+using GTA5HotKey;
 using GTA5Core.Native;
 using GTA5Core.Offsets;
 using GTA5Core.Features;
 using GTA5Core.RAGE.Rage;
 using GTA5Shared.Helper;
-
-using GTA5Menu.Options;
 
 using CommunityToolkit.Mvvm.Input;
 

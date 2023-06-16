@@ -34,7 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vendor", "Vendor", "{E602CB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualizingWrapPanel", "Vendor\VirtualizingWrapPanel\VirtualizingWrapPanel.csproj", "{75346AB5-1A44-4D10-8DB4-E31FC816C41F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormLib", "FormsSendKeys\WinFormLib.csproj", "{60D184AA-F649-42C4-865A-6814BAB9EEAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormLib", "WinFormLib\WinFormLib.csproj", "{60D184AA-F649-42C4-865A-6814BAB9EEAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

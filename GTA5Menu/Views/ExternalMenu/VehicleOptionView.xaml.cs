@@ -1,6 +1,8 @@
 ﻿using GTA5Core.Feature;
 using GTA5Core.RAGE.Onlines;
 
+using GTA5Menu.Options;
+
 namespace GTA5Menu.Views.ExternalMenu;
 
 /// <summary>

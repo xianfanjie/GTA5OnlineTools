@@ -1,11 +1,10 @@
-﻿using GTA5Core.Native;
-using GTA5Core.Feature;
-using GTA5HotKey;
+﻿using GTA5HotKey;
 using GTA5Shared.API;
 using GTA5Shared.Helper;
-using FormsSendKeys;
+using GTA5Core.Native;
+using GTA5Core.Feature;
 
-using Chinese;
+using WinFormLib;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -27,53 +26,43 @@ public partial class SessionChatView : UserControl
 
     private void Button_Translate_Click(object sender, RoutedEventArgs e)
     {
-        try
-        {
-            var message = TextBox_InputMessage.Text.Trim();
+        var message = TextBox_InputMessage.Text.Trim();
 
-            if (!string.IsNullOrEmpty(message))
+        if (!string.IsNullOrEmpty(message))
+        {
+            var btnContent = (e.OriginalSource as Button).Content.ToString();
+
+            switch (btnContent)
             {
-                var btnContent = (e.OriginalSource as Button).Content.ToString();
-
-                switch (btnContent)
-                {
-                    case "中英互译":
-                        YouDaoTranslation(message);
-                        break;
-                    case "简转繁":
-                        TextBox_InputMessage.Text = ChineseConverter.ToTraditional(message);
-                        break;
-                    case "繁转简":
-                        TextBox_InputMessage.Text = ChineseConverter.ToSimplified(message);
-                        break;
-                    case "转拼音":
-                        TextBox_InputMessage.Text = Pinyin.GetString(message, PinyinFormat.WithoutTone);
-                        break;
-                }
+                case "中英互译":
+                    YouDaoTranslation(message);
+                    break;
+                case "简转繁":
+                    TextBox_InputMessage.Text = ChsHelper.ToTraditional(message);
+                    break;
+                case "繁转简":
+                    TextBox_InputMessage.Text = ChsHelper.ToSimplified(message);
+                    break;
+                case "转拼音":
+                    TextBox_InputMessage.Text = ChsHelper.ToPinyin(message);
+                    break;
             }
-        }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
         }
     }
 
     private void Button_SendTextToGTA5_Click(object sender, RoutedEventArgs e)
     {
-        try
-        {
-            if (TextBox_InputMessage.Text != "")
-            {
-                TextBox_InputMessage.Text = ToDBC(TextBox_InputMessage.Text);
+        var msg = TextBox_InputMessage.Text.Trim();
 
-                Memory.SetForegroundWindow();
-                SendMessageToGTA5(TextBox_InputMessage.Text);
-            }
-        }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
-        }
+        if (string.IsNullOrWhiteSpace(msg))
+            return;
+
+        msg = ToDBC(msg);
+
+        Memory.SetForegroundWindow();
+        SendMessageToGTA5(msg);
+
+        TextBox_InputMessage.Text = msg;
     }
 
     /// <summary>

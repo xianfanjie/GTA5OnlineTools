@@ -2,6 +2,8 @@
 using GTA5Core.Native;
 using GTA5Core.Feature;
 
+using GTA5Menu.Options;
+
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
 

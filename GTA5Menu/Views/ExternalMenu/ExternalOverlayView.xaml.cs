@@ -1,4 +1,5 @@
 ﻿using GTA5Menu.ESP;
+using GTA5Menu.Options;
 
 using GTA5HotKey;
 using GTA5Core.Native;

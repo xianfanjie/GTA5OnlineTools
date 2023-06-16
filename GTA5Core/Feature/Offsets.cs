@@ -33,9 +33,9 @@ public static class Offsets
 
     ////////////////////////////////////////////////////////////////////
 
-    public const int InitSessionState = 1574589;
+    public const int InitSessionState = 1574589;        // if (AUDIO::IS_AUDIO_SCENE_ACTIVE("MP_POST_MATCH_TRANSITION_SCENE"))
     public const int InitSessionCache = 1574589 + 2;
-    public const int InitSessionType = 1575017;
+    public const int InitSessionType = 1575020;         // NETWORK::NETWORK_SESSION_SET_UNIQUE_CREW_LIMIT(1);
 
     ////////////////////////////////////////////////////////////////////
 

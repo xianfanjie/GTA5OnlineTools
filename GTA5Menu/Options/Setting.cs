@@ -1,6 +1,6 @@
 ﻿using GTA5HotKey;
 
-namespace GTA5Menu;
+namespace GTA5Menu.Options;
 
 public static class Setting
 {

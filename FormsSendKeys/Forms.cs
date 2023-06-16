@@ -1,6 +1,6 @@
 ﻿using Forms = System.Windows.Forms;
 
-namespace FormsSendKeys;
+namespace WinFormLib;
 
 public static class SendKeys
 {

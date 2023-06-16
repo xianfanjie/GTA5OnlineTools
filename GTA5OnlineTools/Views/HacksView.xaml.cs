@@ -314,7 +314,7 @@ public partial class HacksView : UserControl
             return;
         }
 
-        var result = Injector.DLLInjector(GTA5Process.Id, FileHelper.File_Inject_YimMenu, true);
+        var result = Injector.DLLInjector(GTA5Process.Id, FileHelper.File_YimMenu_YimMenu, true);
         if (result.IsSuccess)
             NotifierHelper.Show(NotifierType.Success, "YimMenu菜单注入成功");
         else
@@ -544,7 +544,7 @@ public partial class HacksView : UserControl
     {
         try
         {
-            if (FileHelper.IsOccupied(FileHelper.File_Inject_YimMenu))
+            if (FileHelper.IsOccupied(FileHelper.File_YimMenu_YimMenu))
             {
                 NotifierHelper.Show(NotifierType.Warning, "YimMenu被占用，请先卸载YimMenu菜单后再执行操作");
                 return;
@@ -554,43 +554,11 @@ public partial class HacksView : UserControl
                 "重置YimMenu配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 FileHelper.ClearDirectory(FileHelper.Dir_BigBaseV2);
-                //释放Yimmenu官中语言文件
-                try
-                {
-                    if (Directory.Exists(FileHelper.Dir_BigBaseV2))
-                    {
-                        if (Directory.Exists(FileHelper.Dir_BigBaseV2 + "\\translations"))
-                        {
-                            LoggerHelper.Info("Translations文件夹存在,正在释放Yimmenu汉化文件");
-                            FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
-                            FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
-                            LoggerHelper.Info("Yimmenu汉化文件已释放");
-                        }
-                        else
-                        {
-                            LoggerHelper.Info("Translations文件夹不存在,正在新建文件夹并释放Yimmenu汉化文件");
-                            Directory.CreateDirectory(FileHelper.Dir_BigBaseV2 + "\\translations");
-                            FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
-                            FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
-                            LoggerHelper.Info("Yimmenu汉化文件已释放");
-                        }
-                    }
-                    else
-                    {
-                        LoggerHelper.Info("BigBaseV2文件夹不存在,正在新建文件夹并释放Yimmenu汉化文件");
-                        Directory.CreateDirectory(FileHelper.Dir_BigBaseV2);
-                        Directory.CreateDirectory(FileHelper.Dir_BigBaseV2 + "\\translations");
-                        FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
-                        FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
-                        LoggerHelper.Info("Yimmenu汉化文件已释放");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LoggerHelper.Error("Yimmenu汉化文件释放失败");
-                    LoggerHelper.Error(ex.Message);
-                }
 
+                // 释放Yimmenu官中语言文件
+                FileHelper.CreateDirectory(FileHelper.Dir_BigBaseV2_Translations);
+                FileHelper.ExtractResFile(FileHelper.Res_YimMenu_Index, FileHelper.File_YimMenu_Index);
+                FileHelper.ExtractResFile(FileHelper.Res_YimMenu_ZHCN, FileHelper.File_YimMenu_ZHCN);
 
                 NotifierHelper.Show(NotifierType.Success, "重置YimMenu配置文件成功");
             }

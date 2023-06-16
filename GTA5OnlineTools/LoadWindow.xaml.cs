@@ -50,12 +50,16 @@ public partial class LoadWindow
                 LoggerHelper.Info("正在初始化配置文件...");
 
                 // 创建指定文件夹，用于释放必要文件和更新软件（如果已存在则不会创建）
-                Directory.CreateDirectory(FileHelper.Dir_Cache);
-                Directory.CreateDirectory(FileHelper.Dir_Config);
-                Directory.CreateDirectory(FileHelper.Dir_Kiddion);
-                Directory.CreateDirectory(FileHelper.Dir_Kiddion_Scripts);
-                Directory.CreateDirectory(FileHelper.Dir_Inject);
-                Directory.CreateDirectory(FileHelper.Dir_Log);
+                FileHelper.CreateDirectory(FileHelper.Dir_Cache);
+                FileHelper.CreateDirectory(FileHelper.Dir_YimMenu);
+                FileHelper.CreateDirectory(FileHelper.Dir_Config);
+                FileHelper.CreateDirectory(FileHelper.Dir_Kiddion);
+                FileHelper.CreateDirectory(FileHelper.Dir_Log);
+
+                FileHelper.CreateDirectory(FileHelper.Dir_Kiddion_Scripts);
+
+                FileHelper.CreateDirectory(FileHelper.Dir_Log_NLog);
+                FileHelper.CreateDirectory(FileHelper.Dir_Log_Crash);
 
                 // 清空缓存文件夹
                 FileHelper.ClearDirectory(FileHelper.Dir_Cache);
@@ -84,62 +88,31 @@ public partial class LoadWindow
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_LSCHax, FileHelper.File_Cache_LSCHax);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Stat, FileHelper.File_Cache_Stat);
 
-                //释放Yimmenu官中语言文件
-                try
-                {
-                    if (Directory.Exists(FileHelper.Dir_BigBaseV2))
-                    {
-                        if (Directory.Exists(FileHelper.Dir_BigBaseV2 + "\\translations"))
-                        {
-                            LoggerHelper.Info("Translations文件夹存在,正在释放Yimmenu汉化文件");
-                            FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
-                            FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
-                            LoggerHelper.Info("Yimmenu汉化文件已释放");
-                        }
-                        else
-                        {
-                            LoggerHelper.Info("Translations文件夹不存在,正在新建文件夹并释放Yimmenu汉化文件");
-                            Directory.CreateDirectory(FileHelper.Dir_BigBaseV2 + "\\translations");
-                            FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
-                            FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
-                            LoggerHelper.Info("Yimmenu汉化文件已释放");
-                        }
-                    }
-                    else
-                    {
-                        LoggerHelper.Info("BigBaseV2文件夹不存在,正在新建文件夹并释放Yimmenu汉化文件");
-                        Directory.CreateDirectory(FileHelper.Dir_BigBaseV2);
-                        Directory.CreateDirectory(FileHelper.Dir_BigBaseV2 + "\\translations");
-                        FileHelper.ExtractResFile(FileHelper.Res_Cache_index, FileHelper.Dir_BigBaseV2 + "\\translations\\index.json");
-                        FileHelper.ExtractResFile(FileHelper.Res_Cache_zhcn, FileHelper.Dir_BigBaseV2 + "\\translations\\zh_CN.json");
-                        LoggerHelper.Info("Yimmenu汉化文件已释放");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LoggerHelper.Error("Yimmenu汉化文件释放失败");
-                    LoggerHelper.Error(ex.Message);
-                }
-
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Notepad2, FileHelper.File_Cache_Notepad2);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64, FileHelper.File_Cache_Xenos64);
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64Profile, FileHelper.File_Cache_Xenos64Profile);
 
-                // 判断DLL文件是否存在以及是否被占用
-                if (!File.Exists(FileHelper.File_Inject_YimMenu))
+                // 判断YimMenu.dll文件是否存在以及是否被占用
+                if (!File.Exists(FileHelper.File_YimMenu_YimMenu))
                 {
-                    FileHelper.ExtractResFile(FileHelper.Res_Inject_YimMenu, FileHelper.File_Inject_YimMenu);
+                    FileHelper.ExtractResFile(FileHelper.Res_YimMenu_YimMenu, FileHelper.File_YimMenu_YimMenu);
                 }
                 else
                 {
-                    if (!FileHelper.IsOccupied(FileHelper.File_Inject_YimMenu))
-                        FileHelper.ExtractResFile(FileHelper.Res_Inject_YimMenu, FileHelper.File_Inject_YimMenu);
+                    if (!FileHelper.IsOccupied(FileHelper.File_YimMenu_YimMenu))
+                        FileHelper.ExtractResFile(FileHelper.Res_YimMenu_YimMenu, FileHelper.File_YimMenu_YimMenu);
                 }
 
+                // 释放Yimmenu官中语言文件
+                FileHelper.CreateDirectory(FileHelper.Dir_BigBaseV2_Translations);
+                FileHelper.ExtractResFile(FileHelper.Res_YimMenu_Index, FileHelper.File_YimMenu_Index);
+                FileHelper.ExtractResFile(FileHelper.Res_YimMenu_ZHCN, FileHelper.File_YimMenu_ZHCN);
+
+                // 修改Xenos64配置文件
                 var xmlDoc = new XmlDocument();
                 xmlDoc.Load(FileHelper.File_Cache_Xenos64Profile);
                 var xmlRoot = xmlDoc.DocumentElement;
-                xmlRoot.SelectSingleNode("imagePath").InnerText = FileHelper.File_Inject_YimMenu;
+                xmlRoot.SelectSingleNode("imagePath").InnerText = FileHelper.File_YimMenu_YimMenu;
                 xmlDoc.Save(FileHelper.File_Cache_Xenos64Profile);
 
                 /////////////////////////////////////////////////////////////////////

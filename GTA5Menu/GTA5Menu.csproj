@@ -30,14 +30,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="Assets\Alice\01.png" />
-	  <Resource Include="Assets\Alice\02.png" />
-	  <Resource Include="Assets\Alice\03.png" />
-	  <Resource Include="Assets\Alice\04.png" />
-	  <Resource Include="Assets\Alice\05.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Page Update="Properties\DesignTimeResources.xaml">
 			<Generator>MSBuild:Compile</Generator>
 			<SubType>Designer</SubType>

@@ -7,6 +7,7 @@ public static class FileHelper
     public const string Res_Kiddion_Kiddion = $"{ResFiles}.Kiddion.Kiddion.exe";
     public const string Res_Kiddion_KiddionChs = $"{ResFiles}.Kiddion.KiddionChs.dll";
     public const string Res_Kiddion_Config = $"{ResFiles}.Kiddion.config.json";
+    public const string Res_Kiddion_Config87 = $"{ResFiles}.Kiddion.config87.json";
     public const string Res_Kiddion_Themes = $"{ResFiles}.Kiddion.themes.json";
     public const string Res_Kiddion_Teleports = $"{ResFiles}.Kiddion.teleports.json";
     public const string Res_Kiddion_Vehicles = $"{ResFiles}.Kiddion.vehicles.json";
@@ -14,9 +15,6 @@ public static class FileHelper
     public const string Res_Kiddion_Scripts_Readme = $"{ResFiles}.Kiddion.scripts.Readme.api";
 
     public const string Res_Cache_BincoHax = $"{ResFiles}.Cache.BincoHax.exe";
-    public const string Res_Cache_zhcn = $"{ResFiles}.Cache.zh_CN.json";
-    public const string Res_Cache_index = $"{ResFiles}.Cache.index.json";
-    public const string Res_Kiddion_Config87 = $"{ResFiles}.Kiddion.config87.json";
     public const string Res_Cache_GTAHax = $"{ResFiles}.Cache.GTAHax.exe";
     public const string Res_Cache_LSCHax = $"{ResFiles}.Cache.LSCHax.exe";
     public const string Res_Cache_Stat = $"{ResFiles}.Cache.stat.txt";
@@ -24,7 +22,9 @@ public static class FileHelper
     public const string Res_Cache_Xenos64Profile = $"{ResFiles}.Cache.XenosCurrentProfile.xpr";
     public const string Res_Cache_Xenos64 = $"{ResFiles}.Cache.Xenos64.exe";
 
-    public const string Res_Inject_YimMenu = $"{ResFiles}.Inject.YimMenu.dll";
+    public const string Res_YimMenu_YimMenu = $"{ResFiles}.YimMenu.YimMenu.dll";
+    public const string Res_YimMenu_Index = $"{ResFiles}.YimMenu.index.json";
+    public const string Res_YimMenu_ZHCN = $"{ResFiles}.YimMenu.zh_CN.json";
 
     public const string Res_Other_SGTA50000 = $"{ResFiles}.Other.SGTA50000";
 
@@ -35,9 +35,9 @@ public static class FileHelper
     public static string Dir_Default { get; private set; }
 
     public static string Dir_Kiddion { get; private set; }
+    public static string Dir_YimMenu { get; private set; }
     public static string Dir_Cache { get; private set; }
     public static string Dir_Config { get; private set; }
-    public static string Dir_Inject { get; private set; }
     public static string Dir_Log { get; private set; }
 
     public static string Dir_Kiddion_Scripts { get; private set; }
@@ -55,8 +55,6 @@ public static class FileHelper
     public static string File_Kiddion_Scripts_Readme { get; private set; }
 
     public static string File_Cache_BincoHax { get; private set; }
-    public static string File_Cache_index { get; private set; }
-    public static string File_Cache_zhcn { get; private set; }
     public static string File_Cache_GTAHax { get; private set; }
     public static string File_Cache_LSCHax { get; private set; }
     public static string File_Cache_Stat { get; private set; }
@@ -64,13 +62,16 @@ public static class FileHelper
     public static string File_Cache_Xenos64 { get; private set; }
     public static string File_Cache_Xenos64Profile { get; private set; }
 
-    public static string File_Inject_YimMenu { get; private set; }
+    public static string File_YimMenu_YimMenu { get; private set; }
+    public static string File_YimMenu_Index { get; private set; }
+    public static string File_YimMenu_ZHCN { get; private set; }
 
     //////////////////////////////////////////////////////////////////
 
     public static string Dir_AppData { get; private set; }
 
     public static string Dir_BigBaseV2 { get; private set; }
+    public static string Dir_BigBaseV2_Translations { get; private set; }
 
     static FileHelper()
     {
@@ -80,15 +81,18 @@ public static class FileHelper
         Dir_Default = Path.Combine(Dir_MyDocuments, "GTA5OnlineTools");
 
         Dir_Kiddion = Path.Combine(Dir_Default, "Kiddion");
+        Dir_YimMenu = Path.Combine(Dir_Default, "YimMenu");
         Dir_Cache = Path.Combine(Dir_Default, "Cache");
         Dir_Config = Path.Combine(Dir_Default, "Config");
-        Dir_Inject = Path.Combine(Dir_Default, "Inject");
         Dir_Log = Path.Combine(Dir_Default, "Log");
 
         Dir_Kiddion_Scripts = Path.Combine(Dir_Kiddion, "scripts");
 
         Dir_Log_Crash = Path.Combine(Dir_Log, "Crash");
         Dir_Log_NLog = Path.Combine(Dir_Log, "NLog");
+
+        Dir_BigBaseV2 = Path.Combine(Dir_AppData, "BigBaseV2");
+        Dir_BigBaseV2_Translations = Path.Combine(Dir_BigBaseV2, "translations");
 
         File_Kiddion_Kiddion = Path.Combine(Dir_Kiddion, "Kiddion.exe");
         File_Kiddion_KiddionChs = Path.Combine(Dir_Kiddion, "KiddionChs.dll");
@@ -100,8 +104,6 @@ public static class FileHelper
         File_Kiddion_Scripts_Readme = Path.Combine(Dir_Kiddion_Scripts, "Readme.api");
 
         File_Cache_BincoHax = Path.Combine(Dir_Cache, "BincoHax.exe");
-        File_Cache_index = Path.Combine(Dir_Cache, "index.json");
-        File_Cache_zhcn = Path.Combine(Dir_Cache, "zh_CN.json");
         File_Cache_GTAHax = Path.Combine(Dir_Cache, "GTAHax.exe");
         File_Cache_LSCHax = Path.Combine(Dir_Cache, "LSCHax.exe");
         File_Cache_Stat = Path.Combine(Dir_Cache, "stat.txt");
@@ -109,9 +111,20 @@ public static class FileHelper
         File_Cache_Xenos64 = Path.Combine(Dir_Cache, "Xenos64.exe");
         File_Cache_Xenos64Profile = Path.Combine(Dir_Cache, "XenosCurrentProfile.xpr");
 
-        File_Inject_YimMenu = Path.Combine(Dir_Inject, "YimMenu.dll");
+        File_YimMenu_YimMenu = Path.Combine(Dir_YimMenu, "YimMenu.dll");
 
-        Dir_BigBaseV2 = Path.Combine(Dir_AppData, "BigBaseV2");
+        File_YimMenu_Index = Path.Combine(Dir_BigBaseV2_Translations, "index.json");
+        File_YimMenu_ZHCN = Path.Combine(Dir_BigBaseV2_Translations, "zh_CN.json");
+    }
+
+    /// <summary>
+    /// 创建文件夹，如果文件夹存在则不创建
+    /// </summary>
+    /// <param name="dirPath"></param>
+    public static void CreateDirectory(string dirPath)
+    {
+        if (!Directory.Exists(dirPath))
+            Directory.CreateDirectory(dirPath);
     }
 
     /// <summary>
@@ -120,9 +133,7 @@ public static class FileHelper
     /// <param name="log">日志内容</param>
     public static void SaveCrashLog(string log)
     {
-        var path = Dir_Log_Crash;
-        Directory.CreateDirectory(path);
-        path += $@"\#Crash#{DateTime.Now:yyyyMMdd_HH-mm-ss_ffff}.log";
+        var path = Path.Combine(Dir_Log_Crash, $"#Crash#{DateTime.Now:yyyyMMdd_HH-mm-ss_ffff}.log");
         File.WriteAllText(path, log);
     }
 

@@ -69,13 +69,13 @@
                         IsChecked="True" />
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
-                        CommandParameter="SessionChatView"
-                        Hint="战局聊天"
-                        Icon="&#xe61f;" />
+                        CommandParameter="NavMenu"
+                        Hint="功能预留位置"
+                        Icon="&#xe610;" />
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
                         CommandParameter="NavMenu"
-                        Hint="NavMenu"
+                        Hint="功能预留位置"
                         Icon="&#xe610;" />
                 </StackPanel>
             </Grid>

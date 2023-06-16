@@ -38,7 +38,7 @@ public static class FileHelper
     public static string Dir_YimMenu { get; private set; }
     public static string Dir_Cache { get; private set; }
     public static string Dir_Config { get; private set; }
-    public static string Dir_Log { get; private set; }
+    public static string Dir_Logger { get; private set; }
 
     public static string Dir_Kiddion_Scripts { get; private set; }
 
@@ -84,12 +84,12 @@ public static class FileHelper
         Dir_YimMenu = Path.Combine(Dir_Default, "YimMenu");
         Dir_Cache = Path.Combine(Dir_Default, "Cache");
         Dir_Config = Path.Combine(Dir_Default, "Config");
-        Dir_Log = Path.Combine(Dir_Default, "Log");
+        Dir_Logger = Path.Combine(Dir_Default, "Logger");
 
         Dir_Kiddion_Scripts = Path.Combine(Dir_Kiddion, "scripts");
 
-        Dir_Log_Crash = Path.Combine(Dir_Log, "Crash");
-        Dir_Log_NLog = Path.Combine(Dir_Log, "NLog");
+        Dir_Log_Crash = Path.Combine(Dir_Logger, "Crash");
+        Dir_Log_NLog = Path.Combine(Dir_Logger, "NLog");
 
         Dir_BigBaseV2 = Path.Combine(Dir_AppData, "BigBaseV2");
         Dir_BigBaseV2_Translations = Path.Combine(Dir_BigBaseV2, "translations");

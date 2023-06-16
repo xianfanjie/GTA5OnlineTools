@@ -1,4 +1,4 @@
-﻿namespace MetroSkin.Controls.Attach;
+﻿namespace MetroSkin.Attach;
 
 /// <summary>
 /// 附加属性-图标

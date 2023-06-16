@@ -54,7 +54,7 @@ public partial class LoadWindow
                 FileHelper.CreateDirectory(FileHelper.Dir_YimMenu);
                 FileHelper.CreateDirectory(FileHelper.Dir_Config);
                 FileHelper.CreateDirectory(FileHelper.Dir_Kiddion);
-                FileHelper.CreateDirectory(FileHelper.Dir_Log);
+                FileHelper.CreateDirectory(FileHelper.Dir_Logger);
 
                 FileHelper.CreateDirectory(FileHelper.Dir_Kiddion_Scripts);
 

@@ -20,7 +20,7 @@
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>
-        <DockPanel LastChildFill="True">
+        <DockPanel>
             <StackPanel
                 VerticalAlignment="Center"
                 DockPanel.Dock="Left"
@@ -37,7 +37,7 @@
                     FontWeight="Bold"
                     Text="GTA5线上小助手" />
             </StackPanel>
-            <!--  ################################  -->
+            <!--  /////////////////////////  -->
             <StackPanel
                 VerticalAlignment="Center"
                 DockPanel.Dock="Right"
@@ -57,7 +57,7 @@
                     Style="{StaticResource TextBlockStyle_IconFontGTA5IsRun}"
                     Text="&#xe64d;" />
             </StackPanel>
-            <!--  ################################  -->
+            <!--  /////////////////////////  -->
             <StackPanel
                 x:Name="StackPanel_NavMenu"
                 DockPanel.Dock="Left"

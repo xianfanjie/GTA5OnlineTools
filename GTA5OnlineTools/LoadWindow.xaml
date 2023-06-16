@@ -9,8 +9,6 @@
     Title="GTA5线上小助手 初始化窗口"
     Width="600"
     Height="350"
-    BorderBrush="Gray"
-    BorderThickness="1"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_Load_Loaded"
     ResizeMode="NoResize"

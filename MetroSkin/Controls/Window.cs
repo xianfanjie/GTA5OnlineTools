@@ -125,7 +125,7 @@ public class Window : System.Windows.Window
         // 窗口默认居中
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         // 窗口边框
-        BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#585858"));
+        BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5C5A58"));
         BorderThickness = new Thickness(1);
 
         #region 绑定系统Command

@@ -1,4 +1,4 @@
-﻿namespace MetroSkin.Controls.Attach;
+﻿namespace MetroSkin.Attach;
 
 /// <summary>
 /// 附加属性-鼠标相关颜色

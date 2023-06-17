@@ -10,6 +10,8 @@ public static class NotifierHelper
 
     private static readonly TimeSpan ExpirationTime = TimeSpan.FromSeconds(2);
 
+    private const string _areaName = "";
+
     static NotifierHelper()
     {
         NotificationConstants.MessagePosition = NotificationPosition.BottomCenter;
@@ -59,13 +61,13 @@ public static class NotifierHelper
             TrimType = NotificationTextTrimType.NoTrim,
         };
 
-        _notificationManager.Show(clickContent, string.Empty, ExpirationTime, null, null, true, false);
+        _notificationManager.Show(clickContent, _areaName, ExpirationTime, null, null, true, false);
     }
 
     /// <summary>
     /// 显示异常通知信息
     /// </summary>
-    /// <param name="ex"></param>
+    /// <param name="ex">异常</param>
     public static void ShowException(Exception ex)
     {
         var clickContent = new NotificationContent
@@ -76,7 +78,7 @@ public static class NotifierHelper
             TrimType = NotificationTextTrimType.NoTrim,
         };
 
-        _notificationManager.Show(clickContent, string.Empty, ExpirationTime, null, null, true, false);
+        _notificationManager.Show(clickContent, _areaName, ExpirationTime, null, null, true, false);
     }
 }
 

@@ -115,6 +115,10 @@ public partial class LoadWindow
                 xmlRoot.SelectSingleNode("imagePath").InnerText = FileHelper.File_YimMenu_YimMenu;
                 xmlDoc.Save(FileHelper.File_Cache_Xenos64Profile);
 
+                // 初始化简繁字库
+                ChsHelper.PreHeat();
+                LoggerHelper.Info("简繁翻译库初始化成功");
+
                 /////////////////////////////////////////////////////////////////////
 
                 this.Dispatcher.Invoke(() =>

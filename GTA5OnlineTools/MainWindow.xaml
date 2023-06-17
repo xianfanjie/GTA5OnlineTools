@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:notifications="clr-namespace:Notification.Wpf.Controls;assembly=Notification.Wpf"
     xmlns:tb="http://www.hardcodet.net/taskbar"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_Main"
@@ -111,7 +112,13 @@
     </ui:Window.TitleContent>
 
     <Grid>
+        <!--  内容区域  -->
         <ContentControl x:Name="ContentControl_NavRegion" FocusVisualStyle="{x:Null}" />
+        <!--  通知显示区域  -->
+        <notifications:NotificationArea
+            x:Name="MainWindowArea"
+            MaxItems="5"
+            Position="BottomCenter" />
         <!--  托盘图标  -->
         <tb:TaskbarIcon
             x:Name="TaskbarIcon_Main"

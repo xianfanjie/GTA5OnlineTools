@@ -10,8 +10,13 @@
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
-    <DockPanel>
-        <DockPanel DockPanel.Dock="Top">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!--  ////////////////////////////////////  -->
+        <DockPanel>
             <StackPanel DockPanel.Dock="Right">
                 <ui:TextBoxHint
                     x:Name="TextBox_ModelName"
@@ -44,36 +49,14 @@
                 </TextBlock>
             </StackPanel>
         </DockPanel>
-        <!--  //////////////////  -->
+        <!--  ////////////////////////////////////  -->
         <ListBox
             x:Name="ListBox_PersonalVehicle"
+            Grid.Row="1"
             Margin="5,0,5,5"
-            DockPanel.Dock="Bottom"
             ItemsSource="{Binding PerVehInfos}"
             MouseDoubleClick="ListBox_PersonalVehicle_MouseDoubleClick"
-            Style="{StaticResource ListBoxStyle_PerVehPreview}"
-            ToolTip="双击选中项可快捷呼叫">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type ListBoxItem}">
-                    <DockPanel ToolTip="{Binding Name}">
-                        <Image
-                            Width="80"
-                            Margin="5"
-                            DockPanel.Dock="Left"
-                            Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
-                            Stretch="Uniform"
-                            Style="{StaticResource ImageStyle_HighQuality}" />
-                        <StackPanel
-                            Margin="5,0,5,0"
-                            VerticalAlignment="Center"
-                            DockPanel.Dock="Right">
-                            <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
-                            <TextBlock Margin="0,5,0,0" Text="{Binding Plate}" />
-                        </StackPanel>
-                    </DockPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </DockPanel>
+            Style="{StaticResource ListBoxStyle_VehicleInfo2}" />
+    </Grid>
 
 </UserControl>

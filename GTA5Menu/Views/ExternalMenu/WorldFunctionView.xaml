@@ -105,7 +105,8 @@
                 x:Name="ListBox_PedModel"
                 Margin="5"
                 DockPanel.Dock="Bottom"
-                MouseDoubleClick="ListBox_PedModel_MouseDoubleClick" />
+                MouseDoubleClick="ListBox_PedModel_MouseDoubleClick"
+                Style="{StaticResource ListBoxStyle_Base}" />
         </DockPanel>
     </UniformGrid>
 

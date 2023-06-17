@@ -21,44 +21,14 @@
             Margin="5"
             DockPanel.Dock="Bottom"
             MouseDoubleClick="ListBox_WeaponInfo_MouseDoubleClick"
-            Style="{StaticResource ListBoxStyle_WeaponInfo}"
-            ToolTip="双击选中项可快捷刷出">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" ToolTip="{Binding Name}">
-                        <Image
-                            Width="60"
-                            Margin="5"
-                            Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}"
-                            Stretch="Uniform"
-                            Style="{StaticResource ImageStyle_HighQuality}" />
-                        <TextBlock
-                            Margin="5,0,5,0"
-                            VerticalAlignment="Center"
-                            Text="{Binding Name}"
-                            TextTrimming="CharacterEllipsis" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            Style="{StaticResource ListBoxStyle_WeaponInfo}" />
         <!--  武器分类信息  -->
         <ListBox
             x:Name="ListBox_WeaponClasses"
             Grid.Column="1"
             Margin="0,5,5,5"
-            SelectionChanged="ListBox_WeaponClasses_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type ListBoxItem}">
-                    <StackPanel Orientation="Horizontal">
-                        <ui:IconFont
-                            Margin="0,0,5,0"
-                            FontSize="16"
-                            Icon="{Binding Icon}" />
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            SelectionChanged="ListBox_WeaponClasses_SelectionChanged"
+            Style="{StaticResource ListBoxStyle_BaseClass}" />
     </Grid>
 
 </UserControl>

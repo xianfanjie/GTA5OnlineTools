@@ -6,6 +6,7 @@
 
         <ResourceDictionary Source="/MetroSkin;component/Styles/ScrollViewer.xaml" />
         <ResourceDictionary Source="/MetroSkin;component/Styles/IconFont.xaml" />
+        <ResourceDictionary Source="/MetroSkin;component/Styles/BlurImage.xaml" />
         <ResourceDictionary Source="/MetroSkin;component/Styles/ContextMenu.xaml" />
 
         <ResourceDictionary Source="/MetroSkin;component/Styles/TextBlock.xaml" />

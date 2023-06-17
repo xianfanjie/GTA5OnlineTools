@@ -5,8 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
-    d:DesignHeight="720"
-    d:DesignWidth="1280"
+    d:DesignHeight="600"
+    d:DesignWidth="1100"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
     <TabControl Margin="5">
@@ -37,7 +38,7 @@
                         IsReadOnly="False"
                         Style="{StaticResource TextBoxStyle_Logger}" />
                 </DockPanel>
-                <!--  ##########  -->
+                <!--  ////////////  -->
                 <ScrollViewer Grid.Column="1" Margin="5">
                     <StackPanel Orientation="Vertical">
                         <Border>
@@ -107,7 +108,7 @@
                         </TextBlock>
                     </StackPanel>
                 </ScrollViewer>
-                <!--  ##########  -->
+                <!--  ////////////  -->
                 <ScrollViewer Grid.Column="2" Margin="5">
                     <StackPanel Orientation="Vertical">
                         <Border>
@@ -201,7 +202,7 @@
                 </ScrollViewer>
             </Grid>
         </ui:TabItemIcon>
-        <!--  ##############################  -->
+        <!--  ////////////////////////////////////  -->
         <ui:TabItemIcon Header="赌场抢劫 - 分红数据">
             <StackPanel>
                 <Border Margin="5" Background="#F0F0F0">
@@ -216,7 +217,7 @@
                             Content="写入数据" />
                     </WrapPanel>
                 </Border>
-                <!--  ##########  -->
+                <!--  ////////////  -->
                 <UniformGrid Columns="4">
                     <UniformGrid.Resources>
                         <Style TargetType="{x:Type TextBlock}">
@@ -308,7 +309,7 @@
                 </UniformGrid>
             </StackPanel>
         </ui:TabItemIcon>
-        <!--  ##############################  -->
+        <!--  ////////////////////////////////////  -->
         <ui:TabItemIcon Header="赌场抢劫 - 高级">
             <UniformGrid Columns="3">
                 <ScrollViewer Margin="5">

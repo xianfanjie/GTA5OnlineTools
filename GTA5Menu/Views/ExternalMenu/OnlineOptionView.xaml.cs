@@ -25,10 +25,12 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_Sessions_Click(object sender, RoutedEventArgs e)
     {
-        var btnContent = (e.OriginalSource as Button).Content.ToString();
-        var index = OnlineData.Sessions.FindIndex(t => t.Name == btnContent);
-        if (index != -1)
-            Online.LoadSession(OnlineData.Sessions[index].Value);
+        if (sender is Button button)
+        {
+            var session = OnlineData.Sessions.Find(t => t.Name == button.Content.ToString());
+            if (session != null)
+                Online.LoadSession(session.Value);
+        }
     }
 
     private void Button_Disconnect_Click(object sender, RoutedEventArgs e)
@@ -43,20 +45,22 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_RPxN_Click(object sender, RoutedEventArgs e)
     {
-        var btnContent = (e.OriginalSource as Button).Content.ToString();
-
-        var index = OnlineData.RPxNs.FindIndex(t => t.Name == btnContent);
-        if (index != -1)
-            Online.RPMultiplier(OnlineData.RPxNs[index].Value);
+        if (sender is Button button)
+        {
+            var rpxn = OnlineData.RPxNs.Find(t => t.Name == button.Content.ToString());
+            if (rpxn != null)
+                Online.RPMultiplier(rpxn.Value);
+        }
     }
 
     private void Button_REPxN_Click(object sender, RoutedEventArgs e)
     {
-        var btnContent = (e.OriginalSource as Button).Content.ToString();
-
-        var index = OnlineData.REPxNs.FindIndex(t => t.Name == btnContent);
-        if (index != -1)
-            Online.REPMultiplier(OnlineData.REPxNs[index].Value);
+        if (sender is Button button)
+        {
+            var repxn = OnlineData.REPxNs.Find(t => t.Name == button.Content.ToString());
+            if (repxn != null)
+                Online.REPMultiplier(repxn.Value);
+        }
     }
 
     private void CheckBox_RemovePassiveModeCooldown_Click(object sender, RoutedEventArgs e)
@@ -112,20 +116,22 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_Blips_Click(object sender, RoutedEventArgs e)
     {
-        var btnContent = (e.OriginalSource as Button).Content.ToString();
-
-        var index = OnlineData.Blips.FindIndex(t => t.Name == btnContent);
-        if (index != -1)
-            Teleport.ToBlips(OnlineData.Blips[index].Value);
+        if (sender is Button button)
+        {
+            var blip = OnlineData.Blips.Find(t => t.Name == button.Content.ToString());
+            if (blip != null)
+                Teleport.ToBlips(blip.Value);
+        }
     }
 
     private void Button_MerryweatherServices_Click(object sender, RoutedEventArgs e)
     {
-        var btnContent = (e.OriginalSource as Button).Content.ToString();
-
-        var index = OnlineData.MerryWeatherServices.FindIndex(t => t.Name == btnContent);
-        if (index != -1)
-            Online.MerryWeatherServices(OnlineData.MerryWeatherServices[index].Value);
+        if (sender is Button button)
+        {
+            var service = OnlineData.MerryWeatherServices.Find(t => t.Name == button.Content.ToString());
+            if (service != null)
+                Online.MerryWeatherServices(service.Value);
+        }
     }
 
     private void CheckBox_InstantBullShark_Click(object sender, RoutedEventArgs e)

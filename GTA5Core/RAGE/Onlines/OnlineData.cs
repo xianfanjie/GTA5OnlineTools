@@ -8,7 +8,7 @@ public static class OnlineData
         public int Value;
     }
 
-    public static List<OnlineInfo> Blips = new()
+    public static readonly List<OnlineInfo> Blips = new()
     {
         new OnlineInfo(){ Name="游艇", Value=455 },
         new OnlineInfo(){ Name="CEO仓库", Value=473 },
@@ -32,7 +32,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="事务所", Value=826 },
     };
 
-    public static List<OnlineInfo> Sessions = new()
+    public static readonly List<OnlineInfo> Sessions = new()
     {
         new OnlineInfo(){ Name="离开线上模式", Value=-1 },
         new OnlineInfo(){ Name="公共战局", Value=0 },
@@ -46,7 +46,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="加入帮会伙伴", Value=12 },
     };
 
-    public static List<OnlineInfo> RPxNs = new()
+    public static readonly List<OnlineInfo> RPxNs = new()
     {
         new OnlineInfo(){ Name="RPx1", Value=1 },
         new OnlineInfo(){ Name="RPx2", Value=2 },
@@ -59,7 +59,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="RPx1000", Value=1000 },
     };
 
-    public static List<OnlineInfo> REPxNs = new()
+    public static readonly List<OnlineInfo> REPxNs = new()
     {
         new OnlineInfo(){ Name="REPx1", Value=1 },
         new OnlineInfo(){ Name="REPx2", Value=2 },
@@ -76,7 +76,7 @@ public static class OnlineData
     // Set Global_1946637 to one of these: 2, 4, 6, 7, 8, 9.
     // Now you'll see the unique cargo in your terrorbyte.
 
-    public static List<OnlineInfo> CEOCargos = new()
+    public static readonly List<OnlineInfo> CEOCargos = new()
     {
         new OnlineInfo(){ Name="医疗用品", Value=0 },
         new OnlineInfo(){ Name="烟酒", Value=1 },
@@ -91,7 +91,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="银块", Value=10 },
     };
 
-    public static List<OnlineInfo> CEOSpecialCargos = new()
+    public static readonly List<OnlineInfo> CEOSpecialCargos = new()
     {
         new OnlineInfo(){ Name="古董艺术品（华丽彩蛋）", Value=2 },
         new OnlineInfo(){ Name="武器弹药（黄金火神机枪）", Value=4 },
@@ -101,16 +101,16 @@ public static class OnlineData
         new OnlineInfo(){ Name="珠宝（稀有怀表）", Value=9 },
     };
 
-    public static List<OnlineInfo> MerryWeatherServices = new()
+    public static readonly List<OnlineInfo> MerryWeatherServices = new()
     {
-        new OnlineInfo(){ Name="请求弹药空投", Value=886 },
-        new OnlineInfo(){ Name="请求重型防弹装甲", Value=896 },
-        new OnlineInfo(){ Name="请求牛鲨睾酮", Value=894 },
-        new OnlineInfo(){ Name="请求船只接送", Value=887 },
-        new OnlineInfo(){ Name="请求直升机接送", Value=888 },
+        new OnlineInfo(){ Name="请求弹药空投", Value=891 },       // NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_AMMO_DROP", -1, true, 0)
+        new OnlineInfo(){ Name="请求重型防弹装甲", Value=901 },    // NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_AMMO_DROP", PLAYER::PLAYER_ID(), true, 0)
+        new OnlineInfo(){ Name="请求牛鲨睾酮", Value=899 },       // NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_BRU_BOX", PLAYER::PLAYER_ID(), true, 0)
+        new OnlineInfo(){ Name="请求船只接送", Value=892 },       // NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_BOAT_TAXI", PLAYER::PLAYER_ID(), true, 0)
+        new OnlineInfo(){ Name="请求直升机接送", Value=893 },      // NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_HELI_TAXI", -1, true, 0)
     };
 
-    public static List<OnlineInfo> LocalWeathers = new()
+    public static readonly List<OnlineInfo> LocalWeathers = new()
     {
         new OnlineInfo(){ Name="默认", Value=-1 },
         new OnlineInfo(){ Name="格外晴朗", Value=0 },
@@ -130,7 +130,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="万圣节", Value=14 },
     };
 
-    public static List<OnlineInfo> ImpactExplosions = new()
+    public static readonly List<OnlineInfo> ImpactExplosions = new()
     {
         new OnlineInfo(){ Name="默认", Value=-1 },
         new OnlineInfo(){ Name="手榴弹", Value=0 },
@@ -210,7 +210,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="无伤害爆炸", Value=99 },
     };
 
-    public static List<OnlineInfo> VehicleExtras = new()
+    public static readonly List<OnlineInfo> VehicleExtras = new()
     {
         new OnlineInfo(){ Name="默认", Value=0x00 },
         new OnlineInfo(){ Name="载具跳跃", Value=0x20 },

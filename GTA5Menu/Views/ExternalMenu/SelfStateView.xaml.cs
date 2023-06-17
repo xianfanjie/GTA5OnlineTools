@@ -42,7 +42,7 @@ public partial class SelfStateView : UserControl
     public SelfStateView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         new Thread(SelfStateUpdateThread)
         {
@@ -89,12 +89,14 @@ public partial class SelfStateView : UserControl
             SelfStateModel.IsHotKeyNoCollision = isHotKeyNoCollision == "1";
     }
 
-    private void ExternalMenuWindow_WindowClosingEvent()
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
         IsAppRunning = false;
 
         SaveConfig();
     }
+
+    /////////////////////////////////////////////////
 
     /// <summary>
     /// 保存配置文件

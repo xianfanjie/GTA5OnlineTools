@@ -12,7 +12,7 @@ public partial class WorldFunctionView : UserControl
     public WorldFunctionView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         // Ped列表
         foreach (var item in PedHash.PedHashData)
@@ -22,10 +22,12 @@ public partial class WorldFunctionView : UserControl
         ListBox_PedModel.SelectedIndex = 0;
     }
 
-    private void ExternalMenuWindow_WindowClosingEvent()
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
 
     }
+
+    /////////////////////////////////////////////////
 
     private void Button_LocalWeather_Click(object sender, RoutedEventArgs e)
     {

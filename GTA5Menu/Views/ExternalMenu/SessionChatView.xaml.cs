@@ -17,6 +17,7 @@ public partial class SessionChatView : UserControl
     public SessionChatView()
     {
         InitializeComponent();
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         TextBox_InputMessage.Text = "测试文本: 请把游戏中聊天输入法调成英文,否则会漏掉文字.Hello1234,漏掉文字了吗?";
 
@@ -24,6 +25,12 @@ public partial class SessionChatView : UserControl
         TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + CPed.CPlayerInfo.Name, 20);
     }
 
+    private void GTA5MenuWindow_WindowClosingEvent()
+    {
+        
+    }
+
+    /////////////////////////////////////////////////
 
     private void Button_Translate_Click(object sender, RoutedEventArgs e)
     {

@@ -11,10 +11,12 @@ public partial class JobHelperView : UserControl
     public JobHelperView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
     }
 
-    private void ExternalMenuWindow_WindowClosingEvent()
+    /////////////////////////////////////////////////
+
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
 
     }

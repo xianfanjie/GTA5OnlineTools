@@ -18,7 +18,7 @@ public partial class FindVehicleView : UserControl
     public FindVehicleView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         // 填充全部载具
         foreach (var info in VehicleHash.AllVehicles)
@@ -34,10 +34,12 @@ public partial class FindVehicleView : UserControl
         }
     }
 
-    private void SpawnVehicleWindow_WindowClosingEvent()
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
 
     }
+
+    /////////////////////////////////////////////////
 
     private void FindVehiclesByModeName()
     {

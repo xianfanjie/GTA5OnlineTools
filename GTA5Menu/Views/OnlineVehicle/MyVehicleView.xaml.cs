@@ -1,5 +1,4 @@
 ﻿using GTA5Menu.Data;
-using GTA5Menu.Utils;
 using GTA5Menu.Config;
 
 using GTA5Core.RAGE;
@@ -21,42 +20,50 @@ public partial class MyVehicleView : UserControl
     public MyVehicleView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         ActionAddMyFavorite = AddMyFavorite;
 
-        // 如果配置文件存在就读取
-        if (File.Exists(GTA5Util.File_Config_Vehicles))
-        {
-            var vehicles = JsonHelper.ReadFile<List<Vehicles>>(GTA5Util.File_Config_Vehicles);
+        ReadConfig();
+    }
 
-            // 填充数据
-            foreach (var item in vehicles)
+    private void GTA5MenuWindow_WindowClosingEvent()
+    {
+        SaveConfig();
+    }
+
+    /////////////////////////////////////////////////
+
+    /// <summary>
+    /// 读取配置文件
+    /// </summary>
+    private void ReadConfig()
+    {
+        if (!File.Exists(FileHelper.File_Config_Vehicles))
+            return;
+
+        var vehicles = JsonHelper.ReadFile<List<Vehicles>>(FileHelper.File_Config_Vehicles);
+
+        foreach (var item in vehicles)
+        {
+            var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
+            if (classes != null)
             {
-                var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
-                if (classes != null)
+                var info = classes.VehicleInfos.Find(v => v.Value == item.Value);
+                if (info != null)
                 {
-                    var info = classes.VehicleInfos.Find(v => v.Value == item.Value);
-                    if (info != null)
+                    MyFavorites.Add(new()
                     {
-                        MyFavorites.Add(new()
-                        {
-                            Class = classes.Name,
-                            Name = info.Name,
-                            Value = info.Value,
-                            Image = RAGEHelper.GetVehicleImage(info.Value),
-                            Mod = info.Mod
-                        });
-                        continue;
-                    }
+                        Class = classes.Name,
+                        Name = info.Name,
+                        Value = info.Value,
+                        Image = RAGEHelper.GetVehicleImage(info.Value),
+                        Mod = info.Mod
+                    });
+                    continue;
                 }
             }
         }
-    }
-
-    private void SpawnVehicleWindow_WindowClosingEvent()
-    {
-        SaveConfig();
     }
 
     /// <summary>
@@ -77,7 +84,7 @@ public partial class MyVehicleView : UserControl
                 });
             }
             // 写入到Json文件
-            JsonHelper.WriteFile(GTA5Util.File_Config_Vehicles, vehicles);
+            JsonHelper.WriteFile(FileHelper.File_Config_Vehicles, vehicles);
         }
     }
 

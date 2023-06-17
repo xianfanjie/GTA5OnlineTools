@@ -13,13 +13,15 @@ public partial class OnlineOptionView : UserControl
     public OnlineOptionView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
     }
 
-    private void ExternalMenuWindow_WindowClosingEvent()
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
 
     }
+
+    /////////////////////////////////////////////////
 
     private void Button_Sessions_Click(object sender, RoutedEventArgs e)
     {

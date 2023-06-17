@@ -1,7 +1,7 @@
 ﻿using GTA5Core.Native;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Utils;
+namespace GTA5MenuExtra.Utils;
 
 public static class GTAHaxUtil
 {

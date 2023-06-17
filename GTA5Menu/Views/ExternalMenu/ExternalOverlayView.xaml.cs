@@ -17,13 +17,15 @@ public partial class ExternalOverlayView : UserControl
     public ExternalOverlayView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent; ;
     }
 
-    private void ExternalMenuWindow_WindowClosingEvent()
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
         CloseESP();
     }
+
+    /////////////////////////////////////////////////
 
     private void Button_Overaly_Run_Click(object sender, RoutedEventArgs e)
     {

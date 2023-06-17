@@ -73,6 +73,13 @@ public static class FileHelper
     public static string Dir_BigBaseV2 { get; private set; }
     public static string Dir_BigBaseV2_Translations { get; private set; }
 
+    //////////////////////////////////////////////////////////////////
+
+    public static string File_Config_Teleports { get; private set; }
+    public static string File_Config_Vehicles { get; private set; }
+
+    //////////////////////////////////////////////////////////////////
+
     static FileHelper()
     {
         Dir_AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -115,6 +122,9 @@ public static class FileHelper
 
         File_YimMenu_Index = Path.Combine(Dir_BigBaseV2_Translations, "index.json");
         File_YimMenu_ZHCN = Path.Combine(Dir_BigBaseV2_Translations, "zh_CN.json");
+
+        File_Config_Teleports = Path.Combine(FileHelper.Dir_Config, "Teleports.json");
+        File_Config_Vehicles = Path.Combine(FileHelper.Dir_Config, "Vehicles.json");
     }
 
     /// <summary>

@@ -14,7 +14,7 @@ public partial class AllVehicleView : UserControl
     public AllVehicleView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += SpawnVehicleWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         // 载具分类列表
         foreach (var vClass in VehicleHash.VehicleClasses)
@@ -28,10 +28,12 @@ public partial class AllVehicleView : UserControl
         ListBox_VehicleClasses.SelectedIndex = 0;
     }
 
-    private void SpawnVehicleWindow_WindowClosingEvent()
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
 
     }
+
+    /////////////////////////////////////////////////
 
     private void ListBox_VehicleTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {

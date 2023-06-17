@@ -1,9 +1,7 @@
-﻿using GTA5Menu.Utils;
-using GTA5Menu.Config;
+﻿using GTA5Menu.Config;
 using GTA5Menu.Models;
 
 using GTA5Core.Features;
-using GTA5Core.RAGE.Teleports;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.OnlineTeleport;
@@ -20,30 +18,40 @@ public partial class CustomTeleportView : UserControl
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
-        // 如果配置文件存在就读取
-        if (File.Exists(GTA5Util.File_Config_Teleports))
-        {
-            var teleports = JsonHelper.ReadFile<Teleports>(GTA5Util.File_Config_Teleports);
-
-            foreach (var custom in teleports.CustomLocations)
-            {
-                CustomTeleports.Add(new()
-                {
-                    Name = custom.Name,
-                    X = custom.X,
-                    Y = custom.Y,
-                    Z = custom.Z
-                });
-            }
-        }
+        ReadConfig();
     }
 
+    /// <summary>
+    /// 主窗口关闭事件
+    /// </summary>
     private void GTA5MenuWindow_WindowClosingEvent()
     {
         SaveConfig();
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+
+    /// <summary>
+    /// 读取配置文件
+    /// </summary>
+    private void ReadConfig()
+    {
+        if (!File.Exists(FileHelper.File_Config_Teleports))
+            return;
+
+        var teleports = JsonHelper.ReadFile<Teleports>(FileHelper.File_Config_Teleports);
+
+        foreach (var custom in teleports.CustomLocations)
+        {
+            CustomTeleports.Add(new()
+            {
+                Name = custom.Name,
+                X = custom.X,
+                Y = custom.Y,
+                Z = custom.Z
+            });
+        }
+    }
 
     /// <summary>
     /// 保存配置文件
@@ -72,7 +80,7 @@ public partial class CustomTeleportView : UserControl
             });
         }
         // 写入到Json文件
-        JsonHelper.WriteFile(GTA5Util.File_Config_Teleports, teleports);
+        JsonHelper.WriteFile(FileHelper.File_Config_Teleports, teleports);
     }
 
     private void ListBox_CustomTeleports_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -95,7 +103,7 @@ public partial class CustomTeleportView : UserControl
     }
 
     /// <summary>
-    /// 增加
+    /// 增加自定义传送坐标
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -115,7 +123,7 @@ public partial class CustomTeleportView : UserControl
     }
 
     /// <summary>
-    /// 修改
+    /// 修改自定义传送坐标
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -156,7 +164,7 @@ public partial class CustomTeleportView : UserControl
     }
 
     /// <summary>
-    /// 删除
+    /// 删除自定义传送坐标
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -172,6 +180,11 @@ public partial class CustomTeleportView : UserControl
         CustomTeleports.RemoveAt(index);
     }
 
+    /// <summary>
+    /// 传送到自定义传送坐标
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Button_Teleport_Click(object sender, RoutedEventArgs e)
     {
         var index = ListBox_CustomTeleports.SelectedIndex;
@@ -193,11 +206,21 @@ public partial class CustomTeleportView : UserControl
 
     /////////////////////////////////////////////////////////////////////////////
 
+    /// <summary>
+    /// 传送到导航点
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Button_ToWaypoint_Click(object sender, RoutedEventArgs e)
     {
         Teleport.ToWaypoint();
     }
 
+    /// <summary>
+    /// 传送到目标点
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Button_ToObjective_Click(object sender, RoutedEventArgs e)
     {
         Teleport.ToObjective();
@@ -205,6 +228,11 @@ public partial class CustomTeleportView : UserControl
 
     /////////////////////////////////////////////////////////////////////////////
 
+    /// <summary>
+    /// 坐标微调
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Button_MoveDistance_Click(object sender, RoutedEventArgs e)
     {
         var moveDistance = (float)Slider_MoveDistance.Value;

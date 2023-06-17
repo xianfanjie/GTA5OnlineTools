@@ -1,4 +1,5 @@
 ﻿using GTA5Menu.Data;
+
 using GTA5Core.Native;
 using GTA5Core.Features;
 using GTA5Core.Offsets;
@@ -16,13 +17,15 @@ public partial class PlayerListView : UserControl
     public PlayerListView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
     }
 
-    private void ExternalMenuWindow_WindowClosingEvent()
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
 
     }
+
+    /////////////////////////////////////////////////
 
     private void Button_RefreshPlayerList_Click(object sender, RoutedEventArgs e)
     {

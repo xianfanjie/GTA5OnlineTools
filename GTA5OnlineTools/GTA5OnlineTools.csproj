@@ -29,25 +29,25 @@
 		<DebugType>full</DebugType>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Downloader" Version="3.0.6" />
-		<PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\GTA5Inject\GTA5Inject.csproj" />
+        <ProjectReference Include="..\GTA5MenuExtra\GTA5MenuExtra.csproj" />
+        <ProjectReference Include="..\GTA5Menu\GTA5Menu.csproj" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<Resource Include="Assets\Favicon.ico" />
-		<Resource Include="Assets\Hacks\BincoHax.png" />
-		<Resource Include="Assets\Hacks\GTAHax.png" />
-		<Resource Include="Assets\Hacks\Kiddion.png" />
-		<Resource Include="Assets\Hacks\LSCHax.png" />
-		<Resource Include="Assets\Hacks\YimMenu.png" />
-		<Resource Include="Assets\Launch.png" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Downloader" Version="3.0.6" />
+        <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\GTA5Inject\GTA5Inject.csproj" />
-		<ProjectReference Include="..\GTA5MenuExtra\GTA5MenuExtra.csproj" />
-		<ProjectReference Include="..\GTA5Menu\GTA5Menu.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <Resource Include="Assets\Favicon.ico" />
+        <Resource Include="Assets\Hacks\BincoHax.png" />
+        <Resource Include="Assets\Hacks\GTAHax.png" />
+        <Resource Include="Assets\Hacks\Kiddion.png" />
+        <Resource Include="Assets\Hacks\LSCHax.png" />
+        <Resource Include="Assets\Hacks\YimMenu.png" />
+        <Resource Include="Assets\Launch.png" />
+    </ItemGroup>
 
 </Project>

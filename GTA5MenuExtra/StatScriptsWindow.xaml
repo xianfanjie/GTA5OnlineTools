@@ -10,6 +10,7 @@
     Width="1260"
     Height="700"
     Closing="Window_StatScripts_Closing"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_StatScripts_Loaded"
     ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"

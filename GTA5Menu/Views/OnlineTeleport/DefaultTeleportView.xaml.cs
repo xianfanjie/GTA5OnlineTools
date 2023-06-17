@@ -1,6 +1,8 @@
 ﻿using GTA5Menu.Data;
 
 using GTA5Core.RAGE.Teleports;
+using GTA5Core.Features;
+using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.OnlineTeleport;
 
@@ -12,7 +14,7 @@ public partial class DefaultTeleportView : UserControl
     public DefaultTeleportView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += ExternalMenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         // 传送分类列表
         foreach (var tClass in TeleportData.TeleportClasses)
@@ -26,13 +28,21 @@ public partial class DefaultTeleportView : UserControl
         ListBox_TeleportClasses.SelectedIndex = 0;
     }
 
-    private void ExternalMenuWindow_WindowClosingEvent()
+    /// <summary>
+    /// 主窗口关闭事件
+    /// </summary>
+    private void GTA5MenuWindow_WindowClosingEvent()
     {
-
+        
     }
 
     /////////////////////////////////////////////////////
 
+    /// <summary>
+    /// 传送分类选中变更事件
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ListBox_TeleportClasses_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         lock (this)
@@ -68,8 +78,23 @@ public partial class DefaultTeleportView : UserControl
         }
     }
 
+    /// <summary>
+    /// 传送项鼠标双击事件
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ListBox_TeleportInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
+        AudioHelper.PlayClickSound();
 
+        if (ListBox_TeleportInfos.SelectedItem is TeleportInfo info)
+        {
+            Teleport.SetTeleportPosition(new()
+            {
+                X = info.X,
+                Y = info.Y,
+                Z = info.Z
+            });
+        }
     }
 }

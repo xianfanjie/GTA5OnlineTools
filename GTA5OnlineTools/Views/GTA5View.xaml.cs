@@ -14,7 +14,9 @@ public partial class GTA5View : UserControl
 {
     private GTA5MenuWindow GTA5MenuWindow = null;
 
+    private HeistsEditWindow HeistsEditWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
+    private OutfitsEditWindow OutfitsEditWindow = null;
 
     /// <summary>
     /// 关闭全部GTA5窗口委托
@@ -57,8 +59,14 @@ public partial class GTA5View : UserControl
                 case "ExternalMenu":
                     ExternalMenuClick();
                     break;
+                case "HeistsEdit":
+                    HeistsEditClick();
+                    break;
                 case "StatScripts":
                     StatScriptsClick();
+                    break;
+                case "OutfitsEdit":
+                    OutfitsEditClick();
                     break;
             }
         }
@@ -99,6 +107,30 @@ public partial class GTA5View : UserControl
         }
     }
 
+    private void HeistsEditClick()
+    {
+        if (HeistsEditWindow == null)
+        {
+            HeistsEditWindow = new HeistsEditWindow();
+            HeistsEditWindow.Show();
+        }
+        else
+        {
+            if (HeistsEditWindow.IsVisible)
+            {
+                HeistsEditWindow.Topmost = true;
+                HeistsEditWindow.Topmost = false;
+                HeistsEditWindow.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                HeistsEditWindow = null;
+                HeistsEditWindow = new HeistsEditWindow();
+                HeistsEditWindow.Show();
+            }
+        }
+    }
+
     private void StatScriptsClick()
     {
         if (StatScriptsWindow == null)
@@ -122,6 +154,30 @@ public partial class GTA5View : UserControl
             }
         }
     }
+
+    private void OutfitsEditClick()
+    {
+        if (OutfitsEditWindow == null)
+        {
+            OutfitsEditWindow = new OutfitsEditWindow();
+            OutfitsEditWindow.Show();
+        }
+        else
+        {
+            if (OutfitsEditWindow.IsVisible)
+            {
+                OutfitsEditWindow.Topmost = true;
+                OutfitsEditWindow.Topmost = false;
+                OutfitsEditWindow.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                OutfitsEditWindow = null;
+                OutfitsEditWindow = new OutfitsEditWindow();
+                OutfitsEditWindow.Show();
+            }
+        }
+    }
     #endregion
 
     ///////////////////////////////////////////////////////////////////
@@ -141,10 +197,22 @@ public partial class GTA5View : UserControl
                 GTA5MenuWindow = null;
             }
 
+            if (HeistsEditWindow != null)
+            {
+                HeistsEditWindow.Close();
+                HeistsEditWindow = null;
+            }
+
             if (StatScriptsWindow != null)
             {
                 StatScriptsWindow.Close();
                 StatScriptsWindow = null;
+            }
+
+            if (OutfitsEditWindow != null)
+            {
+                OutfitsEditWindow.Close();
+                OutfitsEditWindow = null;
             }
         });
     }

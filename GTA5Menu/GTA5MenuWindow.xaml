@@ -74,6 +74,11 @@
                         Icon="&#xe629;" />
                     <ui:NavMenu
                         Command="{Binding NavigateCommand}"
+                        CommandParameter="OnlineWeaponView"
+                        Hint="线上武器"
+                        Icon="&#xedb2;" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
                         CommandParameter="OnlineTeleportView"
                         Hint="线上传送"
                         Icon="&#xe65d;" />

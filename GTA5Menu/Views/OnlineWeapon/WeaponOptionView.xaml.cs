@@ -3,7 +3,7 @@ using GTA5Core.RAGE.Onlines;
 
 using GTA5Menu.Options;
 
-namespace GTA5Menu.Views.ExternalMenu;
+namespace GTA5Menu.Views.OnlineWeapon;
 
 /// <summary>
 /// WeaponOptionView.xaml 的交互逻辑

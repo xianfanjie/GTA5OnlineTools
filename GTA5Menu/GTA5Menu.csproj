@@ -22,7 +22,7 @@
 		<ProjectReference Include="..\GTA5Shared\GTA5Shared.csproj" />
 		<ProjectReference Include="..\MetroSkin\MetroSkin.csproj" />
 		<ProjectReference Include="..\Vendor\GameOverlay\GameOverlay.csproj" />
-		<ProjectReference Include="..\WinFormLib\WinFormLib.csproj" />
+		<ProjectReference Include="..\Vendor\WinFormLib\WinFormLib.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -19,7 +19,7 @@
         <ListBox
             x:Name="ListBox_TeleportInfos"
             Margin="5"
-            MouseDoubleClick="ListBox_TeleportInfo_MouseDoubleClick"
+            MouseDoubleClick="ListBox_TeleportInfos_MouseDoubleClick"
             Style="{StaticResource ListBoxStyle_TeleportInfo}"
             ToolTip="双击选中项可快捷传送">
             <ListBox.ItemTemplate>
@@ -50,11 +50,10 @@
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListBoxItem}">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock
+                        <ui:IconFont
                             Margin="0,0,5,0"
                             FontSize="16"
-                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
-                            Text="{Binding Icon}" />
+                            Icon="{Binding Icon}" />
                         <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
                     </StackPanel>
                 </DataTemplate>

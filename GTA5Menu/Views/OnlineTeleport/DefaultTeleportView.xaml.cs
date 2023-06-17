@@ -68,7 +68,7 @@ public partial class DefaultTeleportView : UserControl
         }
     }
 
-    private void ListBox_TeleportInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private void ListBox_TeleportInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
 
     }

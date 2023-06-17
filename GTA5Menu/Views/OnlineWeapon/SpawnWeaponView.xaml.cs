@@ -5,7 +5,7 @@ using GTA5Core.RAGE.Weapons;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 
-namespace GTA5Menu.Views.ExternalMenu;
+namespace GTA5Menu.Views.OnlineWeapon;
 
 /// <summary>
 /// SpawnWeaponView.xaml 的交互逻辑
@@ -20,13 +20,13 @@ public partial class SpawnWeaponView : UserControl
         // 武器列表
         foreach (var wClass in WeaponHash.WeaponClasses)
         {
-            ComboBox_WeaponClasses.Items.Add(new IconMenu()
+            ListBox_WeaponClasses.Items.Add(new IconMenu()
             {
                 Icon = wClass.Icon,
                 Title = wClass.Name
             });
         }
-        ComboBox_WeaponClasses.SelectedIndex = 0;
+        ListBox_WeaponClasses.SelectedIndex = 0;
     }
 
     private void ExternalMenuWindow_WindowClosingEvent()
@@ -36,40 +36,37 @@ public partial class SpawnWeaponView : UserControl
 
     /////////////////////////////////////////////////////
 
-    private void ComboBox_WeaponClasses_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ListBox_WeaponClasses_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         lock (this)
         {
-            var index = ComboBox_WeaponClasses.SelectedIndex;
+            var index = ListBox_WeaponClasses.SelectedIndex;
             if (index == -1)
                 return;
 
             ListBox_WeaponInfo.Items.Clear();
 
-            Task.Run(() =>
+            foreach (var item in WeaponHash.WeaponClasses[index].WeaponInfos)
             {
-                foreach (var item in WeaponHash.WeaponClasses[index].WeaponInfos)
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                 {
-                    this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+                    if (index == ListBox_WeaponClasses.SelectedIndex)
                     {
-                        if (index == ComboBox_WeaponClasses.SelectedIndex)
+                        ListBox_WeaponInfo.Items.Add(new ModelInfo()
                         {
-                            ListBox_WeaponInfo.Items.Add(new ModelInfo()
-                            {
-                                Name = item.Name,
-                                Value = item.Value,
-                                Image = RAGEHelper.GetWeaponImage(item.Value)
-                            });
-                        }
-                    });
-                }
-            });
+                            Name = item.Name,
+                            Value = item.Value,
+                            Image = RAGEHelper.GetWeaponImage(item.Value)
+                        });
+                    }
+                });
+            }
 
             ListBox_WeaponInfo.SelectedIndex = 0;
         }
     }
 
-    private async void Button_SpawnWeapon_Click(object sender, RoutedEventArgs e)
+    private async void ListBox_WeaponInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
@@ -77,10 +74,5 @@ public partial class SpawnWeaponView : UserControl
         {
             await Hacks.CreateAmbientPickup($"pickup_{info.Value}");
         }
-    }
-
-    private void ListBox_WeaponInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-        Button_SpawnWeapon_Click(null, null);
     }
 }

@@ -26,7 +26,6 @@
             dd:DragDrop.UseDefaultDragAdorner="True"
             ItemsSource="{Binding CustomTeleports}"
             MouseDoubleClick="ListBox_CustomTeleports_MouseDoubleClick"
-            SelectionChanged="ListBox_CustomTeleports_SelectionChanged"
             Style="{StaticResource ListBoxStyle_TeleportInfo}" />
         <!--  //////////////////////  -->
         <StackPanel Grid.Column="1">
@@ -38,7 +37,7 @@
                         Width="50"
                         VerticalAlignment="Center"
                         Text="坐标名称" />
-                    <TextBox x:Name="TextBox_CustomName" Text="{Binding ElementName=ListBox_Teleports, Path=SelectedItem.Name}" />
+                    <TextBox x:Name="TextBox_CustomName" Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Name}" />
                 </DockPanel>
                 <!--  X坐标  -->
                 <DockPanel Margin="5,0,0,0">
@@ -46,7 +45,7 @@
                         Width="50"
                         VerticalAlignment="Center"
                         Text="X坐标" />
-                    <TextBox x:Name="TextBox_Position_X" Text="{Binding ElementName=ListBox_Teleports, Path=SelectedItem.X, StringFormat='{}{0:0.000}'}" />
+                    <TextBox x:Name="TextBox_Position_X" Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.X, StringFormat='{}{0:0.000}'}" />
                 </DockPanel>
                 <!--  Y坐标  -->
                 <DockPanel Margin="5,0,0,0">
@@ -54,7 +53,7 @@
                         Width="50"
                         VerticalAlignment="Center"
                         Text="Y坐标" />
-                    <TextBox x:Name="TextBox_Position_Y" Text="{Binding ElementName=ListBox_Teleports, Path=SelectedItem.Y, StringFormat='{}{0:0.000}'}" />
+                    <TextBox x:Name="TextBox_Position_Y" Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Y, StringFormat='{}{0:0.000}'}" />
                 </DockPanel>
                 <!--  Z坐标  -->
                 <DockPanel Margin="5,0,0,0">
@@ -62,7 +61,7 @@
                         Width="50"
                         VerticalAlignment="Center"
                         Text="Z坐标" />
-                    <TextBox x:Name="TextBox_Position_Z" Text="{Binding ElementName=ListBox_Teleports, Path=SelectedItem.Z, StringFormat='{}{0:0.000}'}" />
+                    <TextBox x:Name="TextBox_Position_Z" Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Z, StringFormat='{}{0:0.000}'}" />
                 </DockPanel>
                 <WrapPanel>
                     <Button

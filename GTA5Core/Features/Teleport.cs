@@ -338,7 +338,7 @@ public static class Teleport
     {
         if (Pointers.HeightPTR == 0x0)
         {
-            Pointers.HeightPTR = Memory.FindPattern(Mask.HeightMask);
+            Pointers.HeightPTR = Memory.FindPattern(Mask.Height);
             if (Pointers.HeightPTR == 0x0)
             {
                 return -225.0f;

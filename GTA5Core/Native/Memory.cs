@@ -48,20 +48,7 @@ public static class Memory
         GTA5ProBaseAddress = 0;
         GTA5ProHandle = IntPtr.Zero;
 
-        Pointers.WorldPTR = 0;
-        Pointers.BlipPTR = 0;
-        Pointers.GlobalPTR = 0;
-        Pointers.NetworkPlayerMgrPTR = 0;
-        Pointers.ReplayInterfacePTR = 0;
-        Pointers.NetworkInfoPTR = 0;
-        Pointers.ViewPortPTR = 0;
-        Pointers.CCameraPTR = 0;
-        Pointers.AimingPedPTR = 0;
-        Pointers.WeatherPTR = 0;
-        Pointers.PickupDataPTR = 0;
-        Pointers.UnkModelPTR = 0;
-        Pointers.LocalScriptsPTR = 0;
-        Pointers.UnkPTR = 0;
+        Pointers.Reset();
     }
 
     /// <summary>

@@ -19,36 +19,36 @@
         ShadowDepth="0"
         Color="#616161" />
 
-    <Style x:Key="DefaultLeftRepeatButtonStyle" TargetType="RepeatButton">
+    <Style x:Key="DefaultLeftRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="RepeatButton">
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
                     <Border Height="4" Background="#1E88E5" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="DefaultRightRepeatButtonStyle" TargetType="RepeatButton">
+    <Style x:Key="DefaultRightRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="RepeatButton">
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
                     <Border Background="Transparent" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="DefaultSliderThumbStyle" TargetType="Thumb">
+    <Style x:Key="DefaultSliderThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="15" />
         <Setter Property="Height" Value="15" />
         <Setter Property="Background" Value="White" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Thumb">
+                <ControlTemplate TargetType="{x:Type Thumb}">
                     <Ellipse
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
@@ -83,7 +83,7 @@
         <Setter Property="Foreground" Value="#1E88E5" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Slider">
+                <ControlTemplate TargetType="{x:Type Slider}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />

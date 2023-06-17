@@ -88,20 +88,6 @@ public partial class CustomTeleportView : UserControl
         Button_Teleport_Click(null, null);
     }
 
-    private void ListBox_CustomTeleports_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var index = ListBox_CustomTeleports.SelectedIndex;
-        if (index == -1)
-            return;
-
-        var info = CustomTeleports[index];
-
-        TextBox_CustomName.Text = info.Name;
-        TextBox_Position_X.Text = info.X.ToString("0.000");
-        TextBox_Position_Y.Text = info.Y.ToString("0.000");
-        TextBox_Position_Z.Text = info.Z.ToString("0.000");
-    }
-
     /// <summary>
     /// 增加自定义传送坐标
     /// </summary>

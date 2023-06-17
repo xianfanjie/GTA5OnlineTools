@@ -145,7 +145,7 @@ public class Overlay : IDisposable
 
             // 玩家列表
             long pCNetworkPlayerMgr = Memory.Read<long>(Pointers.NetworkPlayerMgrPTR);
-            int playerCount = Memory.Read<int>(pCNetworkPlayerMgr + 0x178);
+            int playerCount = Memory.Read<int>(pCNetworkPlayerMgr + 0x180);
 
             // Ped数量
             long m_replay = Memory.Read<long>(Pointers.ReplayInterfacePTR);

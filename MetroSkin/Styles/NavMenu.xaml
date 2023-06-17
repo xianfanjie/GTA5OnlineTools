@@ -7,7 +7,6 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="Black" />
         <Setter Property="Width" Value="50" />
         <Setter Property="Height" Value="36" />
         <Setter Property="Template">
@@ -34,12 +33,13 @@
                                 IsOpen="False"
                                 Placement="Right"
                                 PlacementTarget="{Binding ElementName=border}"
-                                VerticalOffset="3">
-                                <Border Padding="7,5,7,5" Background="#000000">
-                                    <TextBlock
-                                        FontSize="14"
-                                        Foreground="#FFFFFF"
-                                        Text="{TemplateBinding Hint}" />
+                                VerticalOffset="4">
+                                <Border
+                                    Padding="7,5,7,5"
+                                    Background="White"
+                                    BorderBrush="#767676"
+                                    BorderThickness="1">
+                                    <TextBlock Foreground="Black" Text="{TemplateBinding Hint}" />
                                 </Border>
                             </Popup>
                         </Grid>

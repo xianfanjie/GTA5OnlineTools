@@ -2,6 +2,10 @@
 
 namespace GTA5Core.Features;
 
+/// <summary>
+/// 2023/06/17
+/// 这里的功能可能会有风险， 暂时遗弃
+/// </summary>
 public static class Online2
 {
     /// <summary>

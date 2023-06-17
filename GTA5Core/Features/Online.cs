@@ -229,14 +229,14 @@ public static class Online
     /// <param name="multiplier"></param>
     public static void REPMultiplier(float multiplier)
     {
-        Hacks.WriteGA(Base.Default + 31648, multiplier);        // Street Race         街头比赛        -147149995
-        Hacks.WriteGA(Base.Default + 31649, multiplier);        // Pursuit Race        追逐赛
-        Hacks.WriteGA(Base.Default + 31650, multiplier);        // Scramble            攀登
-        Hacks.WriteGA(Base.Default + 31651, multiplier);        // Head 2 Head         头对头          1434998920
+        Hacks.WriteGA(Base.Default + 31855, multiplier);        // Street Race         街头比赛        -147149995  joaat("TUNER_STREET_RACE_PLACE_XP_MULTIPLIER")
+        Hacks.WriteGA(Base.Default + 31856, multiplier);        // Pursuit Race        追逐赛
+        Hacks.WriteGA(Base.Default + 31857, multiplier);        // Scramble            攀登
+        Hacks.WriteGA(Base.Default + 31858, multiplier);        // Head 2 Head         头对头          1434998920
 
-        Hacks.WriteGA(Base.Default + 31653, multiplier);        // LS Car Meet         汽车见面会       1819417801
-        Hacks.WriteGA(Base.Default + 31654, multiplier);        // LS Car Meet Track
-        Hacks.WriteGA(Base.Default + 31655, multiplier);        // LS Car Meet Cloth Shop
+        Hacks.WriteGA(Base.Default + 31860, multiplier);        // LS Car Meet         汽车见面会       1819417801  joaat("TUNER_CARCLUB_TIME_XP_MULTIPLIER")
+        Hacks.WriteGA(Base.Default + 31861, multiplier);        // LS Car Meet Track
+        Hacks.WriteGA(Base.Default + 31862, multiplier);        // LS Car Meet Cloth Shop
     }
 
     /// <summary>

@@ -12,11 +12,9 @@
 
     <UniformGrid Columns="3">
         <!--  面板1  -->
-        <GroupBox
-            Margin="5"
-            Header="ESP选项"
-            Style="{StaticResource GroupBoxStyle_Normal}">
-            <StackPanel>
+        <StackPanel>
+            <ui:LabelIcon Content="ESP选项" />
+            <StackPanel Margin="5,0,5,0">
                 <CheckBox
                     x:Name="CheckBox_ESP_2DBox"
                     Click="CheckBox_ESP_2DBox_Click"
@@ -78,7 +76,7 @@
                     Click="CheckBox_NoTOPMostHide_Click"
                     Content="非游戏状态隐藏"
                     IsChecked="False" />
-
+                <!--  //////////////  -->
                 <TextBlock />
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     提示：* 代表该功能比较影响绘制帧数
@@ -93,125 +91,109 @@
                     提示：外部绘图会有性能损失，有时候绘制帧数低也是正常现象
                 </TextBlock>
             </StackPanel>
-        </GroupBox>
+        </StackPanel>
         <!--  面板2  -->
         <StackPanel>
-            <GroupBox
-                Margin="5"
-                Header="AimBot位置"
-                Style="{StaticResource GroupBoxStyle_Normal}">
-                <WrapPanel Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="RadioButton_AimBot_BoneIndex_0"
-                        Click="RadioButton_AimBot_BoneIndex_Click"
-                        Content="头部"
-                        IsChecked="True" />
-                    <RadioButton
-                        x:Name="RadioButton_AimBot_BoneIndex_7"
-                        Click="RadioButton_AimBot_BoneIndex_Click"
-                        Content="颈部" />
-                    <RadioButton
-                        x:Name="RadioButton_AimBot_BoneIndex_8"
-                        Click="RadioButton_AimBot_BoneIndex_Click"
-                        Content="腹部" />
-                </WrapPanel>
-            </GroupBox>
-
-            <GroupBox
-                Margin="5"
-                Header="Aimbot按键"
-                Style="{StaticResource GroupBoxStyle_Normal}">
-                <WrapPanel Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="RadioButton_AimbotKey_CONTROL"
-                        Click="RadioButton_AimbotKey_CONTROL_Click"
-                        Content="左Ctrl键"
-                        IsChecked="True" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotKey_SHIFT"
-                        Click="RadioButton_AimbotKey_CONTROL_Click"
-                        Content="左Shift键" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotKey_LBUTTON"
-                        Click="RadioButton_AimbotKey_CONTROL_Click"
-                        Content="鼠标左键" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotKey_RBUTTON"
-                        Click="RadioButton_AimbotKey_CONTROL_Click"
-                        Content="鼠标右键" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotKey_XBUTTON1"
-                        Click="RadioButton_AimbotKey_CONTROL_Click"
-                        Content="鼠标侧键1" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotKey_XBUTTON2"
-                        Click="RadioButton_AimbotKey_CONTROL_Click"
-                        Content="鼠标侧键2" />
-                </WrapPanel>
-            </GroupBox>
-
-            <GroupBox
-                Margin="5"
-                Header="Aimbot范围"
-                Style="{StaticResource GroupBoxStyle_Normal}">
-                <WrapPanel Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="RadioButton_Crosshair_NearBy"
-                        Click="RadioButton_AimbotFov_Height_Click"
-                        Content="准星附近"
-                        IsChecked="True" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotFov_14Height"
-                        Click="RadioButton_AimbotFov_Height_Click"
-                        Content="1/4屏幕高度" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotFov_12Height"
-                        Click="RadioButton_AimbotFov_Height_Click"
-                        Content="1/2屏幕高度" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotFov_Height"
-                        Click="RadioButton_AimbotFov_Height_Click"
-                        Content="屏幕高度" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotFov_Width"
-                        Click="RadioButton_AimbotFov_Height_Click"
-                        Content="屏幕宽度" />
-                    <RadioButton
-                        x:Name="RadioButton_AimbotFov_All"
-                        Click="RadioButton_AimbotFov_Height_Click"
-                        Content="全部范围" />
-                </WrapPanel>
-            </GroupBox>
-
-            <GroupBox
-                Margin="5"
-                Header="ESP工作模式"
-                Style="{StaticResource GroupBoxStyle_Normal}">
-                <WrapPanel Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="RadioButton_Overlay_RunMode0"
-                        Click="RadioButton_Overlay_RunMode0_Click"
-                        Content="垂直同步"
-                        IsChecked="True" />
-                    <RadioButton
-                        x:Name="RadioButton_Overlay_RunMode1"
-                        Click="RadioButton_Overlay_RunMode0_Click"
-                        Content="300帧" />
-                    <RadioButton
-                        x:Name="RadioButton_Overlay_RunMode2"
-                        Click="RadioButton_Overlay_RunMode0_Click"
-                        Content="144帧" />
-                    <RadioButton
-                        x:Name="RadioButton_Overlay_RunMode3"
-                        Click="RadioButton_Overlay_RunMode0_Click"
-                        Content="90帧" />
-                    <RadioButton
-                        x:Name="RadioButton_Overlay_RunMode4"
-                        Click="RadioButton_Overlay_RunMode0_Click"
-                        Content="60帧" />
-                </WrapPanel>
-            </GroupBox>
-
+            <ui:LabelIcon Content="AimBot位置" />
+            <WrapPanel Margin="5,0,5,0">
+                <RadioButton
+                    x:Name="RadioButton_AimBot_BoneIndex_0"
+                    Click="RadioButton_AimBot_BoneIndex_Click"
+                    Content="头部"
+                    IsChecked="True" />
+                <RadioButton
+                    x:Name="RadioButton_AimBot_BoneIndex_7"
+                    Click="RadioButton_AimBot_BoneIndex_Click"
+                    Content="颈部" />
+                <RadioButton
+                    x:Name="RadioButton_AimBot_BoneIndex_8"
+                    Click="RadioButton_AimBot_BoneIndex_Click"
+                    Content="腹部" />
+            </WrapPanel>
+            <!--  //////////////  -->
+            <ui:LabelIcon Content="Aimbot按键" />
+            <WrapPanel Margin="5,0,5,0">
+                <RadioButton
+                    x:Name="RadioButton_AimbotKey_CONTROL"
+                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    Content="左Ctrl键"
+                    IsChecked="True" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotKey_SHIFT"
+                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    Content="左Shift键" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotKey_LBUTTON"
+                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    Content="鼠标左键" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotKey_RBUTTON"
+                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    Content="鼠标右键" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotKey_XBUTTON1"
+                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    Content="鼠标侧键1" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotKey_XBUTTON2"
+                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    Content="鼠标侧键2" />
+            </WrapPanel>
+            <!--  //////////////  -->
+            <ui:LabelIcon Content="Aimbot范围" />
+            <WrapPanel Margin="5,0,5,0">
+                <RadioButton
+                    x:Name="RadioButton_Crosshair_NearBy"
+                    Click="RadioButton_AimbotFov_Height_Click"
+                    Content="准星附近"
+                    IsChecked="True" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotFov_14Height"
+                    Click="RadioButton_AimbotFov_Height_Click"
+                    Content="1/4屏幕高度" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotFov_12Height"
+                    Click="RadioButton_AimbotFov_Height_Click"
+                    Content="1/2屏幕高度" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotFov_Height"
+                    Click="RadioButton_AimbotFov_Height_Click"
+                    Content="屏幕高度" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotFov_Width"
+                    Click="RadioButton_AimbotFov_Height_Click"
+                    Content="屏幕宽度" />
+                <RadioButton
+                    x:Name="RadioButton_AimbotFov_All"
+                    Click="RadioButton_AimbotFov_Height_Click"
+                    Content="全部范围" />
+            </WrapPanel>
+            <!--  //////////////  -->
+            <ui:LabelIcon Content="工作模式" />
+            <WrapPanel Margin="5,0,5,0">
+                <RadioButton
+                    x:Name="RadioButton_Overlay_RunMode0"
+                    Click="RadioButton_Overlay_RunMode0_Click"
+                    Content="垂直同步"
+                    IsChecked="True" />
+                <RadioButton
+                    x:Name="RadioButton_Overlay_RunMode1"
+                    Click="RadioButton_Overlay_RunMode0_Click"
+                    Content="300帧" />
+                <RadioButton
+                    x:Name="RadioButton_Overlay_RunMode2"
+                    Click="RadioButton_Overlay_RunMode0_Click"
+                    Content="144帧" />
+                <RadioButton
+                    x:Name="RadioButton_Overlay_RunMode3"
+                    Click="RadioButton_Overlay_RunMode0_Click"
+                    Content="90帧" />
+                <RadioButton
+                    x:Name="RadioButton_Overlay_RunMode4"
+                    Click="RadioButton_Overlay_RunMode0_Click"
+                    Content="60帧" />
+            </WrapPanel>
+            <!--  //////////////  -->
             <StackPanel
                 Margin="2"
                 HorizontalAlignment="Right"

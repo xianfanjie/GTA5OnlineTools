@@ -12,8 +12,8 @@ namespace GTA5Menu.Views.OnlineVehicle;
 /// </summary>
 public partial class FindVehicleView : UserControl
 {
-    public List<ModelInfo> AllVehicles { get; private set; } = new();
-    public ObservableCollection<ModelInfo> FindVehicles { get; private set; } = new();
+    public List<ModelInfo> AllVehicles { get; set; } = new();
+    public ObservableCollection<ModelInfo> FindVehicles { get; set; } = new();
 
     public FindVehicleView()
     {

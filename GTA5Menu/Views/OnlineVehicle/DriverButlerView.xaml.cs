@@ -12,7 +12,7 @@ namespace GTA5Menu.Views.OnlineVehicle;
 public partial class DriverButlerView : UserControl
 {
     private List<PerVehInfo> _perVehInfos = new();
-    public ObservableCollection<PerVehInfo> PerVehInfos { get; private set; } = new();
+    public ObservableCollection<PerVehInfo> PerVehInfos { get; set; } = new();
 
     public DriverButlerView()
     {

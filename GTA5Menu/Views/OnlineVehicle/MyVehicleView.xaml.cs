@@ -71,21 +71,21 @@ public partial class MyVehicleView : UserControl
     /// </summary>
     private void SaveConfig()
     {
-        if (Directory.Exists(FileHelper.Dir_Config))
+        if (!Directory.Exists(FileHelper.Dir_Config))
+            return;
+
+        var vehicles = new List<Vehicles>();
+        foreach (ModelInfo info in ListBox_Vehicles.Items)
         {
-            var vehicles = new List<Vehicles>();
-            foreach (ModelInfo info in ListBox_Vehicles.Items)
+            vehicles.Add(new()
             {
-                vehicles.Add(new()
-                {
-                    Class = info.Class,
-                    Name = info.Name,
-                    Value = info.Value,
-                });
-            }
-            // 写入到Json文件
-            JsonHelper.WriteFile(FileHelper.File_Config_Vehicles, vehicles);
+                Class = info.Class,
+                Name = info.Name,
+                Value = info.Value,
+            });
         }
+        // 写入到Json文件
+        JsonHelper.WriteFile(FileHelper.File_Config_Vehicles, vehicles);
     }
 
     private void AddMyFavorite(ModelInfo model)

@@ -58,7 +58,8 @@
             <ListBox
                 x:Name="ListBox_STATList"
                 Margin="0,0,0,5"
-                DockPanel.Dock="Bottom" />
+                DockPanel.Dock="Bottom"
+                Style="{StaticResource ListBoxStyle_Base}" />
         </DockPanel>
         <!--  面板3  -->
         <StackPanel Grid.Column="2">

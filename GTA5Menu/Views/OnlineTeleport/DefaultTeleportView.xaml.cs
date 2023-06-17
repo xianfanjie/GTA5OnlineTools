@@ -57,24 +57,18 @@ public partial class DefaultTeleportView : UserControl
             {
                 this.Dispatcher.Invoke(DispatcherPriority.Background, () =>
                 {
-                    if (index == ListBox_TeleportClasses.SelectedIndex)
-                    {
-                        ListBox_TeleportInfos.Items.Add(new TeleportInfo()
-                        {
-                            Name = item.Name,
-                            X = item.X,
-                            Y = item.Y,
-                            Z = item.Z
-                        });
-                    }
-                    else
-                    {
+                    if (index != ListBox_TeleportClasses.SelectedIndex)
                         return;
-                    }
+
+                    ListBox_TeleportInfos.Items.Add(new TeleportInfo()
+                    {
+                        Name = item.Name,
+                        X = item.X,
+                        Y = item.Y,
+                        Z = item.Z
+                    });
                 });
             }
-
-            ListBox_TeleportInfos.SelectedIndex = 0;
         }
     }
 

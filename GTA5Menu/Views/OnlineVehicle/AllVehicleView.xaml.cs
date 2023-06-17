@@ -49,25 +49,19 @@ public partial class AllVehicleView : UserControl
             {
                 this.Dispatcher.Invoke(DispatcherPriority.Background, () =>
                 {
-                    if (index == ListBox_VehicleClasses.SelectedIndex)
-                    {
-                        ListBox_VehicleInfos.Items.Add(new ModelInfo()
-                        {
-                            Class = item.Class,
-                            Name = item.Name,
-                            Value = item.Value,
-                            Image = item.Image,
-                            Mod = item.Mod
-                        });
-                    }
-                    else
-                    {
+                    if (index != ListBox_VehicleClasses.SelectedIndex)
                         return;
-                    }
+
+                    ListBox_VehicleInfos.Items.Add(new ModelInfo()
+                    {
+                        Class = item.Class,
+                        Name = item.Name,
+                        Value = item.Value,
+                        Image = item.Image,
+                        Mod = item.Mod
+                    });
                 });
             }
-
-            ListBox_VehicleInfos.SelectedIndex = 0;
         }
     }
 

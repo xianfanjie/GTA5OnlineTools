@@ -16,6 +16,26 @@
 		<DebugType>full</DebugType>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <None Remove="Assets\Vehicles\avenger3.png" />
+	  <None Remove="Assets\Vehicles\avenger4.png" />
+	  <None Remove="Assets\Vehicles\brigham.png" />
+	  <None Remove="Assets\Vehicles\buffalo5.png" />
+	  <None Remove="Assets\Vehicles\clique2.png" />
+	  <None Remove="Assets\Vehicles\conada2.png" />
+	  <None Remove="Assets\Vehicles\coureur.png" />
+	  <None Remove="Assets\Vehicles\gauntlet6.png" />
+	  <None Remove="Assets\Vehicles\inductor.png" />
+	  <None Remove="Assets\Vehicles\inductor2.png" />
+	  <None Remove="Assets\Vehicles\l35.png" />
+	  <None Remove="Assets\Vehicles\monstrociti.png" />
+	  <None Remove="Assets\Vehicles\raiju.png" />
+	  <None Remove="Assets\Vehicles\ratel.png" />
+	  <None Remove="Assets\Vehicles\speedo5.png" />
+	  <None Remove="Assets\Vehicles\stingertt.png" />
+	  <None Remove="Assets\Vehicles\streamer216.png" />
+	</ItemGroup>
+
     <ItemGroup>
         <Page Update="Properties\DesignTimeResources.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -54,6 +74,8 @@
 		<Resource Include="Assets\Vehicles\avarus.png" />
 		<Resource Include="Assets\Vehicles\avenger.png" />
 		<Resource Include="Assets\Vehicles\avenger2.png" />
+		<Resource Include="Assets\Vehicles\avenger3.png" />
+		<Resource Include="Assets\Vehicles\avenger4.png" />
 		<Resource Include="Assets\Vehicles\avisa.png" />
 		<Resource Include="Assets\Vehicles\bagger.png" />
 		<Resource Include="Assets\Vehicles\baletrailer.png" />
@@ -109,6 +131,7 @@
 		<Resource Include="Assets\Vehicles\brawler.png" />
 		<Resource Include="Assets\Vehicles\brickade.png" />
 		<Resource Include="Assets\Vehicles\brickade2.png" />
+		<Resource Include="Assets\Vehicles\brigham.png" />
 		<Resource Include="Assets\Vehicles\brioso.png" />
 		<Resource Include="Assets\Vehicles\brioso2.png" />
 		<Resource Include="Assets\Vehicles\brioso3.png" />
@@ -128,6 +151,7 @@
 		<Resource Include="Assets\Vehicles\buffalo2.png" />
 		<Resource Include="Assets\Vehicles\buffalo3.png" />
 		<Resource Include="Assets\Vehicles\buffalo4.png" />
+		<Resource Include="Assets\Vehicles\buffalo5.png" />
 		<Resource Include="Assets\Vehicles\bulldozer.png" />
 		<Resource Include="Assets\Vehicles\bullet.png" />
 		<Resource Include="Assets\Vehicles\burrito.png" />
@@ -171,6 +195,7 @@
 		<Resource Include="Assets\Vehicles\cinquemila.png" />
 		<Resource Include="Assets\Vehicles\cliffhanger.png" />
 		<Resource Include="Assets\Vehicles\clique.png" />
+		<Resource Include="Assets\Vehicles\clique2.png" />
 		<Resource Include="Assets\Vehicles\club.png" />
 		<Resource Include="Assets\Vehicles\coach.png" />
 		<Resource Include="Assets\Vehicles\cog55.png" />
@@ -185,12 +210,14 @@
 		<Resource Include="Assets\Vehicles\comet6.png" />
 		<Resource Include="Assets\Vehicles\comet7.png" />
 		<Resource Include="Assets\Vehicles\conada.png" />
+		<Resource Include="Assets\Vehicles\conada2.png" />
 		<Resource Include="Assets\Vehicles\contender.png" />
 		<Resource Include="Assets\Vehicles\coquette.png" />
 		<Resource Include="Assets\Vehicles\coquette2.png" />
 		<Resource Include="Assets\Vehicles\coquette3.png" />
 		<Resource Include="Assets\Vehicles\coquette4.png" />
 		<Resource Include="Assets\Vehicles\corsita.png" />
+		<Resource Include="Assets\Vehicles\coureur.png" />
 		<Resource Include="Assets\Vehicles\cruiser.png" />
 		<Resource Include="Assets\Vehicles\crusader.png" />
 		<Resource Include="Assets\Vehicles\cuban800.png" />
@@ -309,6 +336,7 @@
 		<Resource Include="Assets\Vehicles\gauntlet3.png" />
 		<Resource Include="Assets\Vehicles\gauntlet4.png" />
 		<Resource Include="Assets\Vehicles\gauntlet5.png" />
+		<Resource Include="Assets\Vehicles\gauntlet6.png" />
 		<Resource Include="Assets\Vehicles\gb200.png" />
 		<Resource Include="Assets\Vehicles\gburrito.png" />
 		<Resource Include="Assets\Vehicles\gburrito2.png" />
@@ -350,6 +378,8 @@
 		<Resource Include="Assets\Vehicles\imperator.png" />
 		<Resource Include="Assets\Vehicles\imperator2.png" />
 		<Resource Include="Assets\Vehicles\imperator3.png" />
+		<Resource Include="Assets\Vehicles\inductor.png" />
+		<Resource Include="Assets\Vehicles\inductor2.png" />
 		<Resource Include="Assets\Vehicles\infernus.png" />
 		<Resource Include="Assets\Vehicles\infernus2.png" />
 		<Resource Include="Assets\Vehicles\ingot.png" />
@@ -394,6 +424,7 @@
 		<Resource Include="Assets\Vehicles\krieger.png" />
 		<Resource Include="Assets\Vehicles\kuruma.png" />
 		<Resource Include="Assets\Vehicles\kuruma2.png" />
+		<Resource Include="Assets\Vehicles\l35.png" />
 		<Resource Include="Assets\Vehicles\landstalker.png" />
 		<Resource Include="Assets\Vehicles\landstalker2.png" />
 		<Resource Include="Assets\Vehicles\lazer.png" />
@@ -440,6 +471,7 @@
 		<Resource Include="Assets\Vehicles\monster3.png" />
 		<Resource Include="Assets\Vehicles\monster4.png" />
 		<Resource Include="Assets\Vehicles\monster5.png" />
+		<Resource Include="Assets\Vehicles\monstrociti.png" />
 		<Resource Include="Assets\Vehicles\moonbeam.png" />
 		<Resource Include="Assets\Vehicles\moonbeam2.png" />
 		<Resource Include="Assets\Vehicles\mower.png" />
@@ -527,6 +559,7 @@
 		<Resource Include="Assets\Vehicles\r300.png" />
 		<Resource Include="Assets\Vehicles\radi.png" />
 		<Resource Include="Assets\Vehicles\raiden.png" />
+		<Resource Include="Assets\Vehicles\raiju.png" />
 		<Resource Include="Assets\Vehicles\raketrailer.png" />
 		<Resource Include="Assets\Vehicles\rallytruck.png" />
 		<Resource Include="Assets\Vehicles\rancherxl.png" />
@@ -536,6 +569,7 @@
 		<Resource Include="Assets\Vehicles\rapidgt3.png" />
 		<Resource Include="Assets\Vehicles\raptor.png" />
 		<Resource Include="Assets\Vehicles\ratbike.png" />
+		<Resource Include="Assets\Vehicles\ratel.png" />
 		<Resource Include="Assets\Vehicles\ratloader.png" />
 		<Resource Include="Assets\Vehicles\ratloader2.png" />
 		<Resource Include="Assets\Vehicles\rcbandito.png" />
@@ -636,6 +670,7 @@
 		<Resource Include="Assets\Vehicles\speedo.png" />
 		<Resource Include="Assets\Vehicles\speedo2.png" />
 		<Resource Include="Assets\Vehicles\speedo4.png" />
+		<Resource Include="Assets\Vehicles\speedo5.png" />
 		<Resource Include="Assets\Vehicles\squaddie.png" />
 		<Resource Include="Assets\Vehicles\squalo.png" />
 		<Resource Include="Assets\Vehicles\stafford.png" />
@@ -645,9 +680,11 @@
 		<Resource Include="Assets\Vehicles\starling.png" />
 		<Resource Include="Assets\Vehicles\stinger.png" />
 		<Resource Include="Assets\Vehicles\stingergt.png" />
+		<Resource Include="Assets\Vehicles\stingertt.png" />
 		<Resource Include="Assets\Vehicles\stockade.png" />
 		<Resource Include="Assets\Vehicles\stockade3.png" />
 		<Resource Include="Assets\Vehicles\stratum.png" />
+		<Resource Include="Assets\Vehicles\streamer216.png" />
 		<Resource Include="Assets\Vehicles\streiter.png" />
 		<Resource Include="Assets\Vehicles\stretch.png" />
 		<Resource Include="Assets\Vehicles\strikeforce.png" />

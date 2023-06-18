@@ -45,4 +45,8 @@ public partial class SelfStateModel : ObservableObject
     /// </summary>
     [ObservableProperty]
     private bool isHotKeyNoCollision = false;
+
+    public SelfStateModel()
+    {
+    }
 }

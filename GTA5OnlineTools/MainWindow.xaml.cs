@@ -1,13 +1,12 @@
 ﻿using GTA5OnlineTools.Data;
+using GTA5OnlineTools.Models;
 using GTA5OnlineTools.Utils;
 using GTA5OnlineTools.Views;
-using GTA5OnlineTools.Models;
 using GTA5OnlineTools.Windows;
 
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
-using Hardcodet.Wpf.TaskbarNotification;
 
 namespace GTA5OnlineTools;
 
@@ -123,9 +122,6 @@ public partial class MainWindow
 
         ProcessHelper.CloseThirdProcess();
         LoggerHelper.Info("关闭第三方进程成功");
-
-        TaskbarIcon_Main?.Dispose();
-        LoggerHelper.Info("清理托盘图标成功");
 
         Application.Current.Shutdown();
         LoggerHelper.Info("主程序关闭\n\n");
@@ -273,44 +269,6 @@ public partial class MainWindow
             {
                 NotifierHelper.Show(NotifierType.Error, $"初始化错误\n{ex.Message}");
             });
-        }
-    }
-
-    [RelayCommand]
-    private void ShowWindow()
-    {
-        this.WindowState = WindowState.Normal;
-        this.ShowInTaskbar = true;
-
-        this.Show();
-
-        this.Topmost = true;
-        this.Topmost = false;
-    }
-
-    private void HideWindow()
-    {
-        this.WindowState = WindowState.Minimized;
-        this.ShowInTaskbar = false;
-        TaskbarIcon_Main.ShowBalloonTip("提示", "小助手已最小化到系统托盘", BalloonIcon.Info);
-    }
-
-    private void TaskbarIcon_MenuItem_Click(object sender, RoutedEventArgs e)
-    {
-        if (e.Source is MenuItem menu)
-        {
-            switch (menu.Header.ToString())
-            {
-                case "显示窗口":
-                    ShowWindow();
-                    break;
-                case "隐藏到托盘":
-                    HideWindow();
-                    break;
-                case "退出":
-                    this.Close();
-                    break;
-            }
         }
     }
 }

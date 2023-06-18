@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:notifications="clr-namespace:Notification.Wpf.Controls;assembly=Notification.Wpf"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_GTA5Menu"
     Title="GTA5线上小助手 - 外置菜单"
@@ -51,51 +50,44 @@
     </ui:Window.TitleContent>
 
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <!--  导航区域  -->
-            <Border
-                Margin="0,5,0,5"
-                Padding="5,0,5,0"
-                BorderBrush="#C2C3C9"
-                BorderThickness="0,0,1,0">
-                <Grid x:Name="Grid_NavMenu">
-                    <StackPanel>
-                        <ui:NavMenu
-                            Command="{Binding NavigateCommand}"
-                            CommandParameter="ExternalMenuView"
-                            Hint="外置菜单"
-                            Icon="&#xe666;"
-                            IsChecked="True" />
-                        <ui:NavMenu
-                            Command="{Binding NavigateCommand}"
-                            CommandParameter="OnlineVehicleView"
-                            Hint="线上载具"
-                            Icon="&#xe629;" />
-                        <ui:NavMenu
-                            Command="{Binding NavigateCommand}"
-                            CommandParameter="OnlineWeaponView"
-                            Hint="线上武器"
-                            Icon="&#xedb2;" />
-                        <ui:NavMenu
-                            Command="{Binding NavigateCommand}"
-                            CommandParameter="OnlineTeleportView"
-                            Hint="线上传送"
-                            Icon="&#xe65d;" />
-                    </StackPanel>
-                </Grid>
-            </Border>
-            <!--  内容显示区域  -->
-            <ContentControl x:Name="ContentControl_NavRegion" Grid.Column="1" />
-        </Grid>
-        <!--  通知显示区域  -->
-        <notifications:NotificationArea
-            x:Name="MainWindowArea"
-            MaxItems="5"
-            Position="BottomCenter" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--  导航区域  -->
+        <Border
+            Margin="0,5,0,5"
+            Padding="5,0,5,0"
+            BorderBrush="#C2C3C9"
+            BorderThickness="0,0,1,0">
+            <Grid x:Name="Grid_NavMenu">
+                <StackPanel>
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="ExternalMenuView"
+                        Hint="外置菜单"
+                        Icon="&#xe666;"
+                        IsChecked="True" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="OnlineVehicleView"
+                        Hint="线上载具"
+                        Icon="&#xe629;" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="OnlineWeaponView"
+                        Hint="线上武器"
+                        Icon="&#xedb2;" />
+                    <ui:NavMenu
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="OnlineTeleportView"
+                        Hint="线上传送"
+                        Icon="&#xe65d;" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!--  内容显示区域  -->
+        <ContentControl x:Name="ContentControl_NavRegion" Grid.Column="1" />
     </Grid>
 
 </ui:Window>

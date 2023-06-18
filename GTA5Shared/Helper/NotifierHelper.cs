@@ -10,8 +10,6 @@ public static class NotifierHelper
 
     private static readonly TimeSpan ExpirationTime = TimeSpan.FromSeconds(2);
 
-    private const string _areaName = "";
-
     static NotifierHelper()
     {
         NotificationConstants.MessagePosition = NotificationPosition.BottomCenter;
@@ -61,7 +59,7 @@ public static class NotifierHelper
             TrimType = NotificationTextTrimType.NoTrim,
         };
 
-        _notificationManager.Show(clickContent, _areaName, ExpirationTime, null, null, true, false);
+        _notificationManager.Show(clickContent, string.Empty, ExpirationTime, null, null, true, false);
     }
 
     /// <summary>
@@ -78,7 +76,7 @@ public static class NotifierHelper
             TrimType = NotificationTextTrimType.NoTrim,
         };
 
-        _notificationManager.Show(clickContent, _areaName, ExpirationTime, null, null, true, false);
+        _notificationManager.Show(clickContent, string.Empty, ExpirationTime, null, null, true, false);
     }
 }
 

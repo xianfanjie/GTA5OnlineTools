@@ -1,7 +1,7 @@
 ﻿using GTA5OnlineTools.Utils;
 using GTA5OnlineTools.Windows;
 
-using GTA5Menu;
+using GTA5Core;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;

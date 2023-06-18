@@ -1,7 +1,7 @@
 ﻿using GTA5Core.Native;
 using GTA5Core.Offsets;
 
-namespace GTA5Menu;
+namespace GTA5Core;
 
 /// <summary>
 /// GTA5InitWindow.xaml 的交互逻辑

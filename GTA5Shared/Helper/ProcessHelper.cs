@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace GTA5Shared.Helper;
+﻿namespace GTA5Shared.Helper;
 
 public static class ProcessHelper
 {

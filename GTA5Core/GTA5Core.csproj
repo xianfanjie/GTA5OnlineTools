@@ -16,6 +16,18 @@
 		<DebugType>full</DebugType>
 	</PropertyGroup>
 
+    <ItemGroup>
+        <Page Update="Properties\DesignTimeResources.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+            <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+        </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MetroSkin\MetroSkin.csproj" />
+    </ItemGroup>
+
 	<ItemGroup>
 		<Resource Include="Assets\Vehicles\adder.png" />
 		<Resource Include="Assets\Vehicles\airbus.png" />

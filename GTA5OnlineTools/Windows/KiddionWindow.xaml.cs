@@ -12,7 +12,6 @@ public partial class KiddionWindow
     public KiddionWindow()
     {
         InitializeComponent();
-        this.DataContext = this;
     }
 
     private void Window_Kiddion_Loaded(object sender, RoutedEventArgs e)

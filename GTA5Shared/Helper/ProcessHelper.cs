@@ -1,4 +1,6 @@
-﻿namespace GTA5Shared.Helper;
+﻿using System.Linq;
+
+namespace GTA5Shared.Helper;
 
 public static class ProcessHelper
 {
@@ -23,11 +25,13 @@ public static class ProcessHelper
         {
             foreach (var item in pArray)
             {
-                if (item.MainWindowHandle == IntPtr.Zero)
-                    continue;
-
-                if (item.MainModule.FileVersionInfo.LegalCopyright.Contains("Rockstar Games Inc."))
-                    return true;
+                for (int i = 0; i < item.Modules.Count; i++)
+                {
+                    if (item.Modules[i].ModuleName.Equals("socialclub.dll"))
+                    {
+                        return true;
+                    }
+                }
             }
         }
 

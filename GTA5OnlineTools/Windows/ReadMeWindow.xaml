@@ -9,6 +9,7 @@
     Title="使用说明"
     Width="1200"
     Height="650"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     ResizeMode="NoResize"
     Style="{StaticResource SystemWindowStyle}"
     WindowStartupLocation="CenterOwner"

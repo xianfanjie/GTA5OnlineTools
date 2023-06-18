@@ -10,6 +10,7 @@
     Width="700"
     Height="400"
     Closing="Window_Update_Closing"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_Update_Loaded"
     ResizeMode="NoResize"
     Style="{StaticResource SystemWindowStyle}"
@@ -63,7 +64,10 @@
                 DockPanel.Dock="Top"
                 Style="{StaticResource TextBlockStyle_Title}"
                 Text="下载节点" />
-            <ListBox x:Name="ListBox_DownloadAddress" Margin="5,0,5,5" />
+            <ListBox
+                x:Name="ListBox_DownloadAddress"
+                Margin="5,0,5,5"
+                Style="{StaticResource ListBoxStyle_Base}" />
         </DockPanel>
         <!--  //////////////////////  -->
         <TextBlock

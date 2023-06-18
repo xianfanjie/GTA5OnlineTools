@@ -2,45 +2,29 @@
 
 namespace GTA5OnlineTools.Models;
 
-public class HacksModel : ObservableObject
+public partial class HacksModel : ObservableObject
 {
-    private bool kiddionIsRun;
     /// <summary>
     /// Kiddion运行状态
     /// </summary>
-    public bool KiddionIsRun
-    {
-        get => kiddionIsRun;
-        set => SetProperty(ref kiddionIsRun, value);
-    }
+    [ObservableProperty]
+    private bool kiddionIsRun;
 
-    private bool gTAHaxIsRun;
     /// <summary>
     /// GTAHax运行状态
     /// </summary>
-    public bool GTAHaxIsRun
-    {
-        get => gTAHaxIsRun;
-        set => SetProperty(ref gTAHaxIsRun, value);
-    }
+    [ObservableProperty]
+    private bool gTAHaxIsRun;
 
-    private bool bincoHaxIsRun;
     /// <summary>
     /// BincoHax运行状态
     /// </summary>
-    public bool BincoHaxIsRun
-    {
-        get => bincoHaxIsRun;
-        set => SetProperty(ref bincoHaxIsRun, value);
-    }
+    [ObservableProperty]
+    private bool bincoHaxIsRun;
 
-    private bool lSCHaxIsRun;
     /// <summary>
     /// LSCHax运行状态
     /// </summary>
-    public bool LSCHaxIsRun
-    {
-        get => lSCHaxIsRun;
-        set => SetProperty(ref lSCHaxIsRun, value);
-    }
+    [ObservableProperty]
+    private bool lSCHaxIsRun;
 }

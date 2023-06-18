@@ -294,6 +294,18 @@ public partial class HacksView : UserControl
     /// </summary>
     private void YimMenuClick()
     {
+        try
+        {
+            // 释放Yimmenu官中语言文件
+            FileHelper.CreateDirectory(FileHelper.Dir_BigBaseV2_Translations);
+            FileHelper.ExtractResFile(FileHelper.Res_YimMenu_Index, FileHelper.File_YimMenu_Index);
+            FileHelper.ExtractResFile(FileHelper.Res_YimMenu_ZHCN, FileHelper.File_YimMenu_ZHCN);
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.Error($"释放Yimmenu官中语言文件失败，异常信息：{ex.Message}");
+        }
+
         Process GTA5Process = null;
 
         foreach (var item in Process.GetProcessesByName("GTA5"))
@@ -318,7 +330,7 @@ public partial class HacksView : UserControl
         if (result.IsSuccess)
             NotifierHelper.Show(NotifierType.Success, "YimMenu菜单注入成功");
         else
-            NotifierHelper.Show(NotifierType.Error, $"YimMenu菜单注入\n错误信息：{result.Content}");
+            NotifierHelper.Show(NotifierType.Error, $"YimMenu菜单注入失败\n错误信息：{result.Content}");
     }
     #endregion
 
@@ -554,11 +566,6 @@ public partial class HacksView : UserControl
                 "重置YimMenu配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 FileHelper.ClearDirectory(FileHelper.Dir_BigBaseV2);
-
-                // 释放Yimmenu官中语言文件
-                FileHelper.CreateDirectory(FileHelper.Dir_BigBaseV2_Translations);
-                FileHelper.ExtractResFile(FileHelper.Res_YimMenu_Index, FileHelper.File_YimMenu_Index);
-                FileHelper.ExtractResFile(FileHelper.Res_YimMenu_ZHCN, FileHelper.File_YimMenu_ZHCN);
 
                 NotifierHelper.Show(NotifierType.Success, "重置YimMenu配置文件成功");
             }

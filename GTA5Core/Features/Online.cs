@@ -333,7 +333,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void MCSupplyDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 18999, isEnable ? 0 : 600);          // 728170457  tuneables_processing.c
+        Hacks.WriteGA(Base.Default + 19179, isEnable ? 0 : 600);          // 728170457  joaat("WEBSITE_PEGASSI_FAGGIO_SPORT")
     }
 
     /// <summary>
@@ -351,10 +351,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void ExportVehicleDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 19862, isEnable ? 0 : 1200000);         // 1001423248  tuneables_processing.c
-        Hacks.WriteGA(Base.Default + 19863, isEnable ? 0 : 1680000);
-        Hacks.WriteGA(Base.Default + 19864, isEnable ? 0 : 2340000);
-        Hacks.WriteGA(Base.Default + 19865, isEnable ? 0 : 2880000);         // -824005590
+        Hacks.WriteGA(Base.Default + 19862, isEnable ? 0 : 1200000);        // 1001423248  tuneables_processing.c
+        Hacks.WriteGA(Base.Default + 19863, isEnable ? 0 : 1680000);        // 240134765
+        Hacks.WriteGA(Base.Default + 19864, isEnable ? 0 : 2340000);        // 1915379148
+        Hacks.WriteGA(Base.Default + 19865, isEnable ? 0 : 2880000);        // -824005590
     }
 
     /// <summary>
@@ -382,10 +382,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void SmugglerRunInDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 22931, isEnable ? 0 : 120000);          // 1278611667  tuneables_processing.c
-        Hacks.WriteGA(Base.Default + 22932, isEnable ? 0 : 180000);
-        Hacks.WriteGA(Base.Default + 22933, isEnable ? 0 : 240000);
-        Hacks.WriteGA(Base.Default + 22934, isEnable ? 0 : 60000);
+        Hacks.WriteGA(Base.Default + 22931, isEnable ? 0 : 120000);         // 1278611667  tuneables_processing.c
+        Hacks.WriteGA(Base.Default + 22932, isEnable ? 0 : 180000);         // -1424847540
+        Hacks.WriteGA(Base.Default + 22933, isEnable ? 0 : 240000);         // -1817541754
+        Hacks.WriteGA(Base.Default + 22934, isEnable ? 0 : 60000);          // 1722502526
     }
 
     /// <summary>
@@ -394,7 +394,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void SmugglerRunOutDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 22972, isEnable ? 0 : 180000);          // -1525481945  tuneables_processing.c
+        Hacks.WriteGA(Base.Default + 22972, isEnable ? 0 : 180000);         // -1525481945  tuneables_processing.c
     }
 
     /// <summary>
@@ -403,9 +403,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void NightclubOutDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 24629, isEnable ? 0 : 300000);          // 1763921019  tuneables_processing.c
-        Hacks.WriteGA(Base.Default + 24671, isEnable ? 0 : 300000);          // -1004589438  Global_262145.f_24671 = 300000;
-        Hacks.WriteGA(Base.Default + 24672, isEnable ? 0 : 300000);
+        Hacks.WriteGA(Base.Default + 24629, isEnable ? 0 : 300000);         // 1763921019  tuneables_processing.c
+        Hacks.WriteGA(Base.Default + 24671, isEnable ? 0 : 300000);         // -1004589438  Global_262145.f_24671 = 300000;
+        Hacks.WriteGA(Base.Default + 24672, isEnable ? 0 : 300000);         // 464940095
     }
 
     /// <summary>
@@ -434,11 +434,11 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void ClientJonCooldown(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 24818 + 0, isEnable ? 0 : 300000);       // Between Jobs -926426916
-        Hacks.WriteGA(Base.Default + 24818 + 1, isEnable ? 0 : 1800000);      // Robbery in Progress
-        Hacks.WriteGA(Base.Default + 24818 + 2, isEnable ? 0 : 1800000);      // Data Sweep
-        Hacks.WriteGA(Base.Default + 24818 + 3, isEnable ? 0 : 1800000);      // Targeted Data
-        Hacks.WriteGA(Base.Default + 24818 + 4, isEnable ? 0 : 1800000);      // Diamond Shopping
+        Hacks.WriteGA(Base.Default + 24818 + 0, isEnable ? 0 : 300000);       // Between Jobs           -926426916
+        Hacks.WriteGA(Base.Default + 24818 + 1, isEnable ? 0 : 1800000);      // Robbery in Progress    1733390598
+        Hacks.WriteGA(Base.Default + 24818 + 2, isEnable ? 0 : 1800000);      // Data Sweep             724724668
+        Hacks.WriteGA(Base.Default + 24818 + 3, isEnable ? 0 : 1800000);      // Targeted Data          846317886
+        Hacks.WriteGA(Base.Default + 24818 + 4, isEnable ? 0 : 1800000);      // Diamond Shopping       443623246
     }
 
     /// <summary>

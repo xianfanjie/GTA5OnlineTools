@@ -72,13 +72,13 @@ public partial class GTA5InitWindow
                 Logger($"《GTA5》进程数量 {pArray.Length}");
                 foreach (var item in pArray)
                 {
-                    if (item.MainWindowHandle == IntPtr.Zero)
-                        continue;
-
-                    if (item.MainModule.FileVersionInfo.LegalCopyright.Contains("Rockstar Games Inc."))
+                    for (int i = 0; i < item.Modules.Count; i++)
                     {
-                        Memory.GTA5Process = item;
-                        break;
+                        if (item.Modules[i].ModuleName.Equals("socialclub.dll"))
+                        {
+                            Memory.GTA5Process = item;
+                            break;
+                        }
                     }
                 }
 

@@ -10,6 +10,7 @@
     Width="600"
     Height="700"
     Closing="Window_Kiddion2_Closing"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_Kiddion2_Loaded"
     ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"

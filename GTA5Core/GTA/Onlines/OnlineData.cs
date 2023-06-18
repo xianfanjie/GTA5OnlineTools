@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.RAGE.Onlines;
+﻿namespace GTA5Core.GTA.Onlines;
 
 public static class OnlineData
 {

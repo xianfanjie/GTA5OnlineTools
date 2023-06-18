@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.RAGE;
+﻿namespace GTA5Core.GTA;
 
 public static class RAGEHelper
 {

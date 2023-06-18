@@ -4,7 +4,7 @@ using GTA5HotKey;
 using GTA5Core.Native;
 using GTA5Core.Offsets;
 using GTA5Core.Features;
-using GTA5Core.RAGE.Rage;
+using GTA5Core.GTA.Rage;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;

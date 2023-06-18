@@ -1,6 +1,6 @@
 ﻿using GTA5Menu.Data;
 
-using GTA5Core.RAGE.Vehicles;
+using GTA5Core.GTA.Vehicles;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 
@@ -58,7 +58,7 @@ public partial class AllVehicleView : UserControl
                         Name = item.Name,
                         Value = item.Value,
                         Image = item.Image,
-                        Mod = item.Mod
+                        Mod = item.Mods
                     });
                 });
             }

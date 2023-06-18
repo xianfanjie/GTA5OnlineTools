@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.RAGE.Weapons;
+﻿namespace GTA5Core.GTA.Weapons;
 
 public static class WeaponHash
 {

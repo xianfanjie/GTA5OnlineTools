@@ -1,6 +1,6 @@
 ﻿using GTA5Core.Features;
-using GTA5Core.RAGE.Peds;
-using GTA5Core.RAGE.Onlines;
+using GTA5Core.GTA.Peds;
+using GTA5Core.GTA.Onlines;
 
 namespace GTA5Menu.Views.ExternalMenu;
 

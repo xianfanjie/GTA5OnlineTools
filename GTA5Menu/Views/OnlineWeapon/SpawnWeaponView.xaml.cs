@@ -1,7 +1,7 @@
 ﻿using GTA5Menu.Data;
 
-using GTA5Core.RAGE;
-using GTA5Core.RAGE.Weapons;
+using GTA5Core.GTA;
+using GTA5Core.GTA.Weapons;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 

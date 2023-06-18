@@ -1,8 +1,8 @@
 ﻿using GTA5Menu.Data;
 using GTA5Menu.Config;
 
-using GTA5Core.RAGE;
-using GTA5Core.RAGE.Vehicles;
+using GTA5Core.GTA;
+using GTA5Core.GTA.Vehicles;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 
@@ -58,7 +58,7 @@ public partial class MyVehicleView : UserControl
                         Name = info.Name,
                         Value = info.Value,
                         Image = RAGEHelper.GetVehicleImage(info.Value),
-                        Mod = info.Mod
+                        Mod = info.Mods
                     });
                     continue;
                 }

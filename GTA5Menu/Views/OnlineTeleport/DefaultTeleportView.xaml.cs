@@ -1,6 +1,6 @@
 ﻿using GTA5Menu.Data;
 
-using GTA5Core.RAGE.Teleports;
+using GTA5Core.GTA.Teleports;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 

@@ -1,5 +1,5 @@
 ﻿using GTA5Core.Features;
-using GTA5Core.RAGE.Stats;
+using GTA5Core.GTA.Stats;
 
 namespace GTA5MenuExtra; 
 

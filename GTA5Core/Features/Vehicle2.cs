@@ -1,6 +1,6 @@
 ﻿using GTA5Core.Native;
 using GTA5Core.Offsets;
-using GTA5Core.RAGE.Vehicles;
+using GTA5Core.GTA.Vehicles;
 
 namespace GTA5Core.Features;
 

@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.RAGE.Teleports;
+﻿namespace GTA5Core.GTA.Teleports;
 
 public static class TeleportData
 {

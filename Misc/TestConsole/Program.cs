@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Text;
 
 namespace TestConsole;
 
@@ -9,22 +8,20 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //var bytes1 = Encoding.Unicode.GetBytes("F:\\Downloads\\新建文件夹\\YimMenu.dll");
-        //Console.WriteLine(bytes1.Length);
-        //var bytes2 = Encoding.Unicode.GetBytes("F:\\Downloads\\YimMenu.dll");
-        //Console.WriteLine(bytes2.Length);
+        Func();
 
         Console.WriteLine("操作结束，按任意键继续！");
         Console.ReadLine();
     }
 
-    void Func()
+    static void Func()
     {
         // 2023/02/07   793
+        // 2023/06/18   810
         var vehicles = Enum.GetValues(typeof(VehicleHash));
         Console.WriteLine($"载具数量：{vehicles.Length}");
 
-        var path = "E:\\GTA5\\GTA5图片数据\\Vehicles\\20230205";
+        var path = "E:\\Dev\\GTA5\\GTA5图片数据\\Vehicles\\20230205";
         var imgNames = new List<string>();
         foreach (var imgFile in Directory.GetFiles(path))
         {
@@ -38,21 +35,21 @@ internal class Program
 
         foreach (VehicleHash vEnum in vehicles)
         {
-            Console.WriteLine($"{vEnum} 0x{Joaat(vEnum.ToString()):X8}");
+            //Console.WriteLine($"{vEnum} 0x{Joaat(vEnum.ToString()):X8}");
             //Console.WriteLine($"{vEnum}");
             //Console.WriteLine($"0x{Joaat(vEnum.ToString()):X8}");
 
             //Console.WriteLine($"{vEnum.ToString().ToUpper()} = 0x{Joaat(vEnum.ToString()):X8},");
 
-            //var index = imgNames.IndexOf(vEnum.ToString());
-            //if (index == -1)
-            //{
-            //    Console.WriteLine($"{vEnum}");
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"{vEnum} {imgNames[index]}");
-            //}
+            var index = imgNames.IndexOf(vEnum.ToString().ToLower());
+            if (index == -1)
+            {
+                Console.WriteLine($"{vEnum}");
+            }
+            else
+            {
+                //Console.WriteLine($"{vEnum} {imgNames[index]}");
+            }
         }
     }
 

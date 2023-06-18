@@ -1,5 +1,5 @@
 ﻿using GTA5Core.Features;
-using GTA5Core.RAGE.Onlines;
+using GTA5Core.GTA.Onlines;
 
 using GTA5Menu.Options;
 

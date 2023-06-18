@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.RAGE.Stats;
+﻿namespace GTA5Core.GTA.Stats;
 
 public static class StatData
 {

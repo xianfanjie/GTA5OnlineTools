@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.RAGE.Rage;
+﻿namespace GTA5Core.GTA.Rage;
 
 public enum BlipIcon
 {

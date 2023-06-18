@@ -1,4 +1,4 @@
-﻿namespace GTA5Core.RAGE.Peds;
+﻿namespace GTA5Core.GTA.Peds;
 
 public static class PedHash
 {

@@ -1,7 +1,8 @@
-﻿namespace GTA5Core.RAGE.Vehicles;
+﻿namespace GTA5Core.GTA.Vehicles;
 
 public enum VehicleModType
 {
+    None = -1,
     Spoilers = 0,
     FrontBumper = 1,
     RearBumper = 2,
@@ -19,12 +20,14 @@ public enum VehicleModType
     Horns = 14,
     Suspension = 15,
     Armor = 16,
+
     NITROUS = 17,
     TURBO = 18,
     SUBWOOFER = 19,
     TYRE_SMOKE = 20,
     HYDRAULICS = 21,
     XENON_LIGHTS = 22,
+
     FrontWheel = 23,
     RearWheel = 24,
     PlateHolder = 25,
@@ -50,6 +53,5 @@ public enum VehicleModType
     Tank = 45,
     Windows = 46,
     Doors = 47,
-    Livery = 48,
-    LightBar = 49,
+    Livery = 48
 }

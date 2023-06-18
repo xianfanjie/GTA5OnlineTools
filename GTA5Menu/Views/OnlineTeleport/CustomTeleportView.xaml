@@ -82,8 +82,8 @@
                         Background="#34A853"
                         Click="Button_Teleport_Click"
                         Content="传送" />
-                    <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockStyle_Hint}">
-                        提示：双击选中项可快捷传送
+                    <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                        提示：双击选中项可直接传送，按住鼠标左键可拖拽排序
                     </TextBlock>
                 </WrapPanel>
             </StackPanel>

@@ -35,23 +35,29 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         ContextMenu="{TemplateBinding ContextMenu}"
                         SnapsToDevicePixels="True">
-                        <Grid>
-                            <ScrollViewer
-                                x:Name="PART_ContentHost"
-                                Padding="{TemplateBinding Padding}"
-                                ContextMenu="{TemplateBinding ContextMenu}"
-                                Focusable="false"
-                                HorizontalScrollBarVisibility="Hidden"
-                                VerticalScrollBarVisibility="Hidden" />
-                            <TextBlock
-                                Name="hint"
-                                Padding="{TemplateBinding Padding}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                ContextMenu="{TemplateBinding ContextMenu}"
-                                FontStyle="Italic"
-                                Opacity="0.5"
-                                Text="{TemplateBinding Hint}" />
-                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <controls:IconFont
+                                Margin="10,0,0,0"
+                                FontSize="16"
+                                Icon="&#xe8d6;" />
+                            <Grid>
+                                <ScrollViewer
+                                    x:Name="PART_ContentHost"
+                                    Padding="{TemplateBinding Padding}"
+                                    ContextMenu="{TemplateBinding ContextMenu}"
+                                    Focusable="false"
+                                    HorizontalScrollBarVisibility="Hidden"
+                                    VerticalScrollBarVisibility="Hidden" />
+                                <TextBlock
+                                    Name="hint"
+                                    Padding="{TemplateBinding Padding}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    ContextMenu="{TemplateBinding ContextMenu}"
+                                    FontStyle="Italic"
+                                    Opacity="0.5"
+                                    Text="{TemplateBinding Hint}" />
+                            </Grid>
+                        </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">

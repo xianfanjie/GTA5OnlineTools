@@ -23,7 +23,6 @@
                     Width="200"
                     Margin="5"
                     Hint="请输入载具名称"
-                    InputLanguageManager.InputLanguage="zh-CN"
                     TextChanged="TextBox_ModelName_TextChanged" />
             </StackPanel>
             <!--  //////////////////  -->
@@ -38,24 +37,25 @@
                 <Button
                     x:Name="Button_SpawnPersonalVehicle"
                     Click="Button_SpawnPersonalVehicle_Click"
-                    Content="呼叫个人载具" />
+                    Content="呼叫个人载具"
+                    IsEnabled="{Binding ElementName=ListBox_VehicleInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
                 <Button
                     x:Name="Button_GetInOnlinePV"
                     Click="Button_GetInOnlinePV_Click"
                     Content="坐进个人载具" />
                 <!--  //////////////////  -->
                 <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：双击选中项可快捷呼叫
+                    提示：双击选中项可直接呼叫载具
                 </TextBlock>
             </StackPanel>
         </DockPanel>
         <!--  ////////////////////////////////////  -->
         <ListBox
-            x:Name="ListBox_PersonalVehicle"
+            x:Name="ListBox_VehicleInfos"
             Grid.Row="1"
             Margin="5,0,5,5"
             ItemsSource="{Binding PerVehInfos}"
-            MouseDoubleClick="ListBox_PersonalVehicle_MouseDoubleClick"
+            MouseDoubleClick="ListBox_VehicleInfos_MouseDoubleClick"
             Style="{StaticResource ListBoxStyle_VehicleInfo2}" />
     </Grid>
 

@@ -44,7 +44,7 @@ public partial class SpawnWeaponView : UserControl
             if (index == -1)
                 return;
 
-            ListBox_WeaponInfo.Items.Clear();
+            ListBox_WeaponInfos.Items.Clear();
 
             foreach (var item in WeaponHash.WeaponClasses[index].WeaponInfos)
             {
@@ -53,7 +53,7 @@ public partial class SpawnWeaponView : UserControl
 
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                 {
-                    ListBox_WeaponInfo.Items.Add(new ModelInfo()
+                    ListBox_WeaponInfos.Items.Add(new ModelInfo()
                     {
                         Name = item.Name,
                         Value = item.Value,
@@ -64,13 +64,23 @@ public partial class SpawnWeaponView : UserControl
         }
     }
 
-    private async void ListBox_WeaponInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private async void SpawnWeapon()
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_WeaponInfo.SelectedItem is ModelInfo info)
+        if (ListBox_WeaponInfos.SelectedItem is ModelInfo info)
         {
             await Hacks.CreateAmbientPickup($"pickup_{info.Value}");
         }
+    }
+
+    private void ListBox_WeaponInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        SpawnWeapon();
+    }
+
+    private void Button_SpawnWeapon_Click(object sender, RoutedEventArgs e)
+    {
+        SpawnWeapon();
     }
 }

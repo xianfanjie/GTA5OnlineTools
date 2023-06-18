@@ -12,6 +12,7 @@ namespace GTA5Menu.Views.OnlineVehicle;
 public partial class DriverButlerView : UserControl
 {
     private List<PerVehInfo> _perVehInfos = new();
+
     public ObservableCollection<PerVehInfo> PerVehInfos { get; set; } = new();
 
     public DriverButlerView()
@@ -71,7 +72,7 @@ public partial class DriverButlerView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_PersonalVehicle.SelectedItem is PerVehInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is PerVehInfo info)
             Vehicle.RequestPersonalVehicle(info.Id);
     }
 
@@ -82,7 +83,7 @@ public partial class DriverButlerView : UserControl
         Online.GetInOnlinePV();
     }
 
-    private void ListBox_PersonalVehicle_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private void ListBox_VehicleInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         Button_SpawnPersonalVehicle_Click(null, null);
     }

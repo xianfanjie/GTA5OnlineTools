@@ -3,10 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cvt="clr-namespace:MetroSkin.Converters">
 
-    <cvt:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
+    <cvt:StringToImageSourceConverter x:Key="StringToImageSource" />
     <cvt:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
     <cvt:IsNullOrEmpty2Converter x:Key="IsNullOrEmpty2Converter" />
     <cvt:IndexToBoolConvertent x:Key="IndexToBoolConvertent" />
+    <cvt:SelectedIndexToIsEnabledConverter x:Key="SelectedIndexToIsEnabledConverter" />
 
     <SolidColorBrush x:Key="BlueColor" Color="#2196F3" />
     <SolidColorBrush x:Key="PinkColor" Color="#E91E63" />

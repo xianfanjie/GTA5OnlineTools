@@ -15,40 +15,46 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <!--  ///////////////////  -->
-        <ui:TextBoxHint
-            x:Name="TextBox_ModelName"
-            Width="260"
-            Margin="5,5,0,5"
-            Hint="请输入载具名称"
-            InputLanguageManager.InputLanguage="zh-CN"
-            TextChanged="TextBox_ModelName_TextChanged" />
-        <!--  ///////////////////  -->
+        <!--  操作面板  -->
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Right">
+                <ui:TextBoxHint
+                    x:Name="TextBox_ModelName"
+                    Width="200"
+                    Margin="5"
+                    Hint="请输入载具名称"
+                    InputLanguageManager.InputLanguage="zh-CN"
+                    TextChanged="TextBox_ModelName_TextChanged" />
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Button
+                    x:Name="Button_SpawnVehicleA"
+                    Click="Button_SpawnVehicleA_Click"
+                    Content="刷出线上载具（空地）"
+                    IsEnabled="{Binding ElementName=ListBox_VehicleInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
+                <Button
+                    x:Name="Button_SpawnVehicleB"
+                    Click="Button_SpawnVehicleB_Click"
+                    Content="刷出线上载具（室内）"
+                    IsEnabled="{Binding ElementName=ListBox_VehicleInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
+                <Button
+                    x:Name="Button_AddMyFavorite"
+                    Click="Button_AddMyFavorite_Click"
+                    Content="添加到我的收藏"
+                    IsEnabled="{Binding ElementName=ListBox_VehicleInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：双击选中项可直接刷出载具
+                </TextBlock>
+            </StackPanel>
+        </DockPanel>
+        <!--  载具详细信息  -->
         <ListBox
-            x:Name="ListBox_VehicleInfo"
+            x:Name="ListBox_VehicleInfos"
             Grid.Row="1"
             Margin="5,0,5,5"
             ItemsSource="{Binding FindVehicles}"
-            MouseDoubleClick="ListBox_VehicleInfo_MouseDoubleClick"
-            Style="{StaticResource ListBoxStyle_VehicleInfo}">
-            <ListBox.ContextMenu>
-                <ContextMenu>
-                    <MenuItem
-                        x:Name="MenuItem_SpawnVehicleA"
-                        Click="MenuItem_SpawnVehicleA_Click"
-                        Header="刷出线上载具（空地）" />
-                    <MenuItem
-                        x:Name="MenuItem_SpawnVehicleB"
-                        Click="MenuItem_SpawnVehicleB_Click"
-                        Header="刷出线上载具（室内）" />
-                    <Separator />
-                    <MenuItem
-                        x:Name="MenuItem_AddMyFavorite"
-                        Click="MenuItem_AddMyFavorite_Click"
-                        Header="添加到我的收藏" />
-                </ContextMenu>
-            </ListBox.ContextMenu>
-        </ListBox>
+            MouseDoubleClick="ListBox_VehicleInfos_MouseDoubleClick"
+            Style="{StaticResource ListBoxStyle_VehicleInfo}" />
     </Grid>
 
 </UserControl>

@@ -27,6 +27,7 @@
         <Setter Property="Margin" Value="5" />
         <Setter Property="Foreground" Value="Green" />
         <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <!--  根据GTA5是否运行呈现不同样式  -->

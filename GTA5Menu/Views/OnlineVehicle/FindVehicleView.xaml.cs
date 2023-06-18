@@ -62,50 +62,38 @@ public partial class FindVehicleView : UserControl
         FindVehiclesByModeName();
     }
 
-    private async void MenuItem_SpawnVehicleA_Click(object sender, RoutedEventArgs e)
+    private void ListBox_VehicleInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        Button_SpawnVehicleA_Click(null, null);
+    }
+
+    private async void Button_SpawnVehicleA_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
         }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请选择正确的载具，操作取消");
-        }
     }
 
-    private async void MenuItem_SpawnVehicleB_Click(object sender, RoutedEventArgs e)
+    private async void Button_SpawnVehicleB_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
         }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请选择正确的载具，操作取消");
-        }
     }
 
-    private void MenuItem_AddMyFavorite_Click(object sender, RoutedEventArgs e)
+    private void Button_AddMyFavorite_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_VehicleInfo.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             MyVehicleView.ActionAddMyFavorite(info);
         }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请选择正确的载具，操作取消");
-        }
-    }
-
-    private void ListBox_VehicleInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-        MenuItem_SpawnVehicleA_Click(null, null);
     }
 }

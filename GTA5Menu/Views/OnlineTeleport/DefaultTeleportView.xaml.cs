@@ -79,6 +79,11 @@ public partial class DefaultTeleportView : UserControl
     /// <param name="e"></param>
     private void ListBox_TeleportInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
+        Button_Teleport_Click(null, null);
+    }
+
+    private void Button_Teleport_Click(object sender, RoutedEventArgs e)
+    {
         AudioHelper.PlayClickSound();
 
         if (ListBox_TeleportInfos.SelectedItem is TeleportInfo info)

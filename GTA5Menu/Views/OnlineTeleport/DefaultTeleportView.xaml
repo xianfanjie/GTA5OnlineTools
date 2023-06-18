@@ -11,19 +11,41 @@
     mc:Ignorable="d">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="120" />
         </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="5,5,5,0"
+            Orientation="Horizontal">
+            <Button
+                x:Name="Button_Teleport"
+                Click="Button_Teleport_Click"
+                Content="传送到选中项"
+                IsEnabled="{Binding ElementName=ListBox_TeleportInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
+            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                提示：双击选中项可直接传送
+            </TextBlock>
+        </StackPanel>
         <!--  传送详细信息  -->
         <ListBox
             x:Name="ListBox_TeleportInfos"
+            Grid.Row="1"
+            Grid.Column="0"
             Margin="5"
             MouseDoubleClick="ListBox_TeleportInfos_MouseDoubleClick"
             Style="{StaticResource ListBoxStyle_TeleportInfo}" />
         <!--  传送分类信息  -->
         <ListBox
             x:Name="ListBox_TeleportClasses"
+            Grid.Row="1"
             Grid.Column="1"
             Margin="0,5,5,5"
             SelectionChanged="ListBox_TeleportClasses_SelectionChanged"

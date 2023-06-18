@@ -75,7 +75,7 @@ public partial class MyVehicleView : UserControl
             return;
 
         var vehicles = new List<Vehicles>();
-        foreach (ModelInfo info in ListBox_Vehicles.Items)
+        foreach (ModelInfo info in ListBox_VehicleInfos.Items)
         {
             vehicles.Add(new()
             {
@@ -102,52 +102,40 @@ public partial class MyVehicleView : UserControl
         }
     }
 
-    private async void MenuItem_SpawnVehicleA_Click(object sender, RoutedEventArgs e)
+    private void ListBox_VehicleInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        Button_SpawnVehicleA_Click(null, null);
+    }
+
+    private async void Button_SpawnVehicleA_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_Vehicles.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
         }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请选择正确的载具，操作取消");
-        }
     }
 
-    private async void MenuItem_SpawnVehicleB_Click(object sender, RoutedEventArgs e)
+    private async void Button_SpawnVehicleB_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_Vehicles.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
         }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请选择正确的载具，操作取消");
-        }
     }
 
-    private void MenuItem_DeleteMyFavorite_Click(object sender, RoutedEventArgs e)
+    private void Button_DeleteMyFavorite_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        if (ListBox_Vehicles.SelectedItem is ModelInfo info)
+        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
             MyFavorites.Remove(info);
 
             NotifierHelper.Show(NotifierType.Success, $"从我的收藏删除载具 {info.Name} 成功");
         }
-        else
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请选择正确的载具，操作取消");
-        }
-    }
-
-    private void ListBox_Vehicles_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-        MenuItem_SpawnVehicleA_Click(null, null);
     }
 }

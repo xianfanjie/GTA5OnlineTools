@@ -179,9 +179,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void BribeOrBlindCops(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 4654 + 1, isEnable ? 1 : 0);
-        Hacks.WriteGA(Base.oVMYCar + 4654 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
-        Hacks.WriteGA(Base.oVMYCar + 4654, isEnable ? 5 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4661 + 1, isEnable ? 1 : 0);           // _DISPLAY_HELP_TEXT("FM_LEST_NCPW"
+        Hacks.WriteGA(Base.oVMYCar + 4661 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4661, isEnable ? 5 : 0);
     }
 
     /// <summary>
@@ -190,9 +190,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void BribeAuthorities(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 4654 + 1, isEnable ? 1 : 0);
-        Hacks.WriteGA(Base.oVMYCar + 4654 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
-        Hacks.WriteGA(Base.oVMYCar + 4654, isEnable ? 21 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4661 + 1, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4661 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 4661, isEnable ? 21 : 0);
     }
 
     /// <summary>
@@ -465,7 +465,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void TriggerRCBandito(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 6874, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 6879, isEnable ? 1 : 0);               // if (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), true) || PED::IS_PED_GETTING_INTO_A_VEHICLE(PLAYER::PLAYER_PED_ID()))
     }
 
     /// <summary>
@@ -474,6 +474,6 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void TriggerMiniTank(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 6875, isEnable ? 1 : 0);
+        Hacks.WriteGA(Base.oVMYCar + 6880, isEnable ? 1 : 0);
     }
 }

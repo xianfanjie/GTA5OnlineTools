@@ -39,7 +39,7 @@ internal class Program
             //Console.WriteLine($"{vEnum}");
             //Console.WriteLine($"0x{Joaat(vEnum.ToString()):X8}");
 
-            //Console.WriteLine($"{vEnum.ToString().ToUpper()} = 0x{Joaat(vEnum.ToString()):X8},");
+            //Console.WriteLine($"{vEnum} = 0x{Joaat(vEnum.ToString()):X8},");
 
             var index = imgNames.IndexOf(vEnum.ToString().ToLower());
             if (index == -1)

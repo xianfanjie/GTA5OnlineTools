@@ -12,8 +12,8 @@ public static class Vehicle2
     /// <param name="model">载具名称</param>
     /// <param name="z255">高度</param>
     /// <param name="dist">距离</param>
-    /// <param name="mod">Mod</param>
-    public static async Task SpawnVehicle(string model, float z255, int dist, int[] mod)
+    /// <param name="mods">Mod</param>
+    public static async Task SpawnVehicle(string model, float z255, int dist, int[] mods)
     {
         await Task.Run(() =>
         {
@@ -56,18 +56,18 @@ public static class Vehicle2
                 {
                     if (i < 17)
                     {
-                        Hacks.WriteGA(Base.oVMCreate + 27 + 10 + i, mod[i]);
+                        Hacks.WriteGA(Base.oVMCreate + 27 + 10 + i, mods[i]);
                     }
                     else if (i > 22)
                     {
-                        Hacks.WriteGA(Base.oVMCreate + 27 + 10 + 6 + i, mod[i]);
+                        Hacks.WriteGA(Base.oVMCreate + 27 + 10 + 6 + i, mods[i]);
                     }
                 }
             }
 
             // 随机涂装
-            if (mod[48] > 0)
-                Hacks.WriteGA(Base.oVMCreate + 27 + 10 + 48, new Random().Next(0, mod[48] + 1));
+            if (mods[48] > 0)
+                Hacks.WriteGA(Base.oVMCreate + 27 + 10 + 48, new Random().Next(0, mods[48] + 1));
 
             Hacks.WriteGA(Base.oVMCreate + 27 + 5, -1);      // primary -1 auto 159  主色调
             Hacks.WriteGA(Base.oVMCreate + 27 + 6, -1);      // secondary -1 auto 159  副色调
@@ -77,7 +77,7 @@ public static class Vehicle2
             Hacks.WriteGA(Base.oVMCreate + 27 + 69, -1);     // Wheel type  车轮类型
             Hacks.WriteGA(Base.oVMCreate + 27 + 33, -1);     // wheel selection  车轮选择
 
-            Hacks.WriteGA(Base.oVMCreate + 27 + 24, new Random().Next(0, mod[14] + 1));      // 喇叭
+            Hacks.WriteGA(Base.oVMCreate + 27 + 24, new Random().Next(0, mods[14] + 1));      // 喇叭
             Hacks.WriteGA(Base.oVMCreate + 27 + 27, 1);      // Turbo (0-1)  涡轮增压
             Hacks.WriteGA(Base.oVMCreate + 27 + 28, 1);      // weaponised ownerflag
 
@@ -98,46 +98,6 @@ public static class Vehicle2
 
             Hacks.WriteGA(Base.oVMCreate + 27 + 95, 14);     // Ownerflag  拥有者标志
             Hacks.WriteGA(Base.oVMCreate + 27 + 94, 2);      // Personal car ownerflag  个人载具拥有者标志
-        });
-    }
-
-    /// <summary>
-    /// 另一种生成线上载具的方式
-    /// </summary>
-    /// <param name="model"></param>
-    /// <param name="z255"></param>
-    /// <param name="dist"></param>
-    /// <returns></returns>
-    public async static Task SpawnVehicle(string model, float z255, int dist)
-    {
-        await Task.Run(() =>
-        {
-            if (string.IsNullOrEmpty(model))
-                return;
-
-            long pCPed = Globals.GetCPed();
-            Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
-
-            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
-
-            float sin = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightX);
-            float cos = Memory.Read<float>(pCNavigation + CPed.CNavigation.ForwardX);
-
-            vector3.X += cos * dist;
-            vector3.Y += sin * dist;
-
-            if (z255 == -255.0f)
-                vector3.Z = z255;
-            else
-                vector3.Z += z255;
-
-            Hacks.WriteGA(2639783 + 46, Hacks.Joaat(model));    // 载具哈希值
-
-            Hacks.WriteGA(2639783 + 42 + 0, vector3.X);         // 载具坐标x
-            Hacks.WriteGA(2639783 + 42 + 1, vector3.Y);         // 载具坐标y
-            Hacks.WriteGA(2639783 + 42 + 2, vector3.Z);         // 载具坐标z
-
-            Hacks.WriteGA(2639783 + 41, true);            // trigger
         });
     }
 

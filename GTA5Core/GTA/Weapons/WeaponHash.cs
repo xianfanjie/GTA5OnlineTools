@@ -80,6 +80,7 @@ public static class WeaponHash
         new WeaponInfo(){ Name="冲锋手枪", Value="weapon_machinepistol" },
         new WeaponInfo(){ Name="迷你冲锋枪", Value="weapon_minismg" },
         new WeaponInfo(){ Name="古森柏冲锋枪", Value="weapon_gusenberg" },
+        new WeaponInfo(){ Name="战术冲锋枪", Value="weapon_tecpistol" },
     };
 
     /// <summary>

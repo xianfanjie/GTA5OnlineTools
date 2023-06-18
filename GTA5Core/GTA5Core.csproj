@@ -16,26 +16,6 @@
 		<DebugType>full</DebugType>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <None Remove="Assets\Vehicles\avenger3.png" />
-	  <None Remove="Assets\Vehicles\avenger4.png" />
-	  <None Remove="Assets\Vehicles\brigham.png" />
-	  <None Remove="Assets\Vehicles\buffalo5.png" />
-	  <None Remove="Assets\Vehicles\clique2.png" />
-	  <None Remove="Assets\Vehicles\conada2.png" />
-	  <None Remove="Assets\Vehicles\coureur.png" />
-	  <None Remove="Assets\Vehicles\gauntlet6.png" />
-	  <None Remove="Assets\Vehicles\inductor.png" />
-	  <None Remove="Assets\Vehicles\inductor2.png" />
-	  <None Remove="Assets\Vehicles\l35.png" />
-	  <None Remove="Assets\Vehicles\monstrociti.png" />
-	  <None Remove="Assets\Vehicles\raiju.png" />
-	  <None Remove="Assets\Vehicles\ratel.png" />
-	  <None Remove="Assets\Vehicles\speedo5.png" />
-	  <None Remove="Assets\Vehicles\stingertt.png" />
-	  <None Remove="Assets\Vehicles\streamer216.png" />
-	</ItemGroup>
-
     <ItemGroup>
         <Page Update="Properties\DesignTimeResources.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -960,6 +940,7 @@
 		<Resource Include="Assets\Weapons\weapon_stungun_mp.png" />
 		<Resource Include="Assets\Weapons\weapon_switchblade.png" />
 		<Resource Include="Assets\Weapons\weapon_tacticalrifle.png" />
+		<Resource Include="Assets\Weapons\weapon_tecpistol.png" />
 		<Resource Include="Assets\Weapons\weapon_unarmed.png" />
 		<Resource Include="Assets\Weapons\weapon_vintagepistol.png" />
 		<Resource Include="Assets\Weapons\weapon_wrench.png" />

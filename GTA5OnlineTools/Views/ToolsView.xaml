@@ -38,13 +38,13 @@
                         Command="{Binding ToolsButtonClickCommand}"
                         CommandParameter="RestartApp"
                         Content="重启程序"
-                        Icon="&#xe653;"
+                        Icon="&#xe7cb;"
                         Style="{StaticResource ButtonStyle_Tools}" />
                     <ui:ButtonIcon
                         Command="{Binding ToolsButtonClickCommand}"
                         CommandParameter="OpenUpdateWindow"
                         Content="打开更新窗口"
-                        Icon="&#xe652;"
+                        Icon="&#xe6e9;"
                         Style="{StaticResource ButtonStyle_Tools}" />
                     <ui:ButtonIcon
                         Command="{Binding ToolsButtonClickCommand}"
@@ -74,7 +74,7 @@
                         Command="{Binding ToolsButtonClickCommand}"
                         CommandParameter="ManualGC"
                         Content="GC垃圾回收"
-                        Icon="&#xe651;"
+                        Icon="&#xe63a;"
                         Style="{StaticResource ButtonStyle_Tools}" />
                 </WrapPanel>
                 <!--  //////////////////////////////////////////////  -->
@@ -83,13 +83,13 @@
                         Command="{Binding ToolsButtonClickCommand}"
                         CommandParameter="RefreshDNSCache"
                         Content="刷新DNS缓存"
-                        Icon="&#xe62c;"
+                        Icon="&#xe6dc;"
                         Style="{StaticResource ButtonStyle_Tools}" />
                     <ui:ButtonIcon
                         Command="{Binding ToolsButtonClickCommand}"
                         CommandParameter="EditHosts"
                         Content="编辑Hosts文件"
-                        Icon="&#xe675;"
+                        Icon="&#xe6d8;"
                         Style="{StaticResource ButtonStyle_Tools}" />
                     <ui:ButtonIcon
                         Command="{Binding ToolsButtonClickCommand}"

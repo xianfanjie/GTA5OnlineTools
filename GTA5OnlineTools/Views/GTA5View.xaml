@@ -25,7 +25,7 @@
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="HeistsEdit"
             Content="抢劫任务编辑器"
-            Icon="&#xe63b;"
+            Icon="&#xe6b5;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
@@ -33,7 +33,7 @@
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="StatScripts"
             Content="STAT自动化脚本"
-            Icon="&#xe636;"
+            Icon="&#xe67a;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon

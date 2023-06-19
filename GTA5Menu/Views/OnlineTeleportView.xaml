@@ -26,14 +26,12 @@
                     Command="{Binding NavigateCommand}"
                     CommandParameter="CustomTeleportView"
                     Content="自定传送"
-                    Icon="&#xe610;"
                     IsChecked="True"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="DefaultTeleportView"
                     Content="系统预设"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>
         </Border>

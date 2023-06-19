@@ -26,44 +26,37 @@
                     Command="{Binding NavigateCommand}"
                     CommandParameter="SelfStateView"
                     Content="自身属性"
-                    Icon="&#xe610;"
                     IsChecked="True"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="WorldFunctionView"
                     Content="世界功能"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="OnlineOptionView"
                     Content="线上选项"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="JobHelperView"
                     Content="任务帮手"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="SessionChatView"
                     Content="战局聊天"
-                    Icon="&#xe61f;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="ExternalOverlayView"
                     Content="外部ESP"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="ReadMeView"
                     Content="README"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>
         </Border>

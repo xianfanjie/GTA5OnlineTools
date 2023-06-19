@@ -26,32 +26,27 @@
                     Command="{Binding NavigateCommand}"
                     CommandParameter="MyVehicleView"
                     Content="我的收藏"
-                    Icon="&#xe610;"
                     IsChecked="True"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="FindVehicleView"
                     Content="搜索载具"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="AllVehicleView"
                     Content="全部载具"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="VehicleOptionView"
                     Content="载具设置"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="DriverButlerView"
                     Content="随身技工"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>
         </Border>

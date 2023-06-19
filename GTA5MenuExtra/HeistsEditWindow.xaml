@@ -47,38 +47,32 @@
                     Command="{Binding NavigateCommand}"
                     CommandParameter="ReadMeView"
                     Content="使用说明"
-                    Icon="&#xe610;"
                     IsChecked="True"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="ContractView"
                     Content="事所合约"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="PericoView"
                     Content="佩里克岛"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="CasinoView"
                     Content="赌场抢劫"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="DoomsdayView"
                     Content="末日抢劫"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="ApartmentView"
                     Content="公寓抢劫"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>
         </Border>

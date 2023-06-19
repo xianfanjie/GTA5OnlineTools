@@ -96,7 +96,9 @@ public partial class App : Application
     {
         var builder = new StringBuilder();
         builder.AppendLine("===================================");
-        builder.AppendLine($"【当前版本】：{CoreUtil.ClientVersion}");
+        builder.AppendLine($"【电脑名称】：{Environment.MachineName}");
+        builder.AppendLine($"【框架版本】：{RuntimeInformation.FrameworkDescription}"); 
+        builder.AppendLine($"【程序版本】：{CoreUtil.ClientVersion}");
         builder.AppendLine($"【编译时间】：{CoreUtil.BuildDate}");
         builder.AppendLine($"【操作建议】：请将此日志发送到 GitHub Issues");
         builder.AppendLine($"【反馈地址】：https://github.com/CrazyZhang666/GTA5OnlineTools/issues");

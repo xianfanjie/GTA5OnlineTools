@@ -26,14 +26,12 @@
                     Command="{Binding NavigateCommand}"
                     CommandParameter="SpawnWeaponView"
                     Content="刷出武器"
-                    Icon="&#xe610;"
                     IsChecked="True"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="WeaponOptionView"
                     Content="武器设置"
-                    Icon="&#xe610;"
                     Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>
         </Border>

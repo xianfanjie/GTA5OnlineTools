@@ -7,6 +7,7 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Margin" Value="5" />
+        <Setter Property="Icon" Value="&#xe616;" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:LabelIcon}">
@@ -25,11 +26,10 @@
                             CornerRadius="2"
                             SnapsToDevicePixels="True">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
+                                <controls:IconFont
                                     Margin="0,0,5,0"
                                     FontSize="16"
-                                    Style="{DynamicResource TextBlockStyle_IconFontVerCen}"
-                                    Text="{TemplateBinding Icon}" />
+                                    Icon="{TemplateBinding Icon}" />
                                 <ContentPresenter
                                     VerticalAlignment="Center"
                                     TextElement.FontWeight="Bold"

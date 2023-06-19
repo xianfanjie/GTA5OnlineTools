@@ -195,15 +195,15 @@ public static class WeaponHash
     /// </summary>
     public static readonly List<WeaponClass> WeaponClasses = new()
     {
-        new WeaponClass(){ Icon="\xe610", Name="近战", WeaponInfos=Melee },
-        new WeaponClass(){ Icon="\xe610", Name="手枪", WeaponInfos=Handguns },
-        new WeaponClass(){ Icon="\xe610", Name="冲锋枪", WeaponInfos=SubmachineGuns },
-        new WeaponClass(){ Icon="\xe610", Name="霰弹枪", WeaponInfos=Shotguns },
-        new WeaponClass(){ Icon="\xe610", Name="突击步枪", WeaponInfos=AssaultRifles },
-        new WeaponClass(){ Icon="\xe610", Name="轻机枪", WeaponInfos=LightMachineGuns },
-        new WeaponClass(){ Icon="\xe610", Name="狙击枪", WeaponInfos=SniperRifles },
-        new WeaponClass(){ Icon="\xe610", Name="重武器", WeaponInfos=HeavyWeapons },
-        new WeaponClass(){ Icon="\xe610", Name="投掷物", WeaponInfos=Throwables },
-        new WeaponClass(){ Icon="\xe610", Name="杂项", WeaponInfos=Miscellaneous }
+        new WeaponClass(){ Icon="\xe616", Name="近战", WeaponInfos=Melee },
+        new WeaponClass(){ Icon="\xe616", Name="手枪", WeaponInfos=Handguns },
+        new WeaponClass(){ Icon="\xe616", Name="冲锋枪", WeaponInfos=SubmachineGuns },
+        new WeaponClass(){ Icon="\xe616", Name="霰弹枪", WeaponInfos=Shotguns },
+        new WeaponClass(){ Icon="\xe616", Name="突击步枪", WeaponInfos=AssaultRifles },
+        new WeaponClass(){ Icon="\xe616", Name="轻机枪", WeaponInfos=LightMachineGuns },
+        new WeaponClass(){ Icon="\xe616", Name="狙击枪", WeaponInfos=SniperRifles },
+        new WeaponClass(){ Icon="\xe616", Name="重武器", WeaponInfos=HeavyWeapons },
+        new WeaponClass(){ Icon="\xe616", Name="投掷物", WeaponInfos=Throwables },
+        new WeaponClass(){ Icon="\xe616", Name="杂项", WeaponInfos=Miscellaneous }
     };
 }

@@ -53,6 +53,7 @@
                     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                    <Setter Property="Icon" Value="&#xe616;" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type controls:TabItemIcon}">
@@ -68,11 +69,10 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Orientation="Horizontal">
-                                        <TextBlock
+                                        <controls:IconFont
                                             Margin="0,0,5,0"
                                             FontSize="16"
-                                            Style="{DynamicResource TextBlockStyle_IconFontVerCen}"
-                                            Text="{TemplateBinding Icon}" />
+                                            Icon="{TemplateBinding Icon}" />
                                         <ContentPresenter
                                             x:Name="contentPresenter"
                                             VerticalAlignment="Center"

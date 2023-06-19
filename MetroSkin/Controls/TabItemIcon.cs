@@ -11,5 +11,5 @@ public class TabItemIcon : TabItem
         set { SetValue(IconProperty, value); }
     }
     public static readonly DependencyProperty IconProperty =
-        DependencyProperty.Register("Icon", typeof(string), typeof(TabItemIcon), new PropertyMetadata("\xe610"));
+        DependencyProperty.Register("Icon", typeof(string), typeof(TabItemIcon), new PropertyMetadata(default));
 }

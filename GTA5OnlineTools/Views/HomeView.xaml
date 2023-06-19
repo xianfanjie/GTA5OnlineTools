@@ -19,7 +19,7 @@
         <UniformGrid Grid.Row="0" Columns="2">
             <ui:LabelIcon
                 Content="通知公告"
-                Icon="&#xe61e;"
+                Icon="&#xe62d;"
                 Style="{StaticResource LabelIconStyle_MenuTitle}" />
             <ui:LabelIcon
                 Content="更新日志"

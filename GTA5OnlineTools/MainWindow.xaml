@@ -75,7 +75,7 @@
                     CommandParameter="HacksView"
                     Content="第三方"
                     GroupName="NavMenu"
-                    Icon="&#xe691;"
+                    Icon="&#xe63b;"
                     Style="{StaticResource NavMenuStyle_Main}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
@@ -89,21 +89,21 @@
                     CommandParameter="ToolsView"
                     Content="工具"
                     GroupName="NavMenu"
-                    Icon="&#xe606;"
+                    Icon="&#xe648;"
                     Style="{StaticResource NavMenuStyle_Main}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="OptionsView"
                     Content="选项"
                     GroupName="NavMenu"
-                    Icon="&#xe78e;"
+                    Icon="&#xe646;"
                     Style="{StaticResource NavMenuStyle_Main}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
                     CommandParameter="AboutView"
                     Content="关于"
                     GroupName="NavMenu"
-                    Icon="&#xe625;"
+                    Icon="&#xe644;"
                     Style="{StaticResource NavMenuStyle_Main}" />
             </StackPanel>
         </DockPanel>

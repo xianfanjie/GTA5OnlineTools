@@ -15,6 +15,7 @@
             <UniformGrid Columns="3">
                 <StackPanel Margin="5">
                     <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="公寓抢劫" />
+                    <ui:TextKeyValue Key="MP0_HEIST_PLANNING_STAGE" Value="-1" />
                     <Button
                         x:Name="Button_HEIST_PLANNING_STAGE"
                         Click="Button_HEIST_PLANNING_STAGE_Click"

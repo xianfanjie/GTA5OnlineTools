@@ -42,12 +42,12 @@
             </StackPanel.Resources>
             <TextBlock ToolTip="项目开源地址">
                 <Hyperlink NavigateUri="https://github.com/CrazyZhang666/GTA5OnlineTools" RequestNavigate="Hyperlink_RequestNavigate">
-                    &#xe686;
+                    &#xe6e1;
                 </Hyperlink>
             </TextBlock>
             <TextBlock ToolTip="小助手官方Discord频道">
                 <Hyperlink NavigateUri="https://discord.gg/7GuNzajfhD" RequestNavigate="Hyperlink_RequestNavigate">
-                    &#xe71d;
+                    &#xe6e3;
                 </Hyperlink>
             </TextBlock>
             <TextBlock ToolTip="Bug反馈">
@@ -57,7 +57,7 @@
             </TextBlock>
             <TextBlock ToolTip="小助手官方网站">
                 <Hyperlink NavigateUri="https://crazyzhang.cn" RequestNavigate="Hyperlink_RequestNavigate">
-                    &#xe975;
+                    &#xe65b;
                 </Hyperlink>
             </TextBlock>
             <TextBlock ToolTip="小助手邮箱">

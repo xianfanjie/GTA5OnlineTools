@@ -1,4 +1,4 @@
-﻿namespace GTA5MenuExtra.Views.HeistsEdit;
+﻿namespace GTA5Heists.Views;
 
 /// <summary>
 /// PericoView.xaml 的交互逻辑

@@ -45,14 +45,9 @@
             <StackPanel x:Name="Grid_NavMenu">
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
-                    CommandParameter="ReadMeView"
-                    Content="使用说明"
-                    IsChecked="True"
-                    Style="{StaticResource NavMenuStyle_Normal}" />
-                <ui:NavMenu
-                    Command="{Binding NavigateCommand}"
                     CommandParameter="ContractView"
                     Content="事所合约"
+                    IsChecked="True"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"

@@ -16,7 +16,6 @@ public partial class MoneyView : UserControl
         InitializeComponent();
     }
 
-    #region 分红数据
     private void Button_Read_Click(object sender, RoutedEventArgs e)
     {
         // 公寓抢劫玩家分红比例
@@ -73,5 +72,4 @@ public partial class MoneyView : UserControl
             NotifierHelper.ShowException(ex);
         }
     }
-    #endregion
 }

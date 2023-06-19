@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="GTA5MenuExtra.Views.HeistsEdit.ContractView"
+    x:Class="GTA5Heists.Views.ContractView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,6 +14,10 @@
     <TabControl Margin="5">
         <ui:TabItemIcon Header="前置任务">
             <views:MissionView />
+        </ui:TabItemIcon>
+        <!--  ///////////////////  -->
+        <ui:TabItemIcon Header="分红数据">
+            <views:MoneyView />
         </ui:TabItemIcon>
         <!--  ///////////////////  -->
     </TabControl>

@@ -18,7 +18,6 @@ public partial class MoneyView : UserControl
 
     private void Button_Read_Click(object sender, RoutedEventArgs e)
     {
-        // hash: -920277662
         TextBox_FIXER_Value.Text = Hacks.ReadGA<int>(fixer_ratio).ToString();
         TextBox_TUNER_Value0.Text = Hacks.ReadGA<int>(tuner_ratio + 1).ToString();
         TextBox_TUNER_Value1.Text = Hacks.ReadGA<int>(tuner_ratio + 2).ToString();

@@ -37,7 +37,7 @@
             <ColumnDefinition Width="300" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <!--  ##########  -->
+        <!--  ///////////  -->
         <DockPanel>
             <Button
                 x:Name="Button_ImportGTAHax"
@@ -51,12 +51,13 @@
                 IsReadOnly="False"
                 Style="{StaticResource TextBoxStyle_Logger}" />
         </DockPanel>
-        <!--  ##########  -->
+        <!--  ///////////  -->
         <ListBox
             x:Name="ListBox_GTAHaxClass"
             Grid.Column="1"
             Margin="0,5,5,5"
-            SelectionChanged="ListBox_GTAHaxClass_SelectionChanged" />
+            SelectionChanged="ListBox_GTAHaxClass_SelectionChanged"
+            Style="{StaticResource ListBoxStyle_Base}" />
     </Grid>
 
 </ui:Window>

@@ -8,7 +8,7 @@ namespace GTA5Heists.Views.Apartment;
 /// </summary>
 public partial class MoneyView : UserControl
 {
-    private const int apart_radio = 1938365 + 3008;
+    private const int apart_radio = 1938365 + 3008;     // +1 +2 +3 +4
     private const int apart_money = 262145 + 9300;
 
     public MoneyView()
@@ -18,7 +18,6 @@ public partial class MoneyView : UserControl
 
     private void Button_Read_Click(object sender, RoutedEventArgs e)
     {
-        // 公寓抢劫玩家分红比例
         TextBox_Apart_Player1.Text = Hacks.ReadGA<int>(apart_radio + 1).ToString();
         TextBox_Apart_Player2.Text = Hacks.ReadGA<int>(apart_radio + 2).ToString();
         TextBox_Apart_Player3.Text = Hacks.ReadGA<int>(apart_radio + 3).ToString();
@@ -48,7 +47,6 @@ public partial class MoneyView : UserControl
                 TextBox_Apart_SeriesA.Text.Trim() != "" &&
                 TextBox_Apart_PacificStandard.Text.Trim() != "")
             {
-                // 公寓抢劫玩家分红比例
                 Hacks.WriteGA(apart_radio + 1, Convert.ToInt32(TextBox_Apart_Player1.Text.Trim()));
                 Hacks.WriteGA(apart_radio + 2, Convert.ToInt32(TextBox_Apart_Player2.Text.Trim()));
                 Hacks.WriteGA(apart_radio + 3, Convert.ToInt32(TextBox_Apart_Player3.Text.Trim()));

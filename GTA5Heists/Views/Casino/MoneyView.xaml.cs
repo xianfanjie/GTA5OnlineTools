@@ -8,7 +8,7 @@ namespace GTA5Heists.Views.Casino;
 /// </summary>
 public partial class MoneyView : UserControl
 {
-    private const int player_ratio = 1971696 + 2325;
+    private const int player_ratio = 1971696 + 1497 + 736 + 92;
     private const int player_money = 262145 + 29011;     // -1638885821
 
     private const int ai_ratio = 262145 + 29023;

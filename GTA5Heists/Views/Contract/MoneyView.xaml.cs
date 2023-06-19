@@ -8,8 +8,8 @@ namespace GTA5Heists.Views.Contract;
 /// </summary>
 public partial class MoneyView : UserControl
 {
-    private const int fixer_ratio = 262145 + 31955;     // joaat("FIXER_FINALE_LEADER_CASH_REWARD")
-    private const int tuner_ratio = 262145 + 31249;     // joaat("TUNER_ROBBERY_LEADER_CASH_REWARD0"), &Global_262145.f_31249[0], true);
+    private const int fixer_ratio = 262145 + 31955;     // -2108119120  joaat("FIXER_FINALE_LEADER_CASH_REWARD")     Global_262145.f_31955
+    private const int tuner_ratio = 262145 + 31249;     // -920277662   joaat("TUNER_ROBBERY_LEADER_CASH_REWARD0")   Global_262145.f_31249[0]
 
     public MoneyView()
     {

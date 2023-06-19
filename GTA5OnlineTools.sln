@@ -38,6 +38,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormLib", "Vendor\WinFor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5MenuExtra", "GTA5MenuExtra\GTA5MenuExtra.csproj", "{43538105-9FD4-4EA4-AF29-90EECD69294E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTA5Heists", "GTA5Heists\GTA5Heists.csproj", "{1D87F83E-E438-417F-9959-2CA453210312}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -96,6 +98,10 @@ Global
 		{43538105-9FD4-4EA4-AF29-90EECD69294E}.Debug|x64.Build.0 = Debug|x64
 		{43538105-9FD4-4EA4-AF29-90EECD69294E}.Release|x64.ActiveCfg = Release|x64
 		{43538105-9FD4-4EA4-AF29-90EECD69294E}.Release|x64.Build.0 = Release|x64
+		{1D87F83E-E438-417F-9959-2CA453210312}.Debug|x64.ActiveCfg = Debug|x64
+		{1D87F83E-E438-417F-9959-2CA453210312}.Debug|x64.Build.0 = Debug|x64
+		{1D87F83E-E438-417F-9959-2CA453210312}.Release|x64.ActiveCfg = Release|x64
+		{1D87F83E-E438-417F-9959-2CA453210312}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

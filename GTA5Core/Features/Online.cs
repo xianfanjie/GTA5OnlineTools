@@ -28,18 +28,18 @@ public static class Online
             if (sessionID == -1)
             {
                 // 离开线上模式需要特殊处理
-                Hacks.WriteGA(Base.InitSessionCache, -1);
+                Hacks.WriteGA(Base.SessionSwitchCache, -1);
             }
             else
             {
                 // 正常切换战局，修改战局类型
-                Hacks.WriteGA(Base.InitSessionType, sessionID);
+                Hacks.WriteGA(Base.SessionSwitchType, sessionID);
             }
 
             // 切换战局状态
-            Hacks.WriteGA(Base.InitSessionState, 1);
+            Hacks.WriteGA(Base.SessionSwitchState, 1);
             await Task.Delay(200);
-            Hacks.WriteGA(Base.InitSessionState, 0);
+            Hacks.WriteGA(Base.SessionSwitchState, 0);
         });
     }
 
@@ -67,6 +67,15 @@ public static class Online
         Hacks.WriteGA(Base.Default + 8249, isEnable ? 2000000000 : 60000);     // 60000      joaat("ConstrainedKick_Warning2")
         Hacks.WriteGA(Base.Default + 8250, isEnable ? 2000000000 : 90000);     // 90000      joaat("ConstrainedKick_Warning3")
         Hacks.WriteGA(Base.Default + 8251, isEnable ? 2000000000 : 120000);    // 120000     joaat("ConstrainedKick_Kick")
+    }
+
+    /// <summary>
+    /// 挂机防踢（2023/06/19 未测试是否有效）
+    /// </summary>
+    public static void IdleKick()
+    {
+        Hacks.WriteGA(1654054 + 1155, 0);        // STATS::PLAYSTATS_IDLE_KICK(time);
+        Hacks.WriteGA(1654054 + 1171, 0);        // AUDIO::PLAY_SOUND_FRONTEND(-1, "MP_IDLE_TIMER", "HUD_FRONTEND_DEFAULT_SOUNDSET", true);
     }
 
     /// <summary>

@@ -142,17 +142,17 @@ public static class Hacks
             if (hash.IndexOf("_") == 0)
                 hash = $"MP{GetPlayerIndex()}{hash}";
 
-            uint oldhash = ReadGA<uint>(1665476 + 4);       // if (STATS::STAT_GET_INT(statHash,
-            int oldvalue = ReadGA<int>(980531 + 5525);
+            var oldHash = ReadGA<uint>(Base.statSetIntOldHash + 4);       // if (STATS::STAT_GET_INT(statHash,
+            var oldValue = ReadGA<int>(Base.statSetIntOldValue + 5525);
 
-            WriteGA(1665476 + 4, Joaat(hash));
-            WriteGA(980531 + 5525, value);
-            WriteGA(1654054 + 1139, -1);
+            WriteGA(Base.statSetIntOldHash + 4, Joaat(hash));
+            WriteGA(Base.statSetIntOldValue + 5525, value);
+            WriteGA(Base.statSetIntMinusOne + 1139, -1);
 
             await Task.Delay(1000);
 
-            WriteGA(1665476 + 4, oldhash);
-            WriteGA(980531 + 5525, oldvalue);
+            WriteGA(Base.statSetIntOldHash + 4, oldHash);
+            WriteGA(Base.statSetIntOldValue + 5525, oldValue);
         });
     }
 

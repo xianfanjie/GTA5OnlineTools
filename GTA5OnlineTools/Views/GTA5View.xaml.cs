@@ -2,6 +2,7 @@
 using GTA5Core.Native;
 using GTA5Menu;
 using GTA5MenuExtra;
+using GTA5Heists;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -14,8 +15,8 @@ namespace GTA5OnlineTools.Views;
 public partial class GTA5View : UserControl
 {
     private GTA5MenuWindow GTA5MenuWindow = null;
+    private GTA5HeistsWindow GTA5HeistsWindow = null;
 
-    private HeistsEditWindow HeistsEditWindow = null;
     private StatScriptsWindow StatScriptsWindow = null;
     private OutfitsEditWindow OutfitsEditWindow = null;
 
@@ -60,8 +61,8 @@ public partial class GTA5View : UserControl
                 case "ExternalMenu":
                     ExternalMenuClick();
                     break;
-                case "HeistsEdit":
-                    HeistsEditClick();
+                case "HeistsEditor":
+                    HeistsEditorClick();
                     break;
                 case "StatScripts":
                     StatScriptsClick();
@@ -108,26 +109,26 @@ public partial class GTA5View : UserControl
         }
     }
 
-    private void HeistsEditClick()
+    private void HeistsEditorClick()
     {
-        if (HeistsEditWindow == null)
+        if (GTA5HeistsWindow == null)
         {
-            HeistsEditWindow = new HeistsEditWindow();
-            HeistsEditWindow.Show();
+            GTA5HeistsWindow = new GTA5HeistsWindow();
+            GTA5HeistsWindow.Show();
         }
         else
         {
-            if (HeistsEditWindow.IsVisible)
+            if (GTA5HeistsWindow.IsVisible)
             {
-                HeistsEditWindow.Topmost = true;
-                HeistsEditWindow.Topmost = false;
-                HeistsEditWindow.WindowState = WindowState.Normal;
+                GTA5HeistsWindow.Topmost = true;
+                GTA5HeistsWindow.Topmost = false;
+                GTA5HeistsWindow.WindowState = WindowState.Normal;
             }
             else
             {
-                HeistsEditWindow = null;
-                HeistsEditWindow = new HeistsEditWindow();
-                HeistsEditWindow.Show();
+                GTA5HeistsWindow = null;
+                GTA5HeistsWindow = new GTA5HeistsWindow();
+                GTA5HeistsWindow.Show();
             }
         }
     }
@@ -198,10 +199,10 @@ public partial class GTA5View : UserControl
                 GTA5MenuWindow = null;
             }
 
-            if (HeistsEditWindow != null)
+            if (GTA5HeistsWindow != null)
             {
-                HeistsEditWindow.Close();
-                HeistsEditWindow = null;
+                GTA5HeistsWindow.Close();
+                GTA5HeistsWindow = null;
             }
 
             if (StatScriptsWindow != null)

@@ -23,7 +23,7 @@
         <ui:ButtonIcon
             Title="Heists Edit"
             Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="HeistsEdit"
+            CommandParameter="HeistsEditor"
             Content="抢劫任务编辑器"
             Icon="&#xe6b5;"
             Style="{StaticResource ButtonStyle_FuncModule}" />

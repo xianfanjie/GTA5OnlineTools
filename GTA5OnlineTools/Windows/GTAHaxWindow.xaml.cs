@@ -1,5 +1,5 @@
-﻿using GTA5Shared.Helper;
-using GTA5MenuExtra.Utils;
+﻿using GTA5Heists.Utils;
+using GTA5Shared.Helper;
 using GTA5Core.GTA.Stats;
 
 namespace GTA5OnlineTools.Windows;

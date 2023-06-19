@@ -19,19 +19,21 @@
                             <RowDefinition x:Name="RowDefinition0" Height="Auto" />
                             <RowDefinition x:Name="RowDefinition1" Height="*" />
                         </Grid.RowDefinitions>
-                        <TabPanel
-                            x:Name="headerPanel"
+                        <Border
                             Grid.Row="0"
-                            Margin="0"
-                            Panel.ZIndex="1"
-                            IsItemsHost="true"
-                            KeyboardNavigation.TabIndex="1" />
+                            Margin="3,0,3,0"
+                            BorderBrush="#C2C3C9"
+                            BorderThickness="0,0,0,1">
+                            <TabPanel
+                                x:Name="headerPanel"
+                                Panel.ZIndex="1"
+                                IsItemsHost="true"
+                                KeyboardNavigation.TabIndex="1" />
+                        </Border>
                         <Border
                             x:Name="contentPanel"
                             Grid.Row="1"
-                            Margin="0,2,0,0"
-                            BorderBrush="#D0D7DE"
-                            BorderThickness="0,1,0,0"
+                            Margin="0"
                             KeyboardNavigation.DirectionalNavigation="Contained"
                             KeyboardNavigation.TabIndex="2"
                             KeyboardNavigation.TabNavigation="Local"
@@ -59,8 +61,8 @@
                             <ControlTemplate TargetType="{x:Type controls:TabItemIcon}">
                                 <Border
                                     x:Name="border"
-                                    Margin="3,3,0,3"
-                                    Padding="6"
+                                    Margin="0,0,2,0"
+                                    Padding="5,7,5,7"
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="Transparent"

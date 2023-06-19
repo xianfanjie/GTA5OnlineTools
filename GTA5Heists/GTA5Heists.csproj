@@ -30,8 +30,4 @@
         <ProjectReference Include="..\MetroSkin\MetroSkin.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Assets\" />
-    </ItemGroup>
-
 </Project>

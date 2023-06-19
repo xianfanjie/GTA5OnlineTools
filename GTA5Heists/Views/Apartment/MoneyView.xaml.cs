@@ -30,7 +30,7 @@ public partial class MoneyView : UserControl
         TextBox_Apart_SeriesA.Text = Hacks.ReadGA<int>(apart_money + 3).ToString();
         TextBox_Apart_PacificStandard.Text = Hacks.ReadGA<int>(apart_money + 4).ToString();
 
-        NotifierHelper.Show(NotifierType.Success, "读取公寓抢劫玩家分红数据成功");
+        NotifierHelper.Show(NotifierType.Success, "读取 公寓抢劫 玩家分红数据 成功");
     }
 
     private void Button_Write_Click(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ public partial class MoneyView : UserControl
                 Hacks.WriteGA(apart_money + 3, Convert.ToInt32(TextBox_Apart_SeriesA.Text.Trim()));
                 Hacks.WriteGA(apart_money + 4, Convert.ToInt32(TextBox_Apart_PacificStandard.Text.Trim()));
 
-                NotifierHelper.Show(NotifierType.Success, "写入公寓抢劫玩家分红数据成功");
+                NotifierHelper.Show(NotifierType.Success, "写入 公寓抢劫 玩家分红数据 成功");
             }
             else
             {

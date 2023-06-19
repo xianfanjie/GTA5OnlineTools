@@ -28,6 +28,8 @@ public partial class MoneyView : UserControl
         TextBox_TUNER_Value5.Text = Hacks.ReadGA<int>(tuner_ratio + 6).ToString();
         TextBox_TUNER_Value6.Text = Hacks.ReadGA<int>(tuner_ratio + 7).ToString();
         TextBox_TUNER_Value7.Text = Hacks.ReadGA<int>(tuner_ratio + 8).ToString();
+
+        NotifierHelper.Show(NotifierType.Success, "读取 事所合约 玩家分红数据 成功");
     }
 
     private void Button_Write_Click(object sender, RoutedEventArgs e)
@@ -53,6 +55,8 @@ public partial class MoneyView : UserControl
                 Hacks.WriteGA(tuner_ratio + 6, Convert.ToInt32(TextBox_TUNER_Value5.Text.Trim()));
                 Hacks.WriteGA(tuner_ratio + 7, Convert.ToInt32(TextBox_TUNER_Value6.Text.Trim()));
                 Hacks.WriteGA(tuner_ratio + 8, Convert.ToInt32(TextBox_TUNER_Value7.Text.Trim()));
+
+                NotifierHelper.Show(NotifierType.Success, "写入 事所合约 玩家分红数据 成功");
             }
             else
             {

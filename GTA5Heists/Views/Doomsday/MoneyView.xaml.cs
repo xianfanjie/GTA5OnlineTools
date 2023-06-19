@@ -8,8 +8,8 @@ namespace GTA5Heists.Views.Doomsday;
 /// </summary>
 public partial class MoneyView : UserControl
 {
-    private const int doomsday_player_ration = 1967630 + 812 + 50;  // 
-    private const int doomsday_player_money = 262145 + 9305;        // joaat("GANGOPS_THE_IAA_JOB_CASH_REWARD")
+    private const int player_ratio = 1967630 + 812 + 50;  // 
+    private const int player_money = 262145 + 9305;        // joaat("GANGOPS_THE_IAA_JOB_CASH_REWARD")
 
     public MoneyView()
     {
@@ -18,15 +18,16 @@ public partial class MoneyView : UserControl
 
     private void Button_Read_Click(object sender, RoutedEventArgs e)
     {
-        // 末日抢劫玩家分红比例
-        TextBox_Doomsday_Player1.Text = Hacks.ReadGA<int>(doomsday_player_ration + 1).ToString();
-        TextBox_Doomsday_Player2.Text = Hacks.ReadGA<int>(doomsday_player_ration + 2).ToString();
-        TextBox_Doomsday_Player3.Text = Hacks.ReadGA<int>(doomsday_player_ration + 3).ToString();
-        TextBox_Doomsday_Player4.Text = Hacks.ReadGA<int>(doomsday_player_ration + 4).ToString();
+        TextBox_Doomsday_Player1.Text = Hacks.ReadGA<int>(player_ratio + 1).ToString();
+        TextBox_Doomsday_Player2.Text = Hacks.ReadGA<int>(player_ratio + 2).ToString();
+        TextBox_Doomsday_Player3.Text = Hacks.ReadGA<int>(player_ratio + 3).ToString();
+        TextBox_Doomsday_Player4.Text = Hacks.ReadGA<int>(player_ratio + 4).ToString();
 
-        TextBox_Doomsday_ActI.Text = Hacks.ReadGA<int>(doomsday_player_money + 0).ToString();
-        TextBox_Doomsday_ActII.Text = Hacks.ReadGA<int>(doomsday_player_money + 1).ToString();
-        TextBox_Doomsday_ActIII.Text = Hacks.ReadGA<int>(doomsday_player_money + 2).ToString();
+        TextBox_Doomsday_ActI.Text = Hacks.ReadGA<int>(player_money + 0).ToString();
+        TextBox_Doomsday_ActII.Text = Hacks.ReadGA<int>(player_money + 1).ToString();
+        TextBox_Doomsday_ActIII.Text = Hacks.ReadGA<int>(player_money + 2).ToString();
+
+        NotifierHelper.Show(NotifierType.Success, "读取 末日抢劫 玩家分红数据 成功");
     }
 
     private void Button_Write_Click(object sender, RoutedEventArgs e)
@@ -42,15 +43,16 @@ public partial class MoneyView : UserControl
                 TextBox_Doomsday_ActII.Text.Trim() != "" &&
                 TextBox_Doomsday_ActIII.Text.Trim() != "")
             {
-                // 末日抢劫玩家分红比例
-                Hacks.WriteGA(doomsday_player_ration + 1, Convert.ToInt32(TextBox_Doomsday_Player1.Text.Trim()));
-                Hacks.WriteGA(doomsday_player_ration + 2, Convert.ToInt32(TextBox_Doomsday_Player2.Text.Trim()));
-                Hacks.WriteGA(doomsday_player_ration + 3, Convert.ToInt32(TextBox_Doomsday_Player3.Text.Trim()));
-                Hacks.WriteGA(doomsday_player_ration + 4, Convert.ToInt32(TextBox_Doomsday_Player4.Text.Trim()));
+                Hacks.WriteGA(player_ratio + 1, Convert.ToInt32(TextBox_Doomsday_Player1.Text.Trim()));
+                Hacks.WriteGA(player_ratio + 2, Convert.ToInt32(TextBox_Doomsday_Player2.Text.Trim()));
+                Hacks.WriteGA(player_ratio + 3, Convert.ToInt32(TextBox_Doomsday_Player3.Text.Trim()));
+                Hacks.WriteGA(player_ratio + 4, Convert.ToInt32(TextBox_Doomsday_Player4.Text.Trim()));
 
-                Hacks.WriteGA(doomsday_player_money + 0, Convert.ToInt32(TextBox_Doomsday_ActI.Text.Trim()));
-                Hacks.WriteGA(doomsday_player_money + 1, Convert.ToInt32(TextBox_Doomsday_ActII.Text.Trim()));
-                Hacks.WriteGA(doomsday_player_money + 2, Convert.ToInt32(TextBox_Doomsday_ActIII.Text.Trim()));
+                Hacks.WriteGA(player_money + 0, Convert.ToInt32(TextBox_Doomsday_ActI.Text.Trim()));
+                Hacks.WriteGA(player_money + 1, Convert.ToInt32(TextBox_Doomsday_ActII.Text.Trim()));
+                Hacks.WriteGA(player_money + 2, Convert.ToInt32(TextBox_Doomsday_ActIII.Text.Trim()));
+
+                NotifierHelper.Show(NotifierType.Success, "写入 末日抢劫 玩家分红数据 成功");
             }
             else
             {

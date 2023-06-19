@@ -12,33 +12,13 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
-        <DockPanel>
-            <WrapPanel DockPanel.Dock="Bottom">
-                <Button
-                    x:Name="Button_BuildGTAHax"
-                    Margin="5,5,2,5"
-                    Click="Button_BuildGTAHax_Click"
-                    Content="生成GTAHax代码" />
-                <Button
-                    x:Name="Button_ImportGTAHax"
-                    Margin="2,5,5,5"
-                    Click="Button_ImportGTAHax_Click"
-                    Content="批量导入GTAHax" />
-            </WrapPanel>
-            <TextBox
-                x:Name="TextBox_PreviewGTAHax"
-                Margin="5,5,5,0"
-                AcceptsReturn="True"
-                IsReadOnly="False"
-                Style="{StaticResource TextBoxStyle_Logger}" />
-        </DockPanel>
-        <!--  ////////////  -->
-        <ScrollViewer Grid.Column="1" Margin="5">
-            <StackPanel Orientation="Vertical">
+        <!--  ////////////////////////  -->
+        <ScrollViewer Margin="5">
+            <StackPanel>
                 <Border>
                     <Border.Style>
                         <Style TargetType="{x:Type Border}">
@@ -106,8 +86,8 @@
                 </TextBlock>
             </StackPanel>
         </ScrollViewer>
-        <!--  ////////////  -->
-        <ScrollViewer Grid.Column="2" Margin="5">
+        <!--  ////////////////////////  -->
+        <ScrollViewer Grid.Column="1" Margin="5">
             <StackPanel Orientation="Vertical">
                 <Border>
                     <Border.Style>
@@ -198,6 +178,27 @@
                 <CheckBox x:Name="CheckBox_H3OPT_BITSET0_0" Content="提交修改到第二块面板" />
             </StackPanel>
         </ScrollViewer>
+        <!--  ////////////////////////  -->
+        <DockPanel Grid.Column="2">
+            <UniformGrid Columns="2" DockPanel.Dock="Bottom">
+                <Button
+                    x:Name="Button_BuildGTAHax"
+                    Margin="5,5,2,5"
+                    Click="Button_BuildGTAHax_Click"
+                    Content="生成GTAHax代码" />
+                <Button
+                    x:Name="Button_ImportGTAHax"
+                    Margin="2,5,5,5"
+                    Click="Button_ImportGTAHax_Click"
+                    Content="批量导入GTAHax" />
+            </UniformGrid>
+            <TextBox
+                x:Name="TextBox_PreviewGTAHax"
+                Margin="5,5,5,0"
+                AcceptsReturn="True"
+                IsReadOnly="False"
+                Style="{StaticResource TextBoxStyle_Logger}" />
+        </DockPanel>
     </Grid>
 
 </UserControl>

@@ -3,6 +3,7 @@
 using GTA5Core.GTA.Teleports;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
+using GTA5Core.GTA.Vehicles;
 
 namespace GTA5Menu.Views.OnlineTeleport;
 
@@ -45,30 +46,29 @@ public partial class DefaultTeleportView : UserControl
     /// <param name="e"></param>
     private void ListBox_TeleportClasses_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        lock (this)
+        var index = ListBox_TeleportClasses.SelectedIndex;
+        if (index == -1)
+            return;
+
+        ListBox_TeleportInfos.Items.Clear();
+
+        foreach (var item in TeleportData.TeleportClasses[index].TeleportInfos)
         {
-            var index = ListBox_TeleportClasses.SelectedIndex;
-            if (index == -1)
-                return;
+            var currentIndex = index;
 
-            ListBox_TeleportInfos.Items.Clear();
-
-            foreach (var item in TeleportData.TeleportClasses[index].TeleportInfos)
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
             {
-                this.Dispatcher.Invoke(DispatcherPriority.Background, () =>
-                {
-                    if (index != ListBox_TeleportClasses.SelectedIndex)
-                        return;
+                if (currentIndex != ListBox_TeleportClasses.SelectedIndex)
+                    return;
 
-                    ListBox_TeleportInfos.Items.Add(new TeleportInfo()
-                    {
-                        Name = item.Name,
-                        X = item.X,
-                        Y = item.Y,
-                        Z = item.Z
-                    });
+                ListBox_TeleportInfos.Items.Add(new TeleportInfo()
+                {
+                    Name = item.Name,
+                    X = item.X,
+                    Y = item.Y,
+                    Z = item.Z
                 });
-            }
+            });
         }
     }
 

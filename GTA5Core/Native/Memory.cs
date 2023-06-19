@@ -126,7 +126,6 @@ public static class Memory
     /// </summary>
     /// <param name="pattern"></param>
     /// <returns></returns>
-    /// <exception cref="Exception"></exception>
     public static long FindPattern(string pattern)
     {
         long address = 0;
@@ -148,7 +147,7 @@ public static class Memory
 
         var moduleSize = GTA5Process.MainModule.ModuleMemorySize;
         if (moduleSize == 0)
-            throw new Exception($"模块 {GTA5Process.MainModule.ModuleName} 大小无效");
+            return address;
 
         var localModulebytes = new byte[moduleSize];
         Win32.ReadProcessMemory(GTA5ProHandle, GTA5ProBaseAddress, localModulebytes, moduleSize, out _);
@@ -179,11 +178,10 @@ public static class Memory
     }
 
     /// <summary>
-    /// 特征码搜索，结果为多个地址
+    /// 特征码搜索，结果为地址列表
     /// </summary>
     /// <param name="pattern"></param>
     /// <returns></returns>
-    /// <exception cref="Exception"></exception>
     public static List<long> FindPatterns(string pattern)
     {
         var address = new List<long>();
@@ -192,7 +190,7 @@ public static class Memory
 
         var moduleSize = GTA5Process.MainModule.ModuleMemorySize;
         if (moduleSize == 0)
-            throw new Exception($"模块 {GTA5Process.MainModule.ModuleName} 大小无效");
+            return address;
 
         var localModulebytes = new byte[moduleSize];
         Win32.ReadProcessMemory(GTA5ProHandle, GTA5ProBaseAddress, localModulebytes, moduleSize, out _);
@@ -222,33 +220,24 @@ public static class Memory
         return address;
     }
 
+    /// <summary>
+    /// 修正特征码偏移
+    /// </summary>
+    /// <param name="address"></param>
+    /// <returns></returns>
     public static long Rip_37(long address)
     {
         return address + Read<int>(address + 0x03) + 0x07;
     }
 
+    /// <summary>
+    /// 修正特征码偏移2
+    /// </summary>
+    /// <param name="address"></param>
+    /// <returns></returns>
     public static long Rip_6A(long address)
     {
         return address + Read<int>(address + 0x06) + 0x0A;
-    }
-
-    /// <summary>
-    /// 获取取偏移数组指针
-    /// </summary>
-    /// <param name="pointer"></param>
-    /// <param name="offset"></param>
-    private static long GetPtrAddress(long pointer, int[] offset)
-    {
-        var buffer = new byte[8];
-        Win32.ReadProcessMemory(GTA5ProHandle, pointer, buffer, buffer.Length, out _);
-
-        for (int i = 0; i < (offset.Length - 1); i++)
-        {
-            pointer = BitConverter.ToInt64(buffer, 0) + offset[i];
-            Win32.ReadProcessMemory(GTA5ProHandle, pointer, buffer, buffer.Length, out _);
-        }
-
-        return BitConverter.ToInt64(buffer, 0) + offset[^1];
     }
 
     /// <summary>
@@ -265,24 +254,10 @@ public static class Memory
     }
 
     /// <summary>
-    /// 泛型读取内存，带偏移数组
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="basePtr"></param>
-    /// <param name="offsets"></param>
-    public static T Read<T>(long basePtr, int[] offsets) where T : struct
-    {
-        var buffer = new byte[Marshal.SizeOf(typeof(T))];
-        Win32.ReadProcessMemory(GTA5ProHandle, GetPtrAddress(basePtr, offsets), buffer, buffer.Length, out _);
-        return ByteArrayToStructure<T>(buffer);
-    }
-
-    /// <summary>
     /// 泛型写入内存
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <param name="basePtr"></param>
-    /// <param name="offsets"></param>
+    /// <param name="address"></param>
     /// <param name="value"></param>
     public static void Write<T>(long address, T value) where T : struct
     {
@@ -291,28 +266,16 @@ public static class Memory
     }
 
     /// <summary>
-    /// 泛型写入内存，带偏移数组
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="address"></param>
-    /// <param name="value"></param>
-    public static void Write<T>(long basePtr, int[] offsets, T value) where T : struct
-    {
-        var buffer = StructureToByteArray(value);
-        Win32.WriteProcessMemory(GTA5ProHandle, GetPtrAddress(basePtr, offsets), buffer, buffer.Length, out _);
-    }
-
-    /// <summary>
     /// 读取矩阵数据
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="address"></param>
-    /// <param name="MatrixSize"></param>
+    /// <param name="matrixSize"></param>
     /// <returns></returns>
-    public static float[] ReadMatrix<T>(long address, int MatrixSize) where T : struct
+    public static float[] ReadMatrix<T>(long address, int matrixSize) where T : struct
     {
-        var ByteSize = Marshal.SizeOf(typeof(T));
-        var buffer = new byte[ByteSize * MatrixSize];
+        var byteSize = Marshal.SizeOf(typeof(T));
+        var buffer = new byte[byteSize * matrixSize];
         Win32.ReadProcessMemory(GTA5ProHandle, address, buffer, buffer.Length, out _);
         return ConvertToFloatArray(buffer);
     }
@@ -342,31 +305,6 @@ public static class Memory
     }
 
     /// <summary>
-    /// 读取字符串，带偏移数组
-    /// </summary>
-    /// <param name="basePtr"></param>
-    /// <param name="offsets"></param>
-    /// <param name="size"></param>
-    /// <returns></returns>
-    public static string ReadString(long basePtr, int[] offsets, int size)
-    {
-        var buffer = new byte[size];
-        Win32.ReadProcessMemory(GTA5ProHandle, GetPtrAddress(basePtr, offsets), buffer, size, out _);
-
-        for (int i = 0; i < buffer.Length; i++)
-        {
-            if (buffer[i] == 0)
-            {
-                var _buffer = new byte[i];
-                Buffer.BlockCopy(buffer, 0, _buffer, 0, i);
-                return Encoding.UTF8.GetString(_buffer);
-            }
-        }
-
-        return Encoding.UTF8.GetString(buffer);
-    }
-
-    /// <summary>
     /// 写入字符串
     /// </summary>
     /// <param name="address"></param>
@@ -375,18 +313,6 @@ public static class Memory
     {
         var buffer = new UTF8Encoding().GetBytes(str);
         Win32.WriteProcessMemory(GTA5ProHandle, address, buffer, buffer.Length, out _);
-    }
-
-    /// <summary>
-    /// 写入字符串，带偏移数组
-    /// </summary>
-    /// <param name="basePtr"></param>
-    /// <param name="offsets"></param>
-    /// <param name="str"></param>
-    public static void WriteString(long basePtr, int[] offsets, string str)
-    {
-        var buffer = new UTF8Encoding().GetBytes(str);
-        Win32.WriteProcessMemory(GTA5ProHandle, GetPtrAddress(basePtr, offsets), buffer, buffer.Length, out _);
     }
 
     /// <summary>
@@ -467,13 +393,10 @@ public static class Memory
     /// </summary>
     /// <param name="bytes"></param>
     /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
     private static float[] ConvertToFloatArray(byte[] bytes)
     {
         if (bytes.Length % 4 != 0)
-        {
-            throw new ArgumentException();
-        }
+            return Array.Empty<float>();
 
         var floats = new float[bytes.Length / 4];
         for (int i = 0; i < floats.Length; i++)

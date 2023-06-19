@@ -38,29 +38,28 @@ public partial class SpawnWeaponView : UserControl
 
     private void ListBox_WeaponClasses_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        lock (this)
+        var index = ListBox_WeaponClasses.SelectedIndex;
+        if (index == -1)
+            return;
+
+        ListBox_WeaponInfos.Items.Clear();
+
+        foreach (var item in WeaponHash.WeaponClasses[index].WeaponInfos)
         {
-            var index = ListBox_WeaponClasses.SelectedIndex;
-            if (index == -1)
-                return;
+            var currentIndex = index;
 
-            ListBox_WeaponInfos.Items.Clear();
-
-            foreach (var item in WeaponHash.WeaponClasses[index].WeaponInfos)
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
             {
-                if (index != ListBox_WeaponClasses.SelectedIndex)
+                if (currentIndex != ListBox_WeaponClasses.SelectedIndex)
                     return;
 
-                this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+                ListBox_WeaponInfos.Items.Add(new ModelInfo()
                 {
-                    ListBox_WeaponInfos.Items.Add(new ModelInfo()
-                    {
-                        Name = item.Name,
-                        Value = item.Value,
-                        Image = RAGEHelper.GetWeaponImage(item.Value)
-                    });
+                    Name = item.Name,
+                    Value = item.Value,
+                    Image = RAGEHelper.GetWeaponImage(item.Value)
                 });
-            }
+            });
         }
     }
 

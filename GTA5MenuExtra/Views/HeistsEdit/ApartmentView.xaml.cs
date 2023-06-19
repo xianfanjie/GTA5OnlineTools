@@ -1,5 +1,4 @@
 ﻿using GTA5Core.Features;
-using GTA5Shared.Helper;
 
 namespace GTA5MenuExtra.Views.HeistsEdit;
 

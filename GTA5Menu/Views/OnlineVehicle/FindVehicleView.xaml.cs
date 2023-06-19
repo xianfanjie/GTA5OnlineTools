@@ -29,7 +29,7 @@ public partial class FindVehicleView : UserControl
                 Name = info.Name,
                 Value = info.Value,
                 Image = info.Image,
-                Mod = info.Mods
+                Mods = info.Mods
             });
         }
     }
@@ -73,7 +73,7 @@ public partial class FindVehicleView : UserControl
 
         if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
-            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mods);
         }
     }
 
@@ -83,7 +83,7 @@ public partial class FindVehicleView : UserControl
 
         if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
-            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mods);
         }
     }
 

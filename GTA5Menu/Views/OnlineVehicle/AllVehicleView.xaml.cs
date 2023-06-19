@@ -37,31 +37,30 @@ public partial class AllVehicleView : UserControl
 
     private void ListBox_VehicleTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        lock (this)
+        var index = ListBox_VehicleClasses.SelectedIndex;
+        if (index == -1)
+            return;
+
+        ListBox_VehicleInfos.Items.Clear();
+
+        foreach (var item in VehicleHash.VehicleClasses[index].VehicleInfos)
         {
-            var index = ListBox_VehicleClasses.SelectedIndex;
-            if (index == -1)
-                return;
+            var currentIndex = index;
 
-            ListBox_VehicleInfos.Items.Clear();
-
-            foreach (var item in VehicleHash.VehicleClasses[index].VehicleInfos)
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
             {
-                this.Dispatcher.Invoke(DispatcherPriority.Background, () =>
-                {
-                    if (index != ListBox_VehicleClasses.SelectedIndex)
-                        return;
+                if (currentIndex != ListBox_VehicleClasses.SelectedIndex)
+                    return;
 
-                    ListBox_VehicleInfos.Items.Add(new ModelInfo()
-                    {
-                        Class = item.Class,
-                        Name = item.Name,
-                        Value = item.Value,
-                        Image = item.Image,
-                        Mod = item.Mods
-                    });
+                ListBox_VehicleInfos.Items.Add(new ModelInfo()
+                {
+                    Class = item.Class,
+                    Name = item.Name,
+                    Value = item.Value,
+                    Image = item.Image,
+                    Mods = item.Mods
                 });
-            }
+            });
         }
     }
 
@@ -76,7 +75,7 @@ public partial class AllVehicleView : UserControl
 
         if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
-            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mods);
         }
     }
 
@@ -86,7 +85,7 @@ public partial class AllVehicleView : UserControl
 
         if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
-            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mods);
         }
     }
 

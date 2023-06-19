@@ -58,7 +58,7 @@ public partial class MyVehicleView : UserControl
                         Name = info.Name,
                         Value = info.Value,
                         Image = RAGEHelper.GetVehicleImage(info.Value),
-                        Mod = info.Mods
+                        Mods = info.Mods
                     });
                     continue;
                 }
@@ -113,7 +113,7 @@ public partial class MyVehicleView : UserControl
 
         if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
-            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mods);
         }
     }
 
@@ -123,7 +123,7 @@ public partial class MyVehicleView : UserControl
 
         if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
-            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mod);
+            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mods);
         }
     }
 

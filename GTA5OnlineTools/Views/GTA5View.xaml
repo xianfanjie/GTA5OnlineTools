@@ -21,7 +21,7 @@
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
-            Title="Heists Edit"
+            Title="Heists Editor"
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="HeistsEditor"
             Content="抢劫任务编辑器"
@@ -37,11 +37,19 @@
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
-            Title="Outfits Edit"
+            Title="Outfits Editor"
             Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="OutfitsEdit"
+            CommandParameter="OutfitsEditor"
             Content="角色服装编辑器"
             Icon="&#xe8c7;"
+            Style="{StaticResource ButtonStyle_FuncModule}" />
+
+        <ui:ButtonIcon
+            Title="Speed Meter"
+            Command="{Binding GTA5ViewClickCommand}"
+            CommandParameter="SpeedMeter"
+            Content="车速表"
+            Icon="&#xeab4;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
     </WrapPanel>

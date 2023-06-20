@@ -2,7 +2,6 @@
 using GTA5Core.Native;
 using GTA5Menu;
 using GTA5MenuExtra;
-using GTA5Heists;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -15,10 +14,11 @@ namespace GTA5OnlineTools.Views;
 public partial class GTA5View : UserControl
 {
     private GTA5MenuWindow GTA5MenuWindow = null;
-    private GTA5HeistsWindow GTA5HeistsWindow = null;
+    private HeistsEditorWindow GTA5HeistsWindow = null;
 
     private StatScriptsWindow StatScriptsWindow = null;
-    private OutfitsEditWindow OutfitsEditWindow = null;
+    private OutfitsEditorWindow OutfitsEditorWindow = null;
+    private SpeedMeterWindow SpeedMeterWindow = null;
 
     /// <summary>
     /// 关闭全部GTA5窗口委托
@@ -67,8 +67,11 @@ public partial class GTA5View : UserControl
                 case "StatScripts":
                     StatScriptsClick();
                     break;
-                case "OutfitsEdit":
-                    OutfitsEditClick();
+                case "OutfitsEditor":
+                    OutfitsEditorClick();
+                    break;
+                case "SpeedMeter":
+                    SpeedMeterClick();
                     break;
             }
         }
@@ -113,7 +116,7 @@ public partial class GTA5View : UserControl
     {
         if (GTA5HeistsWindow == null)
         {
-            GTA5HeistsWindow = new GTA5HeistsWindow();
+            GTA5HeistsWindow = new HeistsEditorWindow();
             GTA5HeistsWindow.Show();
         }
         else
@@ -127,7 +130,7 @@ public partial class GTA5View : UserControl
             else
             {
                 GTA5HeistsWindow = null;
-                GTA5HeistsWindow = new GTA5HeistsWindow();
+                GTA5HeistsWindow = new HeistsEditorWindow();
                 GTA5HeistsWindow.Show();
             }
         }
@@ -157,26 +160,50 @@ public partial class GTA5View : UserControl
         }
     }
 
-    private void OutfitsEditClick()
+    private void OutfitsEditorClick()
     {
-        if (OutfitsEditWindow == null)
+        if (OutfitsEditorWindow == null)
         {
-            OutfitsEditWindow = new OutfitsEditWindow();
-            OutfitsEditWindow.Show();
+            OutfitsEditorWindow = new OutfitsEditorWindow();
+            OutfitsEditorWindow.Show();
         }
         else
         {
-            if (OutfitsEditWindow.IsVisible)
+            if (OutfitsEditorWindow.IsVisible)
             {
-                OutfitsEditWindow.Topmost = true;
-                OutfitsEditWindow.Topmost = false;
-                OutfitsEditWindow.WindowState = WindowState.Normal;
+                OutfitsEditorWindow.Topmost = true;
+                OutfitsEditorWindow.Topmost = false;
+                OutfitsEditorWindow.WindowState = WindowState.Normal;
             }
             else
             {
-                OutfitsEditWindow = null;
-                OutfitsEditWindow = new OutfitsEditWindow();
-                OutfitsEditWindow.Show();
+                OutfitsEditorWindow = null;
+                OutfitsEditorWindow = new OutfitsEditorWindow();
+                OutfitsEditorWindow.Show();
+            }
+        }
+    }
+
+    private void SpeedMeterClick()
+    {
+        if (SpeedMeterWindow == null)
+        {
+            SpeedMeterWindow = new SpeedMeterWindow();
+            SpeedMeterWindow.Show();
+        }
+        else
+        {
+            if (SpeedMeterWindow.IsVisible)
+            {
+                SpeedMeterWindow.Topmost = true;
+                SpeedMeterWindow.Topmost = false;
+                SpeedMeterWindow.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                SpeedMeterWindow = null;
+                SpeedMeterWindow = new SpeedMeterWindow();
+                SpeedMeterWindow.Show();
             }
         }
     }
@@ -211,10 +238,16 @@ public partial class GTA5View : UserControl
                 StatScriptsWindow = null;
             }
 
-            if (OutfitsEditWindow != null)
+            if (OutfitsEditorWindow != null)
             {
-                OutfitsEditWindow.Close();
-                OutfitsEditWindow = null;
+                OutfitsEditorWindow.Close();
+                OutfitsEditorWindow = null;
+            }
+
+            if (SpeedMeterWindow != null)
+            {
+                SpeedMeterWindow.Close();
+                SpeedMeterWindow = null;
             }
         });
     }

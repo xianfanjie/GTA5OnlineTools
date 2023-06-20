@@ -8,4 +8,5 @@ global using System.Threading;
 global using System.Threading.Tasks;
 global using System.ComponentModel;
 global using System.Collections.Generic;
+global using System.Runtime.Versioning;
 global using System.Runtime.InteropServices;

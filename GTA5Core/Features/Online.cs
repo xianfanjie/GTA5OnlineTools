@@ -469,7 +469,7 @@ public static class Online
     }
 
     /// <summary>
-    /// 进入RC匪徒
+    /// 进入RC匪徒z
     /// </summary>
     /// <param name="isEnable"></param>
     public static void TriggerRCBandito(bool isEnable)

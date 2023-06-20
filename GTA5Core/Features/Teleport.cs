@@ -300,35 +300,35 @@ public static class Teleport
     public static async void ToWaypointSuper()
     {
         Vector3 coords = WaypointPosition();
-        if (coords != Vector3.Zero)
+        if (coords == Vector3.Zero)
+            return;
+
+        if (coords.Z == -225.0f)
         {
-            if (coords.Z == -225.0f)
+            bool isFindGround = false;
+            float oldHeight = GetGroundZCoord();
+
+            for (float z = 0; z < 1000; z += 100)
             {
-                bool isFindGround = false;
-                float oldHeight = GetGroundZCoord();
+                coords.Z = z;
+                SetTeleportPosition(coords);
 
-                for (float z = 0; z < 1000; z += 100)
+                coords.Z = GetGroundZCoord();
+                if (coords.Z != 0.0f && coords.Z != oldHeight)
                 {
-                    coords.Z = z;
-                    SetTeleportPosition(coords);
-
-                    coords.Z = GetGroundZCoord();
-                    if (coords.Z != 0.0f && coords.Z != oldHeight)
-                    {
-                        isFindGround = true;
-                        coords.Z += 1.0f;
-                        break;
-                    }
-
-                    await Task.Delay(100);
+                    isFindGround = true;
+                    coords.Z += 1.0f;
+                    break;
                 }
 
-                if (!isFindGround)
-                    coords.Z = -301.0f;
+                await Task.Delay(100);
             }
 
-            SetTeleportPosition(coords);
+            if (!isFindGround)
+                coords.Z = -301.0f;
         }
+
+        SetTeleportPosition(coords);
     }
 
     /// <summary>

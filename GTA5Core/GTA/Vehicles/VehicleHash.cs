@@ -11,8 +11,8 @@ public static class VehicleHash
             {
                 info.Value = info.Value.ToLower();
                 info.Class = vClass.Name;
-                info.Hash = RAGEHelper.JOAAT(info.Value);
-                info.Image = RAGEHelper.GetVehicleImage(info.Value);
+                info.Hash = GTAHelper.JOAAT(info.Value);
+                info.Image = GTAHelper.GetVehicleImage(info.Value);
 
                 AllVehicles.Add(info);
             }

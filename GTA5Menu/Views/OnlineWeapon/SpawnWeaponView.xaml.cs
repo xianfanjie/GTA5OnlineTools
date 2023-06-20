@@ -57,7 +57,7 @@ public partial class SpawnWeaponView : UserControl
                 {
                     Name = item.Name,
                     Value = item.Value,
-                    Image = RAGEHelper.GetWeaponImage(item.Value)
+                    Image = GTAHelper.GetWeaponImage(item.Value)
                 });
             });
         }

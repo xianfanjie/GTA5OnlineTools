@@ -45,7 +45,7 @@ public partial class OptionsView : UserControl
                 break;
         }
 
-        TextBlock_Computer.Text = $"{Environment.MachineName}";
+        TextBlock_Computer.Text = $"{Environment.UserName}";
         TextBlock_Runtime.Text = $"{RuntimeInformation.FrameworkDescription}";
         TextBlock_Version.Text = $"{CoreUtil.ClientVersion}";
         TextBlock_Build.Text = $"{CoreUtil.BuildDate}";

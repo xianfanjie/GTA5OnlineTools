@@ -1,6 +1,6 @@
 ﻿namespace GTA5Core.GTA;
 
-public static class RAGEHelper
+public static class GTAHelper
 {
     /// <summary>
     /// 获取载具对应预览图

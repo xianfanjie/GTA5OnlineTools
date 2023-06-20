@@ -53,8 +53,8 @@ public class Overlay : IDisposable
             IsVisible = true
         };
 
-        _window.DestroyGraphics += _window_DestroyGraphics;
         _window.DrawGraphics += _window_DrawGraphics;
+        _window.DestroyGraphics += _window_DestroyGraphics;
         _window.SetupGraphics += _window_SetupGraphics;
 
         new Thread(AimbotThread)
@@ -89,7 +89,8 @@ public class Overlay : IDisposable
 
         if (e.RecreateResources)
         {
-            foreach (var pair in _brushes) pair.Value.Dispose();
+            foreach (var pair in _brushes)
+                pair.Value.Dispose();
         }
 
         _brushes["black"] = gfx.CreateSolidBrush(0, 0, 0);
@@ -103,15 +104,19 @@ public class Overlay : IDisposable
 
         _brushes["transparency"] = gfx.CreateSolidBrush(0, 0, 0, 0);
 
-        if (e.RecreateResources) return;
+        if (e.RecreateResources)
+            return;
 
         _fonts["Microsoft YaHei"] = gfx.CreateFont("Microsoft YaHei", 12);
     }
 
     private void _window_DestroyGraphics(object sender, DestroyGraphicsEventArgs e)
     {
-        foreach (var pair in _brushes) pair.Value.Dispose();
-        foreach (var pair in _fonts) pair.Value.Dispose();
+        foreach (var pair in _brushes) 
+            pair.Value.Dispose();
+
+        foreach (var pair in _fonts) 
+            pair.Value.Dispose();
     }
 
     private void _window_DrawGraphics(object sender, DrawGraphicsEventArgs e)

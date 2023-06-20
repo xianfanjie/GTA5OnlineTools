@@ -41,6 +41,7 @@
         <DockPanel>
             <Button
                 x:Name="Button_ImportGTAHax"
+                Margin="5"
                 Click="Button_ImportGTAHax_Click"
                 Content="导入GTAHax"
                 DockPanel.Dock="Bottom" />

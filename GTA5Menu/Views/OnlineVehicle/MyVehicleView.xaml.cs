@@ -57,7 +57,7 @@ public partial class MyVehicleView : UserControl
                         Class = classes.Name,
                         Name = info.Name,
                         Value = info.Value,
-                        Image = RAGEHelper.GetVehicleImage(info.Value),
+                        Image = GTAHelper.GetVehicleImage(info.Value),
                         Mods = info.Mods
                     });
                     continue;

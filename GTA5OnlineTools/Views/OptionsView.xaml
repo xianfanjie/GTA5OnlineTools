@@ -49,7 +49,7 @@
                     <TextBlock
                         Width="100"
                         Margin="5"
-                        Text="计算机名称" />
+                        Text="用户名称" />
                     <TextBlock x:Name="TextBlock_Computer" Margin="5" />
                 </DockPanel>
                 <DockPanel>

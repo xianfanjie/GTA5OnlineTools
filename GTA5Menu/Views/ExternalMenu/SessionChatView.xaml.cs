@@ -21,7 +21,7 @@ public partial class SessionChatView : UserControl
 
         TextBox_InputMessage.Text = "测试文本: 请把游戏中聊天输入法调成英文,否则会漏掉文字.Hello1234,漏掉文字了吗?";
 
-        long pCPlayerInfo = Globals.GetCPlayerInfo();
+        long pCPlayerInfo = Game.GetCPlayerInfo();
         TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + CPed.CPlayerInfo.Name, 20);
     }
 
@@ -166,7 +166,7 @@ public partial class SessionChatView : UserControl
 
     private void Button_ReadPlayerName_Click(object sender, RoutedEventArgs e)
     {
-        long pCPlayerInfo = Globals.GetCPlayerInfo();
+        long pCPlayerInfo = Game.GetCPlayerInfo();
         TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + CPed.CPlayerInfo.Name, 64);
     }
 
@@ -191,7 +191,7 @@ public partial class SessionChatView : UserControl
                 }
             }
 
-            long pCPlayerInfo = Globals.GetCPlayerInfo();
+            long pCPlayerInfo = Game.GetCPlayerInfo();
             string name = Memory.ReadString(pCPlayerInfo + CPed.CPlayerInfo.Name, 64);
 
             if (playerName.Equals(name))

@@ -68,7 +68,7 @@ public partial class StatScriptsWindow
                     {
                         AppendTextBox($"正在执行 第 {i + 1}/{StatData.StatClasses[index].StatInfos.Count} 条代码");
 
-                        await Hacks.WriteIntStat(StatData.StatClasses[index].StatInfos[i].Hash, StatData.StatClasses[index].StatInfos[i].Value);
+                        await Globals.WriteIntStat(StatData.StatClasses[index].StatInfos[i].Hash, StatData.StatClasses[index].StatInfos[i].Value);
                     }
 
                     AppendTextBox($"{StatData.StatClasses[index].Name} 脚本代码执行完毕");

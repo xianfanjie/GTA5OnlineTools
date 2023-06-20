@@ -28,18 +28,18 @@ public static class Online
             if (sessionID == -1)
             {
                 // 离开线上模式需要特殊处理
-                Hacks.WriteGA(Base.SessionSwitchCache, -1);
+                Globals.WriteGA(Base.SessionSwitchCache, -1);
             }
             else
             {
                 // 正常切换战局，修改战局类型
-                Hacks.WriteGA(Base.SessionSwitchType, sessionID);
+                Globals.WriteGA(Base.SessionSwitchType, sessionID);
             }
 
             // 切换战局状态
-            Hacks.WriteGA(Base.SessionSwitchState, 1);
+            Globals.WriteGA(Base.SessionSwitchState, 1);
             await Task.Delay(200);
-            Hacks.WriteGA(Base.SessionSwitchState, 0);
+            Globals.WriteGA(Base.SessionSwitchState, 0);
         });
     }
 
@@ -58,15 +58,15 @@ public static class Online
     public static void AntiAFK(bool isEnable)
     {
         // STATS::PLAYSTATS_IDLE_KICK
-        Hacks.WriteGA(Base.Default + 87, isEnable ? 99999999 : 120000);        // 120000     joaat("IDLEKICK_WARNING1") 
-        Hacks.WriteGA(Base.Default + 88, isEnable ? 99999999 : 300000);        // 300000     joaat("IDLEKICK_WARNING2")
-        Hacks.WriteGA(Base.Default + 89, isEnable ? 99999999 : 600000);        // 600000     joaat("IDLEKICK_WARNING3")
-        Hacks.WriteGA(Base.Default + 90, isEnable ? 99999999 : 900000);        // 900000     joaat("IDLEKICK_KICK")
+        Globals.WriteGA(Base.Default + 87, isEnable ? 99999999 : 120000);        // 120000     joaat("IDLEKICK_WARNING1") 
+        Globals.WriteGA(Base.Default + 88, isEnable ? 99999999 : 300000);        // 300000     joaat("IDLEKICK_WARNING2")
+        Globals.WriteGA(Base.Default + 89, isEnable ? 99999999 : 600000);        // 600000     joaat("IDLEKICK_WARNING3")
+        Globals.WriteGA(Base.Default + 90, isEnable ? 99999999 : 900000);        // 900000     joaat("IDLEKICK_KICK")
 
-        Hacks.WriteGA(Base.Default + 8248, isEnable ? 2000000000 : 30000);     // 30000      joaat("ConstrainedKick_Warning1")
-        Hacks.WriteGA(Base.Default + 8249, isEnable ? 2000000000 : 60000);     // 60000      joaat("ConstrainedKick_Warning2")
-        Hacks.WriteGA(Base.Default + 8250, isEnable ? 2000000000 : 90000);     // 90000      joaat("ConstrainedKick_Warning3")
-        Hacks.WriteGA(Base.Default + 8251, isEnable ? 2000000000 : 120000);    // 120000     joaat("ConstrainedKick_Kick")
+        Globals.WriteGA(Base.Default + 8248, isEnable ? 2000000000 : 30000);     // 30000      joaat("ConstrainedKick_Warning1")
+        Globals.WriteGA(Base.Default + 8249, isEnable ? 2000000000 : 60000);     // 60000      joaat("ConstrainedKick_Warning2")
+        Globals.WriteGA(Base.Default + 8250, isEnable ? 2000000000 : 90000);     // 90000      joaat("ConstrainedKick_Warning3")
+        Globals.WriteGA(Base.Default + 8251, isEnable ? 2000000000 : 120000);    // 120000     joaat("ConstrainedKick_Kick")
     }
 
     /// <summary>
@@ -74,8 +74,8 @@ public static class Online
     /// </summary>
     public static void IdleKick()
     {
-        Hacks.WriteGA(1654054 + 1155, 0);        // STATS::PLAYSTATS_IDLE_KICK(time);
-        Hacks.WriteGA(1654054 + 1171, 0);        // AUDIO::PLAY_SOUND_FRONTEND(-1, "MP_IDLE_TIMER", "HUD_FRONTEND_DEFAULT_SOUNDSET", true);
+        Globals.WriteGA(1654054 + 1155, 0);        // STATS::PLAYSTATS_IDLE_KICK(time);
+        Globals.WriteGA(1654054 + 1171, 0);        // AUDIO::PLAY_SOUND_FRONTEND(-1, "MP_IDLE_TIMER", "HUD_FRONTEND_DEFAULT_SOUNDSET", true);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void FreeChangeAppearance(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 19290, isEnable ? 0 : 100000);         // joaat("CHARACTER_APPEARANCE_CHARGE")
+        Globals.WriteGA(Base.Default + 19290, isEnable ? 0 : 100000);         // joaat("CHARACTER_APPEARANCE_CHARGE")
     }
 
     /// <summary>
@@ -94,10 +94,10 @@ public static class Online
     public static void ModelChange(long hash)
     {
         // else if (!PED::HAS_PED_HEAD_BLEND_FINISHED(PLAYER::PLAYER_PED_ID())
-        Hacks.WriteGA(Base.oVGETIn + 61, 1);                 // triggerModelChange
-        Hacks.WriteGA(Base.oVGETIn + 48, hash);              // modelChangeHash
+        Globals.WriteGA(Base.oVGETIn + 61, 1);                 // triggerModelChange
+        Globals.WriteGA(Base.oVGETIn + 48, hash);              // modelChangeHash
         Thread.Sleep(10);
-        Hacks.WriteGA(Base.oVGETIn + 61, 0);
+        Globals.WriteGA(Base.oVGETIn + 61, 0);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void AllowSellOnNonPublic(bool isEnable)
     {
-        Hacks.WriteGA(2683883 + 744, isEnable ? 0 : 1);         // NETWORK::NETWORK_SESSION_GET_PRIVATE_SLOTS()
+        Globals.WriteGA(2683883 + 744, isEnable ? 0 : 1);         // NETWORK::NETWORK_SESSION_GET_PRIVATE_SLOTS()
     }
 
     /// <summary>
@@ -115,8 +115,8 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void PassiveModeCooldown(bool isEnable)
     {
-        Hacks.WriteGA(2794162 + 4497, isEnable ? 0 : 1);        // AUDIO::REQUEST_SCRIPT_AUDIO_BANK("DLC_HEI4/DLC_HEI4_Submarine" // _STOPWATCH_RESET(&(Global_2794162.f_4497), false, false);
-        Hacks.WriteGA(1971499, isEnable ? 0 : 1);               // joaat("VEHICLE_WEAPON_SUB_MISSILE_HOMING")
+        Globals.WriteGA(2794162 + 4497, isEnable ? 0 : 1);        // AUDIO::REQUEST_SCRIPT_AUDIO_BANK("DLC_HEI4/DLC_HEI4_Submarine" // _STOPWATCH_RESET(&(Global_2794162.f_4497), false, false);
+        Globals.WriteGA(1971499, isEnable ? 0 : 1);               // joaat("VEHICLE_WEAPON_SUB_MISSILE_HOMING")
     }
 
     /// <summary>
@@ -126,10 +126,10 @@ public static class Online
     public static void SuicideCooldown(bool isEnable)
     {
         if (isEnable)
-            Hacks.WriteGA(Base.oVMYCar + 6898, 0);      // joaat("XPCATEGORY_ACTION_KILLS")
+            Globals.WriteGA(Base.oVMYCar + 6898, 0);      // joaat("XPCATEGORY_ACTION_KILLS")
 
-        Hacks.WriteGA(Base.Default + 28615, isEnable ? 1 : 300000);         // 247954694
-        Hacks.WriteGA(Base.Default + 28616, isEnable ? 1 : 60000);          // -1771488297
+        Globals.WriteGA(Base.Default + 28615, isEnable ? 1 : 300000);         // 247954694
+        Globals.WriteGA(Base.Default + 28616, isEnable ? 1 : 60000);          // -1771488297
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void DisableOrbitalCooldown(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 23264, isEnable ? 0 : 2880000);         // -1707434973
+        Globals.WriteGA(Base.Default + 23264, isEnable ? 0 : 2880000);         // -1707434973
     }
 
     /// <summary>
@@ -146,7 +146,7 @@ public static class Online
     /// </summary>
     public static void GetInOnlinePV()
     {
-        Hacks.WriteGA(Base.oVGETIn + 8, 1);     // (PLAYER::PLAYER_ID()), 0f, 0f, 0f, Global_
+        Globals.WriteGA(Base.oVGETIn + 8, 1);     // (PLAYER::PLAYER_ID()), 0f, 0f, 0f, Global_
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void SessionSnow(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 4752, isEnable ? 1 : 0);            // joaat("turn_snow_on_off")
+        Globals.WriteGA(Base.Default + 4752, isEnable ? 1 : 0);            // joaat("turn_snow_on_off")
     }
 
     /// <summary>
@@ -164,10 +164,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void OffRadar(bool isEnable)
     {
-        Hacks.WriteGA(Base.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
+        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
         if (isEnable)
-            Hacks.WriteGA(Base.oNETTimeHelp + 57, Hacks.GetNetworkTime() + 3600000);
-        Hacks.WriteGA(Base.oVMYCar + 4660, isEnable ? 3 : 0);
+            Globals.WriteGA(Base.oNETTimeHelp + 57, Globals.GetNetworkTime() + 3600000);
+        Globals.WriteGA(Base.oVMYCar + 4660, isEnable ? 3 : 0);
     }
 
     /// <summary>
@@ -176,10 +176,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void GhostOrganization(bool isEnable)
     {
-        Hacks.WriteGA(Base.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
+        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
         if (isEnable)
-            Hacks.WriteGA(Base.oNETTimeHelp + 57, Hacks.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
-        Hacks.WriteGA(Base.oVMYCar + 4660, isEnable ? 4 : 0);
+            Globals.WriteGA(Base.oNETTimeHelp + 57, Globals.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
+        Globals.WriteGA(Base.oVMYCar + 4660, isEnable ? 4 : 0);
     }
 
     /// <summary>
@@ -188,9 +188,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void BribeOrBlindCops(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 4661 + 1, isEnable ? 1 : 0);           // _DISPLAY_HELP_TEXT("FM_LEST_NCPW"
-        Hacks.WriteGA(Base.oVMYCar + 4661 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
-        Hacks.WriteGA(Base.oVMYCar + 4661, isEnable ? 5 : 0);
+        Globals.WriteGA(Base.oVMYCar + 4661 + 1, isEnable ? 1 : 0);           // _DISPLAY_HELP_TEXT("FM_LEST_NCPW"
+        Globals.WriteGA(Base.oVMYCar + 4661 + 3, isEnable ? Globals.GetNetworkTime() + 3600000 : 0);
+        Globals.WriteGA(Base.oVMYCar + 4661, isEnable ? 5 : 0);
     }
 
     /// <summary>
@@ -199,9 +199,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void BribeAuthorities(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 4661 + 1, isEnable ? 1 : 0);
-        Hacks.WriteGA(Base.oVMYCar + 4661 + 3, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
-        Hacks.WriteGA(Base.oVMYCar + 4661, isEnable ? 21 : 0);
+        Globals.WriteGA(Base.oVMYCar + 4661 + 1, isEnable ? 1 : 0);
+        Globals.WriteGA(Base.oVMYCar + 4661 + 3, isEnable ? Globals.GetNetworkTime() + 3600000 : 0);
+        Globals.WriteGA(Base.oVMYCar + 4661, isEnable ? 21 : 0);
     }
 
     /// <summary>
@@ -210,8 +210,8 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void RevealPlayers(bool isEnable)
     {
-        Hacks.WriteGA(Base.oPlayerIDHelp + 1 + Hacks.GetPlayerID() * 466 + 213, isEnable ? 1 : 0);
-        Hacks.WriteGA(Base.oNETTimeHelp + 58, isEnable ? Hacks.GetNetworkTime() + 3600000 : 0);
+        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 466 + 213, isEnable ? 1 : 0);
+        Globals.WriteGA(Base.oNETTimeHelp + 58, isEnable ? Globals.GetNetworkTime() + 3600000 : 0);
     }
 
     /// <summary>
@@ -220,7 +220,7 @@ public static class Online
     /// <param name="multiplier"></param>
     public static void RPMultiplier(float multiplier)
     {
-        Hacks.WriteGA(Base.Default + 1, multiplier);           // xpMultiplier Global_Base.Default.f_1
+        Globals.WriteGA(Base.Default + 1, multiplier);           // xpMultiplier Global_Base.Default.f_1
     }
 
     /// <summary>
@@ -229,7 +229,7 @@ public static class Online
     /// <param name="multiplier"></param>
     public static void APMultiplier(float multiplier)
     {
-        Hacks.WriteGA(Base.Default + 25926, multiplier);
+        Globals.WriteGA(Base.Default + 25926, multiplier);
     }
 
     /// <summary>
@@ -238,14 +238,14 @@ public static class Online
     /// <param name="multiplier"></param>
     public static void REPMultiplier(float multiplier)
     {
-        Hacks.WriteGA(Base.Default + 31855, multiplier);        // Street Race         街头比赛        -147149995  joaat("TUNER_STREET_RACE_PLACE_XP_MULTIPLIER")
-        Hacks.WriteGA(Base.Default + 31856, multiplier);        // Pursuit Race        追逐赛
-        Hacks.WriteGA(Base.Default + 31857, multiplier);        // Scramble            攀登
-        Hacks.WriteGA(Base.Default + 31858, multiplier);        // Head 2 Head         头对头          1434998920
+        Globals.WriteGA(Base.Default + 31855, multiplier);        // Street Race         街头比赛        -147149995  joaat("TUNER_STREET_RACE_PLACE_XP_MULTIPLIER")
+        Globals.WriteGA(Base.Default + 31856, multiplier);        // Pursuit Race        追逐赛
+        Globals.WriteGA(Base.Default + 31857, multiplier);        // Scramble            攀登
+        Globals.WriteGA(Base.Default + 31858, multiplier);        // Head 2 Head         头对头          1434998920
 
-        Hacks.WriteGA(Base.Default + 31860, multiplier);        // LS Car Meet         汽车见面会       1819417801  joaat("TUNER_CARCLUB_TIME_XP_MULTIPLIER")
-        Hacks.WriteGA(Base.Default + 31861, multiplier);        // LS Car Meet Track
-        Hacks.WriteGA(Base.Default + 31862, multiplier);        // LS Car Meet Cloth Shop
+        Globals.WriteGA(Base.Default + 31860, multiplier);        // LS Car Meet         汽车见面会       1819417801  joaat("TUNER_CARCLUB_TIME_XP_MULTIPLIER")
+        Globals.WriteGA(Base.Default + 31861, multiplier);        // LS Car Meet Track
+        Globals.WriteGA(Base.Default + 31862, multiplier);        // LS Car Meet Cloth Shop
     }
 
     /// <summary>
@@ -255,12 +255,12 @@ public static class Online
     public static void InstantBullShark(bool isEnable)
     {
         if (isEnable)
-            Hacks.WriteGA(Base.oNETTimeHelp + 3690, 1);
+            Globals.WriteGA(Base.oNETTimeHelp + 3690, 1);
         else
         {
-            int temp = Hacks.ReadGA<int>(Base.oNETTimeHelp + 3690);
+            int temp = Globals.ReadGA<int>(Base.oNETTimeHelp + 3690);
             if (temp != 0)
-                Hacks.WriteGA(Base.oNETTimeHelp + 3690, 5);
+                Globals.WriteGA(Base.oNETTimeHelp + 3690, 5);
         }
     }
 
@@ -270,7 +270,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CallBackupHeli(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 4491, isEnable ? 1 : 0);   // SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("am_backup_heli")
+        Globals.WriteGA(Base.oVMYCar + 4491, isEnable ? 1 : 0);   // SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("am_backup_heli")
     }
 
     /// <summary>
@@ -279,7 +279,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CallAirstrike(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 4492, isEnable ? 1 : 0);   // SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("am_airstrike")
+        Globals.WriteGA(Base.oVMYCar + 4492, isEnable ? 1 : 0);   // SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("am_airstrike")
     }
 
     /// <summary>
@@ -288,7 +288,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CEOSpecialCargo(bool isEnable)
     {
-        Hacks.WriteGA(1950703, isEnable ? 1 : 0);           // MISC::GET_RANDOM_INT_IN_RANGE(1, 101);   // Global_1950703 = 1;
+        Globals.WriteGA(1950703, isEnable ? 1 : 0);           // MISC::GET_RANDOM_INT_IN_RANGE(1, 101);   // Global_1950703 = 1;
     }
 
     /// <summary>
@@ -297,7 +297,7 @@ public static class Online
     /// <param name="cargoID"></param>
     public static void CEOCargoType(int cargoID)
     {
-        Hacks.WriteGA(1950549, cargoID);                    // MISC::GET_RANDOM_INT_IN_RANGE(1, 101);   // Global_1950549 = num;
+        Globals.WriteGA(1950549, cargoID);                    // MISC::GET_RANDOM_INT_IN_RANGE(1, 101);   // Global_1950549 = num;
     }
 
     /// <summary>
@@ -306,7 +306,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CEOBuyingCratesCooldown(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 15728, isEnable ? 0 : 300000);          // 153204142 joaat("EXEC_BUY_COOLDOWN")
+        Globals.WriteGA(Base.Default + 15728, isEnable ? 0 : 300000);          // 153204142 joaat("EXEC_BUY_COOLDOWN")
     }
 
     /// <summary>
@@ -315,7 +315,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CEOSellingCratesCooldown(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 15729, isEnable ? 0 : 1800000);         // 1291620941 joaat("EXEC_SELL_COOLDOWN")
+        Globals.WriteGA(Base.Default + 15729, isEnable ? 0 : 1800000);         // 1291620941 joaat("EXEC_SELL_COOLDOWN")
     }
 
     /// <summary>
@@ -324,7 +324,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void BunkerSupplyDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 21737, isEnable ? 0 : 600);            // -2094564985 joaat("GR_PURCHASE_SUPPLIES_DELAY")
+        Globals.WriteGA(Base.Default + 21737, isEnable ? 0 : 600);            // -2094564985 joaat("GR_PURCHASE_SUPPLIES_DELAY")
     }
 
     /// <summary>
@@ -333,7 +333,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void UnlockBunkerResearch(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 21865, isEnable ? 1 : 0);                // 886070202
+        Globals.WriteGA(Base.Default + 21865, isEnable ? 1 : 0);                // 886070202
     }
 
     /// <summary>
@@ -342,7 +342,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void MCSupplyDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 19179, isEnable ? 0 : 600);          // 728170457  joaat("WEBSITE_PEGASSI_FAGGIO_SPORT")
+        Globals.WriteGA(Base.Default + 19179, isEnable ? 0 : 600);          // 728170457  joaat("WEBSITE_PEGASSI_FAGGIO_SPORT")
     }
 
     /// <summary>
@@ -351,7 +351,7 @@ public static class Online
     /// <param name="serverId"></param>
     public static void MerryWeatherServices(int serverId)
     {
-        Hacks.WriteGA(Base.oVMYCar + serverId, 1);
+        Globals.WriteGA(Base.oVMYCar + serverId, 1);
     }
 
     /// <summary>
@@ -360,10 +360,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void ExportVehicleDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 19862, isEnable ? 0 : 1200000);        // 1001423248  tuneables_processing.c
-        Hacks.WriteGA(Base.Default + 19863, isEnable ? 0 : 1680000);        // 240134765
-        Hacks.WriteGA(Base.Default + 19864, isEnable ? 0 : 2340000);        // 1915379148
-        Hacks.WriteGA(Base.Default + 19865, isEnable ? 0 : 2880000);        // -824005590
+        Globals.WriteGA(Base.Default + 19862, isEnable ? 0 : 1200000);        // 1001423248  tuneables_processing.c
+        Globals.WriteGA(Base.Default + 19863, isEnable ? 0 : 1680000);        // 240134765
+        Globals.WriteGA(Base.Default + 19864, isEnable ? 0 : 2340000);        // 1915379148
+        Globals.WriteGA(Base.Default + 19865, isEnable ? 0 : 2880000);        // -824005590
     }
 
     /// <summary>
@@ -371,9 +371,9 @@ public static class Online
     /// </summary>
     public static async void Disconnect()
     {
-        Hacks.WriteGA(32561, 1);        // NETWORK::NETWORK_BAIL(1, 0, 0)
+        Globals.WriteGA(32561, 1);        // NETWORK::NETWORK_BAIL(1, 0, 0)
         await Task.Delay(200);
-        Hacks.WriteGA(32561, 0);        // return NETWORK::NETWORK_CAN_ACCESS_MULTIPLAYER
+        Globals.WriteGA(32561, 0);        // return NETWORK::NETWORK_CAN_ACCESS_MULTIPLAYER
     }
 
     /// <summary>
@@ -381,8 +381,8 @@ public static class Online
     /// </summary>
     public static void StopCutscene()
     {
-        Hacks.WriteGA(2766640 + 3, 1);      // return MISC::GET_HASH_KEY("AVISA")
-        Hacks.WriteGA(1575063, 1);          // NETWORK::NETWORK_TRANSITION_ADD_STAGE(hashKey, 1, num, etsParam0, 0);
+        Globals.WriteGA(2766640 + 3, 1);      // return MISC::GET_HASH_KEY("AVISA")
+        Globals.WriteGA(1575063, 1);          // NETWORK::NETWORK_TRANSITION_ADD_STAGE(hashKey, 1, num, etsParam0, 0);
     }
 
     /// <summary>
@@ -391,10 +391,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void SmugglerRunInDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 22931, isEnable ? 0 : 120000);         // 1278611667  tuneables_processing.c
-        Hacks.WriteGA(Base.Default + 22932, isEnable ? 0 : 180000);         // -1424847540
-        Hacks.WriteGA(Base.Default + 22933, isEnable ? 0 : 240000);         // -1817541754
-        Hacks.WriteGA(Base.Default + 22934, isEnable ? 0 : 60000);          // 1722502526
+        Globals.WriteGA(Base.Default + 22931, isEnable ? 0 : 120000);         // 1278611667  tuneables_processing.c
+        Globals.WriteGA(Base.Default + 22932, isEnable ? 0 : 180000);         // -1424847540
+        Globals.WriteGA(Base.Default + 22933, isEnable ? 0 : 240000);         // -1817541754
+        Globals.WriteGA(Base.Default + 22934, isEnable ? 0 : 60000);          // 1722502526
     }
 
     /// <summary>
@@ -403,7 +403,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void SmugglerRunOutDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 22972, isEnable ? 0 : 180000);         // -1525481945  tuneables_processing.c
+        Globals.WriteGA(Base.Default + 22972, isEnable ? 0 : 180000);         // -1525481945  tuneables_processing.c
     }
 
     /// <summary>
@@ -412,9 +412,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void NightclubOutDelay(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 24629, isEnable ? 0 : 300000);         // 1763921019  tuneables_processing.c
-        Hacks.WriteGA(Base.Default + 24671, isEnable ? 0 : 300000);         // -1004589438  Global_262145.f_24671 = 300000;
-        Hacks.WriteGA(Base.Default + 24672, isEnable ? 0 : 300000);         // 464940095
+        Globals.WriteGA(Base.Default + 24629, isEnable ? 0 : 300000);         // 1763921019  tuneables_processing.c
+        Globals.WriteGA(Base.Default + 24671, isEnable ? 0 : 300000);         // -1004589438  Global_262145.f_24671 = 300000;
+        Globals.WriteGA(Base.Default + 24672, isEnable ? 0 : 300000);         // 464940095
     }
 
     /// <summary>
@@ -423,8 +423,8 @@ public static class Online
     /// <param name="index"></param>
     public static void DeliverPersonalVehicle(int index)
     {
-        Hacks.WriteGA(Base.oVMYCar + 965, index);
-        Hacks.WriteGA(Base.oVMYCar + 962, 1);
+        Globals.WriteGA(Base.oVMYCar + 965, index);
+        Globals.WriteGA(Base.oVMYCar + 962, 1);
     }
 
     /// <summary>
@@ -433,8 +433,8 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CEOWorkCooldown(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 13254, isEnable ? 0 : 300000);       // -1404265088 joaat("GB_COOLDOWN_UNTIL_NEXT_BOSS_WORK")
-        Hacks.WriteGA(Base.Default + 13151, isEnable ? 0 : 600000);       // -1911318106 joaat("GB_SIGHTSEER_COOLDOWN")
+        Globals.WriteGA(Base.Default + 13254, isEnable ? 0 : 300000);       // -1404265088 joaat("GB_COOLDOWN_UNTIL_NEXT_BOSS_WORK")
+        Globals.WriteGA(Base.Default + 13151, isEnable ? 0 : 600000);       // -1911318106 joaat("GB_SIGHTSEER_COOLDOWN")
     }
 
     /// <summary>
@@ -443,11 +443,11 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void ClientJonCooldown(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 24818 + 0, isEnable ? 0 : 300000);       // Between Jobs           -926426916
-        Hacks.WriteGA(Base.Default + 24818 + 1, isEnable ? 0 : 1800000);      // Robbery in Progress    1733390598
-        Hacks.WriteGA(Base.Default + 24818 + 2, isEnable ? 0 : 1800000);      // Data Sweep             724724668
-        Hacks.WriteGA(Base.Default + 24818 + 3, isEnable ? 0 : 1800000);      // Targeted Data          846317886
-        Hacks.WriteGA(Base.Default + 24818 + 4, isEnable ? 0 : 1800000);      // Diamond Shopping       443623246
+        Globals.WriteGA(Base.Default + 24818 + 0, isEnable ? 0 : 300000);       // Between Jobs           -926426916
+        Globals.WriteGA(Base.Default + 24818 + 1, isEnable ? 0 : 1800000);      // Robbery in Progress    1733390598
+        Globals.WriteGA(Base.Default + 24818 + 2, isEnable ? 0 : 1800000);      // Data Sweep             724724668
+        Globals.WriteGA(Base.Default + 24818 + 3, isEnable ? 0 : 1800000);      // Targeted Data          846317886
+        Globals.WriteGA(Base.Default + 24818 + 4, isEnable ? 0 : 1800000);      // Diamond Shopping       443623246
     }
 
     /// <summary>
@@ -456,7 +456,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void SecurityHitCooldown(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 31908, isEnable ? 0 : 300000);           // -1462622971 joaat("FIXER_SECURITY_CONTRACT_COOLDOWN_TIME")
+        Globals.WriteGA(Base.Default + 31908, isEnable ? 0 : 300000);           // -1462622971 joaat("FIXER_SECURITY_CONTRACT_COOLDOWN_TIME")
     }
 
     /// <summary>
@@ -465,7 +465,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void PayphoneHitCooldown(bool isEnable)
     {
-        Hacks.WriteGA(Base.Default + 31989, isEnable ? 0 : 1200000);          // 1872071131
+        Globals.WriteGA(Base.Default + 31989, isEnable ? 0 : 1200000);          // 1872071131
     }
 
     /// <summary>
@@ -474,7 +474,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void TriggerRCBandito(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 6879, isEnable ? 1 : 0);               // if (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), true) || PED::IS_PED_GETTING_INTO_A_VEHICLE(PLAYER::PLAYER_PED_ID()))
+        Globals.WriteGA(Base.oVMYCar + 6879, isEnable ? 1 : 0);               // if (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), true) || PED::IS_PED_GETTING_INTO_A_VEHICLE(PLAYER::PLAYER_PED_ID()))
     }
 
     /// <summary>
@@ -483,6 +483,6 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void TriggerMiniTank(bool isEnable)
     {
-        Hacks.WriteGA(Base.oVMYCar + 6880, isEnable ? 1 : 0);
+        Globals.WriteGA(Base.oVMYCar + 6880, isEnable ? 1 : 0);
     }
 }

@@ -10,7 +10,7 @@ public static class Vehicle
     /// </summary>
     public static bool IsInVehicle()
     {
-        long pCPed = Globals.GetCPed();
+        long pCPed = Game.GetCPed();
         return Memory.Read<byte>(pCPed + CPed.InVehicle) == 0x01;
     }
 
@@ -19,7 +19,7 @@ public static class Vehicle
     /// </summary>
     public static void GodMode(bool isEnable)
     {
-        if (Globals.GetCVehicle(out long pCVehicle))
+        if (Game.GetCVehicle(out long pCVehicle))
             Memory.Write(pCVehicle + CPed.CVehicle.God, (byte)(isEnable ? 0x01 : 0x00));
     }
 
@@ -28,7 +28,7 @@ public static class Vehicle
     /// </summary>
     public static void Seatbelt(bool isEnable)
     {
-        long pCPed = Globals.GetCPed();
+        long pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.Seatbelt, (byte)(isEnable ? 0xC9 : 0xC8));
     }
 
@@ -37,7 +37,7 @@ public static class Vehicle
     /// </summary>
     public static void Invisible(bool isEnable)
     {
-        if (Globals.GetCVehicle(out long pCVehicle))
+        if (Game.GetCVehicle(out long pCVehicle))
             Memory.Write(pCVehicle + CPed.CVehicle.Invisible, (byte)(isEnable ? 0x01 : 0x27));
     }
 
@@ -46,7 +46,7 @@ public static class Vehicle
     /// </summary>
     public static void Extras(short flag)
     {
-        if (Globals.GetCVehicle(out long pCVehicle))
+        if (Game.GetCVehicle(out long pCVehicle))
         {
             long pCModelInfo = Memory.Read<long>(pCVehicle + CPed.CVehicle.CModelInfo.__Offset__);
             Memory.Write(pCModelInfo + CPed.CVehicle.CModelInfo.Extras, flag);
@@ -58,7 +58,7 @@ public static class Vehicle
     /// </summary>
     public static void Parachute(bool isEnable)
     {
-        if (Globals.GetCVehicle(out long pCVehicle))
+        if (Game.GetCVehicle(out long pCVehicle))
         {
             long pCModelInfo = Memory.Read<long>(pCVehicle + CPed.CVehicle.CModelInfo.__Offset__);
             Memory.Write(pCModelInfo + CPed.CVehicle.CModelInfo.Parachute, (byte)(isEnable ? 0x01 : 0x00));
@@ -70,7 +70,7 @@ public static class Vehicle
     /// </summary>
     public static void FillHealth()
     {
-        if (Globals.GetCVehicle(out long pCVehicle))
+        if (Game.GetCVehicle(out long pCVehicle))
         {
             float oVHealth = Memory.Read<float>(pCVehicle + CPed.CVehicle.Health);
             float oVHealthMax = Memory.Read<float>(pCVehicle + CPed.CVehicle.HealthMax);
@@ -98,9 +98,9 @@ public static class Vehicle
     {
         await Task.Run(async () =>
         {
-            if (Globals.GetCVehicle(out long pCVehicle))
+            if (Game.GetCVehicle(out long pCVehicle))
             {
-                Hacks.WriteGA(Base.oVMYCar + 899, 1);       // if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_BRU_BOX", PLAYER::PLAYER_ID(), true, 0))
+                Globals.WriteGA(Base.oVMYCar + 899, 1);       // if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_BRU_BOX", PLAYER::PLAYER_ID(), true, 0))
 
                 await Task.Delay(1000);
 
@@ -146,8 +146,8 @@ public static class Vehicle
 
                 await Task.Delay(1000);
 
-                if (Hacks.ReadGA<int>(Base.oNETTimeHelp + 3690) != 0)
-                    Hacks.WriteGA(Base.oNETTimeHelp + 3690, -1);
+                if (Globals.ReadGA<int>(Base.oNETTimeHelp + 3690) != 0)
+                    Globals.WriteGA(Base.oNETTimeHelp + 3690, -1);
             }
         });
     }
@@ -158,7 +158,26 @@ public static class Vehicle
     /// <param name="index"></param>
     public static void RequestPersonalVehicle(int index)
     {
-        Hacks.WriteGA(Base.oVMYCar + 992, index);
-        Hacks.WriteGA(Base.oVMYCar + 989, 1);
+        Globals.WriteGA(Base.oVMYCar + 992, index);
+        Globals.WriteGA(Base.oVMYCar + 989, 1);
+    }
+
+    /// <summary>
+    /// 提前解锁1.67新载具（避免刷出消失）
+    /// </summary>
+    public static void Unlock167Vehicle()
+    {
+        Globals.WriteGA(Base.Default + 35462, 1);         // walton
+        Globals.WriteGA(Base.Default + 35463, 1);         // vapid ratel
+        Globals.WriteGA(Base.Default + 35464, 1);         // maibatsu
+        Globals.WriteGA(Base.Default + 35465, 1);         // vapid vagon
+        Globals.WriteGA(Base.Default + 35466, 1);         // stinger
+        Globals.WriteGA(Base.Default + 35467, 1);         // streame216
+        Globals.WriteGA(Base.Default + 35468, 1);         // f-160
+        Globals.WriteGA(Base.Default + 35469, 1);         // buffalo5
+        Globals.WriteGA(Base.Default + 35471, 1);         // penaud
+        Globals.WriteGA(Base.Default + 35472, 1);         // conada
+        Globals.WriteGA(Base.Default + 35473, 1);         // bravodo hotring
+        Globals.WriteGA(Base.Default + 35474, 1);         // albany brigrham
     }
 }

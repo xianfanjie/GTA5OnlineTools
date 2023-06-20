@@ -46,7 +46,7 @@ public static class Teleport
     /// <returns></returns>
     public static Vector3 GetPlayerPosition()
     {
-        long pCPed = Globals.GetCPed();
+        long pCPed = Game.GetCPed();
         return Memory.Read<Vector3>(pCPed + CPed.VisualX);
     }
 
@@ -57,7 +57,7 @@ public static class Teleport
     {
         if (vector3 != Vector3.Zero)
         {
-            long pCPed = Globals.GetCPed();
+            long pCPed = Game.GetCPed();
 
             if (Memory.Read<int>(pCPed + CPed.InVehicle) == 0)
             {
@@ -198,7 +198,7 @@ public static class Teleport
     /// </summary>
     public static void MoveFoward(float distance)
     {
-        long pCPed = Globals.GetCPed();
+        long pCPed = Game.GetCPed();
         long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
         float head = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightX);
@@ -218,7 +218,7 @@ public static class Teleport
     /// <param name="distance">微调距离</param>
     public static void MoveBack(float distance)
     {
-        long pCPed = Globals.GetCPed();
+        long pCPed = Game.GetCPed();
         long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
         float head = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightX);
@@ -238,7 +238,7 @@ public static class Teleport
     /// <param name="distance">微调距离</param>
     public static void MoveLeft(float distance)
     {
-        long pCPed = Globals.GetCPed();
+        long pCPed = Game.GetCPed();
         long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
         float head2 = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightY);
@@ -257,7 +257,7 @@ public static class Teleport
     /// <param name="distance">微调距离</param>
     public static void MoveRight(float distance)
     {
-        long pCPed = Globals.GetCPed();
+        long pCPed = Game.GetCPed();
         long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
         float head2 = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightY);

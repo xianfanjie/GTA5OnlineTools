@@ -62,6 +62,14 @@
                     Click="CheckBox_TriggerMiniTank_Click"
                     Content="进入迷你坦克" />
             </WrapPanel>
+            <!--  ////////////////  -->
+            <ui:LabelIcon Content="高级" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_Unlock167Vehicle"
+                    Click="Button_Unlock167Vehicle_Click"
+                    Content="提前解锁1.67新载具" />
+            </WrapPanel>
         </StackPanel>
     </UniformGrid>
 

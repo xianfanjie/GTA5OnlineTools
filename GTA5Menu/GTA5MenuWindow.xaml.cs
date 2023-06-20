@@ -183,7 +183,7 @@ public partial class GTA5MenuWindow
     {
         while (IsAppRunning)
         {
-            long pCPed = Globals.GetCPed();
+            long pCPed = Game.GetCPed();
             long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
 
             byte oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
@@ -204,7 +204,7 @@ public partial class GTA5MenuWindow
             // 挂机防踢
             if (Setting.Player.AntiAFK)
             {
-                if (Hacks.ReadGA<int>(262145 + 87) != 99999999)
+                if (Globals.ReadGA<int>(262145 + 87) != 99999999)
                     Online.AntiAFK(true);
             }
 
@@ -270,7 +270,7 @@ public partial class GTA5MenuWindow
             if (Setting.Auto.ClearWanted)
                 Player.WantedLevel(0x00);
 
-            long pCPedList = Globals.GetCPedList();
+            long pCPedList = Game.GetCPedList();
 
             for (int i = 0; i < Base.oMaxPeds; i++)
             {

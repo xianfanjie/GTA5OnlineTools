@@ -14,7 +14,7 @@ public partial class MissionView : UserControl
 
     private async void WriteStatWithDelay(string hash, int value)
     {
-        await Hacks.WriteIntStat(hash, value);
+        await Globals.WriteIntStat(hash, value);
     }
 
     ////////////////////////////////////////////////////

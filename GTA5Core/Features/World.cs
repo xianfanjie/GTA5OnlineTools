@@ -47,7 +47,7 @@ public static class World
     /// </summary>
     public static void KillAllNPC(bool isOnlyKillHostility)
     {
-        long pCPedList = Globals.GetCPedList();
+        long pCPedList = Game.GetCPedList();
 
         for (int i = 0; i < Base.oMaxPeds; i++)
         {
@@ -80,7 +80,7 @@ public static class World
     /// </summary>
     public static void KillAllPolice()
     {
-        long pCPedList = Globals.GetCPedList();
+        long pCPedList = Game.GetCPedList();
 
         for (int i = 0; i < Base.oMaxPeds; i++)
         {
@@ -110,7 +110,7 @@ public static class World
     /// </summary>
     public static void DestroyAllNPCVehicles(bool isOnlyKillHostility)
     {
-        long pCPedList = Globals.GetCPedList();
+        long pCPedList = Game.GetCPedList();
 
         for (int i = 0; i < Base.oMaxPeds; i++)
         {
@@ -153,7 +153,7 @@ public static class World
     /// </summary>
     public static void DestroyAllVehicles()
     {
-        long pCVehicleList = Globals.GetCVehicleList();
+        long pCVehicleList = Game.GetCVehicleList();
 
         for (int i = 0; i < Base.oMaxPeds; i++)
         {
@@ -175,7 +175,7 @@ public static class World
     {
         Vector3 v3MyPos = Teleport.GetPlayerPosition();
 
-        long pCPedList = Globals.GetCPedList();
+        long pCPedList = Game.GetCPedList();
 
         for (int i = 0; i < Base.oMaxPeds; i++)
         {

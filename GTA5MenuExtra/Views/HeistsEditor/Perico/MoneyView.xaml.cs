@@ -28,22 +28,22 @@ public partial class MoneyView : UserControl
 
     private void Button_Read_Click(object sender, RoutedEventArgs e)
     {
-        TextBox_Cayo_Player1.Text = Hacks.ReadGA<int>(player_ratio + 1).ToString();
-        TextBox_Cayo_Player2.Text = Hacks.ReadGA<int>(player_ratio + 2).ToString();
-        TextBox_Cayo_Player3.Text = Hacks.ReadGA<int>(player_ratio + 3).ToString();
-        TextBox_Cayo_Player4.Text = Hacks.ReadGA<int>(player_ratio + 4).ToString();
+        TextBox_Cayo_Player1.Text = Globals.ReadGA<int>(player_ratio + 1).ToString();
+        TextBox_Cayo_Player2.Text = Globals.ReadGA<int>(player_ratio + 2).ToString();
+        TextBox_Cayo_Player3.Text = Globals.ReadGA<int>(player_ratio + 3).ToString();
+        TextBox_Cayo_Player4.Text = Globals.ReadGA<int>(player_ratio + 4).ToString();
 
-        TextBox_Cayo_Tequila.Text = Hacks.ReadGA<int>(target_money + 0).ToString();
-        TextBox_Cayo_RubyNecklace.Text = Hacks.ReadGA<int>(target_money + 1).ToString();
-        TextBox_Cayo_BearerBonds.Text = Hacks.ReadGA<int>(target_money + 2).ToString();
-        TextBox_Cayo_PinkDiamond.Text = Hacks.ReadGA<int>(target_money + 3).ToString();
-        TextBox_Cayo_MadrazoFiles.Text = Hacks.ReadGA<int>(target_money + 4).ToString();
-        TextBox_Cayo_BlackPanther.Text = Hacks.ReadGA<int>(target_money + 5).ToString();
+        TextBox_Cayo_Tequila.Text = Globals.ReadGA<int>(target_money + 0).ToString();
+        TextBox_Cayo_RubyNecklace.Text = Globals.ReadGA<int>(target_money + 1).ToString();
+        TextBox_Cayo_BearerBonds.Text = Globals.ReadGA<int>(target_money + 2).ToString();
+        TextBox_Cayo_PinkDiamond.Text = Globals.ReadGA<int>(target_money + 3).ToString();
+        TextBox_Cayo_MadrazoFiles.Text = Globals.ReadGA<int>(target_money + 4).ToString();
+        TextBox_Cayo_BlackPanther.Text = Globals.ReadGA<int>(target_money + 5).ToString();
 
-        TextBox_Cayo_LocalBagSize.Text = Hacks.ReadGA<int>(bag_size).ToString();
+        TextBox_Cayo_LocalBagSize.Text = Globals.ReadGA<int>(bag_size).ToString();
 
-        TextBox_Cayo_FencingFee.Text = Hacks.ReadGA<float>(target_money + 9).ToString();
-        TextBox_Cayo_PavelCut.Text = Hacks.ReadGA<float>(target_money + 10).ToString();
+        TextBox_Cayo_FencingFee.Text = Globals.ReadGA<float>(target_money + 9).ToString();
+        TextBox_Cayo_PavelCut.Text = Globals.ReadGA<float>(target_money + 10).ToString();
 
         NotifierHelper.Show(NotifierType.Success, "读取 佩里克岛 玩家分红数据 成功");
     }
@@ -69,22 +69,22 @@ public partial class MoneyView : UserControl
                 TextBox_Cayo_FencingFee.Text.Trim() != "" &&
                 TextBox_Cayo_PavelCut.Text.Trim() != "")
             {
-                Hacks.WriteGA(player_ratio + 1, Convert.ToInt32(TextBox_Cayo_Player1.Text.Trim()));
-                Hacks.WriteGA(player_ratio + 2, Convert.ToInt32(TextBox_Cayo_Player2.Text.Trim()));
-                Hacks.WriteGA(player_ratio + 3, Convert.ToInt32(TextBox_Cayo_Player3.Text.Trim()));
-                Hacks.WriteGA(player_ratio + 4, Convert.ToInt32(TextBox_Cayo_Player4.Text.Trim()));
+                Globals.WriteGA(player_ratio + 1, Convert.ToInt32(TextBox_Cayo_Player1.Text.Trim()));
+                Globals.WriteGA(player_ratio + 2, Convert.ToInt32(TextBox_Cayo_Player2.Text.Trim()));
+                Globals.WriteGA(player_ratio + 3, Convert.ToInt32(TextBox_Cayo_Player3.Text.Trim()));
+                Globals.WriteGA(player_ratio + 4, Convert.ToInt32(TextBox_Cayo_Player4.Text.Trim()));
 
-                Hacks.WriteGA(target_money + 0, Convert.ToInt32(TextBox_Cayo_Tequila.Text.Trim()));
-                Hacks.WriteGA(target_money + 1, Convert.ToInt32(TextBox_Cayo_RubyNecklace.Text.Trim()));
-                Hacks.WriteGA(target_money + 2, Convert.ToInt32(TextBox_Cayo_BearerBonds.Text.Trim()));
-                Hacks.WriteGA(target_money + 3, Convert.ToInt32(TextBox_Cayo_PinkDiamond.Text.Trim()));
-                Hacks.WriteGA(target_money + 4, Convert.ToInt32(TextBox_Cayo_MadrazoFiles.Text.Trim()));
-                Hacks.WriteGA(target_money + 5, Convert.ToInt32(TextBox_Cayo_BlackPanther.Text.Trim()));
+                Globals.WriteGA(target_money + 0, Convert.ToInt32(TextBox_Cayo_Tequila.Text.Trim()));
+                Globals.WriteGA(target_money + 1, Convert.ToInt32(TextBox_Cayo_RubyNecklace.Text.Trim()));
+                Globals.WriteGA(target_money + 2, Convert.ToInt32(TextBox_Cayo_BearerBonds.Text.Trim()));
+                Globals.WriteGA(target_money + 3, Convert.ToInt32(TextBox_Cayo_PinkDiamond.Text.Trim()));
+                Globals.WriteGA(target_money + 4, Convert.ToInt32(TextBox_Cayo_MadrazoFiles.Text.Trim()));
+                Globals.WriteGA(target_money + 5, Convert.ToInt32(TextBox_Cayo_BlackPanther.Text.Trim()));
 
-                Hacks.WriteGA(bag_size, Convert.ToInt32(TextBox_Cayo_LocalBagSize.Text.Trim()));
+                Globals.WriteGA(bag_size, Convert.ToInt32(TextBox_Cayo_LocalBagSize.Text.Trim()));
 
-                Hacks.WriteGA(target_money + 9, Convert.ToSingle(TextBox_Cayo_FencingFee.Text.Trim()));
-                Hacks.WriteGA(target_money + 10, Convert.ToSingle(TextBox_Cayo_PavelCut.Text.Trim()));
+                Globals.WriteGA(target_money + 9, Convert.ToSingle(TextBox_Cayo_FencingFee.Text.Trim()));
+                Globals.WriteGA(target_money + 10, Convert.ToSingle(TextBox_Cayo_PavelCut.Text.Trim()));
 
                 NotifierHelper.Show(NotifierType.Success, "写入 佩里克岛 玩家分红数据 成功");
             }

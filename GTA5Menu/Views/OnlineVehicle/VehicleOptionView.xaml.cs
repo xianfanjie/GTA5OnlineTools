@@ -84,4 +84,9 @@ public partial class VehicleOptionView : UserControl
     {
         Online.TriggerMiniTank(CheckBox_TriggerMiniTank.IsChecked == true);
     }
+
+    private void Button_Unlock167Vehicle_Click(object sender, RoutedEventArgs e)
+    {
+        Vehicle.Unlock167Vehicle();
+    }
 }

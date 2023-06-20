@@ -14,7 +14,7 @@ public partial class MissionView : UserControl
 
     private async void WriteStatWithDelay(string hash, int value)
     {
-        await Hacks.WriteIntStat(hash, value);
+        await Globals.WriteIntStat(hash, value);
     }
 
     private void Button_FIXER_GENERAL_BS_Click(object sender, RoutedEventArgs e)

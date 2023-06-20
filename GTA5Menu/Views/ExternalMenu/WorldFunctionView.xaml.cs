@@ -95,7 +95,7 @@ public partial class WorldFunctionView : UserControl
     {
         var index = ListBox_PedModel.SelectedIndex;
         if (index != -1)
-            Online.ModelChange(Hacks.Joaat(PedHash.PedHashData[index].Value));
+            Online.ModelChange(Globals.Joaat(PedHash.PedHashData[index].Value));
     }
 
     private void ListBox_PedModel_MouseDoubleClick(object sender, MouseButtonEventArgs e)

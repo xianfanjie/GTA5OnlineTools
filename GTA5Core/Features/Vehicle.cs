@@ -100,7 +100,7 @@ public static class Vehicle
         {
             if (Globals.GetCVehicle(out long pCVehicle))
             {
-                Hacks.WriteGA(Base.oVMYCar + 894, 1);
+                Hacks.WriteGA(Base.oVMYCar + 899, 1);       // if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_BRU_BOX", PLAYER::PLAYER_ID(), true, 0))
 
                 await Task.Delay(1000);
 

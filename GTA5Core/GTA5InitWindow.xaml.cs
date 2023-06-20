@@ -226,10 +226,9 @@ public partial class GTA5InitWindow
         if (Pointers.UnkPTR == 0)
             return false;
 
+        // 此特征码仅在游戏世界加载完毕后可搜索（找不到不返回错误，在使用此功能时重新搜索）
         Pointers.HeightPTR = Memory.FindPattern(Mask.Height);
         Logger($"《GTA5》HeightPTR 0x{Pointers.HeightPTR:x}");
-        if (Pointers.HeightPTR == 0)
-            return true; // 返回 true 此特征码仅在游戏世界加载完毕后可搜索 如果当前未搜索到 将会在使用功能时再次搜索
 
         return true;
     }

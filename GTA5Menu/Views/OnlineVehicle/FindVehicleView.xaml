@@ -23,7 +23,6 @@
                     Width="200"
                     Margin="5"
                     Hint="请输入载具名称"
-                    InputLanguageManager.InputLanguage="zh-CN"
                     TextChanged="TextBox_ModelName_TextChanged" />
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal">

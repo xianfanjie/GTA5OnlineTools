@@ -32,68 +32,61 @@
 
     <UniformGrid Columns="2">
         <StackPanel>
-            <GroupBox
-                Margin="5"
-                Header="车速表位置"
-                Style="{StaticResource GroupBoxStyle_Normal}">
-                <WrapPanel Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="RadioButton_SpeedMeterPos_Center"
-                        Click="RadioButton_SpeedMeterPos_Center_Click"
-                        Content="居中"
-                        IsChecked="True" />
-                    <RadioButton
-                        x:Name="RadioButton_SpeedMeterPos_Right"
-                        Click="RadioButton_SpeedMeterPos_Center_Click"
-                        Content="居右" />
-                </WrapPanel>
-            </GroupBox>
-            <GroupBox
-                Margin="5"
-                Header="车速表单位"
-                Style="{StaticResource GroupBoxStyle_Normal}">
-                <WrapPanel Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="RadioButton_SpeedMeterUnit_MPH"
-                        Click="RadioButton_SpeedMeterUnit_MPH_Click"
-                        Content="MPH（英里每小时）"
-                        IsChecked="True" />
-                    <RadioButton
-                        x:Name="RadioButton_SpeedMeterUnit_KPH"
-                        Click="RadioButton_SpeedMeterUnit_MPH_Click"
-                        Content="KPH（公里每小时）" />
-                </WrapPanel>
-            </GroupBox>
-            <GroupBox
-                Margin="5"
-                Header="调试信息"
-                Style="{StaticResource GroupBoxStyle_Normal}">
-                <StackPanel>
-                    <TextBlock
-                        x:Name="TextBlock_ScreenResolution"
-                        Margin="5"
-                        Text="屏幕分辨率" />
-                    <TextBlock
-                        x:Name="TextBlock_GameResolution"
-                        Margin="5"
-                        Text="游戏分辨率" />
-                    <TextBlock
-                        x:Name="TextBlock_ScreenScale"
-                        Margin="5"
-                        Text="缩放比例" />
-                </StackPanel>
-            </GroupBox>
+            <ui:LabelIcon Content="车速表位置" />
+            <WrapPanel Margin="5,0,5,0">
+                <RadioButton
+                    x:Name="RadioButton_SpeedMeterPos_Center"
+                    Click="RadioButton_SpeedMeterPos_Center_Click"
+                    Content="居中"
+                    IsChecked="True" />
+                <RadioButton
+                    x:Name="RadioButton_SpeedMeterPos_Right"
+                    Click="RadioButton_SpeedMeterPos_Center_Click"
+                    Content="居右" />
+            </WrapPanel>
+
+            <ui:LabelIcon Content="车速表单位" />
+            <WrapPanel Margin="5,0,5,0">
+                <RadioButton
+                    x:Name="RadioButton_SpeedMeterUnit_MPH"
+                    Click="RadioButton_SpeedMeterUnit_MPH_Click"
+                    Content="MPH（英里每小时）"
+                    IsChecked="True" />
+                <RadioButton
+                    x:Name="RadioButton_SpeedMeterUnit_KPH"
+                    Click="RadioButton_SpeedMeterUnit_MPH_Click"
+                    Content="KPH（公里每小时）" />
+            </WrapPanel>
+
+            <ui:LabelIcon Content="调试信息" />
+            <StackPanel Margin="5,0,5,0">
+                <TextBlock
+                    x:Name="TextBlock_ScreenResolution"
+                    Margin="5"
+                    Text="屏幕分辨率" />
+                <TextBlock
+                    x:Name="TextBlock_GameResolution"
+                    Margin="5"
+                    Text="游戏分辨率" />
+                <TextBlock
+                    x:Name="TextBlock_ScreenScale"
+                    Margin="5"
+                    Text="缩放比例" />
+            </StackPanel>
         </StackPanel>
+        <!--  /////////////////////////////  -->
         <StackPanel>
             <ui:LabelIcon Content="车速表" />
-            <Button
-                x:Name="Button_RunDraw"
-                Click="Button_RunDraw_Click"
-                Content="启动" />
-            <Button
-                x:Name="Button_StopDraw"
-                Click="Button_StopDraw_Click"
-                Content="停止" />
+            <UniformGrid Columns="2">
+                <Button
+                    x:Name="Button_RunDraw"
+                    Click="Button_RunDraw_Click"
+                    Content="启动" />
+                <Button
+                    x:Name="Button_StopDraw"
+                    Click="Button_StopDraw_Click"
+                    Content="停止" />
+            </UniformGrid>
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 提示：游戏需要无边框或者窗口化才能正常显示，不支持全屏
             </TextBlock>

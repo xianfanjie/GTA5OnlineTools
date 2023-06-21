@@ -8,6 +8,7 @@ global using System.Windows;
 global using System.Windows.Input;
 global using System.Windows.Controls;
 global using System.Windows.Threading;
+global using System.Text;
 global using System.Text.RegularExpressions;
 global using System.Collections.Generic;
 global using System.Linq;

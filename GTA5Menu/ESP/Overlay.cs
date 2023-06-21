@@ -19,6 +19,8 @@ public class Overlay : IDisposable
 
     private WindowData windowData;
 
+    private readonly StringBuilder builder = new();
+
     // 视角宽和视角高
     private float gview_width;
     private float gview_height;
@@ -112,10 +114,10 @@ public class Overlay : IDisposable
 
     private void _window_DestroyGraphics(object sender, DestroyGraphicsEventArgs e)
     {
-        foreach (var pair in _brushes) 
+        foreach (var pair in _brushes)
             pair.Value.Dispose();
 
-        foreach (var pair in _fonts) 
+        foreach (var pair in _fonts)
             pair.Value.Dispose();
     }
 
@@ -152,18 +154,43 @@ public class Overlay : IDisposable
             long pCNetworkPlayerMgr = Memory.Read<long>(Pointers.NetworkPlayerMgrPTR);
             int playerCount = Memory.Read<int>(pCNetworkPlayerMgr + 0x180);
 
-            // Ped数量
-            long m_replay = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-            long m_ped_interface = Memory.Read<long>(m_replay + 0x18);
-            int m_max_peds = Memory.Read<int>(m_ped_interface + 0x108);
-            int m_cur_peds = Memory.Read<int>(m_ped_interface + 0x110);
+            long pReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
 
-            gfx.DrawText(_fonts["Microsoft YaHei"], 12, _brushes["blue"], 10, _window.Height / 3 + 30,
-                $"GTA5线上小助手\n\nX: {myPosV3.X:0.0000}\nY: {myPosV3.Y:0.0000}\nZ: {myPosV3.Z:0.0000}\n\n" +
-                $"玩家数量: {playerCount}\nPed数量: {m_cur_peds}");
+            // Ped
+            long pCPedInterface = Memory.Read<long>(pReplayInterface + CReplayInterface.CPedInterface.__Offset__);
+            int m_max_peds = Memory.Read<int>(pCPedInterface + CReplayInterface.CPedInterface.MaxPeds);
+            int m_cur_peds = Memory.Read<int>(pCPedInterface + CReplayInterface.CPedInterface.CurPeds);
 
-            long pAimingPedPTR = Memory.Read<long>(Pointers.AimingPedPTR);
-            bool isAimPed = Memory.Read<long>(pAimingPedPTR + 0x280) > 0;
+            // 载具
+            long pCVehicleInterface = Memory.Read<long>(pReplayInterface + CReplayInterface.CVehicleInterface.__Offset__);
+            int m_max_vehicles = Memory.Read<int>(pCVehicleInterface + CReplayInterface.CVehicleInterface.MaxVehicles);
+            int m_cur_vehicles = Memory.Read<int>(pCVehicleInterface + CReplayInterface.CVehicleInterface.CurVehicles);
+
+            // 可拾取
+            long pCPickupInterface = Memory.Read<long>(pReplayInterface + CReplayInterface.CPickupInterface.__Offset__);
+            int m_max_pickups = Memory.Read<int>(pCPickupInterface + CReplayInterface.CPickupInterface.MaxPickups);
+            int m_cur_pickups = Memory.Read<int>(pCPickupInterface + CReplayInterface.CPickupInterface.CurPickups);
+
+            // 对象
+            long pCObjectInterface = Memory.Read<long>(pReplayInterface + CReplayInterface.CObjectInterface.__Offset__);
+            int m_max_objects = Memory.Read<int>(pCObjectInterface + CReplayInterface.CObjectInterface.MaxObjects);
+            int m_cur_objects = Memory.Read<int>(pCObjectInterface + CReplayInterface.CObjectInterface.CurObjects);
+
+            builder.Clear();
+            builder.AppendLine("GTA5线上小助手\n");
+            builder.AppendLine($"X: {myPosV3.X:0.0000}");
+            builder.AppendLine($"Y: {myPosV3.Y:0.0000}");
+            builder.AppendLine($"Z: {myPosV3.Z:0.0000}\n");
+            builder.AppendLine($"线上玩家: {playerCount}");
+            builder.AppendLine($"人物模型: {m_cur_peds}");
+            builder.AppendLine($"载具模型: {m_cur_vehicles}");
+            builder.AppendLine($"掉落物品: {m_cur_pickups}");
+            builder.AppendLine($"游戏对象: {m_cur_objects}");
+
+            gfx.DrawText(_fonts["Microsoft YaHei"], 12, _brushes["blue"], 10, _window.Height / 3 + 30, builder.ToString());
+
+            long pAimingPed = Memory.Read<long>(Pointers.AimingPedPTR);
+            bool isAimPed = Memory.Read<long>(pAimingPed + 0x280) > 0;
 
             if (Setting.Overlay.ESP_Crosshair)
             {
@@ -178,8 +205,8 @@ public class Overlay : IDisposable
 
             for (int i = 0; i < m_max_peds; i++)
             {
-                long m_ped_list = Memory.Read<long>(m_ped_interface + 0x100);
-                m_ped_list = Memory.Read<long>(m_ped_list + i * 0x10);
+                long m_ped_list = Memory.Read<long>(pCPedInterface + 0x100);
+                m_ped_list = Memory.Read<long>(m_ped_list + i * 0x10);      // CEntityEntry
                 if (!Memory.IsValid(m_ped_list))
                     continue;
 
@@ -753,7 +780,7 @@ public class Overlay : IDisposable
     /// <param name="m_SinCos"></param>
     private void DrawAABBBox(Graphics gfx, IBrush brush, Vector3 m_Position, Vector2 m_SinCos)
     {
-        AxisAlignedBox aabb = new AxisAlignedBox
+        var aabb = new AxisAlignedBox()
         {
             Min = new Vector3(-0.5f, -0.5f, -1.0f),
             Max = new Vector3(0.5f, 0.5f, 1.0f)

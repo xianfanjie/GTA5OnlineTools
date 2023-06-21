@@ -104,26 +104,16 @@ public partial class MyVehicleView : UserControl
 
     private void ListBox_VehicleInfos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
-        Button_SpawnVehicleA_Click(null, null);
+        Button_SpawnVehicle_Click(null, null);
     }
 
-    private async void Button_SpawnVehicleA_Click(object sender, RoutedEventArgs e)
+    private async void Button_SpawnVehicle_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
-            await Vehicle2.SpawnVehicle(info.Value, -255.0f, 5, info.Mods);
-        }
-    }
-
-    private async void Button_SpawnVehicleB_Click(object sender, RoutedEventArgs e)
-    {
-        AudioHelper.PlayClickSound();
-
-        if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
-        {
-            await Vehicle2.SpawnVehicle(info.Value, 0.0f, 5, info.Mods);
+            await Vehicle2.SpawnVehicle(info.Value, info.Mods);
         }
     }
 

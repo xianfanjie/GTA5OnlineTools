@@ -19,14 +19,9 @@
         <!--  操作面板  -->
         <StackPanel Margin="5,5,5,0" Orientation="Horizontal">
             <Button
-                x:Name="Button_SpawnVehicleA"
-                Click="Button_SpawnVehicleA_Click"
-                Content="刷出线上载具（空地）"
-                IsEnabled="{Binding ElementName=ListBox_VehicleInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
-            <Button
-                x:Name="Button_SpawnVehicleB"
-                Click="Button_SpawnVehicleB_Click"
-                Content="刷出线上载具（室内）"
+                x:Name="Button_SpawnVehicle"
+                Click="Button_SpawnVehicle_Click"
+                Content="刷出线上载具"
                 IsEnabled="{Binding ElementName=ListBox_VehicleInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
             <Button
                 x:Name="Button_DeleteMyFavorite"

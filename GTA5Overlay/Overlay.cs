@@ -164,7 +164,7 @@ public class Overlay : IDisposable
         ///////////////////////////////////////////////////////
 
         var pWordPTR = Memory.Read<long>(Pointers.WorldPTR);
-        var pLocalCPed = Memory.Read<long>(pWordPTR + 0x08);
+        var pLocalCPed = Memory.Read<long>(pWordPTR + CPedFactory.CPed);
 
         // 自己坐标
         var pLocalCNavigation = Memory.Read<long>(pLocalCPed + 0x30);
@@ -243,32 +243,35 @@ public class Overlay : IDisposable
                 continue;
 
             // 如果ped死亡，跳过
-            var ped_Health = Memory.Read<float>(pCPed + 0x280);
+            var ped_Health = Memory.Read<float>(pCPed + CPed.Health);
             if (ped_Health <= 0)
                 continue;
 
-            var ped_MaxHealth = Memory.Read<float>(pCPed + 0x284);
+            var ped_MaxHealth = Memory.Read<float>(pCPed + CPed.HealthMax);
             var ped_HPPercentage = ped_Health / ped_MaxHealth;
 
-            var pCPlayerInfo = Memory.Read<long>(pCPed + 0x10A8);
+            var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             //if (!Memory.IsValid(pCPlayerInfo))
             //    continue;
 
-            var pedName = Memory.ReadString(pCPlayerInfo + 0x104, 20);
+            var pedName = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 20);
+
+            // 实体类型 byte 156:Player 152:Other
+            var ped_EntityType = Memory.Read<byte>(pCPed + CPed.EntityType);
 
             // 绘制玩家
             if (!Setting.ESP_Player)
             {
-                // 当不绘制玩家时，跳过玩家名称不为空的
-                if (!string.IsNullOrEmpty(pedName))
+                // 跳过玩家
+                if (ped_EntityType == (byte)EntityType.Player)
                     continue;
             }
 
             // 绘制Ped
             if (!Setting.ESP_NPC)
             {
-                // 当不绘制NPC时，跳过玩家名称为空的
-                if (string.IsNullOrEmpty(pedName))
+                // 跳过其他
+                if (ped_EntityType == (byte)EntityType.Other)
                     continue;
             }
 
@@ -289,8 +292,8 @@ public class Overlay : IDisposable
             // m_heading2   0x24
             var v2PedSinCos = new Vector2
             {
-                X = Memory.Read<float>(pCNavigation + 0x20),
-                Y = Memory.Read<float>(pCNavigation + 0x30)
+                X = Memory.Read<float>(pCNavigation + CNavigation.RightX),
+                Y = Memory.Read<float>(pCNavigation + CNavigation.ForwardX)
             };
 
             if (Setting.ESP_3DBox)
@@ -307,14 +310,16 @@ public class Overlay : IDisposable
                 }
             }
 
-            Vector2 pedPosV2 = Core.WorldToScreen(pedPosV3);
-            Vector2 pedBoxV2 = Core.GetBoxSize(pedPosV3);
+            var pedPosV2 = Core.WorldToScreen(pedPosV3);
+            var pedBoxV2 = Core.GetBoxSize(pedPosV3);
 
             if (!Core.IsNullVector2(pedPosV2))
             {
                 //int ped_type = Memory.Read<int>(pCPed + 0x10B8);
                 //ped_type = ped_type << 11 >> 25;
-                //Draw2DNameText(_brush_white, pedPosV2, pedBoxV2, ped_type.ToString(), myToPedDistance);
+                //Draw2DNameText(_brush_white, pedPosV2, pedBoxV2, $"{ped_type}", distance);
+
+                //gfx.DrawText(_font_YaHei, 12, _brush_green, pedPosV2.X, pedPosV2.Y, $"{ped_EntityType}");
 
                 if (!string.IsNullOrEmpty(pedName))
                 {
@@ -507,8 +512,8 @@ public class Overlay : IDisposable
                     // m_heading2   0x24
                     var v2PickupSinCos = new Vector2
                     {
-                        X = Memory.Read<float>(pCNavigation + 0x20),
-                        Y = Memory.Read<float>(pCNavigation + 0x30)
+                        X = Memory.Read<float>(pCNavigation + CNavigation.RightX),
+                        Y = Memory.Read<float>(pCNavigation + CNavigation.ForwardX)
                     };
 
                     if (Setting.ESP_3DBox)
@@ -555,6 +560,9 @@ public class Overlay : IDisposable
         _gviewHeight = _windowData.Height / 2;
     }
 
+    /// <summary>
+    /// Aimbot线程
+    /// </summary>
     private void AimbotThread()
     {
         while (_isRun)
@@ -565,13 +573,10 @@ public class Overlay : IDisposable
                 var aimBot_ViewAngles = new Vector3() { X = 0, Y = 0, Z = 0 };
                 var teleW_pedCoords = new Vector3() { X = 0, Y = 0, Z = 0 };
 
-                var pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-                var pCPed = Memory.Read<long>(pCPedFactory + CPedFactory.CPed);
-                var oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
-                var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+                var pWordPTR = Memory.Read<long>(Pointers.WorldPTR);
+                var pLocalCPed = Memory.Read<long>(pWordPTR + CPedFactory.CPed);
 
-                // 玩家自己RID
-                var myRID = Memory.Read<long>(pCPlayerInfo + CPlayerInfo.RockstarID);
+                var oInVehicle = Memory.Read<byte>(pLocalCPed + CPed.InVehicle);
 
                 // 相机坐标
                 var pCCameraPTR = Memory.Read<long>(Pointers.CCameraPTR);
@@ -584,52 +589,47 @@ public class Overlay : IDisposable
                 var isFPP = Memory.Read<float>(offset + 0x30);
 
                 // Ped实体
-                var pReplayInterfacePTR = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-                var my_offset_0x18 = Memory.Read<long>(pReplayInterfacePTR + 0x18);
+                var pReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
+                var pCPedInterface = Memory.Read<long>(pReplayInterface + +CReplayInterface.CPedInterface);
+                var m_max_peds = Memory.Read<int>(pCPedInterface + CPedInterface.MaxPeds);
 
-                for (var i = 0; i < 128; i++)
+                for (var i = 0; i < m_max_peds; i++)
                 {
-                    var ped_offset_0 = Memory.Read<long>(my_offset_0x18 + 0x100);
-                    ped_offset_0 = Memory.Read<long>(ped_offset_0 + i * 0x10);
-                    if (ped_offset_0 == 0)
-                    {
+                    var pCPedList = Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
+                    var pCPed = Memory.Read<long>(pCPedList + i * 0x10);      // CEntityEntry
+                    if (!Memory.IsValid(pCPed))
                         continue;
-                    }
 
-                    var pedHealth = Memory.Read<float>(ped_offset_0 + 0x280);
-                    if (pedHealth <= 0)
-                    {
+                    // 如果是自己，跳过
+                    if (pLocalCPed == pCPed)
                         continue;
-                    }
 
-                    var ped_offset_1 = Memory.Read<long>(ped_offset_0 + 0x10A8);
-                    var pedRID = Memory.Read<long>(ped_offset_1 + 0x90);
-                    if (myRID == pedRID)
-                    {
+                    // 如果ped死亡，跳过
+                    var ped_Health = Memory.Read<float>(pCPed + CPed.Health);
+                    if (ped_Health <= 0)
                         continue;
-                    }
 
-                    var pedName = Memory.ReadString(ped_offset_1 + 0xA4, 20);
+                    var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+
+                    var pedName = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 20);
 
                     // 绘制玩家
                     if (!Setting.ESP_Player)
                     {
-                        if (pedName != "")
-                        {
+                        // 当不绘制玩家时，跳过玩家名称不为空的
+                        if (!string.IsNullOrEmpty(pedName))
                             continue;
-                        }
                     }
 
                     // 绘制Ped
                     if (!Setting.ESP_NPC)
                     {
-                        if (pedName == "")
-                        {
+                        // 当不绘制NPC时，跳过玩家名称为空的
+                        if (string.IsNullOrEmpty(pedName))
                             continue;
-                        }
                     }
 
-                    var pedV3Pos = Memory.Read<Vector3>(ped_offset_0 + 0x90);
+                    var pedV3Pos = Memory.Read<Vector3>(pCPed + CPed.VisualX);
                     var pedV2Pos = Core.WorldToScreen(pedV3Pos);
 
                     // 自瞄数据
@@ -638,7 +638,7 @@ public class Overlay : IDisposable
                     if (aimBot_Distance < aimBot_Min_Distance)
                     {
                         aimBot_Min_Distance = aimBot_Distance;
-                        aimBot_ViewAngles = Core.GetCCameraViewAngles(cameraV3Pos, Core.GetBonePosition(ped_offset_0, Setting.AimBot_BoneIndex));
+                        aimBot_ViewAngles = Core.GetCCameraViewAngles(cameraV3Pos, Core.GetBonePosition(pCPed, Setting.AimBot_BoneIndex));
                         teleW_pedCoords = pedV3Pos;
                     }
                 }

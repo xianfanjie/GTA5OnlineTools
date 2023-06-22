@@ -7,7 +7,7 @@ public struct CPedFactory
 
 public struct CPed                                      // 0x08
 {
-    public const int EntityType = 0x2B;                 // 实体类型 int 156:Player 152:Other
+    public const int EntityType = 0x2B;                 // 实体类型 byte 156:Player 152:Other
     public const int Invisible = 0x2C;                  // 可见性 byte 0x01:on 0x24:off
     public const int CNavigation = 0x30;
     public const int VisualX = 0x90;
@@ -64,16 +64,16 @@ public struct CVehicle                                  // 0xD10
 
 public struct CPlayerInfo                               // 0x10A8
 {
-    public const int RlGamerInfo = 0x80;
-    public const int RockstarId = 0x88;                 // int64
-    public const int RelayIP = 0xC4;                    // byte
-    public const int RelayPort = 0xC8;                  // short
-    public const int ExternalIP = 0xCC;
-    public const int ExternalPort = 0xD0;
-    public const int InternalIP = 0xD4;
-    public const int InternalPort = 0xD8;
-    public const int HostToken = 0xE0;                  // int64
-    public const int RockstarID = 0xF0;
+    //public const int RlGamerInfo = 0x80;
+    //public const int RockstarId = 0x88;                 // int64
+    //public const int RelayIP = 0xC4;                    // byte
+    //public const int RelayPort = 0xC8;                  // short
+    //public const int ExternalIP = 0xCC;
+    //public const int ExternalPort = 0xD0;
+    //public const int InternalIP = 0xD4;
+    //public const int InternalPort = 0xD8;
+    //public const int HostToken = 0xE0;                  // int64
+    public const int RockstarID = 0xE8;
     public const int Name = 0xFC;                       // string[20]
     public const int SwimSpeed = 0x1C8;                 // float
     public const int WaterProof = 0x1E0;

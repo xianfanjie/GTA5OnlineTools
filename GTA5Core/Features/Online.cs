@@ -371,18 +371,21 @@ public static class Online
     /// </summary>
     public static async void Disconnect()
     {
-        Globals.WriteGA(32561, 1);        // NETWORK::NETWORK_BAIL(1, 0, 0)
+        Globals.WriteGA(32561, 1);              // NETWORK::NETWORK_BAIL(1, 0, 0)
         await Task.Delay(200);
-        Globals.WriteGA(32561, 0);        // return NETWORK::NETWORK_CAN_ACCESS_MULTIPLAYER
+        Globals.WriteGA(32561, 0);              // return NETWORK::NETWORK_CAN_ACCESS_MULTIPLAYER
     }
 
     /// <summary>
     /// 结束过场动画
     /// </summary>
-    public static void StopCutscene()
+    public static async void StopCutscene()
     {
-        Globals.WriteGA(2766640 + 3, 1);      // return MISC::GET_HASH_KEY("AVISA")
-        Globals.WriteGA(1575063, 1);          // NETWORK::NETWORK_TRANSITION_ADD_STAGE(hashKey, 1, num, etsParam0, 0);
+        Globals.WriteGA(2766640 + 3, 1);        // return MISC::GET_HASH_KEY("AVISA")
+        Globals.WriteGA(1575063, 1);            // NETWORK::NETWORK_TRANSITION_ADD_STAGE(hashKey, 1, num, etsParam0, 0);
+        await Task.Delay(200);
+        Globals.WriteGA(2766640 + 3, 0);
+        Globals.WriteGA(1575063, 0);
     }
 
     /// <summary>

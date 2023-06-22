@@ -33,6 +33,11 @@ public partial class OnlineOptionView : UserControl
         }
     }
 
+    private void Button_StopCutscene_Click(object sender, RoutedEventArgs e)
+    {
+        Online.StopCutscene();
+    }
+
     private void Button_Disconnect_Click(object sender, RoutedEventArgs e)
     {
         Online.Disconnect();

@@ -48,7 +48,12 @@ public static class Online
     /// </summary>
     public static void EmptySession()
     {
-
+        Task.Run(async () =>
+        {
+            ProcessMgr.SuspendProcess();
+            await Task.Delay(10000);
+            ProcessMgr.ResumeProcess();
+        });
     }
 
     /// <summary>

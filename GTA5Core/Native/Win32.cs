@@ -61,6 +61,12 @@ public static class Win32
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
     public static extern bool GetCursorPos(out POINT pt);
 
+    [DllImport("ntdll.dll")]
+    public static extern uint NtResumeProcess([In] IntPtr processHandle);
+
+    [DllImport("ntdll.dll")]
+    public static extern uint NtSuspendProcess([In] IntPtr processHandle);
+
     [DllImport("kernel32.dll")]
     public static extern bool AllocConsole();
 

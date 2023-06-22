@@ -21,7 +21,7 @@ public partial class GTA5MenuWindow
     /// </summary>
     private readonly Dictionary<string, UserControl> NavDictionary = new();
 
-    ///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////
 
     /// <summary>
     /// 主窗口关闭事件
@@ -43,7 +43,7 @@ public partial class GTA5MenuWindow
     /// </summary>
     private bool IsAppRunning = true;
 
-    ///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////
 
     public GTA5MenuWindow()
     {
@@ -182,14 +182,14 @@ public partial class GTA5MenuWindow
     {
         while (IsAppRunning)
         {
-            long pCPed = Game.GetCPed();
-            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+            var pCPed = Game.GetCPed();
+            var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
 
-            byte oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
+            var oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
 
-            byte oGod = Memory.Read<byte>(pCPed + CPed.God);
-            byte oRagdoll = Memory.Read<byte>(pCPed + CPed.Ragdoll);
-            byte oSeatbelt = Memory.Read<byte>(pCPed + CPed.Seatbelt);
+            var oGod = Memory.Read<byte>(pCPed + CPed.God);
+            var oRagdoll = Memory.Read<byte>(pCPed + CPed.Ragdoll);
+            var oSeatbelt = Memory.Read<byte>(pCPed + CPed.Seatbelt);
 
             ////////////////////////////////////////////////////////////////
 
@@ -246,8 +246,8 @@ public partial class GTA5MenuWindow
 
             if (oInVehicle != 0x00)
             {
-                long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
-                byte oVehicleGod = Memory.Read<byte>(pCVehicle + CVehicle.God);
+                var pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
+                var oVehicleGod = Memory.Read<byte>(pCVehicle + CVehicle.God);
 
                 // 载具无敌
                 if (Setting.Vehicle.GodMode)
@@ -269,16 +269,16 @@ public partial class GTA5MenuWindow
             if (Setting.Auto.ClearWanted)
                 Player.WantedLevel(0x00);
 
-            long pCPedList = Game.GetCPedList();
+            var pCPedList = Game.GetCPedList();
 
-            for (int i = 0; i < Base.oMaxPeds; i++)
+            for (var i = 0; i < Base.oMaxPeds; i++)
             {
-                long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
+                var pCPed = Memory.Read<long>(pCPedList + i * 0x10);
                 if (!Memory.IsValid(pCPed))
                     continue;
 
                 // 跳过玩家
-                long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+                var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
                 if (Memory.IsValid(pCPlayerInfo))
                     continue;
 
@@ -289,7 +289,7 @@ public partial class GTA5MenuWindow
                 // 自动击杀敌对NPC
                 if (Setting.Auto.KillHostilityNPC)
                 {
-                    byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
+                    var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                     if (oHostility > 0x01)
                     {
                         Memory.Write(pCPed + CPed.Health, 0.0f);
@@ -299,7 +299,7 @@ public partial class GTA5MenuWindow
                 // 自动击杀警察
                 if (Setting.Auto.KillPolice)
                 {
-                    int ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
+                    var ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
                     ped_type = ped_type << 11 >> 25;
 
                     if (ped_type == (int)PedType.COP ||

@@ -33,14 +33,19 @@ public partial class OnlineOptionView : UserControl
         }
     }
 
-    private void Button_StopCutscene_Click(object sender, RoutedEventArgs e)
+    private void Button_EmptySession_Click(object sender, RoutedEventArgs e)
     {
-        Online.StopCutscene();
+        Online.EmptySession();
     }
 
     private void Button_Disconnect_Click(object sender, RoutedEventArgs e)
     {
         Online.Disconnect();
+    }
+
+    private void Button_StopCutscene_Click(object sender, RoutedEventArgs e)
+    {
+        Online.StopCutscene();
     }
 
     private void CheckBox_FreeChangeAppearance_Click(object sender, RoutedEventArgs e)

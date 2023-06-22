@@ -251,27 +251,22 @@ public class Overlay : IDisposable
             var ped_HPPercentage = ped_Health / ped_MaxHealth;
 
             var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
-            //if (!Memory.IsValid(pCPlayerInfo))
-            //    continue;
 
             var pedName = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 20);
-
-            // 实体类型 byte 156:Player 152:Other
-            var ped_EntityType = Memory.Read<byte>(pCPed + CPed.EntityType);
 
             // 绘制玩家
             if (!Setting.ESP_Player)
             {
-                // 跳过玩家
-                if (ped_EntityType == (byte)EntityType.Player)
+                // 跳过玩家，IsValid返回为true
+                if (Memory.IsValid(pCPlayerInfo))
                     continue;
             }
 
             // 绘制Ped
             if (!Setting.ESP_NPC)
             {
-                // 跳过其他
-                if (ped_EntityType == (byte)EntityType.Other)
+                // 跳过其他，NPC的pCPlayerInfo为0，IsValid返回为false
+                if (!Memory.IsValid(pCPlayerInfo))
                     continue;
             }
 
@@ -319,7 +314,7 @@ public class Overlay : IDisposable
                 //ped_type = ped_type << 11 >> 25;
                 //Draw2DNameText(_brush_white, pedPosV2, pedBoxV2, $"{ped_type}", distance);
 
-                //gfx.DrawText(_font_YaHei, 12, _brush_green, pedPosV2.X, pedPosV2.Y, $"{ped_EntityType}");
+                //gfx.DrawText(_font_YaHei, 12, _brush_green, pedPosV2.X, pedPosV2.Y, $"{pCPlayerInfo}");
 
                 if (!string.IsNullOrEmpty(pedName))
                 {
@@ -611,21 +606,19 @@ public class Overlay : IDisposable
 
                     var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
 
-                    var pedName = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 20);
-
                     // 绘制玩家
                     if (!Setting.ESP_Player)
                     {
-                        // 当不绘制玩家时，跳过玩家名称不为空的
-                        if (!string.IsNullOrEmpty(pedName))
+                        // 跳过玩家，IsValid返回为true
+                        if (Memory.IsValid(pCPlayerInfo))
                             continue;
                     }
 
                     // 绘制Ped
                     if (!Setting.ESP_NPC)
                     {
-                        // 当不绘制NPC时，跳过玩家名称为空的
-                        if (string.IsNullOrEmpty(pedName))
+                        // 跳过其他，NPC的pCPlayerInfo为0，IsValid返回为false
+                        if (!Memory.IsValid(pCPlayerInfo))
                             continue;
                     }
 

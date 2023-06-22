@@ -93,6 +93,9 @@ public static class Vehicle2
         // 27 + 10 ~ 27 + 58
         for (int i = 0; i < 48; i++)
         {
+            if (i > 16 || i < 23)
+                continue;
+
             Globals.WriteGA(Base.oVMCreate + 27 + 10 + i, mods[i]);
         }
 

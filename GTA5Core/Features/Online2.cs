@@ -46,15 +46,15 @@ public static class Online2
     /// <param name="produce_time"></param>
     public static void SetBunkerProduceResearchTime(bool isEnable, int produce_time = 1)
     {
-        // Base Time to Produce                                                     // tuneables_processing.c
-        Globals.WriteGA(Base.Default + 21532, isEnable ? produce_time : 600000);      // Product                  215868155 
-        Globals.WriteGA(Base.Default + 21548, isEnable ? produce_time : 300000);      // Research                 -676414773 joaat("GR_RESEARCH_PRODUCTION_TIME")
+        // Base Time to Produce                                                         // tuneables_processing.c
+        Globals.WriteGA(Base.Default + 21532, isEnable ? produce_time : 600000);        // Product                  215868155 
+        Globals.WriteGA(Base.Default + 21548, isEnable ? produce_time : 300000);        // Research                 -676414773 joaat("GR_RESEARCH_PRODUCTION_TIME")
 
         // Time to Produce Reductions
-        Globals.WriteGA(Base.Default + 21533, isEnable ? produce_time : 90000);       // Production Equipment     631477612
-        Globals.WriteGA(Base.Default + 21534, isEnable ? produce_time : 90000);       // Production Staff         818645907
-        Globals.WriteGA(Base.Default + 21593, isEnable ? produce_time : 45000);       // Research Equipment       -1148432846
-        Globals.WriteGA(Base.Default + 21594, isEnable ? produce_time : 45000);       // Research Staff           510883248
+        Globals.WriteGA(Base.Default + 21533, isEnable ? produce_time : 90000);         // Production Equipment     631477612
+        Globals.WriteGA(Base.Default + 21534, isEnable ? produce_time : 90000);         // Production Staff         818645907
+        Globals.WriteGA(Base.Default + 21593, isEnable ? produce_time : 45000);         // Research Equipment       -1148432846
+        Globals.WriteGA(Base.Default + 21594, isEnable ? produce_time : 45000);         // Research Staff           510883248
     }
 
     /// <summary>

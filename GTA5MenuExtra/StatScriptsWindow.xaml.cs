@@ -1,5 +1,7 @@
 ﻿using GTA5Core.Features;
 using GTA5Core.GTA.Stats;
+using GTA5Core.Offsets;
+using GTA5Shared.Helper;
 
 namespace GTA5MenuExtra; 
 
@@ -30,7 +32,9 @@ public partial class StatScriptsWindow
 
     private void Button_LoadSession_Click(object sender, RoutedEventArgs e)
     {
-        Online.LoadSession(11);
+        AudioHelper.PlayClickSound();
+
+        Online.LoadSession((int)SessionType.Invite_Only);
     }
 
     private void AppendTextBox(string log)
@@ -44,6 +48,8 @@ public partial class StatScriptsWindow
 
     private void Button_ExecuteAutoScript_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         var index = ListBox_STATList.SelectedIndex;
         if (index != -1)
         {

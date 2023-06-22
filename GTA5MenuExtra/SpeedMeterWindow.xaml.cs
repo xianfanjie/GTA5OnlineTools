@@ -1,6 +1,7 @@
 ﻿using GTA5MenuExtra.Views.SpeedMeter;
 
 using GTA5Core.Native;
+using GTA5Shared.Helper;
 
 namespace GTA5MenuExtra;
 
@@ -42,6 +43,8 @@ public partial class SpeedMeterWindow
 
     private void Button_RunDraw_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Memory.SetForegroundWindow();
 
         if (DrawWindow == null)
@@ -59,6 +62,8 @@ public partial class SpeedMeterWindow
 
     private void Button_StopDraw_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (DrawWindow != null)
         {
             DrawWindow.Close();

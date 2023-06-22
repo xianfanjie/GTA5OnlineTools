@@ -34,6 +34,8 @@ public partial class SessionChatView : UserControl
 
     private void Button_Translate_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         var message = TextBox_InputMessage.Text.Trim();
 
         if (string.IsNullOrWhiteSpace(message))
@@ -60,6 +62,8 @@ public partial class SessionChatView : UserControl
 
     private void Button_SendTextToGTA5_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         var message = TextBox_InputMessage.Text.Trim();
 
         if (string.IsNullOrWhiteSpace(message))
@@ -171,6 +175,8 @@ public partial class SessionChatView : UserControl
 
     private void Button_ReadPlayerName_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         var pCPlayerInfo = Game.GetCPlayerInfo();
         TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 64);
     }
@@ -182,6 +188,8 @@ public partial class SessionChatView : UserControl
 
     private void Button_WritePlayerName_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         try
         {
             var playerName = TextBox_PlayerName.Text.Trim();

@@ -2,6 +2,7 @@
 using GTA5Core.GTA.Onlines;
 
 using GTA5Menu.Options;
+using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.OnlineWeapon;
 
@@ -46,6 +47,8 @@ public partial class WeaponOptionView : UserControl
 
     private void Button_NoRecoil_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Weapon.NoRecoil();
     }
 
@@ -75,11 +78,15 @@ public partial class WeaponOptionView : UserControl
 
     private void Button_FillCurrentAmmo_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Weapon.FillCurrentAmmo();
     }
 
     private void Button_FillAllAmmo_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Weapon.FillAllAmmo();
     }
 }

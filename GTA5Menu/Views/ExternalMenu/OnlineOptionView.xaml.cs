@@ -2,6 +2,7 @@
 using GTA5Core.GTA.Onlines;
 
 using GTA5Menu.Options;
+using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -25,6 +26,8 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_Sessions_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (sender is Button button)
         {
             var session = OnlineData.Sessions.Find(t => t.Name == button.Content.ToString());
@@ -35,16 +38,22 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_EmptySession_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Online.EmptySession();
     }
 
     private void Button_Disconnect_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Online.Disconnect();
     }
 
     private void Button_StopCutscene_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Online.StopCutscene();
     }
 
@@ -55,6 +64,8 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_RPxN_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (sender is Button button)
         {
             var rpxn = OnlineData.RPxNs.Find(t => t.Name == button.Content.ToString());
@@ -65,6 +76,8 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_REPxN_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (sender is Button button)
         {
             var repxn = OnlineData.REPxNs.Find(t => t.Name == button.Content.ToString());
@@ -126,6 +139,8 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_Blips_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (sender is Button button)
         {
             var blip = OnlineData.Blips.Find(t => t.Name == button.Content.ToString());
@@ -136,6 +151,8 @@ public partial class OnlineOptionView : UserControl
 
     private void Button_MerryweatherServices_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         if (sender is Button button)
         {
             var service = OnlineData.MerryWeatherServices.Find(t => t.Name == button.Content.ToString());
@@ -157,5 +174,20 @@ public partial class OnlineOptionView : UserControl
     private void CheckBox_Airstrike_Click(object sender, RoutedEventArgs e)
     {
         Online.CallAirstrike(CheckBox_Airstrike.IsChecked == true);
+    }
+
+    private void Slider_RPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        Online.RPMultiplier((float)Slider_RPxN.Value);
+    }
+
+    private void Slider_APxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        Online.APMultiplier((float)Slider_APxN.Value);
+    }
+
+    private void Slider_REPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        Online.REPMultiplier((float)Slider_REPxN.Value);
     }
 }

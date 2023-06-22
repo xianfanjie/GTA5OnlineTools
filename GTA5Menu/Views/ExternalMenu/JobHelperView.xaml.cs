@@ -1,5 +1,6 @@
 ﻿using GTA5Core.Features;
 using GTA5Core.GTA.Onlines;
+using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -48,6 +49,8 @@ public partial class JobHelperView : UserControl
 
     private void Button_CEOCargos_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         var btnContent = (e.OriginalSource as Button).Content.ToString();
 
         var index = OnlineData.CEOCargos.FindIndex(t => t.Name == btnContent);
@@ -60,6 +63,8 @@ public partial class JobHelperView : UserControl
 
     private void Button_CEOSpecialCargos_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         var btnContent = (e.OriginalSource as Button).Content.ToString();
 
         var index = OnlineData.CEOSpecialCargos.FindIndex(t => t.Name == btnContent);

@@ -150,31 +150,35 @@
         </StackPanel>
         <!--  面板3  -->
         <StackPanel>
-            <ui:LabelIcon Content="角色等级RP倍数" />
-            <WrapPanel Margin="5,0,5,0">
-                <Button Click="Button_RPxN_Click" Content="RPx1" />
-                <Button Click="Button_RPxN_Click" Content="RPx2" />
-                <Button Click="Button_RPxN_Click" Content="RPx5" />
-                <Button Click="Button_RPxN_Click" Content="RPx10" />
-                <Button Click="Button_RPxN_Click" Content="RPx20" />
-                <Button Click="Button_RPxN_Click" Content="RPx50" />
-                <Button Click="Button_RPxN_Click" Content="RPx100" />
-                <Button Click="Button_RPxN_Click" Content="RPx500" />
-                <Button Click="Button_RPxN_Click" Content="RPx1000" />
-            </WrapPanel>
+            <ui:LabelIcon Content="经验倍数" />
+            <StackPanel Margin="5,0,5,0">
+                <ui:SliderIcon
+                    x:Name="Slider_RPxN"
+                    Title="角色RP"
+                    Maximum="1000"
+                    Minimum="1"
+                    Style="{StaticResource SliderIconStyle_Int}"
+                    ValueChanged="Slider_RPxN_ValueChanged" />
+                <ui:SliderIcon
+                    x:Name="Slider_APxN"
+                    Title="竞技场AP"
+                    Maximum="1000"
+                    Minimum="1"
+                    Style="{StaticResource SliderIconStyle_Int}"
+                    ValueChanged="Slider_APxN_ValueChanged" />
+                <ui:SliderIcon
+                    x:Name="Slider_REPxN"
+                    Title="车友会RP"
+                    Maximum="1000"
+                    Minimum="1"
+                    Style="{StaticResource SliderIconStyle_Int}"
+                    ValueChanged="Slider_REPxN_ValueChanged" />
 
-            <ui:LabelIcon Content="车友会等级RP倍数" />
-            <WrapPanel Margin="5,0,5,0">
-                <Button Click="Button_REPxN_Click" Content="REPx1" />
-                <Button Click="Button_REPxN_Click" Content="REPx2" />
-                <Button Click="Button_REPxN_Click" Content="REPx5" />
-                <Button Click="Button_REPxN_Click" Content="REPx10" />
-                <Button Click="Button_REPxN_Click" Content="REPx20" />
-                <Button Click="Button_REPxN_Click" Content="REPx50" />
-                <Button Click="Button_REPxN_Click" Content="REPx100" />
-                <Button Click="Button_REPxN_Click" Content="REPx500" />
-                <Button Click="Button_REPxN_Click" Content="REPx1000" />
-            </WrapPanel>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：经验倍数不建议调整的太高，建议10~100倍左右，太高容易出现交易警告
+                </TextBlock>
+            </StackPanel>
+
         </StackPanel>
 
     </UniformGrid>

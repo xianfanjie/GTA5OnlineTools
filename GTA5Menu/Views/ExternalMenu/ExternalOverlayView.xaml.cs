@@ -89,98 +89,42 @@ public partial class ExternalOverlayView : UserControl
 
     private void CheckBox_ESP_2DLine_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_2DLine.IsChecked == true)
-        {
-            Setting.ESP_2DLine = true;
-        }
-        else
-        {
-            Setting.ESP_2DLine = false;
-        }
+        Setting.ESP_2DLine = CheckBox_ESP_2DLine.IsChecked == true;
     }
 
     private void CheckBox_ESP_Bone_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_Bone.IsChecked == true)
-        {
-            Setting.ESP_Bone = true;
-        }
-        else
-        {
-            Setting.ESP_Bone = false;
-        }
+        Setting.ESP_Bone = CheckBox_ESP_Bone.IsChecked == true;
     }
 
     private void CheckBox_ESP_2DHealthBar_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_2DHealthBar.IsChecked == true)
-        {
-            Setting.ESP_2DHealthBar = true;
-        }
-        else
-        {
-            Setting.ESP_2DHealthBar = false;
-        }
+        Setting.ESP_2DHealthBar = CheckBox_ESP_2DHealthBar.IsChecked == true;
     }
 
     private void CheckBox_ESP_HealthText_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_HealthText.IsChecked == true)
-        {
-            Setting.ESP_HealthText = true;
-        }
-        else
-        {
-            Setting.ESP_HealthText = false;
-        }
+        Setting.ESP_HealthText = CheckBox_ESP_HealthText.IsChecked == true;
     }
 
     private void CheckBox_ESP_NameText_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_NameText.IsChecked == true)
-        {
-            Setting.ESP_NameText = true;
-        }
-        else
-        {
-            Setting.ESP_NameText = false;
-        }
+        Setting.ESP_NameText = CheckBox_ESP_NameText.IsChecked == true;
     }
 
     private void CheckBox_AimBot_Enabled_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_AimBot_Enabled.IsChecked == true)
-        {
-            Setting.AimBot_Enabled = true;
-        }
-        else
-        {
-            Setting.AimBot_Enabled = false;
-        }
+        Setting.AimBot_Enabled = CheckBox_AimBot_Enabled.IsChecked == true;
     }
 
     private void CheckBox_ESP_Player_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_Player.IsChecked == true)
-        {
-            Setting.ESP_Player = true;
-        }
-        else
-        {
-            Setting.ESP_Player = false;
-        }
+        Setting.ESP_Player = CheckBox_ESP_Player.IsChecked == true;
     }
 
     private void CheckBox_ESP_NPC_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_NPC.IsChecked == true)
-        {
-            Setting.ESP_NPC = true;
-        }
-        else
-        {
-            Setting.ESP_NPC = false;
-        }
+        Setting.ESP_NPC = CheckBox_ESP_NPC.IsChecked == true;
     }
 
     private void RadioButton_Overlay_RunMode0_Click(object sender, RoutedEventArgs e)
@@ -224,14 +168,7 @@ public partial class ExternalOverlayView : UserControl
 
     private void CheckBox_ESP_Crosshair_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_Crosshair.IsChecked == true)
-        {
-            Setting.ESP_Crosshair = true;
-        }
-        else
-        {
-            Setting.ESP_Crosshair = false;
-        }
+        Setting.ESP_Crosshair = CheckBox_ESP_Crosshair.IsChecked == true;
     }
 
     private void RadioButton_AimbotKey_CONTROL_Click(object sender, RoutedEventArgs e)
@@ -308,8 +245,18 @@ public partial class ExternalOverlayView : UserControl
         }
     }
 
-    private void CheckBox_NoTOPMostHide_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_NoTopMostHide_Click(object sender, RoutedEventArgs e)
     {
-        Setting.NoTopMostHide = CheckBox_NoTOPMostHide.IsChecked == true;
+        Setting.NoTopMostHide = CheckBox_NoTopMostHide.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_InfoText_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_InfoText = CheckBox_ESP_InfoText.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_Pickup_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Pickup = CheckBox_ESP_Pickup.IsChecked == true;
     }
 }

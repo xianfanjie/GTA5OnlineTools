@@ -111,7 +111,7 @@ public static class Vehicle
                 Memory.Write(pCVehicle + CPed.CVehicle.Health, 999.0f);
 
                 long pCPickupInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-                long pCReplayInterface_CPickupInterface = Memory.Read<long>(pCPickupInterface + CReplayInterface.CPickupInterface.__Offset__);
+                long pCReplayInterface_CPickupInterface = Memory.Read<long>(pCPickupInterface + CReplayInterface.CPickupInterface);
 
                 long mPickupCount = Memory.Read<int>(pCReplayInterface_CPickupInterface + 0x110);       // oPickupNum
                 long pPickupList = Memory.Read<long>(pCReplayInterface_CPickupInterface + 0x100);       // pPickupList

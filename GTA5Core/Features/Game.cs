@@ -53,8 +53,8 @@ public static class Game
     public static long GetCPedList()
     {
         long pCReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-        long pCPedInterface = Memory.Read<long>(pCReplayInterface + CReplayInterface.CPedInterface.__Offset__);
-        return Memory.Read<long>(pCPedInterface + CReplayInterface.CPedInterface.CPedList);
+        long pCPedInterface = Memory.Read<long>(pCReplayInterface + CReplayInterface.CPedInterface);
+        return Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
     }
 
     /// <summary>
@@ -64,7 +64,7 @@ public static class Game
     public static long GetCVehicleList()
     {
         long pCReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-        long pCVehicleInterface = Memory.Read<long>(pCReplayInterface + CReplayInterface.CVehicleInterface.__Offset__);
-        return Memory.Read<long>(pCVehicleInterface + CReplayInterface.CVehicleInterface.CVehicleList);
+        long pCVehicleInterface = Memory.Read<long>(pCReplayInterface + CReplayInterface.CVehicleInterface);
+        return Memory.Read<long>(pCVehicleInterface + CVehicleInterface.CVehicleList);
     }
 }

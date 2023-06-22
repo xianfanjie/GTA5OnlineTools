@@ -62,7 +62,7 @@ public static class Core
 
         cameraV3.Z = viewMatrix[2] * posV3.X + viewMatrix[6] * posV3.Y + viewMatrix[10] * posV3.Z + viewMatrix[14];
         if (cameraV3.Z < 0.001f)
-            return new Vector2(0, 0);
+            return Vector2.Zero;
 
         cameraV3.X = _windowWidth / 2;
         cameraV3.Y = _windowHeight / 2;
@@ -91,7 +91,7 @@ public static class Core
 
         cameraV3.Z = viewMatrix[2] * posV3.X + viewMatrix[6] * posV3.Y + viewMatrix[10] * posV3.Z + viewMatrix[14];
         if (cameraV3.Z < 0.001f)
-            return new Vector2(0, 0);
+            return Vector2.Zero;
 
         cameraV3.Y = _windowHeight / 2;
         cameraV3.Z = 1 / cameraV3.Z;

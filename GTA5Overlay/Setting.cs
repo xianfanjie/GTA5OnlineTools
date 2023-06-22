@@ -25,6 +25,9 @@ public static class Setting
 
     public static bool NoTopMostHide = false;
 
+    public static bool ESP_InfoText = true;
+    public static bool ESP_Pickup = true;
+
     public static void Reset()
     {
         VSync = true;
@@ -47,5 +50,8 @@ public static class Setting
         AimBot_Key = WinVK.CONTROL;
 
         NoTopMostHide = false;
+
+        ESP_InfoText = true;
+        ESP_Pickup = true;
     }
 }

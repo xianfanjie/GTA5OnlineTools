@@ -50,7 +50,7 @@ public static class Player
     public static void WantedLevel(byte level)
     {
         long pCPlayerInfo = Game.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.WantedLevel, level);
+        Memory.Write(pCPlayerInfo + CPlayerInfo.WantedLevel, level);
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public static class Player
     public static void RunSpeed(float value)
     {
         long pCPlayerInfo = Game.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.RunSpeed, value);
+        Memory.Write(pCPlayerInfo + CPlayerInfo.RunSpeed, value);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public static class Player
     public static void SwimSpeed(float value)
     {
         long pCPlayerInfo = Game.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.SwimSpeed, value);
+        Memory.Write(pCPlayerInfo + CPlayerInfo.SwimSpeed, value);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public static class Player
     public static void WalkSpeed(float value)
     {
         long pCPlayerInfo = Game.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.WalkSpeed, value);
+        Memory.Write(pCPlayerInfo + CPlayerInfo.WalkSpeed, value);
     }
 
     /// <summary>
@@ -149,7 +149,7 @@ public static class Player
     public static void WantedCanChange(bool isEnable)
     {
         long pCPlayerInfo = Game.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.WantedCanChange, isEnable ? 1.0f : 0.0f);
+        Memory.Write(pCPlayerInfo + CPlayerInfo.WantedCanChange, isEnable ? 1.0f : 0.0f);
     }
 
     /// <summary>
@@ -159,7 +159,7 @@ public static class Player
     public static void NPCIgnore(int value)
     {
         long pCPlayerInfo = Game.GetCPlayerInfo();
-        Memory.Write(pCPlayerInfo + CPed.CPlayerInfo.NPCIgnore, value);
+        Memory.Write(pCPlayerInfo + CPlayerInfo.NPCIgnore, value);
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public static class Player
     {
         long pCPed = Game.GetCPed();
 
-        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
+        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
         long pointer = Memory.Read<long>(pCNavigation + 0x10);
         pointer = Memory.Read<long>(pointer + 0x20);
         pointer = Memory.Read<long>(pointer + 0x70);

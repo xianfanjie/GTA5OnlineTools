@@ -181,17 +181,17 @@ public partial class SelfStateView : UserControl
         while (IsAppRunning)
         {
             long pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-            long pCPed = Memory.Read<long>(pCPedFactory + CPed.__Offset__);
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
+            long pCPed = Memory.Read<long>(pCPedFactory + CPedFactory.CPed);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
 
             float oHealth = Memory.Read<float>(pCPed + CPed.Health);
             float oHealthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
             float oArmor = Memory.Read<float>(pCPed + CPed.Armor);
 
-            byte oWantedLevel = Memory.Read<byte>(pCPlayerInfo + CPed.CPlayerInfo.WantedLevel);
-            float oWalkSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.WalkSpeed);
-            float oRunSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.RunSpeed);
-            float oSwimSpeed = Memory.Read<float>(pCPlayerInfo + CPed.CPlayerInfo.SwimSpeed);
+            byte oWantedLevel = Memory.Read<byte>(pCPlayerInfo + CPlayerInfo.WantedLevel);
+            float oWalkSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.WalkSpeed);
+            float oRunSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.RunSpeed);
+            float oSwimSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.SwimSpeed);
 
             ////////////////////////////////////////////////////////////////
 

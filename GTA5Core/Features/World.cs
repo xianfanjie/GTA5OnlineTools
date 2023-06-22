@@ -56,7 +56,7 @@ public static class World
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
@@ -89,7 +89,7 @@ public static class World
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
@@ -119,11 +119,11 @@ public static class World
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle.__Offset__);
+            long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
             if (!Memory.IsValid(pCVehicle))
                 continue;
 
@@ -132,18 +132,18 @@ public static class World
                 byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
-                    Memory.Write(pCVehicle + CPed.CVehicle.Health, -1.0f);
-                    Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, -1.0f);
-                    Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, -1.0f);
-                    Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, -1.0f);
+                    Memory.Write(pCVehicle + CVehicle.Health, -1.0f);
+                    Memory.Write(pCVehicle + CVehicle.HealthBody, -1.0f);
+                    Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, -1.0f);
+                    Memory.Write(pCVehicle + CVehicle.HealthEngine, -1.0f);
                 }
             }
             else
             {
-                Memory.Write(pCVehicle + CPed.CVehicle.Health, -1.0f);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, -1.0f);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, -1.0f);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, -1.0f);
+                Memory.Write(pCVehicle + CVehicle.Health, -1.0f);
+                Memory.Write(pCVehicle + CVehicle.HealthBody, -1.0f);
+                Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, -1.0f);
+                Memory.Write(pCVehicle + CVehicle.HealthEngine, -1.0f);
             }
         }
     }
@@ -161,10 +161,10 @@ public static class World
             if (!Memory.IsValid(pCVehicle))
                 continue;
 
-            Memory.Write(pCVehicle + CPed.CVehicle.Health, -1.0f);
-            Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, -1.0f);
-            Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, -1.0f);
-            Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, -1.0f);
+            Memory.Write(pCVehicle + CVehicle.Health, -1.0f);
+            Memory.Write(pCVehicle + CVehicle.HealthBody, -1.0f);
+            Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, -1.0f);
+            Memory.Write(pCVehicle + CVehicle.HealthEngine, -1.0f);
         }
     }
 
@@ -184,11 +184,11 @@ public static class World
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
+            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
+            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
             if (!Memory.IsValid(pCNavigation))
                 continue;
 
@@ -197,14 +197,14 @@ public static class World
                 byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
-                    Memory.Write(pCPed + CPed.CVehicle.VisualX, v3MyPos);
-                    Memory.Write(pCNavigation + CPed.CVehicle.CNavigation.PositionX, v3MyPos);
+                    Memory.Write(pCPed + CVehicle.VisualX, v3MyPos);
+                    Memory.Write(pCNavigation + CNavigation.PositionX, v3MyPos);
                 }
             }
             else
             {
-                Memory.Write(pCPed + CPed.CVehicle.VisualX, v3MyPos);
-                Memory.Write(pCNavigation + CPed.CVehicle.CNavigation.PositionX, v3MyPos);
+                Memory.Write(pCPed + CVehicle.VisualX, v3MyPos);
+                Memory.Write(pCNavigation + CNavigation.PositionX, v3MyPos);
             }
         }
     }

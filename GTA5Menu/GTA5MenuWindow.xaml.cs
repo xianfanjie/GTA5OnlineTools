@@ -183,7 +183,7 @@ public partial class GTA5MenuWindow
         while (IsAppRunning)
         {
             long pCPed = Game.GetCPed();
-            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
+            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
 
             byte oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
 
@@ -234,8 +234,8 @@ public partial class GTA5MenuWindow
             // 弹药编辑
             if (Setting.Weapon.AmmoModifierFlag != 0)
             {
-                long pCPedInventory = Memory.Read<long>(pCPed + CPed.CPedInventory.__Offset__);
-                Memory.Write(pCPedInventory + CPed.CPedInventory.AmmoModifier, Setting.Weapon.AmmoModifierFlag);
+                long pCPedInventory = Memory.Read<long>(pCPed + CPed.CPedInventory);
+                Memory.Write(pCPedInventory + CPedInventory.AmmoModifier, Setting.Weapon.AmmoModifierFlag);
             }
 
             // 非公开战局运货
@@ -246,14 +246,14 @@ public partial class GTA5MenuWindow
 
             if (oInVehicle != 0x00)
             {
-                long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle.__Offset__);
-                byte oVehicleGod = Memory.Read<byte>(pCVehicle + CPed.CVehicle.God);
+                long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
+                byte oVehicleGod = Memory.Read<byte>(pCVehicle + CVehicle.God);
 
                 // 载具无敌
                 if (Setting.Vehicle.GodMode)
                 {
                     if (oVehicleGod != 0x01)
-                        Memory.Write<byte>(pCVehicle + CPed.CVehicle.God, 0x01);
+                        Memory.Write<byte>(pCVehicle + CVehicle.God, 0x01);
                 }
             }
 
@@ -278,7 +278,7 @@ public partial class GTA5MenuWindow
                     continue;
 
                 // 跳过玩家
-                long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
+                long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
                 if (Memory.IsValid(pCPlayerInfo))
                     continue;
 

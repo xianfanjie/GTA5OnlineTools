@@ -198,25 +198,24 @@ public class Overlay : IDisposable
         var m_max_objects = Memory.Read<int>(pCObjectInterface + CObjectInterface.MaxObjects);
         var m_cur_objects = Memory.Read<int>(pCObjectInterface + CObjectInterface.CurObjects);
 
+        _infoText.Clear();
+        _infoText.AppendLine("GTA5线上小助手\n");
+        _infoText.AppendLine($"X: {localPosV3.X:0.0000}");
+        _infoText.AppendLine($"Y: {localPosV3.Y:0.0000}");
+        _infoText.AppendLine($"Z: {localPosV3.Z:0.0000}\n");
+        _infoText.AppendLine($"线上玩家: {playerCount}");
+        _infoText.AppendLine($"人物模型: {m_cur_peds}");
+        _infoText.AppendLine($"载具模型: {m_cur_vehicles}");
+        _infoText.AppendLine($"掉落物品: {m_cur_pickups}");
+        _infoText.AppendLine($"游戏对象: {m_cur_objects}");
+
         if (Setting.ESP_InfoText)
         {
             // 绘制帧数文本
             gfx.DrawText(_font_YaHei, 12, _brush_green, 10, _window.Height / 3, $"FPS：{gfx.FPS}");
-
             // 绘制信息文本
-            _infoText.Clear();
-            _infoText.AppendLine("GTA5线上小助手\n");
-            _infoText.AppendLine($"X: {localPosV3.X:0.0000}");
-            _infoText.AppendLine($"Y: {localPosV3.Y:0.0000}");
-            _infoText.AppendLine($"Z: {localPosV3.Z:0.0000}\n");
-            _infoText.AppendLine($"线上玩家: {playerCount}");
-            _infoText.AppendLine($"人物模型: {m_cur_peds}");
-            _infoText.AppendLine($"载具模型: {m_cur_vehicles}");
-            _infoText.AppendLine($"掉落物品: {m_cur_pickups}");
-            _infoText.AppendLine($"游戏对象: {m_cur_objects}");
+            gfx.DrawText(_font_YaHei, 12, _brush_blue, 10, _window.Height / 3 + 30, _infoText.ToString());
         }
-
-        gfx.DrawText(_font_YaHei, 12, _brush_blue, 10, _window.Height / 3 + 30, _infoText.ToString());
 
         var pAimingPed = Memory.Read<long>(Pointers.AimingPedPTR);
         var isAimPed = Memory.Read<long>(pAimingPed + 0x280) > 0;
@@ -503,12 +502,12 @@ public class Overlay : IDisposable
                 var teleW_pedCoords = new Vector3() { X = 0, Y = 0, Z = 0 };
 
                 var pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-                var pCPed = Memory.Read<long>(pCPedFactory + CPed.__Offset__);
+                var pCPed = Memory.Read<long>(pCPedFactory + CPedFactory.CPed);
                 var oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
-                var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
+                var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
 
                 // 玩家自己RID
-                var myRID = Memory.Read<long>(pCPlayerInfo + CPed.CPlayerInfo.RockstarID);
+                var myRID = Memory.Read<long>(pCPlayerInfo + CPlayerInfo.RockstarID);
 
                 // 相机坐标
                 var pCCameraPTR = Memory.Read<long>(Pointers.CCameraPTR);

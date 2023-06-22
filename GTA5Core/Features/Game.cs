@@ -12,7 +12,7 @@ public static class Game
     public static long GetCPed()
     {
         long pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-        return Memory.Read<long>(pCPedFactory + CPed.__Offset__);
+        return Memory.Read<long>(pCPedFactory + CPedFactory.CPed);
     }
 
     /// <summary>
@@ -22,7 +22,7 @@ public static class Game
     public static long GetCPlayerInfo()
     {
         long pCPed = GetCPed();
-        return Memory.Read<long>(pCPed + CPed.CPlayerInfo.__Offset__);
+        return Memory.Read<long>(pCPed + CPed.CPlayerInfo);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public static class Game
 
         if (oInVehicle == 0x01)
         {
-            pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle.__Offset__);
+            pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
             return true;
         }
 

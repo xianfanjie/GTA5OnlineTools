@@ -25,10 +25,10 @@ public static class Vehicle2
             Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
             float temp_z = vector3.Z;
 
-            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation.__Offset__);
+            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
 
-            float sin = Memory.Read<float>(pCNavigation + CPed.CNavigation.RightX);
-            float cos = Memory.Read<float>(pCNavigation + CPed.CNavigation.ForwardX);
+            float sin = Memory.Read<float>(pCNavigation + CNavigation.RightX);
+            float cos = Memory.Read<float>(pCNavigation + CNavigation.ForwardX);
 
             vector3.X += cos * dist;
             vector3.Y += sin * dist;

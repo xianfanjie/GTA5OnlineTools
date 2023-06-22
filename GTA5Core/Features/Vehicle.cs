@@ -20,7 +20,7 @@ public static class Vehicle
     public static void GodMode(bool isEnable)
     {
         if (Game.GetCVehicle(out long pCVehicle))
-            Memory.Write(pCVehicle + CPed.CVehicle.God, (byte)(isEnable ? 0x01 : 0x00));
+            Memory.Write(pCVehicle + CVehicle.God, (byte)(isEnable ? 0x01 : 0x00));
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ public static class Vehicle
     public static void Invisible(bool isEnable)
     {
         if (Game.GetCVehicle(out long pCVehicle))
-            Memory.Write(pCVehicle + CPed.CVehicle.Invisible, (byte)(isEnable ? 0x01 : 0x27));
+            Memory.Write(pCVehicle + CVehicle.Invisible, (byte)(isEnable ? 0x01 : 0x27));
     }
 
     /// <summary>
@@ -48,8 +48,8 @@ public static class Vehicle
     {
         if (Game.GetCVehicle(out long pCVehicle))
         {
-            long pCModelInfo = Memory.Read<long>(pCVehicle + CPed.CVehicle.CModelInfo.__Offset__);
-            Memory.Write(pCModelInfo + CPed.CVehicle.CModelInfo.Extras, flag);
+            long pCModelInfo = Memory.Read<long>(pCVehicle + CVehicle.CModelInfo);
+            Memory.Write(pCModelInfo + CModelInfo.Extras, flag);
         }
     }
 
@@ -60,8 +60,8 @@ public static class Vehicle
     {
         if (Game.GetCVehicle(out long pCVehicle))
         {
-            long pCModelInfo = Memory.Read<long>(pCVehicle + CPed.CVehicle.CModelInfo.__Offset__);
-            Memory.Write(pCModelInfo + CPed.CVehicle.CModelInfo.Parachute, (byte)(isEnable ? 0x01 : 0x00));
+            long pCModelInfo = Memory.Read<long>(pCVehicle + CVehicle.CModelInfo);
+            Memory.Write(pCModelInfo + CModelInfo.Parachute, (byte)(isEnable ? 0x01 : 0x00));
         }
     }
 
@@ -72,21 +72,21 @@ public static class Vehicle
     {
         if (Game.GetCVehicle(out long pCVehicle))
         {
-            float oVHealth = Memory.Read<float>(pCVehicle + CPed.CVehicle.Health);
-            float oVHealthMax = Memory.Read<float>(pCVehicle + CPed.CVehicle.HealthMax);
+            float oVHealth = Memory.Read<float>(pCVehicle + CVehicle.Health);
+            float oVHealthMax = Memory.Read<float>(pCVehicle + CVehicle.HealthMax);
             if (oVHealth <= oVHealthMax)
             {
-                Memory.Write(pCVehicle + CPed.CVehicle.Health, oVHealthMax);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, oVHealthMax);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, oVHealthMax);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, oVHealthMax);
+                Memory.Write(pCVehicle + CVehicle.Health, oVHealthMax);
+                Memory.Write(pCVehicle + CVehicle.HealthBody, oVHealthMax);
+                Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, oVHealthMax);
+                Memory.Write(pCVehicle + CVehicle.HealthEngine, oVHealthMax);
             }
             else
             {
-                Memory.Write(pCVehicle + CPed.CVehicle.Health, 1000.0f);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthBody, 1000.0f);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthPetrolTank, 1000.0f);
-                Memory.Write(pCVehicle + CPed.CVehicle.HealthEngine, 1000.0f);
+                Memory.Write(pCVehicle + CVehicle.Health, 1000.0f);
+                Memory.Write(pCVehicle + CVehicle.HealthBody, 1000.0f);
+                Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, 1000.0f);
+                Memory.Write(pCVehicle + CVehicle.HealthEngine, 1000.0f);
             }
         }
     }
@@ -108,7 +108,7 @@ public static class Vehicle
                 long FixVehValue = Memory.Read<long>(pCPickupData + 0x230);       // pFixVeh
                 long BSTValue = Memory.Read<long>(pCPickupData + 0x160);          // pBST
 
-                Memory.Write(pCVehicle + CPed.CVehicle.Health, 999.0f);
+                Memory.Write(pCVehicle + CVehicle.Health, 999.0f);
 
                 long pCPickupInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
                 long pCReplayInterface_CPickupInterface = Memory.Read<long>(pCPickupInterface + CReplayInterface.CPickupInterface);
@@ -135,7 +135,7 @@ public static class Vehicle
                         await Task.Delay(10);
 
                         Vector3 dwpPickupV3 = Memory.Read<Vector3>(dwpPickup + 0x90);
-                        Vector3 vehicleV3 = Memory.Read<Vector3>(pCVehicle + CPed.CVehicle.VisualX);
+                        Vector3 vehicleV3 = Memory.Read<Vector3>(pCVehicle + CVehicle.VisualX);
 
                         await Task.Delay(10);
 

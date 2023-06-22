@@ -174,12 +174,12 @@ public partial class DrawWindow : Window
     private int GetVehicleSpeed()
     {
         long pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-        long pCPed = Memory.Read<long>(pCPedFactory + CPed.__Offset__);
+        long pCPed = Memory.Read<long>(pCPedFactory + CPedFactory.CPed);
         byte oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
 
         if (oInVehicle == 0x01)
         {
-            long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle.__Offset__);
+            long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
 
             var v3_1 = Memory.Read<Vector3>(pCVehicle + 0x7D0);
             var VehicleSpeed1 = Math.Sqrt(Math.Pow(v3_1.X, 2) + Math.Pow(v3_1.Y, 2) + Math.Pow(v3_1.Z, 2));

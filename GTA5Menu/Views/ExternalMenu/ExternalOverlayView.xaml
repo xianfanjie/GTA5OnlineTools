@@ -17,6 +17,46 @@
             <UniformGrid Margin="5,0,5,0" Columns="2">
                 <StackPanel>
                     <CheckBox
+                        x:Name="CheckBox_ESP_Player"
+                        Click="CheckBox_ESP_Player_Click"
+                        Content="显示玩家"
+                        IsChecked="True" />
+                    <CheckBox
+                        x:Name="CheckBox_ESP_NPC"
+                        Click="CheckBox_ESP_NPC_Click"
+                        Content="显示NPC"
+                        IsChecked="True" />
+                    <CheckBox
+                        x:Name="CheckBox_ESP_Pickup"
+                        Click="CheckBox_ESP_Pickup_Click"
+                        Content="显示掉落物品"
+                        IsChecked="True" />
+                    <TextBlock />
+
+                    <CheckBox
+                        x:Name="CheckBox_ESP_Crosshair"
+                        Click="CheckBox_ESP_Crosshair_Click"
+                        Content="显示准心"
+                        IsChecked="True" />
+                    <CheckBox
+                        x:Name="CheckBox_ESP_InfoText"
+                        Click="CheckBox_ESP_InfoText_Click"
+                        Content="显示绘制信息"
+                        IsChecked="True" />
+                    <TextBlock />
+
+                    <CheckBox
+                        x:Name="CheckBox_AimBot_Enabled"
+                        Click="CheckBox_AimBot_Enabled_Click"
+                        Content="开启Aimbot" />
+                    <CheckBox
+                        x:Name="CheckBox_NoTopMostHide"
+                        Click="CheckBox_NoTopMostHide_Click"
+                        Content="非游戏状态隐藏" />
+                </StackPanel>
+                <!--  //////////////  -->
+                <StackPanel>
+                    <CheckBox
                         x:Name="CheckBox_ESP_2DBox"
                         Click="CheckBox_ESP_2DBox_Click"
                         Content="显示2D方框"
@@ -33,7 +73,7 @@
                     <CheckBox
                         x:Name="CheckBox_ESP_Bone"
                         Click="CheckBox_ESP_Bone_Click"
-                        Content="显示骨骼#" />
+                        Content="显示骨骼 #" />
                     <CheckBox
                         x:Name="CheckBox_ESP_2DHealthBar"
                         Click="CheckBox_ESP_2DHealthBar_Click"
@@ -42,50 +82,11 @@
                     <CheckBox
                         x:Name="CheckBox_ESP_HealthText"
                         Click="CheckBox_ESP_HealthText_Click"
-                        Content="显示数字血量#" />
+                        Content="显示数字血量 #" />
                     <CheckBox
                         x:Name="CheckBox_ESP_NameText"
                         Click="CheckBox_ESP_NameText_Click"
-                        Content="显示玩家姓名#" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_Player"
-                        Click="CheckBox_ESP_Player_Click"
-                        Content="显示玩家"
-                        IsChecked="True" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_NPC"
-                        Click="CheckBox_ESP_NPC_Click"
-                        Content="显示NPC"
-                        IsChecked="True" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_Crosshair"
-                        Click="CheckBox_ESP_Crosshair_Click"
-                        Content="显示准心"
-                        IsChecked="True" />
-                </StackPanel>
-                <!--  //////////////  -->
-                <StackPanel>
-                    <CheckBox
-                        x:Name="CheckBox_ESP_InfoText"
-                        Click="CheckBox_ESP_InfoText_Click"
-                        Content="显示绘制信息"
-                        IsChecked="True" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_Pickup"
-                        Click="CheckBox_ESP_Pickup_Click"
-                        Content="显示可拾取物品"
-                        IsChecked="True" />
-
-                    <TextBlock />
-
-                    <CheckBox
-                        x:Name="CheckBox_AimBot_Enabled"
-                        Click="CheckBox_AimBot_Enabled_Click"
-                        Content="开启Aimbot" />
-                    <CheckBox
-                        x:Name="CheckBox_NoTopMostHide"
-                        Click="CheckBox_NoTopMostHide_Click"
-                        Content="非游戏状态隐藏" />
+                        Content="显示玩家信息 #" />
                 </StackPanel>
             </UniformGrid>
         </StackPanel>

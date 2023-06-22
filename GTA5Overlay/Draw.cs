@@ -228,49 +228,61 @@ public static class Draw
     /// 绘制3D方框
     /// </summary>
     /// <param name="brush"></param>
-    /// <param name="m_Position"></param>
-    /// <param name="m_SinCos"></param>
-    public static void DrawAABBBox(IBrush brush, Vector3 m_Position, Vector2 m_SinCos)
+    /// <param name="m_position"></param>
+    /// <param name="m_sinCos"></param>
+    /// <param name="dist"></param>
+    /// <param name="ratio"></param>
+    public static void DrawAABBBox(IBrush brush, Vector3 m_position, Vector2 m_sinCos, float dist = 1.0f, float ratio = 2.0f)
     {
         var aabb = new AxisAlignedBox()
         {
-            Min = new Vector3(-0.5f, -0.5f, -1.0f),
-            Max = new Vector3(0.5f, 0.5f, 1.0f)
+            Min = new Vector3
+            {
+                X = dist / ratio * -1,
+                Y = dist / ratio * -1,
+                Z = dist * -1
+            },
+            Max = new Vector3
+            {
+                X = dist / ratio,
+                Y = dist / ratio,
+                Z = dist
+            }
         };
 
         Vector3 aabb_0 = new Vector3(
-            aabb.Min.X * m_SinCos.Y - aabb.Min.Y * m_SinCos.X,
-            aabb.Min.X * m_SinCos.X + aabb.Min.Y * m_SinCos.Y,
-            aabb.Min.Z) + m_Position; // 0
+            aabb.Min.X * m_sinCos.Y - aabb.Min.Y * m_sinCos.X,
+            aabb.Min.X * m_sinCos.X + aabb.Min.Y * m_sinCos.Y,
+            aabb.Min.Z) + m_position; // 0
         Vector3 aabb_1 = new Vector3(
-            aabb.Min.X * m_SinCos.Y - aabb.Max.Y * m_SinCos.X,
-            aabb.Min.X * m_SinCos.X + aabb.Max.Y * m_SinCos.Y,
-            aabb.Min.Z) + m_Position; // 1
+            aabb.Min.X * m_sinCos.Y - aabb.Max.Y * m_sinCos.X,
+            aabb.Min.X * m_sinCos.X + aabb.Max.Y * m_sinCos.Y,
+            aabb.Min.Z) + m_position; // 1
         Vector3 aabb_2 = new Vector3(
-            aabb.Min.X * m_SinCos.Y - aabb.Min.Y * m_SinCos.X,
-            aabb.Min.X * m_SinCos.X + aabb.Min.Y * m_SinCos.Y,
-            aabb.Max.Z) + m_Position; // 2
+            aabb.Min.X * m_sinCos.Y - aabb.Min.Y * m_sinCos.X,
+            aabb.Min.X * m_sinCos.X + aabb.Min.Y * m_sinCos.Y,
+            aabb.Max.Z) + m_position; // 2
         Vector3 aabb_3 = new Vector3(
-            aabb.Min.X * m_SinCos.Y - aabb.Max.Y * m_SinCos.X,
-            aabb.Min.X * m_SinCos.X + aabb.Max.Y * m_SinCos.Y,
-            aabb.Max.Z) + m_Position; // 3
+            aabb.Min.X * m_sinCos.Y - aabb.Max.Y * m_sinCos.X,
+            aabb.Min.X * m_sinCos.X + aabb.Max.Y * m_sinCos.Y,
+            aabb.Max.Z) + m_position; // 3
 
         Vector3 aabb_4 = new Vector3(
-            aabb.Max.X * m_SinCos.Y - aabb.Min.Y * m_SinCos.X,
-            aabb.Max.X * m_SinCos.X + aabb.Min.Y * m_SinCos.Y,
-            aabb.Min.Z) + m_Position; // 4
+            aabb.Max.X * m_sinCos.Y - aabb.Min.Y * m_sinCos.X,
+            aabb.Max.X * m_sinCos.X + aabb.Min.Y * m_sinCos.Y,
+            aabb.Min.Z) + m_position; // 4
         Vector3 aabb_5 = new Vector3(
-            aabb.Max.X * m_SinCos.Y - aabb.Max.Y * m_SinCos.X,
-            aabb.Max.X * m_SinCos.X + aabb.Max.Y * m_SinCos.Y,
-            aabb.Min.Z) + m_Position; // 5
+            aabb.Max.X * m_sinCos.Y - aabb.Max.Y * m_sinCos.X,
+            aabb.Max.X * m_sinCos.X + aabb.Max.Y * m_sinCos.Y,
+            aabb.Min.Z) + m_position; // 5
         Vector3 aabb_6 = new Vector3(
-            aabb.Max.X * m_SinCos.Y - aabb.Min.Y * m_SinCos.X,
-            aabb.Max.X * m_SinCos.X + aabb.Min.Y * m_SinCos.Y,
-            aabb.Max.Z) + m_Position; // 6
+            aabb.Max.X * m_sinCos.Y - aabb.Min.Y * m_sinCos.X,
+            aabb.Max.X * m_sinCos.X + aabb.Min.Y * m_sinCos.Y,
+            aabb.Max.Z) + m_position; // 6
         Vector3 aabb_7 = new Vector3(
-            aabb.Max.X * m_SinCos.Y - aabb.Max.Y * m_SinCos.X,
-            aabb.Max.X * m_SinCos.X + aabb.Max.Y * m_SinCos.Y,
-            aabb.Max.Z) + m_Position; // 7
+            aabb.Max.X * m_sinCos.Y - aabb.Max.Y * m_sinCos.X,
+            aabb.Max.X * m_sinCos.X + aabb.Max.Y * m_sinCos.Y,
+            aabb.Max.Z) + m_position; // 7
 
         /// <summary>
         ///                    max
@@ -303,20 +315,20 @@ public static class Draw
             !Core.IsNullVector2(aabb_6V2Pos) &&
             !Core.IsNullVector2(aabb_7V2Pos))
         {
-            _gfx.DrawLine(brush, aabb_0V2Pos.X, aabb_0V2Pos.Y, aabb_1V2Pos.X, aabb_1V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_0V2Pos.X, aabb_0V2Pos.Y, aabb_2V2Pos.X, aabb_2V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_3V2Pos.X, aabb_3V2Pos.Y, aabb_1V2Pos.X, aabb_1V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_3V2Pos.X, aabb_3V2Pos.Y, aabb_2V2Pos.X, aabb_2V2Pos.Y, 0.7f);
+            _gfx.DrawLine(brush, aabb_0V2Pos.X, aabb_0V2Pos.Y, aabb_1V2Pos.X, aabb_1V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_0V2Pos.X, aabb_0V2Pos.Y, aabb_2V2Pos.X, aabb_2V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_3V2Pos.X, aabb_3V2Pos.Y, aabb_1V2Pos.X, aabb_1V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_3V2Pos.X, aabb_3V2Pos.Y, aabb_2V2Pos.X, aabb_2V2Pos.Y, 1.0f);
 
-            _gfx.DrawLine(brush, aabb_4V2Pos.X, aabb_4V2Pos.Y, aabb_5V2Pos.X, aabb_5V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_4V2Pos.X, aabb_4V2Pos.Y, aabb_6V2Pos.X, aabb_6V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_7V2Pos.X, aabb_7V2Pos.Y, aabb_5V2Pos.X, aabb_5V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_7V2Pos.X, aabb_7V2Pos.Y, aabb_6V2Pos.X, aabb_6V2Pos.Y, 0.7f);
+            _gfx.DrawLine(brush, aabb_4V2Pos.X, aabb_4V2Pos.Y, aabb_5V2Pos.X, aabb_5V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_4V2Pos.X, aabb_4V2Pos.Y, aabb_6V2Pos.X, aabb_6V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_7V2Pos.X, aabb_7V2Pos.Y, aabb_5V2Pos.X, aabb_5V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_7V2Pos.X, aabb_7V2Pos.Y, aabb_6V2Pos.X, aabb_6V2Pos.Y, 1.0f);
 
-            _gfx.DrawLine(brush, aabb_0V2Pos.X, aabb_0V2Pos.Y, aabb_4V2Pos.X, aabb_4V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_1V2Pos.X, aabb_1V2Pos.Y, aabb_5V2Pos.X, aabb_5V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_2V2Pos.X, aabb_2V2Pos.Y, aabb_6V2Pos.X, aabb_6V2Pos.Y, 0.7f);
-            _gfx.DrawLine(brush, aabb_3V2Pos.X, aabb_3V2Pos.Y, aabb_7V2Pos.X, aabb_7V2Pos.Y, 0.7f);
+            _gfx.DrawLine(brush, aabb_0V2Pos.X, aabb_0V2Pos.Y, aabb_4V2Pos.X, aabb_4V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_1V2Pos.X, aabb_1V2Pos.Y, aabb_5V2Pos.X, aabb_5V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_2V2Pos.X, aabb_2V2Pos.Y, aabb_6V2Pos.X, aabb_6V2Pos.Y, 1.0f);
+            _gfx.DrawLine(brush, aabb_3V2Pos.X, aabb_3V2Pos.Y, aabb_7V2Pos.X, aabb_7V2Pos.Y, 1.0f);
         }
     }
 

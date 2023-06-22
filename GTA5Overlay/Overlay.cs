@@ -5,6 +5,7 @@ using GTA5Core.Features;
 
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
+using System.Windows.Ink;
 
 namespace GTA5Overlay;
 
@@ -21,6 +22,7 @@ public class Overlay : IDisposable
     private SolidBrush _brush_red;
     private SolidBrush _brush_green;
     private SolidBrush _brush_blue;
+    private SolidBrush _brush_yellow;
     private SolidBrush _brush_deepPink;
     private SolidBrush _brush_transparency;
 
@@ -116,6 +118,7 @@ public class Overlay : IDisposable
         _brush_red = gfx.CreateSolidBrush(255, 0, 98);
         _brush_green = gfx.CreateSolidBrush(0, 128, 0);
         _brush_blue = gfx.CreateSolidBrush(30, 144, 255);
+        _brush_yellow = gfx.CreateSolidBrush(254, 215, 0);
         _brush_deepPink = gfx.CreateSolidBrush(247, 63, 147, 255);
         _brush_transparency = gfx.CreateSolidBrush(0, 0, 0, 0);
 
@@ -123,6 +126,7 @@ public class Overlay : IDisposable
         _brushes.Add(_brush_red);
         _brushes.Add(_brush_green);
         _brushes.Add(_brush_blue);
+        _brushes.Add(_brush_yellow);
         _brushes.Add(_brush_deepPink);
         _brushes.Add(_brush_transparency);
 
@@ -272,12 +276,12 @@ public class Overlay : IDisposable
                     continue;
             }
 
-            var pCNavigation = Memory.Read<long>(pCPed + 0x30);
+            var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
             if (!Memory.IsValid(pCNavigation))
                 continue;
 
             // ped坐标
-            var pedPosV3 = Memory.Read<Vector3>(pCNavigation + 0x50);
+            var pedPosV3 = Memory.Read<Vector3>(pCNavigation + CNavigation.PositionX);
 
             // Ped与自己的距离
             var distance = (float)Math.Sqrt(
@@ -308,7 +312,7 @@ public class Overlay : IDisposable
             }
 
             Vector2 pedPosV2 = Core.WorldToScreen(pedPosV3);
-            Vector2 pedBoxV2 = Core.GetBoxWH(pedPosV3);
+            Vector2 pedBoxV2 = Core.GetBoxSize(pedPosV3);
 
             if (!Core.IsNullVector2(pedPosV2))
             {
@@ -321,20 +325,20 @@ public class Overlay : IDisposable
                     if (Setting.ESP_2DBox)
                     {
                         // 2D方框
-                        Draw.Draw2DBox(_brush_red, pedPosV2, pedBoxV2, 0.7f);
+                        Draw.Draw2DBox(_brush_red, pedPosV2, pedBoxV2, 1.0f);
                     }
 
-                    if (Setting.ESP_2DLine)
+                    if (Setting.ESP_Line)
                     {
                         if (Setting.ESP_2DBox)
                         {
                             // 2DBox射线
-                            Draw.Draw2DLine(_brush_red, pedPosV2, pedBoxV2, 0.7f);
+                            Draw.Draw2DLine(_brush_red, pedPosV2, pedBoxV2, 1.0f);
                         }
                         else
                         {
                             // 3DBox射线
-                            Draw.DrawAABBLine(_brush_red, pedPosV3, 0.7f);
+                            Draw.DrawAABBLine(_brush_red, pedPosV3, 1.0f);
                         }
                     }
 
@@ -343,12 +347,12 @@ public class Overlay : IDisposable
                         if (Setting.ESP_2DBox)
                         {
                             // 2DBox血条
-                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 0.7f);
+                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 1.0f);
                         }
                         else
                         {
                             // 3DBox血条
-                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 0.7f);
+                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 1.0f);
                         }
                     }
 
@@ -385,20 +389,20 @@ public class Overlay : IDisposable
                     if (Setting.ESP_2DBox)
                     {
                         // 2D方框
-                        Draw.Draw2DBox(_brush_white, pedPosV2, pedBoxV2, 0.7f);
+                        Draw.Draw2DBox(_brush_white, pedPosV2, pedBoxV2, 1.0f);
                     }
 
-                    if (Setting.ESP_2DLine)
+                    if (Setting.ESP_Line)
                     {
                         if (Setting.ESP_2DBox)
                         {
                             // 2DBox射线
-                            Draw.Draw2DLine(_brush_white, pedPosV2, pedBoxV2, 0.7f);
+                            Draw.Draw2DLine(_brush_white, pedPosV2, pedBoxV2, 1.0f);
                         }
                         else
                         {
                             // 3DBox射线
-                            Draw.DrawAABBLine(_brush_white, pedPosV3, 0.7f);
+                            Draw.DrawAABBLine(_brush_white, pedPosV3, 1.0f);
                         }
                     }
 
@@ -407,12 +411,12 @@ public class Overlay : IDisposable
                         if (Setting.ESP_2DBox)
                         {
                             // 2DBox血条
-                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 0.7f);
+                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 1.0f);
                         }
                         else
                         {
                             // 3DBox血条
-                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 0.7f);
+                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 1.0f);
                         }
                     }
 
@@ -465,6 +469,58 @@ public class Overlay : IDisposable
                 Draw.DrawBone(_brush_white, pCPed, 8, 4);
                 Draw.DrawBone(_brush_white, pCPed, 7, 5);
                 Draw.DrawBone(_brush_white, pCPed, 7, 6);
+            }
+        }
+
+        ///////////////////////////////////////////////////////
+
+        for (var i = 0; i < m_max_pickups; i++)
+        {
+            var pCPickupList = Memory.Read<long>(pCPickupInterface + CPickupInterface.CPickupList);
+            var pCPickup = Memory.Read<long>(pCPickupList + i * 0x10);      // CEntityEntry
+            if (!Memory.IsValid(pCPickup))
+                continue;
+
+            var pCNavigation = Memory.Read<long>(pCPickup + CPed.CNavigation);
+            if (!Memory.IsValid(pCNavigation))
+                continue;
+
+            // pickup坐标
+            var pickupPosV3 = Memory.Read<Vector3>(pCNavigation + CNavigation.PositionX);
+
+            Vector2 pickupPosV2 = Core.WorldToScreen(pickupPosV3);
+            Vector2 pickupBoxV2 = Core.GetBoxSize(pickupPosV3, 0.3f, 1.0f);
+
+            if (pickupPosV2 != Vector2.Zero)
+            {
+                if (Setting.ESP_Pickup)
+                {
+                    if (Setting.ESP_2DBox)
+                    {
+                        // 2D方框
+                        Draw.Draw2DBox(_brush_yellow, pickupPosV2, pickupBoxV2, 1.0f);
+                    }
+
+                    if (Setting.ESP_Line)
+                    {
+                        // 2DBox射线
+                        Draw.Draw2DLine(_brush_yellow, pickupPosV2, pickupBoxV2, 1.0f);
+                    }
+
+                    // m_heading    0x20
+                    // m_heading2   0x24
+                    var v2PickupSinCos = new Vector2
+                    {
+                        X = Memory.Read<float>(pCNavigation + 0x20),
+                        Y = Memory.Read<float>(pCNavigation + 0x30)
+                    };
+
+                    if (Setting.ESP_3DBox)
+                    {
+                        // 3DBox
+                        Draw.DrawAABBBox(_brush_yellow, pickupPosV3, v2PickupSinCos, 0.3f, 1.0f);
+                    }
+                }
             }
         }
     }

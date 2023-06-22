@@ -57,6 +57,45 @@ public partial class ExternalOverlayView : UserControl
         }
     }
 
+    /////////////////////////////////////////////////
+
+    private void CheckBox_ESP_Player_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Player = CheckBox_ESP_Player.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_NPC_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_NPC = CheckBox_ESP_NPC.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_Pickup_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Pickup = CheckBox_ESP_Pickup.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_Crosshair_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Crosshair = CheckBox_ESP_Crosshair.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_InfoText_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_InfoText = CheckBox_ESP_InfoText.IsChecked == true;
+    }
+
+    private void CheckBox_AimBot_Enabled_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.AimBot_Enabled = CheckBox_AimBot_Enabled.IsChecked == true;
+    }
+
+    private void CheckBox_NoTopMostHide_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.NoTopMostHide = CheckBox_NoTopMostHide.IsChecked == true;
+    }
+
+    /////////////////////////////////////////////////
+
     private void CheckBox_ESP_2DBox_Click(object sender, RoutedEventArgs e)
     {
         if (CheckBox_ESP_2DBox.IsChecked == true)
@@ -89,7 +128,7 @@ public partial class ExternalOverlayView : UserControl
 
     private void CheckBox_ESP_2DLine_Click(object sender, RoutedEventArgs e)
     {
-        Setting.ESP_2DLine = CheckBox_ESP_2DLine.IsChecked == true;
+        Setting.ESP_Line = CheckBox_ESP_2DLine.IsChecked == true;
     }
 
     private void CheckBox_ESP_Bone_Click(object sender, RoutedEventArgs e)
@@ -112,20 +151,7 @@ public partial class ExternalOverlayView : UserControl
         Setting.ESP_NameText = CheckBox_ESP_NameText.IsChecked == true;
     }
 
-    private void CheckBox_AimBot_Enabled_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.AimBot_Enabled = CheckBox_AimBot_Enabled.IsChecked == true;
-    }
-
-    private void CheckBox_ESP_Player_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_Player = CheckBox_ESP_Player.IsChecked == true;
-    }
-
-    private void CheckBox_ESP_NPC_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_NPC = CheckBox_ESP_NPC.IsChecked == true;
-    }
+    /////////////////////////////////////////////////
 
     private void RadioButton_Overlay_RunMode0_Click(object sender, RoutedEventArgs e)
     {
@@ -164,11 +190,6 @@ public partial class ExternalOverlayView : UserControl
 
             CloseESP();
         }
-    }
-
-    private void CheckBox_ESP_Crosshair_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_Crosshair = CheckBox_ESP_Crosshair.IsChecked == true;
     }
 
     private void RadioButton_AimbotKey_CONTROL_Click(object sender, RoutedEventArgs e)
@@ -243,20 +264,5 @@ public partial class ExternalOverlayView : UserControl
         {
             Setting.AimBot_Fov = 8848.0f;
         }
-    }
-
-    private void CheckBox_NoTopMostHide_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.NoTopMostHide = CheckBox_NoTopMostHide.IsChecked == true;
-    }
-
-    private void CheckBox_ESP_InfoText_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_InfoText = CheckBox_ESP_InfoText.IsChecked == true;
-    }
-
-    private void CheckBox_ESP_Pickup_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_Pickup = CheckBox_ESP_Pickup.IsChecked == true;
     }
 }

@@ -81,8 +81,10 @@ public static class Core
     /// 获取方框高度
     /// </summary>
     /// <param name="posV3"></param>
+    /// <param name="dist">高度扩展 1.0f</param>
+    /// <param name="ratio">长宽比 2.0f</param>
     /// <returns></returns>
-    public static Vector2 GetBoxWH(Vector3 posV3)
+    public static Vector2 GetBoxSize(Vector3 posV3, float dist = 1.0f, float ratio = 2.0f)
     {
         Vector2 boxV2;
         Vector3 cameraV3;
@@ -96,14 +98,14 @@ public static class Core
         cameraV3.Y = _windowHeight / 2;
         cameraV3.Z = 1 / cameraV3.Z;
 
-        boxV2.X = viewMatrix[1] * posV3.X + viewMatrix[5] * posV3.Y + viewMatrix[9] * (posV3.Z + 1.0f) + viewMatrix[13];
-        boxV2.Y = viewMatrix[1] * posV3.X + viewMatrix[5] * posV3.Y + viewMatrix[9] * (posV3.Z - 1.0f) + viewMatrix[13];
+        boxV2.X = viewMatrix[1] * posV3.X + viewMatrix[5] * posV3.Y + viewMatrix[9] * (posV3.Z + dist) + viewMatrix[13];
+        boxV2.Y = viewMatrix[1] * posV3.X + viewMatrix[5] * posV3.Y + viewMatrix[9] * (posV3.Z - dist) + viewMatrix[13];
 
         boxV2.X = cameraV3.Y - cameraV3.Y * boxV2.X * cameraV3.Z;
         boxV2.Y = cameraV3.Y - cameraV3.Y * boxV2.Y * cameraV3.Z;
 
         boxV2.Y = Math.Abs(boxV2.X - boxV2.Y);
-        boxV2.X = boxV2.Y / 2;
+        boxV2.X = boxV2.Y / ratio;
 
         return boxV2;
     }

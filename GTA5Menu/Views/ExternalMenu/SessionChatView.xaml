@@ -10,7 +10,7 @@
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
-    <UniformGrid Columns="2">
+    <UniformGrid Columns="3">
         <!--  面板1  -->
         <StackPanel>
             <ui:LabelIcon Content="输入文本" />

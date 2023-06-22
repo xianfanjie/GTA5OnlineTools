@@ -2,8 +2,8 @@
 using GTA5Shared.API;
 using GTA5Shared.Helper;
 using GTA5Core.Native;
-using GTA5Core.Features;
 using GTA5Core.Offsets;
+using GTA5Core.Features;
 
 using WinFormLib;
 
@@ -19,9 +19,9 @@ public partial class SessionChatView : UserControl
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
-        TextBox_InputMessage.Text = "测试文本: 请把游戏中聊天输入法调成英文,否则会漏掉文字.Hello1234,漏掉文字了吗?";
+        TextBox_InputMessage.Text = "测试文本: 请把GTA5游戏中聊天输入法调成英文,否则会漏掉文字.Hello1234,漏掉文字了吗?";
 
-        long pCPlayerInfo = Game.GetCPlayerInfo();
+        var pCPlayerInfo = Game.GetCPlayerInfo();
         TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 20);
     }
 
@@ -36,41 +36,41 @@ public partial class SessionChatView : UserControl
     {
         var message = TextBox_InputMessage.Text.Trim();
 
-        if (!string.IsNullOrEmpty(message))
-        {
-            var btnContent = (e.OriginalSource as Button).Content.ToString();
+        if (string.IsNullOrWhiteSpace(message))
+            return;
 
-            switch (btnContent)
-            {
-                case "中英互译":
-                    YouDaoTranslation(message);
-                    break;
-                case "简转繁":
-                    TextBox_InputMessage.Text = ChsHelper.ToTraditional(message);
-                    break;
-                case "繁转简":
-                    TextBox_InputMessage.Text = ChsHelper.ToSimplified(message);
-                    break;
-                case "转拼音":
-                    TextBox_InputMessage.Text = ChsHelper.ToPinyin(message);
-                    break;
-            }
+        var btnContent = (e.OriginalSource as Button).Content.ToString();
+
+        switch (btnContent)
+        {
+            case "中英互译":
+                YouDaoTranslation(message);
+                break;
+            case "简转繁":
+                TextBox_InputMessage.Text = ChsHelper.ToTraditional(message);
+                break;
+            case "繁转简":
+                TextBox_InputMessage.Text = ChsHelper.ToSimplified(message);
+                break;
+            case "转拼音":
+                TextBox_InputMessage.Text = ChsHelper.ToPinyin(message);
+                break;
         }
     }
 
     private void Button_SendTextToGTA5_Click(object sender, RoutedEventArgs e)
     {
-        var msg = TextBox_InputMessage.Text.Trim();
+        var message = TextBox_InputMessage.Text.Trim();
 
-        if (string.IsNullOrWhiteSpace(msg))
+        if (string.IsNullOrWhiteSpace(message))
             return;
 
-        msg = ToDBC(msg);
+        message = ToDBC(message);
 
         Memory.SetForegroundWindow();
-        SendMessageToGTA5(msg);
+        SendMessageToGTA5(message);
 
-        TextBox_InputMessage.Text = msg;
+        TextBox_InputMessage.Text = message;
     }
 
     /// <summary>
@@ -79,11 +79,13 @@ public partial class SessionChatView : UserControl
     /// <param name="winVK"></param>
     private void KeyPress(WinVK winVK)
     {
-        Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
+        var sleep2 = Convert.ToInt32(Slider_SendKey_Sleep2.Value);
+
+        Thread.Sleep(sleep2);
         KeyHelper.Keybd_Event(winVK, KeyHelper.MapVirtualKey(winVK, 0), 0, 0);
-        Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
+        Thread.Sleep(sleep2);
         KeyHelper.Keybd_Event(winVK, KeyHelper.MapVirtualKey(winVK, 0), 2, 0);
-        Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
+        Thread.Sleep(sleep2);
     }
 
     /// <summary>
@@ -92,7 +94,10 @@ public partial class SessionChatView : UserControl
     /// <param name="str"></param>
     private void SendMessageToGTA5(string str)
     {
-        Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep1.Value));
+        var sleep1 = Convert.ToInt32(Slider_SendKey_Sleep1.Value);
+        var sleep2 = Convert.ToInt32(Slider_SendKey_Sleep2.Value);
+
+        Thread.Sleep(sleep1);
 
         KeyPress(WinVK.RETURN);
 
@@ -101,13 +106,13 @@ public partial class SessionChatView : UserControl
         else
             KeyPress(WinVK.Y);
 
-        Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep1.Value));
+        Thread.Sleep(sleep1);
         SendKeys.Flush();
-        Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
+        Thread.Sleep(sleep2);
         SendKeys.SendWait(str);
-        Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep2.Value));
+        Thread.Sleep(sleep2);
         SendKeys.Flush();
-        Thread.Sleep(Convert.ToInt32(Slider_SendKey_Sleep1.Value));
+        Thread.Sleep(sleep1);
 
         KeyPress(WinVK.RETURN);
         KeyPress(WinVK.RETURN);
@@ -145,9 +150,9 @@ public partial class SessionChatView : UserControl
     /// <returns></returns>
     private string ToDBC(string input)
     {
-        char[] inputChar = input.ToCharArray();
+        var inputChar = input.ToCharArray();
 
-        for (int i = 0; i < inputChar.Length; i++)
+        for (var i = 0; i < inputChar.Length; i++)
         {
             if (inputChar[i] == 12288)
             {
@@ -166,7 +171,7 @@ public partial class SessionChatView : UserControl
 
     private void Button_ReadPlayerName_Click(object sender, RoutedEventArgs e)
     {
-        long pCPlayerInfo = Game.GetCPlayerInfo();
+        var pCPlayerInfo = Game.GetCPlayerInfo();
         TextBox_PlayerName.Text = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 64);
     }
 
@@ -179,7 +184,7 @@ public partial class SessionChatView : UserControl
     {
         try
         {
-            string playerName = TextBox_PlayerName.Text.Trim();
+            var playerName = TextBox_PlayerName.Text.Trim();
             TextBox_PlayerName.Text = playerName;
 
             if (CheckBox_IngnoreInputRule.IsChecked == false)
@@ -191,8 +196,8 @@ public partial class SessionChatView : UserControl
                 }
             }
 
-            long pCPlayerInfo = Game.GetCPlayerInfo();
-            string name = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 64);
+            var pCPlayerInfo = Game.GetCPlayerInfo();
+            var name = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 64);
 
             if (playerName.Equals(name))
             {

@@ -63,10 +63,10 @@ public static class Online
         Globals.WriteGA(Base.Default + 89, isEnable ? 99999999 : 600000);        // 600000     joaat("IDLEKICK_WARNING3")
         Globals.WriteGA(Base.Default + 90, isEnable ? 99999999 : 900000);        // 900000     joaat("IDLEKICK_KICK")
 
-        Globals.WriteGA(Base.Default + 8248, isEnable ? 2000000000 : 30000);     // 30000      joaat("ConstrainedKick_Warning1")
-        Globals.WriteGA(Base.Default + 8249, isEnable ? 2000000000 : 60000);     // 60000      joaat("ConstrainedKick_Warning2")
-        Globals.WriteGA(Base.Default + 8250, isEnable ? 2000000000 : 90000);     // 90000      joaat("ConstrainedKick_Warning3")
-        Globals.WriteGA(Base.Default + 8251, isEnable ? 2000000000 : 120000);    // 120000     joaat("ConstrainedKick_Kick")
+        Globals.WriteGA(Base.Default + 8420, isEnable ? 2000000000 : 30000);     // 30000      joaat("ConstrainedKick_Warning1")
+        Globals.WriteGA(Base.Default + 8421, isEnable ? 2000000000 : 60000);     // 60000      joaat("ConstrainedKick_Warning2")
+        Globals.WriteGA(Base.Default + 8422, isEnable ? 2000000000 : 90000);     // 90000      joaat("ConstrainedKick_Warning3")
+        Globals.WriteGA(Base.Default + 8423, isEnable ? 2000000000 : 120000);    // 120000     joaat("ConstrainedKick_Kick")
     }
 
     /// <summary>

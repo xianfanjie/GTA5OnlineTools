@@ -75,15 +75,6 @@ public static class Online
     }
 
     /// <summary>
-    /// 挂机防踢（2023/06/19 未测试是否有效）
-    /// </summary>
-    public static void IdleKick()
-    {
-        Globals.WriteGA(1654054 + 1155, 0);        // STATS::PLAYSTATS_IDLE_KICK(time);
-        Globals.WriteGA(1654054 + 1171, 0);        // AUDIO::PLAY_SOUND_FRONTEND(-1, "MP_IDLE_TIMER", "HUD_FRONTEND_DEFAULT_SOUNDSET", true);
-    }
-
-    /// <summary>
     /// 免费更改角色外观
     /// </summary>
     /// <param name="isEnable"></param>
@@ -169,10 +160,12 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void OffRadar(bool isEnable)
     {
-        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
+        // Global_2657704[PLAYER::PLAYER_ID() /*463*/].f_210
+        // timeDifference = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME(), Global_2672524.f_57);
+        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 463 + 210, isEnable ? 1 : 0);
         if (isEnable)
             Globals.WriteGA(Base.oNETTimeHelp + 57, Globals.GetNetworkTime() + 3600000);
-        Globals.WriteGA(Base.oVMYCar + 4660, isEnable ? 3 : 0);
+        Globals.WriteGA(Base.oVMYCar + 4667, isEnable ? 3 : 0);
     }
 
     /// <summary>
@@ -181,10 +174,10 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void GhostOrganization(bool isEnable)
     {
-        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 466 + 210, isEnable ? 1 : 0);
+        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 463 + 210, isEnable ? 1 : 0);
         if (isEnable)
             Globals.WriteGA(Base.oNETTimeHelp + 57, Globals.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
-        Globals.WriteGA(Base.oVMYCar + 4660, isEnable ? 4 : 0);
+        Globals.WriteGA(Base.oVMYCar + 4667, isEnable ? 4 : 0);
     }
 
     /// <summary>
@@ -215,7 +208,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void RevealPlayers(bool isEnable)
     {
-        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 466 + 213, isEnable ? 1 : 0);
+        Globals.WriteGA(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 463 + 213, isEnable ? 1 : 0);
         Globals.WriteGA(Base.oNETTimeHelp + 58, isEnable ? Globals.GetNetworkTime() + 3600000 : 0);
     }
 
@@ -225,7 +218,7 @@ public static class Online
     /// <param name="multiplier"></param>
     public static void RPMultiplier(float multiplier)
     {
-        Globals.WriteGA(Base.Default + 1, multiplier);           // xpMultiplier Global_Base.Default.f_1
+        Globals.WriteGA(Base.Default + 1, multiplier);           // joaat("XP_MULTIPLIER")
     }
 
     /// <summary>
@@ -234,7 +227,7 @@ public static class Online
     /// <param name="multiplier"></param>
     public static void APMultiplier(float multiplier)
     {
-        Globals.WriteGA(Base.Default + 25926, multiplier);
+        Globals.WriteGA(Base.Default + 26114, multiplier);      // joaat("AP_MULTIPLIER")
     }
 
     /// <summary>
@@ -263,7 +256,7 @@ public static class Online
             Globals.WriteGA(Base.oNETTimeHelp + 3690, 1);
         else
         {
-            int temp = Globals.ReadGA<int>(Base.oNETTimeHelp + 3690);
+            var temp = Globals.ReadGA<int>(Base.oNETTimeHelp + 3690);
             if (temp != 0)
                 Globals.WriteGA(Base.oNETTimeHelp + 3690, 5);
         }
@@ -426,16 +419,6 @@ public static class Online
     }
 
     /// <summary>
-    /// 未知功能
-    /// </summary>
-    /// <param name="index"></param>
-    public static void DeliverPersonalVehicle(int index)
-    {
-        Globals.WriteGA(Base.oVMYCar + 965, index);
-        Globals.WriteGA(Base.oVMYCar + 962, 1);
-    }
-
-    /// <summary>
     /// 移除CEO工作冷却
     /// </summary>
     /// <param name="isEnable"></param>
@@ -477,7 +460,7 @@ public static class Online
     }
 
     /// <summary>
-    /// 进入RC匪徒z
+    /// 进入RC匪徒
     /// </summary>
     /// <param name="isEnable"></param>
     public static void TriggerRCBandito(bool isEnable)

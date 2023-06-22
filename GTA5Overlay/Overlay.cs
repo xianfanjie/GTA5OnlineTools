@@ -5,7 +5,6 @@ using GTA5Core.Features;
 
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
-using System.Windows.Ink;
 
 namespace GTA5Overlay;
 
@@ -76,6 +75,7 @@ public class Overlay : IDisposable
         _window.DestroyGraphics += _window_DestroyGraphics;
         _window.SetupGraphics += _window_SetupGraphics;
 
+        SetViewSize();
         Draw.SetGraphicsIns(gfx);
 
         new Thread(AimbotThread)
@@ -163,10 +163,6 @@ public class Overlay : IDisposable
         //                 用户自定义绘制区域                   //
         ///////////////////////////////////////////////////////
 
-        // 视角宽和视角高
-        _gviewWidth = _windowData.Width / 2;
-        _gviewHeight = _windowData.Height / 2;
-
         var pWordPTR = Memory.Read<long>(Pointers.WorldPTR);
         var pLocalCPed = Memory.Read<long>(pWordPTR + 0x08);
 
@@ -228,9 +224,9 @@ public class Overlay : IDisposable
         {
             // 当玩家按住右键准心对准敌人，准心变成粉红色，否则为绿色
             if (isAimPed && KeyHelper.IsKeyPressed(WinVK.RBUTTON))
-                Draw.DrawCrosshair(_brush_deepPink, 7.0f, 1.5f);
+                Draw.DrawCrosshair(_brush_deepPink, 7.0f);
             else
-                Draw.DrawCrosshair(_brush_green, 7.0f, 1.5f);
+                Draw.DrawCrosshair(_brush_green, 7.0f);
         }
 
         ///////////////////////////////////////////////////////
@@ -325,7 +321,7 @@ public class Overlay : IDisposable
                     if (Setting.ESP_2DBox)
                     {
                         // 2D方框
-                        Draw.Draw2DBox(_brush_red, pedPosV2, pedBoxV2, 1.0f);
+                        Draw.Draw2DBox(_brush_red, pedPosV2, pedBoxV2);
                     }
 
                     if (Setting.ESP_Line)
@@ -333,12 +329,12 @@ public class Overlay : IDisposable
                         if (Setting.ESP_2DBox)
                         {
                             // 2DBox射线
-                            Draw.Draw2DLine(_brush_red, pedPosV2, pedBoxV2, 1.0f);
+                            Draw.Draw2DLine(_brush_red, pedPosV2, pedBoxV2);
                         }
                         else
                         {
                             // 3DBox射线
-                            Draw.DrawAABBLine(_brush_red, pedPosV3, 1.0f);
+                            Draw.DrawAABBLine(_brush_red, pedPosV3);
                         }
                     }
 
@@ -347,12 +343,12 @@ public class Overlay : IDisposable
                         if (Setting.ESP_2DBox)
                         {
                             // 2DBox血条
-                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 1.0f);
+                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage);
                         }
                         else
                         {
                             // 3DBox血条
-                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 1.0f);
+                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage);
                         }
                     }
 
@@ -389,7 +385,7 @@ public class Overlay : IDisposable
                     if (Setting.ESP_2DBox)
                     {
                         // 2D方框
-                        Draw.Draw2DBox(_brush_white, pedPosV2, pedBoxV2, 1.0f);
+                        Draw.Draw2DBox(_brush_white, pedPosV2, pedBoxV2);
                     }
 
                     if (Setting.ESP_Line)
@@ -397,12 +393,12 @@ public class Overlay : IDisposable
                         if (Setting.ESP_2DBox)
                         {
                             // 2DBox射线
-                            Draw.Draw2DLine(_brush_white, pedPosV2, pedBoxV2, 1.0f);
+                            Draw.Draw2DLine(_brush_white, pedPosV2, pedBoxV2);
                         }
                         else
                         {
                             // 3DBox射线
-                            Draw.DrawAABBLine(_brush_white, pedPosV3, 1.0f);
+                            Draw.DrawAABBLine(_brush_white, pedPosV3);
                         }
                     }
 
@@ -411,12 +407,12 @@ public class Overlay : IDisposable
                         if (Setting.ESP_2DBox)
                         {
                             // 2DBox血条
-                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 1.0f);
+                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage);
                         }
                         else
                         {
                             // 3DBox血条
-                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage, 1.0f);
+                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage);
                         }
                     }
 
@@ -489,7 +485,7 @@ public class Overlay : IDisposable
             var pickupPosV3 = Memory.Read<Vector3>(pCNavigation + CNavigation.PositionX);
 
             Vector2 pickupPosV2 = Core.WorldToScreen(pickupPosV3);
-            Vector2 pickupBoxV2 = Core.GetBoxSize(pickupPosV3, 0.3f, 1.0f);
+            Vector2 pickupBoxV2 = Core.GetBoxSize(pickupPosV3, 0.2f);
 
             if (pickupPosV2 != Vector2.Zero)
             {
@@ -498,13 +494,13 @@ public class Overlay : IDisposable
                     if (Setting.ESP_2DBox)
                     {
                         // 2D方框
-                        Draw.Draw2DBox(_brush_yellow, pickupPosV2, pickupBoxV2, 1.0f);
+                        Draw.Draw2DBox(_brush_yellow, pickupPosV2, pickupBoxV2);
                     }
 
                     if (Setting.ESP_Line)
                     {
                         // 2DBox射线
-                        Draw.Draw2DLine(_brush_yellow, pickupPosV2, pickupBoxV2, 1.0f);
+                        Draw.Draw2DLine(_brush_yellow, pickupPosV2, pickupBoxV2);
                     }
 
                     // m_heading    0x20
@@ -518,7 +514,7 @@ public class Overlay : IDisposable
                     if (Setting.ESP_3DBox)
                     {
                         // 3DBox
-                        Draw.DrawAABBBox(_brush_yellow, pickupPosV3, v2PickupSinCos, 0.3f, 1.0f);
+                        Draw.DrawAABBBox(_brush_yellow, pickupPosV3, v2PickupSinCos, 0.2f);
                     }
                 }
             }
@@ -542,9 +538,21 @@ public class Overlay : IDisposable
 
             gfx.Resize(_window.Width, _window.Height);
 
+            SetViewSize();
+
             Core.SetWindowData(_windowData.Width, _windowData.Height);
             Draw.SetWindowData(_windowData.Width, _windowData.Height);
         }
+    }
+
+    /// <summary>
+    /// 设置视角大小
+    /// </summary>
+    private void SetViewSize()
+    {
+        // 视角宽和视角高
+        _gviewWidth = _windowData.Width / 2;
+        _gviewHeight = _windowData.Height / 2;
     }
 
     private void AimbotThread()

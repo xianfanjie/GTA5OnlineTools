@@ -37,21 +37,20 @@ public static class Draw
     /// </summary>
     /// <param name="brush"></param>
     /// <param name="length"></param>
-    /// <param name="stroke"></param>
-    public static void DrawCrosshair(IBrush brush, float length, float stroke)
+    public static void DrawCrosshair(IBrush brush, float length)
     {
         _gfx.DrawLine(brush,
             _gviewWidth - length,
             _gviewHeight,
             _gviewWidth + length,
-            _gviewHeight, stroke);
+            _gviewHeight, 1.5f);
         _gfx.DrawLine(brush,
             _gviewWidth,
             _gviewHeight - length,
             _gviewWidth,
-            _gviewHeight + length, stroke);
+            _gviewHeight + length, 1.5f);
 
-        //gfx.DrawCircle(brush, gview_width, gview_height, gview_height / 4, stroke);
+        //_gfx.DrawCircle(brush, _gviewWidth, _gviewHeight, _gviewHeight / 4, 1.0f);
     }
 
     /// <summary>
@@ -60,14 +59,13 @@ public static class Draw
     /// <param name="brush"></param>
     /// <param name="screenV2"></param>
     /// <param name="boxV2"></param>
-    /// <param name="stroke"></param>
-    public static void Draw2DBox(IBrush brush, Vector2 screenV2, Vector2 boxV2, float stroke)
+    public static void Draw2DBox(IBrush brush, Vector2 screenV2, Vector2 boxV2)
     {
         _gfx.DrawRectangle(brush, Rectangle.Create(
             screenV2.X - boxV2.X / 2,
             screenV2.Y - boxV2.Y / 2,
             boxV2.X,
-            boxV2.Y), stroke);
+            boxV2.Y), 1.0f);
     }
 
     /// <summary>
@@ -76,14 +74,13 @@ public static class Draw
     /// <param name="brush"></param>
     /// <param name="screenV2"></param>
     /// <param name="boxV2"></param>
-    /// <param name="stroke"></param>
-    public static void Draw2DLine(IBrush brush, Vector2 screenV2, Vector2 boxV2, float stroke)
+    public static void Draw2DLine(IBrush brush, Vector2 screenV2, Vector2 boxV2)
     {
         _gfx.DrawLine(brush,
             _windowWidth / 2,
             0,
             screenV2.X,
-            screenV2.Y - boxV2.Y / 2, stroke);
+            screenV2.Y - boxV2.Y / 2, 1.0f);
     }
 
     /// <summary>
@@ -94,14 +91,13 @@ public static class Draw
     /// <param name="screenV2"></param>
     /// <param name="boxV2"></param>
     /// <param name="pedHPPercentage"></param>
-    /// <param name="stroke"></param>
-    public static void Draw2DHealthBar(IBrush dBrush, IBrush fBrush, Vector2 screenV2, Vector2 boxV2, float pedHPPercentage, float stroke)
+    public static void Draw2DHealthBar(IBrush dBrush, IBrush fBrush, Vector2 screenV2, Vector2 boxV2, float pedHPPercentage)
     {
         _gfx.DrawRectangle(dBrush, Rectangle.Create(
             screenV2.X - boxV2.X / 2 - boxV2.X / 8,
             screenV2.Y + boxV2.Y / 2,
             boxV2.X / 10,
-            boxV2.Y * -1.0f), stroke);
+            boxV2.Y * -1.0f), 0.7f);
 
         _gfx.FillRectangle(fBrush, Rectangle.Create(
             screenV2.X - boxV2.X / 2 - boxV2.X / 8,
@@ -118,14 +114,13 @@ public static class Draw
     /// <param name="screenV2"></param>
     /// <param name="boxV2"></param>
     /// <param name="hpPer"></param>
-    /// <param name="stroke"></param>
-    public static void Draw3DHealthBar(IBrush dBrush, IBrush fBrush, Vector2 screenV2, Vector2 boxV2, float hpPer, float stroke)
+    public static void Draw3DHealthBar(IBrush dBrush, IBrush fBrush, Vector2 screenV2, Vector2 boxV2, float hpPer)
     {
         _gfx.DrawRectangle(dBrush, Rectangle.Create(
             screenV2.X - boxV2.X / 2,
             screenV2.Y + boxV2.Y / 2 + boxV2.X / 10,
             boxV2.X,
-            boxV2.X / 10 / 2), stroke);
+            boxV2.X / 10 / 2), 0.7f);
 
         _gfx.FillRectangle(fBrush, Rectangle.Create(
             screenV2.X - boxV2.X / 2,
@@ -207,11 +202,9 @@ public static class Draw
     /// <summary>
     /// 绘制3D方框连线
     /// </summary>
-    /// <param name="gfx"></param>
     /// <param name="brush"></param>
     /// <param name="m_Position"></param>
-    /// <param name="stroke"></param>
-    public static void DrawAABBLine(IBrush brush, Vector3 m_Position, float stroke)
+    public static void DrawAABBLine(IBrush brush, Vector3 m_Position)
     {
         Vector3 aabb_0 = new Vector3(0.0f, 0.0f, 1.0f) + m_Position; // 0
         Vector2 aabb_0V2Pos = Core.WorldToScreen(aabb_0);
@@ -220,7 +213,7 @@ public static class Draw
         {
             _gfx.DrawLine(brush,
                 _windowWidth / 2, 0,
-                aabb_0V2Pos.X, aabb_0V2Pos.Y, stroke);
+                aabb_0V2Pos.X, aabb_0V2Pos.Y, 1.0f);
         }
     }
 

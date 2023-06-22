@@ -82,7 +82,6 @@ public partial class GTA5MenuWindow
         Setting.Vehicle.Reset();
         Setting.Weapon.Reset();
         Setting.Auto.Reset();
-        Setting.Overlay.Reset();
 
         HotKeys.ClearKeys();
     }

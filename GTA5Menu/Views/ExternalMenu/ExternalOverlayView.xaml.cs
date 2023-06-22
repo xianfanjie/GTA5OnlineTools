@@ -1,7 +1,5 @@
-﻿using GTA5Menu.ESP;
-using GTA5Menu.Options;
-
-using GTA5HotKey;
+﻿using GTA5HotKey;
+using GTA5Overlay;
 using GTA5Core.Native;
 using GTA5Shared.Helper;
 
@@ -63,14 +61,14 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_2DBox.IsChecked == true)
         {
-            Setting.Overlay.ESP_2DBox = true;
+            Setting.ESP_2DBox = true;
 
-            Setting.Overlay.ESP_3DBox = false;
+            Setting.ESP_3DBox = false;
             CheckBox_ESP_3DBox.IsChecked = false;
         }
         else
         {
-            Setting.Overlay.ESP_2DBox = false;
+            Setting.ESP_2DBox = false;
         }
     }
 
@@ -78,14 +76,14 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_3DBox.IsChecked == true)
         {
-            Setting.Overlay.ESP_3DBox = true;
+            Setting.ESP_3DBox = true;
 
-            Setting.Overlay.ESP_2DBox = false;
+            Setting.ESP_2DBox = false;
             CheckBox_ESP_2DBox.IsChecked = false;
         }
         else
         {
-            Setting.Overlay.ESP_3DBox = false;
+            Setting.ESP_3DBox = false;
         }
     }
 
@@ -93,11 +91,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_2DLine.IsChecked == true)
         {
-            Setting.Overlay.ESP_2DLine = true;
+            Setting.ESP_2DLine = true;
         }
         else
         {
-            Setting.Overlay.ESP_2DLine = false;
+            Setting.ESP_2DLine = false;
         }
     }
 
@@ -105,11 +103,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_Bone.IsChecked == true)
         {
-            Setting.Overlay.ESP_Bone = true;
+            Setting.ESP_Bone = true;
         }
         else
         {
-            Setting.Overlay.ESP_Bone = false;
+            Setting.ESP_Bone = false;
         }
     }
 
@@ -117,11 +115,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_2DHealthBar.IsChecked == true)
         {
-            Setting.Overlay.ESP_2DHealthBar = true;
+            Setting.ESP_2DHealthBar = true;
         }
         else
         {
-            Setting.Overlay.ESP_2DHealthBar = false;
+            Setting.ESP_2DHealthBar = false;
         }
     }
 
@@ -129,11 +127,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_HealthText.IsChecked == true)
         {
-            Setting.Overlay.ESP_HealthText = true;
+            Setting.ESP_HealthText = true;
         }
         else
         {
-            Setting.Overlay.ESP_HealthText = false;
+            Setting.ESP_HealthText = false;
         }
     }
 
@@ -141,11 +139,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_NameText.IsChecked == true)
         {
-            Setting.Overlay.ESP_NameText = true;
+            Setting.ESP_NameText = true;
         }
         else
         {
-            Setting.Overlay.ESP_NameText = false;
+            Setting.ESP_NameText = false;
         }
     }
 
@@ -153,11 +151,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_AimBot_Enabled.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Enabled = true;
+            Setting.AimBot_Enabled = true;
         }
         else
         {
-            Setting.Overlay.AimBot_Enabled = false;
+            Setting.AimBot_Enabled = false;
         }
     }
 
@@ -165,11 +163,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_Player.IsChecked == true)
         {
-            Setting.Overlay.ESP_Player = true;
+            Setting.ESP_Player = true;
         }
         else
         {
-            Setting.Overlay.ESP_Player = false;
+            Setting.ESP_Player = false;
         }
     }
 
@@ -177,11 +175,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_NPC.IsChecked == true)
         {
-            Setting.Overlay.ESP_NPC = true;
+            Setting.ESP_NPC = true;
         }
         else
         {
-            Setting.Overlay.ESP_NPC = false;
+            Setting.ESP_NPC = false;
         }
     }
 
@@ -189,36 +187,36 @@ public partial class ExternalOverlayView : UserControl
     {
         if (RadioButton_Overlay_RunMode0.IsChecked == true)
         {
-            Setting.Overlay.VSync = true;
-            Setting.Overlay.FPS = 300;
+            Setting.VSync = true;
+            Setting.FPS = 300;
 
             CloseESP();
         }
         else if (RadioButton_Overlay_RunMode1.IsChecked == true)
         {
-            Setting.Overlay.VSync = false;
-            Setting.Overlay.FPS = 300;
+            Setting.VSync = false;
+            Setting.FPS = 300;
 
             CloseESP();
         }
         else if (RadioButton_Overlay_RunMode2.IsChecked == true)
         {
-            Setting.Overlay.VSync = false;
-            Setting.Overlay.FPS = 144;
+            Setting.VSync = false;
+            Setting.FPS = 144;
 
             CloseESP();
         }
         else if (RadioButton_Overlay_RunMode3.IsChecked == true)
         {
-            Setting.Overlay.VSync = false;
-            Setting.Overlay.FPS = 90;
+            Setting.VSync = false;
+            Setting.FPS = 90;
 
             CloseESP();
         }
         else if (RadioButton_Overlay_RunMode4.IsChecked == true)
         {
-            Setting.Overlay.VSync = false;
-            Setting.Overlay.FPS = 60;
+            Setting.VSync = false;
+            Setting.FPS = 60;
 
             CloseESP();
         }
@@ -228,11 +226,11 @@ public partial class ExternalOverlayView : UserControl
     {
         if (CheckBox_ESP_Crosshair.IsChecked == true)
         {
-            Setting.Overlay.ESP_Crosshair = true;
+            Setting.ESP_Crosshair = true;
         }
         else
         {
-            Setting.Overlay.ESP_Crosshair = false;
+            Setting.ESP_Crosshair = false;
         }
     }
 
@@ -240,27 +238,27 @@ public partial class ExternalOverlayView : UserControl
     {
         if (RadioButton_AimbotKey_CONTROL.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Key = WinVK.CONTROL;
+            Setting.AimBot_Key = WinVK.CONTROL;
         }
         else if (RadioButton_AimbotKey_SHIFT.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Key = WinVK.SHIFT;
+            Setting.AimBot_Key = WinVK.SHIFT;
         }
         else if (RadioButton_AimbotKey_LBUTTON.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Key = WinVK.LBUTTON;
+            Setting.AimBot_Key = WinVK.LBUTTON;
         }
         else if (RadioButton_AimbotKey_RBUTTON.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Key = WinVK.RBUTTON;
+            Setting.AimBot_Key = WinVK.RBUTTON;
         }
         else if (RadioButton_AimbotKey_XBUTTON1.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Key = WinVK.XBUTTON1;
+            Setting.AimBot_Key = WinVK.XBUTTON1;
         }
         else if (RadioButton_AimbotKey_XBUTTON2.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Key = WinVK.XBUTTON2;
+            Setting.AimBot_Key = WinVK.XBUTTON2;
         }
     }
 
@@ -268,15 +266,15 @@ public partial class ExternalOverlayView : UserControl
     {
         if (RadioButton_AimBot_BoneIndex_0.IsChecked == true)
         {
-            Setting.Overlay.AimBot_BoneIndex = 0;
+            Setting.AimBot_BoneIndex = 0;
         }
         else if (RadioButton_AimBot_BoneIndex_7.IsChecked == true)
         {
-            Setting.Overlay.AimBot_BoneIndex = 7;
+            Setting.AimBot_BoneIndex = 7;
         }
         else if (RadioButton_AimBot_BoneIndex_8.IsChecked == true)
         {
-            Setting.Overlay.AimBot_BoneIndex = 8;
+            Setting.AimBot_BoneIndex = 8;
         }
     }
 
@@ -286,32 +284,32 @@ public partial class ExternalOverlayView : UserControl
 
         if (RadioButton_Crosshair_NearBy.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Fov = 250.0f;
+            Setting.AimBot_Fov = 250.0f;
         }
         else if (RadioButton_AimbotFov_14Height.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Fov = windowData.Height / 4.0f;
+            Setting.AimBot_Fov = windowData.Height / 4.0f;
         }
         else if (RadioButton_AimbotFov_12Height.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Fov = windowData.Height / 2.0f;
+            Setting.AimBot_Fov = windowData.Height / 2.0f;
         }
         else if (RadioButton_AimbotFov_Height.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Fov = windowData.Height;
+            Setting.AimBot_Fov = windowData.Height;
         }
         else if (RadioButton_AimbotFov_Width.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Fov = windowData.Width;
+            Setting.AimBot_Fov = windowData.Width;
         }
         else if (RadioButton_AimbotFov_All.IsChecked == true)
         {
-            Setting.Overlay.AimBot_Fov = 8848.0f;
+            Setting.AimBot_Fov = 8848.0f;
         }
     }
 
     private void CheckBox_NoTOPMostHide_Click(object sender, RoutedEventArgs e)
     {
-        Setting.Overlay.NoTOPMostHide = CheckBox_NoTOPMostHide.IsChecked == true;
+        Setting.NoTopMostHide = CheckBox_NoTOPMostHide.IsChecked == true;
     }
 }

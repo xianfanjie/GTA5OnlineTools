@@ -82,30 +82,59 @@ public static class Vehicle2
     /// <param name="mods"></param>
     private static void UseVehicleMods(string model, int[] mods)
     {
-        // 这两辆载具使用mod会导致崩溃
-        if (model == "issi8" || model == "entity3")
-            return;
-
         Globals.WriteGA(Base.oVMCreate + 27 + 5, -1);       // 主色调  primary -1 auto 159  
         Globals.WriteGA(Base.oVMCreate + 27 + 6, -1);       // 副色调  secondary -1 auto 159  
         Globals.WriteGA(Base.oVMCreate + 27 + 7, -1);       // 珠光色  pearlescent  
 
         // 27 + 10 ~ 27 + 58
-        for (int i = 0; i < 48; i++)
+        for (int i = 0; i < 49; i++)
         {
-            if (i > 16 || i < 23)
-                continue;
+            // 27 + 27  (17)  涡轮增压
+            // 27 + 28  (18)  武器化标志
+            // 27 + 29  (19)  ???
+            // 27 + 30  (20)  ???
+            // 27 + 31  (21)  ???
+            // 27 + 32  (22)  大灯颜色
+
+            // 0  MOD_SPOILERS
+            if (i == (int)VehicleModType.MOD_SPOILERS)
+            {
+                if (mods[i] == 3 || mods[i] == 4)
+                    continue;
+            }
+            // 34  MOD_COLUMNSHIFTERLEVERS
+            if (i == (int)VehicleModType.MOD_COLUMNSHIFTERLEVERS)
+            {
+                if (mods[i] == 0 || mods[i] == 1 || mods[i] == 2 || mods[i] == 3)
+                    continue;
+            }
+            // 36  MOD_SPEAKERS
+            if (i == (int)VehicleModType.MOD_SPEAKERS)
+            {
+                if (mods[i] == 0)
+                    continue;
+            }
+            // 48  MOD_LIVERY
+            if (i == (int)VehicleModType.MOD_LIVERY)
+            {
+                if (mods[i] == 0 || mods[i] == 1 || mods[i] == 15 || mods[i] == 16)
+                    continue;
+            }
 
             Globals.WriteGA(Base.oVMCreate + 27 + 10 + i, mods[i]);
         }
 
-        Globals.WriteGA(Base.oVMCreate + 27 + 10 + 48, RandomMod(mods[48]));    // 随机涂装
+        //Globals.WriteGA(Base.oVMCreate + 27 + 58, RandomMod(mods[48]));    // 随机涂装
 
         Globals.WriteGA(Base.oVMCreate + 27 + 8, -1);       // 车轮颜色 wheel color  
         Globals.WriteGA(Base.oVMCreate + 27 + 69, -1);      // 车轮类型 Wheel type  
         Globals.WriteGA(Base.oVMCreate + 27 + 33, -1);      // 车轮选择 wheel selection  
 
+        //Globals.WriteGA(Base.oVMCreate + 27 + 15, mods[5]);         // 主武器 primary weapon
+        //Globals.WriteGA(Base.oVMCreate + 27 + 30, mods[20]);        // 副武器 secondary weapon
+
         Globals.WriteGA(Base.oVMCreate + 27 + 24, -1);      // 喇叭
+
         Globals.WriteGA(Base.oVMCreate + 27 + 27, 1);       // Turbo (0-1)  涡轮增压
         Globals.WriteGA(Base.oVMCreate + 27 + 28, 1);       // weaponised ownerflag
 

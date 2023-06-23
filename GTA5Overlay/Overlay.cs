@@ -484,8 +484,8 @@ public class Overlay : IDisposable
             // pickup坐标
             var pickupPosV3 = Memory.Read<Vector3>(pCNavigation + CNavigation.PositionX);
 
-            Vector2 pickupPosV2 = Core.WorldToScreen(pickupPosV3);
-            Vector2 pickupBoxV2 = Core.GetBoxSize(pickupPosV3, 0.2f);
+            var pickupPosV2 = Core.WorldToScreen(pickupPosV3);
+            var pickupBoxV2 = Core.GetBoxSize(pickupPosV3, 0.2f, 1.0f);
 
             if (pickupPosV2 != Vector2.Zero)
             {
@@ -514,7 +514,7 @@ public class Overlay : IDisposable
                     if (Setting.ESP_3DBox)
                     {
                         // 3DBox
-                        Draw.DrawAABBBox(_brush_yellow, pickupPosV3, v2PickupSinCos, 0.2f);
+                        Draw.DrawAABBBox(_brush_yellow, pickupPosV3, v2PickupSinCos, 0.2f, 1.0f);
                     }
                 }
             }

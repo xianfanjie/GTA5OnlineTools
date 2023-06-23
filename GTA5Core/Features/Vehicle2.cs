@@ -82,12 +82,14 @@ public static class Vehicle2
     /// <param name="mods"></param>
     private static void UseVehicleMods(string model, int[] mods)
     {
+        // 值设置-1代表载具默认配置
+
         Globals.WriteGA(Base.oVMCreate + 27 + 5, -1);       // 主色调  primary -1 auto 159  
         Globals.WriteGA(Base.oVMCreate + 27 + 6, -1);       // 副色调  secondary -1 auto 159  
         Globals.WriteGA(Base.oVMCreate + 27 + 7, -1);       // 珠光色  pearlescent  
 
         // 27 + 10 ~ 27 + 58
-        for (int i = 0; i < 49; i++)
+        for (int i = 0; i < 48; i++)
         {
             // 27 + 27  (17)  涡轮增压
             // 27 + 28  (18)  武器化标志
@@ -96,35 +98,21 @@ public static class Vehicle2
             // 27 + 31  (21)  ???
             // 27 + 32  (22)  大灯颜色
 
-            // 0  MOD_SPOILERS
-            if (i == (int)VehicleModType.MOD_SPOILERS)
-            {
-                if (mods[i] == 3 || mods[i] == 4)
-                    continue;
-            }
-            // 34  MOD_COLUMNSHIFTERLEVERS
-            if (i == (int)VehicleModType.MOD_COLUMNSHIFTERLEVERS)
-            {
-                if (mods[i] == 0 || mods[i] == 1 || mods[i] == 2 || mods[i] == 3)
-                    continue;
-            }
-            // 36  MOD_SPEAKERS
-            if (i == (int)VehicleModType.MOD_SPEAKERS)
-            {
-                if (mods[i] == 0)
-                    continue;
-            }
-            // 48  MOD_LIVERY
-            if (i == (int)VehicleModType.MOD_LIVERY)
-            {
-                if (mods[i] == 0 || mods[i] == 1 || mods[i] == 15 || mods[i] == 16)
-                    continue;
-            }
+            // 过滤会崩溃的载具mod
+            if (model == "banshee" ||
+                model == "sentinel" ||
+                model == "turismo2" ||
+                model == "deveste" ||
+                model == "hakuchou2" ||
+                model == "entity3" ||
+                model == "issi8" ||
+                model == "brioso")
+                return;
 
             Globals.WriteGA(Base.oVMCreate + 27 + 10 + i, mods[i]);
         }
 
-        //Globals.WriteGA(Base.oVMCreate + 27 + 58, RandomMod(mods[48]));    // 随机涂装
+        Globals.WriteGA(Base.oVMCreate + 27 + 58, RandomMod(mods[48]));    // 随机涂装
 
         Globals.WriteGA(Base.oVMCreate + 27 + 8, -1);       // 车轮颜色 wheel color  
         Globals.WriteGA(Base.oVMCreate + 27 + 69, -1);      // 车轮类型 Wheel type  

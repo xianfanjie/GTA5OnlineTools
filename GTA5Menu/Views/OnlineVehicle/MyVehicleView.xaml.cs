@@ -91,7 +91,7 @@ public partial class MyVehicleView : UserControl
     private void AddMyFavorite(ModelInfo model)
     {
         var result = MyFavorites.ToList().Find(var => var.Value == model.Value);
-        if (result != null)
+        if (result == null)
         {
             MyFavorites.Add(model);
 

@@ -424,7 +424,9 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void CEOWorkCooldown(bool isEnable)
     {
+        // CEO工作
         Globals.WriteGA(Base.Default + 13254, isEnable ? 0 : 300000);       // -1404265088 joaat("GB_COOLDOWN_UNTIL_NEXT_BOSS_WORK")
+        // 观光客
         Globals.WriteGA(Base.Default + 13151, isEnable ? 0 : 600000);       // -1911318106 joaat("GB_SIGHTSEER_COOLDOWN")
     }
 

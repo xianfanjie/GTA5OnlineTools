@@ -16,10 +16,10 @@
                     简介
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 一个载具改装编辑器
+                    一个载具改装编辑器，请把载具开进改车王后再启动本程序
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 请把载具开进改车王后再启动本程序
+                    项目地址：<Hyperlink NavigateUri="https://www.unknowncheats.me/forum/grand-theft-auto-v/224075-lschax-1-67-external.html" RequestNavigate="Hyperlink_RequestNavigate">https://www.unknowncheats.me/forum/grand-theft-auto-v/224075-lschax-1-67-external.html</Hyperlink>
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
@@ -49,8 +49,7 @@
                     更多
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 详细使用教程，请前往小助手官方网站查看
-                    <Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                    ● 详细使用教程，请前往小助手官方网站查看&#160;<Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
                 </Paragraph>
 
             </FlowDocument>

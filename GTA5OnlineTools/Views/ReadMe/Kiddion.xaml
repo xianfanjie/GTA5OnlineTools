@@ -16,10 +16,10 @@
                     简介
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 使用Kiddion外置辅助游戏需要设置无边框或窗口化
+                    使用Kiddion外置辅助游戏需要设置无边框或窗口化，Kiddion启动后，游戏右边的英文提示是Kiddion的免责声明，并不是R星的提示，无需担心
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● Kiddion启动后，游戏右边的英文提示是Kiddion的免责声明，并不是R星的提示，无需担心
+                    项目地址：<Hyperlink NavigateUri="https://www.unknowncheats.me/forum/grand-theft-auto-v/576854-kiddions-modest-external-menu-thread-5-a.html" RequestNavigate="Hyperlink_RequestNavigate">https://www.unknowncheats.me/forum/grand-theft-auto-v/576854-kiddions-modest-external-menu-thread-5-a.html</Hyperlink>
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
@@ -55,8 +55,7 @@
                     更多
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 详细使用教程，请前往小助手官方网站查看
-                    <Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                    ● 详细使用教程，请前往小助手官方网站查看&#160;<Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
                 </Paragraph>
 
             </FlowDocument>
@@ -68,50 +67,34 @@
                     快捷键
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    【F3】补满全部弹药
+                    【F3】补满全部弹药<LineBreak />
+                    【F4】坐标向前微调<LineBreak />
                     <LineBreak />
-                    【F4】坐标向前微调
+                    【F5】传送至导航点<LineBreak />
+                    【F6】传送至目标点<LineBreak />
+                    【F7】治疗玩家<LineBreak />
+                    【F8】消除警星<LineBreak />
                     <LineBreak />
-                    <LineBreak />
-                    【F5】传送至导航点
-                    <LineBreak />
-                    【F6】传送至目标点
-                    <LineBreak />
-                    【F7】治疗玩家
-                    <LineBreak />
-                    【F8】消除警星
-                    <LineBreak />
-                    <LineBreak />
-                    【F9】修复载具
-                    <LineBreak />
-                    【F10】跳过过场动画
-                </Paragraph>
+                    【F9】修复载具<LineBreak />
+                    【F10】跳过过场动画</Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     104按键
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    【小键盘-】显示/隐藏菜单
-                    <LineBreak />
-                    【小键盘8】和【小键盘2】上下选择
-                    <LineBreak />
-                    【小键盘4】和【小键盘6】左右选择
-                    <LineBreak />
-                    【小键盘5】确定，【小键盘0】返回
-                </Paragraph>
+                    【小键盘-】显示/隐藏菜单<LineBreak />
+                    【小键盘8】和【小键盘2】上下选择<LineBreak />
+                    【小键盘4】和【小键盘6】左右选择<LineBreak />
+                    【小键盘5】确定，【小键盘0】返回</Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     87按键
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    【P键】显示/隐藏菜单
-                    <LineBreak />
-                    【I键】和【K键】上下选择
-                    <LineBreak />
-                    【J键】和【L键】左右选择
-                    <LineBreak />
-                    【U键】确定，【O键】返回
-                </Paragraph>
+                    【P键】显示/隐藏菜单<LineBreak />
+                    【I键】和【K键】上下选择<LineBreak />
+                    【J键】和【L键】左右选择<LineBreak />
+                    【U键】确定，【O键】返回</Paragraph>
             </FlowDocument>
         </RichTextBox>
     </UniformGrid>

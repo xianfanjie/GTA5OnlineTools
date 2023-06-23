@@ -19,10 +19,7 @@
                     一款GitHub开源项目Yimura大佬制作的免费GTA5注入式菜单，旨在防止崩溃（目前并非全部）并改善整体体验。
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    项目地址：https://github.com/YimMenu/YimMenu
-                </Paragraph>
-                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    发布版本：https://github.com/YimMenu/YimMenu/releases/tag/nightly
+                    项目地址：<Hyperlink NavigateUri="https://github.com/YimMenu/YimMenu" RequestNavigate="Hyperlink_RequestNavigate">https://github.com/YimMenu/YimMenu</Hyperlink>
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
@@ -56,7 +53,7 @@
                     更多
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 详细使用教程，请前往小助手官方网站查看<Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                    ● 详细使用教程，请前往小助手官方网站查看&#160;<Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
                 </Paragraph>
 
             </FlowDocument>

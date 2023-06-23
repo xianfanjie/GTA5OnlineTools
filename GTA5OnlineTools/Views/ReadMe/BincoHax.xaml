@@ -21,6 +21,9 @@
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
                     ● 可以获取男、女警服等限制服装（虽然不能保存）
                 </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    项目地址：<Hyperlink NavigateUri="https://www.unknowncheats.me/forum/grand-theft-auto-v/250308-bincohax-1-67-external.html" RequestNavigate="Hyperlink_RequestNavigate">https://www.unknowncheats.me/forum/grand-theft-auto-v/250308-bincohax-1-67-external.html</Hyperlink>
+                </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     提示
@@ -36,7 +39,7 @@
                     更多
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 详细使用教程，请前往小助手官方网站查看<Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                    ● 详细使用教程，请前往小助手官方网站查看&#160;<Hyperlink NavigateUri="https://crazyzhang.cn/" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
                 </Paragraph>
 
             </FlowDocument>

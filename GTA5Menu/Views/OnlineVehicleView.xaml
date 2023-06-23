@@ -48,6 +48,11 @@
                     CommandParameter="DriverButlerView"
                     Content="随身技工"
                     Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="ReadMeView"
+                    Content="README"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>
         </Border>
         <!--  /////////////////////////  -->

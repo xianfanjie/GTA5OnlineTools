@@ -36,9 +36,6 @@
                     Click="Button_AddMyFavorite_Click"
                     Content="添加到我的收藏"
                     IsEnabled="{Binding ElementName=ListBox_VehicleInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
-                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：双击选中项可直接刷出载具
-                </TextBlock>
             </StackPanel>
         </DockPanel>
         <!--  载具详细信息  -->

@@ -19,15 +19,22 @@
     <ui:Window.TitleContent>
         <DockPanel>
             <StackPanel
+                Margin="0,0,5,0"
                 VerticalAlignment="Center"
                 DockPanel.Dock="Right"
                 Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center" Text="Delete键 显示/隐藏" />
                 <CheckBox
                     x:Name="CheckBox_IsTopMost"
-                    Margin="10,0,10,0"
+                    Margin="10,0,0,0"
                     Click="CheckBox_IsTopMost_Click"
                     Content="窗口置顶"
+                    WindowChrome.IsHitTestVisibleInChrome="True" />
+                <CheckBox
+                    x:Name="CheckBox_IsShowInTaskbar"
+                    Margin="10,0,0,0"
+                    Click="CheckBox_IsShowInTaskbar_Click"
+                    Content="隐藏任务栏图标"
                     WindowChrome.IsHitTestVisibleInChrome="True" />
             </StackPanel>
             <StackPanel

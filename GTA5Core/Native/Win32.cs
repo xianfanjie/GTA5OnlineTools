@@ -67,17 +67,17 @@ public static class Win32
     [DllImport("ntdll.dll")]
     public static extern uint NtSuspendProcess([In] IntPtr processHandle);
 
-    [DllImport("kernel32.dll")]
-    public static extern bool AllocConsole();
-
-    [DllImport("kernel32.dll")]
-    public static extern bool FreeConsole();
-
     [DllImport("user32.dll")]
     public static extern int GetWindowLong(IntPtr hwnd, int index);
 
     [DllImport("user32.dll")]
     public static extern int SetWindowLong(IntPtr hwnd, int nIndex, long dwNewLong);
+
+    [DllImport("user32.dll")]
+    public static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
+
+    [DllImport("user32.dll")]
+    public static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr ProcessId);
 }
 
 [Flags]

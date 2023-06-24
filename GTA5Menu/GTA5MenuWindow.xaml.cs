@@ -8,6 +8,7 @@ using GTA5Core.GTA.Rage;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
+using System.Windows.Interop;
 
 namespace GTA5Menu;
 
@@ -22,6 +23,8 @@ public partial class GTA5MenuWindow
     private readonly Dictionary<string, UserControl> NavDictionary = new();
 
     ///////////////////////////////////////////
+
+    private IntPtr ThisWindowHandle = IntPtr.Zero;
 
     /// <summary>
     /// 主窗口关闭事件
@@ -55,6 +58,8 @@ public partial class GTA5MenuWindow
     private void Window_GTA5Menu_Loaded(object sender, RoutedEventArgs e)
     {
         Navigate(NavDictionary.First().Key);
+
+        ThisWindowHandle = new WindowInteropHelper(this).Handle;
 
         // 添加快捷键
         HotKeys.AddKey(WinVK.DELETE);
@@ -128,7 +133,7 @@ public partial class GTA5MenuWindow
     }
 
     /// <summary>
-    /// 外置菜单窗口是否置顶
+    /// 窗口是否置顶
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -138,8 +143,19 @@ public partial class GTA5MenuWindow
             Topmost = true;
         else
             Topmost = false;
+    }
 
-        ShowInTaskbar = !Topmost;
+    /// <summary>
+    /// 窗口是否隐藏任务栏图标
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void CheckBox_IsShowInTaskbar_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckBox_IsShowInTaskbar.IsChecked == true)
+            ShowInTaskbar = false;
+        else
+            ShowInTaskbar = true;
     }
 
     /// <summary>
@@ -155,7 +171,6 @@ public partial class GTA5MenuWindow
                 ShowWindow();
                 break;
         }
-
     }
 
     /// <summary>
@@ -169,15 +184,28 @@ public partial class GTA5MenuWindow
 
             if (IsShowExternalMenu)
             {
+                var thisWindowThreadId = Win32.GetWindowThreadProcessId(ThisWindowHandle, IntPtr.Zero);
+                var currentForegroundWindow = Win32.GetForegroundWindow();
+                var currentForegroundWindowThreadId = Win32.GetWindowThreadProcessId(currentForegroundWindow, IntPtr.Zero);
+
+                Win32.AttachThreadInput(currentForegroundWindowThreadId, thisWindowThreadId, true);
+
+                this.Show();
+                this.Activate();
+                this.Focus();
+
                 this.Visibility = Visibility.Visible;
                 this.WindowState = WindowState.Normal;
 
-                Topmost = true;
-                Topmost = false;
+                Win32.AttachThreadInput(currentForegroundWindowThreadId, thisWindowThreadId, false);
+
+                this.Topmost = true;
+                this.Topmost = false;
 
                 if (CheckBox_IsTopMost.IsChecked == true)
-                    Topmost = true;
+                    this.Topmost = true;
 
+                Win32.SetForegroundWindow(ThisWindowHandle);
                 Win32.SetCursorPos(ThisWinPOINT.X, ThisWinPOINT.Y);
             }
             else

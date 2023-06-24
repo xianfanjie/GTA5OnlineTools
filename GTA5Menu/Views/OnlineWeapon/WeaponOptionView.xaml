@@ -21,24 +21,22 @@
             </ComboBox>
             <!--  ////////////////  -->
             <ui:LabelIcon Content="高级" />
-            <StackPanel Margin="5,0,5,0">
-                <CheckBox
-                    x:Name="CheckBox_ReloadMult"
-                    Click="CheckBox_ReloadMult_Click"
-                    Content="快速换弹" />
-            </StackPanel>
             <WrapPanel Margin="5,0,5,0">
-                <Button
-                    x:Name="Button_NoRecoil"
-                    Click="Button_NoRecoil_Click"
+                <CheckBox
+                    x:Name="CheckBox_FastReload"
+                    Click="CheckBox_FastReload_Click"
+                    Content="快速换弹" />
+                <CheckBox
+                    x:Name="CheckBox_NoRecoil"
+                    Click="CheckBox_NoRecoil_Click"
                     Content="无后坐力" />
-                <Button
+                <CheckBox
                     x:Name="CheckBox_NoSpread"
                     Click="CheckBox_NoSpread_Click"
                     Content="无子弹扩散" />
-                <Button
-                    x:Name="CheckBox_Range"
-                    Click="CheckBox_Range_Click"
+                <CheckBox
+                    x:Name="CheckBox_LongRange"
+                    Click="CheckBox_LongRange_Click"
                     Content="提升射程" />
             </WrapPanel>
             <!--  ////////////////  -->

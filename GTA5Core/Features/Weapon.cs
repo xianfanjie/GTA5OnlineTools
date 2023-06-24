@@ -172,7 +172,7 @@ public static class Weapon
     /// <summary>
     /// 武器射程
     /// </summary>
-    public static void Range()
+    public static void LongRange()
     {
         long pCPed = Game.GetCPed();
         long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
@@ -185,7 +185,7 @@ public static class Weapon
     /// <summary>
     /// 武器快速换弹
     /// </summary>
-    public static void ReloadMult(bool isEnable)
+    public static void FastReload(bool isEnable)
     {
         long pCPed = Game.GetCPed();
         long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);

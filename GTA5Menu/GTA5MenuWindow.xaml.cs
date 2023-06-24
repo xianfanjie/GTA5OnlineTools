@@ -1,10 +1,5 @@
-﻿using GTA5Menu.Options;
-
-using GTA5HotKey;
+﻿using GTA5HotKey;
 using GTA5Core.Native;
-using GTA5Core.Offsets;
-using GTA5Core.Features;
-using GTA5Core.GTA.Rage;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
@@ -82,13 +77,13 @@ public partial class GTA5MenuWindow
 
         new Thread(LoopTime1000MsThread)
         {
-            Name = "LoopTime200MsThread",
+            Name = "LoopTime1000MsThread",
             IsBackground = true
         }.Start();
 
         new Thread(LoopTime200MsThread)
         {
-            Name = "LoopTime1000MsThread",
+            Name = "LoopTime200MsThread",
             IsBackground = true
         }.Start();
     }
@@ -97,11 +92,6 @@ public partial class GTA5MenuWindow
     {
         IsAppRunning = false;
         WindowClosingEvent?.Invoke();
-
-        Setting.Player.Reset();
-        Setting.Vehicle.Reset();
-        Setting.Weapon.Reset();
-        Setting.Auto.Reset();
 
         // 移除快捷键
         HotKeys.RemoveKey(WinVK.DELETE);

@@ -100,7 +100,7 @@ public static class Online
     /// 允许非公共战局运货
     /// </summary>
     /// <param name="isEnable"></param>
-    public static void AllowSellOnNonPublic(bool isEnable)
+    public static void SellOnNonPublic(bool isEnable)
     {
         Globals.WriteGA(2683883 + 744, isEnable ? 0 : 1);         // NETWORK::NETWORK_SESSION_GET_PRIVATE_SLOTS()
     }
@@ -132,7 +132,7 @@ public static class Online
     /// 移除轨道炮CD
     /// </summary>
     /// <param name="isEnable"></param>
-    public static void DisableOrbitalCooldown(bool isEnable)
+    public static void OrbitalCooldown(bool isEnable)
     {
         Globals.WriteGA(Base.Default + 23264, isEnable ? 0 : 2880000);         // -1707434973
     }

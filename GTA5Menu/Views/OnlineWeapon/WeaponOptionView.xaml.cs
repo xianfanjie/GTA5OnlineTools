@@ -1,8 +1,4 @@
-﻿using GTA5Menu.Options;
-
-using GTA5Core.Native;
-using GTA5Core.Offsets;
-using GTA5Core.Features;
+﻿using GTA5Core.Features;
 using GTA5Core.GTA.Onlines;
 using GTA5Shared.Helper;
 
@@ -13,6 +9,21 @@ namespace GTA5Menu.Views.OnlineWeapon;
 /// </summary>
 public partial class WeaponOptionView : UserControl
 {
+    private class Options
+    {
+        public bool AmmoModifier = false;
+        public byte AmmoModifierFlag = 0;
+
+        public bool FastReload = false;
+        public bool NoRecoil = false;
+        public bool NoSpread = false;
+        public bool LongRange = false;
+
+        public bool ImpactExplosion = false;
+        public int ImpactExplosionFlag = -1;
+    }
+    private readonly Options _options = new();
+
     public WeaponOptionView()
     {
         InitializeComponent();
@@ -35,57 +46,91 @@ public partial class WeaponOptionView : UserControl
 
     private void GTA5MenuWindow_LoopTime1000MsEvent()
     {
-        var pCPed = Game.GetCPed();
-
         // 弹药编辑
-        var pCPedInventory = Memory.Read<long>(pCPed + CPed.CPedInventory);
-        Memory.Write(pCPedInventory + CPedInventory.AmmoModifier, Setting.Weapon.AmmoModifierFlag);
+        if (_options.AmmoModifier)
+            Weapon.AmmoModifier(_options.AmmoModifierFlag);
+
+        // 快速换弹
+        if (_options.FastReload)
+            Weapon.FastReload(true);
+        // 无后坐力
+        if (_options.NoRecoil)
+            Weapon.NoRecoil();
+        // 无子弹扩散
+        if (_options.NoSpread)
+            Weapon.NoSpread();
+        // 提升射程
+        if (_options.LongRange)
+            Weapon.LongRange();
+
+        // 子弹类型
+        if (_options.ImpactExplosion)
+        {
+            if (_options.ImpactExplosionFlag == -1)
+                Weapon.ImpactType(3);
+            else
+                Weapon.ImpactType(5);
+
+            Weapon.ImpactExplosion(_options.ImpactExplosionFlag);
+        }
     }
 
     private void ComboBox_AmmoModifier_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var index = ComboBox_AmmoModifier.SelectedIndex;
-        if (index != -1)
+        if (index == -1)
         {
-            Setting.Weapon.AmmoModifierFlag = index;
-            Weapon.AmmoModifier((byte)index);
+            _options.AmmoModifier = false;
+            return;
         }
+
+        _options.AmmoModifier = true;
+        _options.AmmoModifierFlag = (byte)index;
+        Weapon.AmmoModifier(_options.AmmoModifierFlag);
     }
 
-    private void CheckBox_ReloadMult_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_FastReload_Click(object sender, RoutedEventArgs e)
     {
-        Weapon.ReloadMult(CheckBox_ReloadMult.IsChecked == true);
+        _options.FastReload = CheckBox_FastReload.IsChecked == true;
+        Weapon.FastReload(_options.FastReload);
     }
 
-    private void Button_NoRecoil_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_NoRecoil_Click(object sender, RoutedEventArgs e)
     {
-        AudioHelper.PlayClickSound();
-
+        _options.NoRecoil = CheckBox_NoRecoil.IsChecked == true;
         Weapon.NoRecoil();
     }
 
     private void CheckBox_NoSpread_Click(object sender, RoutedEventArgs e)
     {
+        _options.NoSpread = CheckBox_NoSpread.IsChecked == true;
         Weapon.NoSpread();
     }
 
-    private void CheckBox_Range_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_LongRange_Click(object sender, RoutedEventArgs e)
     {
-        Weapon.Range();
+        _options.LongRange = CheckBox_LongRange.IsChecked == true;
+        Weapon.LongRange();
     }
 
     private void ComboBox_ImpactExplosion_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var index = ComboBox_ImpactExplosion.SelectedIndex;
-        if (index != -1)
+        if (index == -1)
         {
-            if (index == 0)
-                Weapon.ImpactType(3);
-            else
-                Weapon.ImpactType(5);
-
-            Weapon.ImpactExplosion(OnlineData.ImpactExplosions[index].Value);
+            _options.ImpactExplosion = false;
+            return;
         }
+
+        _options.ImpactExplosion = true;
+
+        if (index == 0)
+            Weapon.ImpactType(3);
+        else
+            Weapon.ImpactType(5);
+
+        _options.ImpactExplosionFlag = OnlineData.ImpactExplosions[index].Value;
+        Weapon.ImpactExplosion(_options.ImpactExplosionFlag);
     }
 
     private void Button_FillCurrentAmmo_Click(object sender, RoutedEventArgs e)

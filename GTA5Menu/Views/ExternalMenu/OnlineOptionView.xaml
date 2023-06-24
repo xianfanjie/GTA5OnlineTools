@@ -53,24 +53,24 @@
             <UniformGrid Margin="5,0,5,0" Columns="2">
                 <StackPanel>
                     <CheckBox
-                        x:Name="CheckBox_RemovePassiveModeCooldown"
-                        Click="CheckBox_RemovePassiveModeCooldown_Click"
+                        x:Name="CheckBox_PassiveModeCooldown"
+                        Click="CheckBox_PassiveModeCooldown_Click"
                         Content="移除被动模式冷却" />
                     <CheckBox
-                        x:Name="CheckBox_RemoveSuicideCooldown"
-                        Click="CheckBox_RemoveSuicideCooldown_Click"
+                        x:Name="CheckBox_SuicideCooldown"
+                        Click="CheckBox_SuicideCooldown_Click"
                         Content="移除自杀冷却" />
                     <CheckBox
-                        x:Name="CheckBox_DisableOrbitalCooldown"
-                        Click="CheckBox_DisableOrbitalCooldown_Click"
+                        x:Name="CheckBox_OrbitalCooldown"
+                        Click="CheckBox_OrbitalCooldown_Click"
                         Content="移除天基炮冷却" />
                     <CheckBox
-                        x:Name="CheckBox_AllowSellOnNonPublic"
-                        Click="CheckBox_AllowSellOnNonPublic_Click"
+                        x:Name="CheckBox_SellOnNonPublic"
+                        Click="CheckBox_SellOnNonPublic_Click"
                         Content="非公开战局运货" />
                     <CheckBox
-                        x:Name="CheckBox_OnlineSnow"
-                        Click="CheckBox_OnlineSnow_Click"
+                        x:Name="CheckBox_SessionSnow"
+                        Click="CheckBox_SessionSnow_Click"
                         Content="战局雪天 (自己可见)" />
                 </StackPanel>
                 <StackPanel>

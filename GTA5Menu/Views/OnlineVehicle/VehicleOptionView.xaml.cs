@@ -1,8 +1,4 @@
-﻿using GTA5Menu.Options;
-
-using GTA5Core.Native;
-using GTA5Core.Offsets;
-using GTA5Core.Features;
+﻿using GTA5Core.Features;
 using GTA5Core.GTA.Onlines;
 using GTA5Shared.Helper;
 
@@ -13,6 +9,16 @@ namespace GTA5Menu.Views.OnlineVehicle;
 /// </summary>
 public partial class VehicleOptionView : UserControl
 {
+    private class Options
+    {
+        public bool GodMode = false;
+        public bool Seatbelt = false;
+        public bool Parachute = false;
+
+        public short Extras = -1;
+    }
+    private readonly Options _options = new();
+
     public VehicleOptionView()
     {
         InitializeComponent();
@@ -34,44 +40,38 @@ public partial class VehicleOptionView : UserControl
     private void GTA5MenuWindow_LoopTime1000MsEvent()
     {
         // 载具无敌
-        if (Game.GetCVehicle(out long pCVehicle))
-        {
-            // 载具无敌
-            if (Setting.Vehicle.GodMode)
-                Memory.Write<byte>(pCVehicle + CVehicle.God, 0x01);
-        }
+        if (_options.GodMode)
+            Vehicle.GodMode(true);
+        // 载具安全带
+        if (_options.Seatbelt)
+            Vehicle.Seatbelt(true);
+        // 载具降落伞
+        if (_options.Parachute)
+            Vehicle.Parachute(true);
+
+        // 载具附加功能
+        if (_options.Extras != -1)
+            Vehicle.Extras(_options.Extras);
     }
 
     /////////////////////////////////////////////////
 
     private void CheckBox_VehicleGodMode_Click(object sender, RoutedEventArgs e)
     {
-        AudioHelper.PlayClickSound();
-
-        Setting.Vehicle.GodMode = CheckBox_VehicleGodMode.IsChecked == true;
-        Vehicle.GodMode(CheckBox_VehicleGodMode.IsChecked == true);
+        _options.GodMode = CheckBox_VehicleGodMode.IsChecked == true;
+        Vehicle.GodMode(_options.GodMode);
     }
 
     private void CheckBox_VehicleSeatbelt_Click(object sender, RoutedEventArgs e)
     {
-        AudioHelper.PlayClickSound();
-
-        Setting.Vehicle.Seatbelt = CheckBox_VehicleSeatbelt.IsChecked == true;
-        Vehicle.Seatbelt(CheckBox_VehicleSeatbelt.IsChecked == true);
+        _options.Seatbelt = CheckBox_VehicleSeatbelt.IsChecked == true;
+        Vehicle.Seatbelt(_options.Seatbelt);
     }
 
     private void CheckBox_VehicleParachute_Click(object sender, RoutedEventArgs e)
     {
-        AudioHelper.PlayClickSound();
-
-        Vehicle.Parachute(CheckBox_VehicleParachute.IsChecked == true);
-    }
-
-    private void CheckBox_VehicleInvisibility_Click(object sender, RoutedEventArgs e)
-    {
-        AudioHelper.PlayClickSound();
-
-        Vehicle.Invisible(CheckBox_VehicleInvisibility.IsChecked == true);
+        _options.Parachute = CheckBox_VehicleParachute.IsChecked == true;
+        Vehicle.Parachute(_options.Parachute);
     }
 
     private void Button_FillVehicleHealth_Click(object sender, RoutedEventArgs e)
@@ -98,23 +98,23 @@ public partial class VehicleOptionView : UserControl
     private void ComboBox_VehicleExtras_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var index = ComboBox_VehicleExtras.SelectedIndex;
-        if (index != -1)
+        if (index == -1)
         {
-            Vehicle.Extras((short)OnlineData.VehicleExtras[index].Value);
+            _options.Extras = -1;
+            return;
         }
+
+        _options.Extras = (short)OnlineData.VehicleExtras[index].Value;
+        Vehicle.Extras(_options.Extras);
     }
 
     private void CheckBox_TriggerRCBandito_Click(object sender, RoutedEventArgs e)
     {
-        AudioHelper.PlayClickSound();
-
         Online.TriggerRCBandito(CheckBox_TriggerRCBandito.IsChecked == true);
     }
 
     private void CheckBox_TriggerMiniTank_Click(object sender, RoutedEventArgs e)
     {
-        AudioHelper.PlayClickSound();
-
         Online.TriggerMiniTank(CheckBox_TriggerMiniTank.IsChecked == true);
     }
 

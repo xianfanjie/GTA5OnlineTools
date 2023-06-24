@@ -9,6 +9,22 @@ namespace GTA5Menu.Views.ExternalMenu;
 /// </summary>
 public partial class OnlineOptionView : UserControl
 {
+    private class Options
+    {
+        public bool FreeChangeAppearance = false;
+
+        public bool PassiveModeCooldown = false;
+        public bool SuicideCooldown = false;
+        public bool OrbitalCooldown = false;
+        public bool SellOnNonPublic = false;
+        public bool SessionSnow = false;
+
+        public float RPxN = 1.0f;
+        public float APxN = 1.0f;
+        public float REPxN = 1.0f;
+    }
+    private readonly Options _options = new();
+
     public OnlineOptionView()
     {
         InitializeComponent();
@@ -24,34 +40,34 @@ public partial class OnlineOptionView : UserControl
     private void GTA5MenuWindow_LoopTime1000MsEvent()
     {
         // 免费更改角色外观
-        if (CheckBox_FreeChangeAppearance.IsChecked == true)
+        if (_options.FreeChangeAppearance)
             Online.FreeChangeAppearance(true);
 
         // 移除被动模式冷却
-        if (CheckBox_RemovePassiveModeCooldown.IsChecked == true)
+        if (_options.PassiveModeCooldown)
             Online.PassiveModeCooldown(true);
         // 移除自杀冷却
-        if (CheckBox_RemoveSuicideCooldown.IsChecked == true)
+        if (_options.SuicideCooldown)
             Online.SuicideCooldown(true);
         // 移除天基炮冷却
-        if (CheckBox_DisableOrbitalCooldown.IsChecked == true)
-            Online.DisableOrbitalCooldown(true);
+        if (_options.OrbitalCooldown)
+            Online.OrbitalCooldown(true);
         // 非公开战局运货
-        if (CheckBox_AllowSellOnNonPublic.IsChecked == true)
-            Online.AllowSellOnNonPublic(true);
+        if (_options.SellOnNonPublic)
+            Online.SellOnNonPublic(true);
         // 战局雪天 (自己可见)
-        if (CheckBox_OnlineSnow.IsChecked == true)
+        if (_options.SessionSnow)
             Online.SessionSnow(true);
 
         // 角色RP
-        if (Slider_RPxN.Value != 1.0)
-            Online.RPMultiplier((float)Slider_RPxN.Value);
+        if (_options.RPxN != 1.0)
+            Online.RPMultiplier(_options.RPxN);
         // 竞技场AP
-        if (Slider_APxN.Value != 1.0)
-            Online.APMultiplier((float)Slider_APxN.Value);
+        if (_options.APxN != 1.0)
+            Online.APMultiplier(_options.APxN);
         // 车友会RP
-        if (Slider_REPxN.Value != 1.0)
-            Online.REPMultiplier((float)Slider_REPxN.Value);
+        if (_options.REPxN != 1.0)
+            Online.REPMultiplier(_options.REPxN);
     }
 
     /////////////////////////////////////////////////
@@ -93,33 +109,41 @@ public partial class OnlineOptionView : UserControl
 
     private void CheckBox_FreeChangeAppearance_Click(object sender, RoutedEventArgs e)
     {
-        Online.FreeChangeAppearance(CheckBox_FreeChangeAppearance.IsChecked == true);
+        _options.FreeChangeAppearance = CheckBox_FreeChangeAppearance.IsChecked == true;
+        Online.FreeChangeAppearance(_options.FreeChangeAppearance);
     }
 
-    private void CheckBox_RemovePassiveModeCooldown_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_PassiveModeCooldown_Click(object sender, RoutedEventArgs e)
     {
-        Online.PassiveModeCooldown(CheckBox_RemovePassiveModeCooldown.IsChecked == true);
+        _options.PassiveModeCooldown = CheckBox_PassiveModeCooldown.IsChecked == true;
+        Online.PassiveModeCooldown(_options.PassiveModeCooldown);
     }
 
-    private void CheckBox_RemoveSuicideCooldown_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_SuicideCooldown_Click(object sender, RoutedEventArgs e)
     {
-        Online.SuicideCooldown(CheckBox_RemoveSuicideCooldown.IsChecked == true);
+        _options.SuicideCooldown = CheckBox_SuicideCooldown.IsChecked == true;
+        Online.SuicideCooldown(_options.SuicideCooldown);
     }
 
-    private void CheckBox_DisableOrbitalCooldown_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_OrbitalCooldown_Click(object sender, RoutedEventArgs e)
     {
-        Online.DisableOrbitalCooldown(CheckBox_DisableOrbitalCooldown.IsChecked == true);
+        _options.OrbitalCooldown = CheckBox_OrbitalCooldown.IsChecked == true;
+        Online.OrbitalCooldown(_options.OrbitalCooldown);
     }
 
-    private void CheckBox_AllowSellOnNonPublic_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_SellOnNonPublic_Click(object sender, RoutedEventArgs e)
     {
-        Online.AllowSellOnNonPublic(CheckBox_AllowSellOnNonPublic.IsChecked == true);
+        _options.SellOnNonPublic = CheckBox_SellOnNonPublic.IsChecked == true;
+        Online.SellOnNonPublic(_options.SellOnNonPublic);
     }
 
-    private void CheckBox_OnlineSnow_Click(object sender, RoutedEventArgs e)
+    private void CheckBox_SessionSnow_Click(object sender, RoutedEventArgs e)
     {
-        Online.SessionSnow(CheckBox_OnlineSnow.IsChecked == true);
+        _options.SessionSnow = CheckBox_SessionSnow.IsChecked == true;
+        Online.SessionSnow(_options.SessionSnow);
     }
+
+    /////////////////////////////////////////////////////////////
 
     private void CheckBox_OffRadar_Click(object sender, RoutedEventArgs e)
     {
@@ -189,18 +213,23 @@ public partial class OnlineOptionView : UserControl
         Online.CallAirstrike(CheckBox_Airstrike.IsChecked == true);
     }
 
+    /////////////////////////////////////////////////////////////
+
     private void Slider_RPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        Online.RPMultiplier((float)Slider_RPxN.Value);
+        _options.RPxN = (float)Slider_RPxN.Value;
+        Online.RPMultiplier(_options.RPxN);
     }
 
     private void Slider_APxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        Online.APMultiplier((float)Slider_APxN.Value);
+        _options.APxN = (float)Slider_APxN.Value;
+        Online.APMultiplier(_options.APxN);
     }
 
     private void Slider_REPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        Online.REPMultiplier((float)Slider_REPxN.Value);
+        _options.REPxN = (float)Slider_REPxN.Value;
+        Online.REPMultiplier(_options.REPxN);
     }
 }

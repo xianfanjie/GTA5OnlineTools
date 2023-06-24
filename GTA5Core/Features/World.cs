@@ -47,16 +47,16 @@ public static class World
     /// </summary>
     public static void KillAllNPC(bool isOnlyKillHostility)
     {
-        long pCPedList = Game.GetCPedList();
+        var pCPedList = Game.GetCPedList();
 
-        for (int i = 0; i < Base.oMaxPeds; i++)
+        for (var i = 0; i < Base.oMaxPeds; i++)
         {
-            long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
+            var pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+            var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
@@ -80,20 +80,20 @@ public static class World
     /// </summary>
     public static void KillAllPolice()
     {
-        long pCPedList = Game.GetCPedList();
+        var pCPedList = Game.GetCPedList();
 
-        for (int i = 0; i < Base.oMaxPeds; i++)
+        for (var i = 0; i < Base.oMaxPeds; i++)
         {
-            long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
+            var pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+            var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            int ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
+            var ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
             ped_type = ped_type << 11 >> 25;
 
             if (ped_type == (int)PedType.COP ||
@@ -110,26 +110,26 @@ public static class World
     /// </summary>
     public static void DestroyAllNPCVehicles(bool isOnlyKillHostility)
     {
-        long pCPedList = Game.GetCPedList();
+        var pCPedList = Game.GetCPedList();
 
         for (int i = 0; i < Base.oMaxPeds; i++)
         {
-            long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
+            var pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+            var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
+            var pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
             if (!Memory.IsValid(pCVehicle))
                 continue;
 
             if (isOnlyKillHostility)
             {
-                byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
+                var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
                     Memory.Write(pCVehicle + CVehicle.Health, -1.0f);
@@ -153,11 +153,11 @@ public static class World
     /// </summary>
     public static void DestroyAllVehicles()
     {
-        long pCVehicleList = Game.GetCVehicleList();
+        var pCVehicleList = Game.GetCVehicleList();
 
-        for (int i = 0; i < Base.oMaxPeds; i++)
+        for (var i = 0; i < Base.oMaxPeds; i++)
         {
-            long pCVehicle = Memory.Read<long>(pCVehicleList + i * 0x10);
+            var pCVehicle = Memory.Read<long>(pCVehicleList + i * 0x10);
             if (!Memory.IsValid(pCVehicle))
                 continue;
 
@@ -173,28 +173,28 @@ public static class World
     /// </summary>
     public static void TeleportAllNPCToMe(bool isOnlyHostility)
     {
-        Vector3 v3MyPos = Teleport.GetPlayerPosition();
+        var v3MyPos = Teleport.GetPlayerPosition();
 
-        long pCPedList = Game.GetCPedList();
+        var pCPedList = Game.GetCPedList();
 
-        for (int i = 0; i < Base.oMaxPeds; i++)
+        for (var i = 0; i < Base.oMaxPeds; i++)
         {
-            long pCPed = Memory.Read<long>(pCPedList + i * 0x10);
+            var pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))
                 continue;
 
             // 跳过玩家
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+            var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+            var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
             if (!Memory.IsValid(pCNavigation))
                 continue;
 
             if (isOnlyHostility)
             {
-                byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
+                var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
                     Memory.Write(pCPed + CVehicle.VisualX, v3MyPos);

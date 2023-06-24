@@ -180,22 +180,22 @@ public class Overlay : IDisposable
 
         // Ped
         var pCPedInterface = Memory.Read<long>(pReplayInterface + CReplayInterface.CPedInterface);
-        var m_max_peds = Memory.Read<int>(pCPedInterface + CPedInterface.MaxPeds);
+        //var m_max_peds = Memory.Read<int>(pCPedInterface + CPedInterface.MaxPeds);
         var m_cur_peds = Memory.Read<int>(pCPedInterface + CPedInterface.CurPeds);
 
         // 载具
         var pCVehicleInterface = Memory.Read<long>(pReplayInterface + CReplayInterface.CVehicleInterface);
-        var m_max_vehicles = Memory.Read<int>(pCVehicleInterface + CVehicleInterface.MaxVehicles);
+        //var m_max_vehicles = Memory.Read<int>(pCVehicleInterface + CVehicleInterface.MaxVehicles);
         var m_cur_vehicles = Memory.Read<int>(pCVehicleInterface + CVehicleInterface.CurVehicles);
 
         // 可拾取
         var pCPickupInterface = Memory.Read<long>(pReplayInterface + CReplayInterface.CPickupInterface);
-        var m_max_pickups = Memory.Read<int>(pCPickupInterface + CPickupInterface.MaxPickups);
+        //var m_max_pickups = Memory.Read<int>(pCPickupInterface + CPickupInterface.MaxPickups);
         var m_cur_pickups = Memory.Read<int>(pCPickupInterface + CPickupInterface.CurPickups);
 
         // 对象
         var pCObjectInterface = Memory.Read<long>(pReplayInterface + CReplayInterface.CObjectInterface);
-        var m_max_objects = Memory.Read<int>(pCObjectInterface + CObjectInterface.MaxObjects);
+        //var m_max_objects = Memory.Read<int>(pCObjectInterface + CObjectInterface.MaxObjects);
         var m_cur_objects = Memory.Read<int>(pCObjectInterface + CObjectInterface.CurObjects);
 
         _infoText.Clear();
@@ -231,7 +231,7 @@ public class Overlay : IDisposable
 
         ///////////////////////////////////////////////////////
 
-        for (var i = 0; i < m_max_peds; i++)
+        for (var i = 0; i < Base.oMaxPeds; i++)
         {
             var pCPedList = Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
             var pCPed = Memory.Read<long>(pCPedList + i * 0x10);      // CEntityEntry
@@ -470,7 +470,7 @@ public class Overlay : IDisposable
 
         ///////////////////////////////////////////////////////
 
-        for (var i = 0; i < m_max_pickups; i++)
+        for (var i = 0; i < Base.oMaxPickups; i++)
         {
             var pCPickupList = Memory.Read<long>(pCPickupInterface + CPickupInterface.CPickupList);
             var pCPickup = Memory.Read<long>(pCPickupList + i * 0x10);      // CEntityEntry
@@ -586,9 +586,8 @@ public class Overlay : IDisposable
                 // Ped实体
                 var pReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
                 var pCPedInterface = Memory.Read<long>(pReplayInterface + +CReplayInterface.CPedInterface);
-                var m_max_peds = Memory.Read<int>(pCPedInterface + CPedInterface.MaxPeds);
 
-                for (var i = 0; i < m_max_peds; i++)
+                for (var i = 0; i < Base.oMaxPeds; i++)
                 {
                     var pCPedList = Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
                     var pCPed = Memory.Read<long>(pCPedList + i * 0x10);      // CEntityEntry

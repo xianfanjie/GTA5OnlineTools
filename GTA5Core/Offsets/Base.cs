@@ -11,7 +11,12 @@ public struct Base
     public const int SessionTransitionState = 1574996;
     public const int SessionSwitchType = 1575020;         // NETWORK::NETWORK_SESSION_SET_UNIQUE_CREW_LIMIT(1);
 
+    public const int oMaxPlayers = 32;
+
     public const int oMaxPeds = 256;
+    public const int oMaxVehicles = 300;
+    public const int oMaxPickups = 73;
+    public const int oMaxObjects = 2300;
 
     // Vehicle Menus Globals
     public const int oVMCreate = 2694613;       // Create any vehicle. STREAMING::REQUEST_MODEL(Global_2694562.f_27.f_66);

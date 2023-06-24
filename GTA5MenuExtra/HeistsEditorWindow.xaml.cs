@@ -40,14 +40,14 @@ public partial class HeistsEditorWindow
         {
             var viewName = item.CommandParameter.ToString();
 
-            if (!NavDictionary.ContainsKey(viewName))
-            {
-                var type = Type.GetType($"GTA5MenuExtra.Views.HeistsEditor.{viewName}");
-                if (type == null)
-                    continue;
+            if (NavDictionary.ContainsKey(viewName))
+                continue;
 
-                NavDictionary.Add(viewName, Activator.CreateInstance(type) as UserControl);
-            }
+            var typeView = Type.GetType($"GTA5MenuExtra.Views.HeistsEditor.{viewName}");
+            if (typeView == null)
+                continue;
+
+            NavDictionary.Add(viewName, Activator.CreateInstance(typeView) as UserControl);
         }
     }
 
@@ -61,7 +61,9 @@ public partial class HeistsEditorWindow
         if (!NavDictionary.ContainsKey(viewName))
             return;
 
-        if (ContentControl_NavRegion.Content != NavDictionary[viewName])
-            ContentControl_NavRegion.Content = NavDictionary[viewName];
+        if (ContentControl_NavRegion.Content == NavDictionary[viewName])
+            return;
+
+        ContentControl_NavRegion.Content = NavDictionary[viewName];
     }
 }

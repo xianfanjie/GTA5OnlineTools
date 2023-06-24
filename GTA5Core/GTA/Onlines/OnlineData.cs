@@ -132,6 +132,7 @@ public static class OnlineData
 
     public static readonly List<OnlineInfo> ImpactExplosions = new()
     {
+        new OnlineInfo(){ Name="未选择", Value=-1 },
         new OnlineInfo(){ Name="默认", Value=-1 },
         new OnlineInfo(){ Name="手榴弹", Value=0 },
         new OnlineInfo(){ Name="榴弹发射器", Value=1 },
@@ -212,6 +213,7 @@ public static class OnlineData
 
     public static readonly List<OnlineInfo> VehicleExtras = new()
     {
+        new OnlineInfo(){ Name="未选择", Value=-1 },
         new OnlineInfo(){ Name="默认", Value=0x00 },
         new OnlineInfo(){ Name="载具跳跃", Value=0x20 },
         new OnlineInfo(){ Name="火箭推进", Value=0x40 },

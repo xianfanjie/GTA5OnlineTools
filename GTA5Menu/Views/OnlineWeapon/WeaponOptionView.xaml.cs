@@ -20,7 +20,7 @@ public partial class WeaponOptionView : UserControl
         public bool LongRange = false;
 
         public bool ImpactExplosion = false;
-        public int ImpactExplosionFlag = -1;
+        public int ImpactExplosionFlag = 0;
     }
     private readonly Options _options = new();
 
@@ -35,6 +35,7 @@ public partial class WeaponOptionView : UserControl
         {
             ComboBox_ImpactExplosion.Items.Add(item.Name);
         }
+        ComboBox_ImpactExplosion.SelectedIndex = 0;
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()
@@ -78,14 +79,14 @@ public partial class WeaponOptionView : UserControl
     private void ComboBox_AmmoModifier_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var index = ComboBox_AmmoModifier.SelectedIndex;
-        if (index == -1)
+        if (index == -1 || index == 0)
         {
             _options.AmmoModifier = false;
             return;
         }
 
         _options.AmmoModifier = true;
-        _options.AmmoModifierFlag = (byte)index;
+        _options.AmmoModifierFlag = (byte)(index - 1);
         Weapon.AmmoModifier(_options.AmmoModifierFlag);
     }
 
@@ -116,7 +117,7 @@ public partial class WeaponOptionView : UserControl
     private void ComboBox_ImpactExplosion_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var index = ComboBox_ImpactExplosion.SelectedIndex;
-        if (index == -1)
+        if (index == -1 || index == 0)
         {
             _options.ImpactExplosion = false;
             return;
@@ -124,7 +125,7 @@ public partial class WeaponOptionView : UserControl
 
         _options.ImpactExplosion = true;
 
-        if (index == 0)
+        if (index == 1)
             Weapon.ImpactType(3);
         else
             Weapon.ImpactType(5);

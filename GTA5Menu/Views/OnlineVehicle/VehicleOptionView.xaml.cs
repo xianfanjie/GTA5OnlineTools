@@ -15,7 +15,8 @@ public partial class VehicleOptionView : UserControl
         public bool Seatbelt = false;
         public bool Parachute = false;
 
-        public short Extras = -1;
+        public bool Extra = false;
+        public short ExtraFlag = 0;
     }
     private readonly Options _options = new();
 
@@ -30,6 +31,7 @@ public partial class VehicleOptionView : UserControl
         {
             ComboBox_VehicleExtras.Items.Add(item.Name);
         }
+        ComboBox_VehicleExtras.SelectedIndex = 0;
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()
@@ -50,8 +52,8 @@ public partial class VehicleOptionView : UserControl
             Vehicle.Parachute(true);
 
         // 载具附加功能
-        if (_options.Extras != -1)
-            Vehicle.Extras(_options.Extras);
+        if (_options.Extra)
+            Vehicle.Extras(_options.ExtraFlag);
     }
 
     /////////////////////////////////////////////////
@@ -98,14 +100,15 @@ public partial class VehicleOptionView : UserControl
     private void ComboBox_VehicleExtras_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var index = ComboBox_VehicleExtras.SelectedIndex;
-        if (index == -1)
+        if (index == -1 || index == 0)
         {
-            _options.Extras = -1;
+            _options.Extra = false;
             return;
         }
 
-        _options.Extras = (short)OnlineData.VehicleExtras[index].Value;
-        Vehicle.Extras(_options.Extras);
+        _options.Extra = true;
+        _options.ExtraFlag = (short)OnlineData.VehicleExtras[index].Value;
+        Vehicle.Extras(_options.ExtraFlag);
     }
 
     private void CheckBox_TriggerRCBandito_Click(object sender, RoutedEventArgs e)

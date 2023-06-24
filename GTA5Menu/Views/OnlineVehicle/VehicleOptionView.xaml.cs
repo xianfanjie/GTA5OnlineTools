@@ -1,7 +1,9 @@
-﻿using GTA5Core.Features;
-using GTA5Core.GTA.Onlines;
+﻿using GTA5Menu.Options;
 
-using GTA5Menu.Options;
+using GTA5Core.Native;
+using GTA5Core.Offsets;
+using GTA5Core.Features;
+using GTA5Core.GTA.Onlines;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.OnlineVehicle;
@@ -15,6 +17,7 @@ public partial class VehicleOptionView : UserControl
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.LoopTime1000MsEvent += GTA5MenuWindow_LoopTime1000MsEvent;
 
         // 载具附加功能
         foreach (var item in OnlineData.VehicleExtras)
@@ -25,7 +28,18 @@ public partial class VehicleOptionView : UserControl
 
     private void GTA5MenuWindow_WindowClosingEvent()
     {
-        
+
+    }
+
+    private void GTA5MenuWindow_LoopTime1000MsEvent()
+    {
+        // 载具无敌
+        if (Game.GetCVehicle(out long pCVehicle))
+        {
+            // 载具无敌
+            if (Setting.Vehicle.GodMode)
+                Memory.Write<byte>(pCVehicle + CVehicle.God, 0x01);
+        }
     }
 
     /////////////////////////////////////////////////

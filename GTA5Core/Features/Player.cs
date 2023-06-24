@@ -10,7 +10,7 @@ public static class Player
     /// </summary>
     public static void GodMode(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.God, (byte)(isEnable ? 0x01 : 0x00));
     }
 
@@ -20,7 +20,7 @@ public static class Player
     /// <param name="value"></param>
     public static void Health(float value)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.Health, value);
     }
 
@@ -30,7 +30,7 @@ public static class Player
     /// <param name="value"></param>
     public static void HealthMax(float value)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.HealthMax, value);
     }
 
@@ -40,7 +40,7 @@ public static class Player
     /// <param name="value"></param>
     public static void Armor(float value)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.Armor, value);
     }
 
@@ -49,7 +49,7 @@ public static class Player
     /// </summary>
     public static void WantedLevel(byte level)
     {
-        long pCPlayerInfo = Game.GetCPlayerInfo();
+        var pCPlayerInfo = Game.GetCPlayerInfo();
         Memory.Write(pCPlayerInfo + CPlayerInfo.WantedLevel, level);
     }
 
@@ -59,7 +59,7 @@ public static class Player
     /// <param name="value"></param>
     public static void RunSpeed(float value)
     {
-        long pCPlayerInfo = Game.GetCPlayerInfo();
+        var pCPlayerInfo = Game.GetCPlayerInfo();
         Memory.Write(pCPlayerInfo + CPlayerInfo.RunSpeed, value);
     }
 
@@ -69,7 +69,7 @@ public static class Player
     /// <param name="value"></param>
     public static void SwimSpeed(float value)
     {
-        long pCPlayerInfo = Game.GetCPlayerInfo();
+        var pCPlayerInfo = Game.GetCPlayerInfo();
         Memory.Write(pCPlayerInfo + CPlayerInfo.SwimSpeed, value);
     }
 
@@ -79,7 +79,7 @@ public static class Player
     /// <param name="value"></param>
     public static void WalkSpeed(float value)
     {
-        long pCPlayerInfo = Game.GetCPlayerInfo();
+        var pCPlayerInfo = Game.GetCPlayerInfo();
         Memory.Write(pCPlayerInfo + CPlayerInfo.WalkSpeed, value);
     }
 
@@ -88,7 +88,7 @@ public static class Player
     /// </summary>
     public static void NoRagdoll(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.Ragdoll, (byte)(isEnable ? 0x01 : 0x20));
     }
 
@@ -97,7 +97,7 @@ public static class Player
     /// </summary>
     public static void Invisible(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.Invisible, (byte)(isEnable ? 0x01 : 0x27));
     }
 
@@ -106,10 +106,10 @@ public static class Player
     /// </summary>
     public static void FillHealth()
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
 
-        float oHealth = Memory.Read<float>(pCPed + CPed.Health);
-        float oHealthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
+        var oHealth = Memory.Read<float>(pCPed + CPed.Health);
+        var oHealthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
         if (oHealth <= oHealthMax)
             Memory.Write(pCPed + CPed.Health, oHealthMax);
         else
@@ -121,7 +121,7 @@ public static class Player
     /// </summary>
     public static void FillArmor()
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.Armor, Globals.IsOnlineMode() ? 50.0f : 100.0f);
     }
 
@@ -130,7 +130,7 @@ public static class Player
     /// </summary>
     public static void Suicide()
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.Health, 1.0f);
     }
 
@@ -139,7 +139,7 @@ public static class Player
     /// </summary>
     public static void UndeadOffRadar(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
         Memory.Write(pCPed + CPed.HealthMax, isEnable ? 0.0f : 328.0f);
     }
 
@@ -148,7 +148,7 @@ public static class Player
     /// </summary>
     public static void WantedCanChange(bool isEnable)
     {
-        long pCPlayerInfo = Game.GetCPlayerInfo();
+        var pCPlayerInfo = Game.GetCPlayerInfo();
         Memory.Write(pCPlayerInfo + CPlayerInfo.WantedCanChange, isEnable ? 1.0f : 0.0f);
     }
 
@@ -158,7 +158,7 @@ public static class Player
     /// <param name="value"></param>
     public static void NPCIgnore(int value)
     {
-        long pCPlayerInfo = Game.GetCPlayerInfo();
+        var pCPlayerInfo = Game.GetCPlayerInfo();
         Memory.Write(pCPlayerInfo + CPlayerInfo.NPCIgnore, value);
     }
 
@@ -167,10 +167,10 @@ public static class Player
     /// </summary>
     public static void NoCollision(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
 
-        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
-        long pointer = Memory.Read<long>(pCNavigation + 0x10);
+        var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+        var pointer = Memory.Read<long>(pCNavigation + 0x10);
         pointer = Memory.Read<long>(pointer + 0x20);
         pointer = Memory.Read<long>(pointer + 0x70);
         pointer = Memory.Read<long>(pointer + 0x00);
@@ -183,8 +183,8 @@ public static class Player
     /// </summary>
     public static void ProofBullet(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 4 : (uint)(oProof & ~(1 << 4));
         Memory.Write(pCPed + CPed.Proof, oProof);
@@ -195,8 +195,8 @@ public static class Player
     /// </summary>
     public static void ProofFire(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 5 : (uint)(oProof & ~(1 << 5));
         Memory.Write(pCPed + CPed.Proof, oProof);
@@ -207,8 +207,8 @@ public static class Player
     /// </summary>
     public static void ProofCollision(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 6 : (uint)(oProof & ~(1 << 6));
         Memory.Write(pCPed + CPed.Proof, oProof);
@@ -219,8 +219,8 @@ public static class Player
     /// </summary>
     public static void ProofMelee(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 7 : (uint)(oProof & ~(1 << 7));
         Memory.Write(pCPed + CPed.Proof, oProof);
@@ -231,8 +231,8 @@ public static class Player
     /// </summary>
     public static void ProofGod(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 8 : (uint)(oProof & ~(1 << 8));
         Memory.Write(pCPed + CPed.Proof, oProof);
@@ -243,8 +243,8 @@ public static class Player
     /// </summary>
     public static void ProofExplosion(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 11 : (uint)(oProof & ~(1 << 11));
         Memory.Write(pCPed + CPed.Proof, oProof);
@@ -255,8 +255,8 @@ public static class Player
     /// </summary>
     public static void ProofSteam(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 15 : (uint)(oProof & ~(1 << 15));
         Memory.Write(pCPed + CPed.Proof, oProof);
@@ -267,8 +267,8 @@ public static class Player
     /// </summary>
     public static void ProofDrown(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 16 : (uint)(oProof & ~(1 << 16));
         Memory.Write(pCPed + CPed.Proof, oProof);
@@ -279,8 +279,8 @@ public static class Player
     /// </summary>
     public static void ProofWater(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        uint oProof = Memory.Read<uint>(pCPed + CPed.Proof);
+        var pCPed = Game.GetCPed();
+        var oProof = Memory.Read<uint>(pCPed + CPed.Proof);
 
         oProof = isEnable ? oProof | 1 << 24 : (uint)(oProof & ~(1 << 24));
         Memory.Write(pCPed + CPed.Proof, oProof);

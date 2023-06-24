@@ -1,11 +1,11 @@
 ﻿using GTA5Menu.Models;
-using GTA5Menu.Options;
 
 using GTA5HotKey;
 using GTA5Core.Native;
 using GTA5Core.Offsets;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
+using GTA5Core.GTA.Rage;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -15,21 +15,39 @@ namespace GTA5Menu.Views.ExternalMenu;
 public partial class SelfStateView : UserControl
 {
     /// <summary>
-    /// SelfState 的数据模型绑定
+    /// 数据模型绑定
     /// </summary>
     public SelfStateModel SelfStateModel { get; set; } = new();
 
+    private class Options
+    {
+        public bool GodMode = false;
+        public bool AntiAFK = false;
+        public bool NoRagdoll = false;
+
+        public bool UndeadOffRadar = false;
+        public bool NPCIgnore = false;
+        public bool PoliceIgnore = false;
+
+        public bool NoCollision = false;
+
+        public bool ClearWanted = false;
+        public bool KillNPC = false;
+        public bool KillHostilityNPC = false;
+        public bool KillPolice = false;
+
+        public bool ProofBullet = false;
+        public bool ProofFire = false;
+        public bool ProofCollision = false;
+        public bool ProofMelee = false;
+        public bool ProofExplosion = false;
+        public bool ProofSteam = false;
+        public bool ProofDrown = false;
+        public bool ProofWater = false;
+    }
+    private readonly Options _options = new();
+
     /////////////////////////////////////////////////////////
-
-    /// <summary>
-    /// 判断程序是否在运行，用于结束线程
-    /// </summary>
-    private bool IsAppRunning = true;
-
-    /// <summary>
-    /// 穿墙开关切换
-    /// </summary>
-    private bool Toggle_NoCollision = false;
 
     /// <summary>
     /// 坐标微调距离
@@ -42,12 +60,8 @@ public partial class SelfStateView : UserControl
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
-
-        new Thread(SelfStateUpdateThread)
-        {
-            Name = "SelfStateUpdateThread",
-            IsBackground = true
-        }.Start();
+        GTA5MenuWindow.LoopTime1000MsEvent += GTA5MenuWindow_LoopTime1000MsEvent;
+        GTA5MenuWindow.LoopTime200MsEvent += GTA5MenuWindow_LoopTime200MsEvent;
 
         // 添加快捷键
         HotKeys.AddKey(WinVK.F3);
@@ -62,6 +76,32 @@ public partial class SelfStateView : UserControl
 
         ///////////  读取配置文件  ///////////
 
+        ReadConfig();
+    }
+
+    private void GTA5MenuWindow_WindowClosingEvent()
+    {
+        // 移除快捷键
+        HotKeys.RemoveKey(WinVK.F3);
+        HotKeys.RemoveKey(WinVK.F4);
+        HotKeys.RemoveKey(WinVK.F5);
+        HotKeys.RemoveKey(WinVK.F6);
+        HotKeys.RemoveKey(WinVK.F7);
+        HotKeys.RemoveKey(WinVK.F8);
+        HotKeys.RemoveKey(WinVK.Oem0);
+        // 取消订阅按钮事件
+        HotKeys.KeyDownEvent -= HotKeys_KeyDownEvent;
+
+        SaveConfig();
+    }
+
+    /////////////////////////////////////////////////
+
+    /// <summary>
+    /// 读取配置文件
+    /// </summary>
+    private void ReadConfig()
+    {
         var isHotKeyToWaypoint = IniHelper.ReadValue("ExternalMenu", "IsHotKeyToWaypoint");
         var isHotKeyToObjective = IniHelper.ReadValue("ExternalMenu", "IsHotKeyToObjective");
         var isHotKeyFillHealthArmor = IniHelper.ReadValue("ExternalMenu", "IsHotKeyFillHealthArmor");
@@ -89,26 +129,6 @@ public partial class SelfStateView : UserControl
         if (!string.IsNullOrEmpty(isHotKeyNoCollision))
             SelfStateModel.IsHotKeyNoCollision = isHotKeyNoCollision == "1";
     }
-
-    private void GTA5MenuWindow_WindowClosingEvent()
-    {
-        IsAppRunning = false;
-
-        SaveConfig();
-
-        // 移除快捷键
-        HotKeys.RemoveKey(WinVK.F3);
-        HotKeys.RemoveKey(WinVK.F4);
-        HotKeys.RemoveKey(WinVK.F5);
-        HotKeys.RemoveKey(WinVK.F6);
-        HotKeys.RemoveKey(WinVK.F7);
-        HotKeys.RemoveKey(WinVK.F8);
-        HotKeys.RemoveKey(WinVK.Oem0);
-        // 取消订阅按钮事件
-        HotKeys.KeyDownEvent -= HotKeys_KeyDownEvent;
-    }
-
-    /////////////////////////////////////////////////
 
     /// <summary>
     /// 保存配置文件
@@ -168,18 +188,16 @@ public partial class SelfStateView : UserControl
             case WinVK.F8:
                 if (SelfStateModel.IsHotKeyClearWanted)
                 {
-                    Player.WantedLevel(0x00);
+                    Player.WantedLevel((byte)WantedLevel.Level0);
                 }
                 break;
             case WinVK.Oem0:
                 if (SelfStateModel.IsHotKeyNoCollision)
                 {
-                    Toggle_NoCollision = !Toggle_NoCollision;
+                    _options.NoCollision = !_options.NoCollision;
+                    Player.NoCollision(_options.NoCollision);
 
-                    Player.NoCollision(Toggle_NoCollision);
-                    Setting.Player.NoCollision = Toggle_NoCollision;
-
-                    if (Toggle_NoCollision)
+                    if (_options.NoCollision)
                         Console.Beep(600, 75);
                     else
                         Console.Beep(500, 75);
@@ -188,52 +206,162 @@ public partial class SelfStateView : UserControl
         }
     }
 
-    private void SelfStateUpdateThread()
+    /////////////////////////////////////////////////
+
+    private void GTA5MenuWindow_LoopTime1000MsEvent()
     {
-        while (IsAppRunning)
+        var pCPed = Game.GetCPed();
+        var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+
+        var mHealth = Memory.Read<float>(pCPed + CPed.Health);
+        var mHealthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
+        var mArmor = Memory.Read<float>(pCPed + CPed.Armor);
+
+        var mWantedLevel = Memory.Read<byte>(pCPlayerInfo + CPlayerInfo.WantedLevel);
+        var mWalkSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.WalkSpeed);
+        var mRunSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.RunSpeed);
+        var mSwimSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.SwimSpeed);
+
+        ///////////////////////////////////////////////////
+
+        this.Dispatcher.BeginInvoke(() =>
         {
-            long pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
-            long pCPed = Memory.Read<long>(pCPedFactory + CPedFactory.CPed);
-            long pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+            if ((float)Slider_Health.Value != mHealth)
+                Slider_Health.Value = mHealth;
 
-            float oHealth = Memory.Read<float>(pCPed + CPed.Health);
-            float oHealthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
-            float oArmor = Memory.Read<float>(pCPed + CPed.Armor);
+            if ((float)Slider_HealthMax.Value != mHealthMax)
+                Slider_HealthMax.Value = mHealthMax;
 
-            byte oWantedLevel = Memory.Read<byte>(pCPlayerInfo + CPlayerInfo.WantedLevel);
-            float oWalkSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.WalkSpeed);
-            float oRunSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.RunSpeed);
-            float oSwimSpeed = Memory.Read<float>(pCPlayerInfo + CPlayerInfo.SwimSpeed);
+            if ((float)Slider_Armor.Value != mArmor)
+                Slider_Armor.Value = mArmor;
 
-            ////////////////////////////////////////////////////////////////
+            if ((float)Slider_WantedLevel.Value != mWantedLevel)
+                Slider_WantedLevel.Value = mWantedLevel;
 
-            this.Dispatcher.BeginInvoke(() =>
+            if ((float)Slider_RunSpeed.Value != mRunSpeed)
+                Slider_RunSpeed.Value = mRunSpeed;
+
+            if ((float)Slider_SwimSpeed.Value != mSwimSpeed)
+                Slider_SwimSpeed.Value = mSwimSpeed;
+
+            if ((float)Slider_WalkSpeed.Value != mWalkSpeed)
+                Slider_WalkSpeed.Value = mWalkSpeed;
+        });
+
+        ///////////////////////////////////////////////////
+
+        // 玩家无敌
+        if (_options.GodMode)
+            Player.GodMode(true);
+        // 挂机防踢
+        if (_options.AntiAFK)
+            Online.AntiAFK(true);
+        // 无布娃娃
+        if (_options.NoRagdoll)
+            Player.NoRagdoll(true);
+        // 雷达影踪（假死）
+        if (_options.UndeadOffRadar)
+            Player.UndeadOffRadar(true);
+        // 玩家无碰撞体积
+        if (_options.NoCollision)
+            Player.NoCollision(true);
+
+        // NPC无视、警察无视
+        if (_options.NPCIgnore == true && _options.PoliceIgnore == false)
+        {
+            Player.NPCIgnore(0x040000);
+        }
+        else if (_options.NPCIgnore == false && _options.PoliceIgnore == true)
+        {
+            Player.NPCIgnore(0xC30000);
+        }
+        else if (_options.NPCIgnore == true && _options.PoliceIgnore == true)
+        {
+            Player.NPCIgnore(0xC70000);
+        }
+
+        ///////////////////////////////////////////////////
+
+        // 防子弹（防止子弹掉血）
+        if (_options.ProofBullet)
+            Player.ProofBullet(true);
+        // 防火烧（防止燃烧掉血）
+        if (_options.ProofFire)
+            Player.ProofFire(true);
+        // 防撞击（防止撞击掉血）
+        if (_options.ProofCollision)
+            Player.ProofCollision(true);
+        // 防近战（防止近战掉血）
+        if (_options.ProofMelee)
+            Player.ProofMelee(true);
+
+        // 防爆炸（防止爆炸掉血）
+        if (_options.ProofExplosion)
+            Player.ProofExplosion(true);
+        // 防蒸汽（具体场景未知）
+        if (_options.ProofSteam)
+            Player.ProofSteam(true);
+        // 防溺水（具体场景未知）
+        if (_options.ProofDrown)
+            Player.ProofDrown(true);
+        // 防海水（可以水下行走）
+        if (_options.ProofWater)
+            Player.ProofWater(true);
+    }
+
+    private void GTA5MenuWindow_LoopTime200MsEvent()
+    {
+        // 自动消星
+        if (_options.ClearWanted)
+            Player.WantedLevel((byte)WantedLevel.Level0);
+
+        // Ped
+        var pCPedInterface = Game.GetCPedInterface();
+        var pCPedList = Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
+        var mCurPeds = Memory.Read<int>(pCPedInterface + CPedInterface.CurPeds);
+
+        for (var i = 0; i < mCurPeds; i++)
+        {
+            var pCPed = Memory.Read<long>(pCPedList + i * 0x10);
+            if (!Memory.IsValid(pCPed))
+                continue;
+
+            // 跳过玩家
+            var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
+            if (Memory.IsValid(pCPlayerInfo))
+                continue;
+
+            // 自动击杀NPC
+            if (_options.KillNPC)
+                Memory.Write(pCPed + CPed.Health, 0.0f);
+
+            // 自动击杀敌对NPC
+            if (_options.KillHostilityNPC)
             {
-                if (Slider_Health.Value != oHealth)
-                    Slider_Health.Value = oHealth;
+                var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
+                if (oHostility > 0x01)
+                {
+                    Memory.Write(pCPed + CPed.Health, 0.0f);
+                }
+            }
 
-                if (Slider_HealthMax.Value != oHealthMax)
-                    Slider_HealthMax.Value = oHealthMax;
+            // 自动击杀警察
+            if (_options.KillPolice)
+            {
+                var ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
+                ped_type = ped_type << 11 >> 25;
 
-                if (Slider_Armor.Value != oArmor)
-                    Slider_Armor.Value = oArmor;
-
-                if (Slider_WantedLevel.Value != oWantedLevel)
-                    Slider_WantedLevel.Value = oWantedLevel;
-
-                if (Slider_RunSpeed.Value != oRunSpeed)
-                    Slider_RunSpeed.Value = oRunSpeed;
-
-                if (Slider_SwimSpeed.Value != oSwimSpeed)
-                    Slider_SwimSpeed.Value = oSwimSpeed;
-
-                if (Slider_WalkSpeed.Value != oWalkSpeed)
-                    Slider_WalkSpeed.Value = oWalkSpeed;
-            });
-
-            Thread.Sleep(1000);
+                if (ped_type == (int)PedType.COP ||
+                    ped_type == (int)PedType.SWAT ||
+                    ped_type == (int)PedType.ARMY)
+                {
+                    Memory.Write(pCPed + CPed.Health, 0.0f);
+                }
+            }
         }
     }
+
+    /////////////////////////////////////////////////
 
     private void Slider_Health_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
@@ -277,74 +405,82 @@ public partial class SelfStateView : UserControl
 
     private void CheckBox_PlayerGodMode_Click(object sender, RoutedEventArgs e)
     {
-        Setting.Player.GodMode = CheckBox_PlayerGodMode.IsChecked == true;
-        Player.GodMode(CheckBox_PlayerGodMode.IsChecked == true);
+        _options.GodMode = CheckBox_PlayerGodMode.IsChecked == true;
+        Player.GodMode(_options.GodMode);
     }
 
     private void CheckBox_AntiAFK_Click(object sender, RoutedEventArgs e)
     {
-        Setting.Player.AntiAFK = CheckBox_AntiAFK.IsChecked == true;
-        Online.AntiAFK(CheckBox_AntiAFK.IsChecked == true);
+        _options.AntiAFK = CheckBox_AntiAFK.IsChecked == true;
+        Online.AntiAFK(_options.AntiAFK);
     }
 
     private void CheckBox_NoRagdoll_Click(object sender, RoutedEventArgs e)
     {
-        Setting.Player.NoRagdoll = CheckBox_NoRagdoll.IsChecked == true;
-        Player.NoRagdoll(CheckBox_NoRagdoll.IsChecked == true);
+        _options.NoRagdoll = CheckBox_NoRagdoll.IsChecked == true;
+        Player.NoRagdoll(_options.NoRagdoll);
     }
 
     private void CheckBox_UndeadOffRadar_Click(object sender, RoutedEventArgs e)
     {
-        Player.UndeadOffRadar(CheckBox_UndeadOffRadar.IsChecked == true);
-    }
-
-    private void CheckBox_Invisibility_Click(object sender, RoutedEventArgs e)
-    {
-        Player.Invisible(CheckBox_Invisibility.IsChecked == true);
+        _options.UndeadOffRadar = CheckBox_UndeadOffRadar.IsChecked == true;
+        Player.UndeadOffRadar(_options.UndeadOffRadar);
     }
 
     private void CheckBox_NPCIgnore_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_NPCIgnore.IsChecked == true && CheckBox_PoliceIgnore.IsChecked == false)
+        _options.NPCIgnore = CheckBox_NPCIgnore.IsChecked == true;
+        _options.PoliceIgnore = CheckBox_PoliceIgnore.IsChecked == true;
+
+        if (_options.NPCIgnore == true && _options.PoliceIgnore == false)
         {
             Player.NPCIgnore(0x040000);
+            return;
         }
-        else if (CheckBox_NPCIgnore.IsChecked == false && CheckBox_PoliceIgnore.IsChecked == true)
+
+        if (_options.NPCIgnore == false && _options.PoliceIgnore == true)
         {
             Player.NPCIgnore(0xC30000);
+            return;
         }
-        else if (CheckBox_NPCIgnore.IsChecked == true && CheckBox_PoliceIgnore.IsChecked == true)
+
+        if (_options.NPCIgnore == true && _options.PoliceIgnore == true)
         {
             Player.NPCIgnore(0xC70000);
+            return;
         }
-        else
-        {
-            Player.NPCIgnore(0x00);
-        }
+
+        Player.NPCIgnore(0x00);
     }
 
     private void CheckBox_AutoClearWanted_Click(object sender, RoutedEventArgs e)
     {
-        Player.WantedLevel(0x00);
-        Setting.Auto.ClearWanted = CheckBox_AutoClearWanted.IsChecked == true;
+        _options.ClearWanted = CheckBox_AutoClearWanted.IsChecked == true;
+        Player.WantedLevel((byte)WantedLevel.Level0);
     }
 
     private void CheckBox_AutoKillNPC_Click(object sender, RoutedEventArgs e)
     {
+        _options.KillNPC = CheckBox_AutoKillNPC.IsChecked == true;
         World.KillAllNPC(false);
-        Setting.Auto.KillNPC = CheckBox_AutoKillNPC.IsChecked == true;
     }
 
     private void CheckBox_AutoKillHostilityNPC_Click(object sender, RoutedEventArgs e)
     {
+        _options.KillHostilityNPC = CheckBox_AutoKillHostilityNPC.IsChecked == true;
         World.KillAllNPC(true);
-        Setting.Auto.KillHostilityNPC = CheckBox_AutoKillHostilityNPC.IsChecked == true;
     }
 
     private void CheckBox_AutoKillPolice_Click(object sender, RoutedEventArgs e)
     {
+        _options.KillPolice = CheckBox_AutoKillPolice.IsChecked == true;
         World.KillAllPolice();
-        Setting.Auto.KillPolice = CheckBox_AutoKillPolice.IsChecked == true;
+    }
+
+    private void CheckBox_NoCollision_Click(object sender, RoutedEventArgs e)
+    {
+        _options.NoCollision = SelfStateModel.IsHotKeyNoCollision;
+        Player.NoCollision(_options.NoCollision);
     }
 
     private void Button_ToWaypoint_Click(object sender, RoutedEventArgs e)
@@ -389,58 +525,58 @@ public partial class SelfStateView : UserControl
         Player.Suicide();
     }
 
-    private void CheckBox_ProofBullet_Click(object sender, RoutedEventArgs e)
-    {
-        Player.ProofBullet(CheckBox_ProofBullet.IsChecked == true);
-    }
-
-    private void CheckBox_ProofFire_Click(object sender, RoutedEventArgs e)
-    {
-        Player.ProofFire(CheckBox_ProofFire.IsChecked == true);
-    }
-
-    private void CheckBox_ProofCollision_Click(object sender, RoutedEventArgs e)
-    {
-        Player.ProofCollision(CheckBox_ProofCollision.IsChecked == true);
-    }
-
-    private void CheckBox_ProofMelee_Click(object sender, RoutedEventArgs e)
-    {
-        Player.ProofMelee(CheckBox_ProofMelee.IsChecked == true);
-    }
-
-    private void CheckBox_ProofExplosion_Click(object sender, RoutedEventArgs e)
-    {
-        Player.ProofExplosion(CheckBox_ProofExplosion.IsChecked == true);
-    }
-
-    private void CheckBox_ProofSteam_Click(object sender, RoutedEventArgs e)
-    {
-        Player.ProofSteam(CheckBox_ProofSteam.IsChecked == true);
-    }
-
-    private void CheckBox_ProofDrown_Click(object sender, RoutedEventArgs e)
-    {
-        Player.ProofDrown(CheckBox_ProofDrown.IsChecked == true);
-    }
-
-    private void CheckBox_ProofWater_Click(object sender, RoutedEventArgs e)
-    {
-        Player.ProofWater(CheckBox_ProofWater.IsChecked == true);
-    }
-
-    private void CheckBox_NoCollision_Click(object sender, RoutedEventArgs e)
-    {
-        Toggle_NoCollision = SelfStateModel.IsHotKeyNoCollision;
-
-        Player.NoCollision(Toggle_NoCollision);
-        Setting.Player.NoCollision = Toggle_NoCollision;
-    }
-
     private void Button_ToWaypoint_Super_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         Teleport.ToWaypointSuper();
+    }
+
+    private void CheckBox_ProofBullet_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ProofBullet = CheckBox_ProofBullet.IsChecked == true;
+        Player.ProofBullet(_options.ProofBullet);
+    }
+
+    private void CheckBox_ProofFire_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ProofFire = CheckBox_ProofFire.IsChecked == true;
+        Player.ProofFire(_options.ProofFire);
+    }
+
+    private void CheckBox_ProofCollision_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ProofCollision = CheckBox_ProofCollision.IsChecked == true;
+        Player.ProofCollision(_options.ProofCollision);
+    }
+
+    private void CheckBox_ProofMelee_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ProofMelee = CheckBox_ProofMelee.IsChecked == true;
+        Player.ProofMelee(_options.ProofMelee);
+    }
+
+    private void CheckBox_ProofExplosion_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ProofExplosion = CheckBox_ProofExplosion.IsChecked == true;
+        Player.ProofExplosion(_options.ProofExplosion);
+    }
+
+    private void CheckBox_ProofSteam_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ProofSteam = CheckBox_ProofSteam.IsChecked == true;
+        Player.ProofSteam(_options.ProofSteam);
+    }
+
+    private void CheckBox_ProofDrown_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ProofDrown = CheckBox_ProofDrown.IsChecked == true;
+        Player.ProofDrown(_options.ProofDrown);
+    }
+
+    private void CheckBox_ProofWater_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ProofWater = CheckBox_ProofWater.IsChecked == true;
+        Player.ProofWater(_options.ProofWater);
     }
 }

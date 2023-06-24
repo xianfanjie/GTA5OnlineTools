@@ -1,7 +1,5 @@
 ﻿using GTA5Core.Features;
 using GTA5Core.GTA.Onlines;
-
-using GTA5Menu.Options;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
@@ -15,11 +13,45 @@ public partial class OnlineOptionView : UserControl
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.LoopTime1000MsEvent += GTA5MenuWindow_LoopTime1000MsEvent;
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()
     {
 
+    }
+
+    private void GTA5MenuWindow_LoopTime1000MsEvent()
+    {
+        // 免费更改角色外观
+        if (CheckBox_FreeChangeAppearance.IsChecked == true)
+            Online.FreeChangeAppearance(true);
+
+        // 移除被动模式冷却
+        if (CheckBox_RemovePassiveModeCooldown.IsChecked == true)
+            Online.PassiveModeCooldown(true);
+        // 移除自杀冷却
+        if (CheckBox_RemoveSuicideCooldown.IsChecked == true)
+            Online.SuicideCooldown(true);
+        // 移除天基炮冷却
+        if (CheckBox_DisableOrbitalCooldown.IsChecked == true)
+            Online.DisableOrbitalCooldown(true);
+        // 非公开战局运货
+        if (CheckBox_AllowSellOnNonPublic.IsChecked == true)
+            Online.AllowSellOnNonPublic(true);
+        // 战局雪天 (自己可见)
+        if (CheckBox_OnlineSnow.IsChecked == true)
+            Online.SessionSnow(true);
+
+        // 角色RP
+        if (Slider_RPxN.Value != 1.0)
+            Online.RPMultiplier((float)Slider_RPxN.Value);
+        // 竞技场AP
+        if (Slider_APxN.Value != 1.0)
+            Online.APMultiplier((float)Slider_APxN.Value);
+        // 车友会RP
+        if (Slider_REPxN.Value != 1.0)
+            Online.REPMultiplier((float)Slider_REPxN.Value);
     }
 
     /////////////////////////////////////////////////
@@ -30,7 +62,9 @@ public partial class OnlineOptionView : UserControl
 
         if (sender is Button button)
         {
-            var session = OnlineData.Sessions.Find(t => t.Name == button.Content.ToString());
+            var btnContent = button.Content.ToString();
+
+            var session = OnlineData.Sessions.Find(t => t.Name == btnContent);
             if (session != null)
                 Online.LoadSession(session.Value);
         }
@@ -62,30 +96,6 @@ public partial class OnlineOptionView : UserControl
         Online.FreeChangeAppearance(CheckBox_FreeChangeAppearance.IsChecked == true);
     }
 
-    private void Button_RPxN_Click(object sender, RoutedEventArgs e)
-    {
-        AudioHelper.PlayClickSound();
-
-        if (sender is Button button)
-        {
-            var rpxn = OnlineData.RPxNs.Find(t => t.Name == button.Content.ToString());
-            if (rpxn != null)
-                Online.RPMultiplier(rpxn.Value);
-        }
-    }
-
-    private void Button_REPxN_Click(object sender, RoutedEventArgs e)
-    {
-        AudioHelper.PlayClickSound();
-
-        if (sender is Button button)
-        {
-            var repxn = OnlineData.REPxNs.Find(t => t.Name == button.Content.ToString());
-            if (repxn != null)
-                Online.REPMultiplier(repxn.Value);
-        }
-    }
-
     private void CheckBox_RemovePassiveModeCooldown_Click(object sender, RoutedEventArgs e)
     {
         Online.PassiveModeCooldown(CheckBox_RemovePassiveModeCooldown.IsChecked == true);
@@ -99,6 +109,16 @@ public partial class OnlineOptionView : UserControl
     private void CheckBox_DisableOrbitalCooldown_Click(object sender, RoutedEventArgs e)
     {
         Online.DisableOrbitalCooldown(CheckBox_DisableOrbitalCooldown.IsChecked == true);
+    }
+
+    private void CheckBox_AllowSellOnNonPublic_Click(object sender, RoutedEventArgs e)
+    {
+        Online.AllowSellOnNonPublic(CheckBox_AllowSellOnNonPublic.IsChecked == true);
+    }
+
+    private void CheckBox_OnlineSnow_Click(object sender, RoutedEventArgs e)
+    {
+        Online.SessionSnow(CheckBox_OnlineSnow.IsChecked == true);
     }
 
     private void CheckBox_OffRadar_Click(object sender, RoutedEventArgs e)
@@ -126,24 +146,15 @@ public partial class OnlineOptionView : UserControl
         Online.RevealPlayers(CheckBox_RevealPlayers.IsChecked == true);
     }
 
-    private void CheckBox_AllowSellOnNonPublic_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.Online.AllowSellOnNonPublic = CheckBox_AllowSellOnNonPublic.IsChecked == true;
-        Online.AllowSellOnNonPublic(CheckBox_AllowSellOnNonPublic.IsChecked == true);
-    }
-
-    private void CheckBox_OnlineSnow_Click(object sender, RoutedEventArgs e)
-    {
-        Online.SessionSnow(CheckBox_OnlineSnow.IsChecked == true);
-    }
-
     private void Button_Blips_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         if (sender is Button button)
         {
-            var blip = OnlineData.Blips.Find(t => t.Name == button.Content.ToString());
+            var btnContent = button.Content.ToString();
+
+            var blip = OnlineData.Blips.Find(t => t.Name == btnContent);
             if (blip != null)
                 Teleport.ToBlips(blip.Value);
         }
@@ -155,7 +166,9 @@ public partial class OnlineOptionView : UserControl
 
         if (sender is Button button)
         {
-            var service = OnlineData.MerryWeatherServices.Find(t => t.Name == button.Content.ToString());
+            var btnContent = button.Content.ToString();
+
+            var service = OnlineData.MerryWeatherServices.Find(t => t.Name == btnContent);
             if (service != null)
                 Online.MerryWeatherServices(service.Value);
         }

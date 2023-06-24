@@ -36,7 +36,7 @@ public static class Vehicle2
             vector3.Z = -255.0f;
             SpawnVehicle(vector3, model, mods);
 
-            await Task.Delay(100);
+            await Task.Delay(250);
 
             vector3.Z = temp_z;
             SpawnVehicle(vector3, model, mods);

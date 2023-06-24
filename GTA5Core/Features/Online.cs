@@ -434,7 +434,7 @@ public static class Online
     /// 移除恐霸客户差事冷却
     /// </summary>
     /// <param name="isEnable"></param>
-    public static void ClientJonCooldown(bool isEnable)
+    public static void ClientJobCooldown(bool isEnable)
     {
         Globals.WriteGA(Base.Default + 24818 + 0, isEnable ? 0 : 300000);       // Between Jobs           -926426916
         Globals.WriteGA(Base.Default + 24818 + 1, isEnable ? 0 : 1800000);      // Robbery in Progress    1733390598

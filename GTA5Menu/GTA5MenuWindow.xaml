@@ -17,11 +17,33 @@
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>
-        <DockPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <!--  窗口标题  -->
             <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+                <Image
+                    Height="20"
+                    Margin="5"
+                    Source="/Assets/Favicon.ico"
+                    Style="{StaticResource ImageStyle_HighQuality}" />
+                <!--  2023/06/17 这里不清楚为啥绑定不上  -->
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Text="GTA5线上小助手 - 外置菜单" />
+            </StackPanel>
+            <!--  窗口额外功能  -->
+            <StackPanel
+                Grid.Column="1"
                 Margin="0,0,5,0"
-                VerticalAlignment="Center"
-                DockPanel.Dock="Right"
+                HorizontalAlignment="Right"
                 Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center" Text="Delete键 显示/隐藏" />
                 <CheckBox
@@ -37,23 +59,7 @@
                     Content="隐藏任务栏图标"
                     WindowChrome.IsHitTestVisibleInChrome="True" />
             </StackPanel>
-            <StackPanel
-                HorizontalAlignment="Left"
-                DockPanel.Dock="Left"
-                Orientation="Horizontal">
-                <Image
-                    Height="20"
-                    Margin="5"
-                    Source="/Assets/Favicon.ico"
-                    Style="{StaticResource ImageStyle_HighQuality}" />
-                <!--  2023/06/17 这里不清楚为啥绑定不上  -->
-                <TextBlock
-                    VerticalAlignment="Center"
-                    FontSize="14"
-                    FontWeight="Bold"
-                    Text="GTA5线上小助手 - 外置菜单" />
-            </StackPanel>
-        </DockPanel>
+        </Grid>
     </ui:Window.TitleContent>
 
     <Grid>

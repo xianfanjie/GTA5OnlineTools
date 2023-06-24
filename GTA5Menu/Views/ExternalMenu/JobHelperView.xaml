@@ -55,8 +55,8 @@
                     Click="CheckBox_CEOWorkCooldown_Click"
                     Content="移除CEO工作冷却" />
                 <CheckBox
-                    x:Name="CheckBox_ClientJonCooldown"
-                    Click="CheckBox_ClientJonCooldown_Click"
+                    x:Name="CheckBox_ClientJobCooldown"
+                    Click="CheckBox_ClientJobCooldown_Click"
                     Content="移除恐霸客户差事冷却" />
             </StackPanel>
 

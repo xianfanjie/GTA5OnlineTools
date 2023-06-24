@@ -11,7 +11,7 @@ public static class Game
     /// <returns></returns>
     public static long GetCPed()
     {
-        long pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
+        var pCPedFactory = Memory.Read<long>(Pointers.WorldPTR);
         return Memory.Read<long>(pCPedFactory + CPedFactory.CPed);
     }
 
@@ -21,7 +21,7 @@ public static class Game
     /// <returns></returns>
     public static long GetCPlayerInfo()
     {
-        long pCPed = GetCPed();
+        var pCPed = GetCPed();
         return Memory.Read<long>(pCPed + CPed.CPlayerInfo);
     }
 
@@ -34,10 +34,10 @@ public static class Game
     {
         pCVehicle = 0;
 
-        long pCPed = GetCPed();
-        byte oInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
+        var pCPed = GetCPed();
+        var mInVehicle = Memory.Read<byte>(pCPed + CPed.InVehicle);
 
-        if (oInVehicle == 0x01)
+        if (mInVehicle == 0x01)
         {
             pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
             return true;
@@ -47,14 +47,39 @@ public static class Game
     }
 
     /// <summary>
+    /// 获取 CReplayInterface 指针
+    /// </summary>
+    /// <returns></returns>
+    public static long GetCReplayInterface()
+    {
+        return Memory.Read<long>(Pointers.ReplayInterfacePTR);
+    }
+
+    /// <summary>
+    /// 获取 CPedInterface 指针
+    /// </summary>
+    /// <returns></returns>
+    public static long GetCPedInterface()
+    {
+        return Memory.Read<long>(GetCReplayInterface() + CReplayInterface.CPedInterface);
+    }
+
+    /// <summary>
+    /// 获取 CVehicleInterface 指针
+    /// </summary>
+    /// <returns></returns>
+    public static long GetCVehicleInterface()
+    {
+        return Memory.Read<long>(GetCReplayInterface() + CReplayInterface.CVehicleInterface);
+    }
+
+    /// <summary>
     /// 获取 CPedList 指针
     /// </summary>
     /// <returns></returns>
     public static long GetCPedList()
     {
-        long pCReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-        long pCPedInterface = Memory.Read<long>(pCReplayInterface + CReplayInterface.CPedInterface);
-        return Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
+        return Memory.Read<long>(GetCPedInterface() + CPedInterface.CPedList);
     }
 
     /// <summary>
@@ -63,8 +88,6 @@ public static class Game
     /// <returns></returns>
     public static long GetCVehicleList()
     {
-        long pCReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-        long pCVehicleInterface = Memory.Read<long>(pCReplayInterface + CReplayInterface.CVehicleInterface);
-        return Memory.Read<long>(pCVehicleInterface + CVehicleInterface.CVehicleList);
+        return Memory.Read<long>(GetCVehicleInterface() + CVehicleInterface.CVehicleList);
     }
 }

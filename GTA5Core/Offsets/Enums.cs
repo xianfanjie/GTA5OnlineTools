@@ -53,3 +53,13 @@ public enum SessionType : int
     /// </summary>
     Leave_Online = -1
 }
+
+public enum WantedLevel : byte
+{
+    Level0, 
+    Level1, 
+    Level2, 
+    Level3, 
+    Level4, 
+    Level5,
+}

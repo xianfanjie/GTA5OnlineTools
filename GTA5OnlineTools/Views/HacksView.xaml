@@ -191,7 +191,7 @@
             <!--  YimMenu 注入式菜单  -->
             <ui:GroupBoxHack
                 Title="YimMenu 注入式菜单"
-                Description="一款GitHub开源项目Yimura大佬制作的免费GTA5注入式菜单，旨在防止崩溃（目前并非全部）并改善整体体验"
+                Description="一款GitHub开源项目Yimura大佬制作的免费GTA5注入式菜单，旨在防止大范围的公共崩溃和改善整体体验"
                 Image="pack://application:,,,/GTA5OnlineTools;component/Assets/Hacks/YimMenu.png">
                 <ui:GroupBoxHack.TitleContent>
                     <StackPanel Orientation="Horizontal">

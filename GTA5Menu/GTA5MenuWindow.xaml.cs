@@ -56,7 +56,9 @@ public partial class GTA5MenuWindow
     {
         Navigate(NavDictionary.First().Key);
 
+        // 添加快捷键
         HotKeys.AddKey(WinVK.DELETE);
+        // 订阅按钮事件
         HotKeys.KeyDownEvent += HotKeys_KeyDownEvent;
 
         new Thread(CPedThread)
@@ -83,7 +85,10 @@ public partial class GTA5MenuWindow
         Setting.Weapon.Reset();
         Setting.Auto.Reset();
 
-        HotKeys.ClearKeys();
+        // 移除快捷键
+        HotKeys.RemoveKey(WinVK.DELETE);
+        // 取消订阅按钮事件（2023/06/24 这里一定要取消订阅，否则会照成事件累加）
+        HotKeys.KeyDownEvent -= HotKeys_KeyDownEvent;
     }
 
     /// <summary>
@@ -95,14 +100,14 @@ public partial class GTA5MenuWindow
         {
             var viewName = item.CommandParameter.ToString();
 
-            if (!NavDictionary.ContainsKey(viewName))
-            {
-                var type = Type.GetType($"GTA5Menu.Views.{viewName}");
-                if (type == null)
-                    continue;
+            if (NavDictionary.ContainsKey(viewName))
+                continue;
 
-                NavDictionary.Add(viewName, Activator.CreateInstance(type) as UserControl);
-            }
+            var typeView = Type.GetType($"GTA5Menu.Views.{viewName}");
+            if (typeView == null)
+                continue;
+
+            NavDictionary.Add(viewName, Activator.CreateInstance(typeView) as UserControl);
         }
     }
 
@@ -116,8 +121,10 @@ public partial class GTA5MenuWindow
         if (!NavDictionary.ContainsKey(viewName))
             return;
 
-        if (ContentControl_NavRegion.Content != NavDictionary[viewName])
-            ContentControl_NavRegion.Content = NavDictionary[viewName];
+        if (ContentControl_NavRegion.Content == NavDictionary[viewName])
+            return;
+
+        ContentControl_NavRegion.Content = NavDictionary[viewName];
     }
 
     /// <summary>
@@ -131,6 +138,8 @@ public partial class GTA5MenuWindow
             Topmost = true;
         else
             Topmost = false;
+
+        ShowInTaskbar = !Topmost;
     }
 
     /// <summary>
@@ -140,15 +149,13 @@ public partial class GTA5MenuWindow
     /// <exception cref="NotImplementedException"></exception>
     private void HotKeys_KeyDownEvent(WinVK vK)
     {
-        this.Dispatcher.Invoke(() =>
+        switch (vK)
         {
-            switch (vK)
-            {
-                case WinVK.DELETE:
-                    ShowWindow();
-                    break;
-            }
-        });
+            case WinVK.DELETE:
+                ShowWindow();
+                break;
+        }
+
     }
 
     /// <summary>
@@ -156,26 +163,31 @@ public partial class GTA5MenuWindow
     /// </summary>
     private void ShowWindow()
     {
-        IsShowExternalMenu = !IsShowExternalMenu;
-        if (IsShowExternalMenu)
+        this.Dispatcher.Invoke(() =>
         {
-            this.WindowState = WindowState.Normal;
+            IsShowExternalMenu = !IsShowExternalMenu;
 
-            if (CheckBox_IsTopMost.IsChecked == false)
+            if (IsShowExternalMenu)
             {
+                this.Visibility = Visibility.Visible;
+                this.WindowState = WindowState.Normal;
+
                 Topmost = true;
                 Topmost = false;
+
+                if (CheckBox_IsTopMost.IsChecked == true)
+                    Topmost = true;
+
+                Win32.SetCursorPos(ThisWinPOINT.X, ThisWinPOINT.Y);
             }
+            else
+            {
+                this.Visibility = Visibility.Hidden;
 
-            Win32.SetCursorPos(ThisWinPOINT.X, ThisWinPOINT.Y);
-        }
-        else
-        {
-            this.WindowState = WindowState.Minimized;
-
-            Win32.GetCursorPos(out ThisWinPOINT);
-            Memory.SetForegroundWindow();
-        }
+                Win32.GetCursorPos(out ThisWinPOINT);
+                Memory.SetForegroundWindow();
+            }
+        });
     }
 
     private void CPedThread()

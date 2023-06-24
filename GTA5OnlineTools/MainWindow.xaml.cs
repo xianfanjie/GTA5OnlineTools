@@ -138,14 +138,14 @@ public partial class MainWindow
         {
             var viewName = item.CommandParameter.ToString();
 
-            if (!NavDictionary.ContainsKey(viewName))
-            {
-                var type = Type.GetType($"GTA5OnlineTools.Views.{viewName}");
-                if (type == null)
-                    continue;
+            if (NavDictionary.ContainsKey(viewName))
+                continue;
 
-                NavDictionary.Add(viewName, Activator.CreateInstance(type) as UserControl);
-            }
+            var viewType = Type.GetType($"GTA5OnlineTools.Views.{viewName}");
+            if (viewType == null)
+                continue;
+
+            NavDictionary.Add(viewName, Activator.CreateInstance(viewType) as UserControl);
         }
     }
 
@@ -159,8 +159,10 @@ public partial class MainWindow
         if (!NavDictionary.ContainsKey(viewName))
             return;
 
-        if (ContentControl_NavRegion.Content != NavDictionary[viewName])
-            ContentControl_NavRegion.Content = NavDictionary[viewName];
+        if (ContentControl_NavRegion.Content == NavDictionary[viewName])
+            return;
+
+        ContentControl_NavRegion.Content = NavDictionary[viewName];
     }
 
     /// <summary>

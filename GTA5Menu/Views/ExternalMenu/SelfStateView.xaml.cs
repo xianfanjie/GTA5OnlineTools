@@ -49,6 +49,7 @@ public partial class SelfStateView : UserControl
             IsBackground = true
         }.Start();
 
+        // 添加快捷键
         HotKeys.AddKey(WinVK.F3);
         HotKeys.AddKey(WinVK.F4);
         HotKeys.AddKey(WinVK.F5);
@@ -56,6 +57,7 @@ public partial class SelfStateView : UserControl
         HotKeys.AddKey(WinVK.F7);
         HotKeys.AddKey(WinVK.F8);
         HotKeys.AddKey(WinVK.Oem0);
+        // 订阅按钮事件
         HotKeys.KeyDownEvent += HotKeys_KeyDownEvent;
 
         ///////////  读取配置文件  ///////////
@@ -93,6 +95,17 @@ public partial class SelfStateView : UserControl
         IsAppRunning = false;
 
         SaveConfig();
+
+        // 移除快捷键
+        HotKeys.RemoveKey(WinVK.F3);
+        HotKeys.RemoveKey(WinVK.F4);
+        HotKeys.RemoveKey(WinVK.F5);
+        HotKeys.RemoveKey(WinVK.F6);
+        HotKeys.RemoveKey(WinVK.F7);
+        HotKeys.RemoveKey(WinVK.F8);
+        HotKeys.RemoveKey(WinVK.Oem0);
+        // 取消订阅按钮事件
+        HotKeys.KeyDownEvent -= HotKeys_KeyDownEvent;
     }
 
     /////////////////////////////////////////////////

@@ -16,7 +16,7 @@
                     简介
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    一款GitHub开源项目Yimura大佬制作的免费GTA5注入式菜单，旨在防止崩溃（目前并非全部）并改善整体体验。
+                    一款GitHub开源项目Yimura大佬制作的免费GTA5注入式菜单，旨在防止大范围的公共崩溃和改善整体体验
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
                     项目地址：<Hyperlink NavigateUri="https://github.com/YimMenu/YimMenu" RequestNavigate="Hyperlink_RequestNavigate">https://github.com/YimMenu/YimMenu</Hyperlink>
@@ -26,8 +26,11 @@
                     配置文件
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    默认配置文件路径：C:\Users\用户名\AppData\Roaming\BigBaseV2<LineBreak />
-                    如果你不小心修改了某些设置导致Yim无法正常使用，请先卸载注入，到这个文件夹清理里面内容，然后重新注入Yim即可恢复默认设置</Paragraph>
+                    默认配置文件路径：C:\Users\用户名\AppData\Roaming\BigBaseV2
+                </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    如果你不小心修改了某些设置导致Yim无法正常使用，请先卸载注入，到这个文件夹清理里面内容，然后重新注入Yim即可恢复默认设置
+                </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     注意事项

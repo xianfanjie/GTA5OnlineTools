@@ -1,4 +1,6 @@
-﻿using GTA5Core;
+﻿using GTA5OnlineTools.Data;
+
+using GTA5Core;
 using GTA5Core.Native;
 using GTA5Menu;
 using GTA5MenuExtra;
@@ -13,17 +15,17 @@ namespace GTA5OnlineTools.Views;
 /// </summary>
 public partial class GTA5View : UserControl
 {
-    private GTA5MenuWindow GTA5MenuWindow = null;
-    private HeistsEditorWindow GTA5HeistsWindow = null;
-
-    private StatScriptsWindow StatScriptsWindow = null;
-    private OutfitsEditorWindow OutfitsEditorWindow = null;
-    private SpeedMeterWindow SpeedMeterWindow = null;
+    /// <summary>
+    /// 导航字典
+    /// </summary>
+    private readonly Dictionary<string, NavWindow> NavDictionary = new();
 
     /// <summary>
     /// 关闭全部GTA5窗口委托
     /// </summary>
     public static Action ActionCloseAllGTA5Window;
+
+    /////////////////////////////////////////////////
 
     public GTA5View()
     {
@@ -31,6 +33,35 @@ public partial class GTA5View : UserControl
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
 
         ActionCloseAllGTA5Window = CloseAllGTA5Window;
+
+        /////////////////////////////////////////////////
+
+        NavDictionary.Add("GTA5MenuWindow", new()
+        {
+            Type = typeof(GTA5MenuWindow),
+            Window = null
+        });
+
+        NavDictionary.Add("HeistsEditorWindow", new()
+        {
+            Type = typeof(HeistsEditorWindow),
+            Window = null
+        });
+        NavDictionary.Add("StatScriptsWindow", new()
+        {
+            Type = typeof(StatScriptsWindow),
+            Window = null
+        });
+        NavDictionary.Add("OutfitsEditorWindow", new()
+        {
+            Type = typeof(OutfitsEditorWindow),
+            Window = null
+        });
+        NavDictionary.Add("SpeedMeterWindow", new()
+        {
+            Type = typeof(SpeedMeterWindow),
+            Window = null
+        });
     }
 
     private void MainWindow_WindowClosingEvent()
@@ -83,129 +114,87 @@ public partial class GTA5View : UserControl
 
     ///////////////////////////////////////////////////////////////////
 
+    /// <summary>
+    /// 自动处理窗口显示、隐藏和创建
+    /// </summary>
+    /// <param name="windowName"></param>
+    private void AutoOpenWindow(string windowName)
+    {
+        if (!NavDictionary.ContainsKey(windowName))
+            return;
+
+        // 首次创建
+        if (NavDictionary[windowName].Window == null)
+            goto RE_CREATE;
+
+        // 窗口隐藏
+        if (NavDictionary[windowName].Window.Visibility == Visibility.Hidden)
+        {
+            NavDictionary[windowName].Window.Show();
+            return;
+        }
+
+        // 窗口最小化
+        if (NavDictionary[windowName].Window.WindowState == WindowState.Minimized)
+        {
+            NavDictionary[windowName].Window.WindowState = WindowState.Normal;
+            return;
+        }
+
+        // 窗口不在最前面（为false代表窗口已被关闭）
+        if (NavDictionary[windowName].Window.IsVisible)
+        {
+            NavDictionary[windowName].Window.Topmost = true;
+            NavDictionary[windowName].Window.Topmost = false;
+            return;
+        }
+
+        // 窗口已被关闭，重新创建
+        NavDictionary[windowName].Window.Close();
+        NavDictionary[windowName].Window = null;
+
+    RE_CREATE:
+        NavDictionary[windowName].Window = Activator.CreateInstance(NavDictionary[windowName].Type) as Window;
+        NavDictionary[windowName].Window.Show();
+    }
+
+    /// <summary>
+    /// 关闭窗口
+    /// </summary>
+    /// <param name="windowName"></param>
+    private void AutoCloseWindow(string windowName)
+    {
+        if (NavDictionary[windowName].Window != null)
+        {
+            NavDictionary[windowName].Window.Close();
+            NavDictionary[windowName].Window = null;
+        }
+    }
+
     #region 第三方模块按钮点击事件
     private void ExternalMenuClick()
     {
-        if (GTA5MenuWindow == null)
-        {
-            GTA5MenuWindow = new GTA5MenuWindow();
-            GTA5MenuWindow.Show();
-        }
-        else
-        {
-            if (GTA5MenuWindow.IsVisible)
-            {
-                if (!GTA5MenuWindow.Topmost)
-                {
-                    GTA5MenuWindow.Topmost = true;
-                    GTA5MenuWindow.Topmost = false;
-                }
-
-                GTA5MenuWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                GTA5MenuWindow = null;
-                GTA5MenuWindow = new GTA5MenuWindow();
-                GTA5MenuWindow.Show();
-            }
-        }
+        AutoOpenWindow("GTA5MenuWindow");
     }
 
     private void HeistsEditorClick()
     {
-        if (GTA5HeistsWindow == null)
-        {
-            GTA5HeistsWindow = new HeistsEditorWindow();
-            GTA5HeistsWindow.Show();
-        }
-        else
-        {
-            if (GTA5HeistsWindow.IsVisible)
-            {
-                GTA5HeistsWindow.Topmost = true;
-                GTA5HeistsWindow.Topmost = false;
-                GTA5HeistsWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                GTA5HeistsWindow = null;
-                GTA5HeistsWindow = new HeistsEditorWindow();
-                GTA5HeistsWindow.Show();
-            }
-        }
+        AutoOpenWindow("HeistsEditorWindow");
     }
 
     private void StatScriptsClick()
     {
-        if (StatScriptsWindow == null)
-        {
-            StatScriptsWindow = new StatScriptsWindow();
-            StatScriptsWindow.Show();
-        }
-        else
-        {
-            if (StatScriptsWindow.IsVisible)
-            {
-                StatScriptsWindow.Topmost = true;
-                StatScriptsWindow.Topmost = false;
-                StatScriptsWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                StatScriptsWindow = null;
-                StatScriptsWindow = new StatScriptsWindow();
-                StatScriptsWindow.Show();
-            }
-        }
+        AutoOpenWindow("StatScriptsWindow");
     }
 
     private void OutfitsEditorClick()
     {
-        if (OutfitsEditorWindow == null)
-        {
-            OutfitsEditorWindow = new OutfitsEditorWindow();
-            OutfitsEditorWindow.Show();
-        }
-        else
-        {
-            if (OutfitsEditorWindow.IsVisible)
-            {
-                OutfitsEditorWindow.Topmost = true;
-                OutfitsEditorWindow.Topmost = false;
-                OutfitsEditorWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                OutfitsEditorWindow = null;
-                OutfitsEditorWindow = new OutfitsEditorWindow();
-                OutfitsEditorWindow.Show();
-            }
-        }
+        AutoOpenWindow("OutfitsEditorWindow");
     }
 
     private void SpeedMeterClick()
     {
-        if (SpeedMeterWindow == null)
-        {
-            SpeedMeterWindow = new SpeedMeterWindow();
-            SpeedMeterWindow.Show();
-        }
-        else
-        {
-            if (SpeedMeterWindow.IsVisible)
-            {
-                SpeedMeterWindow.Topmost = true;
-                SpeedMeterWindow.Topmost = false;
-                SpeedMeterWindow.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                SpeedMeterWindow = null;
-                SpeedMeterWindow = new SpeedMeterWindow();
-                SpeedMeterWindow.Show();
-            }
-        }
+        AutoOpenWindow("SpeedMeterWindow");
     }
     #endregion
 
@@ -220,35 +209,12 @@ public partial class GTA5View : UserControl
 
         this.Dispatcher.Invoke(() =>
         {
-            if (GTA5MenuWindow != null)
-            {
-                GTA5MenuWindow.Close();
-                GTA5MenuWindow = null;
-            }
+            AutoCloseWindow("GTA5MenuWindow");
 
-            if (GTA5HeistsWindow != null)
-            {
-                GTA5HeistsWindow.Close();
-                GTA5HeistsWindow = null;
-            }
-
-            if (StatScriptsWindow != null)
-            {
-                StatScriptsWindow.Close();
-                StatScriptsWindow = null;
-            }
-
-            if (OutfitsEditorWindow != null)
-            {
-                OutfitsEditorWindow.Close();
-                OutfitsEditorWindow = null;
-            }
-
-            if (SpeedMeterWindow != null)
-            {
-                SpeedMeterWindow.Close();
-                SpeedMeterWindow = null;
-            }
+            AutoCloseWindow("HeistsEditorWindow");
+            AutoCloseWindow("StatScriptsWindow");
+            AutoCloseWindow("OutfitsEditorWindow");
+            AutoCloseWindow("SpeedMeterWindow");
         });
     }
 }

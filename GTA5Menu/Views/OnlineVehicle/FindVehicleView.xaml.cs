@@ -1,6 +1,5 @@
 ﻿using GTA5Menu.Data;
 
-using GTA5Core.GTA;
 using GTA5Core.GTA.Vehicles;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
@@ -13,6 +12,7 @@ namespace GTA5Menu.Views.OnlineVehicle;
 public partial class FindVehicleView : UserControl
 {
     public List<ModelInfo> AllVehicles { get; set; } = new();
+
     public ObservableCollection<ModelInfo> FindVehicles { get; set; } = new();
 
     public FindVehicleView()
@@ -21,17 +21,20 @@ public partial class FindVehicleView : UserControl
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
 
         // 填充全部载具
-        foreach (var info in VehicleHash.AllVehicles)
+        Task.Run(() =>
         {
-            AllVehicles.Add(new()
+            foreach (var info in VehicleHash.AllVehicles)
             {
-                Class = info.Class,
-                Name = info.Name,
-                Value = info.Value,
-                Image = info.Image,
-                Mods = info.Mods
-            });
-        }
+                AllVehicles.Add(new()
+                {
+                    Class = info.Class,
+                    Name = info.Name,
+                    Value = info.Value,
+                    Image = info.Image,
+                    Mods = info.Mods
+                });
+            }
+        });
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()

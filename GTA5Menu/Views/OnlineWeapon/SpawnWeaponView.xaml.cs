@@ -80,8 +80,6 @@ public partial class SpawnWeaponView : UserControl
 
     private void Button_SpawnWeapon_Click(object sender, RoutedEventArgs e)
     {
-        AudioHelper.PlayClickSound();
-
         SpawnWeapon();
     }
 }

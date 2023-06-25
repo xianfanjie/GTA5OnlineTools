@@ -39,17 +39,27 @@ public partial class CustomTeleportView : UserControl
         if (!File.Exists(FileHelper.File_Config_Teleports))
             return;
 
-        var teleports = JsonHelper.ReadFile<Teleports>(FileHelper.File_Config_Teleports);
-
-        foreach (var custom in teleports.CustomLocations)
+        try
         {
-            CustomTeleports.Add(new()
+            var teleports = JsonHelper.ReadFile<Teleports>(FileHelper.File_Config_Teleports);
+
+            foreach (var custom in teleports.CustomLocations)
             {
-                Name = custom.Name,
-                X = custom.X,
-                Y = custom.Y,
-                Z = custom.Z
-            });
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+                {
+                    CustomTeleports.Add(new()
+                    {
+                        Name = custom.Name,
+                        X = custom.X,
+                        Y = custom.Y,
+                        Z = custom.Z
+                    });
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+            NotifierHelper.Show(NotifierType.Warning, $"Teleports配置文件读取异常，{ex.Message}");
         }
     }
 
@@ -61,26 +71,33 @@ public partial class CustomTeleportView : UserControl
         if (!Directory.Exists(FileHelper.Dir_Config))
             return;
 
-        var teleports = new Teleports
+        try
         {
-            CustomLocations = new()
-        };
-        // 加载到配置文件
-        foreach (var info in CustomTeleports)
-        {
-            teleports.CustomLocations.Add(new()
+            var teleports = new Teleports
             {
-                Name = info.Name,
-                X = info.X,
-                Y = info.Y,
-                Z = info.Z,
-                Pitch = 0.0f,
-                Yaw = 0.0f,
-                Roll = 0.0f,
-            });
+                CustomLocations = new()
+            };
+            // 加载到配置文件
+            foreach (var info in CustomTeleports)
+            {
+                teleports.CustomLocations.Add(new()
+                {
+                    Name = info.Name,
+                    X = info.X,
+                    Y = info.Y,
+                    Z = info.Z,
+                    Pitch = 0.0f,
+                    Yaw = 0.0f,
+                    Roll = 0.0f,
+                });
+            }
+            // 写入到Json文件
+            JsonHelper.WriteFile(FileHelper.File_Config_Teleports, teleports);
         }
-        // 写入到Json文件
-        JsonHelper.WriteFile(FileHelper.File_Config_Teleports, teleports);
+        catch (Exception ex)
+        {
+            LoggerHelper.Error($"Teleports配置文件写入异常，{ex.Message}");
+        }
     }
 
     private void ListBox_CustomTeleports_MouseDoubleClick(object sender, MouseButtonEventArgs e)

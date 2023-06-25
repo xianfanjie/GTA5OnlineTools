@@ -42,15 +42,21 @@ public partial class MyVehicleView : UserControl
         if (!File.Exists(FileHelper.File_Config_Vehicles))
             return;
 
-        var vehicles = JsonHelper.ReadFile<List<Vehicles>>(FileHelper.File_Config_Vehicles);
-
-        foreach (var item in vehicles)
+        try
         {
-            var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
-            if (classes != null)
+            var vehicles = JsonHelper.ReadFile<List<Vehicles>>(FileHelper.File_Config_Vehicles);
+
+            foreach (var item in vehicles)
             {
+                var classes = VehicleHash.VehicleClasses.Find(v => v.Name == item.Class);
+                if (classes == null)
+                    continue;
+
                 var info = classes.VehicleInfos.Find(v => v.Value == item.Value);
-                if (info != null)
+                if (info == null)
+                    continue;
+
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
                 {
                     MyFavorites.Add(new()
                     {
@@ -60,9 +66,12 @@ public partial class MyVehicleView : UserControl
                         Image = GTAHelper.GetVehicleImage(info.Value),
                         Mods = info.Mods
                     });
-                    continue;
-                }
+                });
             }
+        }
+        catch (Exception ex)
+        {
+            NotifierHelper.Show(NotifierType.Warning, $"Vehicles配置文件读取异常，{ex.Message}");
         }
     }
 
@@ -74,18 +83,25 @@ public partial class MyVehicleView : UserControl
         if (!Directory.Exists(FileHelper.Dir_Config))
             return;
 
-        var vehicles = new List<Vehicles>();
-        foreach (ModelInfo info in ListBox_VehicleInfos.Items)
+        try
         {
-            vehicles.Add(new()
+            var vehicles = new List<Vehicles>();
+            foreach (ModelInfo info in ListBox_VehicleInfos.Items)
             {
-                Class = info.Class,
-                Name = info.Name,
-                Value = info.Value,
-            });
+                vehicles.Add(new()
+                {
+                    Class = info.Class,
+                    Name = info.Name,
+                    Value = info.Value,
+                });
+            }
+            // 写入到Json文件
+            JsonHelper.WriteFile(FileHelper.File_Config_Vehicles, vehicles);
         }
-        // 写入到Json文件
-        JsonHelper.WriteFile(FileHelper.File_Config_Vehicles, vehicles);
+        catch (Exception ex)
+        {
+            LoggerHelper.Error($"Vehicles配置文件写入异常，{ex.Message}");
+        }
     }
 
     private void AddMyFavorite(ModelInfo model)

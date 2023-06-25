@@ -82,21 +82,18 @@
                         Background="#34A853"
                         Click="Button_Teleport_Click"
                         Content="传送" />
-                    <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                        提示：双击选中项可直接传送，按住鼠标左键可拖拽排序
-                    </TextBlock>
+                </WrapPanel>
+                <WrapPanel>
+                    <Button
+                        x:Name="Button_ToWaypoint"
+                        Click="Button_ToWaypoint_Click"
+                        Content="传送到导航点" />
+                    <Button
+                        x:Name="Button_ToObjective"
+                        Click="Button_ToObjective_Click"
+                        Content="传送到目标点" />
                 </WrapPanel>
             </StackPanel>
-            <WrapPanel Margin="5,0,5,0">
-                <Button
-                    x:Name="Button_ToWaypoint"
-                    Click="Button_ToWaypoint_Click"
-                    Content="传送到导航点" />
-                <Button
-                    x:Name="Button_ToObjective"
-                    Click="Button_ToObjective_Click"
-                    Content="传送到目标点" />
-            </WrapPanel>
             <!--  //////////////////////////  -->
             <ui:LabelIcon Content="坐标微调" />
             <StackPanel Margin="5,0,5,0">

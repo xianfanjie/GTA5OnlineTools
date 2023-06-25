@@ -10,7 +10,7 @@
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
-    <UniformGrid Margin="5" Columns="2">
+    <UniformGrid Columns="2">
         <RichTextBox Style="{StaticResource RichTextBoxStyle_ReadMe}">
             <FlowDocument>
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">

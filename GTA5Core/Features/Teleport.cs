@@ -30,7 +30,7 @@ public static class Teleport
     }
 
     /// <summary>
-    /// 传送到Blips
+    /// 传送到Blips（带颜色ID）
     /// </summary>
     public static void ToBlips(int blipId, byte blipColor)
     {

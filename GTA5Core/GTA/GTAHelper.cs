@@ -23,6 +23,16 @@ public static class GTAHelper
     }
 
     /// <summary>
+    /// 获取Blip预览图
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    public static string GetBlipImage(int index)
+    {
+        return $"pack://application:,,,/GTA5Core;component/Assets/Blips/Blip_{index}.png";
+    }
+
+    /// <summary>
     /// 计算字符串Hash值
     /// </summary>
     /// <param name="data"></param>

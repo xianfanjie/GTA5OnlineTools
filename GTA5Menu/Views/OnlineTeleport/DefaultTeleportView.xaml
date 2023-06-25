@@ -30,9 +30,7 @@
                 Click="Button_Teleport_Click"
                 Content="传送到选中项"
                 IsEnabled="{Binding ElementName=ListBox_TeleportInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
-            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：双击选中项可直接传送
-            </TextBlock>
+
         </StackPanel>
         <!--  传送详细信息  -->
         <ListBox

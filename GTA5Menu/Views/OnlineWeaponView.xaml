@@ -33,6 +33,11 @@
                     CommandParameter="WeaponOptionView"
                     Content="武器设置"
                     Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="ReadMeView"
+                    Content="README"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>
         </Border>
         <!--  /////////////////////////  -->

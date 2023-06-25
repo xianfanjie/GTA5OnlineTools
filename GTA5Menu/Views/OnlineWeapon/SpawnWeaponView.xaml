@@ -31,9 +31,6 @@
                 Click="Button_SpawnWeapon_Click"
                 Content="刷出选中武器"
                 IsEnabled="{Binding ElementName=ListBox_WeaponInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
-            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：双击选中项可直接刷出武器。部分武器无法刷出，如果出现掉落金钱并+9999子弹说明刷出成功
-            </TextBlock>
         </StackPanel>
         <!--  武器详细信息  -->
         <ListBox

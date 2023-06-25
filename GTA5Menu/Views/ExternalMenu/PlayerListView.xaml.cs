@@ -56,10 +56,11 @@ public partial class PlayerListView : UserControl
 
         ///////////////////////////////////////
 
-        var pCNetworkInfoPTR = Memory.Read<long>(Pointers.NetworkInfoPTR);
+        var pCNetworkInfo = Memory.Read<long>(Pointers.NetworkInfoPTR);
         var pCNetworkPlayerMgr = Memory.Read<long>(Pointers.NetworkPlayerMgrPTR);
 
-        var hostToken1 = Memory.Read<long>(pCNetworkInfoPTR + 0x9E0);
+        // 当前战局主机token
+        var hostToken1 = Memory.Read<long>(pCNetworkInfo + 0x9E0);      // oHostNetToken
 
         for (var i = 0; i < Base.oMaxPlayers; i++)
         {
@@ -75,6 +76,7 @@ public partial class PlayerListView : UserControl
             if (!Memory.IsValid(pCPed))
                 continue;
 
+            // 当前玩家战局token
             var hostToken2 = Memory.Read<long>(pCPlayerInfo + CPlayerInfo.HostToken);
 
             // 是否为战局主机
@@ -83,6 +85,7 @@ public partial class PlayerListView : UserControl
             ////////////////////////////////////////////
 
             var god = Memory.Read<byte>(pCPed + CPed.God);
+            var godMode = (god & 1) == 1;
             var position = Memory.Read<Vector3>(pCPed + CPed.VisualX);
             var health = Memory.Read<float>(pCPed + CPed.Health);
             var healthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
@@ -120,7 +123,7 @@ public partial class PlayerListView : UserControl
                 Cash = cash,
                 Bank = money - cash,
 
-                GodMode = (god & 1) == 1,
+                GodMode = godMode,
                 Health = health,
                 HealthMax = healthMax,
                 Armor = armor,
@@ -139,7 +142,7 @@ public partial class PlayerListView : UserControl
                 ClanMotto = clanMotto,
 
                 ClanTagUpper = clanTag.ToUpper(),
-                GodModeStr = BoolToString((god & 1) == 1)
+                GodModeFlag = BoolToString(godMode)
             });
         }
     }

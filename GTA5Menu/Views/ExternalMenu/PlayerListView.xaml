@@ -108,7 +108,7 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     Foreground="#FCAF17"
-                                    Text="{Binding GodModeStr}"
+                                    Text="{Binding GodModeFlag}"
                                     TextAlignment="Right" />
                                 <TextBlock
                                     Width="20"

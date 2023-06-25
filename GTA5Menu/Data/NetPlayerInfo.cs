@@ -33,5 +33,5 @@ public class NetPlayerInfo
     public string ClanMotto { get; set; }
 
     public string ClanTagUpper { get; set; }
-    public string GodModeStr { get; set; }
+    public string GodModeFlag { get; set; }
 }

@@ -16,8 +16,7 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="Gray" />
-        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="#C2C3C9" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />

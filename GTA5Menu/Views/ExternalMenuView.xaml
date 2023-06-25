@@ -55,6 +55,11 @@
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
+                    CommandParameter="PlayerListView"
+                    Content="玩家列表"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
                     CommandParameter="ReadMeView"
                     Content="README"
                     Style="{StaticResource NavMenuStyle_Normal}" />

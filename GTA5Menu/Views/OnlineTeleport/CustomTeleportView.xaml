@@ -37,7 +37,10 @@
                         Width="50"
                         VerticalAlignment="Center"
                         Text="坐标名称" />
-                    <TextBox x:Name="TextBox_CustomName" Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Name}" />
+                    <TextBox
+                        x:Name="TextBox_CustomName"
+                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
+                        Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Name}" />
                 </DockPanel>
                 <!--  X坐标  -->
                 <DockPanel Margin="5,0,0,0">
@@ -45,7 +48,10 @@
                         Width="50"
                         VerticalAlignment="Center"
                         Text="X坐标" />
-                    <TextBox x:Name="TextBox_Position_X" Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.X, StringFormat='{}{0:0.000}'}" />
+                    <TextBox
+                        x:Name="TextBox_Position_X"
+                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
+                        Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.X, StringFormat='{}{0:0.000}'}" />
                 </DockPanel>
                 <!--  Y坐标  -->
                 <DockPanel Margin="5,0,0,0">
@@ -53,7 +59,10 @@
                         Width="50"
                         VerticalAlignment="Center"
                         Text="Y坐标" />
-                    <TextBox x:Name="TextBox_Position_Y" Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Y, StringFormat='{}{0:0.000}'}" />
+                    <TextBox
+                        x:Name="TextBox_Position_Y"
+                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
+                        Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Y, StringFormat='{}{0:0.000}'}" />
                 </DockPanel>
                 <!--  Z坐标  -->
                 <DockPanel Margin="5,0,0,0">
@@ -61,7 +70,10 @@
                         Width="50"
                         VerticalAlignment="Center"
                         Text="Z坐标" />
-                    <TextBox x:Name="TextBox_Position_Z" Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Z, StringFormat='{}{0:0.000}'}" />
+                    <TextBox
+                        x:Name="TextBox_Position_Z"
+                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
+                        Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Z, StringFormat='{}{0:0.000}'}" />
                 </DockPanel>
                 <WrapPanel>
                     <Button
@@ -71,17 +83,20 @@
                     <Button
                         x:Name="Button_EditCustomTeleport"
                         Click="Button_EditCustomTeleport_Click"
-                        Content="修改" />
+                        Content="修改"
+                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
                     <Button
                         x:Name="Button_DeleteCustomTeleport"
                         Background="#EA4335"
                         Click="Button_DeleteCustomTeleport_Click"
-                        Content="删除" />
+                        Content="删除"
+                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
                     <Button
                         x:Name="Button_Teleport"
                         Background="#34A853"
                         Click="Button_Teleport_Click"
-                        Content="传送" />
+                        Content="传送"
+                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
                 </WrapPanel>
                 <WrapPanel>
                     <Button

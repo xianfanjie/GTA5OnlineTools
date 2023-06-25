@@ -1,7 +1,11 @@
 ﻿namespace GTA5Menu.Data;
 
-public class NetPlayerData
+public class NetPlayerInfo
 {
+    public int Index { get; set; }
+    public string Avatar { get; set; }
+    public bool IsHost { get; set; }
+
     public int Rank { get; set; }
     public long RockstarId { get; set; }
     public string PlayerName { get; set; }
@@ -11,7 +15,7 @@ public class NetPlayerData
     public long Cash { get; set; }
 
     public float Health { get; set; }
-    public float MaxHealth { get; set; }
+    public float HealthMax { get; set; }
     public float Armor { get; set; }
     public bool GodMode { get; set; }
     public bool NoRagdoll { get; set; }
@@ -24,6 +28,10 @@ public class NetPlayerData
     public float Distance { get; set; }
     public Vector3 Position { get; set; }
 
-    public string ClanName { get; set; }
     public string ClanTag { get; set; }
+    public string ClanName { get; set; }
+    public string ClanMotto { get; set; }
+
+    public string ClanTagUpper { get; set; }
+    public string GodModeStr { get; set; }
 }

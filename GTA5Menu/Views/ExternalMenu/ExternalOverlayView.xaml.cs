@@ -21,6 +21,8 @@ public partial class ExternalOverlayView : UserControl
     private void GTA5MenuWindow_WindowClosingEvent()
     {
         CloseESP();
+        // 重置ESP按键
+        Setting.Reset();
     }
 
     /////////////////////////////////////////////////

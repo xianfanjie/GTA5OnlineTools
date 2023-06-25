@@ -690,8 +690,6 @@ public class Overlay : IDisposable
         }
 
         _isRun = false;
-
-        Setting.Reset();
     }
 
     public void Dispose()

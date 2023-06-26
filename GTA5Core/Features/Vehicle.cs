@@ -10,7 +10,10 @@ public static class Vehicle
     /// </summary>
     public static bool IsInVehicle()
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
+        if (!Memory.IsValid(pCPed))
+            return false;
+
         return Memory.Read<byte>(pCPed + CPed.InVehicle) == 0x01;
     }
 
@@ -28,7 +31,10 @@ public static class Vehicle
     /// </summary>
     public static void Seatbelt(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
+        var pCPed = Game.GetCPed();
+        if (!Memory.IsValid(pCPed))
+            return;
+
         Memory.Write(pCPed + CPed.Seatbelt, (byte)(isEnable ? 0xC9 : 0xC8));
     }
 
@@ -48,7 +54,7 @@ public static class Vehicle
     {
         if (Game.GetCVehicle(out long pCVehicle))
         {
-            long pCModelInfo = Memory.Read<long>(pCVehicle + CVehicle.CModelInfo);
+            var pCModelInfo = Memory.Read<long>(pCVehicle + CVehicle.CModelInfo);
             Memory.Write(pCModelInfo + CModelInfo.Extras, flag);
         }
     }
@@ -60,7 +66,7 @@ public static class Vehicle
     {
         if (Game.GetCVehicle(out long pCVehicle))
         {
-            long pCModelInfo = Memory.Read<long>(pCVehicle + CVehicle.CModelInfo);
+            var pCModelInfo = Memory.Read<long>(pCVehicle + CVehicle.CModelInfo);
             Memory.Write(pCModelInfo + CModelInfo.Parachute, (byte)(isEnable ? 0x01 : 0x00));
         }
     }
@@ -72,8 +78,9 @@ public static class Vehicle
     {
         if (Game.GetCVehicle(out long pCVehicle))
         {
-            float oVHealth = Memory.Read<float>(pCVehicle + CVehicle.Health);
-            float oVHealthMax = Memory.Read<float>(pCVehicle + CVehicle.HealthMax);
+            var oVHealth = Memory.Read<float>(pCVehicle + CVehicle.Health);
+            var oVHealthMax = Memory.Read<float>(pCVehicle + CVehicle.HealthMax);
+
             if (oVHealth <= oVHealthMax)
             {
                 Memory.Write(pCVehicle + CVehicle.Health, oVHealthMax);
@@ -104,27 +111,27 @@ public static class Vehicle
 
                 await Task.Delay(1000);
 
-                long pCPickupData = Memory.Read<long>(Pointers.PickupDataPTR);
-                long FixVehValue = Memory.Read<long>(pCPickupData + 0x230);       // pFixVeh
-                long BSTValue = Memory.Read<long>(pCPickupData + 0x160);          // pBST
+                var pCPickupData = Memory.Read<long>(Pointers.PickupDataPTR);
+                var FixVehValue = Memory.Read<long>(pCPickupData + 0x230);       // pFixVeh
+                var BSTValue = Memory.Read<long>(pCPickupData + 0x160);          // pBST
 
                 Memory.Write(pCVehicle + CVehicle.Health, 999.0f);
 
-                long pCPickupInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-                long pCReplayInterface_CPickupInterface = Memory.Read<long>(pCPickupInterface + CReplayInterface.CPickupInterface);
+                var pCPickupInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
+                var pCReplayInterface_CPickupInterface = Memory.Read<long>(pCPickupInterface + CReplayInterface.CPickupInterface);
 
-                long mPickupCount = Memory.Read<int>(pCReplayInterface_CPickupInterface + 0x110);       // oPickupNum
-                long pPickupList = Memory.Read<long>(pCReplayInterface_CPickupInterface + 0x100);       // pPickupList
+                var mPickupCount = Memory.Read<int>(pCReplayInterface_CPickupInterface + 0x110);       // oPickupNum
+                var pPickupList = Memory.Read<long>(pCReplayInterface_CPickupInterface + 0x100);       // pPickupList
 
                 await Task.Delay(100);
 
-                for (long i = 0; i < mPickupCount; i++)
+                for (var i = 0; i < mPickupCount; i++)
                 {
-                    long dwpPickup = Memory.Read<long>(pPickupList + i * 0x10);
+                    var dwpPickup = Memory.Read<long>(pPickupList + i * 0x10);
                     if (!Memory.IsValid(dwpPickup))
                         continue;
 
-                    long dwPickupValue = Memory.Read<long>(dwpPickup + 0x470);        // pDroppedPickupData
+                    var dwPickupValue = Memory.Read<long>(dwpPickup + 0x470);        // pDroppedPickupData
                     if (!Memory.IsValid(dwPickupValue))
                         continue;
 

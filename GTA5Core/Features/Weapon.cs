@@ -10,31 +10,34 @@ public static class Weapon
     /// </summary>
     public static void FillCurrentAmmo()
     {
-        long pCPed = Game.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
-        long pCAmmoInfo = Memory.Read<long>(pCWeaponInfo + CWeaponInfo.CAmmoInfo);
+        var pCWeaponInfo = Game.GetCWeaponInfo();
+        if (!Memory.IsValid(pCWeaponInfo))
+            return;
+
+        var pCAmmoInfo = Memory.Read<long>(pCWeaponInfo + CWeaponInfo.CAmmoInfo);
         if (!Memory.IsValid(pCAmmoInfo))
             return;
 
-        int getMaxAmmo = Memory.Read<int>(pCAmmoInfo + 0x28);
+        var getMaxAmmo = Memory.Read<int>(pCAmmoInfo + 0x28);
 
-        long my_offset_1 = pCAmmoInfo;
-        long my_offset_2;
+        long offset_1 = pCAmmoInfo;
+        long offset_2;
         byte ammo_type;
+
         do
         {
-            my_offset_1 = Memory.Read<long>(my_offset_1 + 0x08);
-            my_offset_2 = Memory.Read<long>(my_offset_1 + 0x00);
+            offset_1 = Memory.Read<long>(offset_1 + 0x08);
+            offset_2 = Memory.Read<long>(offset_1 + 0x00);
 
-            if (my_offset_1 == 0 || my_offset_2 == 0)
+            if (!Memory.IsValid(offset_1) ||
+                !Memory.IsValid(offset_2))
                 return;
 
-            ammo_type = Memory.Read<byte>(my_offset_2 + 0x0C);
+            ammo_type = Memory.Read<byte>(offset_2 + 0x0C);
 
         } while (ammo_type == 0x00);
 
-        Memory.Write(my_offset_2 + 0x18, getMaxAmmo);
+        Memory.Write(offset_2 + 0x18, getMaxAmmo);
     }
 
     /// <summary>
@@ -42,20 +45,24 @@ public static class Weapon
     /// </summary>
     public static void FillAllAmmo()
     {
-        long pCPed = Game.GetCPed();
-        long pCPedInventory = Memory.Read<long>(pCPed + CPed.CPedInventory);
-        long pWeapon = Memory.Read<long>(pCPedInventory + 0x48);
+        var pCPedInventory = Game.GetCPedInventory();
+        if (!Memory.IsValid(pCPedInventory))
+            return;
+
+        var pWeapon = Memory.Read<long>(pCPedInventory + 0x48);
         if (!Memory.IsValid(pWeapon))
             return;
 
-        int count = 0;
-        long offset_1 = Memory.Read<long>(pWeapon + count * 0x08);
-        long offset_2 = Memory.Read<long>(offset_1 + 0x08);
-        while (offset_1 != 0 && offset_2 != 0)
+        var count = 0;
+        var offset_1 = Memory.Read<long>(pWeapon + count * 0x08);
+        var offset_2 = Memory.Read<long>(offset_1 + 0x08);
+
+        while (Memory.IsValid(offset_1) && Memory.IsValid(offset_2))
         {
-            int ammo_1 = Memory.Read<int>(offset_2 + 0x28);
-            int ammo_2 = Memory.Read<int>(offset_2 + 0x34);
-            int max_ammo = Math.Max(ammo_1, ammo_2);
+            var ammo_1 = Memory.Read<int>(offset_2 + 0x28);
+            var ammo_2 = Memory.Read<int>(offset_2 + 0x34);
+
+            var max_ammo = Math.Max(ammo_1, ammo_2);
             Memory.Write(offset_1 + 0x20, max_ammo);
 
             count++;
@@ -65,72 +72,47 @@ public static class Weapon
     }
 
     /// <summary>
-    /// 无限弹药（旧版方式，已弃用）
-    /// </summary>
-    public static void InfiniteAmmo(bool isEnable)
-    {
-        if (isEnable)
-        {
-            long addrAmmo = Memory.FindPattern("41 2B D1 E8");
-            if (Memory.IsValid(addrAmmo))
-                addrAmmo = Memory.FindPattern("90 90 90 E8");
-
-            Memory.WriteBytes(addrAmmo, new byte[] { 0x90, 0x90, 0x90 });
-        }
-        else
-        {
-            long addrAmmo = Memory.FindPattern("41 2B D1 E8");
-            if (Memory.IsValid(addrAmmo))
-                addrAmmo = Memory.FindPattern("90 90 90 E8");
-
-            Memory.WriteBytes(addrAmmo, new byte[] { 0x41, 0x2B, 0xD1 });
-        }
-    }
-
-    /// <summary>
-    /// 无需换弹（旧版方式，已弃用）
-    /// </summary>
-    public static void NoReload(bool isEnable)
-    {
-        if (isEnable)
-        {
-            long addrAmmo = Memory.FindPattern("41 2B C9 3B C8 0F");
-            if (Memory.IsValid(addrAmmo))
-                addrAmmo = Memory.FindPattern("90 90 90 3B C8 0F");
-
-            Memory.WriteBytes(addrAmmo, new byte[] { 0x90, 0x90, 0x90 });
-        }
-        else
-        {
-            long addrAmmo = Memory.FindPattern("41 2B C9 3B C8 0F");
-            if (Memory.IsValid(addrAmmo))
-                addrAmmo = Memory.FindPattern("90 90 90 3B C8 0F");
-
-            Memory.WriteBytes(addrAmmo, new byte[] { 0x41, 0x2B, 0xC9 });
-        }
-    }
-
-    /// <summary>
-    /// 弹药编辑，默认0，无限弹药1，无限弹夹2，无限弹药和弹夹3
+    /// 弹药编辑（字节），默认0x00，无限弹药0x01，无限弹夹0x02，无限弹药和弹夹0x03
     /// </summary>
     public static void AmmoModifier(byte flag)
     {
-        long pCPed = Game.GetCPed();
-        long pCPedInventory = Memory.Read<long>(pCPed + CPed.CPedInventory);
+        var pCPedInventory = Game.GetCPedInventory();
+        if (!Memory.IsValid(pCPedInventory))
+            return;
 
         Memory.Write(pCPedInventory + CPedInventory.AmmoModifier, flag);
     }
 
     /// <summary>
-    /// 无后坐力
+    /// 无后坐力（普通武器 + 狙击枪）
     /// </summary>
     public static void NoRecoil()
     {
-        long pCPed = Game.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
+        var pCPedWeaponManager = Game.GetCPedWeaponManager();
+        if (!Memory.IsValid(pCPedWeaponManager))
+            return;
 
+        var pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
+        if (!Memory.IsValid(pCWeaponInfo))
+            return;
+
+        // 普通武器后坐力
         Memory.Write(pCWeaponInfo + CWeaponInfo.Recoil, 0.0f);
+
+        var offset = Memory.Read<long>(pCPedWeaponManager + 0x78);
+        if (!Memory.IsValid(offset))
+            return;
+
+        offset = Memory.Read<long>(offset + 0x20);
+        offset = Memory.Read<long>(offset + 0x160);
+        offset = Memory.Read<long>(offset + 0x00);
+        offset = Memory.Read<long>(offset + 0x138);
+        offset = Memory.Read<long>(offset + 0x08);
+        if (!Memory.IsValid(offset))
+            return;
+
+        // 狙击枪后坐力
+        Memory.Write(offset + 0x4C, 0.0f);
     }
 
     /// <summary>
@@ -138,21 +120,21 @@ public static class Weapon
     /// </summary>
     public static void NoSpread()
     {
-        long pCPed = Game.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
+        var pCWeaponInfo = Game.GetCWeaponInfo();
+        if (!Memory.IsValid(pCWeaponInfo))
+            return;
 
         Memory.Write(pCWeaponInfo + CWeaponInfo.Spread, 0.0f);
     }
 
     /// <summary>
-    /// 启用子弹类型，2:Fists，3:Bullet，5:Explosion
+    /// 启用子弹类型（字节），0x02:Fists，0x03:Bullet，0x05:Explosion
     /// </summary>
     public static void ImpactType(byte type)
     {
-        long pCPed = Game.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
+        var pCWeaponInfo = Game.GetCWeaponInfo();
+        if (!Memory.IsValid(pCWeaponInfo))
+            return;
 
         Memory.Write(pCWeaponInfo + CWeaponInfo.ImpactType, type);
     }
@@ -162,9 +144,9 @@ public static class Weapon
     /// </summary>
     public static void ImpactExplosion(int id)
     {
-        long pCPed = Game.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
+        var pCWeaponInfo = Game.GetCWeaponInfo();
+        if (!Memory.IsValid(pCWeaponInfo))
+            return;
 
         Memory.Write(pCWeaponInfo + CWeaponInfo.ImpactExplosion, id);
     }
@@ -174,9 +156,9 @@ public static class Weapon
     /// </summary>
     public static void LongRange()
     {
-        long pCPed = Game.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
+        var pCWeaponInfo = Game.GetCWeaponInfo();
+        if (!Memory.IsValid(pCWeaponInfo))
+            return;
 
         Memory.Write(pCWeaponInfo + CWeaponInfo.LockRange, 1000.0f);
         Memory.Write(pCWeaponInfo + CWeaponInfo.Range, 2000.0f);
@@ -187,13 +169,10 @@ public static class Weapon
     /// </summary>
     public static void FastReload(bool isEnable)
     {
-        long pCPed = Game.GetCPed();
-        long pCPedWeaponManager = Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
-        long pCWeaponInfo = Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
+        var pCWeaponInfo = Game.GetCWeaponInfo();
+        if (!Memory.IsValid(pCWeaponInfo))
+            return;
 
-        if (isEnable)
-            Memory.Write(pCWeaponInfo + CWeaponInfo.ReloadMult, 4.0f);
-        else
-            Memory.Write(pCWeaponInfo + CWeaponInfo.ReloadMult, 1.0f);
+        Memory.Write(pCWeaponInfo + CWeaponInfo.ReloadMult, isEnable ? 4.0f : 1.0f);
     }
 }

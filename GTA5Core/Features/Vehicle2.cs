@@ -21,14 +21,14 @@ public static class Vehicle2
             if (string.IsNullOrEmpty(model))
                 return;
 
-            long pCPed = Game.GetCPed();
+            var pCPed = Game.GetCPed();
             Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
-            float temp_z = vector3.Z;
+            var temp_z = vector3.Z;
 
-            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+            var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
 
-            float sin = Memory.Read<float>(pCNavigation + CNavigation.RightX);
-            float cos = Memory.Read<float>(pCNavigation + CNavigation.ForwardX);
+            var sin = Memory.Read<float>(pCNavigation + CNavigation.RightX);
+            var cos = Memory.Read<float>(pCNavigation + CNavigation.ForwardX);
 
             vector3.X += cos * dist;
             vector3.Y += sin * dist;
@@ -89,7 +89,7 @@ public static class Vehicle2
         Globals.WriteGA(Base.oVMCreate + 27 + 7, -1);       // 珠光色  pearlescent  
 
         // 27 + 10 ~ 27 + 58
-        for (int i = 0; i < 48; i++)
+        for (var i = 0; i < 48; i++)
         {
             // 27 + 27  (17)  涡轮增压
             // 27 + 28  (18)  武器化标志

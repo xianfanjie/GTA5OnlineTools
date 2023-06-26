@@ -55,25 +55,25 @@ public static class Teleport
     /// </summary>
     public static void SetTeleportPosition(Vector3 vector3)
     {
-        if (vector3 != Vector3.Zero)
-        {
-            long pCPed = Game.GetCPed();
+        if (vector3 == Vector3.Zero)
+            return;
 
-            if (Memory.Read<int>(pCPed + CPed.InVehicle) == 0)
-            {
-                // 玩家不在载具
-                long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
-                Memory.Write(pCPed + CPed.VisualX, vector3);
-                Memory.Write(pCNavigation + CNavigation.PositionX, vector3);
-            }
-            else
-            {
-                // 玩家在载具
-                long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
-                Memory.Write(pCVehicle + CVehicle.VisualX, vector3);
-                long pCNavigation = Memory.Read<long>(pCVehicle + CVehicle.CNavigation);
-                Memory.Write(pCNavigation + CNavigation.PositionX, vector3);
-            }
+        var pCPed = Game.GetCPed();
+
+        if (Memory.Read<int>(pCPed + CPed.InVehicle) == 0)
+        {
+            // 玩家不在载具
+            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+            Memory.Write(pCPed + CPed.VisualX, vector3);
+            Memory.Write(pCNavigation + CNavigation.PositionX, vector3);
+        }
+        else
+        {
+            // 玩家在载具
+            long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
+            Memory.Write(pCVehicle + CVehicle.VisualX, vector3);
+            long pCNavigation = Memory.Read<long>(pCVehicle + CVehicle.CNavigation);
+            Memory.Write(pCNavigation + CNavigation.PositionX, vector3);
         }
     }
 
@@ -82,21 +82,20 @@ public static class Teleport
     /// </summary>
     public static Vector3 GetBlipPosition(int blipIds)
     {
-        for (int i = 1; i <= 2000; i++)
+        for (var i = 1; i <= 2000; i++)
         {
-            long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
+            var pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
             if (!Memory.IsValid(pBlip))
                 continue;
 
             var dwIcon = Memory.Read<int>(pBlip + 0x40);
+            if (dwIcon != blipIds)
+                continue;
 
-            if (blipIds == dwIcon)
-            {
-                var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-                vector3.Z += +1.0f;
+            var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
+            vector3.Z += +1.0f;
 
-                return vector3;
-            }
+            return vector3;
         }
 
         return Vector3.Zero;
@@ -107,27 +106,22 @@ public static class Teleport
     /// </summary>
     public static Vector3 GetBlipPosition(int blipIds, byte blipColors)
     {
-        for (int i = 1; i <= 2000; i++)
+        for (var i = 1; i <= 2000; i++)
         {
-            long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
+            var pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
             if (!Memory.IsValid(pBlip))
                 continue;
 
             var dwIcon = Memory.Read<int>(pBlip + 0x40);
             var dwColor = Memory.Read<byte>(pBlip + 0x48);
+            if (blipIds != dwIcon || 
+                blipColors != dwColor)
+                continue;
 
-            //if (dwIcon== blipIds)
-            //{
-            //    Debug.WriteLine($"{dwIcon} {dwColor}");
-            //}
+            var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
+            vector3.Z += +1.0f;
 
-            if (blipIds == dwIcon && blipColors == dwColor)
-            {
-                var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-                vector3.Z += +1.0f;
-
-                return vector3;
-            }
+            return vector3;
         }
 
         return Vector3.Zero;
@@ -138,26 +132,26 @@ public static class Teleport
     /// </summary>
     public static Vector3 GetBlipPosition(int[] blipIds, byte[] blipColors, bool isUser = false)
     {
-        for (int i = 1; i <= 2000; i++)
+        for (var i = 1; i <= 2000; i++)
         {
-            long pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
+            var pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
             if (!Memory.IsValid(pBlip))
                 continue;
 
             var dwIcon = Memory.Read<int>(pBlip + 0x40);
             var dwColor = Memory.Read<byte>(pBlip + 0x48);
+            if (!blipIds.Contains(dwIcon) || 
+                !blipColors.Contains(dwColor))
+                continue;
 
-            if (blipIds.Contains(dwIcon) && blipColors.Contains(dwColor))
-            {
-                var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
+            var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
 
-                if (isUser)
-                    vector3.Z = vector3.Z == 20.0f ? -225.0f : vector3.Z + 1.0f;
-                else
-                    vector3.Z += +1.0f;
+            if (isUser)
+                vector3.Z = vector3.Z == 20.0f ? -225.0f : vector3.Z + 1.0f;
+            else
+                vector3.Z += +1.0f;
 
-                return vector3;
-            }
+            return vector3;
         }
 
         return Vector3.Zero;
@@ -198,13 +192,13 @@ public static class Teleport
     /// </summary>
     public static void MoveFoward(float distance)
     {
-        long pCPed = Game.GetCPed();
-        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+        var pCPed = Game.GetCPed();
+        var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
 
-        float head = Memory.Read<float>(pCNavigation + CNavigation.RightX);
-        float head2 = Memory.Read<float>(pCNavigation + CNavigation.RightY);
+        var head = Memory.Read<float>(pCNavigation + CNavigation.RightX);
+        var head2 = Memory.Read<float>(pCNavigation + CNavigation.RightY);
 
-        Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
+        var vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
         vector3.X -= head2 * distance;
         vector3.Y += head * distance;
@@ -218,13 +212,13 @@ public static class Teleport
     /// <param name="distance">微调距离</param>
     public static void MoveBack(float distance)
     {
-        long pCPed = Game.GetCPed();
-        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+        var pCPed = Game.GetCPed();
+        var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
 
-        float head = Memory.Read<float>(pCNavigation + CNavigation.RightX);
-        float head2 = Memory.Read<float>(pCNavigation + CNavigation.RightY);
+        var head = Memory.Read<float>(pCNavigation + CNavigation.RightX);
+        var head2 = Memory.Read<float>(pCNavigation + CNavigation.RightY);
 
-        Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
+        var vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
         vector3.X += head2 * distance;
         vector3.Y -= head * distance;
@@ -238,12 +232,12 @@ public static class Teleport
     /// <param name="distance">微调距离</param>
     public static void MoveLeft(float distance)
     {
-        long pCPed = Game.GetCPed();
-        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+        var pCPed = Game.GetCPed();
+        var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
 
-        float head2 = Memory.Read<float>(pCNavigation + CNavigation.RightY);
+        var head2 = Memory.Read<float>(pCNavigation + CNavigation.RightY);
 
-        Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
+        var vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
         vector3.X += distance;
         vector3.Y -= head2 * distance;
@@ -257,12 +251,12 @@ public static class Teleport
     /// <param name="distance">微调距离</param>
     public static void MoveRight(float distance)
     {
-        long pCPed = Game.GetCPed();
-        long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+        var pCPed = Game.GetCPed();
+        var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
 
-        float head2 = Memory.Read<float>(pCNavigation + CNavigation.RightY);
+        var head2 = Memory.Read<float>(pCNavigation + CNavigation.RightY);
 
-        Vector3 vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
+        var vector3 = Memory.Read<Vector3>(pCPed + CPed.VisualX);
 
         vector3.X -= distance;
         vector3.Y += head2 * distance;
@@ -276,8 +270,9 @@ public static class Teleport
     /// <param name="distance">微调距离</param>
     public static void MoveUp(float distance)
     {
-        Vector3 vector3 = GetPlayerPosition();
+        var vector3 = GetPlayerPosition();
         vector3.Z += distance;
+
         SetTeleportPosition(vector3);
     }
 
@@ -287,8 +282,9 @@ public static class Teleport
     /// <param name="distance">微调距离</param>
     public static void MoveDown(float distance)
     {
-        Vector3 vector3 = GetPlayerPosition();
+        var vector3 = GetPlayerPosition();
         vector3.Z -= distance;
+
         SetTeleportPosition(vector3);
     }
 
@@ -299,16 +295,16 @@ public static class Teleport
     /// </summary>
     public static async void ToWaypointSuper()
     {
-        Vector3 coords = WaypointPosition();
+        var coords = WaypointPosition();
         if (coords == Vector3.Zero)
             return;
 
         if (coords.Z == -225.0f)
         {
-            bool isFindGround = false;
-            float oldHeight = GetGroundZCoord();
+            var isFindGround = false;
+            var oldHeight = GetGroundZCoord();
 
-            for (float z = 0; z < 1000; z += 100)
+            for (var z = 0; z < 1000; z += 100)
             {
                 coords.Z = z;
                 SetTeleportPosition(coords);
@@ -336,14 +332,13 @@ public static class Teleport
     /// </summary>
     public static float GetGroundZCoord()
     {
-        if (Pointers.HeightPTR == 0x0)
+        if (!Memory.IsValid(Pointers.HeightPTR))
         {
             Pointers.HeightPTR = Memory.FindPattern(Mask.Height);
-            if (Pointers.HeightPTR == 0x0)
-            {
+            if (!Memory.IsValid(Pointers.HeightPTR))
                 return -225.0f;
-            }
         }
+
         return Memory.Read<float>(Pointers.HeightPTR + Base.GroundHeight);
     }
 }

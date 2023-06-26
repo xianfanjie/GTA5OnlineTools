@@ -344,6 +344,7 @@ public static class Memory
     /// 判断内存地址是否有效
     /// </summary>
     /// <param name="Address"></param>
+    /// <returns>有效返回true，无效返回false</returns>
     public static bool IsValid(long Address)
     {
         return Address >= 0x10000 && Address < 0x000F000000000000;

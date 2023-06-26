@@ -47,6 +47,36 @@ public static class Game
     }
 
     /// <summary>
+    /// 获取 CPedWeaponManager 指针
+    /// </summary>
+    /// <returns></returns>
+    public static long GetCPedWeaponManager()
+    {
+        var pCPed = GetCPed();
+        return Memory.Read<long>(pCPed + CPed.CPedWeaponManager);
+    }
+
+    /// <summary>
+    /// 获取 CPedInventory 指针
+    /// </summary>
+    /// <returns></returns>
+    public static long GetCPedInventory()
+    {
+        var pCPed = GetCPed();
+        return Memory.Read<long>(pCPed + CPed.CPedInventory);
+    }
+
+    /// <summary>
+    /// 获取 CWeaponInfo 指针
+    /// </summary>
+    /// <returns></returns>
+    public static long GetCWeaponInfo()
+    {
+        var pCPedWeaponManager = GetCPedWeaponManager();
+        return Memory.Read<long>(pCPedWeaponManager + CPedWeaponManager.CWeaponInfo);
+    }
+
+    /// <summary>
     /// 获取 CReplayInterface 指针
     /// </summary>
     /// <returns></returns>
@@ -61,7 +91,8 @@ public static class Game
     /// <returns></returns>
     public static long GetCPedInterface()
     {
-        return Memory.Read<long>(GetCReplayInterface() + CReplayInterface.CPedInterface);
+        var pCReplayInterface = GetCReplayInterface();
+        return Memory.Read<long>(pCReplayInterface + CReplayInterface.CPedInterface);
     }
 
     /// <summary>
@@ -70,7 +101,8 @@ public static class Game
     /// <returns></returns>
     public static long GetCVehicleInterface()
     {
-        return Memory.Read<long>(GetCReplayInterface() + CReplayInterface.CVehicleInterface);
+        var pCReplayInterface = GetCReplayInterface();
+        return Memory.Read<long>(pCReplayInterface + CReplayInterface.CVehicleInterface);
     }
 
     /// <summary>
@@ -79,7 +111,8 @@ public static class Game
     /// <returns></returns>
     public static long GetCPedList()
     {
-        return Memory.Read<long>(GetCPedInterface() + CPedInterface.CPedList);
+        var pCReplayInterface = GetCReplayInterface();
+        return Memory.Read<long>(pCReplayInterface + CPedInterface.CPedList);
     }
 
     /// <summary>
@@ -88,6 +121,7 @@ public static class Game
     /// <returns></returns>
     public static long GetCVehicleList()
     {
-        return Memory.Read<long>(GetCVehicleInterface() + CVehicleInterface.CVehicleList);
+        var pCVehicleInterface = GetCVehicleInterface();
+        return Memory.Read<long>(pCVehicleInterface + CVehicleInterface.CVehicleList);
     }
 }

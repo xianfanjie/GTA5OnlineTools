@@ -112,7 +112,7 @@ public static class World
     {
         var pCPedList = Game.GetCPedList();
 
-        for (int i = 0; i < Base.oMaxPeds; i++)
+        for (var i = 0; i < Base.oMaxPeds; i++)
         {
             var pCPed = Memory.Read<long>(pCPedList + i * 0x10);
             if (!Memory.IsValid(pCPed))

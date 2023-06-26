@@ -37,6 +37,9 @@
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     功能说明
                 </Paragraph>
+                <Paragraph>
+                    ● 如果你子弹类型修改的武器和NPC使用的武器一样，那么他们的子弹类型也会一并修改
+                </Paragraph>
 
             </FlowDocument>
         </RichTextBox>

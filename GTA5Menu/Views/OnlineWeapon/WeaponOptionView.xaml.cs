@@ -18,9 +18,6 @@ public partial class WeaponOptionView : UserControl
         public bool NoRecoil = false;
         public bool NoSpread = false;
         public bool LongRange = false;
-
-        public bool ImpactExplosion = false;
-        public int ImpactExplosionFlag = 0;
     }
     private readonly Options _options = new();
 
@@ -33,9 +30,9 @@ public partial class WeaponOptionView : UserControl
         // 子弹类型
         foreach (var item in OnlineData.ImpactExplosions)
         {
-            ComboBox_ImpactExplosion.Items.Add(item.Name);
+            ListBox_ImpactExplosion.Items.Add(item.Name);
         }
-        ComboBox_ImpactExplosion.SelectedIndex = 0;
+        ListBox_ImpactExplosion.SelectedIndex = 0;
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()
@@ -63,22 +60,11 @@ public partial class WeaponOptionView : UserControl
         // 提升射程
         if (_options.LongRange)
             Weapon.LongRange();
-
-        // 子弹类型
-        if (_options.ImpactExplosion)
-        {
-            if (_options.ImpactExplosionFlag == -1)
-                Weapon.ImpactType(3);
-            else
-                Weapon.ImpactType(5);
-
-            Weapon.ImpactExplosion(_options.ImpactExplosionFlag);
-        }
     }
 
-    private void ComboBox_AmmoModifier_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ListBox_AmmoModifier_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var index = ComboBox_AmmoModifier.SelectedIndex;
+        var index = ListBox_AmmoModifier.SelectedIndex;
         if (index == -1 || index == 0)
         {
             _options.AmmoModifier = false;
@@ -114,26 +100,6 @@ public partial class WeaponOptionView : UserControl
         Weapon.LongRange();
     }
 
-    private void ComboBox_ImpactExplosion_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var index = ComboBox_ImpactExplosion.SelectedIndex;
-        if (index == -1 || index == 0)
-        {
-            _options.ImpactExplosion = false;
-            return;
-        }
-
-        _options.ImpactExplosion = true;
-
-        if (index == 1)
-            Weapon.ImpactType(3);
-        else
-            Weapon.ImpactType(5);
-
-        _options.ImpactExplosionFlag = OnlineData.ImpactExplosions[index].Value;
-        Weapon.ImpactExplosion(_options.ImpactExplosionFlag);
-    }
-
     private void Button_FillCurrentAmmo_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
@@ -146,5 +112,19 @@ public partial class WeaponOptionView : UserControl
         AudioHelper.PlayClickSound();
 
         Weapon.FillAllAmmo();
+    }
+
+    private void ListBox_ImpactExplosion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var index = ListBox_ImpactExplosion.SelectedIndex;
+        if (index == -1 || index == 0)
+            return;
+
+        if (index == 1)
+            Weapon.ImpactType(3);
+        else
+            Weapon.ImpactType(5);
+
+        Weapon.ImpactExplosion(OnlineData.ImpactExplosions[index].Value);
     }
 }

@@ -11,18 +11,21 @@
     mc:Ignorable="d">
 
     <UniformGrid Columns="3">
+        <!--  面板1  -->
         <StackPanel>
             <ui:LabelIcon Content="弹药编辑" />
-            <ComboBox
-                x:Name="ComboBox_AmmoModifier"
+            <ListBox
+                x:Name="ListBox_AmmoModifier"
+                Margin="5"
                 SelectedIndex="0"
-                SelectionChanged="ComboBox_AmmoModifier_SelectionChanged">
-                <ComboBoxItem Content="未选择" />
-                <ComboBoxItem Content="默认" />
-                <ComboBoxItem Content="无限弹药" />
-                <ComboBoxItem Content="无限弹夹" />
-                <ComboBoxItem Content="无限弹药和弹夹" />
-            </ComboBox>
+                SelectionChanged="ListBox_AmmoModifier_SelectionChanged"
+                Style="{StaticResource ListBoxStyle_Base}">
+                <ListBoxItem Content="### 未选择 ###" />
+                <ListBoxItem Content="默认" />
+                <ListBoxItem Content="无限弹药" />
+                <ListBoxItem Content="无限弹夹" />
+                <ListBoxItem Content="无限弹药 + 无限弹夹" />
+            </ListBox>
             <!--  ////////////////  -->
             <ui:LabelIcon Content="高级" />
             <WrapPanel Margin="5,0,5,0">
@@ -44,12 +47,6 @@
                     Content="提升射程" />
             </WrapPanel>
             <!--  ////////////////  -->
-            <ui:LabelIcon Content="子弹类型" />
-            <ComboBox x:Name="ComboBox_ImpactExplosion" SelectionChanged="ComboBox_ImpactExplosion_SelectionChanged" />
-            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                注意：如果你修改的武器和NPC使用的武器一样，那么他们的子弹类型也会一并修改
-            </TextBlock>
-            <!--  ////////////////  -->
             <ui:LabelIcon Content="快捷功能" />
             <WrapPanel Margin="5,0,5,0">
                 <Button
@@ -62,6 +59,15 @@
                     Content="补满全部武器弹药" />
             </WrapPanel>
         </StackPanel>
+        <!--  面板2  -->
+        <DockPanel>
+            <ui:LabelIcon Content="子弹类型" DockPanel.Dock="Top" />
+            <ListBox
+                x:Name="ListBox_ImpactExplosion"
+                Margin="5"
+                SelectionChanged="ListBox_ImpactExplosion_SelectionChanged"
+                Style="{StaticResource ListBoxStyle_Base}" />
+        </DockPanel>
     </UniformGrid>
 
 </UserControl>

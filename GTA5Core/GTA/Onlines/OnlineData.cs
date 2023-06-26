@@ -132,7 +132,7 @@ public static class OnlineData
 
     public static readonly List<OnlineInfo> ImpactExplosions = new()
     {
-        new OnlineInfo(){ Name="未选择", Value=-1 },
+        new OnlineInfo(){ Name="### 未选择 ###", Value=-1 },
         new OnlineInfo(){ Name="默认", Value=-1 },
         new OnlineInfo(){ Name="手榴弹", Value=0 },
         new OnlineInfo(){ Name="榴弹发射器", Value=1 },
@@ -207,7 +207,18 @@ public static class OnlineData
         new OnlineInfo(){ Name="原子能枪", Value=70 },
         new OnlineInfo(){ Name="跳雷", Value=71 },
         new OnlineInfo(){ Name="脚本化导弹", Value=72 },
+        new OnlineInfo(){ Name="RC坦克火箭", Value=73 },
+        new OnlineInfo(){ Name="爆炸水", Value=74 },
+        new OnlineInfo(){ Name="二次爆炸水", Value=75 },
+        new OnlineInfo(){ Name="灭火器", Value=76 },
+        new OnlineInfo(){ Name="灭火器1", Value=77 },
+        new OnlineInfo(){ Name="灭火器2", Value=78 },
+        new OnlineInfo(){ Name="灭火器3", Value=79 },
+        new OnlineInfo(){ Name="灭火器4", Value=80 },
+        new OnlineInfo(){ Name="大脚本导弹", Value=81 },
         new OnlineInfo(){ Name="潜艇导弹", Value=82 },
+        new OnlineInfo(){ Name="EMP发射器EMP", Value=83 },
+        new OnlineInfo(){ Name="轨道炮MX3", Value=84 },
         new OnlineInfo(){ Name="无伤害爆炸", Value=99 },
     };
 

@@ -315,11 +315,11 @@ public class Overlay : IDisposable
 
             if (!Core.IsNullVector2(pedPosV2))
             {
-                var ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
-                var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
-                ped_type = ped_type << 11 >> 25;
+                //var ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
+                //var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
+                //ped_type = ped_type << 11 >> 25;
 
-                gfx.DrawText(_font_YaHei, 12, _brush_green, pedPosV2.X, pedPosV2.Y, $"{ped_type}\n{oHostility}");
+                //gfx.DrawText(_font_YaHei, 12, _brush_green, pedPosV2.X, pedPosV2.Y, $"{ped_type}\n{oHostility}");
 
                 if (!string.IsNullOrEmpty(pedName))
                 {

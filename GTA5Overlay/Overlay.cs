@@ -198,8 +198,13 @@ public class Overlay : IDisposable
         //var m_max_objects = Memory.Read<int>(pCObjectInterface + CObjectInterface.MaxObjects);
         var m_cur_objects = Memory.Read<int>(pCObjectInterface + CObjectInterface.CurObjects);
 
+        var hour = Memory.Read<int>(Pointers.TimePTR + 0x10);
+        var minute = Memory.Read<int>(Pointers.TimePTR + 0x14);
+        var second = Memory.Read<int>(Pointers.TimePTR + 0x18);
+
         _infoText.Clear();
         _infoText.AppendLine("GTA5线上小助手\n");
+        _infoText.AppendLine($"时间: {hour:00}:{minute:00}:{second:00}\n");
         _infoText.AppendLine($"X: {localPosV3.X:0.0000}");
         _infoText.AppendLine($"Y: {localPosV3.Y:0.0000}");
         _infoText.AppendLine($"Z: {localPosV3.Z:0.0000}\n");
@@ -310,11 +315,11 @@ public class Overlay : IDisposable
 
             if (!Core.IsNullVector2(pedPosV2))
             {
-                //int ped_type = Memory.Read<int>(pCPed + 0x10B8);
-                //ped_type = ped_type << 11 >> 25;
-                //Draw2DNameText(_brush_white, pedPosV2, pedBoxV2, $"{ped_type}", distance);
+                var ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
+                var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
+                ped_type = ped_type << 11 >> 25;
 
-                //gfx.DrawText(_font_YaHei, 12, _brush_green, pedPosV2.X, pedPosV2.Y, $"{pCPlayerInfo}");
+                gfx.DrawText(_font_YaHei, 12, _brush_green, pedPosV2.X, pedPosV2.Y, $"{ped_type}\n{oHostility}");
 
                 if (!string.IsNullOrEmpty(pedName))
                 {

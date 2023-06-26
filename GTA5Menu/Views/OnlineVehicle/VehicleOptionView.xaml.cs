@@ -104,21 +104,11 @@ public partial class VehicleOptionView : UserControl
         await Vehicle.FixVehicleByBST();
     }
 
-    private void Button_TurnOffBST_Click(object sender, RoutedEventArgs e)
+    private void Button_RemoveBullShark_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         Online.InstantBullShark(false);
-    }
-
-    private void CheckBox_TriggerRCBandito_Click(object sender, RoutedEventArgs e)
-    {
-        Online.TriggerRCBandito(CheckBox_TriggerRCBandito.IsChecked == true);
-    }
-
-    private void CheckBox_TriggerMiniTank_Click(object sender, RoutedEventArgs e)
-    {
-        Online.TriggerMiniTank(CheckBox_TriggerMiniTank.IsChecked == true);
     }
 
     private void Button_Unlock167Vehicle_Click(object sender, RoutedEventArgs e)

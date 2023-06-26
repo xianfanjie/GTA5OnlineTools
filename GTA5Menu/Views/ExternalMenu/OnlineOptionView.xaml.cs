@@ -198,22 +198,62 @@ public partial class OnlineOptionView : UserControl
         }
     }
 
-    private void CheckBox_InstantBullShark_Click(object sender, RoutedEventArgs e)
+    private void Button_InstantBullShark_Click(object sender, RoutedEventArgs e)
     {
-        Online.InstantBullShark(CheckBox_InstantBullShark.IsChecked == true);
+        AudioHelper.PlayClickSound();
+
+        Online.InstantBullShark(true);
     }
 
-    private void CheckBox_BackupHeli_Click(object sender, RoutedEventArgs e)
+    private void Button_RemoveBullShark_Click(object sender, RoutedEventArgs e)
     {
-        Online.CallBackupHeli(CheckBox_BackupHeli.IsChecked == true);
+        AudioHelper.PlayClickSound();
+
+        Online.InstantBullShark(false);
     }
 
-    private void CheckBox_Airstrike_Click(object sender, RoutedEventArgs e)
+    private void Button_BackupHeli_Click(object sender, RoutedEventArgs e)
     {
-        Online.CallAirstrike(CheckBox_Airstrike.IsChecked == true);
+        AudioHelper.PlayClickSound();
+
+        Online.CallBackupHeli(true);
+    }
+
+    private void Button_Airstrike_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        Online.CallAirstrike(true);
     }
 
     /////////////////////////////////////////////////////////////
+
+    private async void Button_RequestKosatka_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        Online.RequestKosatka(false);
+        await Task.Delay(100);
+        Online.RequestKosatka(true);
+    }
+
+    private async void Button_TriggerRCBandito_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        Online.TriggerRCBandito(true);
+        await Task.Delay(100);
+        Online.TriggerRCBandito(false);
+    }
+
+    private async void Button_TriggerMiniTank_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        Online.TriggerMiniTank(true);
+        await Task.Delay(100);
+        Online.TriggerMiniTank(false);
+    }
 
     private void Slider_RPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {

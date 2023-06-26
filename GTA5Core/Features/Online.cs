@@ -478,4 +478,22 @@ public static class Online
     {
         Globals.WriteGA(Base.oVMYCar + 6880, isEnable ? 1 : 0);
     }
+
+    /// <summary>
+    /// 请求虎鲸
+    /// </summary>
+    /// <param name="isEnable"></param>
+    public static void RequestKosatka(bool isEnable)
+    {
+        Globals.WriteGA(Base.oVMYCar + 960, isEnable ? 1 : 0);
+    }
+
+    /// <summary>
+    /// 虎鲸导弹冷却
+    /// </summary>
+    /// <param name="isEnable"></param>
+    public static void KosatkaMissleCooldown(bool isEnable)
+    {
+        Globals.WriteGA(Base.Default + 30394, isEnable ? 0 : 60000);
+    }
 }

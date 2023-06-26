@@ -39,25 +39,13 @@
                         Click="Button_RepairVehicle_Click"
                         Content="修复外观" />
                     <Button
-                        x:Name="Button_TurnOffBST"
-                        Click="Button_TurnOffBST_Click"
+                        x:Name="Button_RemoveBullShark"
+                        Click="Button_RemoveBullShark_Click"
                         Content="移除牛鲨睾酮效果" />
                 </WrapPanel>
             </StackPanel>
             <!--  ////////////////  -->
-            <ui:LabelIcon Content="高级" />
-            <WrapPanel Margin="5,0,5,0">
-                <CheckBox
-                    x:Name="CheckBox_TriggerRCBandito"
-                    Click="CheckBox_TriggerRCBandito_Click"
-                    Content="进入RC匪徒" />
-                <CheckBox
-                    x:Name="CheckBox_TriggerMiniTank"
-                    Click="CheckBox_TriggerMiniTank_Click"
-                    Content="进入迷你坦克" />
-            </WrapPanel>
-            <!--  ////////////////  -->
-            <ui:LabelIcon Content="高级" />
+            <ui:LabelIcon Content="载具解锁" />
             <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_Unlock167Vehicle"

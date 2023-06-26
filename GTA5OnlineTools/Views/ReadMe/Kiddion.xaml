@@ -73,10 +73,7 @@
                     【F5】传送至导航点<LineBreak />
                     【F6】传送至目标点<LineBreak />
                     【F7】治疗玩家<LineBreak />
-                    【F8】消除警星<LineBreak />
-                    <LineBreak />
-                    【F9】修复载具<LineBreak />
-                    【F10】跳过过场动画</Paragraph>
+                    【F8】消除警星</Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     104按键

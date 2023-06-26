@@ -190,11 +190,11 @@ public static class Globals
                 long dwpPickup = Memory.Read<long>(pPickupList + i * 0x10);
                 uint dwPickupHash = Memory.Read<uint>(dwpPickup + 0x468);
 
-                if (dwPickupHash == 4263048111)
-                {
-                    Memory.Write(dwpPickup + 0x468, pickupHash);
-                    break;
-                }
+                if (dwPickupHash != 4263048111)
+                    continue;
+
+                Memory.Write(dwpPickup + 0x468, pickupHash);
+                break;
             }
         });
     }

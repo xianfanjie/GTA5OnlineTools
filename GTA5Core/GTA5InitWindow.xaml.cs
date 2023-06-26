@@ -145,85 +145,91 @@ public partial class GTA5InitWindow
         Pointers.WorldPTR = Memory.FindPattern(Mask.World);
         Pointers.WorldPTR = Memory.Rip_37(Pointers.WorldPTR);
         Logger($"《GTA5》WorldPTR 0x{Pointers.WorldPTR:x}");
-        if (Pointers.WorldPTR == 0)
+        if (!Memory.IsValid(Pointers.WorldPTR))
             return false;
 
         Pointers.BlipPTR = Memory.FindPattern(Mask.Blip);
         Pointers.BlipPTR = Memory.Rip_37(Pointers.BlipPTR);
         Logger($"《GTA5》BlipPTR 0x{Pointers.BlipPTR:x}");
-        if (Pointers.BlipPTR == 0)
+        if (!Memory.IsValid(Pointers.BlipPTR))
             return false;
 
         Pointers.GlobalPTR = Memory.FindPattern(Mask.Global);
         Pointers.GlobalPTR = Memory.Rip_37(Pointers.GlobalPTR);
         Logger($"《GTA5》GlobalPTR 0x{Pointers.GlobalPTR:x}");
-        if (Pointers.GlobalPTR == 0)
+        if (!Memory.IsValid(Pointers.GlobalPTR))
             return false;
 
         Pointers.ReplayInterfacePTR = Memory.FindPattern(Mask.ReplayInterface);
         Pointers.ReplayInterfacePTR = Memory.Rip_37(Pointers.ReplayInterfacePTR);
         Logger($"《GTA5》ReplayInterfacePTR 0x{Pointers.ReplayInterfacePTR:x}");
-        if (Pointers.ReplayInterfacePTR == 0)
+        if (!Memory.IsValid(Pointers.ReplayInterfacePTR))
             return false;
 
         Pointers.NetworkPlayerMgrPTR = Memory.FindPattern(Mask.NetworkPlayerMgr);
         Pointers.NetworkPlayerMgrPTR = Memory.Rip_37(Pointers.NetworkPlayerMgrPTR);
         Logger($"《GTA5》NetworkPlayerMgrPTR 0x{Pointers.NetworkPlayerMgrPTR:x}");
-        if (Pointers.NetworkPlayerMgrPTR == 0)
+        if (!Memory.IsValid(Pointers.NetworkPlayerMgrPTR))
             return false;
 
         Pointers.NetworkInfoPTR = Memory.FindPattern(Mask.NetworkInfo);
         Pointers.NetworkInfoPTR = Memory.Rip_37(Pointers.NetworkInfoPTR);
         Logger($"《GTA5》NetworkInfoPTR 0x{Pointers.NetworkInfoPTR:x}");
-        if (Pointers.NetworkInfoPTR == 0)
+        if (!Memory.IsValid(Pointers.NetworkInfoPTR))
             return false;
 
         Pointers.ViewPortPTR = Memory.FindPattern(Mask.ViewPort);
         Pointers.ViewPortPTR = Memory.Rip_37(Pointers.ViewPortPTR);
         Logger($"《GTA5》ViewPortPTR 0x{Pointers.ViewPortPTR:x}");
-        if (Pointers.ViewPortPTR == 0)
+        if (!Memory.IsValid(Pointers.ViewPortPTR))
             return false;
 
         Pointers.CCameraPTR = Memory.FindPattern(Mask.CCamera);
         Pointers.CCameraPTR = Memory.Rip_37(Pointers.CCameraPTR);
         Logger($"《GTA5》CCameraPTR 0x{Pointers.CCameraPTR:x}");
-        if (Pointers.CCameraPTR == 0)
+        if (!Memory.IsValid(Pointers.CCameraPTR))
             return false;
 
         Pointers.AimingPedPTR = Memory.FindPattern(Mask.AimingPed);
         Pointers.AimingPedPTR = Memory.Rip_37(Pointers.AimingPedPTR);
         Logger($"《GTA5》AimingPedPTR 0x{Pointers.AimingPedPTR:x}");
-        if (Pointers.AimingPedPTR == 0)
+        if (!Memory.IsValid(Pointers.AimingPedPTR))
             return false;
 
         Pointers.WeatherPTR = Memory.FindPattern(Mask.Weather);
         Pointers.WeatherPTR = Memory.Rip_6A(Pointers.WeatherPTR);
         Logger($"《GTA5》WeatherPTR 0x{Pointers.WeatherPTR:x}");
-        if (Pointers.WeatherPTR == 0)
+        if (!Memory.IsValid(Pointers.WeatherPTR))
+            return false;
+
+        Pointers.TimePTR = Memory.FindPattern(Mask.Time);
+        Pointers.TimePTR = Memory.Rip_6A(Pointers.TimePTR);
+        Logger($"《GTA5》TimePTR 0x{Pointers.TimePTR:x}");
+        if (!Memory.IsValid(Pointers.TimePTR))
             return false;
 
         Pointers.PickupDataPTR = Memory.FindPattern(Mask.PickupData);
         Pointers.PickupDataPTR = Memory.Rip_37(Pointers.PickupDataPTR);
         Logger($"《GTA5》PickupDataPTR 0x{Pointers.PickupDataPTR:x}");
-        if (Pointers.PickupDataPTR == 0)
+        if (!Memory.IsValid(Pointers.PickupDataPTR))
             return false;
 
         Pointers.UnkModelPTR = Memory.FindPattern(Mask.UnkModel);
         Pointers.UnkModelPTR = Memory.Rip_37(Pointers.UnkModelPTR);
         Logger($"《GTA5》UnkModelPTR 0x{Pointers.UnkModelPTR:x}");
-        if (Pointers.UnkModelPTR == 0)
+        if (!Memory.IsValid(Pointers.UnkModelPTR))
             return false;
 
         Pointers.LocalScriptsPTR = Memory.FindPattern(Mask.LocalScripts);
         Pointers.LocalScriptsPTR = Memory.Rip_37(Pointers.LocalScriptsPTR);
         Logger($"《GTA5》LocalScriptsPTR 0x{Pointers.LocalScriptsPTR:x}");
-        if (Pointers.LocalScriptsPTR == 0)
+        if (!Memory.IsValid(Pointers.LocalScriptsPTR))
             return false;
 
         Pointers.UnkPTR = Memory.FindPattern(Mask.Unk);
         Pointers.UnkPTR = Memory.Rip_37(Pointers.UnkPTR);
         Logger($"《GTA5》UnkPTR 0x{Pointers.UnkPTR:x}");
-        if (Pointers.UnkPTR == 0)
+        if (!Memory.IsValid(Pointers.UnkPTR))
             return false;
 
         // 此特征码仅在游戏世界加载完毕后可搜索（找不到不返回错误，在使用此功能时重新搜索）

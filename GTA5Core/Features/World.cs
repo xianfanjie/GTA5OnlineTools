@@ -29,23 +29,19 @@ public static class World
     public static void SetLocalWeather(int weatherId)
     {
         if (weatherId == -1)
-        {
             Memory.Write(Pointers.WeatherPTR + 0x24, -1);
-            Memory.Write(Pointers.WeatherPTR + 0x104, 13);
-        }
+
         if (weatherId == 13)
-        {
             Memory.Write(Pointers.WeatherPTR + 0x24, 13);
-            Memory.Write(Pointers.WeatherPTR + 0x104, 13);
-        }
 
         Memory.Write(Pointers.WeatherPTR + 0x104, weatherId);
     }
 
     /// <summary>
-    /// 杀死全部NPC（仅敌对？）
+    /// 杀死全部NPC
     /// </summary>
-    public static void KillAllNPC(bool isOnlyKillHostility)
+    /// <param name="isOnlyEnemy">仅敌人</param>
+    public static void KillAllNPC(bool isOnlyEnemy)
     {
         var pCPedList = Game.GetCPedList();
 
@@ -60,9 +56,9 @@ public static class World
             if (Memory.IsValid(pCPlayerInfo))
                 continue;
 
-            if (isOnlyKillHostility)
+            if (isOnlyEnemy)
             {
-                byte oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
+                var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
                     Memory.Write(pCPed + CPed.Health, 0.0f);

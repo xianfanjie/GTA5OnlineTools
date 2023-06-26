@@ -131,25 +131,48 @@
                 <Button Click="Button_MerryweatherServices_Click" Content="请求船只接送" />
                 <Button Click="Button_MerryweatherServices_Click" Content="请求直升机接送" />
             </WrapPanel>
-            <StackPanel Margin="5,0,5,0">
-                <CheckBox
-                    x:Name="CheckBox_InstantBullShark"
-                    Click="CheckBox_InstantBullShark_Click"
+
+            <ui:LabelIcon Content="梅利威瑟2" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_InstantBullShark"
+                    Click="Button_InstantBullShark_Click"
                     Content="使用牛鲨睾酮" />
-                <CheckBox
-                    x:Name="CheckBox_BackupHeli"
-                    Click="CheckBox_BackupHeli_Click"
+                <Button
+                    x:Name="Button_RemoveBullShark"
+                    Click="Button_RemoveBullShark_Click"
+                    Content="移除牛鲨睾酮效果" />
+                <Button
+                    x:Name="Button_BackupHeli"
+                    Click="Button_BackupHeli_Click"
                     Content="呼叫支援直升机" />
-                <CheckBox
-                    x:Name="CheckBox_Airstrike"
-                    Click="CheckBox_Airstrike_Click"
+                <Button
+                    x:Name="Button_Airstrike"
+                    Click="Button_Airstrike_Click"
                     Content="呼叫空袭" />
                 <TextBlock />
-            </StackPanel>
+            </WrapPanel>
 
         </StackPanel>
         <!--  面板3  -->
         <StackPanel>
+            <!--  ////////////////  -->
+            <ui:LabelIcon Content="特殊载具" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_RequestKosatka"
+                    Click="Button_RequestKosatka_Click"
+                    Content="请求虎鲸" />
+                <Button
+                    x:Name="Button_TriggerRCBandito"
+                    Click="Button_TriggerRCBandito_Click"
+                    Content="进入RC匪徒" />
+                <Button
+                    x:Name="Button_TriggerMiniTank"
+                    Click="Button_TriggerMiniTank_Click"
+                    Content="进入迷你坦克" />
+            </WrapPanel>
+
             <ui:LabelIcon Content="经验倍数" />
             <StackPanel Margin="5,0,5,0">
                 <ui:SliderIcon

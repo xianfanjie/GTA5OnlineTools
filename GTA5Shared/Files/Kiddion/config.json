@@ -23,14 +23,6 @@
     {
       "Action": "ClearWantedLevel",
       "VirtualKey": 119
-    },
-    {
-      "Action": "HealVehicle",
-      "VirtualKey": 120
-    },
-    {
-      "Action": "EndCutscene",
-      "VirtualKey": 121
     }
   ],
   "Menu": {

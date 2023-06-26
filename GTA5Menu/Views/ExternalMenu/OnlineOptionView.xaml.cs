@@ -228,13 +228,11 @@ public partial class OnlineOptionView : UserControl
 
     /////////////////////////////////////////////////////////////
 
-    private async void Button_RequestKosatka_Click(object sender, RoutedEventArgs e)
+    private void Button_RequestKosatka_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        Online.RequestKosatka(false);
-        await Task.Delay(100);
-        Online.RequestKosatka(true);
+        Online.RequestKosatka();
     }
 
     private async void Button_TriggerRCBandito_Click(object sender, RoutedEventArgs e)

@@ -483,9 +483,11 @@ public static class Online
     /// 请求虎鲸
     /// </summary>
     /// <param name="isEnable"></param>
-    public static void RequestKosatka(bool isEnable)
+    public static async void RequestKosatka()
     {
-        Globals.WriteGA(Base.oVMYCar + 960, isEnable ? 1 : 0);
+        Globals.WriteGA(Base.oNETTimeHelp + 62 + 9, 34);
+        await Task.Delay(100);
+        Globals.WriteGA(Base.oVMYCar + 960, 1);
     }
 
     /// <summary>

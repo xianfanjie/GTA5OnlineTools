@@ -111,8 +111,8 @@ public static class Game
     /// <returns></returns>
     public static long GetCPedList()
     {
-        var pCReplayInterface = GetCReplayInterface();
-        return Memory.Read<long>(pCReplayInterface + CPedInterface.CPedList);
+        var pCPedInterface = GetCPedInterface();
+        return Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
     }
 
     /// <summary>

@@ -102,9 +102,10 @@ public static class World
     }
 
     /// <summary>
-    /// 摧毁全部NPC载具（仅敌对？）
+    /// 摧毁全部NPC载具
     /// </summary>
-    public static void DestroyAllNPCVehicles(bool isOnlyKillHostility)
+    /// <param name="isOnlyEnemy">仅敌人</param>
+    public static void DestroyAllNPCVehicles(bool isOnlyEnemy)
     {
         var pCPedList = Game.GetCPedList();
 
@@ -123,7 +124,7 @@ public static class World
             if (!Memory.IsValid(pCVehicle))
                 continue;
 
-            if (isOnlyKillHostility)
+            if (isOnlyEnemy)
             {
                 var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
@@ -165,11 +166,12 @@ public static class World
     }
 
     /// <summary>
-    /// 传送全部NPC到我这里，仅敌对？
+    /// 传送全部NPC到我这里
     /// </summary>
-    public static void TeleportAllNPCToMe(bool isOnlyHostility)
+    /// <param name="isOnlyEnemy">仅敌人</param>
+    public static void TeleportAllNPCToMe(bool isOnlyEnemy)
     {
-        var v3MyPos = Teleport.GetPlayerPosition();
+        var myPosV3 = Teleport.GetPlayerPosition();
 
         var pCPedList = Game.GetCPedList();
 
@@ -188,19 +190,19 @@ public static class World
             if (!Memory.IsValid(pCNavigation))
                 continue;
 
-            if (isOnlyHostility)
+            if (isOnlyEnemy)
             {
                 var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
-                    Memory.Write(pCPed + CVehicle.VisualX, v3MyPos);
-                    Memory.Write(pCNavigation + CNavigation.PositionX, v3MyPos);
+                    Memory.Write(pCPed + CVehicle.VisualX, myPosV3);
+                    Memory.Write(pCNavigation + CNavigation.PositionX, myPosV3);
                 }
             }
             else
             {
-                Memory.Write(pCPed + CVehicle.VisualX, v3MyPos);
-                Memory.Write(pCNavigation + CNavigation.PositionX, v3MyPos);
+                Memory.Write(pCPed + CVehicle.VisualX, myPosV3);
+                Memory.Write(pCNavigation + CNavigation.PositionX, myPosV3);
             }
         }
     }

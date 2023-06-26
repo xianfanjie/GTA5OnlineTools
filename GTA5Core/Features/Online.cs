@@ -467,7 +467,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static void TriggerRCBandito(bool isEnable)
     {
-        Globals.WriteGA(Base.oVMYCar + 6879, isEnable ? 1 : 0);               // if (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), true) || PED::IS_PED_GETTING_INTO_A_VEHICLE(PLAYER::PLAYER_PED_ID()))
+        Globals.WriteGA(Base.oVMYCar + 6879, isEnable ? 1 : 0);                 // if (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), true) || PED::IS_PED_GETTING_INTO_A_VEHICLE(PLAYER::PLAYER_PED_ID()))
     }
 
     /// <summary>
@@ -485,7 +485,7 @@ public static class Online
     /// <param name="isEnable"></param>
     public static async void RequestKosatka()
     {
-        Globals.WriteGA(Base.oNETTimeHelp + 62 + 9, 34);
+        Globals.WriteGA(Base.oNETTimeHelp + 62 + 10, 17);
         await Task.Delay(100);
         Globals.WriteGA(Base.oVMYCar + 960, 1);
     }

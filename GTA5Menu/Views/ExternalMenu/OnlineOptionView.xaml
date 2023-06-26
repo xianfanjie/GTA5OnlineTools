@@ -200,6 +200,9 @@
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     提示：经验倍数不建议调整的太高，建议10~100倍左右，太高容易出现交易警告
                 </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：鼠标拖动或者点击滑块可粗略调整，使用键盘方向键左右可以精确调整
+                </TextBlock>
             </StackPanel>
 
         </StackPanel>

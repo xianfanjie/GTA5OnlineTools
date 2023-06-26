@@ -38,35 +38,39 @@
                 <Button
                     x:Name="Button_KillAllNPC"
                     Click="Button_KillNPC_Click"
-                    Content="杀死全部NPC" />
+                    Content="杀死NPC" />
                 <Button
                     x:Name="Button_KillAllHostilityNPC"
                     Click="Button_KillAllHostilityNPC_Click"
-                    Content="杀死全部敌对NPC" />
+                    Content="杀死敌对NPC" />
                 <Button
                     x:Name="Button_KillAllPolice"
                     Click="Button_KillAllPolice_Click"
-                    Content="杀死全部警察" />
+                    Content="杀死警察" />
+            </WrapPanel>
+            <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_DestroyAllVehicles"
                     Click="Button_DestroyAllVehicles_Click"
-                    Content="摧毁全部载具" />
+                    Content="摧毁载具" />
                 <Button
                     x:Name="Button_DestroyAllNPCVehicles"
                     Click="Button_DestroyAllNPCVehicles_Click"
-                    Content="摧毁全部NPC载具" />
+                    Content="摧毁NPC载具" />
                 <Button
                     x:Name="Button_DestroyAllHostilityNPCVehicles"
                     Click="Button_DestroyAllHostilityNPCVehicles_Click"
-                    Content="摧毁全部敌对NPC载具" />
+                    Content="摧毁敌对NPC载具" />
+            </WrapPanel>
+            <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_TPAllNPCToMe"
                     Click="Button_TPAllNPCToMe_Click"
-                    Content="传送全部NPC到我" />
+                    Content="传送NPC到我" />
                 <Button
                     x:Name="Button_TPHostilityNPCToMe"
                     Click="Button_TPHostilityNPCToMe_Click"
-                    Content="传送全部敌对NPC到我" />
+                    Content="传送敌对NPC到我" />
             </WrapPanel>
 
             <ui:LabelIcon Content="自定义传送" />

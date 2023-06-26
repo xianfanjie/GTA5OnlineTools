@@ -77,8 +77,6 @@ public static class Teleport
         if (vector3 == Vector3.Zero)
             return;
 
-        vector3.Z += 1.0f;
-
         var pCPed = Game.GetCPed();
 
         if (Vehicle.IsInVehicle(pCPed))

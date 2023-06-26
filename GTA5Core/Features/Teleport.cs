@@ -5,12 +5,41 @@ namespace GTA5Core.Features;
 
 public static class Teleport
 {
+
+    /// <summary>
+    /// 获取玩家当前坐标
+    /// </summary>
+    /// <returns></returns>
+    public static Vector3 GetPlayerPosition()
+    {
+        var pCPed = Game.GetCPed();
+        return Memory.Read<Vector3>(pCPed + CPed.VisualX);
+    }
+
+    /// <summary>
+    /// 获取准星当前坐标
+    /// </summary>
+    /// <returns></returns>
+    public static Vector3 GetCrossHairPosition()
+    {
+        var pCPlayerInfo = Game.GetCPlayerInfo();
+        return Memory.Read<Vector3>(pCPlayerInfo + CPlayerInfo.CrossHairX);
+    }
+
+    /// <summary>
+    /// 传送到准星坐标
+    /// </summary>
+    public static void ToCrossHair()
+    {
+        SetTeleportPosition(GetCrossHairPosition());
+    }
+
     /// <summary>
     /// 传送到导航点
     /// </summary>
     public static void ToWaypoint()
     {
-        SetTeleportPosition(WaypointPosition());
+        SetTeleportPosition(GetWaypointPosition());
     }
 
     /// <summary>
@@ -18,7 +47,7 @@ public static class Teleport
     /// </summary>
     public static void ToObjective()
     {
-        SetTeleportPosition(ObjectivePosition());
+        SetTeleportPosition(GetObjectivePosition());
     }
 
     /// <summary>
@@ -41,16 +70,6 @@ public static class Teleport
     }
 
     /// <summary>
-    /// 获取玩家当前坐标
-    /// </summary>
-    /// <returns></returns>
-    public static Vector3 GetPlayerPosition()
-    {
-        long pCPed = Game.GetCPed();
-        return Memory.Read<Vector3>(pCPed + CPed.VisualX);
-    }
-
-    /// <summary>
     /// 坐标传送功能
     /// </summary>
     public static void SetTeleportPosition(Vector3 vector3)
@@ -58,21 +77,25 @@ public static class Teleport
         if (vector3 == Vector3.Zero)
             return;
 
+        vector3.Z += 1.0f;
+
         var pCPed = Game.GetCPed();
 
-        if (Memory.Read<int>(pCPed + CPed.InVehicle) == 0)
+        if (Vehicle.IsInVehicle(pCPed))
         {
-            // 玩家不在载具
-            long pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
-            Memory.Write(pCPed + CPed.VisualX, vector3);
+            // 玩家在载具
+            var pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
+            Memory.Write(pCVehicle + CVehicle.VisualX, vector3);
+
+            var pCNavigation = Memory.Read<long>(pCVehicle + CVehicle.CNavigation);
             Memory.Write(pCNavigation + CNavigation.PositionX, vector3);
         }
         else
         {
-            // 玩家在载具
-            long pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
-            Memory.Write(pCVehicle + CVehicle.VisualX, vector3);
-            long pCNavigation = Memory.Read<long>(pCVehicle + CVehicle.CNavigation);
+            // 玩家不在载具
+            var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
+
+            Memory.Write(pCPed + CPed.VisualX, vector3);
             Memory.Write(pCNavigation + CNavigation.PositionX, vector3);
         }
     }
@@ -114,7 +137,7 @@ public static class Teleport
 
             var dwIcon = Memory.Read<int>(pBlip + 0x40);
             var dwColor = Memory.Read<byte>(pBlip + 0x48);
-            if (blipIds != dwIcon || 
+            if (blipIds != dwIcon ||
                 blipColors != dwColor)
                 continue;
 
@@ -140,7 +163,7 @@ public static class Teleport
 
             var dwIcon = Memory.Read<int>(pBlip + 0x40);
             var dwColor = Memory.Read<byte>(pBlip + 0x48);
-            if (!blipIds.Contains(dwIcon) || 
+            if (!blipIds.Contains(dwIcon) ||
                 !blipColors.Contains(dwColor))
                 continue;
 
@@ -160,7 +183,7 @@ public static class Teleport
     /// <summary>
     /// 获取导航点坐标
     /// </summary>
-    public static Vector3 WaypointPosition()
+    public static Vector3 GetWaypointPosition()
     {
         return GetBlipPosition(new int[] { 8 }, new byte[] { 84 }, true);
     }
@@ -168,7 +191,7 @@ public static class Teleport
     /// <summary>
     /// 获取目标点坐标
     /// </summary>
-    public static Vector3 ObjectivePosition()
+    public static Vector3 GetObjectivePosition()
     {
         Vector3 vector3;
 
@@ -295,7 +318,7 @@ public static class Teleport
     /// </summary>
     public static async void ToWaypointSuper()
     {
-        var coords = WaypointPosition();
+        var coords = GetWaypointPosition();
         if (coords == Vector3.Zero)
             return;
 

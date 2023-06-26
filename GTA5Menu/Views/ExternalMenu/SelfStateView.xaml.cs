@@ -483,20 +483,6 @@ public partial class SelfStateView : UserControl
         Player.NoCollision(_options.NoCollision);
     }
 
-    private void Button_ToWaypoint_Click(object sender, RoutedEventArgs e)
-    {
-        AudioHelper.PlayClickSound();
-
-        Teleport.ToWaypoint();
-    }
-
-    private void Button_ToObjective_Click(object sender, RoutedEventArgs e)
-    {
-        AudioHelper.PlayClickSound();
-
-        Teleport.ToObjective();
-    }
-
     private void Button_FillHealth_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
@@ -525,11 +511,32 @@ public partial class SelfStateView : UserControl
         Player.Suicide();
     }
 
-    private void Button_ToWaypoint_Super_Click(object sender, RoutedEventArgs e)
+    private void Button_ToWaypoint_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        Teleport.ToWaypoint();
+    }
+
+    private void Button_ToObjective_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        Teleport.ToObjective();
+    }
+
+    private void Button_ToWaypointSuper_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         Teleport.ToWaypointSuper();
+    }
+
+    private void Button_ToCrossHair_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        Teleport.ToCrossHair();
     }
 
     private void CheckBox_ProofBullet_Click(object sender, RoutedEventArgs e)

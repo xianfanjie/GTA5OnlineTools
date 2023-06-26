@@ -37,7 +37,7 @@ public struct CNavigation                               // 0x30
     public const int ForwardY = 0x34;
     public const int ForwardZ = 0x38;
     public const int UpX = 0x40;                        // float, vector3
-    public const int UpY = 0x44;    
+    public const int UpY = 0x44;
     public const int UpZ = 0x48;
     public const int PositionX = 0x50;                  // float, vector3
     public const int PositionY = 0x54;
@@ -81,6 +81,9 @@ public struct CPlayerInfo                               // 0x10A8
     public const int GameState = 0x230;                 // byte
     public const int CPed = 0x240;
     public const int FrameFlags = 0x270;
+    public const int CrossHairX = 0x350;                // float
+    public const int CrossHairY = 0x354;
+    public const int CrossHairZ = 0x358;
     public const int WantedCanChange = 0x78C;           // float
     public const int NPCIgnore = 0x8C0;                 // int32
     public const int WantedLevel = 0x8D8;               // int32
@@ -128,7 +131,7 @@ public struct CWeaponInfo                               // 0x20
     public const int ForcePed = 0xDC;                   // float
     public const int ForceVehicle = 0xE0;               // float
     public const int ForceFlying = 0xE4;                // float
-    public const int ReloadVehicleMult = 0x130; 
+    public const int ReloadVehicleMult = 0x130;
     public const int ReloadMult = 0x134;
     public const int ShotTime = 0x13C;
     public const int LockRange = 0x288;

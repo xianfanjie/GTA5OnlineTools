@@ -121,8 +121,16 @@ public struct CWeaponInfo                               // 0x20
     public const int ImpactType = 0x20;                 // byte
     public const int ImpactExplosion = 0x24;
     public const int CAmmoInfo = 0x60;
-    public const int Spread = 0x7C;                     // float
+    public const int CVehicleWeapon = 0x70;
+    public const int Spread = 0x74;                     // float
+    public const int Damage = 0xB0;
+    public const int Force = 0xD8;
+    public const int ForcePed = 0xDC;                   // float
+    public const int ForceVehicle = 0xE0;               // float
+    public const int ForceFlying = 0xE4;                // float
+    public const int ReloadVehicleMult = 0x130; 
     public const int ReloadMult = 0x134;
+    public const int ShotTime = 0x13C;
     public const int LockRange = 0x288;
     public const int Range = 0x28C;
     public const int Recoil = 0x2F4;

@@ -29,9 +29,9 @@ public partial class VehicleOptionView : UserControl
         // 载具附加功能
         foreach (var item in OnlineData.VehicleExtras)
         {
-            ComboBox_VehicleExtras.Items.Add(item.Name);
+            ListBox_VehicleExtras.Items.Add(item.Name);
         }
-        ComboBox_VehicleExtras.SelectedIndex = 0;
+        ListBox_VehicleExtras.SelectedIndex = 0;
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()
@@ -57,6 +57,20 @@ public partial class VehicleOptionView : UserControl
     }
 
     /////////////////////////////////////////////////
+
+    private void VehicleExtras()
+    {
+        var index = ListBox_VehicleExtras.SelectedIndex;
+        if (index == -1 || index == 0)
+        {
+            _options.Extra = false;
+            return;
+        }
+
+        _options.Extra = true;
+        _options.ExtraFlag = (short)OnlineData.VehicleExtras[index].Value;
+        Vehicle.Extras(_options.ExtraFlag);
+    }
 
     private void CheckBox_VehicleGodMode_Click(object sender, RoutedEventArgs e)
     {
@@ -97,20 +111,6 @@ public partial class VehicleOptionView : UserControl
         Online.InstantBullShark(false);
     }
 
-    private void ComboBox_VehicleExtras_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var index = ComboBox_VehicleExtras.SelectedIndex;
-        if (index == -1 || index == 0)
-        {
-            _options.Extra = false;
-            return;
-        }
-
-        _options.Extra = true;
-        _options.ExtraFlag = (short)OnlineData.VehicleExtras[index].Value;
-        Vehicle.Extras(_options.ExtraFlag);
-    }
-
     private void CheckBox_TriggerRCBandito_Click(object sender, RoutedEventArgs e)
     {
         Online.TriggerRCBandito(CheckBox_TriggerRCBandito.IsChecked == true);
@@ -126,5 +126,15 @@ public partial class VehicleOptionView : UserControl
         AudioHelper.PlayClickSound();
 
         Vehicle.Unlock167Vehicle();
+    }
+
+    private void ListBox_VehicleExtras_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        VehicleExtras();
+    }
+
+    private void ListBox_VehicleExtras_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        VehicleExtras();
     }
 }

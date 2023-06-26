@@ -11,6 +11,7 @@
     mc:Ignorable="d">
 
     <UniformGrid Columns="3">
+        <!--  面板1  -->
         <StackPanel>
             <ui:LabelIcon Content="一般选项" />
             <StackPanel>
@@ -44,9 +45,6 @@
                 </WrapPanel>
             </StackPanel>
             <!--  ////////////////  -->
-            <ui:LabelIcon Content="附加功能" />
-            <ComboBox x:Name="ComboBox_VehicleExtras" SelectionChanged="ComboBox_VehicleExtras_SelectionChanged" />
-            <!--  ////////////////  -->
             <ui:LabelIcon Content="高级" />
             <WrapPanel Margin="5,0,5,0">
                 <CheckBox
@@ -67,6 +65,16 @@
                     Content="提前解锁1.67新载具" />
             </WrapPanel>
         </StackPanel>
+        <!--  面板2  -->
+        <DockPanel>
+            <ui:LabelIcon Content="附加功能" DockPanel.Dock="Top" />
+            <ListBox
+                x:Name="ListBox_VehicleExtras"
+                Margin="5"
+                MouseDoubleClick="ListBox_VehicleExtras_MouseDoubleClick"
+                SelectionChanged="ListBox_VehicleExtras_SelectionChanged"
+                Style="{StaticResource ListBoxStyle_Base}" />
+        </DockPanel>
     </UniformGrid>
 
 </UserControl>

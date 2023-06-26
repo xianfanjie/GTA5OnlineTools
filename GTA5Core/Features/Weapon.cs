@@ -173,6 +173,9 @@ public static class Weapon
         if (!Memory.IsValid(pCWeaponInfo))
             return;
 
-        Memory.Write(pCWeaponInfo + CWeaponInfo.ReloadMult, isEnable ? 4.0f : 1.0f);
+        // 载具中换弹速度
+        Memory.Write(pCWeaponInfo + CWeaponInfo.ReloadVehicleMult, isEnable ? 0.0f : 1.0f);
+        // 步行换弹速度
+        Memory.Write(pCWeaponInfo + CWeaponInfo.ReloadMult, isEnable ? 5.0f : 1.0f);
     }
 }

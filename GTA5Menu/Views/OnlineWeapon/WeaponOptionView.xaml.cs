@@ -62,7 +62,10 @@ public partial class WeaponOptionView : UserControl
             Weapon.LongRange();
     }
 
-    private void ListBox_AmmoModifier_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    /// <summary>
+    /// 弹药编辑
+    /// </summary>
+    private void AmmoModifier()
     {
         var index = ListBox_AmmoModifier.SelectedIndex;
         if (index == -1 || index == 0)
@@ -74,6 +77,33 @@ public partial class WeaponOptionView : UserControl
         _options.AmmoModifier = true;
         _options.AmmoModifierFlag = (byte)(index - 1);
         Weapon.AmmoModifier(_options.AmmoModifierFlag);
+    }
+
+    /// <summary>
+    /// 子弹类型
+    /// </summary>
+    private void ImpactExplosion()
+    {
+        var index = ListBox_ImpactExplosion.SelectedIndex;
+        if (index == -1 || index == 0)
+            return;
+
+        if (index == 1)
+            Weapon.ImpactType(3);
+        else
+            Weapon.ImpactType(5);
+
+        Weapon.ImpactExplosion(OnlineData.ImpactExplosions[index].Value);
+    }
+
+    private void ListBox_AmmoModifier_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        AmmoModifier();
+    }
+
+    private void ListBox_AmmoModifier_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        AmmoModifier();
     }
 
     private void CheckBox_FastReload_Click(object sender, RoutedEventArgs e)
@@ -116,15 +146,11 @@ public partial class WeaponOptionView : UserControl
 
     private void ListBox_ImpactExplosion_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var index = ListBox_ImpactExplosion.SelectedIndex;
-        if (index == -1 || index == 0)
-            return;
+        ImpactExplosion();
+    }
 
-        if (index == 1)
-            Weapon.ImpactType(3);
-        else
-            Weapon.ImpactType(5);
-
-        Weapon.ImpactExplosion(OnlineData.ImpactExplosions[index].Value);
+    private void ListBox_ImpactExplosion_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        ImpactExplosion();
     }
 }

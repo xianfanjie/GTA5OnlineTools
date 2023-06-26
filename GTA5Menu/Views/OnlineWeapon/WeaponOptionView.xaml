@@ -17,6 +17,7 @@
             <ListBox
                 x:Name="ListBox_AmmoModifier"
                 Margin="5"
+                MouseDoubleClick="ListBox_AmmoModifier_MouseDoubleClick"
                 SelectedIndex="0"
                 SelectionChanged="ListBox_AmmoModifier_SelectionChanged"
                 Style="{StaticResource ListBoxStyle_Base}">
@@ -24,7 +25,7 @@
                 <ListBoxItem Content="默认" />
                 <ListBoxItem Content="无限弹药" />
                 <ListBoxItem Content="无限弹夹" />
-                <ListBoxItem Content="无限弹药 + 无限弹夹" />
+                <ListBoxItem Content="无限弹药+无限弹夹" />
             </ListBox>
             <!--  ////////////////  -->
             <ui:LabelIcon Content="高级" />
@@ -65,6 +66,7 @@
             <ListBox
                 x:Name="ListBox_ImpactExplosion"
                 Margin="5"
+                MouseDoubleClick="ListBox_ImpactExplosion_MouseDoubleClick"
                 SelectionChanged="ListBox_ImpactExplosion_SelectionChanged"
                 Style="{StaticResource ListBoxStyle_Base}" />
         </DockPanel>

@@ -63,22 +63,183 @@ public partial class ExternalOverlayView : UserControl
         }
     }
 
-    /////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
 
     private void CheckBox_ESP_Player_Click(object sender, RoutedEventArgs e)
     {
         Setting.ESP_Player = CheckBox_ESP_Player.IsChecked == true;
     }
 
+    private void CheckBox_ESP_Player_2DBox_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckBox_ESP_Player_2DBox.IsChecked == true)
+        {
+            Setting.ESP_Player_2DBox = true;
+            Setting.ESP_Player_3DBox = false;
+
+            CheckBox_ESP_Player_3DBox.IsChecked = false;
+        }
+        else
+        {
+            Setting.ESP_Player_2DBox = false;
+        }
+    }
+
+    private void CheckBox_ESP_Player_3DBox_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckBox_ESP_Player_3DBox.IsChecked == true)
+        {
+            Setting.ESP_Player_3DBox = true;
+            Setting.ESP_Player_2DBox = false;
+
+            CheckBox_ESP_Player_2DBox.IsChecked = false;
+        }
+        else
+        {
+            Setting.ESP_Player_3DBox = false;
+        }
+    }
+
+    private void CheckBox_ESP_Player_Line_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Player_Line = CheckBox_ESP_Player_Line.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_Player_Bone_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Player_Bone = CheckBox_ESP_Player_Bone.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_Player_HealthBar_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Player_HealthBar = CheckBox_ESP_Player_HealthBar.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_Player_HealthText_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Player_HealthText = CheckBox_ESP_Player_HealthText.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_Player_NameText_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Player_NameText = CheckBox_ESP_Player_NameText.IsChecked == true;
+    }
+
+    private void CheckBox_AimBot_Player_Enabled_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.AimBot_Player_Enabled = CheckBox_AimBot_Player_Enabled.IsChecked == true;
+    }
+
+    ///////////////////////////////////////////////////////////////////
+
     private void CheckBox_ESP_NPC_Click(object sender, RoutedEventArgs e)
     {
         Setting.ESP_NPC = CheckBox_ESP_NPC.IsChecked == true;
     }
 
+    private void CheckBox_ESP_NPC_2DBox_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckBox_ESP_NPC_2DBox.IsChecked == true)
+        {
+            Setting.ESP_NPC_2DBox = true;
+            Setting.ESP_NPC_3DBox = false;
+
+            CheckBox_ESP_NPC_3DBox.IsChecked = false;
+        }
+        else
+        {
+            Setting.ESP_NPC_2DBox = false;
+        }
+    }
+
+    private void CheckBox_ESP_NPC_3DBox_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckBox_ESP_NPC_3DBox.IsChecked == true)
+        {
+            Setting.ESP_NPC_3DBox = true;
+            Setting.ESP_NPC_2DBox = false;
+
+            CheckBox_ESP_NPC_2DBox.IsChecked = false;
+        }
+        else
+        {
+            Setting.ESP_NPC_3DBox = false;
+        }
+    }
+
+    private void CheckBox_ESP_NPC_Line_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_NPC_Line = CheckBox_ESP_NPC_Line.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_NPC_Bone_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_NPC_Bone = CheckBox_ESP_NPC_Bone.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_NPC_HealthBar_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_NPC_HealthBar = CheckBox_ESP_NPC_HealthBar.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_NPC_HealthText_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_NPC_HealthText = CheckBox_ESP_NPC_HealthText.IsChecked == true;
+    }
+
+    private void CheckBox_ESP_NPC_NameText_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_NPC_NameText = CheckBox_ESP_NPC_NameText.IsChecked == true;
+    }
+
+    private void CheckBox_AimBot_NPC_Enabled_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.AimBot_NPC_Enabled = CheckBox_AimBot_NPC_Enabled.IsChecked == true;
+    }
+
+    ///////////////////////////////////////////////////////////////////
+    
     private void CheckBox_ESP_Pickup_Click(object sender, RoutedEventArgs e)
     {
         Setting.ESP_Pickup = CheckBox_ESP_Pickup.IsChecked == true;
     }
+
+    private void CheckBox_ESP_Pickup_2DBox_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckBox_ESP_Pickup_2DBox.IsChecked == true)
+        {
+            Setting.ESP_Pickup_2DBox = true;
+            Setting.ESP_Pickup_3DBox = false;
+
+            CheckBox_ESP_Pickup_3DBox.IsChecked = false;
+        }
+        else
+        {
+            Setting.ESP_Pickup_2DBox = false;
+        }
+    }
+
+    private void CheckBox_ESP_Pickup_3DBox_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckBox_ESP_Pickup_3DBox.IsChecked == true)
+        {
+            Setting.ESP_Pickup_3DBox = true;
+            Setting.ESP_Pickup_2DBox = false;
+
+            CheckBox_ESP_Pickup_2DBox.IsChecked = false;
+        }
+        else
+        {
+            Setting.ESP_Pickup_3DBox = false;
+        }
+    }
+
+    private void CheckBox_ESP_Pickup_Line_Click(object sender, RoutedEventArgs e)
+    {
+        Setting.ESP_Pickup_Line = CheckBox_ESP_Pickup_Line.IsChecked == true;
+    }
+
+    ///////////////////////////////////////////////////////////////////
 
     private void CheckBox_ESP_Crosshair_Click(object sender, RoutedEventArgs e)
     {
@@ -90,74 +251,12 @@ public partial class ExternalOverlayView : UserControl
         Setting.ESP_InfoText = CheckBox_ESP_InfoText.IsChecked == true;
     }
 
-    private void CheckBox_AimBot_Enabled_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.AimBot_Enabled = CheckBox_AimBot_Enabled.IsChecked == true;
-    }
-
     private void CheckBox_NoTopMostHide_Click(object sender, RoutedEventArgs e)
     {
         Setting.NoTopMostHide = CheckBox_NoTopMostHide.IsChecked == true;
     }
 
-    /////////////////////////////////////////////////
-
-    private void CheckBox_ESP_2DBox_Click(object sender, RoutedEventArgs e)
-    {
-        if (CheckBox_ESP_2DBox.IsChecked == true)
-        {
-            Setting.ESP_2DBox = true;
-
-            Setting.ESP_3DBox = false;
-            CheckBox_ESP_3DBox.IsChecked = false;
-        }
-        else
-        {
-            Setting.ESP_2DBox = false;
-        }
-    }
-
-    private void CheckBox_ESP_3DBox_Click(object sender, RoutedEventArgs e)
-    {
-        if (CheckBox_ESP_3DBox.IsChecked == true)
-        {
-            Setting.ESP_3DBox = true;
-
-            Setting.ESP_2DBox = false;
-            CheckBox_ESP_2DBox.IsChecked = false;
-        }
-        else
-        {
-            Setting.ESP_3DBox = false;
-        }
-    }
-
-    private void CheckBox_ESP_2DLine_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_Line = CheckBox_ESP_2DLine.IsChecked == true;
-    }
-
-    private void CheckBox_ESP_Bone_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_Bone = CheckBox_ESP_Bone.IsChecked == true;
-    }
-
-    private void CheckBox_ESP_2DHealthBar_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_2DHealthBar = CheckBox_ESP_2DHealthBar.IsChecked == true;
-    }
-
-    private void CheckBox_ESP_HealthText_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_HealthText = CheckBox_ESP_HealthText.IsChecked == true;
-    }
-
-    private void CheckBox_ESP_NameText_Click(object sender, RoutedEventArgs e)
-    {
-        Setting.ESP_NameText = CheckBox_ESP_NameText.IsChecked == true;
-    }
-
-    /////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
 
     private void RadioButton_Overlay_RunMode0_Click(object sender, RoutedEventArgs e)
     {

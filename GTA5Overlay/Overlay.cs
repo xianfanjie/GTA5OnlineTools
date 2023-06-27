@@ -248,32 +248,21 @@ public class Overlay : IDisposable
                 continue;
 
             // 如果ped死亡，跳过
-            var ped_Health = Memory.Read<float>(pCPed + CPed.Health);
-            if (ped_Health <= 0)
+            var pedHealth = Memory.Read<float>(pCPed + CPed.Health);
+            if (pedHealth <= 0)
                 continue;
 
-            var ped_MaxHealth = Memory.Read<float>(pCPed + CPed.HealthMax);
-            var ped_HPPercentage = ped_Health / ped_MaxHealth;
+            var pedHealthMax = Memory.Read<float>(pCPed + CPed.HealthMax);
+            var pedHPPercentage = pedHealth / pedHealthMax;
 
             var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
 
+            // 玩家的pCPlayerInfo为有效指针，IsValid返回为true
+            // NPC的pCPlayerInfo为无效指针，IsValid返回为false
+            var isPlayer = Memory.IsValid(pCPlayerInfo);
+            var isNPC = !isPlayer;
+
             var pedName = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 20);
-
-            // 绘制玩家
-            if (!Setting.ESP_Player)
-            {
-                // 跳过玩家，IsValid返回为true
-                if (Memory.IsValid(pCPlayerInfo))
-                    continue;
-            }
-
-            // 绘制Ped
-            if (!Setting.ESP_NPC)
-            {
-                // 跳过其他，NPC的pCPlayerInfo为0，IsValid返回为false
-                if (!Memory.IsValid(pCPlayerInfo))
-                    continue;
-            }
 
             var pCNavigation = Memory.Read<long>(pCPed + CPed.CNavigation);
             if (!Memory.IsValid(pCNavigation))
@@ -296,180 +285,140 @@ public class Overlay : IDisposable
                 Y = Memory.Read<float>(pCNavigation + CNavigation.ForwardX)
             };
 
-            if (Setting.ESP_3DBox)
-            {
-                if (!string.IsNullOrEmpty(pedName))
-                {
-                    // 玩家 3DBox
-                    Draw.DrawAABBBox(_brush_red, pedPosV3, v2PedSinCos);
-                }
-                else
-                {
-                    // Ped 3DBox
-                    Draw.DrawAABBBox(_brush_white, pedPosV3, v2PedSinCos);
-                }
-            }
-
             var pedPosV2 = Core.WorldToScreen(pedPosV3);
             var pedBoxV2 = Core.GetBoxSize(pedPosV3);
 
             if (!Core.IsNullVector2(pedPosV2))
             {
+                if (Setting.ESP_Player && isPlayer)
+                {
+                    // 玩家 2D方框
+                    if (Setting.ESP_Player_2DBox)
+                    {
+                        Draw.Draw2DBox(_brush_red, pedPosV2, pedBoxV2);
+
+                        // 玩家 2D射线
+                        if (Setting.ESP_Player_Line)
+                            Draw.Draw2DLine(_brush_red, pedPosV2, pedBoxV2);
+
+                        // 玩家 2D血条
+                        if (Setting.ESP_Player_HealthBar)
+                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, pedHPPercentage);
+
+                        // 玩家 2D血量数字
+                        if (Setting.ESP_Player_HealthText)
+                            Draw.Draw2DHealthText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, pedHealth, pedHealthMax, i);
+
+                        // 玩家 2D玩家名称
+                        if (Setting.ESP_Player_NameText)
+                            Draw.Draw2DNameText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, pedName, distance);
+                    }
+
+                    // 玩家 3D方框
+                    if (Setting.ESP_Player_3DBox)
+                    {
+                        Draw.DrawAABBBox(_brush_red, pedPosV3, v2PedSinCos);
+
+                        // 玩家 3D射线
+                        if (Setting.ESP_Player_Line)
+                            Draw.DrawAABBLine(_brush_red, pedPosV3);
+
+                        // 玩家 3D血条
+                        if (Setting.ESP_Player_HealthBar)
+                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, pedHPPercentage);
+
+                        // 玩家 2D血量数字
+                        if (Setting.ESP_Player_HealthText)
+                            Draw.Draw3DHealthText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, pedHealth, pedHealthMax, i);
+
+                        // 玩家 2D玩家名称
+                        if (Setting.ESP_Player_HealthBar)
+                            Draw.Draw3DNameText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, pedName, distance);
+                    }
+
+                    // 玩家 骨骼
+                    if (Setting.ESP_Player_Bone)
+                    {
+                        Draw.DrawBone(_brush_white, pCPed, 0, 7);
+                        Draw.DrawBone(_brush_white, pCPed, 7, 8);
+                        Draw.DrawBone(_brush_white, pCPed, 8, 3);
+                        Draw.DrawBone(_brush_white, pCPed, 8, 4);
+                        Draw.DrawBone(_brush_white, pCPed, 7, 5);
+                        Draw.DrawBone(_brush_white, pCPed, 7, 6);
+                    }
+                }
+
+                ////////////////////////////////////////////////////////////////////////
+
+                if (Setting.ESP_NPC && isNPC)
+                {
+                    // NPC 2D方框
+                    if (Setting.ESP_NPC_2DBox)
+                    {
+                        Draw.Draw2DBox(_brush_white, pedPosV2, pedBoxV2);
+
+                        // NPC 2D射线
+                        if (Setting.ESP_NPC_Line)
+                            Draw.Draw2DLine(_brush_white, pedPosV2, pedBoxV2);
+
+                        // NPC 2D血条
+                        if (Setting.ESP_NPC_HealthBar)
+                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, pedHPPercentage);
+
+                        // NPC 2D血量数字
+                        if (Setting.ESP_NPC_HealthText)
+                            Draw.Draw2DHealthText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, pedHealth, pedHealthMax, i);
+
+                        // NPC 2D玩家名称
+                        if (Setting.ESP_NPC_NameText)
+                            Draw.Draw2DNameText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, pedName, distance);
+                    }
+
+                    // NPC 3D方框
+                    if (Setting.ESP_NPC_3DBox)
+                    {
+                        Draw.DrawAABBBox(_brush_white, pedPosV3, v2PedSinCos);
+
+                        // NPC 3D射线
+                        if (Setting.ESP_NPC_Line)
+                            Draw.DrawAABBLine(_brush_white, pedPosV3);
+
+                        // NPC 3D血条
+                        if (Setting.ESP_NPC_HealthBar)
+                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, pedHPPercentage);
+
+                        // NPC 3D血量数字
+                        if (Setting.ESP_NPC_HealthText)
+                            Draw.Draw3DHealthText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, pedHealth, pedHealthMax, i);
+
+                        // NPC 3D玩家名称
+                        if (Setting.ESP_NPC_NameText)
+                            Draw.Draw3DNameText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, pedName, distance);
+                    }
+
+                    // NPC 骨骼
+                    if (Setting.ESP_NPC_Bone)
+                    {
+                        Draw.DrawBone(_brush_white, pCPed, 0, 7);
+                        Draw.DrawBone(_brush_white, pCPed, 7, 8);
+                        Draw.DrawBone(_brush_white, pCPed, 8, 3);
+                        Draw.DrawBone(_brush_white, pCPed, 8, 4);
+                        Draw.DrawBone(_brush_white, pCPed, 7, 5);
+                        Draw.DrawBone(_brush_white, pCPed, 7, 6);
+                    }
+                }
+
+                ////////////////////////////////////////////////////////////////////////
+
+                // Debug调试信息
+
+#if DEBUG
                 //var ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
                 //var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 //ped_type = ped_type << 11 >> 25;
 
                 //gfx.DrawText(_font_YaHei, 12, _brush_green, pedPosV2.X, pedPosV2.Y, $"{ped_type}\n{oHostility}");
-
-                if (!string.IsNullOrEmpty(pedName))
-                {
-                    if (Setting.ESP_2DBox)
-                    {
-                        // 2D方框
-                        Draw.Draw2DBox(_brush_red, pedPosV2, pedBoxV2);
-                    }
-
-                    if (Setting.ESP_Line)
-                    {
-                        if (Setting.ESP_2DBox)
-                        {
-                            // 2DBox射线
-                            Draw.Draw2DLine(_brush_red, pedPosV2, pedBoxV2);
-                        }
-                        else
-                        {
-                            // 3DBox射线
-                            Draw.DrawAABBLine(_brush_red, pedPosV3);
-                        }
-                    }
-
-                    if (Setting.ESP_2DHealthBar)
-                    {
-                        if (Setting.ESP_2DBox)
-                        {
-                            // 2DBox血条
-                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage);
-                        }
-                        else
-                        {
-                            // 3DBox血条
-                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage);
-                        }
-                    }
-
-                    if (Setting.ESP_HealthText)
-                    {
-                        if (Setting.ESP_2DBox)
-                        {
-                            // 2DBox血量数字
-                            Draw.Draw2DHealthText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, ped_Health, ped_MaxHealth, i);
-                        }
-                        else
-                        {
-                            // 3DBox血量数字
-                            Draw.Draw3DHealthText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, ped_Health, ped_MaxHealth, i);
-                        }
-                    }
-
-                    if (Setting.ESP_NameText)
-                    {
-                        if (Setting.ESP_2DBox)
-                        {
-                            // 2DBox玩家名称
-                            Draw.Draw2DNameText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, pedName, distance);
-                        }
-                        else
-                        {
-                            // 3DBox玩家名称
-                            Draw.Draw3DNameText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, pedName, distance);
-                        }
-                    }
-                }
-                else
-                {
-                    if (Setting.ESP_2DBox)
-                    {
-                        // 2D方框
-                        Draw.Draw2DBox(_brush_white, pedPosV2, pedBoxV2);
-                    }
-
-                    if (Setting.ESP_Line)
-                    {
-                        if (Setting.ESP_2DBox)
-                        {
-                            // 2DBox射线
-                            Draw.Draw2DLine(_brush_white, pedPosV2, pedBoxV2);
-                        }
-                        else
-                        {
-                            // 3DBox射线
-                            Draw.DrawAABBLine(_brush_white, pedPosV3);
-                        }
-                    }
-
-                    if (Setting.ESP_2DHealthBar)
-                    {
-                        if (Setting.ESP_2DBox)
-                        {
-                            // 2DBox血条
-                            Draw.Draw2DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage);
-                        }
-                        else
-                        {
-                            // 3DBox血条
-                            Draw.Draw3DHealthBar(_brush_white, _brush_green, pedPosV2, pedBoxV2, ped_HPPercentage);
-                        }
-                    }
-
-                    if (Setting.ESP_HealthText)
-                    {
-                        if (Setting.ESP_2DBox)
-                        {
-                            // 2DBox血量数字
-                            Draw.Draw2DHealthText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, ped_Health, ped_MaxHealth, i);
-                        }
-                        else
-                        {
-                            // 3DBox血量数字
-                            Draw.Draw3DHealthText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, ped_Health, ped_MaxHealth, i);
-                        }
-                    }
-
-                    if (Setting.ESP_NameText)
-                    {
-                        if (Setting.ESP_2DBox)
-                        {
-                            // 2DBox玩家名称
-                            Draw.Draw2DNameText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, pedName, distance);
-                        }
-                        else
-                        {
-                            // 3DBox玩家名称
-                            Draw.Draw3DNameText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, pedName, distance);
-                        }
-                    }
-                }
-
-                //int pedEntityType = Memory.Read<int>(ped_offset_0 + 0x10B8);
-                //byte pedEntityType = Memory.Read<byte>(ped_offset_0 + 0x2B);
-                //byte oHostility = Memory.Read<byte>(ped_offset_0 + 0x18C);
-
-                //pedEntityType = pedEntityType >> 14 & 0x1F;
-
-                //gfx.DrawText(_font_YaHei, 10, _brush_red,
-                //    pedPosV2.X, pedPosV2.Y,
-                //    $"Type : {pedEntityType}");
-            }
-
-            if (Setting.ESP_Bone)
-            {
-                // 骨骼
-                Draw.DrawBone(_brush_white, pCPed, 0, 7);
-                Draw.DrawBone(_brush_white, pCPed, 7, 8);
-                Draw.DrawBone(_brush_white, pCPed, 8, 3);
-                Draw.DrawBone(_brush_white, pCPed, 8, 4);
-                Draw.DrawBone(_brush_white, pCPed, 7, 5);
-                Draw.DrawBone(_brush_white, pCPed, 7, 6);
+#endif
             }
         }
 
@@ -489,37 +438,39 @@ public class Overlay : IDisposable
             // pickup坐标
             var pickupPosV3 = Memory.Read<Vector3>(pCNavigation + CNavigation.PositionX);
 
+            // m_heading    0x20
+            // m_heading2   0x24
+            var v2PickupSinCos = new Vector2
+            {
+                X = Memory.Read<float>(pCNavigation + CNavigation.RightX),
+                Y = Memory.Read<float>(pCNavigation + CNavigation.ForwardX)
+            };
+
             var pickupPosV2 = Core.WorldToScreen(pickupPosV3);
             var pickupBoxV2 = Core.GetBoxSize(pickupPosV3, 0.2f, 1.0f);
 
-            if (pickupPosV2 != Vector2.Zero)
+            if (!Core.IsNullVector2(pickupPosV2))
             {
                 if (Setting.ESP_Pickup)
                 {
-                    if (Setting.ESP_2DBox)
+                    // Pickup 2D方框
+                    if (Setting.ESP_Pickup_2DBox)
                     {
-                        // 2D方框
                         Draw.Draw2DBox(_brush_yellow, pickupPosV2, pickupBoxV2);
+
+                        // Pickup 2D射线
+                        if (Setting.ESP_Pickup_Line)
+                            Draw.Draw2DLine(_brush_yellow, pickupPosV2, pickupBoxV2);
                     }
 
-                    if (Setting.ESP_Line)
+                    // Pickup 3D方框
+                    if (Setting.ESP_Pickup_3DBox)
                     {
-                        // 2DBox射线
-                        Draw.Draw2DLine(_brush_yellow, pickupPosV2, pickupBoxV2);
-                    }
-
-                    // m_heading    0x20
-                    // m_heading2   0x24
-                    var v2PickupSinCos = new Vector2
-                    {
-                        X = Memory.Read<float>(pCNavigation + CNavigation.RightX),
-                        Y = Memory.Read<float>(pCNavigation + CNavigation.ForwardX)
-                    };
-
-                    if (Setting.ESP_3DBox)
-                    {
-                        // 3DBox
                         Draw.DrawAABBBox(_brush_yellow, pickupPosV3, v2PickupSinCos, 0.2f, 1.0f);
+
+                        // Pickup 3D射线
+                        if (Setting.ESP_Pickup_Line)
+                            Draw.DrawAABBLine(_brush_yellow, pickupPosV3);
                     }
                 }
             }
@@ -567,105 +518,115 @@ public class Overlay : IDisposable
     {
         while (_isRun)
         {
-            if (Setting.AimBot_Enabled)
+            if (!Setting.AimBot_Player_Enabled && !Setting.AimBot_NPC_Enabled)
+                goto SLEEP;
+
+            var aimBot_Min_Distance = Setting.AimBot_Fov;
+            var aimBot_ViewAngles = new Vector3() { X = 0, Y = 0, Z = 0 };
+            var teleW_pedCoords = new Vector3() { X = 0, Y = 0, Z = 0 };
+
+            var pWordPTR = Memory.Read<long>(Pointers.WorldPTR);
+            var pLocalCPed = Memory.Read<long>(pWordPTR + CPedFactory.CPed);
+
+            var isInVehicle = Vehicle.IsInVehicle(pLocalCPed);
+
+            // 相机坐标
+            var pCCameraPTR = Memory.Read<long>(Pointers.CCameraPTR);
+            var pCCameraPTR_0 = Memory.Read<long>(pCCameraPTR + 0x00);
+            pCCameraPTR_0 = Memory.Read<long>(pCCameraPTR_0 + 0x3C0);
+            var cameraV3Pos = Memory.Read<Vector3>(pCCameraPTR_0 + 0x60);
+
+            // 是否是第一人称，当Fov=0为第一人称或者开镜状态，第三人称50
+            var offset = Memory.Read<long>(pCCameraPTR_0 + 0x10);
+            var isFPP = Memory.Read<float>(offset + 0x30);
+
+            // Ped实体
+            var pReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
+            var pCPedInterface = Memory.Read<long>(pReplayInterface + +CReplayInterface.CPedInterface);
+
+            for (var i = 0; i < Base.oMaxPeds; i++)
             {
-                var aimBot_Min_Distance = Setting.AimBot_Fov;
-                var aimBot_ViewAngles = new Vector3() { X = 0, Y = 0, Z = 0 };
-                var teleW_pedCoords = new Vector3() { X = 0, Y = 0, Z = 0 };
+                var pCPedList = Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
+                var pCPed = Memory.Read<long>(pCPedList + i * 0x10);      // CEntityEntry
+                if (!Memory.IsValid(pCPed))
+                    continue;
 
-                var pWordPTR = Memory.Read<long>(Pointers.WorldPTR);
-                var pLocalCPed = Memory.Read<long>(pWordPTR + CPedFactory.CPed);
+                // 如果是自己，跳过
+                if (pLocalCPed == pCPed)
+                    continue;
 
-                var oInVehicle = Memory.Read<byte>(pLocalCPed + CPed.InVehicle);
+                // 如果ped死亡，跳过
+                var ped_Health = Memory.Read<float>(pCPed + CPed.Health);
+                if (ped_Health <= 0)
+                    continue;
 
-                // 相机坐标
-                var pCCameraPTR = Memory.Read<long>(Pointers.CCameraPTR);
-                var pCCameraPTR_0 = Memory.Read<long>(pCCameraPTR + 0x00);
-                pCCameraPTR_0 = Memory.Read<long>(pCCameraPTR_0 + 0x3C0);
-                var cameraV3Pos = Memory.Read<Vector3>(pCCameraPTR_0 + 0x60);
+                var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
 
-                // 是否是第一人称，当Fov=0为第一人称或者开镜状态，第三人称50
-                var offset = Memory.Read<long>(pCCameraPTR_0 + 0x10);
-                var isFPP = Memory.Read<float>(offset + 0x30);
+                // 玩家的pCPlayerInfo为有效指针，IsValid返回为true
+                // NPC的pCPlayerInfo为无效指针，IsValid返回为false
+                var isPlayer = Memory.IsValid(pCPlayerInfo);
+                var isNPC = !isPlayer;
 
-                // Ped实体
-                var pReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-                var pCPedInterface = Memory.Read<long>(pReplayInterface + +CReplayInterface.CPedInterface);
-
-                for (var i = 0; i < Base.oMaxPeds; i++)
+                // AimBot 玩家
+                if (isPlayer)
                 {
-                    var pCPedList = Memory.Read<long>(pCPedInterface + CPedInterface.CPedList);
-                    var pCPed = Memory.Read<long>(pCPedList + i * 0x10);      // CEntityEntry
-                    if (!Memory.IsValid(pCPed))
-                        continue;
-
-                    // 如果是自己，跳过
-                    if (pLocalCPed == pCPed)
-                        continue;
-
-                    // 如果ped死亡，跳过
-                    var ped_Health = Memory.Read<float>(pCPed + CPed.Health);
-                    if (ped_Health <= 0)
-                        continue;
-
-                    var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
-
-                    // 绘制玩家
                     if (!Setting.ESP_Player)
-                    {
-                        // 跳过玩家，IsValid返回为true
-                        if (Memory.IsValid(pCPlayerInfo))
-                            continue;
-                    }
+                        continue;
 
-                    // 绘制Ped
-                    if (!Setting.ESP_NPC)
-                    {
-                        // 跳过其他，NPC的pCPlayerInfo为0，IsValid返回为false
-                        if (!Memory.IsValid(pCPlayerInfo))
-                            continue;
-                    }
-
-                    var pedV3Pos = Memory.Read<Vector3>(pCPed + CPed.VisualX);
-                    var pedV2Pos = Core.WorldToScreen(pedV3Pos);
-
-                    // 自瞄数据
-                    var aimBot_Distance = (float)Math.Sqrt(Math.Pow(pedV2Pos.X - _gviewWidth, 2) + Math.Pow(pedV2Pos.Y - _gviewHeight, 2));
-                    // 获取距离准心最近的方框
-                    if (aimBot_Distance < aimBot_Min_Distance)
-                    {
-                        aimBot_Min_Distance = aimBot_Distance;
-                        aimBot_ViewAngles = Core.GetCCameraViewAngles(cameraV3Pos, Core.GetBonePosition(pCPed, Setting.AimBot_BoneIndex));
-                        teleW_pedCoords = pedV3Pos;
-                    }
+                    if (!Setting.AimBot_Player_Enabled)
+                        continue;
                 }
 
-                // 玩家处于载具或者掩护状态中不启用自瞄，无目标取消自瞄
-                if (oInVehicle != 0x01 && aimBot_Min_Distance != Setting.AimBot_Fov)
+                // AimBot NPC
+                if (isNPC)
                 {
-                    // 默认按住Ctrl键自瞄
-                    if (KeyHelper.IsKeyPressed(Setting.AimBot_Key))
-                    {
-                        if (isFPP == 0)
-                        {
-                            // 第一人称及开镜自瞄
-                            Memory.Write(pCCameraPTR_0 + 0x40, aimBot_ViewAngles);
-                        }
-                        else
-                        {
-                            // 第三人称及自瞄
-                            Memory.Write(pCCameraPTR_0 + 0x3D0, aimBot_ViewAngles);
-                        }
+                    if (!Setting.ESP_NPC)
+                        continue;
 
-                        if (KeyHelper.IsKeyPressed(WinVK.F5))
-                        {
-                            Teleport.SetTeleportPosition(teleW_pedCoords);
-                        }
+                    if (!Setting.AimBot_NPC_Enabled)
+                        continue;
+                }
+
+                var pedV3Pos = Memory.Read<Vector3>(pCPed + CPed.VisualX);
+                var pedV2Pos = Core.WorldToScreen(pedV3Pos);
+
+                // 自瞄数据
+                var aimBot_Distance = (float)Math.Sqrt(Math.Pow(pedV2Pos.X - _gviewWidth, 2) + Math.Pow(pedV2Pos.Y - _gviewHeight, 2));
+                // 获取距离准心最近的方框
+                if (aimBot_Distance < aimBot_Min_Distance)
+                {
+                    aimBot_Min_Distance = aimBot_Distance;
+                    aimBot_ViewAngles = Core.GetCCameraViewAngles(cameraV3Pos, Core.GetBonePosition(pCPed, Setting.AimBot_BoneIndex));
+                    teleW_pedCoords = pedV3Pos;
+                }
+            }
+
+            // 玩家处于载具或者掩护状态中不启用自瞄，无目标取消自瞄
+            if (!isInVehicle && aimBot_Min_Distance != Setting.AimBot_Fov)
+            {
+                // 默认按住Ctrl键自瞄
+                if (KeyHelper.IsKeyPressed(Setting.AimBot_Key))
+                {
+                    if (isFPP == 0)
+                    {
+                        // 第一人称及开镜自瞄
+                        Memory.Write(pCCameraPTR_0 + 0x40, aimBot_ViewAngles);
+                    }
+                    else
+                    {
+                        // 第三人称及自瞄
+                        Memory.Write(pCCameraPTR_0 + 0x3D0, aimBot_ViewAngles);
+                    }
+
+                    if (KeyHelper.IsKeyPressed(WinVK.F5))
+                    {
+                        Teleport.SetTeleportPosition(teleW_pedCoords);
                     }
                 }
             }
 
-            Thread.Sleep(1);
+        SLEEP:
+            Thread.Sleep(10);
         }
     }
 

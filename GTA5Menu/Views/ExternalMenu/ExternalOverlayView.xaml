@@ -21,18 +21,132 @@
                         Click="CheckBox_ESP_Player_Click"
                         Content="显示玩家"
                         IsChecked="True" />
+                    <StackPanel Margin="5,0,0,0">
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Player_2DBox"
+                            Click="CheckBox_ESP_Player_2DBox_Click"
+                            Content="显示2D方框"
+                            IsChecked="True"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Player, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Player_3DBox"
+                            Click="CheckBox_ESP_Player_3DBox_Click"
+                            Content="显示3D方框"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Player, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Player_Line"
+                            Click="CheckBox_ESP_Player_Line_Click"
+                            Content="显示射线"
+                            IsChecked="True"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Player, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Player_Bone"
+                            Click="CheckBox_ESP_Player_Bone_Click"
+                            Content="显示骨骼 #"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Player, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Player_HealthBar"
+                            Click="CheckBox_ESP_Player_HealthBar_Click"
+                            Content="显示血条"
+                            IsChecked="True"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Player, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Player_HealthText"
+                            Click="CheckBox_ESP_Player_HealthText_Click"
+                            Content="显示数字血量 #"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Player, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Player_NameText"
+                            Click="CheckBox_ESP_Player_NameText_Click"
+                            Content="显示玩家信息 #"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Player, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_AimBot_Player_Enabled"
+                            Click="CheckBox_AimBot_Player_Enabled_Click"
+                            Content="开启Aimbot"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Player, Path=IsChecked}" />
+                    </StackPanel>
+                    <TextBlock />
+                    <!--  ////////////////  -->
                     <CheckBox
                         x:Name="CheckBox_ESP_NPC"
                         Click="CheckBox_ESP_NPC_Click"
                         Content="显示NPC"
                         IsChecked="True" />
+                    <StackPanel Margin="5,0,0,0">
+                        <CheckBox
+                            x:Name="CheckBox_ESP_NPC_2DBox"
+                            Click="CheckBox_ESP_NPC_2DBox_Click"
+                            Content="显示2D方框"
+                            IsChecked="True"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_NPC, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_NPC_3DBox"
+                            Click="CheckBox_ESP_NPC_3DBox_Click"
+                            Content="显示3D方框"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_NPC, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_NPC_Line"
+                            Click="CheckBox_ESP_NPC_Line_Click"
+                            Content="显示射线"
+                            IsChecked="True"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_NPC, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_NPC_Bone"
+                            Click="CheckBox_ESP_NPC_Bone_Click"
+                            Content="显示骨骼 #"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_NPC, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_NPC_HealthBar"
+                            Click="CheckBox_ESP_NPC_HealthBar_Click"
+                            Content="显示血条"
+                            IsChecked="True"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_NPC, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_NPC_HealthText"
+                            Click="CheckBox_ESP_NPC_HealthText_Click"
+                            Content="显示数字血量 #"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_NPC, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_NPC_NameText"
+                            Click="CheckBox_ESP_NPC_NameText_Click"
+                            Content="显示NPC信息 #"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_NPC, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_AimBot_NPC_Enabled"
+                            Click="CheckBox_AimBot_NPC_Enabled_Click"
+                            Content="开启Aimbot"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_NPC, Path=IsChecked}" />
+                    </StackPanel>
+                </StackPanel>
+                <!--  ////////////////  -->
+                <StackPanel>
                     <CheckBox
                         x:Name="CheckBox_ESP_Pickup"
                         Click="CheckBox_ESP_Pickup_Click"
                         Content="显示掉落物品"
                         IsChecked="True" />
+                    <StackPanel Margin="5,0,0,0">
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Pickup_2DBox"
+                            Click="CheckBox_ESP_Pickup_2DBox_Click"
+                            Content="显示2D方框"
+                            IsChecked="True"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Pickup, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Pickup_3DBox"
+                            Click="CheckBox_ESP_Pickup_3DBox_Click"
+                            Content="显示3D方框"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Pickup, Path=IsChecked}" />
+                        <CheckBox
+                            x:Name="CheckBox_ESP_Pickup_Line"
+                            Click="CheckBox_ESP_Pickup_Line_Click"
+                            Content="显示射线"
+                            IsChecked="True"
+                            IsEnabled="{Binding ElementName=CheckBox_ESP_Pickup, Path=IsChecked}" />
+                    </StackPanel>
                     <TextBlock />
-
+                    <!--  ////////////////  -->
                     <CheckBox
                         x:Name="CheckBox_ESP_Crosshair"
                         Click="CheckBox_ESP_Crosshair_Click"
@@ -43,50 +157,11 @@
                         Click="CheckBox_ESP_InfoText_Click"
                         Content="显示绘制信息"
                         IsChecked="True" />
-                    <TextBlock />
-
-                    <CheckBox
-                        x:Name="CheckBox_AimBot_Enabled"
-                        Click="CheckBox_AimBot_Enabled_Click"
-                        Content="开启Aimbot" />
                     <CheckBox
                         x:Name="CheckBox_NoTopMostHide"
                         Click="CheckBox_NoTopMostHide_Click"
                         Content="非游戏状态隐藏" />
-                </StackPanel>
-                <!--  //////////////  -->
-                <StackPanel>
-                    <CheckBox
-                        x:Name="CheckBox_ESP_2DBox"
-                        Click="CheckBox_ESP_2DBox_Click"
-                        Content="显示2D方框"
-                        IsChecked="True" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_3DBox"
-                        Click="CheckBox_ESP_3DBox_Click"
-                        Content="显示3D方框" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_2DLine"
-                        Click="CheckBox_ESP_2DLine_Click"
-                        Content="显示射线"
-                        IsChecked="True" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_Bone"
-                        Click="CheckBox_ESP_Bone_Click"
-                        Content="显示骨骼 #" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_2DHealthBar"
-                        Click="CheckBox_ESP_2DHealthBar_Click"
-                        Content="显示血条"
-                        IsChecked="True" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_HealthText"
-                        Click="CheckBox_ESP_HealthText_Click"
-                        Content="显示数字血量 #" />
-                    <CheckBox
-                        x:Name="CheckBox_ESP_NameText"
-                        Click="CheckBox_ESP_NameText_Click"
-                        Content="显示玩家信息 #" />
+
                 </StackPanel>
             </UniformGrid>
         </StackPanel>

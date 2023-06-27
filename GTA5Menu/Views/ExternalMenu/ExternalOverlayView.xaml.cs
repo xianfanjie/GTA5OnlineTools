@@ -70,34 +70,16 @@ public partial class ExternalOverlayView : UserControl
         Setting.ESP_Player = CheckBox_ESP_Player.IsChecked == true;
     }
 
-    private void CheckBox_ESP_Player_2DBox_Click(object sender, RoutedEventArgs e)
+    private void RadioButton_ESP_Player_2DBox_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_Player_2DBox.IsChecked == true)
-        {
-            Setting.ESP_Player_2DBox = true;
-            Setting.ESP_Player_3DBox = false;
-
-            CheckBox_ESP_Player_3DBox.IsChecked = false;
-        }
-        else
-        {
-            Setting.ESP_Player_2DBox = false;
-        }
+        Setting.ESP_Player_2DBox = RadioButton_ESP_Player_2DBox.IsChecked == true;
+        Setting.ESP_Player_3DBox = RadioButton_ESP_Player_3DBox.IsChecked == true;
     }
 
-    private void CheckBox_ESP_Player_3DBox_Click(object sender, RoutedEventArgs e)
+    private void RadioButton_ESP_Player_3DBox_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_Player_3DBox.IsChecked == true)
-        {
-            Setting.ESP_Player_3DBox = true;
-            Setting.ESP_Player_2DBox = false;
-
-            CheckBox_ESP_Player_2DBox.IsChecked = false;
-        }
-        else
-        {
-            Setting.ESP_Player_3DBox = false;
-        }
+        Setting.ESP_Player_2DBox = RadioButton_ESP_Player_2DBox.IsChecked == true;
+        Setting.ESP_Player_3DBox = RadioButton_ESP_Player_3DBox.IsChecked == true;
     }
 
     private void CheckBox_ESP_Player_Line_Click(object sender, RoutedEventArgs e)
@@ -137,34 +119,16 @@ public partial class ExternalOverlayView : UserControl
         Setting.ESP_NPC = CheckBox_ESP_NPC.IsChecked == true;
     }
 
-    private void CheckBox_ESP_NPC_2DBox_Click(object sender, RoutedEventArgs e)
+    private void RadioButton_ESP_NPC_2DBox_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_NPC_2DBox.IsChecked == true)
-        {
-            Setting.ESP_NPC_2DBox = true;
-            Setting.ESP_NPC_3DBox = false;
-
-            CheckBox_ESP_NPC_3DBox.IsChecked = false;
-        }
-        else
-        {
-            Setting.ESP_NPC_2DBox = false;
-        }
+        Setting.ESP_NPC_2DBox = RadioButton_ESP_NPC_2DBox.IsChecked == true;
+        Setting.ESP_NPC_3DBox = RadioButton_ESP_NPC_3DBox.IsChecked == true;
     }
 
-    private void CheckBox_ESP_NPC_3DBox_Click(object sender, RoutedEventArgs e)
+    private void RadioButton_ESP_NPC_3DBox_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_NPC_3DBox.IsChecked == true)
-        {
-            Setting.ESP_NPC_3DBox = true;
-            Setting.ESP_NPC_2DBox = false;
-
-            CheckBox_ESP_NPC_2DBox.IsChecked = false;
-        }
-        else
-        {
-            Setting.ESP_NPC_3DBox = false;
-        }
+        Setting.ESP_NPC_2DBox = RadioButton_ESP_NPC_2DBox.IsChecked == true;
+        Setting.ESP_NPC_3DBox = RadioButton_ESP_NPC_3DBox.IsChecked == true;
     }
 
     private void CheckBox_ESP_NPC_Line_Click(object sender, RoutedEventArgs e)
@@ -204,34 +168,16 @@ public partial class ExternalOverlayView : UserControl
         Setting.ESP_Pickup = CheckBox_ESP_Pickup.IsChecked == true;
     }
 
-    private void CheckBox_ESP_Pickup_2DBox_Click(object sender, RoutedEventArgs e)
+    private void RadioButton_ESP_Pickup_2DBox_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_Pickup_2DBox.IsChecked == true)
-        {
-            Setting.ESP_Pickup_2DBox = true;
-            Setting.ESP_Pickup_3DBox = false;
-
-            CheckBox_ESP_Pickup_3DBox.IsChecked = false;
-        }
-        else
-        {
-            Setting.ESP_Pickup_2DBox = false;
-        }
+        Setting.ESP_Pickup_2DBox = RadioButton_ESP_Pickup_2DBox.IsChecked == true;
+        Setting.ESP_Pickup_3DBox = RadioButton_ESP_Pickup_3DBox.IsChecked == true;
     }
 
-    private void CheckBox_ESP_Pickup_3DBox_Click(object sender, RoutedEventArgs e)
+    private void RadioButton_ESP_Pickup_3DBox_Click(object sender, RoutedEventArgs e)
     {
-        if (CheckBox_ESP_Pickup_3DBox.IsChecked == true)
-        {
-            Setting.ESP_Pickup_3DBox = true;
-            Setting.ESP_Pickup_2DBox = false;
-
-            CheckBox_ESP_Pickup_2DBox.IsChecked = false;
-        }
-        else
-        {
-            Setting.ESP_Pickup_3DBox = false;
-        }
+        Setting.ESP_Pickup_2DBox = RadioButton_ESP_Pickup_2DBox.IsChecked == true;
+        Setting.ESP_Pickup_3DBox = RadioButton_ESP_Pickup_3DBox.IsChecked == true;
     }
 
     private void CheckBox_ESP_Pickup_Line_Click(object sender, RoutedEventArgs e)

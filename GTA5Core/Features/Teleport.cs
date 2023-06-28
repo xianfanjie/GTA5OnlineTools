@@ -183,7 +183,7 @@ public static class Teleport
     /// </summary>
     public static Vector3 GetWaypointPosition()
     {
-        return GetBlipPosition(new int[] { 8 }, new byte[] { 83 }, true);
+        return GetBlipPosition(new int[] { 8 }, new byte[] { 84 }, true);
     }
 
     /// <summary>

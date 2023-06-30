@@ -37,14 +37,32 @@ public static class ProcessHelper
     }
 
     /// <summary>
-    /// 打开http链接或者文件夹路径
+    /// 打开http链接
     /// </summary>
     /// <param name="url"></param>
     public static void OpenLink(string url)
     {
+        if (!url.StartsWith("http"))
+            return;
+
+        Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+    }
+
+    /// <summary>
+    /// 打开文件夹路径
+    /// </summary>
+    /// <param name="path"></param>
+    public static void OpenDir(string path)
+    {
+        if (!Directory.Exists(path))
+        {
+            NotifierHelper.Show(NotifierType.Error, $"要打开的文件夹路径不存在\n{path}");
+            return;
+        }
+
         try
         {
-            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
         }
         catch (Exception ex)
         {
@@ -58,6 +76,12 @@ public static class ProcessHelper
     /// <param name="path">本地文件夹路径</param>
     public static void OpenProcess(string path, string args = "")
     {
+        if (!File.Exists(path))
+        {
+            NotifierHelper.Show(NotifierType.Error, $"要打开的文件路径不存在\n{path}");
+            return;
+        }
+
         try
         {
             Process.Start(path, args);
@@ -74,7 +98,8 @@ public static class ProcessHelper
     /// <param name="path">程序路径</param>
     public static void OpenProcessWithWorkDir(string path)
     {
-        Directory.SetCurrentDirectory(Path.GetDirectoryName(path));
+        var workDir = Path.GetDirectoryName(path);
+        Directory.SetCurrentDirectory(workDir);
         OpenProcess(path);
     }
 
@@ -84,6 +109,12 @@ public static class ProcessHelper
     /// <param name="args"></param>
     public static void Notepad2EditTextFile(string args)
     {
+        if (!File.Exists(args))
+        {
+            NotifierHelper.Show(NotifierType.Error, $"使用Notepad2编辑文本文件路径不存在\n{args}");
+            return;
+        }
+
         OpenProcess(FileHelper.File_Cache_Notepad2, args);
     }
 

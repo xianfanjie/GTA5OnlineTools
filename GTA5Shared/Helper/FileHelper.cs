@@ -71,7 +71,10 @@ public static class FileHelper
     public static string Dir_AppData { get; private set; }
 
     public static string Dir_BigBaseV2 { get; private set; }
+    public static string Dir_BigBaseV2_Scripts { get; private set; }
     public static string Dir_BigBaseV2_Translations { get; private set; }
+
+    public static string File_BigBaseV2_Settings { get; private set; }
 
     //////////////////////////////////////////////////////////////////
 
@@ -100,7 +103,10 @@ public static class FileHelper
         Dir_Log_NLog = Path.Combine(Dir_Logger, "NLog");
 
         Dir_BigBaseV2 = Path.Combine(Dir_AppData, "BigBaseV2");
+        Dir_BigBaseV2_Scripts = Path.Combine(Dir_BigBaseV2, "scripts");
         Dir_BigBaseV2_Translations = Path.Combine(Dir_BigBaseV2, "translations");
+
+        File_BigBaseV2_Settings = Path.Combine(Dir_BigBaseV2, "settings.json");
 
         File_Kiddion_Kiddion = Path.Combine(Dir_Kiddion, "Kiddion.exe");
         File_Kiddion_KiddionChs = Path.Combine(Dir_Kiddion, "KiddionChs.dll");

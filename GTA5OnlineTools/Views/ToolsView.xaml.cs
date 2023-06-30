@@ -75,9 +75,6 @@ public partial class ToolsView : UserControl
             case "EditHosts":
                 EditHostsClick();
                 break;
-            case "OpenWFMSC":
-                OpenWFMSCClick();
-                break;
                 #endregion
         }
     }
@@ -90,7 +87,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void CurrentDirectoryClick()
     {
-        ProcessHelper.OpenLink(FileUtil.Dir_MainApp);
+        ProcessHelper.OpenDir(FileUtil.Dir_MainApp);
     }
 
     /// <summary>
@@ -98,7 +95,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void ReleaseDirectoryClick()
     {
-        ProcessHelper.OpenLink(FileHelper.Dir_Default);
+        ProcessHelper.OpenDir(FileHelper.Dir_Default);
     }
 
     /// <summary>
@@ -289,14 +286,6 @@ public partial class ToolsView : UserControl
     private void EditHostsClick()
     {
         ProcessHelper.Notepad2EditTextFile(@"C:\windows\system32\drivers\etc\hosts");
-    }
-
-    /// <summary>
-    /// 打开防火墙高级设置
-    /// </summary>
-    private void OpenWFMSCClick()
-    {
-        ProcessHelper.OpenLink("wf.msc");
     }
     #endregion
 }

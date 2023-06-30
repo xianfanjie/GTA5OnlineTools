@@ -188,6 +188,9 @@ public partial class HacksView : UserControl
             case "YimMenuDirectory":
                 YimMenuDirectoryClick();
                 break;
+            case "YimMenuScriptsDirectory":
+                YimMenuScriptsDirectoryClick();
+                break;
             case "EditYimMenuConfig":
                 EditYimMenuConfigClick();
                 break;
@@ -360,7 +363,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void KiddionConfigDirectoryClick()
     {
-        ProcessHelper.OpenLink(FileHelper.Dir_Kiddion);
+        ProcessHelper.OpenDir(FileHelper.Dir_Kiddion);
     }
 
     /// <summary>
@@ -368,7 +371,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void KiddionScriptsDirectoryClick()
     {
-        ProcessHelper.OpenLink(FileHelper.Dir_Kiddion_Scripts);
+        ProcessHelper.OpenDir(FileHelper.Dir_Kiddion_Scripts);
     }
 
     /// <summary>
@@ -530,7 +533,15 @@ public partial class HacksView : UserControl
     /// </summary>
     private void YimMenuDirectoryClick()
     {
-        ProcessHelper.OpenLink(FileHelper.Dir_BigBaseV2);
+        ProcessHelper.OpenDir(FileHelper.Dir_BigBaseV2);
+    }
+
+    /// <summary>
+    /// YimMenu脚本目录
+    /// </summary>
+    private void YimMenuScriptsDirectoryClick()
+    {
+        ProcessHelper.OpenDir(FileHelper.Dir_BigBaseV2_Scripts);
     }
 
     /// <summary>
@@ -538,7 +549,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void EditYimMenuConfigClick()
     {
-        ProcessHelper.Notepad2EditTextFile(FileHelper.Dir_BigBaseV2 + "\\settings.json");
+        ProcessHelper.Notepad2EditTextFile(FileHelper.File_BigBaseV2_Settings);
     }
 
     /// <summary>

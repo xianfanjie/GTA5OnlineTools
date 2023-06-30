@@ -38,7 +38,7 @@ public partial class KiddionWindow
             switch (Name)
             {
                 case "LuaScriptDir":
-                    ProcessHelper.OpenLink(FileHelper.Dir_Kiddion_Scripts);
+                    ProcessHelper.OpenDir(FileHelper.Dir_Kiddion_Scripts);
                     break;
                 case "ClearScriptDir":
                     ClearScriptDirClick();

@@ -210,10 +210,15 @@
                     <StackPanel>
                         <WrapPanel>
                             <Button
-                                Background="#4285F4"
+                                Background="#009AD6"
                                 Command="{Binding ExtraClickCommand}"
                                 CommandParameter="YimMenuDirectory"
                                 Content="配置目录" />
+                            <Button
+                                Background="#00AE9D"
+                                Command="{Binding ExtraClickCommand}"
+                                CommandParameter="YimMenuScriptsDirectory"
+                                Content="脚本目录" />
                             <Button
                                 Background="#34A853"
                                 Command="{Binding ExtraClickCommand}"

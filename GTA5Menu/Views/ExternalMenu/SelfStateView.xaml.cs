@@ -4,8 +4,8 @@ using GTA5HotKey;
 using GTA5Core.Native;
 using GTA5Core.Offsets;
 using GTA5Core.Features;
-using GTA5Shared.Helper;
 using GTA5Core.GTA.Rage;
+using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
 
@@ -52,7 +52,7 @@ public partial class SelfStateView : UserControl
     /// <summary>
     /// 坐标微调距离
     /// </summary>
-    private float MoveDistance = 1.5f;
+    private float _moveDistance = 1.5f;
 
     /////////////////////////////////////////////////////////
 
@@ -107,7 +107,7 @@ public partial class SelfStateView : UserControl
         var isHotKeyFillHealthArmor = IniHelper.ReadValue("ExternalMenu", "IsHotKeyFillHealthArmor");
         var isHotKeyClearWanted = IniHelper.ReadValue("ExternalMenu", "IsHotKeyClearWanted");
 
-        var isHotKeyFillAllAmmo = IniHelper.ReadValue("ExternalMenu", "IsHotKeyFillAllAmmo");
+        var isHotKeyToCrossHair = IniHelper.ReadValue("ExternalMenu", "IsHotKeyToCrossHair");
         var isHotKeyMovingFoward = IniHelper.ReadValue("ExternalMenu", "IsHotKeyMovingFoward");
 
         var isHotKeyNoCollision = IniHelper.ReadValue("ExternalMenu", "IsHotKeyNoCollision");
@@ -121,8 +121,8 @@ public partial class SelfStateView : UserControl
         if (!string.IsNullOrEmpty(isHotKeyClearWanted))
             SelfStateModel.IsHotKeyClearWanted = isHotKeyClearWanted == "1";
 
-        if (!string.IsNullOrEmpty(isHotKeyFillAllAmmo))
-            SelfStateModel.IsHotKeyFillAllAmmo = isHotKeyFillAllAmmo == "1";
+        if (!string.IsNullOrEmpty(isHotKeyToCrossHair))
+            SelfStateModel.IsHotKeyToCrossHair = isHotKeyToCrossHair == "1";
         if (!string.IsNullOrEmpty(isHotKeyMovingFoward))
             SelfStateModel.IsHotKeyMovingFoward = isHotKeyMovingFoward == "1";
 
@@ -140,7 +140,7 @@ public partial class SelfStateView : UserControl
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyFillHealthArmor", $"{Convert.ToInt32(SelfStateModel.IsHotKeyFillHealthArmor)}");
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyClearWanted", $"{Convert.ToInt32(SelfStateModel.IsHotKeyClearWanted)}");
 
-        IniHelper.WriteValue("ExternalMenu", "IsHotKeyFillAllAmmo", $"{Convert.ToInt32(SelfStateModel.IsHotKeyFillAllAmmo)}");
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyToCrossHair", $"{Convert.ToInt32(SelfStateModel.IsHotKeyToCrossHair)}");
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyMovingFoward", $"{Convert.ToInt32(SelfStateModel.IsHotKeyMovingFoward)}");
 
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyNoCollision", $"{Convert.ToInt32(SelfStateModel.IsHotKeyNoCollision)}");
@@ -155,15 +155,15 @@ public partial class SelfStateView : UserControl
         switch (vK)
         {
             case WinVK.F3:
-                if (SelfStateModel.IsHotKeyFillAllAmmo)
+                if (SelfStateModel.IsHotKeyToCrossHair)
                 {
-                    Weapon.FillAllAmmo();
+                    Teleport.ToCrossHair();
                 }
                 break;
             case WinVK.F4:
                 if (SelfStateModel.IsHotKeyMovingFoward)
                 {
-                    Teleport.MoveFoward(MoveDistance);
+                    Teleport.MoveFoward(_moveDistance);
                 }
                 break;
             case WinVK.F5:
@@ -400,7 +400,7 @@ public partial class SelfStateView : UserControl
 
     private void Slider_MoveDistance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        MoveDistance = (float)Slider_MoveDistance.Value;
+        _moveDistance = (float)Slider_MoveDistance.Value;
     }
 
     private void CheckBox_PlayerGodMode_Click(object sender, RoutedEventArgs e)

@@ -54,6 +54,11 @@ public partial class GTA5MenuWindow
     /// </summary>
     private bool IsAppRunning = true;
 
+    /// <summary>
+    /// 显示隐藏菜单按键是否使用Del键
+    /// </summary>
+    private bool IsShowMenuKeyUseDel = true;
+
     ///////////////////////////////////////////
 
     public GTA5MenuWindow()
@@ -72,6 +77,7 @@ public partial class GTA5MenuWindow
 
         // 添加快捷键
         HotKeys.AddKey(WinVK.DELETE);
+        HotKeys.AddKey(WinVK.OEM_3);
         // 订阅按钮事件
         HotKeys.KeyDownEvent += HotKeys_KeyDownEvent;
 
@@ -95,6 +101,7 @@ public partial class GTA5MenuWindow
 
         // 移除快捷键
         HotKeys.RemoveKey(WinVK.DELETE);
+        HotKeys.RemoveKey(WinVK.OEM_3);
         // 取消订阅按钮事件（2023/06/24 这里一定要取消订阅，否则会照成事件累加）
         HotKeys.KeyDownEvent -= HotKeys_KeyDownEvent;
     }
@@ -171,7 +178,12 @@ public partial class GTA5MenuWindow
         switch (vK)
         {
             case WinVK.DELETE:
-                ShowWindow();
+                if(IsShowMenuKeyUseDel)
+                    ShowWindow();
+                break;
+            case WinVK.OEM_3:
+                if (!IsShowMenuKeyUseDel)
+                    ShowWindow();
                 break;
         }
     }
@@ -238,5 +250,10 @@ public partial class GTA5MenuWindow
 
             Thread.Sleep(200);
         }
+    }
+
+    private void RadioButton_ShowMenuKey_Del_Click(object sender, RoutedEventArgs e)
+    {
+        IsShowMenuKeyUseDel = RadioButton_ShowMenuKey_Del.IsChecked == true;
     }
 }

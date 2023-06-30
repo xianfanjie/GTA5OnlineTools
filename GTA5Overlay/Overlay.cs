@@ -292,10 +292,12 @@ public class Overlay : IDisposable
             {
                 if (Setting.ESP_Player && isPlayer)
                 {
-                    // 玩家 2D方框
-                    if (Setting.ESP_Player_2DBox)
+                    // 玩家 2D
+                    if (Setting.ESP_Player_2D)
                     {
-                        Draw.Draw2DBox(_brush_red, pedPosV2, pedBoxV2);
+                        // 玩家 2D方框
+                        if (Setting.ESP_Player_Box)
+                            Draw.Draw2DBox(_brush_red, pedPosV2, pedBoxV2);
 
                         // 玩家 2D射线
                         if (Setting.ESP_Player_Line)
@@ -314,10 +316,12 @@ public class Overlay : IDisposable
                             Draw.Draw2DNameText(_font_YaHei, _brush_red, pedPosV2, pedBoxV2, pedName, distance);
                     }
 
-                    // 玩家 3D方框
-                    if (Setting.ESP_Player_3DBox)
+                    // 玩家 3D
+                    if (Setting.ESP_Player_3D)
                     {
-                        Draw.DrawAABBBox(_brush_red, pedPosV3, v2PedSinCos);
+                        // 玩家 3D方框
+                        if (Setting.ESP_Player_Box)
+                            Draw.DrawAABBBox(_brush_red, pedPosV3, v2PedSinCos);
 
                         // 玩家 3D射线
                         if (Setting.ESP_Player_Line)
@@ -352,10 +356,12 @@ public class Overlay : IDisposable
 
                 if (Setting.ESP_NPC && isNPC)
                 {
-                    // NPC 2D方框
-                    if (Setting.ESP_NPC_2DBox)
+                    // NPC 2D
+                    if (Setting.ESP_NPC_2D)
                     {
-                        Draw.Draw2DBox(_brush_white, pedPosV2, pedBoxV2);
+                        // NPC 2D方框
+                        if (Setting.ESP_NPC_Box)
+                            Draw.Draw2DBox(_brush_white, pedPosV2, pedBoxV2);
 
                         // NPC 2D射线
                         if (Setting.ESP_NPC_Line)
@@ -374,10 +380,12 @@ public class Overlay : IDisposable
                             Draw.Draw2DNameText(_font_YaHei, _brush_white, pedPosV2, pedBoxV2, pedName, distance);
                     }
 
-                    // NPC 3D方框
-                    if (Setting.ESP_NPC_3DBox)
+                    // NPC 3D
+                    if (Setting.ESP_NPC_3D)
                     {
-                        Draw.DrawAABBBox(_brush_white, pedPosV3, v2PedSinCos);
+                        // NPC 3D方框
+                        if (Setting.ESP_NPC_Box)
+                            Draw.DrawAABBBox(_brush_white, pedPosV3, v2PedSinCos);
 
                         // NPC 3D射线
                         if (Setting.ESP_NPC_Line)
@@ -454,7 +462,7 @@ public class Overlay : IDisposable
                 if (Setting.ESP_Pickup)
                 {
                     // Pickup 2D方框
-                    if (Setting.ESP_Pickup_2DBox)
+                    if (Setting.ESP_Pickup_2D)
                     {
                         Draw.Draw2DBox(_brush_yellow, pickupPosV2, pickupBoxV2);
 
@@ -464,7 +472,7 @@ public class Overlay : IDisposable
                     }
 
                     // Pickup 3D方框
-                    if (Setting.ESP_Pickup_3DBox)
+                    if (Setting.ESP_Pickup_3D)
                     {
                         Draw.DrawAABBBox(_brush_yellow, pickupPosV3, v2PickupSinCos, 0.2f, 1.0f);
 

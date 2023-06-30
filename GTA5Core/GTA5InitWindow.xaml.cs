@@ -236,6 +236,15 @@ public partial class GTA5InitWindow
         Pointers.HeightPTR = Memory.FindPattern(Mask.Height);
         Logger($"《GTA5》HeightPTR 0x{Pointers.HeightPTR:x}");
 
+#if DEBUG
+        Test();
+#endif
+
         return true;
+    }
+
+    private void Test()
+    {
+
     }
 }

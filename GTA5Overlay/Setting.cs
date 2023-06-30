@@ -9,8 +9,9 @@ public static class Setting
 
     // Player
     public static bool ESP_Player = true;
-    public static bool ESP_Player_2DBox = true;
-    public static bool ESP_Player_3DBox = false;
+    public static bool ESP_Player_2D = true;
+    public static bool ESP_Player_3D = false;
+    public static bool ESP_Player_Box = true;
     public static bool ESP_Player_Line = true;
     public static bool ESP_Player_Bone = false;
     public static bool ESP_Player_HealthBar = true;
@@ -20,8 +21,9 @@ public static class Setting
 
     // NPC
     public static bool ESP_NPC = true;
-    public static bool ESP_NPC_2DBox = true;
-    public static bool ESP_NPC_3DBox = false;
+    public static bool ESP_NPC_2D = true;
+    public static bool ESP_NPC_3D = false;
+    public static bool ESP_NPC_Box = true;
     public static bool ESP_NPC_Line = true;
     public static bool ESP_NPC_Bone = false;
     public static bool ESP_NPC_HealthBar = true;
@@ -31,8 +33,9 @@ public static class Setting
 
     // Pickup
     public static bool ESP_Pickup = true;
-    public static bool ESP_Pickup_2DBox = true;
-    public static bool ESP_Pickup_3DBox = false;
+    public static bool ESP_Pickup_2D = true;
+    public static bool ESP_Pickup_3D = false;
+    public static bool ESP_Pickup_Box = true;
     public static bool ESP_Pickup_Line = true;
 
     public static bool ESP_Crosshair = true;
@@ -50,8 +53,9 @@ public static class Setting
         FPS = 300;
 
         ESP_Player = true;
-        ESP_Player_2DBox = true;
-        ESP_Player_3DBox = false;
+        ESP_Player_2D = true;
+        ESP_Player_3D = false;
+        ESP_Player_Box = true;
         ESP_Player_Line = true;
         ESP_Player_Bone = false;
         ESP_Player_HealthBar = true;
@@ -60,8 +64,9 @@ public static class Setting
         AimBot_Player_Enabled = false;
 
         ESP_NPC = true;
-        ESP_NPC_2DBox = true;
-        ESP_NPC_3DBox = false;
+        ESP_NPC_2D = true;
+        ESP_NPC_3D = false;
+        ESP_NPC_Box = true;
         ESP_NPC_Line = true;
         ESP_NPC_Bone = false;
         ESP_NPC_HealthBar = true;
@@ -70,8 +75,9 @@ public static class Setting
         AimBot_NPC_Enabled = false;
 
         ESP_Pickup = true;
-        ESP_Pickup_2DBox = true;
-        ESP_Pickup_3DBox = false;
+        ESP_Pickup_2D = true;
+        ESP_Pickup_3D = false;
+        ESP_Pickup_Box = true;
         ESP_Pickup_Line = true;
 
         ESP_Crosshair = true;

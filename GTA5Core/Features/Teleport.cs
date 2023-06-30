@@ -53,20 +53,12 @@ public static class Teleport
     /// <summary>
     /// 传送到Blips
     /// </summary>
-    public static void ToBlips(int blipId)
-    {
-        SetTeleportPosition(GetBlipPosition(blipId));
-    }
-
-    /// <summary>
-    /// 传送到Blips（带颜色ID）
-    /// </summary>
-    public static void ToBlips(int blipId, byte blipColor)
+    public static void ToBlips(int blipId, byte blipColor = 0)
     {
         if (blipColor == 0)
-            SetTeleportPosition(GetBlipPosition(blipId));
+            SetTeleportPosition(GetBlipPosition(new int[] { blipId }));
         else
-            SetTeleportPosition(GetBlipPosition(blipId, blipColor));
+            SetTeleportPosition(GetBlipPosition(new int[] { blipId }, new byte[] { blipColor }));
     }
 
     /// <summary>
@@ -101,32 +93,15 @@ public static class Teleport
     /// <summary>
     /// 获取Blip坐标
     /// </summary>
-    public static Vector3 GetBlipPosition(int blipIds)
+    public static Vector3 GetBlipPosition(int[] blipIds, byte[] blipColors = null)
     {
-        for (var i = 1; i <= 2000; i++)
-        {
-            var pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
-            if (!Memory.IsValid(pBlip))
-                continue;
+        if (blipIds is null || blipIds.Length == 0)
+            return Vector3.Zero;
 
-            var dwIcon = Memory.Read<int>(pBlip + 0x40);
-            if (dwIcon != blipIds)
-                continue;
+        var isIgnoreColor = false;
+        if (blipColors is null || blipColors.Length == 0)
+            isIgnoreColor = true;
 
-            var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-            vector3.Z += +1.0f;
-
-            return vector3;
-        }
-
-        return Vector3.Zero;
-    }
-
-    /// <summary>
-    /// 获取Blip坐标
-    /// </summary>
-    public static Vector3 GetBlipPosition(int blipIds, byte blipColors)
-    {
         for (var i = 1; i <= 2000; i++)
         {
             var pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
@@ -135,42 +110,21 @@ public static class Teleport
 
             var dwIcon = Memory.Read<int>(pBlip + 0x40);
             var dwColor = Memory.Read<byte>(pBlip + 0x48);
-            if (blipIds != dwIcon ||
-                blipColors != dwColor)
-                continue;
 
-            var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-            vector3.Z += +1.0f;
-
-            return vector3;
-        }
-
-        return Vector3.Zero;
-    }
-
-    /// <summary>
-    /// 获取Blip坐标
-    /// </summary>
-    public static Vector3 GetBlipPosition(int[] blipIds, byte[] blipColors, bool isUser = false)
-    {
-        for (var i = 1; i <= 2000; i++)
-        {
-            var pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
-            if (!Memory.IsValid(pBlip))
-                continue;
-
-            var dwIcon = Memory.Read<int>(pBlip + 0x40);
-            var dwColor = Memory.Read<byte>(pBlip + 0x48);
-            if (!blipIds.Contains(dwIcon) ||
-                !blipColors.Contains(dwColor))
-                continue;
-
-            var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
-
-            if (isUser)
-                vector3.Z = vector3.Z == 20.0f ? -225.0f : vector3.Z + 1.0f;
+            if (isIgnoreColor)
+            {
+                if (!blipIds.Contains(dwIcon))
+                    continue;
+            }
             else
-                vector3.Z += +1.0f;
+            {
+                if (!blipIds.Contains(dwIcon) ||
+                    !blipColors.Contains(dwColor))
+                    continue;
+            }
+
+            var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
+            vector3.Z = vector3.Z == 20.0f ? -225.0f : vector3.Z + 1.0f;
 
             return vector3;
         }
@@ -183,7 +137,7 @@ public static class Teleport
     /// </summary>
     public static Vector3 GetWaypointPosition()
     {
-        return GetBlipPosition(new int[] { 8 }, new byte[] { 84 }, true);
+        return GetBlipPosition(new int[] { 8 }, new byte[] { 84 });
     }
 
     /// <summary>

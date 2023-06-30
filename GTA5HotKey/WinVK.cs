@@ -122,4 +122,5 @@ public enum WinVK : int
     RCONTROL = 0xA3,    // 右Ctrl键
     LMENU = 0xA4,       // 左Alt键
     RMENU = 0xA5,		// 右Alt键
+    OEM_3 = 0xC0,       // `~键
 }

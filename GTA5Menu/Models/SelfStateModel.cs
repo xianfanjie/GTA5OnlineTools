@@ -5,6 +5,18 @@ namespace GTA5Menu.Models;
 public partial class SelfStateModel : ObservableObject
 {
     /// <summary>
+    /// 热键状态 传送到准星位置
+    /// </summary>
+    [ObservableProperty]
+    private bool isHotKeyToCrossHair = false;
+
+    /// <summary>
+    /// 热键状态 坐标向前微调
+    /// </summary>
+    [ObservableProperty]
+    private bool isHotKeyMovingFoward = false;
+
+    /// <summary>
     /// 热键状态 传送到导航点
     /// </summary>
     [ObservableProperty]
@@ -27,18 +39,6 @@ public partial class SelfStateModel : ObservableObject
     /// </summary>
     [ObservableProperty]
     private bool isHotKeyClearWanted = true;
-
-    /// <summary>
-    /// 热键状态 补满全部武器弹药
-    /// </summary>
-    [ObservableProperty]
-    private bool isHotKeyFillAllAmmo = false;
-
-    /// <summary>
-    /// 热键状态 坐标向前微调
-    /// </summary>
-    [ObservableProperty]
-    private bool isHotKeyMovingFoward = false;
 
     /// <summary>
     /// 热键状态 玩家无碰撞体积（穿墙）

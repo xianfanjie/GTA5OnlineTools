@@ -107,7 +107,7 @@ public partial class SelfStateView : UserControl
         var isHotKeyFillHealthArmor = IniHelper.ReadValue("ExternalMenu", "IsHotKeyFillHealthArmor");
         var isHotKeyClearWanted = IniHelper.ReadValue("ExternalMenu", "IsHotKeyClearWanted");
 
-        var isHotKeyToCrossHair = IniHelper.ReadValue("ExternalMenu", "IsHotKeyToCrossHair");
+        var isHotKeyFillAllAmmo = IniHelper.ReadValue("ExternalMenu", "IsHotKeyFillAllAmmo");
         var isHotKeyMovingFoward = IniHelper.ReadValue("ExternalMenu", "IsHotKeyMovingFoward");
 
         var isHotKeyNoCollision = IniHelper.ReadValue("ExternalMenu", "IsHotKeyNoCollision");
@@ -121,8 +121,8 @@ public partial class SelfStateView : UserControl
         if (!string.IsNullOrEmpty(isHotKeyClearWanted))
             SelfStateModel.IsHotKeyClearWanted = isHotKeyClearWanted == "1";
 
-        if (!string.IsNullOrEmpty(isHotKeyToCrossHair))
-            SelfStateModel.IsHotKeyToCrossHair = isHotKeyToCrossHair == "1";
+        if (!string.IsNullOrEmpty(isHotKeyFillAllAmmo))
+            SelfStateModel.IsHotKeyFillAllAmmo = isHotKeyFillAllAmmo == "1";
         if (!string.IsNullOrEmpty(isHotKeyMovingFoward))
             SelfStateModel.IsHotKeyMovingFoward = isHotKeyMovingFoward == "1";
 
@@ -140,7 +140,7 @@ public partial class SelfStateView : UserControl
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyFillHealthArmor", $"{Convert.ToInt32(SelfStateModel.IsHotKeyFillHealthArmor)}");
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyClearWanted", $"{Convert.ToInt32(SelfStateModel.IsHotKeyClearWanted)}");
 
-        IniHelper.WriteValue("ExternalMenu", "IsHotKeyToCrossHair", $"{Convert.ToInt32(SelfStateModel.IsHotKeyToCrossHair)}");
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyFillAllAmmo", $"{Convert.ToInt32(SelfStateModel.IsHotKeyFillAllAmmo)}");
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyMovingFoward", $"{Convert.ToInt32(SelfStateModel.IsHotKeyMovingFoward)}");
 
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyNoCollision", $"{Convert.ToInt32(SelfStateModel.IsHotKeyNoCollision)}");
@@ -155,9 +155,9 @@ public partial class SelfStateView : UserControl
         switch (vK)
         {
             case WinVK.F3:
-                if (SelfStateModel.IsHotKeyToCrossHair)
+                if (SelfStateModel.IsHotKeyFillAllAmmo)
                 {
-                    Teleport.ToCrossHair();
+                    Weapon.FillAllAmmo();
                 }
                 break;
             case WinVK.F4:

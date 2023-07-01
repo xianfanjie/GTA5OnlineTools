@@ -115,7 +115,7 @@
                 <CheckBox Content="[F8] 消除警星" IsChecked="{Binding SelfStateModel.IsHotKeyClearWanted, UpdateSourceTrigger=PropertyChanged}" />
 
                 <TextBlock />
-                <CheckBox Content="[F3] 传送到准星位置" IsChecked="{Binding SelfStateModel.IsHotKeyToCrossHair, UpdateSourceTrigger=PropertyChanged}" />
+                <CheckBox Content="[F3] 补满全部武器弹药" IsChecked="{Binding SelfStateModel.IsHotKeyFillAllAmmo, UpdateSourceTrigger=PropertyChanged}" />
                 <CheckBox Content="[F4] 坐标向前微调" IsChecked="{Binding SelfStateModel.IsHotKeyMovingFoward, UpdateSourceTrigger=PropertyChanged}" />
                 <ui:SliderIcon
                     Name="Slider_MoveDistance"

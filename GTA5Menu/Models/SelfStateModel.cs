@@ -5,10 +5,10 @@ namespace GTA5Menu.Models;
 public partial class SelfStateModel : ObservableObject
 {
     /// <summary>
-    /// 热键状态 传送到准星位置
+    /// 热键状态 补满全部武器弹药
     /// </summary>
     [ObservableProperty]
-    private bool isHotKeyToCrossHair = false;
+    private bool isHotKeyFillAllAmmo = false;
 
     /// <summary>
     /// 热键状态 坐标向前微调

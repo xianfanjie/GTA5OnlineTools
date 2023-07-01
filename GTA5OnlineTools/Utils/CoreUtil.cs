@@ -1,4 +1,5 @@
 ﻿using GTA5OnlineTools.Data;
+using System.Security.Principal;
 
 namespace GTA5OnlineTools.Utils;
 
@@ -57,5 +58,26 @@ public static class CoreUtil
         var ts2 = new TimeSpan(dateEnd.Ticks);
 
         return ts1.Subtract(ts2).Duration().ToString("c")[..8];
+    }
+
+    /// <summary>
+    /// 获取管理员状态
+    /// </summary>
+    /// <returns></returns>
+    public static string GetAdminState()
+    {
+        return IsAdministrator() ? "管理员" : "普通";
+    }
+
+    /// <summary>
+    /// 判断是否管理员权限运行
+    /// </summary>
+    /// <returns></returns>
+    public static bool IsAdministrator()
+    {
+        var current = WindowsIdentity.GetCurrent();
+        var windowsPrincipal = new WindowsPrincipal(current);
+        // WindowsBuiltInRole可以枚举出很多权限，例如系统用户、User、Guest等等
+        return windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator);
     }
 }

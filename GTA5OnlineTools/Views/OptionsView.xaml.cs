@@ -47,6 +47,7 @@ public partial class OptionsView : UserControl
 
         TextBlock_Computer.Text = $"{Environment.UserName}";
         TextBlock_Runtime.Text = $"{RuntimeInformation.FrameworkDescription}";
+        TextBlock_Admin.Text = $"{CoreUtil.GetAdminState()}";
         TextBlock_Version.Text = $"{CoreUtil.ClientVersion}";
         TextBlock_Build.Text = $"{CoreUtil.BuildDate}";
     }

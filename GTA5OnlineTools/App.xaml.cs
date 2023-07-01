@@ -97,7 +97,8 @@ public partial class App : Application
         var builder = new StringBuilder();
         builder.AppendLine("===================================");
         builder.AppendLine($"【用户名称】：{Environment.UserName}");
-        builder.AppendLine($"【框架版本】：{RuntimeInformation.FrameworkDescription}"); 
+        builder.AppendLine($"【框架版本】：{RuntimeInformation.FrameworkDescription}");
+        builder.AppendLine($"【软件权限】：{CoreUtil.GetAdminState()}");
         builder.AppendLine($"【程序版本】：{CoreUtil.ClientVersion}");
         builder.AppendLine($"【编译时间】：{CoreUtil.BuildDate}");
         builder.AppendLine($"【操作建议】：请将此日志发送到 GitHub Issues");

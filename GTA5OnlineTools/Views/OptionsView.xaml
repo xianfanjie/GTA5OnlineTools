@@ -63,6 +63,13 @@
                     <TextBlock
                         Width="100"
                         Margin="5"
+                        Text="软件权限" />
+                    <TextBlock x:Name="TextBlock_Admin" Margin="5" />
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock
+                        Width="100"
+                        Margin="5"
                         Text="当前程序版本" />
                     <TextBlock x:Name="TextBlock_Version" Margin="5" />
                 </DockPanel>
@@ -76,67 +83,7 @@
             </StackPanel>
         </StackPanel>
         <!--  ////////////////////////////////////  -->
-        <StackPanel>
-            <ui:LabelIcon Content="常用链接" />
-            <WrapPanel Margin="5">
-                <StackPanel>
-                    <TextBlock
-                        Margin="5"
-                        FontWeight="Black"
-                        Text="Discord加速" />
-                    <TextBlock Margin="5">
-                        <Hyperlink
-                            NavigateUri="https://steampp.net"
-                            RequestNavigate="Hyperlink_RequestNavigate"
-                            ToolTip="https://steampp.net">
-                            Steam++
-                        </Hyperlink>
-                    </TextBlock>
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock
-                        Margin="5"
-                        FontWeight="Black"
-                        Text="Discord聊天" />
-                    <TextBlock Margin="5">
-                        <Hyperlink
-                            NavigateUri="https://discord.com"
-                            RequestNavigate="Hyperlink_RequestNavigate"
-                            ToolTip="https://discord.com">
-                            Discord
-                        </Hyperlink>
-                    </TextBlock>
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock
-                        Margin="5"
-                        FontWeight="Black"
-                        Text="Snipaste截图" />
-                    <TextBlock Margin="5">
-                        <Hyperlink
-                            NavigateUri="https://zh.snipaste.com"
-                            RequestNavigate="Hyperlink_RequestNavigate"
-                            ToolTip="https://zh.snipaste.com">
-                            Snipaste
-                        </Hyperlink>
-                    </TextBlock>
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock
-                        Margin="5"
-                        FontWeight="Black"
-                        Text="免费加速器" />
-                    <TextBlock Margin="5">
-                        <Hyperlink
-                            NavigateUri="https://www.nn.com"
-                            RequestNavigate="Hyperlink_RequestNavigate"
-                            ToolTip="https://www.nn.com">
-                            NN游戏加速器
-                        </Hyperlink>
-                    </TextBlock>
-                </StackPanel>
-            </WrapPanel>
-        </StackPanel>
+        <StackPanel />
     </UniformGrid>
 
 </UserControl>

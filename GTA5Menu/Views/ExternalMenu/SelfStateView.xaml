@@ -104,27 +104,6 @@
                         Content="警察无视" />
                 </StackPanel>
             </UniformGrid>
-
-            <ui:LabelIcon Content="常用功能" />
-            <WrapPanel Margin="5,0,5,0">
-                <Button
-                    x:Name="Button_FillHealth"
-                    Click="Button_FillHealth_Click"
-                    Content="补满血量" />
-                <Button
-                    x:Name="Button_FillArmor"
-                    Click="Button_FillArmor_Click"
-                    Content="补满护甲" />
-                <Button
-                    x:Name="Button_ClearWanted"
-                    Click="Button_ClearWanted_Click"
-                    Content="消除警星" />
-                <Button
-                    x:Name="Button_Suicide"
-                    Background="#EA4335"
-                    Click="Button_Suicide_Click"
-                    Content="玩家自杀" />
-            </WrapPanel>
         </StackPanel>
         <!--  面板2  -->
         <StackPanel>
@@ -156,6 +135,27 @@
                     IsChecked="{Binding SelfStateModel.IsHotKeyNoCollision, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
+            <ui:LabelIcon Content="常用功能" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_FillHealth"
+                    Click="Button_FillHealth_Click"
+                    Content="补满血量" />
+                <Button
+                    x:Name="Button_FillArmor"
+                    Click="Button_FillArmor_Click"
+                    Content="补满护甲" />
+                <Button
+                    x:Name="Button_ClearWanted"
+                    Click="Button_ClearWanted_Click"
+                    Content="消除警星" />
+                <Button
+                    x:Name="Button_Suicide"
+                    Background="#EA4335"
+                    Click="Button_Suicide_Click"
+                    Content="玩家自杀" />
+            </WrapPanel>
+
             <ui:LabelIcon Content="传送功能" />
             <WrapPanel Margin="5,0,5,0">
                 <Button
@@ -166,20 +166,16 @@
                     x:Name="Button_ToObjective"
                     Click="Button_ToObjective_Click"
                     Content="传送到目标点" />
-                <Button
+                <!--<Button
                     x:Name="Button_ToWaypointSuper"
                     Background="#CA64EA"
                     Click="Button_ToWaypointSuper_Click"
-                    Content="传送到导航点（精准）" />
+                    Content="传送到导航点（精准）" />-->
                 <Button
                     x:Name="Button_ToCrossHair"
                     Background="#34A853"
                     Click="Button_ToCrossHair_Click"
                     Content="传送到准星位置" />
-
-                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：精准传送传送时不能移动，否则可能会出现传送到错误位置
-                </TextBlock>
             </WrapPanel>
 
         </StackPanel>

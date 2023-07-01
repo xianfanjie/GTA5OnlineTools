@@ -525,12 +525,12 @@ public partial class SelfStateView : UserControl
         Teleport.ToObjective();
     }
 
-    private void Button_ToWaypointSuper_Click(object sender, RoutedEventArgs e)
-    {
-        AudioHelper.PlayClickSound();
+    //private void Button_ToWaypointSuper_Click(object sender, RoutedEventArgs e)
+    //{
+    //    AudioHelper.PlayClickSound();
 
-        Teleport.ToWaypointSuper();
-    }
+    //    Teleport.ToWaypointSuper();
+    //}
 
     private void Button_ToCrossHair_Click(object sender, RoutedEventArgs e)
     {

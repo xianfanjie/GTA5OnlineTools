@@ -268,52 +268,52 @@ public static class Teleport
     /// <summary>
     /// 传送到导航点（精准）
     /// </summary>
-    public static async void ToWaypointSuper()
-    {
-        var coords = GetWaypointPosition();
-        if (coords == Vector3.Zero)
-            return;
+    //public static async void ToWaypointSuper()
+    //{
+    //    var coords = GetWaypointPosition();
+    //    if (coords == Vector3.Zero)
+    //        return;
 
-        if (coords.Z == -225.0f)
-        {
-            var isFindGround = false;
-            var oldHeight = GetGroundZCoord();
+    //    if (coords.Z == -225.0f)
+    //    {
+    //        var isFindGround = false;
+    //        var oldHeight = GetGroundZCoord();
 
-            for (var z = 0; z < 1000; z += 100)
-            {
-                coords.Z = z;
-                SetTeleportPosition(coords);
+    //        for (var z = 0; z < 1000; z += 100)
+    //        {
+    //            coords.Z = z;
+    //            SetTeleportPosition(coords);
 
-                coords.Z = GetGroundZCoord();
-                if (coords.Z != 0.0f && coords.Z != oldHeight)
-                {
-                    isFindGround = true;
-                    coords.Z += 1.0f;
-                    break;
-                }
+    //            coords.Z = GetGroundZCoord();
+    //            if (coords.Z != 0.0f && coords.Z != oldHeight)
+    //            {
+    //                isFindGround = true;
+    //                coords.Z += 1.0f;
+    //                break;
+    //            }
 
-                await Task.Delay(100);
-            }
+    //            await Task.Delay(100);
+    //        }
 
-            if (!isFindGround)
-                coords.Z = -301.0f;
-        }
+    //        if (!isFindGround)
+    //            coords.Z = -301.0f;
+    //    }
 
-        SetTeleportPosition(coords);
-    }
+    //    SetTeleportPosition(coords);
+    //}
 
     /// <summary>
     /// 获取高度坐标
     /// </summary>
-    public static float GetGroundZCoord()
-    {
-        if (!Memory.IsValid(Pointers.HeightPTR))
-        {
-            Pointers.HeightPTR = Memory.FindPattern(Mask.Height);
-            if (!Memory.IsValid(Pointers.HeightPTR))
-                return -225.0f;
-        }
+    //public static float GetGroundZCoord()
+    //{
+    //    if (!Memory.IsValid(Pointers.HeightPTR))
+    //    {
+    //        Pointers.HeightPTR = Memory.FindPattern(Mask.Height);
+    //        if (!Memory.IsValid(Pointers.HeightPTR))
+    //            return -225.0f;
+    //    }
 
-        return Memory.Read<float>(Pointers.HeightPTR + Base.GroundHeight);
-    }
+    //    return Memory.Read<float>(Pointers.HeightPTR + Base.GroundHeight);
+    //}
 }

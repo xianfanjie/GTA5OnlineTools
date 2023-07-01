@@ -24,7 +24,7 @@ public static class Pointers
 
     public static long UnkPTR = 0;
 
-    public static long HeightPTR = 0;
+    //public static long HeightPTR = 0;
 
     public static void Reset()
     {
@@ -43,5 +43,6 @@ public static class Pointers
         UnkModelPTR = 0;
         LocalScriptsPTR = 0;
         UnkPTR = 0;
+        //HeightPTR = 0;
     }
 }

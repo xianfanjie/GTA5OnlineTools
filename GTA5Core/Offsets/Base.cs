@@ -2,7 +2,7 @@
 
 public struct Base
 {
-    public const int GroundHeight = 0xA;
+    //public const int GroundHeight = 0x0A;
 
     public const int Default = 262145;
 

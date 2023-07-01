@@ -8,7 +8,7 @@ namespace GTA5MenuExtra.Views.HeistsEditor.Apartment;
 /// </summary>
 public partial class MoneyView : UserControl
 {
-    private const int apart_radio = 1938365 + 3008;     // +1 +2 +3 +4
+    private const int apart_ratio = 1938365 + 3008;     // +1 +2 +3 +4
     private const int apart_money = 262145 + 9300;
 
     public MoneyView()
@@ -18,10 +18,10 @@ public partial class MoneyView : UserControl
 
     private void Button_Read_Click(object sender, RoutedEventArgs e)
     {
-        TextBox_Apart_Player1.Text = Globals.ReadGA<int>(apart_radio + 1).ToString();
-        TextBox_Apart_Player2.Text = Globals.ReadGA<int>(apart_radio + 2).ToString();
-        TextBox_Apart_Player3.Text = Globals.ReadGA<int>(apart_radio + 3).ToString();
-        TextBox_Apart_Player4.Text = Globals.ReadGA<int>(apart_radio + 4).ToString();
+        TextBox_Apart_Player1.Text = Globals.ReadGA<int>(apart_ratio + 1).ToString();
+        TextBox_Apart_Player2.Text = Globals.ReadGA<int>(apart_ratio + 2).ToString();
+        TextBox_Apart_Player3.Text = Globals.ReadGA<int>(apart_ratio + 3).ToString();
+        TextBox_Apart_Player4.Text = Globals.ReadGA<int>(apart_ratio + 4).ToString();
 
         TextBox_Apart_Fleeca.Text = Globals.ReadGA<int>(apart_money + 0).ToString();
         TextBox_Apart_PrisonBreak.Text = Globals.ReadGA<int>(apart_money + 1).ToString();
@@ -47,10 +47,10 @@ public partial class MoneyView : UserControl
                 TextBox_Apart_SeriesA.Text.Trim() != "" &&
                 TextBox_Apart_PacificStandard.Text.Trim() != "")
             {
-                Globals.WriteGA(apart_radio + 1, Convert.ToInt32(TextBox_Apart_Player1.Text.Trim()));
-                Globals.WriteGA(apart_radio + 2, Convert.ToInt32(TextBox_Apart_Player2.Text.Trim()));
-                Globals.WriteGA(apart_radio + 3, Convert.ToInt32(TextBox_Apart_Player3.Text.Trim()));
-                Globals.WriteGA(apart_radio + 4, Convert.ToInt32(TextBox_Apart_Player4.Text.Trim()));
+                Globals.WriteGA(apart_ratio + 1, Convert.ToInt32(TextBox_Apart_Player1.Text.Trim()));
+                Globals.WriteGA(apart_ratio + 2, Convert.ToInt32(TextBox_Apart_Player2.Text.Trim()));
+                Globals.WriteGA(apart_ratio + 3, Convert.ToInt32(TextBox_Apart_Player3.Text.Trim()));
+                Globals.WriteGA(apart_ratio + 4, Convert.ToInt32(TextBox_Apart_Player4.Text.Trim()));
 
                 Globals.WriteGA(apart_money + 0, Convert.ToInt32(TextBox_Apart_Fleeca.Text.Trim()));
                 Globals.WriteGA(apart_money + 1, Convert.ToInt32(TextBox_Apart_PrisonBreak.Text.Trim()));

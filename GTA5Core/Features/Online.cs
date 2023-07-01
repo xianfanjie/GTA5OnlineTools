@@ -87,12 +87,12 @@ public static class Online
     /// 模型变更
     /// </summary>
     /// <param name="hash"></param>
-    public static void ModelChange(long hash)
+    public static async void ModelChange(long hash)
     {
         // else if (!PED::HAS_PED_HEAD_BLEND_FINISHED(PLAYER::PLAYER_PED_ID())
         Globals.WriteGA(Base.oVGETIn + 61, 1);                 // triggerModelChange
         Globals.WriteGA(Base.oVGETIn + 48, hash);              // modelChangeHash
-        Thread.Sleep(10);
+        await Task.Delay(10);
         Globals.WriteGA(Base.oVGETIn + 61, 0);
     }
 
@@ -381,7 +381,7 @@ public static class Online
     {
         Globals.WriteGA(2766640 + 3, 1);        // return MISC::GET_HASH_KEY("AVISA")
         Globals.WriteGA(1575063, 1);            // NETWORK::NETWORK_TRANSITION_ADD_STAGE(hashKey, 1, num, etsParam0, 0);
-        await Task.Delay(200);
+        await Task.Delay(1000);
         Globals.WriteGA(2766640 + 3, 0);
         Globals.WriteGA(1575063, 0);
     }

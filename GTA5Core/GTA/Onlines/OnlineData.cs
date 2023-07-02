@@ -34,7 +34,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="虎鲸", Value=760 },
         new OnlineInfo(){ Name="洛圣都车友会", Value=777 },
         new OnlineInfo(){ Name="改装铺", Value=779 },
-        new OnlineInfo(){ Name="录音 A 工作室", Value=819 },
+        new OnlineInfo(){ Name="录音A工作室", Value=819 },
         new OnlineInfo(){ Name="事务所", Value=826 },
         new OnlineInfo(){ Name="拉机能量高空跳伞", Value=829 },
         new OnlineInfo(){ Name="豪华汽车", Value=830 },

@@ -246,7 +246,7 @@ public static class World
     /// <param name="isOnlyEnemy">仅敌人</param>
     public static void TeleportAllNPCTo9999(bool isOnlyEnemy = false)
     {
-        TeleportAllNPC(CCTV.TargetPos, isOnlyEnemy);
+        TeleportAllNPC(CCTV.SpacePos, isOnlyEnemy);
     }
 
     /// <summary>
@@ -265,8 +265,8 @@ public static class World
 
             var pCNavigation = Memory.Read<long>(pCObject + CPed.CNavigation);
 
-            Memory.Write(pCObject + CPed.VisualX, CCTV.TargetPos);
-            Memory.Write(pCNavigation + CNavigation.PositionX, CCTV.TargetPos);
+            Memory.Write(pCObject + CPed.VisualX, CCTV.SpacePos);
+            Memory.Write(pCNavigation + CNavigation.PositionX, CCTV.SpacePos);
         }
     }
 }

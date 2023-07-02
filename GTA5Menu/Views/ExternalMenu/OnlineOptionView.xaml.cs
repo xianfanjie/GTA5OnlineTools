@@ -12,6 +12,7 @@ public partial class OnlineOptionView : UserControl
     private class Options
     {
         public bool FreeChangeAppearance = false;
+        public bool ChangeAppearanceCooldown = false;
 
         public bool PassiveModeCooldown = false;
         public bool SuicideCooldown = false;
@@ -38,6 +39,9 @@ public partial class OnlineOptionView : UserControl
         // 免费更改角色外观
         if (_options.FreeChangeAppearance)
             Online.FreeChangeAppearance(true);
+        // 移除更改角色外观冷却
+        if (_options.ChangeAppearanceCooldown)
+            Online.ChangeAppearanceCooldown(true);
 
         // 移除被动模式冷却
         if (_options.PassiveModeCooldown)
@@ -97,6 +101,12 @@ public partial class OnlineOptionView : UserControl
     {
         _options.FreeChangeAppearance = CheckBox_FreeChangeAppearance.IsChecked == true;
         Online.FreeChangeAppearance(_options.FreeChangeAppearance);
+    }
+
+    private void CheckBox_ChangeAppearanceCooldown_Click(object sender, RoutedEventArgs e)
+    {
+        _options.ChangeAppearanceCooldown = CheckBox_ChangeAppearanceCooldown.IsChecked == true;
+        Online.ChangeAppearanceCooldown(_options.ChangeAppearanceCooldown);
     }
 
     private void CheckBox_PassiveModeCooldown_Click(object sender, RoutedEventArgs e)

@@ -18,6 +18,8 @@
                 Click="Button_FIXER_GENERAL_BS_Click"
                 Content="跳过前置任务" />
 
+            <TextBlock />
+
             <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="改装铺合约" />
             <ComboBox x:Name="ComboBox_TUNER_CURRENT" SelectedIndex="0">
                 <ComboBoxItem Content="联合储蓄" />

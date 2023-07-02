@@ -26,10 +26,10 @@ public partial class MissionView : UserControl
     private void Button_TUNER_CURRENT_Click(object sender, RoutedEventArgs e)
     {
         var index = ComboBox_TUNER_CURRENT.SelectedIndex;
-        if (index != -1)
-        {
-            WriteStatWithDelay("_TUNER_CURRENT", index);
-            WriteStatWithDelay("_TUNER_GEN_BS", 65535);
-        }
+        if (index == -1)
+            return;
+
+        WriteStatWithDelay("_TUNER_CURRENT", index);
+        WriteStatWithDelay("_TUNER_GEN_BS", 65535);
     }
 }

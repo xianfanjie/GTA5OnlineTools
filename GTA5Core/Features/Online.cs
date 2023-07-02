@@ -84,6 +84,15 @@ public static class Online
     }
 
     /// <summary>
+    /// 移除更改角色外观冷却
+    /// </summary>
+    /// <param name="isEnable"></param>
+    public static void ChangeAppearanceCooldown(bool isEnable)
+    {
+        Globals.WriteGA(Base.Default + 19291, isEnable ? 0 : 2880000);         // joaat("CHARACTER_APPEARANCE_COOLDOWN")
+    }
+
+    /// <summary>
     /// 模型变更
     /// </summary>
     /// <param name="hash"></param>

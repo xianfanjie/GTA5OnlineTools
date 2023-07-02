@@ -24,6 +24,7 @@
             <UniformGrid Columns="2">
                 <TextBlock Text="别惹德瑞" />
                 <TextBox x:Name="TextBox_FIXER_Value" />
+
                 <TextBlock Text="联合储蓄 - 改装铺" />
                 <TextBox x:Name="TextBox_TUNER_Value0" />
                 <TextBlock Text="大钞交易 - 改装铺" />

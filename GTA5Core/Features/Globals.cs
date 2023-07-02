@@ -180,10 +180,10 @@ public static class Globals
             await Task.Delay(200);
 
             long pReplayInterface = Memory.Read<long>(Pointers.ReplayInterfacePTR);
-            long pCPickupInterface = Memory.Read<long>(pReplayInterface + 0x20);    // pCPickupInterface
+            long pCPickupInterface = Memory.Read<long>(pReplayInterface + 0x20);        // pCPickupInterface
 
-            long oPickupNum = Memory.Read<long>(pCPickupInterface + 0x110);         // oPickupNum
-            long pPickupList = Memory.Read<long>(pCPickupInterface + 0x100);        // pPickupList
+            long oPickupNum = Memory.Read<long>(pCPickupInterface + 0x110);             // oPickupNum
+            long pPickupList = Memory.Read<long>(pCPickupInterface + 0x100);            // pPickupList
 
             for (long i = 0; i < oPickupNum; i++)
             {

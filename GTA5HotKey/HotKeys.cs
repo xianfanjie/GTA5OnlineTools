@@ -9,16 +9,16 @@ public static class HotKeys
     /// <summary>
     /// 热键字典集合
     /// </summary>
-    private static readonly Dictionary<int, KeyInfo> HotKeyDirts = new();
+    private static readonly Dictionary<Keys, KeyInfo> HotKeyDirts = new();
 
     /// <summary>
     /// 按键弹起事件
     /// </summary>
-    public static event Action<WinVK> KeyUpEvent;
+    public static event Action<Keys> KeyUpEvent;
     /// <summary>
     /// 按键按下事件
     /// </summary>
-    public static event Action<WinVK> KeyDownEvent;
+    public static event Action<Keys> KeyDownEvent;
 
     /// <summary>
     /// 初始化
@@ -36,22 +36,20 @@ public static class HotKeys
     /// 增加快捷按键（自动过滤重复按键）
     /// </summary>
     /// <param name="key"></param>
-    public static void AddKey(WinVK key)
+    public static void AddKey(Keys key)
     {
-        var keyId = (int)key;
-        if (!HotKeyDirts.ContainsKey(keyId))
-            HotKeyDirts.Add(keyId, new KeyInfo() { Key = key });
+        if (!HotKeyDirts.ContainsKey(key))
+            HotKeyDirts.Add(key, new KeyInfo() { Key = key });
     }
 
     /// <summary>
     /// 移除快捷键
     /// </summary>
     /// <param name="key"></param>
-    public static void RemoveKey(WinVK key)
+    public static void RemoveKey(Keys key)
     {
-        var keyId = (int)key;
-        if (HotKeyDirts.ContainsKey(keyId))
-            HotKeyDirts.Remove(keyId);
+        if (HotKeyDirts.ContainsKey(key))
+            HotKeyDirts.Remove(key);
     }
 
     /// <summary>
@@ -65,56 +63,58 @@ public static class HotKeys
     /// <summary>
     /// 按键按下
     /// </summary>
-    /// <param name="vK"></param>
-    private static void OnKeyDown(WinVK vK)
+    /// <param name="key"></param>
+    private static void OnKeyDown(Keys key)
     {
-        KeyDownEvent?.Invoke(vK);
+        KeyDownEvent?.Invoke(key);
     }
 
     /// <summary>
     /// 按键弹起
     /// </summary>
-    /// <param name="vK"></param>
-    private static void OnKeyUp(WinVK vK)
+    /// <param name="key"></param>
+    private static void OnKeyUp(Keys key)
     {
-        KeyUpEvent?.Invoke(vK);
+        KeyUpEvent?.Invoke(key);
     }
 
     /// <summary>
     /// 按键监听线程
     /// </summary>
     /// <param name="sender"></param>
-    private static void UpdateHotKeyThread(object sender)
+    private static void UpdateHotKeyThread()
     {
         while (true)
         {
-            if (HotKeyDirts.Count > 0)
+            if (HotKeyDirts.Count == 0)
+                goto SLEEP;
+
+            // 防止枚举异常
+            var keyInfos = new List<KeyInfo>(HotKeyDirts.Values);
+            if (keyInfos.Count == 0)
+                goto SLEEP;
+
+            foreach (var key in keyInfos)
             {
-                var keyInfos = new List<KeyInfo>(HotKeyDirts.Values);
-                if (keyInfos != null && keyInfos.Count > 0)
+                if (KeyHelper.IsKeyPressed(key.Key))
                 {
-                    foreach (var key in keyInfos)
+                    if (!key.IsKeyDown)
                     {
-                        if (KeyHelper.IsKeyPressed(key.Key))
-                        {
-                            if (!key.IsKeyDown)
-                            {
-                                key.IsKeyDown = true;
-                                OnKeyDown(key.Key);
-                            }
-                        }
-                        else
-                        {
-                            if (key.IsKeyDown)
-                            {
-                                key.IsKeyDown = false;
-                                OnKeyUp(key.Key);
-                            }
-                        }
+                        key.IsKeyDown = true;
+                        OnKeyDown(key.Key);
+                    }
+                }
+                else
+                {
+                    if (key.IsKeyDown)
+                    {
+                        key.IsKeyDown = false;
+                        OnKeyUp(key.Key);
                     }
                 }
             }
 
+        SLEEP:
             Thread.Sleep(20);
         }
     }

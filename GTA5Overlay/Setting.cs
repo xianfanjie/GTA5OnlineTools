@@ -43,7 +43,7 @@ public static class Setting
 
     public static int AimBot_BoneIndex = 0;
     public static float AimBot_Fov = 250.0f;
-    public static WinVK AimBot_Key = WinVK.CONTROL;
+    public static Keys AimBot_Key = Keys.ControlKey;
 
     public static bool NoTopMostHide = false;
 
@@ -85,7 +85,7 @@ public static class Setting
 
         AimBot_BoneIndex = 0;
         AimBot_Fov = 250.0f;
-        AimBot_Key = WinVK.CONTROL;
+        AimBot_Key = Keys.ControlKey;
 
         NoTopMostHide = false;
     }

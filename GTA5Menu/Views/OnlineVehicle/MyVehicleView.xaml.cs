@@ -130,7 +130,12 @@ public partial class MyVehicleView : UserControl
 
         if (ListBox_VehicleInfos.SelectedItem is ModelInfo info)
         {
-            await Vehicle2.SpawnVehicle(info.Value, info.Mods);
+            var isMax = CheckBox_SpawnMax.IsChecked == true;
+
+            if (RadioButton_SpawnMode1.IsChecked == true)
+                await Vehicle2.SpawnVehicle(info.Value, info.Mods, isMax);
+            else
+                await Vehicle2.SpawnVehicle(info.Value, info.Mods, isMax, true);
         }
     }
 

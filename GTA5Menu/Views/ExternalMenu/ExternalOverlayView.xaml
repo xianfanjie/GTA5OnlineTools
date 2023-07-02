@@ -232,29 +232,29 @@
             <ui:LabelIcon Content="Aimbot按键" />
             <WrapPanel Margin="5,0,5,0">
                 <RadioButton
-                    x:Name="RadioButton_AimbotKey_CONTROL"
-                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    x:Name="RadioButton_AimbotKey_Control"
+                    Click="RadioButton_AimbotKey_Click"
                     Content="左Ctrl键"
                     IsChecked="True" />
                 <RadioButton
-                    x:Name="RadioButton_AimbotKey_SHIFT"
-                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    x:Name="RadioButton_AimbotKey_ShiftKey"
+                    Click="RadioButton_AimbotKey_Click"
                     Content="左Shift键" />
                 <RadioButton
-                    x:Name="RadioButton_AimbotKey_LBUTTON"
-                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    x:Name="RadioButton_AimbotKey_LButton"
+                    Click="RadioButton_AimbotKey_Click"
                     Content="鼠标左键" />
                 <RadioButton
-                    x:Name="RadioButton_AimbotKey_RBUTTON"
-                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    x:Name="RadioButton_AimbotKey_RButton"
+                    Click="RadioButton_AimbotKey_Click"
                     Content="鼠标右键" />
                 <RadioButton
-                    x:Name="RadioButton_AimbotKey_XBUTTON1"
-                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    x:Name="RadioButton_AimbotKey_XButton1"
+                    Click="RadioButton_AimbotKey_Click"
                     Content="鼠标侧键1" />
                 <RadioButton
-                    x:Name="RadioButton_AimbotKey_XBUTTON2"
-                    Click="RadioButton_AimbotKey_CONTROL_Click"
+                    x:Name="RadioButton_AimbotKey_XButton2"
+                    Click="RadioButton_AimbotKey_Click"
                     Content="鼠标侧键2" />
             </WrapPanel>
             <!--  //////////////  -->

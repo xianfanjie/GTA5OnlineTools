@@ -228,7 +228,7 @@ public class Overlay : IDisposable
         if (Setting.ESP_Crosshair)
         {
             // 当玩家按住右键准心对准敌人，准心变成粉红色，否则为绿色
-            if (isAimPed && KeyHelper.IsKeyPressed(WinVK.RBUTTON))
+            if (isAimPed && KeyHelper.IsKeyPressed(Keys.RButton))
                 Draw.DrawCrosshair(_brush_deepPink, 7.0f);
             else
                 Draw.DrawCrosshair(_brush_green, 7.0f);
@@ -632,7 +632,7 @@ public class Overlay : IDisposable
                         Memory.Write(pCCameraPTR_0 + 0x3D0, aimBot_ViewAngles);
                     }
 
-                    if (KeyHelper.IsKeyPressed(WinVK.F5))
+                    if (KeyHelper.IsKeyPressed(Keys.F5))
                     {
                         Teleport.SetTeleportPosition(teleW_pedCoords);
                     }

@@ -76,8 +76,8 @@ public partial class GTA5MenuWindow
         ThisWindowHandle = new WindowInteropHelper(this).Handle;
 
         // 添加快捷键
-        HotKeys.AddKey(WinVK.DELETE);
-        HotKeys.AddKey(WinVK.OEM_3);
+        HotKeys.AddKey(Keys.Delete);
+        HotKeys.AddKey(Keys.Oem3);
         // 订阅按钮事件
         HotKeys.KeyDownEvent += HotKeys_KeyDownEvent;
 
@@ -100,8 +100,8 @@ public partial class GTA5MenuWindow
         WindowClosingEvent?.Invoke();
 
         // 移除快捷键
-        HotKeys.RemoveKey(WinVK.DELETE);
-        HotKeys.RemoveKey(WinVK.OEM_3);
+        HotKeys.RemoveKey(Keys.Delete);
+        HotKeys.RemoveKey(Keys.Oem3);
         // 取消订阅按钮事件（2023/06/24 这里一定要取消订阅，否则会照成事件累加）
         HotKeys.KeyDownEvent -= HotKeys_KeyDownEvent;
     }
@@ -171,17 +171,16 @@ public partial class GTA5MenuWindow
     /// <summary>
     /// 按键按下事件
     /// </summary>
-    /// <param name="vK"></param>
-    /// <exception cref="NotImplementedException"></exception>
-    private void HotKeys_KeyDownEvent(WinVK vK)
+    /// <param name="key"></param>
+    private void HotKeys_KeyDownEvent(Keys key)
     {
-        switch (vK)
+        switch (key)
         {
-            case WinVK.DELETE:
+            case Keys.Delete:
                 if(IsShowMenuKeyUseDel)
                     ShowWindow();
                 break;
-            case WinVK.OEM_3:
+            case Keys.Oem3:
                 if (!IsShowMenuKeyUseDel)
                     ShowWindow();
                 break;
@@ -252,7 +251,7 @@ public partial class GTA5MenuWindow
         }
     }
 
-    private void RadioButton_ShowMenuKey_Del_Click(object sender, RoutedEventArgs e)
+    private void RadioButton_ShowMenuKey_Click(object sender, RoutedEventArgs e)
     {
         IsShowMenuKeyUseDel = RadioButton_ShowMenuKey_Del.IsChecked == true;
     }

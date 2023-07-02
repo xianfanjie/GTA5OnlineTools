@@ -64,13 +64,14 @@ public partial class SelfStateView : UserControl
         GTA5MenuWindow.LoopTime200MsEvent += GTA5MenuWindow_LoopTime200MsEvent;
 
         // 添加快捷键
-        HotKeys.AddKey(WinVK.F3);
-        HotKeys.AddKey(WinVK.F4);
-        HotKeys.AddKey(WinVK.F5);
-        HotKeys.AddKey(WinVK.F6);
-        HotKeys.AddKey(WinVK.F7);
-        HotKeys.AddKey(WinVK.F8);
-        HotKeys.AddKey(WinVK.Oem0);
+        HotKeys.AddKey(Keys.F3);
+        HotKeys.AddKey(Keys.F4);
+        HotKeys.AddKey(Keys.F5);
+        HotKeys.AddKey(Keys.F6);
+        HotKeys.AddKey(Keys.F7);
+        HotKeys.AddKey(Keys.F8);
+        HotKeys.AddKey(Keys.D0);
+        HotKeys.AddKey(Keys.Oemplus);
         // 订阅按钮事件
         HotKeys.KeyDownEvent += HotKeys_KeyDownEvent;
 
@@ -82,13 +83,14 @@ public partial class SelfStateView : UserControl
     private void GTA5MenuWindow_WindowClosingEvent()
     {
         // 移除快捷键
-        HotKeys.RemoveKey(WinVK.F3);
-        HotKeys.RemoveKey(WinVK.F4);
-        HotKeys.RemoveKey(WinVK.F5);
-        HotKeys.RemoveKey(WinVK.F6);
-        HotKeys.RemoveKey(WinVK.F7);
-        HotKeys.RemoveKey(WinVK.F8);
-        HotKeys.RemoveKey(WinVK.Oem0);
+        HotKeys.RemoveKey(Keys.F3);
+        HotKeys.RemoveKey(Keys.F4);
+        HotKeys.RemoveKey(Keys.F5);
+        HotKeys.RemoveKey(Keys.F6);
+        HotKeys.RemoveKey(Keys.F7);
+        HotKeys.RemoveKey(Keys.F8);
+        HotKeys.RemoveKey(Keys.D0);
+        HotKeys.RemoveKey(Keys.Oemplus);
         // 取消订阅按钮事件
         HotKeys.KeyDownEvent -= HotKeys_KeyDownEvent;
 
@@ -111,6 +113,7 @@ public partial class SelfStateView : UserControl
         var isHotKeyMovingFoward = IniHelper.ReadValue("ExternalMenu", "IsHotKeyMovingFoward");
 
         var isHotKeyNoCollision = IniHelper.ReadValue("ExternalMenu", "IsHotKeyNoCollision");
+        var isHotKeyToCrossHair = IniHelper.ReadValue("ExternalMenu", "IsHotKeyToCrossHair");
 
         if (!string.IsNullOrEmpty(isHotKeyToWaypoint))
             SelfStateModel.IsHotKeyToWaypoint = isHotKeyToWaypoint == "1";
@@ -128,6 +131,8 @@ public partial class SelfStateView : UserControl
 
         if (!string.IsNullOrEmpty(isHotKeyNoCollision))
             SelfStateModel.IsHotKeyNoCollision = isHotKeyNoCollision == "1";
+        if (!string.IsNullOrEmpty(isHotKeyToCrossHair))
+            SelfStateModel.IsHotKeyToCrossHair = isHotKeyToCrossHair == "1";
     }
 
     /// <summary>
@@ -144,54 +149,55 @@ public partial class SelfStateView : UserControl
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyMovingFoward", $"{Convert.ToInt32(SelfStateModel.IsHotKeyMovingFoward)}");
 
         IniHelper.WriteValue("ExternalMenu", "IsHotKeyNoCollision", $"{Convert.ToInt32(SelfStateModel.IsHotKeyNoCollision)}");
+        IniHelper.WriteValue("ExternalMenu", "IsHotKeyToCrossHair", $"{Convert.ToInt32(SelfStateModel.IsHotKeyToCrossHair)}");
     }
 
     /// <summary>
     /// 全局热键 按键按下事件
     /// </summary>
-    /// <param name="vK"></param>
-    private void HotKeys_KeyDownEvent(WinVK vK)
+    /// <param name="key"></param>
+    private void HotKeys_KeyDownEvent(Keys key)
     {
-        switch (vK)
+        switch (key)
         {
-            case WinVK.F3:
+            case Keys.F3:
                 if (SelfStateModel.IsHotKeyFillAllAmmo)
                 {
                     Weapon.FillAllAmmo();
                 }
                 break;
-            case WinVK.F4:
+            case Keys.F4:
                 if (SelfStateModel.IsHotKeyMovingFoward)
                 {
                     Teleport.MoveFoward(_moveDistance);
                 }
                 break;
-            case WinVK.F5:
+            case Keys.F5:
                 if (SelfStateModel.IsHotKeyToWaypoint)
                 {
                     Teleport.ToWaypoint();
                 }
                 break;
-            case WinVK.F6:
+            case Keys.F6:
                 if (SelfStateModel.IsHotKeyToObjective)
                 {
                     Teleport.ToObjective();
                 }
                 break;
-            case WinVK.F7:
+            case Keys.F7:
                 if (SelfStateModel.IsHotKeyFillHealthArmor)
                 {
                     Player.FillHealth();
                     Player.FillArmor();
                 }
                 break;
-            case WinVK.F8:
+            case Keys.F8:
                 if (SelfStateModel.IsHotKeyClearWanted)
                 {
                     Player.WantedLevel((byte)WantedLevel.Level0);
                 }
                 break;
-            case WinVK.Oem0:
+            case Keys.D0:
                 if (SelfStateModel.IsHotKeyNoCollision)
                 {
                     _options.NoCollision = !_options.NoCollision;
@@ -201,6 +207,12 @@ public partial class SelfStateView : UserControl
                         Console.Beep(600, 75);
                     else
                         Console.Beep(500, 75);
+                }
+                break;
+            case Keys.Oemplus:
+                if (SelfStateModel.IsHotKeyToCrossHair)
+                {
+                    Teleport.ToCrossHair();
                 }
                 break;
         }

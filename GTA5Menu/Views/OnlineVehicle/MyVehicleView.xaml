@@ -28,6 +28,16 @@
                 Click="Button_DeleteMyFavorite_Click"
                 Content="从我的收藏删除"
                 IsEnabled="{Binding ElementName=ListBox_VehicleInfos, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
+            <!--  ///////////////  -->
+            <CheckBox
+                x:Name="CheckBox_SpawnMax"
+                Content="最大升级"
+                IsChecked="True" />
+            <RadioButton
+                x:Name="RadioButton_SpawnMode1"
+                Content="空地"
+                IsChecked="True" />
+            <RadioButton x:Name="RadioButton_SpawnMode2" Content="室内" />
         </StackPanel>
         <!--  载具详细信息  -->
         <ListBox

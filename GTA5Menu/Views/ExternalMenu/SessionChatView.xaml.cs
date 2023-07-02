@@ -80,15 +80,15 @@ public partial class SessionChatView : UserControl
     /// <summary>
     /// 模拟键盘按键
     /// </summary>
-    /// <param name="winVK"></param>
-    private void KeyPress(WinVK winVK)
+    /// <param name="key"></param>
+    private void KeyPress(Keys key)
     {
         var sleep2 = Convert.ToInt32(Slider_SendKey_Sleep2.Value);
 
         Thread.Sleep(sleep2);
-        KeyHelper.Keybd_Event(winVK, KeyHelper.MapVirtualKey(winVK, 0), 0, 0);
+        KeyHelper.Keybd_Event(key, KeyHelper.MapVirtualKey(key, 0), 0, 0);
         Thread.Sleep(sleep2);
-        KeyHelper.Keybd_Event(winVK, KeyHelper.MapVirtualKey(winVK, 0), 2, 0);
+        KeyHelper.Keybd_Event(key, KeyHelper.MapVirtualKey(key, 0), 2, 0);
         Thread.Sleep(sleep2);
     }
 
@@ -103,12 +103,12 @@ public partial class SessionChatView : UserControl
 
         Thread.Sleep(sleep1);
 
-        KeyPress(WinVK.RETURN);
+        KeyPress(Keys.Return);
 
         if (RadioButton_PressKeyT.IsChecked == true)
-            KeyPress(WinVK.T);
+            KeyPress(Keys.T);
         else
-            KeyPress(WinVK.Y);
+            KeyPress(Keys.Y);
 
         Thread.Sleep(sleep1);
         SendKeys.Flush();
@@ -118,8 +118,8 @@ public partial class SessionChatView : UserControl
         SendKeys.Flush();
         Thread.Sleep(sleep1);
 
-        KeyPress(WinVK.RETURN);
-        KeyPress(WinVK.RETURN);
+        KeyPress(Keys.Return);
+        KeyPress(Keys.Return);
     }
 
     /// <summary>

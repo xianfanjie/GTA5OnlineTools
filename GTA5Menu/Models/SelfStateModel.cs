@@ -45,4 +45,10 @@ public partial class SelfStateModel : ObservableObject
     /// </summary>
     [ObservableProperty]
     private bool isHotKeyNoCollision = false;
+
+    /// <summary>
+    /// 热键状态 传送到准星位置
+    /// </summary>
+    [ObservableProperty]
+    private bool isHotKeyToCrossHair = false;
 }

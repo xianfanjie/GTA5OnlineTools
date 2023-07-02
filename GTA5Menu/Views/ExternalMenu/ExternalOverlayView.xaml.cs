@@ -258,31 +258,31 @@ public partial class ExternalOverlayView : UserControl
         }
     }
 
-    private void RadioButton_AimbotKey_CONTROL_Click(object sender, RoutedEventArgs e)
+    private void RadioButton_AimbotKey_Click(object sender, RoutedEventArgs e)
     {
-        if (RadioButton_AimbotKey_CONTROL.IsChecked == true)
+        if (RadioButton_AimbotKey_Control.IsChecked == true)
         {
-            Setting.AimBot_Key = WinVK.CONTROL;
+            Setting.AimBot_Key = Keys.Control;
         }
-        else if (RadioButton_AimbotKey_SHIFT.IsChecked == true)
+        else if (RadioButton_AimbotKey_ShiftKey.IsChecked == true)
         {
-            Setting.AimBot_Key = WinVK.SHIFT;
+            Setting.AimBot_Key = Keys.ShiftKey;
         }
-        else if (RadioButton_AimbotKey_LBUTTON.IsChecked == true)
+        else if (RadioButton_AimbotKey_LButton.IsChecked == true)
         {
-            Setting.AimBot_Key = WinVK.LBUTTON;
+            Setting.AimBot_Key = Keys.LButton;
         }
-        else if (RadioButton_AimbotKey_RBUTTON.IsChecked == true)
+        else if (RadioButton_AimbotKey_RButton.IsChecked == true)
         {
-            Setting.AimBot_Key = WinVK.RBUTTON;
+            Setting.AimBot_Key = Keys.RButton;
         }
-        else if (RadioButton_AimbotKey_XBUTTON1.IsChecked == true)
+        else if (RadioButton_AimbotKey_XButton1.IsChecked == true)
         {
-            Setting.AimBot_Key = WinVK.XBUTTON1;
+            Setting.AimBot_Key = Keys.XButton1;
         }
-        else if (RadioButton_AimbotKey_XBUTTON2.IsChecked == true)
+        else if (RadioButton_AimbotKey_XButton2.IsChecked == true)
         {
-            Setting.AimBot_Key = WinVK.XBUTTON2;
+            Setting.AimBot_Key = Keys.XButton2;
         }
     }
 

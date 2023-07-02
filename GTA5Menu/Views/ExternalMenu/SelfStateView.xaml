@@ -133,6 +133,7 @@
                     Click="CheckBox_NoCollision_Click"
                     Content="[数字0] 玩家无碰撞体积（穿墙）"
                     IsChecked="{Binding SelfStateModel.IsHotKeyNoCollision, UpdateSourceTrigger=PropertyChanged}" />
+                <CheckBox Content="[数字=+] 传送到准星位置" IsChecked="{Binding SelfStateModel.IsHotKeyToCrossHair, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <ui:LabelIcon Content="常用功能" />

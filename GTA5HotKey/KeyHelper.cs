@@ -6,23 +6,23 @@ namespace GTA5HotKey;
 public static class KeyHelper
 {
     [DllImport("user32.dll")]
-    public static extern int GetAsyncKeyState(int vKey);
+    public static extern int GetAsyncKeyState(Keys key);
 
     [DllImport("user32.dll", EntryPoint = "keybd_event")]
-    public static extern void Keybd_Event(WinVK bVk, uint bScan, uint dwFlags, uint dwExtraInfo);
+    public static extern void Keybd_Event(Keys bVk, uint bScan, uint dwFlags, uint dwExtraInfo);
 
     [DllImport("user32.dll")]
-    public static extern uint MapVirtualKey(WinVK uCode, uint uMapType);
+    public static extern uint MapVirtualKey(Keys uCode, uint uMapType);
 
     public const int KEY_PRESSED = 0x8000;
 
     /// <summary>
     /// 判断按键是否按下
     /// </summary>
-    /// <param name="nVirtKey"></param>
+    /// <param name="key"></param>
     /// <returns></returns>
-    public static bool IsKeyPressed(WinVK nVirtKey)
+    public static bool IsKeyPressed(Keys key)
     {
-        return Convert.ToBoolean(GetAsyncKeyState((int)nVirtKey) & KEY_PRESSED);
+        return Convert.ToBoolean(GetAsyncKeyState(key) & KEY_PRESSED);
     }
 }

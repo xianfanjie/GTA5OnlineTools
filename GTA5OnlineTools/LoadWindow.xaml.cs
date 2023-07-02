@@ -94,10 +94,10 @@ public partial class LoadWindow
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64Profile, FileHelper.File_Cache_Xenos64Profile);
 
                 // 判断YimMenu.dll文件是否存在 是否被占用
-                if (!File.Exists(FileHelper.File_YimMenu_YimMenu) ||
-                    !FileHelper.IsOccupied(FileHelper.File_YimMenu_YimMenu))
+                if (!File.Exists(FileHelper.File_YimMenu_DLL) ||
+                    !FileHelper.IsOccupied(FileHelper.File_YimMenu_DLL))
                 {
-                    FileHelper.ExtractResFile(FileHelper.Res_YimMenu_YimMenu, FileHelper.File_YimMenu_YimMenu);
+                    FileHelper.ExtractResFile(FileHelper.Res_YimMenu_YimMenu, FileHelper.File_YimMenu_DLL);
                     LoggerHelper.Info("释放YimMenu.dll文件成功");
                 }
                 else
@@ -109,7 +109,7 @@ public partial class LoadWindow
                 var xmlDoc = new XmlDocument();
                 xmlDoc.Load(FileHelper.File_Cache_Xenos64Profile);
                 var xmlRoot = xmlDoc.DocumentElement;
-                xmlRoot.SelectSingleNode("imagePath").InnerText = FileHelper.File_YimMenu_YimMenu;
+                xmlRoot.SelectSingleNode("imagePath").InnerText = FileHelper.File_YimMenu_DLL;
                 xmlDoc.Save(FileHelper.File_Cache_Xenos64Profile);
                 LoggerHelper.Info("修改Xenos64配置文件成功");
 

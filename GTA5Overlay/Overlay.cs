@@ -343,12 +343,14 @@ public class Overlay : IDisposable
                     // 玩家 骨骼
                     if (Setting.ESP_Player_Bone)
                     {
-                        Draw.DrawBone(_brush_white, pCPed, 0, 7);
-                        Draw.DrawBone(_brush_white, pCPed, 7, 8);
-                        Draw.DrawBone(_brush_white, pCPed, 8, 3);
-                        Draw.DrawBone(_brush_white, pCPed, 8, 4);
-                        Draw.DrawBone(_brush_white, pCPed, 7, 5);
-                        Draw.DrawBone(_brush_white, pCPed, 7, 6);
+                        var boneMatrix = Core.GetBoneMatrix(pCPed);
+
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 0, 7);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 7, 8);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 8, 3);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 8, 4);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 7, 5);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 7, 6);
                     }
                 }
 
@@ -407,12 +409,14 @@ public class Overlay : IDisposable
                     // NPC 骨骼
                     if (Setting.ESP_NPC_Bone)
                     {
-                        Draw.DrawBone(_brush_white, pCPed, 0, 7);
-                        Draw.DrawBone(_brush_white, pCPed, 7, 8);
-                        Draw.DrawBone(_brush_white, pCPed, 8, 3);
-                        Draw.DrawBone(_brush_white, pCPed, 8, 4);
-                        Draw.DrawBone(_brush_white, pCPed, 7, 5);
-                        Draw.DrawBone(_brush_white, pCPed, 7, 6);
+                        var boneMatrix = Core.GetBoneMatrix(pCPed);
+
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 0, 7);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 7, 8);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 8, 3);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 8, 4);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 7, 5);
+                        Draw.DrawBone(_brush_white, pCPed, boneMatrix, 7, 6);
                     }
                 }
 
@@ -603,8 +607,10 @@ public class Overlay : IDisposable
                 // 获取距离准心最近的方框
                 if (aimBot_Distance < aimBot_Min_Distance)
                 {
+                    var boneMatrix = Core.GetBoneMatrix(pCPed);
+
                     aimBot_Min_Distance = aimBot_Distance;
-                    aimBot_ViewAngles = Core.GetCCameraViewAngles(cameraV3Pos, Core.GetBonePosition(pCPed, Setting.AimBot_BoneIndex));
+                    aimBot_ViewAngles = Core.GetCCameraViewAngles(cameraV3Pos, Core.GetBonePosition(pCPed, boneMatrix, Setting.AimBot_BoneIndex));
                     teleW_pedCoords = pedV3Pos;
                 }
             }

@@ -300,7 +300,7 @@ public partial class HacksView : UserControl
         try
         {
             // 释放Yimmenu官中语言文件
-            FileHelper.CreateDirectory(FileHelper.Dir_BigBaseV2_Translations);
+            FileHelper.CreateDirectory(FileHelper.Dir_AppData_YimMenu_Translations);
             FileHelper.ExtractResFile(FileHelper.Res_YimMenu_Index, FileHelper.File_YimMenu_Index);
             FileHelper.ExtractResFile(FileHelper.Res_YimMenu_ZHCN, FileHelper.File_YimMenu_ZHCN);
         }
@@ -329,7 +329,7 @@ public partial class HacksView : UserControl
             return;
         }
 
-        var result = Injector.DLLInjector(GTA5Process.Id, FileHelper.File_YimMenu_YimMenu, true);
+        var result = Injector.DLLInjector(GTA5Process.Id, FileHelper.File_YimMenu_DLL, true);
         if (result.IsSuccess)
             NotifierHelper.Show(NotifierType.Success, "YimMenu菜单注入成功");
         else
@@ -533,7 +533,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void YimMenuDirectoryClick()
     {
-        ProcessHelper.OpenDir(FileHelper.Dir_BigBaseV2);
+        ProcessHelper.OpenDir(FileHelper.Dir_AppData_YimMenu);
     }
 
     /// <summary>
@@ -541,7 +541,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void YimMenuScriptsDirectoryClick()
     {
-        ProcessHelper.OpenDir(FileHelper.Dir_BigBaseV2_Scripts);
+        ProcessHelper.OpenDir(FileHelper.Dir_AppData_YimMenu_Scripts);
     }
 
     /// <summary>
@@ -549,7 +549,7 @@ public partial class HacksView : UserControl
     /// </summary>
     private void EditYimMenuConfigClick()
     {
-        ProcessHelper.Notepad2EditTextFile(FileHelper.File_BigBaseV2_Settings);
+        ProcessHelper.Notepad2EditTextFile(FileHelper.File_AppData_YimMenu_Settings);
     }
 
     /// <summary>
@@ -567,16 +567,16 @@ public partial class HacksView : UserControl
     {
         try
         {
-            if (FileHelper.IsOccupied(FileHelper.File_YimMenu_YimMenu))
+            if (FileHelper.IsOccupied(FileHelper.File_YimMenu_DLL))
             {
                 NotifierHelper.Show(NotifierType.Warning, "YimMenu被占用，请先卸载YimMenu菜单后再执行操作");
                 return;
             }
 
-            if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileHelper.Dir_BigBaseV2}」文件夹，如有重要文件请提前备份",
+            if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileHelper.Dir_AppData_YimMenu}」文件夹，如有重要文件请提前备份",
                 "重置YimMenu配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                FileHelper.ClearDirectory(FileHelper.Dir_BigBaseV2);
+                FileHelper.ClearDirectory(FileHelper.Dir_AppData_YimMenu);
 
                 NotifierHelper.Show(NotifierType.Success, "重置YimMenu配置文件成功");
             }

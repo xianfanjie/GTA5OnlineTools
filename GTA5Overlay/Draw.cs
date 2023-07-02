@@ -206,8 +206,8 @@ public static class Draw
     /// <param name="m_Position"></param>
     public static void DrawAABBLine(IBrush brush, Vector3 m_Position)
     {
-        Vector3 aabb_0 = new Vector3(0.0f, 0.0f, 1.0f) + m_Position; // 0
-        Vector2 aabb_0V2Pos = Core.WorldToScreen(aabb_0);
+        var aabb_0 = new Vector3(0.0f, 0.0f, 1.0f) + m_Position; // 0
+        var aabb_0V2Pos = Core.WorldToScreen(aabb_0);
 
         if (!Core.IsNullVector2(aabb_0V2Pos))
         {
@@ -243,36 +243,36 @@ public static class Draw
             }
         };
 
-        Vector3 aabb_0 = new Vector3(
+        var aabb_0 = new Vector3(
             aabb.Min.X * m_sinCos.Y - aabb.Min.Y * m_sinCos.X,
             aabb.Min.X * m_sinCos.X + aabb.Min.Y * m_sinCos.Y,
             aabb.Min.Z) + m_position; // 0
-        Vector3 aabb_1 = new Vector3(
+        var aabb_1 = new Vector3(
             aabb.Min.X * m_sinCos.Y - aabb.Max.Y * m_sinCos.X,
             aabb.Min.X * m_sinCos.X + aabb.Max.Y * m_sinCos.Y,
             aabb.Min.Z) + m_position; // 1
-        Vector3 aabb_2 = new Vector3(
+        var aabb_2 = new Vector3(
             aabb.Min.X * m_sinCos.Y - aabb.Min.Y * m_sinCos.X,
             aabb.Min.X * m_sinCos.X + aabb.Min.Y * m_sinCos.Y,
             aabb.Max.Z) + m_position; // 2
-        Vector3 aabb_3 = new Vector3(
+        var aabb_3 = new Vector3(
             aabb.Min.X * m_sinCos.Y - aabb.Max.Y * m_sinCos.X,
             aabb.Min.X * m_sinCos.X + aabb.Max.Y * m_sinCos.Y,
             aabb.Max.Z) + m_position; // 3
 
-        Vector3 aabb_4 = new Vector3(
+        var aabb_4 = new Vector3(
             aabb.Max.X * m_sinCos.Y - aabb.Min.Y * m_sinCos.X,
             aabb.Max.X * m_sinCos.X + aabb.Min.Y * m_sinCos.Y,
             aabb.Min.Z) + m_position; // 4
-        Vector3 aabb_5 = new Vector3(
+        var aabb_5 = new Vector3(
             aabb.Max.X * m_sinCos.Y - aabb.Max.Y * m_sinCos.X,
             aabb.Max.X * m_sinCos.X + aabb.Max.Y * m_sinCos.Y,
             aabb.Min.Z) + m_position; // 5
-        Vector3 aabb_6 = new Vector3(
+        var aabb_6 = new Vector3(
             aabb.Max.X * m_sinCos.Y - aabb.Min.Y * m_sinCos.X,
             aabb.Max.X * m_sinCos.X + aabb.Min.Y * m_sinCos.Y,
             aabb.Max.Z) + m_position; // 6
-        Vector3 aabb_7 = new Vector3(
+        var aabb_7 = new Vector3(
             aabb.Max.X * m_sinCos.Y - aabb.Max.Y * m_sinCos.X,
             aabb.Max.X * m_sinCos.X + aabb.Max.Y * m_sinCos.Y,
             aabb.Max.Z) + m_position; // 7
@@ -290,14 +290,14 @@ public static class Draw
         ///    min
         /// </summary>
 
-        Vector2 aabb_0V2Pos = Core.WorldToScreen(aabb_0);
-        Vector2 aabb_1V2Pos = Core.WorldToScreen(aabb_1);
-        Vector2 aabb_2V2Pos = Core.WorldToScreen(aabb_2);
-        Vector2 aabb_3V2Pos = Core.WorldToScreen(aabb_3);
-        Vector2 aabb_4V2Pos = Core.WorldToScreen(aabb_4);
-        Vector2 aabb_5V2Pos = Core.WorldToScreen(aabb_5);
-        Vector2 aabb_6V2Pos = Core.WorldToScreen(aabb_6);
-        Vector2 aabb_7V2Pos = Core.WorldToScreen(aabb_7);
+        var aabb_0V2Pos = Core.WorldToScreen(aabb_0);
+        var aabb_1V2Pos = Core.WorldToScreen(aabb_1);
+        var aabb_2V2Pos = Core.WorldToScreen(aabb_2);
+        var aabb_3V2Pos = Core.WorldToScreen(aabb_3);
+        var aabb_4V2Pos = Core.WorldToScreen(aabb_4);
+        var aabb_5V2Pos = Core.WorldToScreen(aabb_5);
+        var aabb_6V2Pos = Core.WorldToScreen(aabb_6);
+        var aabb_7V2Pos = Core.WorldToScreen(aabb_7);
 
         if (!Core.IsNullVector2(aabb_0V2Pos) &&
             !Core.IsNullVector2(aabb_1V2Pos) &&
@@ -329,16 +329,17 @@ public static class Draw
     /// 绘制骨骼连线
     /// </summary>
     /// <param name="brush"></param>
-    /// <param name="offset"></param>
-    /// <param name="bone0"></param>
-    /// <param name="bone1"></param>
-    public static void DrawBone(IBrush brush, long offset, int bone0, int bone1)
+    /// <param name="pCPed"></param>
+    /// <param name="boneMatrix"></param>
+    /// <param name="boneStartId"></param>
+    /// <param name="boneEndId"></param>
+    public static void DrawBone(IBrush brush, long pCPed, float[] boneMatrix, int boneStartId, int boneEndId)
     {
-        Vector2 v2Bone0 = Core.WorldToScreen(Core.GetBonePosition(offset, bone0));
-        Vector2 v2Bone1 = Core.WorldToScreen(Core.GetBonePosition(offset, bone1));
+        var v2BoneStart = Core.WorldToScreen(Core.GetBonePosition(pCPed, boneMatrix, boneStartId));
+        var v2BoneEnd = Core.WorldToScreen(Core.GetBonePosition(pCPed, boneMatrix, boneEndId));
 
-        if (!Core.IsNullVector2(v2Bone0) && !Core.IsNullVector2(v2Bone1))
-            _gfx.DrawLine(brush, v2Bone0.X, v2Bone0.Y, v2Bone1.X, v2Bone1.Y, 1);
+        if (!Core.IsNullVector2(v2BoneStart) && !Core.IsNullVector2(v2BoneEnd))
+            _gfx.DrawLine(brush, v2BoneStart.X, v2BoneStart.Y, v2BoneEnd.X, v2BoneEnd.Y, 1);
     }
 
     /// <summary>
@@ -346,13 +347,15 @@ public static class Draw
     /// </summary>
     /// <param name="font"></param>
     /// <param name="brush"></param>
-    /// <param name="offset"></param>
-    /// <param name="bone"></param>
-    public static void DrawBoneDeBug(Font font, IBrush brush, long offset, int bone)
+    /// <param name="pCPed"></param>
+    /// <param name="boneMatrix"></param>
+    /// <param name="boneId"></param>
+    public static void DrawBoneDebug(Font font, IBrush brush, long pCPed, float[] boneMatrix, int boneId)
     {
-        Vector2 v2Bone = Core.WorldToScreen(Core.GetBonePosition(offset, bone));
+        var v2Bone = Core.WorldToScreen(Core.GetBonePosition(pCPed, boneMatrix,  boneId));
+
         if (!Core.IsNullVector2(v2Bone))
-            _gfx.DrawText(font, 10, brush, v2Bone.X, v2Bone.Y, $"{bone}");
+            _gfx.DrawText(font, 10, brush, v2Bone.X, v2Bone.Y, $"{boneId}");
     }
 }
 

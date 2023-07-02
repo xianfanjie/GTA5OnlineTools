@@ -62,7 +62,7 @@ public static class FileHelper
     public static string File_Cache_Xenos64 { get; private set; }
     public static string File_Cache_Xenos64Profile { get; private set; }
 
-    public static string File_YimMenu_YimMenu { get; private set; }
+    public static string File_YimMenu_DLL { get; private set; }
     public static string File_YimMenu_Index { get; private set; }
     public static string File_YimMenu_ZHCN { get; private set; }
 
@@ -70,11 +70,11 @@ public static class FileHelper
 
     public static string Dir_AppData { get; private set; }
 
-    public static string Dir_BigBaseV2 { get; private set; }
-    public static string Dir_BigBaseV2_Scripts { get; private set; }
-    public static string Dir_BigBaseV2_Translations { get; private set; }
+    public static string Dir_AppData_YimMenu { get; private set; }
+    public static string Dir_AppData_YimMenu_Scripts { get; private set; }
+    public static string Dir_AppData_YimMenu_Translations { get; private set; }
 
-    public static string File_BigBaseV2_Settings { get; private set; }
+    public static string File_AppData_YimMenu_Settings { get; private set; }
 
     //////////////////////////////////////////////////////////////////
 
@@ -102,11 +102,11 @@ public static class FileHelper
         Dir_Log_Crash = Path.Combine(Dir_Logger, "Crash");
         Dir_Log_NLog = Path.Combine(Dir_Logger, "NLog");
 
-        Dir_BigBaseV2 = Path.Combine(Dir_AppData, "BigBaseV2");
-        Dir_BigBaseV2_Scripts = Path.Combine(Dir_BigBaseV2, "scripts");
-        Dir_BigBaseV2_Translations = Path.Combine(Dir_BigBaseV2, "translations");
+        Dir_AppData_YimMenu = Path.Combine(Dir_AppData, "YimMenu");
+        Dir_AppData_YimMenu_Scripts = Path.Combine(Dir_AppData_YimMenu, "scripts");
+        Dir_AppData_YimMenu_Translations = Path.Combine(Dir_AppData_YimMenu, "translations");
 
-        File_BigBaseV2_Settings = Path.Combine(Dir_BigBaseV2, "settings.json");
+        File_AppData_YimMenu_Settings = Path.Combine(Dir_AppData_YimMenu, "settings.json");
 
         File_Kiddion_Kiddion = Path.Combine(Dir_Kiddion, "Kiddion.exe");
         File_Kiddion_KiddionChs = Path.Combine(Dir_Kiddion, "KiddionChs.dll");
@@ -125,10 +125,10 @@ public static class FileHelper
         File_Cache_Xenos64 = Path.Combine(Dir_Cache, "Xenos64.exe");
         File_Cache_Xenos64Profile = Path.Combine(Dir_Cache, "XenosCurrentProfile.xpr");
 
-        File_YimMenu_YimMenu = Path.Combine(Dir_YimMenu, "YimMenu.dll");
+        File_YimMenu_DLL = Path.Combine(Dir_YimMenu, "YimMenu.dll");
 
-        File_YimMenu_Index = Path.Combine(Dir_BigBaseV2_Translations, "index.json");
-        File_YimMenu_ZHCN = Path.Combine(Dir_BigBaseV2_Translations, "zh_CN.json");
+        File_YimMenu_Index = Path.Combine(Dir_AppData_YimMenu_Translations, "index.json");
+        File_YimMenu_ZHCN = Path.Combine(Dir_AppData_YimMenu_Translations, "zh_CN.json");
 
         File_Config_Vehicles = Path.Combine(Dir_Config, "Vehicles.json");
         File_Config_Teleports = Path.Combine(Dir_Config, "Teleports.json");

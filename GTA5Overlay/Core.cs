@@ -58,7 +58,7 @@ public static class Core
         Vector2 screenV2;
         Vector3 cameraV3;
 
-        float[] viewMatrix = GetCameraMatrix();
+        var viewMatrix = GetCameraMatrix();
 
         cameraV3.Z = viewMatrix[2] * posV3.X + viewMatrix[6] * posV3.Y + viewMatrix[10] * posV3.Z + viewMatrix[14];
         if (cameraV3.Z < 0.001f)
@@ -89,7 +89,7 @@ public static class Core
         Vector2 boxV2;
         Vector3 cameraV3;
 
-        float[] viewMatrix = GetCameraMatrix();
+        var viewMatrix = GetCameraMatrix();
 
         cameraV3.Z = viewMatrix[2] * posV3.X + viewMatrix[6] * posV3.Y + viewMatrix[10] * posV3.Z + viewMatrix[14];
         if (cameraV3.Z < 0.001f)
@@ -111,16 +111,15 @@ public static class Core
     }
 
     /// <summary>
-    /// 获取骨骼3D坐标
+    /// 获取骨骼世界坐标
     /// </summary>
-    /// <param name="offset"></param>
-    /// <param name="BoneID"></param>
+    /// <param name="pCPed"></param>
+    /// <param name="boneMatrix"></param>
+    /// <param name="boneId"></param>
     /// <returns></returns>
-    public static Vector3 GetBonePosition(long offset, int BoneID)
+    public static Vector3 GetBonePosition(long pCPed, float[] boneMatrix, int boneId)
     {
-        float[] boneMatrix = GetBoneMatrix(offset);
-
-        Vector3 bone_offset_pos = Memory.Read<Vector3>(offset + 0x410 + BoneID * 0x10);
+        var bone_offset_pos = Memory.Read<Vector3>(pCPed + 0x410 + boneId * 0x10);
 
         Vector3 bone_pos;
         bone_pos.X = boneMatrix[0] * bone_offset_pos.X + boneMatrix[4] * bone_offset_pos.Y + boneMatrix[8] * bone_offset_pos.Z + boneMatrix[12];
@@ -138,7 +137,7 @@ public static class Core
     /// <returns></returns>
     public static Vector3 GetCCameraViewAngles(Vector3 cameraV3, Vector3 targetV3)
     {
-        float distance = (float)Math.Sqrt(Math.Pow(cameraV3.X - targetV3.X, 2) + Math.Pow(cameraV3.Y - targetV3.Y, 2) + Math.Pow(cameraV3.Z - targetV3.Z, 2));
+        var distance = (float)Math.Sqrt(Math.Pow(cameraV3.X - targetV3.X, 2) + Math.Pow(cameraV3.Y - targetV3.Y, 2) + Math.Pow(cameraV3.Z - targetV3.Z, 2));
 
         return new Vector3
         {

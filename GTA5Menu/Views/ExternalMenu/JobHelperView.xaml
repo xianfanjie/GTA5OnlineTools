@@ -29,12 +29,12 @@
             </WrapPanel>
             <ui:LabelIcon Content="CEO特殊货物" />
             <WrapPanel Margin="5,0,5,0">
-                <Button Click="Button_CEOSpecialCargos_Click" Content="古董艺术品（华丽彩蛋）" />
-                <Button Click="Button_CEOSpecialCargos_Click" Content="武器弹药（黄金火神机枪）" />
                 <Button Click="Button_CEOSpecialCargos_Click" Content="宝石（一大颗钻石）" />
+                <Button Click="Button_CEOSpecialCargos_Click" Content="古董艺术品（华丽彩蛋）" />
+                <Button Click="Button_CEOSpecialCargos_Click" Content="珠宝（稀有怀表）" />
                 <Button Click="Button_CEOSpecialCargos_Click" Content="动物材料（稀有皮草）" />
                 <Button Click="Button_CEOSpecialCargos_Click" Content="仿制品（电影胶卷）" />
-                <Button Click="Button_CEOSpecialCargos_Click" Content="珠宝（稀有怀表）" />
+                <Button Click="Button_CEOSpecialCargos_Click" Content="武器弹药（黄金火神机枪）" />
             </WrapPanel>
             <StackPanel Margin="5,0,5,0">
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">

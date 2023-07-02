@@ -27,6 +27,11 @@ public partial class UpdateWindow
     {
         try
         {
+            if (CoreUtil.ServerVersion > CoreUtil.ClientVersion)
+            {
+                AudioHelper.SP_GTA5Email.Play();
+            }
+
             TextBlock_LatestUpdateInfo.Text = $"{CoreUtil.UpdateInfo.Latest.Date}\n{CoreUtil.UpdateInfo.Latest.Change}";
 
             if (CoreUtil.UpdateInfo != null)
@@ -86,12 +91,12 @@ public partial class UpdateWindow
             CoreUtil.UpdateAddress = CoreUtil.UpdateInfo.Download[index].Url;
 
         // 下载临时文件完整路径
-        string OldPath = FileUtil.GetCurrFullPath(CoreUtil.HalfwayAppName);
+        var oldPath = FileUtil.GetCurrFullPath(CoreUtil.HalfwayAppName);
 
         downloader.DownloadProgressChanged += DownloadProgressChanged;
         downloader.DownloadFileCompleted += DownloadFileCompleted;
 
-        downloader.DownloadFileTaskAsync(CoreUtil.UpdateAddress, OldPath);
+        downloader.DownloadFileTaskAsync(CoreUtil.UpdateAddress, oldPath);
     }
 
     /// <summary>
@@ -163,16 +168,16 @@ public partial class UpdateWindow
                 try
                 {
                     // 下载临时文件完整路径
-                    string OldPath = FileUtil.GetCurrFullPath(CoreUtil.HalfwayAppName);
+                    var oldPath = FileUtil.GetCurrFullPath(CoreUtil.HalfwayAppName);
                     // 下载完成后文件真正路径
-                    string NewPath = FileUtil.GetCurrFullPath(CoreUtil.FullAppName());
+                    var newPath = FileUtil.GetCurrFullPath(CoreUtil.FullAppName());
                     // 下载完成后新文件重命名
-                    FileUtil.FileReName(OldPath, NewPath);
+                    FileUtil.FileReName(oldPath, newPath);
 
                     Thread.Sleep(100);
 
                     // 下载完成后旧文件重命名
-                    string oldFileName = $"[旧版本小助手请手动删除] {Guid.NewGuid()}.exe";
+                    var oldFileName = $"[旧版本小助手请手动删除] {Guid.NewGuid()}.exe";
                     // 旧版本小助手重命名
                     FileUtil.FileReName(FileUtil.File_MainApp, FileUtil.GetCurrFullPath(oldFileName));
 
@@ -180,7 +185,7 @@ public partial class UpdateWindow
 
                     App.AppMainMutex.Dispose();
                     Thread.Sleep(1000);
-                    ProcessHelper.OpenProcess(NewPath);
+                    ProcessHelper.OpenProcess(newPath);
                     Application.Current.Shutdown();
                 }
                 catch (Exception ex)
@@ -198,7 +203,7 @@ public partial class UpdateWindow
     /// <returns></returns>
     private string LongToString(long num)
     {
-        float kb = num / 1024.0f;
+        var kb = num / 1024.0f;
 
         if (kb > 1024)
             return $"{kb / 1024:0.0}MB";

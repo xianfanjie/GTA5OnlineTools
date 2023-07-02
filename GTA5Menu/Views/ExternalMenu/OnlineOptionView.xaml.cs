@@ -18,10 +18,6 @@ public partial class OnlineOptionView : UserControl
         public bool OrbitalCooldown = false;
         public bool SellOnNonPublic = false;
         public bool SessionSnow = false;
-
-        public float RPxN = 1.0f;
-        public float APxN = 1.0f;
-        public float REPxN = 1.0f;
     }
     private readonly Options _options = new();
 
@@ -29,7 +25,7 @@ public partial class OnlineOptionView : UserControl
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
-        GTA5MenuWindow.LoopTime1000MsEvent += GTA5MenuWindow_LoopTime1000MsEvent;
+        GTA5MenuWindow.LoopSpeedNormalEvent += GTA5MenuWindow_LoopSpeedNormalEvent;
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()
@@ -37,7 +33,7 @@ public partial class OnlineOptionView : UserControl
 
     }
 
-    private void GTA5MenuWindow_LoopTime1000MsEvent()
+    private void GTA5MenuWindow_LoopSpeedNormalEvent()
     {
         // 免费更改角色外观
         if (_options.FreeChangeAppearance)
@@ -58,19 +54,9 @@ public partial class OnlineOptionView : UserControl
         // 战局雪天 (自己可见)
         if (_options.SessionSnow)
             Online.SessionSnow(true);
-
-        // 角色RP
-        if (_options.RPxN != 1.0)
-            Online.RPMultiplier(_options.RPxN);
-        // 竞技场AP
-        if (_options.APxN != 1.0)
-            Online.APMultiplier(_options.APxN);
-        // 车友会RP
-        if (_options.REPxN != 1.0)
-            Online.REPMultiplier(_options.REPxN);
     }
 
-    /////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
 
     private void Button_Sessions_Click(object sender, RoutedEventArgs e)
     {
@@ -251,23 +237,5 @@ public partial class OnlineOptionView : UserControl
         Online.TriggerMiniTank(true);
         await Task.Delay(100);
         Online.TriggerMiniTank(false);
-    }
-
-    private void Slider_RPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    {
-        _options.RPxN = (float)Slider_RPxN.Value;
-        Online.RPMultiplier(_options.RPxN);
-    }
-
-    private void Slider_APxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    {
-        _options.APxN = (float)Slider_APxN.Value;
-        Online.APMultiplier(_options.APxN);
-    }
-
-    private void Slider_REPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    {
-        _options.REPxN = (float)Slider_REPxN.Value;
-        Online.REPMultiplier(_options.REPxN);
     }
 }

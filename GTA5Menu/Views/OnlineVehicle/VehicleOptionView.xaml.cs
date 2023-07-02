@@ -24,7 +24,7 @@ public partial class VehicleOptionView : UserControl
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
-        GTA5MenuWindow.LoopTime1000MsEvent += GTA5MenuWindow_LoopTime1000MsEvent;
+        GTA5MenuWindow.LoopSpeedNormalEvent += GTA5MenuWindow_LoopSpeedNormalEvent;
 
         // 载具附加功能
         foreach (var item in OnlineData.VehicleExtras)
@@ -39,7 +39,7 @@ public partial class VehicleOptionView : UserControl
 
     }
 
-    private void GTA5MenuWindow_LoopTime1000MsEvent()
+    private void GTA5MenuWindow_LoopSpeedNormalEvent()
     {
         // 载具无敌
         if (_options.GodMode)

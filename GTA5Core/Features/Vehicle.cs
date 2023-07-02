@@ -8,6 +8,14 @@ public static class Vehicle
     /// <summary>
     /// 玩家是否在载具中
     /// </summary>
+    public static bool IsInVehicle(long pCPed)
+    {
+        return Memory.Read<byte>(pCPed + CPed.InVehicle) == 0x01;
+    }
+
+    /// <summary>
+    /// 玩家是否在载具中
+    /// </summary>
     public static bool IsInVehicle()
     {
         var pCPed = Game.GetCPed();
@@ -15,14 +23,6 @@ public static class Vehicle
             return false;
 
         return IsInVehicle(pCPed);
-    }
-
-    /// <summary>
-    /// 玩家是否在载具中
-    /// </summary>
-    public static bool IsInVehicle(long pCPed)
-    {
-        return Memory.Read<byte>(pCPed + CPed.InVehicle) == 0x01;
     }
 
     /// <summary>

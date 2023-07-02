@@ -24,13 +24,13 @@ public partial class GTA5MenuWindow
     public static event Action WindowClosingEvent;
 
     /// <summary>
-    /// 每间隔1000ms调用一次事件
+    /// 周期性调用事件 普通速度
     /// </summary>
-    public static event Action LoopTime1000MsEvent;
+    public static event Action LoopSpeedNormalEvent;
     /// <summary>
-    /// 每间隔200ms调用一次事件
+    /// 周期性调用事件 较快速度
     /// </summary>
-    public static event Action LoopTime200MsEvent;
+    public static event Action LoopSpeedFastEvent;
 
     ///////////////////////////////////////////
 
@@ -81,15 +81,15 @@ public partial class GTA5MenuWindow
         // 订阅按钮事件
         HotKeys.KeyDownEvent += HotKeys_KeyDownEvent;
 
-        new Thread(LoopTime1000MsThread)
+        new Thread(LoopSpeedNormalThread)
         {
-            Name = "LoopTime1000MsThread",
+            Name = "LoopSpeedNormalThread",
             IsBackground = true
         }.Start();
 
-        new Thread(LoopTime200MsThread)
+        new Thread(LoopSpeedFastThread)
         {
-            Name = "LoopTime200MsThread",
+            Name = "LoopSpeedFastThread",
             IsBackground = true
         }.Start();
     }
@@ -231,23 +231,23 @@ public partial class GTA5MenuWindow
         });
     }
 
-    private void LoopTime1000MsThread()
+    private void LoopSpeedNormalThread()
     {
         while (IsAppRunning)
         {
-            LoopTime1000MsEvent?.Invoke();
+            LoopSpeedNormalEvent?.Invoke();
 
             Thread.Sleep(1000);
         }
     }
 
-    private void LoopTime200MsThread()
+    private void LoopSpeedFastThread()
     {
         while (IsAppRunning)
         {
-            LoopTime200MsEvent?.Invoke();
+            LoopSpeedFastEvent?.Invoke();
 
-            Thread.Sleep(200);
+            Thread.Sleep(500);
         }
     }
 

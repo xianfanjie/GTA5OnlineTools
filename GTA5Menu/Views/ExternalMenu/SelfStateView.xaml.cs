@@ -5,6 +5,7 @@ using GTA5Core.Native;
 using GTA5Core.Offsets;
 using GTA5Core.Features;
 using GTA5Core.GTA.Rage;
+using GTA5Core.GTA.Enum;
 using GTA5Shared.Helper;
 
 namespace GTA5Menu.Views.ExternalMenu;
@@ -60,8 +61,8 @@ public partial class SelfStateView : UserControl
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
-        GTA5MenuWindow.LoopTime1000MsEvent += GTA5MenuWindow_LoopTime1000MsEvent;
-        GTA5MenuWindow.LoopTime200MsEvent += GTA5MenuWindow_LoopTime200MsEvent;
+        GTA5MenuWindow.LoopSpeedNormalEvent += GTA5MenuWindow_LoopSpeedNormalEvent;
+        GTA5MenuWindow.LoopSpeedFastEvent += GTA5MenuWindow_LoopSpeedFastEvent;
 
         // 添加快捷键
         HotKeys.AddKey(Keys.F3);
@@ -220,7 +221,7 @@ public partial class SelfStateView : UserControl
 
     /////////////////////////////////////////////////
 
-    private void GTA5MenuWindow_LoopTime1000MsEvent()
+    private void GTA5MenuWindow_LoopSpeedNormalEvent()
     {
         var pCPed = Game.GetCPed();
         var pCPlayerInfo = Memory.Read<long>(pCPed + CPed.CPlayerInfo);
@@ -321,7 +322,7 @@ public partial class SelfStateView : UserControl
             Player.ProofWater(true);
     }
 
-    private void GTA5MenuWindow_LoopTime200MsEvent()
+    private void GTA5MenuWindow_LoopSpeedFastEvent()
     {
         // 自动消星
         if (_options.ClearWanted)

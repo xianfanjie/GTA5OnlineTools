@@ -1,6 +1,6 @@
-﻿using GTA5Core.Features;
+﻿using GTA5Core.GTA.Enum;
 using GTA5Core.GTA.Stats;
-using GTA5Core.Offsets;
+using GTA5Core.Features;
 using GTA5Shared.Helper;
 
 namespace GTA5MenuExtra; 

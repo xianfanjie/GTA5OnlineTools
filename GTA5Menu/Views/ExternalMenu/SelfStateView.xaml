@@ -156,8 +156,8 @@
                     Click="Button_Suicide_Click"
                     Content="玩家自杀" />
             </WrapPanel>
-
-            <ui:LabelIcon Content="传送功能" />
+            <Separator Margin="8,5,8,5" />
+            <!--  //////////////  -->
             <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_ToWaypoint"
@@ -167,18 +167,12 @@
                     x:Name="Button_ToObjective"
                     Click="Button_ToObjective_Click"
                     Content="传送到目标点" />
-                <!--<Button
-                    x:Name="Button_ToWaypointSuper"
-                    Background="#CA64EA"
-                    Click="Button_ToWaypointSuper_Click"
-                    Content="传送到导航点（精准）" />-->
                 <Button
                     x:Name="Button_ToCrossHair"
                     Background="#34A853"
                     Click="Button_ToCrossHair_Click"
                     Content="传送到准星位置" />
             </WrapPanel>
-
         </StackPanel>
         <!--  面板3  -->
         <StackPanel>

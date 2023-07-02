@@ -1,10 +1,4 @@
-﻿namespace GTA5Core.Offsets;
-
-public enum EntityType : byte
-{
-    Player = 156,
-    Other = 152
-}
+﻿namespace GTA5Core.GTA.Enum;
 
 public enum SessionType : int
 {
@@ -52,14 +46,4 @@ public enum SessionType : int
     /// 离开线上模式
     /// </summary>
     Leave_Online = -1
-}
-
-public enum WantedLevel : byte
-{
-    Level0, 
-    Level1, 
-    Level2, 
-    Level3, 
-    Level4, 
-    Level5,
 }

@@ -38,7 +38,7 @@ public partial class JobHelperView : UserControl
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
-        GTA5MenuWindow.LoopTime1000MsEvent += GTA5MenuWindow_LoopTime1000MsEvent;
+        GTA5MenuWindow.LoopSpeedNormalEvent += GTA5MenuWindow_LoopSpeedNormalEvent;
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()
@@ -46,7 +46,7 @@ public partial class JobHelperView : UserControl
 
     }
 
-    private void GTA5MenuWindow_LoopTime1000MsEvent()
+    private void GTA5MenuWindow_LoopSpeedNormalEvent()
     {
         // 只有用户勾选才开启循环写入，不勾选不修改值（避免与其他工具冲突）
 

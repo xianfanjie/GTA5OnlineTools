@@ -25,7 +25,7 @@ public partial class WeaponOptionView : UserControl
     {
         InitializeComponent();
         GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
-        GTA5MenuWindow.LoopTime1000MsEvent += GTA5MenuWindow_LoopTime1000MsEvent;
+        GTA5MenuWindow.LoopSpeedNormalEvent += GTA5MenuWindow_LoopSpeedNormalEvent;
 
         // 子弹类型
         foreach (var item in OnlineData.ImpactExplosions)
@@ -42,7 +42,7 @@ public partial class WeaponOptionView : UserControl
 
     /////////////////////////////////////////////////////
 
-    private void GTA5MenuWindow_LoopTime1000MsEvent()
+    private void GTA5MenuWindow_LoopSpeedNormalEvent()
     {
         // 弹药编辑
         if (_options.AmmoModifier)

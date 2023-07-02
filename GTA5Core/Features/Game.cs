@@ -106,6 +106,16 @@ public static class Game
     }
 
     /// <summary>
+    /// 获取 CObjectInterface 指针
+    /// </summary>
+    /// <returns></returns>
+    public static long GetCObjectInterface()
+    {
+        var pCReplayInterface = GetCReplayInterface();
+        return Memory.Read<long>(pCReplayInterface + CReplayInterface.CObjectInterface);
+    }
+
+    /// <summary>
     /// 获取 CPedList 指针
     /// </summary>
     /// <returns></returns>
@@ -123,5 +133,15 @@ public static class Game
     {
         var pCVehicleInterface = GetCVehicleInterface();
         return Memory.Read<long>(pCVehicleInterface + CVehicleInterface.CVehicleList);
+    }
+
+    /// <summary>
+    /// 获取 CObjectList 指针
+    /// </summary>
+    /// <returns></returns>
+    public static long GetCObjectList()
+    {
+        var pCObjectInterface = GetCObjectInterface();
+        return Memory.Read<long>(pCObjectInterface + CObjectInterface.CObjectList);
     }
 }

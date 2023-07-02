@@ -33,7 +33,42 @@
                 <Button Click="Button_LocalWeather_Click" Content="万圣节" />
             </WrapPanel>
 
+            <ui:LabelIcon Content="经验倍数" />
+            <StackPanel Margin="5,0,5,0">
+                <ui:SliderIcon
+                    x:Name="Slider_RPxN"
+                    Title="角色RP"
+                    Maximum="1000"
+                    Minimum="1"
+                    Style="{StaticResource SliderIconStyle_Int}"
+                    ValueChanged="Slider_RPxN_ValueChanged" />
+                <ui:SliderIcon
+                    x:Name="Slider_APxN"
+                    Title="竞技场AP"
+                    Maximum="1000"
+                    Minimum="1"
+                    Style="{StaticResource SliderIconStyle_Int}"
+                    ValueChanged="Slider_APxN_ValueChanged" />
+                <ui:SliderIcon
+                    x:Name="Slider_REPxN"
+                    Title="车友会RP"
+                    Maximum="1000"
+                    Minimum="1"
+                    Style="{StaticResource SliderIconStyle_Int}"
+                    ValueChanged="Slider_REPxN_ValueChanged" />
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：经验倍数不建议调整的太高，建议10~100倍左右，太高容易出现交易警告
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：鼠标拖动或者点击滑块可粗略调整，使用键盘方向键左右可以精确调整
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <!--  面板2  -->
+        <StackPanel>
             <ui:LabelIcon Content="NPC控制" />
+            <!--  //////////////  -->
             <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_KillAllNPC"
@@ -48,6 +83,8 @@
                     Click="Button_KillAllPolice_Click"
                     Content="杀死警察" />
             </WrapPanel>
+            <Separator Margin="8,5,8,5" />
+            <!--  //////////////  -->
             <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_DestroyAllVehicles"
@@ -62,6 +99,8 @@
                     Click="Button_DestroyAllHostilityNPCVehicles_Click"
                     Content="摧毁敌对NPC载具" />
             </WrapPanel>
+            <Separator Margin="8,5,8,5" />
+            <!--  //////////////  -->
             <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_TPAllNPCToMe"
@@ -72,49 +111,25 @@
                     Click="Button_TPHostilityNPCToMe_Click"
                     Content="传送敌对NPC到我" />
             </WrapPanel>
-
-            <ui:LabelIcon Content="自定义传送" />
+            <Separator Margin="8,5,8,5" />
+            <!--  //////////////  -->
             <WrapPanel Margin="5,0,5,0">
                 <Button
-                    x:Name="Button_ToWaypoint"
-                    Click="Button_ToWaypoint_Click"
-                    Content="传送到导航点" />
+                    x:Name="Button_TPNPCTo9999"
+                    Click="Button_TPNPCTo9999_Click"
+                    Content="传送NPC到太空" />
                 <Button
-                    x:Name="Button_ToObjective"
-                    Click="Button_ToObjective_Click"
-                    Content="传送到目标点" />
+                    x:Name="Button_TPHostilityNPCTo9999"
+                    Click="Button_TPHostilityNPCTo9999_Click"
+                    Content="传送敌对NPC到太空" />
+                <Button
+                    x:Name="Button_RemoveAllCCTV"
+                    Click="Button_RemoveAllCCTV_Click"
+                    Content="移除CCTV摄像头" />
             </WrapPanel>
         </StackPanel>
-        <!--  面板2  -->
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top">
-                <ui:LabelIcon Content="模型修改" />
-                <StackPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_ModelChange"
-                        Click="Button_ModelChange_Click"
-                        Content="⚠ 修改线上角色模型" />
-                </StackPanel>
-            </StackPanel>
-            <ListBox
-                x:Name="ListBox_PedModel"
-                Margin="5"
-                DockPanel.Dock="Bottom"
-                MouseDoubleClick="ListBox_PedModel_MouseDoubleClick"
-                Style="{StaticResource ListBoxStyle_Base}" />
-        </DockPanel>
         <!--  面板3  -->
-        <StackPanel>
-            <ui:LabelIcon Content="模型修改说明" />
-            <StackPanel Margin="5,0,5,0">
-                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    1. 此功能仅供尝鲜使用，部分人物模型显示怪异<LineBreak />
-                    2. 如果人物没有刷出来，请多尝试几次<LineBreak />
-                    3. 刷出的人物没有武器，可以拾取地上掉落武器<LineBreak />
-                    4. 人物死亡复活后会变透明，重新刷人物即可<LineBreak />
-                    5. 如果要恢复线上角色，请切换战局或者回到故事模式然后重新进入线上</TextBlock>
-            </StackPanel>
-        </StackPanel>
+        <StackPanel />
     </UniformGrid>
 
 </UserControl>

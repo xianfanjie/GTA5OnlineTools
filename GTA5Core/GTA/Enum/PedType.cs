@@ -32,4 +32,4 @@ public enum PedType
     SWAT,                       // 27 特警
     ANIMAL,                     // 28 动物
     ARMY                        // 29 军队
-};
+}

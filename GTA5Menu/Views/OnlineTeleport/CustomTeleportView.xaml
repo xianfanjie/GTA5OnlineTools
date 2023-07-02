@@ -12,14 +12,72 @@
     mc:Ignorable="d">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="250" />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!--  //////////////////////  -->
+        <DockPanel Margin="5,5,5,0">
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <Button
+                    x:Name="Button_AddCustomTeleport"
+                    Click="Button_AddCustomTeleport_Click"
+                    Content="添加" />
+                <Button
+                    x:Name="Button_EditCustomTeleport"
+                    Click="Button_EditCustomTeleport_Click"
+                    Content="修改"
+                    IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
+                <Button
+                    x:Name="Button_DeleteCustomTeleport"
+                    Background="#EA4335"
+                    Click="Button_DeleteCustomTeleport_Click"
+                    Content="删除"
+                    IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
+                <Button
+                    x:Name="Button_Teleport"
+                    Background="#34A853"
+                    Click="Button_Teleport_Click"
+                    Content="传送"
+                    IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
+            </StackPanel>
+            <!--  /////////////  -->
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <!--  X坐标  -->
+                <TextBlock VerticalAlignment="Center" Text="X坐标" />
+                <TextBox
+                    x:Name="TextBox_Position_X"
+                    Width="90"
+                    IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
+                    Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.X, StringFormat='{}{0:0.000}'}" />
+                <!--  Y坐标  -->
+                <TextBlock VerticalAlignment="Center" Text="Y坐标" />
+                <TextBox
+                    x:Name="TextBox_Position_Y"
+                    Width="90"
+                    IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
+                    Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Y, StringFormat='{}{0:0.000}'}" />
+                <!--  Z坐标  -->
+                <TextBlock VerticalAlignment="Center" Text="Z坐标" />
+                <TextBox
+                    x:Name="TextBox_Position_Z"
+                    Width="90"
+                    IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
+                    Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Z, StringFormat='{}{0:0.000}'}" />
+            </StackPanel>
+            <!--  /////////////  -->
+            <!--  坐标名称  -->
+            <TextBlock VerticalAlignment="Center" Text="名称" />
+            <TextBox
+                x:Name="TextBox_CustomName"
+                IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
+                Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Name}" />
+        </DockPanel>
         <!--  //////////////////////  -->
         <ListBox
             x:Name="ListBox_CustomTeleports"
-            Margin="5"
+            Grid.Row="1"
+            Margin="5,3,5,5"
             dd:DragDrop.DropTargetAdornerBrush="DodgerBlue"
             dd:DragDrop.IsDragSource="True"
             dd:DragDrop.IsDropTarget="True"
@@ -27,152 +85,6 @@
             ItemsSource="{Binding CustomTeleports}"
             MouseDoubleClick="ListBox_CustomTeleports_MouseDoubleClick"
             Style="{StaticResource ListBoxStyle_TeleportInfo}" />
-        <!--  //////////////////////  -->
-        <StackPanel Grid.Column="1">
-            <ui:LabelIcon Content="坐标数据" />
-            <StackPanel Margin="5,0,5,0">
-                <!--  坐标名称  -->
-                <DockPanel Margin="5,0,0,0">
-                    <TextBlock
-                        Width="50"
-                        VerticalAlignment="Center"
-                        Text="坐标名称" />
-                    <TextBox
-                        x:Name="TextBox_CustomName"
-                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
-                        Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Name}" />
-                </DockPanel>
-                <!--  X坐标  -->
-                <DockPanel Margin="5,0,0,0">
-                    <TextBlock
-                        Width="50"
-                        VerticalAlignment="Center"
-                        Text="X坐标" />
-                    <TextBox
-                        x:Name="TextBox_Position_X"
-                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
-                        Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.X, StringFormat='{}{0:0.000}'}" />
-                </DockPanel>
-                <!--  Y坐标  -->
-                <DockPanel Margin="5,0,0,0">
-                    <TextBlock
-                        Width="50"
-                        VerticalAlignment="Center"
-                        Text="Y坐标" />
-                    <TextBox
-                        x:Name="TextBox_Position_Y"
-                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
-                        Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Y, StringFormat='{}{0:0.000}'}" />
-                </DockPanel>
-                <!--  Z坐标  -->
-                <DockPanel Margin="5,0,0,0">
-                    <TextBlock
-                        Width="50"
-                        VerticalAlignment="Center"
-                        Text="Z坐标" />
-                    <TextBox
-                        x:Name="TextBox_Position_Z"
-                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}"
-                        Text="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedItem.Z, StringFormat='{}{0:0.000}'}" />
-                </DockPanel>
-                <WrapPanel>
-                    <Button
-                        x:Name="Button_AddCustomTeleport"
-                        Click="Button_AddCustomTeleport_Click"
-                        Content="添加" />
-                    <Button
-                        x:Name="Button_EditCustomTeleport"
-                        Click="Button_EditCustomTeleport_Click"
-                        Content="修改"
-                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
-                    <Button
-                        x:Name="Button_DeleteCustomTeleport"
-                        Background="#EA4335"
-                        Click="Button_DeleteCustomTeleport_Click"
-                        Content="删除"
-                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
-                    <Button
-                        x:Name="Button_Teleport"
-                        Background="#34A853"
-                        Click="Button_Teleport_Click"
-                        Content="传送"
-                        IsEnabled="{Binding ElementName=ListBox_CustomTeleports, Path=SelectedIndex, Converter={StaticResource SelectedIndexToIsEnabledConverter}}" />
-                </WrapPanel>
-                <WrapPanel>
-                    <Button
-                        x:Name="Button_ToWaypoint"
-                        Click="Button_ToWaypoint_Click"
-                        Content="传送到导航点" />
-                    <Button
-                        x:Name="Button_ToObjective"
-                        Click="Button_ToObjective_Click"
-                        Content="传送到目标点" />
-                </WrapPanel>
-            </StackPanel>
-            <!--  //////////////////////////  -->
-            <ui:LabelIcon Content="坐标微调" />
-            <StackPanel Margin="5,0,5,0">
-                <DockPanel>
-                    <TextBlock
-                        Margin="5"
-                        DockPanel.Dock="Left"
-                        Text="{Binding ElementName=Slider_MoveDistance, Path=Value, StringFormat=微调距离 : {0:0.0}}" />
-                    <Slider
-                        Name="Slider_MoveDistance"
-                        VerticalAlignment="Center"
-                        DockPanel.Dock="Right"
-                        Maximum="5.0"
-                        Minimum="0.5"
-                        TickFrequency="0.5"
-                        Value="1.5" />
-                </DockPanel>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="0.5*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Click="Button_MoveDistance_Click"
-                            Content="向前" />
-                        <Button
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Click="Button_MoveDistance_Click"
-                            Content="向后" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Click="Button_MoveDistance_Click"
-                            Content="向左" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="2"
-                            Click="Button_MoveDistance_Click"
-                            Content="向右" />
-                    </Grid>
-                    <StackPanel
-                        Grid.Column="1"
-                        Margin="5"
-                        VerticalAlignment="Center">
-                        <Button Click="Button_MoveDistance_Click" Content="向上" />
-                        <Button Click="Button_MoveDistance_Click" Content="向下" />
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
-        </StackPanel>
     </Grid>
 
 </UserControl>

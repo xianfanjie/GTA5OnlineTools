@@ -35,6 +35,11 @@
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
+                    CommandParameter="TeleportOptionView"
+                    Content="传送选项"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
                     CommandParameter="MyBlipView"
                     Content="收藏Blip"
                     Style="{StaticResource NavMenuStyle_Normal}" />

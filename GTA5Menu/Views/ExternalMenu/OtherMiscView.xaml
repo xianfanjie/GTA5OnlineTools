@@ -12,27 +12,21 @@
 
     <UniformGrid Columns="3">
         <!--  面板1  -->
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top">
-                <ui:LabelIcon Content="模型修改" />
-                <StackPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_ModelChange"
-                        Click="Button_ModelChange_Click"
-                        Content="⚠ 修改线上角色模型" />
-                </StackPanel>
-            </StackPanel>
-            <ListBox
-                x:Name="ListBox_PedModel"
-                Margin="5"
-                DockPanel.Dock="Bottom"
-                MouseDoubleClick="ListBox_PedModel_MouseDoubleClick"
-                Style="{StaticResource ListBoxStyle_Base}" />
-        </DockPanel>
+        <ListBox
+            x:Name="ListBox_PedModel"
+            Margin="5"
+            DockPanel.Dock="Bottom"
+            MouseDoubleClick="ListBox_PedModel_MouseDoubleClick"
+            Style="{StaticResource ListBoxStyle_Base}" />
         <!--  面板2  -->
         <StackPanel>
-            <ui:LabelIcon Content="模型修改说明" />
+            <ui:LabelIcon Content="模型修改" />
             <StackPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_ModelChange"
+                    Click="Button_ModelChange_Click"
+                    Content="⚠ 修改线上角色模型" />
+                <!--  /////////////  -->
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     1. 此功能仅供尝鲜使用，部分人物模型显示怪异<LineBreak />
                     2. 如果人物没有刷出来，请多尝试几次<LineBreak />

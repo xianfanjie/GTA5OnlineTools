@@ -50,7 +50,7 @@
                 <CheckBox
                     x:Name="CheckBox_ChangeAppearanceCooldown"
                     Click="CheckBox_ChangeAppearanceCooldown_Click"
-                    Content="移除更改角色外观CD" />
+                    Content="移除更改角色外观冷却" />
             </StackPanel>
 
             <ui:LabelIcon Content="高级" />
@@ -105,26 +105,54 @@
         <StackPanel>
             <ui:LabelIcon Content="线上资产传送" />
             <WrapPanel Margin="5,0,5,0">
-                <Button Click="Button_Blips_Click" Content="游艇" />
-                <Button Click="Button_Blips_Click" Content="CEO仓库" />
-                <Button Click="Button_Blips_Click" Content="CEO办公室" />
+                <Button Click="Button_Blips_Click" Content="办公室" />
+                <Button Click="Button_Blips_Click" Content="特种货物仓库" />
+                <Button Click="Button_Blips_Click" Content="载具仓库" />
+            </WrapPanel>
+            <Separator Margin="8,5,8,5" />
+            <WrapPanel Margin="5,0,5,0">
                 <Button Click="Button_Blips_Click" Content="摩托帮会所" />
-                <Button Click="Button_Blips_Click" Content="大麻种植场" />
-                <Button Click="Button_Blips_Click" Content="可卡因工厂" />
-                <Button Click="Button_Blips_Click" Content="伪证件办公室" />
+                <Button Click="Button_Blips_Click" Content="可卡因作坊" />
                 <Button Click="Button_Blips_Click" Content="冰毒实验室" />
+                <Button Click="Button_Blips_Click" Content="大麻种植场" />
                 <Button Click="Button_Blips_Click" Content="假钞工厂" />
-                <Button Click="Button_Blips_Click" Content="CEO载具仓库" />
+                <Button Click="Button_Blips_Click" Content="证件伪造办公室" />
+            </WrapPanel>
+            <Separator Margin="8,5,8,5" />
+            <WrapPanel Margin="5,0,5,0">
                 <Button Click="Button_Blips_Click" Content="地堡" />
                 <Button Click="Button_Blips_Click" Content="机库" />
                 <Button Click="Button_Blips_Click" Content="设施" />
                 <Button Click="Button_Blips_Click" Content="夜总会" />
-                <Button Click="Button_Blips_Click" Content="恐霸" />
                 <Button Click="Button_Blips_Click" Content="游戏厅" />
-                <Button Click="Button_Blips_Click" Content="虎鲸" />
-                <Button Click="Button_Blips_Click" Content="车友会" />
                 <Button Click="Button_Blips_Click" Content="改装铺" />
                 <Button Click="Button_Blips_Click" Content="事务所" />
+            </WrapPanel>
+            <Separator Margin="8,5,8,5" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button Click="Button_Blips_Click" Content="赌场" />
+                <Button Click="Button_Blips_Click" Content="洛圣都车友会" />
+                <Button Click="Button_Blips_Click" Content="豪华汽车" />
+                <Button Click="Button_Blips_Click" Content="顶级豪华车业" />
+                <Button Click="Button_Blips_Click" Content="好麦坞车友俱乐部" />
+                <Button Click="Button_Blips_Click" Content="录音 A 工作室" />
+                <Button Click="Button_Blips_Click" Content="枪支厢型车" />
+                <Button Click="Button_Blips_Click" Content="街头毒贩" />
+            </WrapPanel>
+            <Separator Margin="8,5,8,5" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button Click="Button_Blips_Click" Content="游艇" />
+                <Button Click="Button_Blips_Click" Content="虎鲸" />
+                <Button Click="Button_Blips_Click" Content="恐霸" />
+                <Button Click="Button_Blips_Click" Content="复仇者" />
+                <Button Click="Button_Blips_Click" Content="机动作战中心" />
+                <Button Click="Button_Blips_Click" Content="致幻剂实验室" />
+            </WrapPanel>
+            <Separator Margin="8,5,8,5" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button Click="Button_Blips_Click" Content="隐藏包裹" />
+                <Button Click="Button_Blips_Click" Content="藏匿屋" />
+                <Button Click="Button_Blips_Click" Content="杰拉德的包裹" />
             </WrapPanel>
         </StackPanel>
         <!--  面板3  -->

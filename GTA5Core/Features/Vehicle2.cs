@@ -77,9 +77,18 @@ public static class Vehicle2
     {
         // 值设置-1代表载具默认配置
 
-        Globals.WriteGA(Base.oVMCreate + 27 + 5, -1);       // 主色调  primary -1 auto 159  
-        Globals.WriteGA(Base.oVMCreate + 27 + 6, -1);       // 副色调  secondary -1 auto 159  
-        Globals.WriteGA(Base.oVMCreate + 27 + 7, -1);       // 珠光色  pearlescent  
+        // 过滤会崩溃的载具mod
+        if (model == "banshee" ||
+            model == "sentinel" ||
+            model == "turismo2" ||
+            model == "deveste" ||
+            model == "hakuchou2" ||
+            model == "entity3" ||
+            model == "issi8" ||
+            model == "brioso")
+            return;
+
+        ////////////////////////////////////////////////////
 
         // 27 + 10 ~ 27 + 58
         for (var i = 0; i < 48; i++)
@@ -91,21 +100,16 @@ public static class Vehicle2
             // 27 + 31  (21)  ???
             // 27 + 32  (22)  大灯颜色
 
-            // 过滤会崩溃的载具mod
-            if (model == "banshee" ||
-                model == "sentinel" ||
-                model == "turismo2" ||
-                model == "deveste" ||
-                model == "hakuchou2" ||
-                model == "entity3" ||
-                model == "issi8" ||
-                model == "brioso")
-                return;
-
             Globals.WriteGA(Base.oVMCreate + 27 + 10 + i, mods[i]);
         }
 
         Globals.WriteGA(Base.oVMCreate + 27 + 58, RandomMod(mods[48]));    // 随机涂装
+
+        ////////////////////////////////////////////////////
+
+        Globals.WriteGA(Base.oVMCreate + 27 + 5, -1);       // 主色调  primary -1 auto 159  
+        Globals.WriteGA(Base.oVMCreate + 27 + 6, -1);       // 副色调  secondary -1 auto 159  
+        Globals.WriteGA(Base.oVMCreate + 27 + 7, -1);       // 珠光色  pearlescent  
 
         Globals.WriteGA(Base.oVMCreate + 27 + 8, -1);       // 车轮颜色 wheel color  
         Globals.WriteGA(Base.oVMCreate + 27 + 69, -1);      // 车轮类型 Wheel type  

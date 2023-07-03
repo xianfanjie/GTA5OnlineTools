@@ -115,7 +115,7 @@ public static class STATS
             if (Globals.ReadGA<int>(callStat + 3) != 3)
                 Globals.WriteGA(callStat + 3, 3);
 
-            await Task.Delay(100);
+            await Task.Delay(1);
 
             if (i > 5)
                 Globals.WriteGA(statGetIntValue, value);

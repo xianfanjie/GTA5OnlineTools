@@ -109,53 +109,6 @@ public static class Globals
     /////////////////////////////////////////
 
     /// <summary>
-    /// 字符串转Hash值
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
-    public static uint Joaat(string data)
-    {
-        uint hash = 0u;
-
-        foreach (char c in data.ToLower())
-        {
-            hash += c;
-            hash += hash << 10;
-            hash ^= hash >> 6;
-        }
-
-        hash += hash << 3;
-        hash ^= hash >> 11;
-        hash += hash << 15;
-
-        return hash;
-    }
-
-    /// <summary>
-    /// 写入stat值，只支持int类型
-    /// </summary>
-    public static async Task WriteIntStat(string stat, int value)
-    {
-        await Task.Run(async () =>
-        {
-            if (stat.StartsWith("_"))
-                stat = $"MP{GetPlayerIndex()}{stat}";
-
-            var oldHash = ReadGA<uint>(Base.statSetIntOldHash + 1 + 3);       // if (STATS::STAT_GET_INT(statHash,
-            var oldValue = ReadGA<int>(Base.statSetIntOldValue + 5525);
-
-            WriteGA(Base.statSetIntOldHash + 1 + 3, Joaat(stat));
-            WriteGA(Base.statSetIntOldValue + 5525, value);
-            WriteGA(Base.statSetIntMinusOne + 1139, -1);
-
-            await Task.Delay(1000);
-
-            WriteGA(Base.statSetIntOldHash + 1 + 3, oldHash);
-            WriteGA(Base.statSetIntOldValue + 5525, oldValue);
-        });
-    }
-
-    /// <summary>
     /// 掉落物品
     /// </summary>
     public static async Task CreateAmbientPickup(string pickup)
@@ -165,7 +118,7 @@ public static class Globals
             if (string.IsNullOrEmpty(pickup))
                 return;
 
-            uint pickupHash = Joaat(pickup);
+            uint pickupHash = STATS.Joaat(pickup);
 
             Vector3 vector3 = Teleport.GetPlayerPosition();
 

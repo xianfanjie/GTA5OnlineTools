@@ -20,11 +20,11 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _MP_CHAR_ARMOUR = new()
     {
-        new StatInfo(){ Hash="_MP_CHAR_ARMOUR_1_COUNT", Value=100 },
-        new StatInfo(){ Hash="_MP_CHAR_ARMOUR_2_COUNT", Value=100 },
-        new StatInfo(){ Hash="_MP_CHAR_ARMOUR_3_COUNT", Value=100 },
-        new StatInfo(){ Hash="_MP_CHAR_ARMOUR_4_COUNT", Value=100 },
-        new StatInfo(){ Hash="_MP_CHAR_ARMOUR_5_COUNT", Value=100 },
+        new StatInfo(){ Hash="MPx_MP_CHAR_ARMOUR_1_COUNT", Value=100 },
+        new StatInfo(){ Hash="MPx_MP_CHAR_ARMOUR_2_COUNT", Value=100 },
+        new StatInfo(){ Hash="MPx_MP_CHAR_ARMOUR_3_COUNT", Value=100 },
+        new StatInfo(){ Hash="MPx_MP_CHAR_ARMOUR_4_COUNT", Value=100 },
+        new StatInfo(){ Hash="MPx_MP_CHAR_ARMOUR_5_COUNT", Value=100 },
     };
 
     /// <summary>
@@ -32,13 +32,13 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _NO_BOUGHT = new()
     {
-        new StatInfo(){ Hash="_NO_BOUGHT_YUM_SNACKS", Value=100 },
-        new StatInfo(){ Hash="_NO_BOUGHT_HEALTH_SNACKS", Value=100 },
-        new StatInfo(){ Hash="_NO_BOUGHT_EPIC_SNACKS", Value=100 },
-        new StatInfo(){ Hash="_NUMBER_OF_ORANGE_BOUGHT", Value=100 },
-        new StatInfo(){ Hash="_NUMBER_OF_BOURGE_BOUGHT", Value=100 },
-        new StatInfo(){ Hash="_CIGARETTES_BOUGHT", Value=100 },
-        new StatInfo(){ Hash="_NUMBER_OF_CHAMP_BOUGHT", Value=100 },
+        new StatInfo(){ Hash="MPx_NO_BOUGHT_YUM_SNACKS", Value=100 },
+        new StatInfo(){ Hash="MPx_NO_BOUGHT_HEALTH_SNACKS", Value=100 },
+        new StatInfo(){ Hash="MPx_NO_BOUGHT_EPIC_SNACKS", Value=100 },
+        new StatInfo(){ Hash="MPx_NUMBER_OF_ORANGE_BOUGHT", Value=100 },
+        new StatInfo(){ Hash="MPx_NUMBER_OF_BOURGE_BOUGHT", Value=100 },
+        new StatInfo(){ Hash="MPx_CIGARETTES_BOUGHT", Value=100 },
+        new StatInfo(){ Hash="MPx_NUMBER_OF_CHAMP_BOUGHT", Value=100 },
     };
 
     /// <summary>
@@ -46,13 +46,13 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _SCRIPT_INCREASE = new()
     {
-        new StatInfo(){ Hash="_SCRIPT_INCREASE_STAM", Value=100 },
-        new StatInfo(){ Hash="_SCRIPT_INCREASE_SHO", Value=100 },
-        new StatInfo(){ Hash="_SCRIPT_INCREASE_STRN", Value=100 },
-        new StatInfo(){ Hash="_SCRIPT_INCREASE_STL", Value=100 },
-        new StatInfo(){ Hash="_SCRIPT_INCREASE_FLY", Value=100 },
-        new StatInfo(){ Hash="_SCRIPT_INCREASE_DRIV", Value=100 },
-        new StatInfo(){ Hash="_SCRIPT_INCREASE_LUNG", Value=100 },
+        new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_STAM", Value=100 },
+        new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_SHO", Value=100 },
+        new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_STRN", Value=100 },
+        new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_STL", Value=100 },
+        new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_FLY", Value=100 },
+        new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_DRIV", Value=100 },
+        new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_LUNG", Value=100 },
     };
 
     /// <summary>
@@ -60,12 +60,12 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CHAR_ABILITY = new()
     {
-        new StatInfo(){ Hash="_CHAR_ABILITY_1_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_ABILITY_2_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_ABILITY_3_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_ABILITY_1_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_ABILITY_2_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_ABILITY_3_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_ABILITY_1_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_ABILITY_2_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_ABILITY_3_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_ABILITY_1_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_ABILITY_2_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_ABILITY_3_UNLCK", Value=-1 },
     };
 
     /// <summary>
@@ -73,7 +73,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _GENDER_CHANGE = new()
     {
-        new StatInfo(){ Hash="_ALLOW_GENDER_CHANGE", Value=52 },
+        new StatInfo(){ Hash="MPx_ALLOW_GENDER_CHANGE", Value=52 },
     };
 
     /// <summary>
@@ -81,7 +81,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CHAR_SET_RP1 = new()
     {
-        new StatInfo(){ Hash="_CHAR_SET_RP_GIFT_ADMIN", Value=0 },
+        new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=0 },
     };
 
     /// <summary>
@@ -89,7 +89,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CHAR_SET_RP30 = new()
     {
-        new StatInfo(){ Hash="_CHAR_SET_RP_GIFT_ADMIN", Value=177100 },
+        new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=177100 },
     };
 
     /// <summary>
@@ -97,7 +97,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CHAR_SET_RP60 = new()
     {
-        new StatInfo(){ Hash="_CHAR_SET_RP_GIFT_ADMIN", Value=625400 },
+        new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=625400 },
     };
 
     /// <summary>
@@ -105,7 +105,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CHAR_SET_RP90 = new()
     {
-        new StatInfo(){ Hash="_CHAR_SET_RP_GIFT_ADMIN", Value=1308100 },
+        new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=1308100 },
     };
 
     /// <summary>
@@ -113,7 +113,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CHAR_SET_RP120 = new()
     {
-        new StatInfo(){ Hash="_CHAR_SET_RP_GIFT_ADMIN", Value=2165850 },
+        new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=2165850 },
     };
     #endregion
 
@@ -123,7 +123,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CLUB_POPULARITY = new()
     {
-        new StatInfo(){ Hash="_CLUB_POPULARITY", Value=1000 },
+        new StatInfo(){ Hash="MPx_CLUB_POPULARITY", Value=1000 },
     };
 
     /// <summary>
@@ -131,7 +131,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CAR_CLUB_REP = new()
     {
-        new StatInfo(){ Hash="_CAR_CLUB_REP", Value=5 },
+        new StatInfo(){ Hash="MPx_CAR_CLUB_REP", Value=5 },
     };
     #endregion
 
@@ -141,25 +141,25 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _H4CNF_1 = new()
     {
-        new StatInfo(){ Hash="_H4CNF_BS_GEN", Value=131071 },
-        new StatInfo(){ Hash="_H4CNF_BS_ENTR", Value=63 },
-        new StatInfo(){ Hash="_H4CNF_BS_ABIL", Value=63 },
-        new StatInfo(){ Hash="_H4CNF_APPROACH", Value=-1 },
-        new StatInfo(){ Hash="_H4_PROGRESS", Value=131055 },
-        new StatInfo(){ Hash="_H4CNF_TARGET", Value=3 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT", Value=-1 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT_SCOPED", Value=-1 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT_V", Value=677045 },
-        new StatInfo(){ Hash="_H4_MISSIONS", Value=65535 },
-        new StatInfo(){ Hash="_H4CNF_WEAPONS", Value=2 },
-        new StatInfo(){ Hash="_H4CNF_WEP_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_ARM_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_HEL_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_GRAPPEL", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_UNIFORM", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_BOLTCUT", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_TROJAN", Value=4 },
-        new StatInfo(){ Hash="_H4_PLAYTHROUGH_STATUS", Value=10 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=131071 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=63 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ABIL", Value=63 },
+        new StatInfo(){ Hash="MPx_H4CNF_APPROACH", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4_PROGRESS", Value=131055 },
+        new StatInfo(){ Hash="MPx_H4CNF_TARGET", Value=3 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT_SCOPED", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT_V", Value=677045 },
+        new StatInfo(){ Hash="MPx_H4_MISSIONS", Value=65535 },
+        new StatInfo(){ Hash="MPx_H4CNF_WEAPONS", Value=2 },
+        new StatInfo(){ Hash="MPx_H4CNF_WEP_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_ARM_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_HEL_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_GRAPPEL", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_UNIFORM", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_BOLTCUT", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_TROJAN", Value=4 },
+        new StatInfo(){ Hash="MPx_H4_PLAYTHROUGH_STATUS", Value=10 },
     };
 
     /// <summary>
@@ -167,25 +167,25 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _H4CNF_2 = new()
     {
-        new StatInfo(){ Hash="_H4CNF_BS_GEN", Value=131071 },
-        new StatInfo(){ Hash="_H4CNF_BS_ENTR", Value=63 },
-        new StatInfo(){ Hash="_H4CNF_BS_ABIL", Value=63 },
-        new StatInfo(){ Hash="_H4CNF_APPROACH", Value=-1 },
-        new StatInfo(){ Hash="_H4_PROGRESS", Value=131055 },
-        new StatInfo(){ Hash="_H4CNF_TARGET", Value=3 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT", Value=-1 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT_SCOPED", Value=-1 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT_V", Value=1034545 },
-        new StatInfo(){ Hash="_H4_MISSIONS", Value=65535 },
-        new StatInfo(){ Hash="_H4CNF_WEAPONS", Value=2 },
-        new StatInfo(){ Hash="_H4CNF_WEP_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_ARM_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_HEL_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_GRAPPEL", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_UNIFORM", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_BOLTCUT", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_TROJAN", Value=4 },
-        new StatInfo(){ Hash="_H4_PLAYTHROUGH_STATUS", Value=10 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=131071 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=63 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ABIL", Value=63 },
+        new StatInfo(){ Hash="MPx_H4CNF_APPROACH", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4_PROGRESS", Value=131055 },
+        new StatInfo(){ Hash="MPx_H4CNF_TARGET", Value=3 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT_SCOPED", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT_V", Value=1034545 },
+        new StatInfo(){ Hash="MPx_H4_MISSIONS", Value=65535 },
+        new StatInfo(){ Hash="MPx_H4CNF_WEAPONS", Value=2 },
+        new StatInfo(){ Hash="MPx_H4CNF_WEP_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_ARM_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_HEL_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_GRAPPEL", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_UNIFORM", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_BOLTCUT", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_TROJAN", Value=4 },
+        new StatInfo(){ Hash="MPx_H4_PLAYTHROUGH_STATUS", Value=10 },
     };
 
     /// <summary>
@@ -193,25 +193,25 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _H4CNF_3 = new()
     {
-        new StatInfo(){ Hash="_H4CNF_BS_GEN", Value=131071 },
-        new StatInfo(){ Hash="_H4CNF_BS_ENTR", Value=63 },
-        new StatInfo(){ Hash="_H4CNF_BS_ABIL", Value=63 },
-        new StatInfo(){ Hash="_H4CNF_APPROACH", Value=-1 },
-        new StatInfo(){ Hash="_H4_PROGRESS", Value=131055 },
-        new StatInfo(){ Hash="_H4CNF_TARGET", Value=3 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT", Value=-1 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT_SCOPED", Value=-1 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT_V", Value=1087424 },
-        new StatInfo(){ Hash="_H4_MISSIONS", Value=65535 },
-        new StatInfo(){ Hash="_H4CNF_WEAPONS", Value=2 },
-        new StatInfo(){ Hash="_H4CNF_WEP_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_ARM_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_HEL_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_GRAPPEL", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_UNIFORM", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_BOLTCUT", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_TROJAN", Value=4 },
-        new StatInfo(){ Hash="_H4_PLAYTHROUGH_STATUS", Value=10 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=131071 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=63 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ABIL", Value=63 },
+        new StatInfo(){ Hash="MPx_H4CNF_APPROACH", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4_PROGRESS", Value=131055 },
+        new StatInfo(){ Hash="MPx_H4CNF_TARGET", Value=3 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT_SCOPED", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT_V", Value=1087424 },
+        new StatInfo(){ Hash="MPx_H4_MISSIONS", Value=65535 },
+        new StatInfo(){ Hash="MPx_H4CNF_WEAPONS", Value=2 },
+        new StatInfo(){ Hash="MPx_H4CNF_WEP_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_ARM_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_HEL_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_GRAPPEL", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_UNIFORM", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_BOLTCUT", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_TROJAN", Value=4 },
+        new StatInfo(){ Hash="MPx_H4_PLAYTHROUGH_STATUS", Value=10 },
     };
 
     /// <summary>
@@ -219,25 +219,25 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _H4CNF_4 = new()
     {
-        new StatInfo(){ Hash="_H4CNF_BS_GEN", Value=131071 },
-        new StatInfo(){ Hash="_H4CNF_BS_ENTR", Value=63 },
-        new StatInfo(){ Hash="_H4CNF_BS_ABIL", Value=63 },
-        new StatInfo(){ Hash="_H4CNF_APPROACH", Value=-1 },
-        new StatInfo(){ Hash="_H4_PROGRESS", Value=131055 },
-        new StatInfo(){ Hash="_H4CNF_TARGET", Value=3 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT", Value=-1 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT_SCOPED", Value=-1 },
-        new StatInfo(){ Hash="_H4LOOT_PAINT_V", Value=1213295 },
-        new StatInfo(){ Hash="_H4_MISSIONS", Value=65535 },
-        new StatInfo(){ Hash="_H4CNF_WEAPONS", Value=2 },
-        new StatInfo(){ Hash="_H4CNF_WEP_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_ARM_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_HEL_DISRP", Value=3 },
-        new StatInfo(){ Hash="_H4CNF_GRAPPEL", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_UNIFORM", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_BOLTCUT", Value=-1 },
-        new StatInfo(){ Hash="_H4CNF_TROJAN", Value=4 },
-        new StatInfo(){ Hash="_H4_PLAYTHROUGH_STATUS", Value=10 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=131071 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=63 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ABIL", Value=63 },
+        new StatInfo(){ Hash="MPx_H4CNF_APPROACH", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4_PROGRESS", Value=131055 },
+        new StatInfo(){ Hash="MPx_H4CNF_TARGET", Value=3 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT_SCOPED", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4LOOT_PAINT_V", Value=1213295 },
+        new StatInfo(){ Hash="MPx_H4_MISSIONS", Value=65535 },
+        new StatInfo(){ Hash="MPx_H4CNF_WEAPONS", Value=2 },
+        new StatInfo(){ Hash="MPx_H4CNF_WEP_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_ARM_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_HEL_DISRP", Value=3 },
+        new StatInfo(){ Hash="MPx_H4CNF_GRAPPEL", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_UNIFORM", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_BOLTCUT", Value=-1 },
+        new StatInfo(){ Hash="MPx_H4CNF_TROJAN", Value=4 },
+        new StatInfo(){ Hash="MPx_H4_PLAYTHROUGH_STATUS", Value=10 },
     };
 
     /// <summary>
@@ -245,11 +245,11 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _H3OPT = new()
     {
-        new StatInfo(){ Hash="_H3OPT_BITSET1", Value=0 },
-        new StatInfo(){ Hash="_H3OPT_BITSET0", Value=0 },
-        new StatInfo(){ Hash="_H3OPT_POI", Value=0 },
-        new StatInfo(){ Hash="_H3OPT_ACCESSPOINTS", Value=0 },
-        new StatInfo(){ Hash="_CAS_HEIST_FLOW", Value=0 },
+        new StatInfo(){ Hash="MPx_H3OPT_BITSET1", Value=0 },
+        new StatInfo(){ Hash="MPx_H3OPT_BITSET0", Value=0 },
+        new StatInfo(){ Hash="MPx_H3OPT_POI", Value=0 },
+        new StatInfo(){ Hash="MPx_H3OPT_ACCESSPOINTS", Value=0 },
+        new StatInfo(){ Hash="MPx_CAS_HEIST_FLOW", Value=0 },
     };
 
     /// <summary>
@@ -257,12 +257,12 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _H4 = new()
     {
-        new StatInfo(){ Hash="_H4_MISSIONS", Value=0 },
-        new StatInfo(){ Hash="_H4_PROGRESS", Value=0 },
-        new StatInfo(){ Hash="_H4_PLAYTHROUGH_STATUS", Value=0 },
-        new StatInfo(){ Hash="_H4CNF_APPROACH", Value=0 },
-        new StatInfo(){ Hash="_H4CNF_BS_ENTR", Value=0 },
-        new StatInfo(){ Hash="_H4CNF_BS_GEN", Value=0 },
+        new StatInfo(){ Hash="MPx_H4_MISSIONS", Value=0 },
+        new StatInfo(){ Hash="MPx_H4_PROGRESS", Value=0 },
+        new StatInfo(){ Hash="MPx_H4_PLAYTHROUGH_STATUS", Value=0 },
+        new StatInfo(){ Hash="MPx_H4CNF_APPROACH", Value=0 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=0 },
+        new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=0 },
     };
 
     /// <summary>
@@ -270,7 +270,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _HEIST_PLANNING_STAGE = new()
     {
-        new StatInfo(){ Hash="_HEIST_PLANNING_STAGE", Value=-1 },
+        new StatInfo(){ Hash="MPx_HEIST_PLANNING_STAGE", Value=-1 },
     };
 
     /// <summary>
@@ -278,8 +278,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CAS_HEIST_NOTS = new()
     {
-        new StatInfo(){ Hash="_CAS_HEIST_NOTS", Value=-1 },
-        new StatInfo(){ Hash="_CAS_HEIST_FLOW", Value=-1 },
+        new StatInfo(){ Hash="MPx_CAS_HEIST_NOTS", Value=-1 },
+        new StatInfo(){ Hash="MPx_CAS_HEIST_FLOW", Value=-1 },
     };
 
     /// <summary>
@@ -287,9 +287,9 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _GANGOPS_FLOW_MISSION_PROG1 = new()
     {
-        new StatInfo(){ Hash="_GANGOPS_FLOW_MISSION_PROG", Value=503 },
-        new StatInfo(){ Hash="_GANGOPS_HEIST_STATUS", Value=229383 },
-        new StatInfo(){ Hash="_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
+        new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=503 },
+        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229383 },
+        new StatInfo(){ Hash="MPx_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
     };
 
     /// <summary>
@@ -297,9 +297,9 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _GANGOPS_FLOW_MISSION_PROG2 = new()
     {
-        new StatInfo(){ Hash="_GANGOPS_FLOW_MISSION_PROG", Value=240 },
-        new StatInfo(){ Hash="_GANGOPS_HEIST_STATUS", Value=229378 },
-        new StatInfo(){ Hash="_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
+        new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=240 },
+        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229378 },
+        new StatInfo(){ Hash="MPx_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
     };
 
     /// <summary>
@@ -307,9 +307,9 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _GANGOPS_FLOW_MISSION_PROG3 = new()
     {
-        new StatInfo(){ Hash="_GANGOPS_FLOW_MISSION_PROG", Value=16368 },
-        new StatInfo(){ Hash="_GANGOPS_HEIST_STATUS", Value=229380 },
-        new StatInfo(){ Hash="_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
+        new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=16368 },
+        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229380 },
+        new StatInfo(){ Hash="MPx_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
     };
     #endregion
 
@@ -319,11 +319,11 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _LIFETIME_BUY_UNDERTAKEN = new()
     {
-        new StatInfo(){ Hash="_LIFETIME_BUY_UNDERTAKEN", Value=1000 },
-        new StatInfo(){ Hash="_LIFETIME_BUY_COMPLETE", Value=1000 },
-        new StatInfo(){ Hash="_LIFETIME_SELL_UNDERTAKEN", Value=10 },
-        new StatInfo(){ Hash="_LIFETIME_SELL_COMPLETE", Value=10 },
-        new StatInfo(){ Hash="_LIFETIME_CONTRA_EARNINGS", Value=28000000 },
+        new StatInfo(){ Hash="MPx_LIFETIME_BUY_UNDERTAKEN", Value=1000 },
+        new StatInfo(){ Hash="MPx_LIFETIME_BUY_COMPLETE", Value=1000 },
+        new StatInfo(){ Hash="MPx_LIFETIME_SELL_UNDERTAKEN", Value=10 },
+        new StatInfo(){ Hash="MPx_LIFETIME_SELL_COMPLETE", Value=10 },
+        new StatInfo(){ Hash="MPx_LIFETIME_CONTRA_EARNINGS", Value=28000000 },
     };
 
     /// <summary>
@@ -331,18 +331,18 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _FM_ACT_PHN = new()
     {
-        new StatInfo(){ Hash="_FM_ACT_PHN", Value=-1 },
-        new StatInfo(){ Hash="_FM_ACT_PH2", Value=-1 },
-        new StatInfo(){ Hash="_FM_ACT_PH3", Value=-1 },
-        new StatInfo(){ Hash="_FM_ACT_PH4", Value=-1 },
-        new StatInfo(){ Hash="_FM_ACT_PH5", Value=-1 },
-        new StatInfo(){ Hash="_FM_VEH_TX1", Value=-1 },
-        new StatInfo(){ Hash="_FM_ACT_PH6", Value=-1 },
-        new StatInfo(){ Hash="_FM_ACT_PH7", Value=-1 },
-        new StatInfo(){ Hash="_FM_ACT_PH8", Value=-1 },
-        new StatInfo(){ Hash="_FM_ACT_PH9", Value=-1 },
-        new StatInfo(){ Hash="_FM_CUT_DONE", Value=-1 },
-        new StatInfo(){ Hash="_FM_CUT_DONE_2", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PHN", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PH2", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PH3", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PH4", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PH5", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_VEH_TX1", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PH6", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PH7", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PH8", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_ACT_PH9", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_CUT_DONE", Value=-1 },
+        new StatInfo(){ Hash="MPx_FM_CUT_DONE_2", Value=-1 },
     };
 
 
@@ -379,7 +379,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _TATTOO_FM_CURRENT_32 = new()
     {
-        new StatInfo(){ Hash="_TATTOO_FM_CURRENT_32", Value=-1 },
+        new StatInfo(){ Hash="MPx_TATTOO_FM_CURRENT_32", Value=-1 },
     };
 
     /// <summary>
@@ -387,9 +387,9 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _YACHT_MISSION_PROG = new()
     {
-        new StatInfo(){ Hash="_YACHT_MISSION_PROG", Value=0 },
-        new StatInfo(){ Hash="_YACHT_MISSION_FLOW", Value=21845 },
-        new StatInfo(){ Hash="_CASINO_DECORATION_GIFT_1", Value=-1 },
+        new StatInfo(){ Hash="MPx_YACHT_MISSION_PROG", Value=0 },
+        new StatInfo(){ Hash="MPx_YACHT_MISSION_FLOW", Value=21845 },
+        new StatInfo(){ Hash="MPx_CASINO_DECORATION_GIFT_1", Value=-1 },
     };
 
     /// <summary>
@@ -397,31 +397,31 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _CHAR_FM_CARMOD_1_UNLCK = new()
     {
-        new StatInfo(){ Hash="_CHAR_FM_CARMOD_1_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_CARMOD_2_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_CARMOD_3_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_CARMOD_4_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_CARMOD_5_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_CARMOD_6_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_CHAR_FM_CARMOD_7_UNLCK", Value=-1 },
-        new StatInfo(){ Hash="_NUMBER_TURBO_STARTS_IN_RACE", Value=50 },
-        new StatInfo(){ Hash="_USJS_COMPLETED", Value=50 },
-        new StatInfo(){ Hash="_AWD_FM_RACES_FASTEST_LAP", Value=50 },
-        new StatInfo(){ Hash="_NUMBER_SLIPSTREAMS_IN_RACE", Value=100 },
-        new StatInfo(){ Hash="_AWD_WIN_CAPTURES", Value=50 },
-        new StatInfo(){ Hash="_AWD_DROPOFF_CAP_PACKAGES", Value=1 },
-        new StatInfo(){ Hash="_AWD_KILL_CARRIER_CAPTURE", Value=1 },
-        new StatInfo(){ Hash="_AWD_FINISH_HEISTS", Value=50 },
-        new StatInfo(){ Hash="_AWD_FINISH_HEIST_SETUP_JOB", Value=50 },
-        new StatInfo(){ Hash="_AWD_NIGHTVISION_KILLS", Value=1 },
-        new StatInfo(){ Hash="_AWD_WIN_LAST_TEAM_STANDINGS", Value=50 },
-        new StatInfo(){ Hash="_AWD_ONLY_PLAYER_ALIVE_LTS", Value=50 },
-        new StatInfo(){ Hash="_AWD_FMRALLYWONDRIVE", Value=1 },
-        new StatInfo(){ Hash="_AWD_FMRALLYWONNAV", Value=1 },
-        new StatInfo(){ Hash="_AWD_FMWINSEARACE", Value=1 },
-        new StatInfo(){ Hash="_AWD_FMWINAIRRACE", Value=1 },
-        new StatInfo(){ Hash="_AWD_RACES_WON", Value=50 },
-        new StatInfo(){ Hash="_RACES_WON", Value=50 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_1_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_2_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_3_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_4_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_5_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_6_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_7_UNLCK", Value=-1 },
+        new StatInfo(){ Hash="MPx_NUMBER_TURBO_STARTS_IN_RACE", Value=50 },
+        new StatInfo(){ Hash="MPx_USJS_COMPLETED", Value=50 },
+        new StatInfo(){ Hash="MPx_AWD_FM_RACES_FASTEST_LAP", Value=50 },
+        new StatInfo(){ Hash="MPx_NUMBER_SLIPSTREAMS_IN_RACE", Value=100 },
+        new StatInfo(){ Hash="MPx_AWD_WIN_CAPTURES", Value=50 },
+        new StatInfo(){ Hash="MPx_AWD_DROPOFF_CAP_PACKAGES", Value=1 },
+        new StatInfo(){ Hash="MPx_AWD_KILL_CARRIER_CAPTURE", Value=1 },
+        new StatInfo(){ Hash="MPx_AWD_FINISH_HEISTS", Value=50 },
+        new StatInfo(){ Hash="MPx_AWD_FINISH_HEIST_SETUP_JOB", Value=50 },
+        new StatInfo(){ Hash="MPx_AWD_NIGHTVISION_KILLS", Value=1 },
+        new StatInfo(){ Hash="MPx_AWD_WIN_LAST_TEAM_STANDINGS", Value=50 },
+        new StatInfo(){ Hash="MPx_AWD_ONLY_PLAYER_ALIVE_LTS", Value=50 },
+        new StatInfo(){ Hash="MPx_AWD_FMRALLYWONDRIVE", Value=1 },
+        new StatInfo(){ Hash="MPx_AWD_FMRALLYWONNAV", Value=1 },
+        new StatInfo(){ Hash="MPx_AWD_FMWINSEARACE", Value=1 },
+        new StatInfo(){ Hash="MPx_AWD_FMWINAIRRACE", Value=1 },
+        new StatInfo(){ Hash="MPx_AWD_RACES_WON", Value=50 },
+        new StatInfo(){ Hash="MPx_RACES_WON", Value=50 },
         new StatInfo(){ Hash="MPPLY_TOTAL_RACES_WON", Value=50 },
     };
 
@@ -430,8 +430,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_AP_TIER25 = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_AP_TIER", Value=24 },
-        new StatInfo(){ Hash="_ARENAWARS_AP", Value=280 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=24 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=280 },
     };
 
     /// <summary>
@@ -439,8 +439,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_AP_TIER50 = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_AP_TIER", Value=49 },
-        new StatInfo(){ Hash="_ARENAWARS_AP", Value=530 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=49 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=530 },
     };
 
     /// <summary>
@@ -448,8 +448,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_AP_TIER75 = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_AP_TIER", Value=74 },
-        new StatInfo(){ Hash="_ARENAWARS_AP", Value=780 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=74 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=780 },
     };
 
     /// <summary>
@@ -457,8 +457,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_AP_TIER100 = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_AP_TIER", Value=99 },
-        new StatInfo(){ Hash="_ARENAWARS_AP", Value=1030 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=99 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=1030 },
     };
 
     /// <summary>
@@ -466,8 +466,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_AP_TIER200 = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_AP_TIER", Value=199 },
-        new StatInfo(){ Hash="_ARENAWARS_AP", Value=2030 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=199 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=2030 },
     };
 
     /// <summary>
@@ -475,8 +475,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_AP_TIER300 = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_AP_TIER", Value=299 },
-        new StatInfo(){ Hash="_ARENAWARS_AP", Value=3030 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=299 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=3030 },
     };
 
     /// <summary>
@@ -484,8 +484,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_AP_TIER500 = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_AP_TIER", Value=499 },
-        new StatInfo(){ Hash="_ARENAWARS_AP", Value=5030 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=499 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=5030 },
     };
 
     /// <summary>
@@ -493,8 +493,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_AP_TIER1000 = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_AP_TIER", Value=999 },
-        new StatInfo(){ Hash="_ARENAWARS_AP", Value=10030 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=999 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=10030 },
     };
 
     /// <summary>
@@ -502,8 +502,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _ARENAWARS_SKILL_LEVEL = new()
     {
-        new StatInfo(){ Hash="_ARENAWARS_SKILL_LEVEL", Value=19 },
-        new StatInfo(){ Hash="_ARENAWARS_SP", Value=209 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_SKILL_LEVEL", Value=19 },
+        new StatInfo(){ Hash="MPx_ARENAWARS_SP", Value=209 },
     };
 
     /// <summary>
@@ -511,7 +511,7 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _AT_FLOW_IMPEXP_NUM = new()
     {
-        new StatInfo(){ Hash="_AT_FLOW_IMPEXP_NUM", Value=32 },
+        new StatInfo(){ Hash="MPx_AT_FLOW_IMPEXP_NUM", Value=32 },
     };
     #endregion
 
@@ -521,8 +521,8 @@ public static class StatData
     /// </summary>
     public static List<StatInfo> _H3OPT_ACCESSPOINTS = new()
     {
-        new StatInfo(){ Hash="_H3OPT_ACCESSPOINTS", Value=0 },
-        new StatInfo(){ Hash="_H3OPT_POI", Value=0 },
+        new StatInfo(){ Hash="MPx_H3OPT_ACCESSPOINTS", Value=0 },
+        new StatInfo(){ Hash="MPx_H3OPT_POI", Value=0 },
     };
 
     /// <summary>

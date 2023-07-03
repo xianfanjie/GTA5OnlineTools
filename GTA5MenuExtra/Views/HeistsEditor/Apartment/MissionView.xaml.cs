@@ -12,15 +12,15 @@ public partial class MissionView : UserControl
         InitializeComponent();
     }
 
-    private async void WriteStatWithDelay(string hash, int value)
+    private async void STAT_SET_INT(string hash, int value)
     {
-        await Globals.WriteIntStat(hash, value);
+        await STATS.STAT_SET_INT(hash, value);
     }
 
     ////////////////////////////////////////////////////
 
     private void Button_HEIST_PLANNING_STAGE_Click(object sender, RoutedEventArgs e)
     {
-        WriteStatWithDelay("_HEIST_PLANNING_STAGE", -1);
+        STAT_SET_INT("MPx_HEIST_PLANNING_STAGE", -1);
     }
 }

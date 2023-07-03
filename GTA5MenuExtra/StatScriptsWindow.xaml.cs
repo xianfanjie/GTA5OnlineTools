@@ -3,7 +3,7 @@ using GTA5Core.GTA.Stats;
 using GTA5Core.Features;
 using GTA5Shared.Helper;
 
-namespace GTA5MenuExtra; 
+namespace GTA5MenuExtra;
 
 /// <summary>
 /// StatScriptsWindow.xaml 的交互逻辑
@@ -50,11 +50,9 @@ public partial class StatScriptsWindow
     {
         AudioHelper.PlayClickSound();
 
-        var index = ListBox_STATList.SelectedIndex;
-        if (index != -1)
-        {
-            AutoScript(ListBox_STATList.SelectedItem.ToString());
-        }
+        var item = ListBox_STATList.SelectedItem;
+        if (item != null)
+            AutoScript(item.ToString());
     }
 
     private void AutoScript(string statClassName)
@@ -65,19 +63,20 @@ public partial class StatScriptsWindow
         {
             try
             {
-                var index = StatData.StatClasses.FindIndex(t => t.Name == statClassName);
-                if (index != -1)
+                var result = StatData.StatClasses.Find(t => t.Name == statClassName);
+                if (result != null)
                 {
-                    AppendTextBox($"正在执行 {StatData.StatClasses[index].Name} 脚本代码");
+                    AppendTextBox($"正在执行 {result.Name} 脚本代码");
 
-                    for (int i = 0; i < StatData.StatClasses[index].StatInfos.Count; i++)
+                    var count = result.StatInfos.Count;
+                    for (int i = 0; i < count; i++)
                     {
-                        AppendTextBox($"正在执行 第 {i + 1}/{StatData.StatClasses[index].StatInfos.Count} 条代码");
+                        AppendTextBox($"正在执行 第 {i + 1}/{count} 条代码");
 
-                        await Globals.WriteIntStat(StatData.StatClasses[index].StatInfos[i].Hash, StatData.StatClasses[index].StatInfos[i].Value);
+                        await STATS.STAT_SET_INT(result.StatInfos[i].Hash, result.StatInfos[i].Value);
                     }
 
-                    AppendTextBox($"{StatData.StatClasses[index].Name} 脚本代码执行完毕");
+                    AppendTextBox($"{result.Name} 脚本代码执行完毕");
                 }
             }
             catch (Exception ex)

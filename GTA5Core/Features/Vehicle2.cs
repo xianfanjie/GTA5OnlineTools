@@ -41,7 +41,7 @@ public static class Vehicle2
                 vector3.Z = -255.0f;
 
             var plate = Guid.NewGuid().ToString()[..8];
-            var hash = Globals.Joaat(model);
+            var hash = STATS.Joaat(model);
 
             Globals.WriteGA(Base.oVMCreate + 7 + 0, vector3.X);         // 载具坐标x
             Globals.WriteGA(Base.oVMCreate + 7 + 1, vector3.Y);         // 载具坐标y

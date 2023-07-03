@@ -18,6 +18,8 @@ public partial class MoneyView : UserControl
 
     private void Button_Read_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         TextBox_FIXER_Value.Text = Globals.ReadGA<int>(fixer_ratio).ToString();
         TextBox_TUNER_Value0.Text = Globals.ReadGA<int>(tuner_ratio + 1).ToString();
         TextBox_TUNER_Value1.Text = Globals.ReadGA<int>(tuner_ratio + 2).ToString();
@@ -33,6 +35,8 @@ public partial class MoneyView : UserControl
 
     private void Button_Write_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         try
         {
             if (TextBox_FIXER_Value.Text.Trim() != "" &&

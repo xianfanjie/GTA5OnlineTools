@@ -19,7 +19,7 @@
                 Click="Button_FIXER_GENERAL_BS_Click"
                 Content="跳过前置任务" />
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：请等CD自然冷却好了再跳下一次前置，不要频繁跳前置
+                提示：请等CD自然冷却好了再跳下一次前置，建议不要频繁跳前置
             </TextBlock>
 
             <Separator Margin="5,10,5,10" />
@@ -44,7 +44,10 @@
                     Click="Button_TUNER_CURRENT_Click"
                     Content="跳过前置任务" />
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：第一次游玩建议手动完整过一遍任务，否则直接跳可能会导致问题
+                    提示：第个警局偷车任务玩家需要自己做
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：使用跳过改装铺前置任务后，离开改装铺再进来面板就会刷新
                 </TextBlock>
             </StackPanel>
         </StackPanel>

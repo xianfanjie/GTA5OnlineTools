@@ -24,8 +24,10 @@ public partial class AdvancedView : UserControl
         e.Handled = true;
     }
 
-    private void Button_ResetEverything_Click(object sender, RoutedEventArgs e)
+    private void Button_Reset_H4_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         STAT_SET_INT("MPx_H4_MISSIONS", 0);
         STAT_SET_INT("MPx_H4_PROGRESS", 0);
         STAT_SET_INT("MPx_H4_PLAYTHROUGH_STATUS", 0);

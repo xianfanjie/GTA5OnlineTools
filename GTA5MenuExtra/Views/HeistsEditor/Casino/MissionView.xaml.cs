@@ -45,6 +45,14 @@ public partial class MissionView : UserControl
 
         //////////////////////////////////////////
 
+        // 解锁所有侦察点
+        if (Button_H3OPT_ACCESSPOINTS.IsChecked == true)
+            AppendLogger("MPx_H3OPT_ACCESSPOINTS", -1);
+
+        // 解锁所有兴趣点
+        if (Button_H3OPT_H3OPT_POI.IsChecked == true)
+            AppendLogger("MPx_H3OPT_POI", -1);
+
         // 抢劫方式
         var index = ListBox_H3OPT_APPROACH.SelectedIndex;
         if (index != 0)
@@ -248,6 +256,8 @@ public partial class MissionView : UserControl
 
     private void Button_STAT_Build_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Button_STAT_Build.IsEnabled = false;
         STAT_Build();
         Button_STAT_Build.IsEnabled = true;
@@ -255,6 +265,8 @@ public partial class MissionView : UserControl
 
     private void Button_STAT_Run_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Button_STAT_Run.IsEnabled = false;
         STAT_Run();
         Button_STAT_Run.IsEnabled = true;

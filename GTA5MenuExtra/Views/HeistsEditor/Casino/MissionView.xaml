@@ -28,7 +28,6 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100" />
                             <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="110" />
                             <ColumnDefinition />
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -62,19 +61,8 @@
                         </ListBox>
                         <!--  /////////////  -->
                         <ListBox
-                            x:Name="ListBox_H3OPT_KEYLEVELS"
-                            Grid.Column="2"
-                            Margin="5"
-                            SelectedIndex="0"
-                            Style="{StaticResource ListBoxStyle_Base}">
-                            <ListBoxItem Content="《门禁卡等级》" FontWeight="Bold" />
-                            <ListBoxItem Content="一级门禁" />
-                            <ListBoxItem Content="二级门禁" />
-                        </ListBox>
-                        <!--  /////////////  -->
-                        <ListBox
                             x:Name="ListBox_H3OPT_CREWWEAP"
-                            Grid.Column="3"
+                            Grid.Column="2"
                             Margin="5"
                             SelectedIndex="0"
                             Style="{StaticResource ListBoxStyle_Base}">
@@ -88,7 +76,7 @@
                         <!--  /////////////  -->
                         <ListBox
                             x:Name="ListBox_H3OPT_CREWDRIVER"
-                            Grid.Column="4"
+                            Grid.Column="3"
                             Margin="5"
                             SelectedIndex="0"
                             Style="{StaticResource ListBoxStyle_Base}">
@@ -102,7 +90,7 @@
                         <!--  /////////////  -->
                         <ListBox
                             x:Name="ListBox_H3OPT_CREWHACKER"
-                            Grid.Column="5"
+                            Grid.Column="4"
                             Margin="5"
                             SelectedIndex="0"
                             Style="{StaticResource ListBoxStyle_Base}">
@@ -117,17 +105,31 @@
                     <!--  /////////////  -->
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
                             <ColumnDefinition Width="100" />
                             <ColumnDefinition Width="100" />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <!--  /////////////  -->
+                        <StackPanel Grid.Column="0">
+                            <ListBox
+                                x:Name="ListBox_H3OPT_KEYLEVELS"
+                                Margin="5"
+                                SelectedIndex="0"
+                                Style="{StaticResource ListBoxStyle_Base}">
+                                <ListBoxItem Content="《门禁卡等级》" FontWeight="Bold" />
+                                <ListBoxItem Content="一级门禁" />
+                                <ListBoxItem Content="二级门禁" />
+                            </ListBox>
+                            <!--  /////////////  -->
+                            <CheckBox x:Name="Button_H3OPT_ACCESSPOINTS" Content="解锁所有侦察点" />
+                            <CheckBox x:Name="Button_H3OPT_H3OPT_POI" Content="解锁所有兴趣点" />
+                        </StackPanel>
+                        <!--  /////////////  -->
                         <ListBox
                             x:Name="ListBox_H3OPT_WEAPS"
-                            Grid.Column="0"
+                            Grid.Column="1"
                             Margin="5"
                             SelectedIndex="0"
                             Style="{StaticResource ListBoxStyle_Base}">
@@ -141,7 +143,7 @@
                         <!--  /////////////  -->
                         <ListBox
                             x:Name="ListBox_H3OPT_VEHS"
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Margin="5"
                             SelectedIndex="0"
                             Style="{StaticResource ListBoxStyle_Base}">

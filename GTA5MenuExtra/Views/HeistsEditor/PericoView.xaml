@@ -23,7 +23,6 @@
         <ui:TabItemIcon Header="高级选项">
             <views:AdvancedView />
         </ui:TabItemIcon>
-        <!--  ///////////////////  -->
     </TabControl>
 
 </UserControl>

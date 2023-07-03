@@ -12,7 +12,7 @@
 
     <StackPanel>
         <Border Margin="5" Background="#F0F0F0">
-            <WrapPanel HorizontalAlignment="Center">
+            <WrapPanel Margin="3" HorizontalAlignment="Center">
                 <Button
                     x:Name="Button_Read"
                     Click="Button_Read_Click"

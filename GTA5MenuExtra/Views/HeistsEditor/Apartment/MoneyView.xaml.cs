@@ -18,6 +18,8 @@ public partial class MoneyView : UserControl
 
     private void Button_Read_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         TextBox_Apart_Player1.Text = Globals.ReadGA<int>(apart_ratio + 1).ToString();
         TextBox_Apart_Player2.Text = Globals.ReadGA<int>(apart_ratio + 2).ToString();
         TextBox_Apart_Player3.Text = Globals.ReadGA<int>(apart_ratio + 3).ToString();
@@ -34,6 +36,8 @@ public partial class MoneyView : UserControl
 
     private void Button_Write_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         try
         {
             if (TextBox_Apart_Player1.Text.Trim() != "" &&

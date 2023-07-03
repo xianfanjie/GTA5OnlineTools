@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="GTA5MenuExtra.Views.HeistsEditor.Perico.AdvancedView"
+    x:Class="GTA5MenuExtra.Views.HeistsEditor.Casino.AdvancedView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,17 +15,15 @@
             <ui:LabelIcon Content="重置" />
             <StackPanel Margin="5,0,5,0">
                 <Button
-                    x:Name="Button_Reset_H4"
-                    Click="Button_Reset_H4_Click"
-                    Content="重置海岛面板" />
-
+                    x:Name="Button_Reset_H3OPT"
+                    Click="Button_Reset_H3OPT_Click"
+                    Content="重置赌场面板" />
+                <Button
+                    x:Name="Button_CAS_HEIST_FLOW"
+                    Click="Button_CAS_HEIST_FLOW_Click"
+                    Content="解决赌场抢劫所有问题" />
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：如果需要重置虎鲸面板，我们点击【重置海岛面板】按钮，然后跑到直升机那里等待STAT代码执行完毕，回来等面板重启刷新，这样佩里克岛任务就恢复默认状态了
-                </TextBlock>
-                <TextBlock Margin="5">
-                    <Hyperlink NavigateUri="https://beholdmystuff.github.io/heist-stat.txt-maker" RequestNavigate="Hyperlink_RequestNavigate">
-                        抢劫任务STAT代码自定义（GitHub）
-                    </Hyperlink>
+                    提示：如果游戏厅一片破败景象，请点击上面按钮修复
                 </TextBlock>
             </StackPanel>
         </StackPanel>

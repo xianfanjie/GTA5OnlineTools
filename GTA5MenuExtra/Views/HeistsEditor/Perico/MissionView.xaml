@@ -34,7 +34,7 @@
                     <CheckBox x:Name="CheckBox_H4CNF_BS_ENTR" Content="解锁所有入侵点" />
                     <CheckBox x:Name="CheckBox_H4CNF_APPROACH" Content="解锁所有逃离点" />
                     <CheckBox x:Name="CheckBox_H4CNF_BS_GEN" Content="解锁所有兴趣点" />
-                    <CheckBox x:Name="CheckBox_H4CNF_BS_ABIL" Content="解锁团队支持" />
+                    <CheckBox x:Name="CheckBox_H4CNF_BS_ABIL" Content="解锁团队支援" />
                 </StackPanel>
                 <!--  /////////////  -->
                 <ListBox
@@ -64,10 +64,6 @@
                 </ListBox>
                 <!--  /////////////  -->
                 <StackPanel Grid.Column="3">
-                    <CheckBox
-                        x:Name="CheckBox_H4LOOT_Random"
-                        Margin="5"
-                        Content="随机次要目标" />
                     <ListBox
                         x:Name="ListBox_H4LOOT"
                         Margin="5"
@@ -79,6 +75,7 @@
                         <ListBoxItem Content="已发现/侦察 可可（室内/室外）" />
                         <ListBoxItem Content="已发现/侦察 黄金（室内/室外）" />
                     </ListBox>
+                    <CheckBox x:Name="CheckBox_H4LOOT_Random" Content="随机次要目标" />
                 </StackPanel>
                 <!--  /////////////  -->
                 <ListBox

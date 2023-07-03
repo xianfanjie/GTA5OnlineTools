@@ -17,14 +17,6 @@ public partial class MissionView : UserControl
         TextBox_Logger.AppendText("INT32\n");
     }
 
-    private string GetListBoxSelectedItemContent(ListBox ListBox)
-    {
-        if (ListBox.SelectedItem is ListBoxItem item)
-            return item.Content.ToString();
-
-        return string.Empty;
-    }
-
     private void ClearLogger()
     {
         TextBox_Logger.Clear();
@@ -51,65 +43,41 @@ public partial class MissionView : UserControl
 
         STAT_DIC.Clear();
 
-        if (CheckBox_H4CNF_BS_GEN.IsChecked == true)
-        {
-            AppendLogger("MPx_H4CNF_BS_GEN", 131071);
-        }
+        //////////////////////////
+
+        // 解锁所有入侵点
         if (CheckBox_H4CNF_BS_ENTR.IsChecked == true)
-        {
             AppendLogger("MPx_H4CNF_BS_ENTR", 63);
-        }
-        if (CheckBox_H4CNF_BS_ABIL.IsChecked == true)
-        {
-            AppendLogger("MPx_H4CNF_BS_ABIL", 63);
-        }
+
+        // 解锁所有逃离点
         if (CheckBox_H4CNF_APPROACH.IsChecked == true)
-        {
             AppendLogger("MPx_H4CNF_APPROACH", -1);
-        }
 
-        //////////////////////////
+        // 解锁所有兴趣点
+        if (CheckBox_H4CNF_BS_GEN.IsChecked == true)
+            AppendLogger("MPx_H4CNF_BS_GEN", 131071);
 
-        if (GetListBoxSelectedItemContent(ListBox_H4_PROGRESS) == "普通模式")
-        {
+        // 解锁团队支援
+        if (CheckBox_H4CNF_BS_ABIL.IsChecked == true)
+            AppendLogger("MPx_H4CNF_BS_ABIL", 63);
+
+        // 任务难度
+        var index = ListBox_H4_PROGRESS.SelectedIndex;
+        if (index == 1)
             AppendLogger("MPx_H4_PROGRESS", 126823);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4_PROGRESS) == "困难模式")
-        {
+        else
             AppendLogger("MPx_H4_PROGRESS", 131055);
-        }
 
-        //////////////////////////
+        // 主要目标
+        index = ListBox_H4CNF_TARGET.SelectedIndex;
+        if (index != 0)
+            AppendLogger("MPx_H4CNF_TARGET", index - 1);
 
-        if (GetListBoxSelectedItemContent(ListBox_H4CNF_TARGET) == "西西米托龙舌兰")
-        {
-            AppendLogger("MPx_H4CNF_TARGET", 0);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TARGET) == "红宝石项链")
-        {
-            AppendLogger("MPx_H4CNF_TARGET", 1);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TARGET) == "不记名债券")
-        {
-            AppendLogger("MPx_H4CNF_TARGET", 2);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TARGET) == "粉钻")
-        {
-            AppendLogger("MPx_H4CNF_TARGET", 3);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TARGET) == "玛德拉索文件")
-        {
-            AppendLogger("MPx_H4CNF_TARGET", 4);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TARGET) == "猎豹雕像")
-        {
-            AppendLogger("MPx_H4CNF_TARGET", 5);
-        }
-
-        //////////////////////////
+        // 次要目标
+        index = ListBox_H4LOOT.SelectedIndex;
 
         // 现金
-        if (GetListBoxSelectedItemContent(ListBox_H4LOOT) == "已发现/侦察 现金（室内/室外）")
+        if (index == 1)
         {
             AppendLogger("MPx_H4LOOT_CASH_I", -1);
             AppendLogger("MPx_H4LOOT_CASH_C", -1);
@@ -130,7 +98,7 @@ public partial class MissionView : UserControl
         }
 
         // 大麻
-        if (GetListBoxSelectedItemContent(ListBox_H4LOOT) == "已发现/侦察 大麻（室内/室外）")
+        if (index == 2)
         {
             AppendLogger("MPx_H4LOOT_WEED_I", -1);
             AppendLogger("MPx_H4LOOT_WEED_C", -1);
@@ -151,7 +119,7 @@ public partial class MissionView : UserControl
         }
 
         // 可可
-        if (GetListBoxSelectedItemContent(ListBox_H4LOOT) == "已发现/侦察 可可（室内/室外）")
+        if (index == 3)
         {
             AppendLogger("MPx_H4LOOT_COKE_I", -1);
             AppendLogger("MPx_H4LOOT_COKE_C", -1);
@@ -172,7 +140,7 @@ public partial class MissionView : UserControl
         }
 
         // 黄金
-        if (GetListBoxSelectedItemContent(ListBox_H4LOOT) == "已发现/侦察 黄金（室内/室外）")
+        if (index == 4)
         {
             AppendLogger("MPx_H4LOOT_GOLD_I", -1);
             AppendLogger("MPx_H4LOOT_GOLD_C", -1);
@@ -192,10 +160,11 @@ public partial class MissionView : UserControl
             }
         }
 
-        //////////////////////////
+        // 次要目标
+        index = ListBox_H4LOOT_PAINT.SelectedIndex;
 
         // 画作
-        if (GetListBoxSelectedItemContent(ListBox_H4LOOT_PAINT) == "已发现/侦察 画作（室内/室外）")
+        if (index == 1)
         {
             AppendLogger("MPx_H4LOOT_PAINT", -1);
             AppendLogger("MPx_H4LOOT_PAINT_SCOPED", -1);
@@ -211,119 +180,70 @@ public partial class MissionView : UserControl
             }
         }
 
-        //////////////////////////
-
-        if (GetListBoxSelectedItemContent(ListBox_H4_MISSIONS) == "潜水艇：虎鲸")
+        // 接近载具
+        index = ListBox_H4_MISSIONS.SelectedIndex;
+        switch (index)
         {
-            AppendLogger("MPx_H4_MISSIONS", 65283);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4_MISSIONS) == "飞机：阿尔科诺斯特")
-        {
-            AppendLogger("MPx_H4_MISSIONS", 65413);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4_MISSIONS) == "飞机：梅杜莎")
-        {
-            AppendLogger("MPx_H4_MISSIONS", 65289);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4_MISSIONS) == "直升机：隐形歼灭者")
-        {
-            AppendLogger("MPx_H4_MISSIONS", 65425);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4_MISSIONS) == "船只：巡逻艇")
-        {
-            AppendLogger("MPx_H4_MISSIONS", 65313);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4_MISSIONS) == "船只：长鳍")
-        {
-            AppendLogger("MPx_H4_MISSIONS", 65345);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4_MISSIONS) == "全部载具可用")
-        {
-            AppendLogger("MPx_H4_MISSIONS", 65535);
+            case 1:
+                AppendLogger("MPx_H4_MISSIONS", 65283);
+                break;
+            case 2:
+                AppendLogger("MPx_H4_MISSIONS", 65413);
+                break;
+            case 3:
+                AppendLogger("MPx_H4_MISSIONS", 65289);
+                break;
+            case 4:
+                AppendLogger("MPx_H4_MISSIONS", 65425);
+                break;
+            case 5:
+                AppendLogger("MPx_H4_MISSIONS", 65313);
+                break;
+            case 6:
+                AppendLogger("MPx_H4_MISSIONS", 65345);
+                break;
+            case 7:
+                AppendLogger("MPx_H4_MISSIONS", 65535);
+                break;
         }
 
-        //////////////////////////
+        // 武器装备
+        index = ListBox_H4CNF_WEAPONS.SelectedIndex;
+        if (index != 0)
+            AppendLogger("MPx_H4CNF_WEAPONS", index);
 
-        if (GetListBoxSelectedItemContent(ListBox_H4CNF_WEAPONS) == "侵略者（连发散弹，连发手枪，手雷，砍刀）")
-        {
-            AppendLogger("MPx_H4CNF_WEAPONS", 1);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_WEAPONS) == "阴谋者（军用步枪，单发手枪，粘弹，指虎）")
-        {
-            AppendLogger("MPx_H4CNF_WEAPONS", 2);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_WEAPONS) == "神枪手（轻狙，连发手枪，燃烧瓶，小刀）")
-        {
-            AppendLogger("MPx_H4CNF_WEAPONS", 3);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_WEAPONS) == "破坏者（MK2冲锋枪，单发手枪，土质炸弹，小刀）")
-        {
-            AppendLogger("MPx_H4CNF_WEAPONS", 4);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_WEAPONS) == "神射手（MK2突击步枪，单发手枪，土质炸弹，砍刀）")
-        {
-            AppendLogger("MPx_H4CNF_WEAPONS", 5);
-        }
+        // 运货卡车位置
+        index = ListBox_H4CNF_TROJAN.SelectedIndex;
+        if (index != 0)
+            AppendLogger("MPx_H4CNF_TROJAN", index);
 
-        //////////////////////////
-
+        // 武器
         if (CheckBox_H4CNF_WEP_DISRP.IsChecked == true)
-        {
             AppendLogger("MPx_H4CNF_WEP_DISRP", 3);
-        }
+
+        // 防弹衣
         if (CheckBox_H4CNF_ARM_DISRP.IsChecked == true)
-        {
             AppendLogger("MPx_H4CNF_ARM_DISRP", 3);
-        }
+
+        // 空中支援
         if (CheckBox_H4CNF_HEL_DISRP.IsChecked == true)
-        {
             AppendLogger("MPx_H4CNF_HEL_DISRP", 3);
-        }
 
-        //////////////////////////
-
+        // 解锁抓钩
         if (CheckBox_H4CNF_GRAPPEL.IsChecked == true)
-        {
             AppendLogger("MPx_H4CNF_GRAPPEL", -1);
-        }
+
+        // 解锁保安制服
         if (CheckBox_H4CNF_UNIFORM.IsChecked == true)
-        {
             AppendLogger("MPx_H4CNF_UNIFORM", -1);
-        }
+
+        // 解锁螺栓切割器
         if (CheckBox_H4CNF_BOLTCUT.IsChecked == true)
-        {
             AppendLogger("MPx_H4CNF_BOLTCUT", -1);
-        }
 
-        //////////////////////////
-
-        if (GetListBoxSelectedItemContent(ListBox_H4CNF_TROJAN) == "机场")
-        {
-            AppendLogger("MPx_H4CNF_TROJAN", 1);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TROJAN) == "北船坞")
-        {
-            AppendLogger("MPx_H4CNF_TROJAN", 2);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TROJAN) == "主码头-东")
-        {
-            AppendLogger("MPx_H4CNF_TROJAN", 3);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TROJAN) == "主码头-西")
-        {
-            AppendLogger("MPx_H4CNF_TROJAN", 4);
-        }
-        else if (GetListBoxSelectedItemContent(ListBox_H4CNF_TROJAN) == "混合粉")
-        {
-            AppendLogger("MPx_H4CNF_TROJAN", 5);
-        }
-
-        //////////////////////////
-
+        // 任务通过状态
         if (CheckBox_H4_PLAYTHROUGH_STATUS.IsChecked == true)
-        {
             AppendLogger("MPx_H4_PLAYTHROUGH_STATUS", 10);
-        }
     }
 
     private async void STAT_Run()
@@ -351,6 +271,8 @@ public partial class MissionView : UserControl
 
     private void Button_STAT_Build_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Button_STAT_Build.IsEnabled = false;
         STAT_Build();
         Button_STAT_Build.IsEnabled = true;
@@ -358,6 +280,8 @@ public partial class MissionView : UserControl
 
     private void Button_STAT_Run_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         Button_STAT_Run.IsEnabled = false;
         STAT_Run();
         Button_STAT_Run.IsEnabled = true;

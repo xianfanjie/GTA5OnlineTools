@@ -40,7 +40,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="豪华汽车", Value=830 },
         new OnlineInfo(){ Name="顶级豪华车业", Value=832 },
         new OnlineInfo(){ Name="致幻剂实验室", Value=840 },
-        new OnlineInfo(){ Name="杰拉德的包裹", Value=842 },
+        new OnlineInfo(){ Name="杰拉德包裹", Value=842 },
         new OnlineInfo(){ Name="枪支厢型车", Value=844 },
         new OnlineInfo(){ Name="藏匿屋", Value=845 },
         new OnlineInfo(){ Name="好麦坞车友俱乐部", Value=857 },

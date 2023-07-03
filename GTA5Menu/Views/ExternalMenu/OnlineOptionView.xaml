@@ -150,9 +150,9 @@
             </WrapPanel>
             <Separator Margin="8,5,8,5" />
             <WrapPanel Margin="5,0,5,0">
-                <Button Click="Button_Blips_Click" Content="隐藏包裹" />
                 <Button Click="Button_Blips_Click" Content="藏匿屋" />
-                <Button Click="Button_Blips_Click" Content="杰拉德的包裹" />
+                <Button Click="Button_Blips_Click" Content="杰拉德包裹" />
+                <Button Click="Button_Blips_Click" Content="隐藏包裹" />
             </WrapPanel>
         </StackPanel>
         <!--  面板3  -->

@@ -134,17 +134,17 @@ public static class Globals
     /// <summary>
     /// 写入stat值，只支持int类型
     /// </summary>
-    public static async Task WriteIntStat(string hash, int value)
+    public static async Task WriteIntStat(string stat, int value)
     {
         await Task.Run(async () =>
         {
-            if (hash.IndexOf("_") == 0)
-                hash = $"MP{GetPlayerIndex()}{hash}";
+            if (stat.StartsWith("_"))
+                stat = $"MP{GetPlayerIndex()}{stat}";
 
             var oldHash = ReadGA<uint>(Base.statSetIntOldHash + 1 + 3);       // if (STATS::STAT_GET_INT(statHash,
             var oldValue = ReadGA<int>(Base.statSetIntOldValue + 5525);
 
-            WriteGA(Base.statSetIntOldHash + 1 + 3, Joaat(hash));
+            WriteGA(Base.statSetIntOldHash + 1 + 3, Joaat(stat));
             WriteGA(Base.statSetIntOldValue + 5525, value);
             WriteGA(Base.statSetIntMinusOne + 1139, -1);
 

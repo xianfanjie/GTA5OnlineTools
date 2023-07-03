@@ -107,10 +107,10 @@ public static class World
     }
 
     /// <summary>
-    /// 杀死全部NPC
+    /// 击杀NPC
     /// </summary>
     /// <param name="isOnlyEnemy">仅敌人</param>
-    public static void KillAllNPC(bool isOnlyEnemy = false)
+    public static void KillNPC(bool isOnlyEnemy = false)
     {
         var pCPeds = GetCPedPointers();
         foreach (var pCPed in pCPeds)
@@ -131,9 +131,9 @@ public static class World
     }
 
     /// <summary>
-    /// 杀死全部警察
+    /// 击杀警察
     /// </summary>
-    public static void KillAllPolice()
+    public static void KillPolice()
     {
         var pCPeds = GetCPedPointers();
         foreach (var pCPed in pCPeds)
@@ -151,10 +151,22 @@ public static class World
     }
 
     /// <summary>
-    /// 摧毁全部NPC载具
+    /// 设置载具生命值
+    /// </summary>
+    /// <param name="pCVehicle"></param>
+    public static void SetVehicleHealth(long pCVehicle)
+    {
+        Memory.Write(pCVehicle + CVehicle.Health, -1.0f);
+        Memory.Write(pCVehicle + CVehicle.HealthBody, -1.0f);
+        Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, -1.0f);
+        Memory.Write(pCVehicle + CVehicle.HealthEngine, -1.0f);
+    }
+
+    /// <summary>
+    /// 摧毁NPC载具
     /// </summary>
     /// <param name="isOnlyEnemy">仅敌人</param>
-    public static void DestroyAllNPCVehicles(bool isOnlyEnemy = false)
+    public static void DestroyNPCVehicles(bool isOnlyEnemy = false)
     {
         var pCPeds = GetCPedPointers();
         foreach (var pCPed in pCPeds)
@@ -168,43 +180,58 @@ public static class World
                 var oHostility = Memory.Read<byte>(pCPed + CPed.Hostility);
                 if (oHostility > 0x01)
                 {
-                    Memory.Write(pCVehicle + CVehicle.Health, -1.0f);
-                    Memory.Write(pCVehicle + CVehicle.HealthBody, -1.0f);
-                    Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, -1.0f);
-                    Memory.Write(pCVehicle + CVehicle.HealthEngine, -1.0f);
+                    SetVehicleHealth(pCVehicle);
                 }
             }
             else
             {
-                Memory.Write(pCVehicle + CVehicle.Health, -1.0f);
-                Memory.Write(pCVehicle + CVehicle.HealthBody, -1.0f);
-                Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, -1.0f);
-                Memory.Write(pCVehicle + CVehicle.HealthEngine, -1.0f);
+                SetVehicleHealth(pCVehicle);
             }
         }
     }
 
     /// <summary>
-    /// 摧毁全部载具（玩家自己的载具也会摧毁）
+    /// 摧毁载具（玩家自己的载具也会摧毁）
     /// </summary>
-    public static void DestroyAllVehicles()
+    public static void DestroyVehicles()
     {
         var pCVehicles = GetCVehiclePointers();
         foreach (var pCVehicle in pCVehicles)
         {
-            Memory.Write(pCVehicle + CVehicle.Health, -1.0f);
-            Memory.Write(pCVehicle + CVehicle.HealthBody, -1.0f);
-            Memory.Write(pCVehicle + CVehicle.HealthPetrolTank, -1.0f);
-            Memory.Write(pCVehicle + CVehicle.HealthEngine, -1.0f);
+            SetVehicleHealth(pCVehicle);
         }
     }
 
     /// <summary>
-    /// 传送全部NPC
+    /// 摧毁警察载具
+    /// </summary>
+    public static void DestroyPoliceVehicles()
+    {
+        var pCPeds = GetCPedPointers();
+        foreach (var pCPed in pCPeds)
+        {
+            var pCVehicle = Memory.Read<long>(pCPed + CPed.CVehicle);
+            if (!Memory.IsValid(pCVehicle))
+                continue;
+
+            var ped_type = Memory.Read<int>(pCPed + CPed.Ragdoll);
+            ped_type = ped_type << 11 >> 25;
+
+            if (ped_type == (int)PedType.COP ||
+                ped_type == (int)PedType.SWAT ||
+                ped_type == (int)PedType.ARMY)
+            {
+                SetVehicleHealth(pCVehicle);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 传送NPC
     /// </summary>
     /// <param name="vector3"></param>
     /// <param name="isOnlyEnemy"></param>
-    public static void TeleportAllNPC(Vector3 vector3, bool isOnlyEnemy = false)
+    public static void TeleportNPC(Vector3 vector3, bool isOnlyEnemy = false)
     {
         var pCPeds = GetCPedPointers();
         foreach (var pCPed in pCPeds)
@@ -231,28 +258,28 @@ public static class World
     }
 
     /// <summary>
-    /// 传送全部NPC到我这里
+    /// 传送NPC到我这里
     /// </summary>
     /// <param name="isOnlyEnemy">仅敌人</param>
-    public static void TeleportAllNPCToMe(bool isOnlyEnemy = false)
+    public static void TeleportNPCToMe(bool isOnlyEnemy = false)
     {
         var myPosV3 = Teleport.GetPlayerPosition();
-        TeleportAllNPC(myPosV3, isOnlyEnemy);
+        TeleportNPC(myPosV3, isOnlyEnemy);
     }
 
     /// <summary>
-    /// 传送全部NPC到虚空
+    /// 传送NPC到太空
     /// </summary>
     /// <param name="isOnlyEnemy">仅敌人</param>
-    public static void TeleportAllNPCTo9999(bool isOnlyEnemy = false)
+    public static void TeleporNPCTo9999(bool isOnlyEnemy = false)
     {
-        TeleportAllNPC(CCTV.SpacePos, isOnlyEnemy);
+        TeleportNPC(CCTV.SpacePos, isOnlyEnemy);
     }
 
     /// <summary>
-    /// 移除全部摄像头
+    /// 移除摄像头
     /// </summary>
-    public static void RemoveAllCCTV()
+    public static void RemoveCCTV()
     {
         var pCObjects = GetCObjectPointers();
         foreach (var pCObject in pCObjects)

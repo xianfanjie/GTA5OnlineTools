@@ -475,19 +475,19 @@ public partial class SelfStateView : UserControl
     private void CheckBox_AutoKillNPC_Click(object sender, RoutedEventArgs e)
     {
         _options.KillNPC = CheckBox_AutoKillNPC.IsChecked == true;
-        World.KillAllNPC(false);
+        World.KillNPC(false);
     }
 
     private void CheckBox_AutoKillHostilityNPC_Click(object sender, RoutedEventArgs e)
     {
         _options.KillHostilityNPC = CheckBox_AutoKillHostilityNPC.IsChecked == true;
-        World.KillAllNPC(true);
+        World.KillNPC(true);
     }
 
     private void CheckBox_AutoKillPolice_Click(object sender, RoutedEventArgs e)
     {
         _options.KillPolice = CheckBox_AutoKillPolice.IsChecked == true;
-        World.KillAllPolice();
+        World.KillPolice();
     }
 
     private void CheckBox_NoCollision_Click(object sender, RoutedEventArgs e)

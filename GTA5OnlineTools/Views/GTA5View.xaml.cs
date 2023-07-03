@@ -57,7 +57,11 @@ public partial class GTA5View : UserControl
             Type = typeof(OutfitsEditorWindow),
             Window = null
         });
-        NavDictionary.Add("SpeedMeterWindow", new()
+        NavDictionary.Add("CasinoHackWindow", new()
+        {
+            Type = typeof(CasinoHackWindow),
+            Window = null
+        }); NavDictionary.Add("SpeedMeterWindow", new()
         {
             Type = typeof(SpeedMeterWindow),
             Window = null
@@ -100,6 +104,9 @@ public partial class GTA5View : UserControl
                     break;
                 case "OutfitsEditor":
                     OutfitsEditorClick();
+                    break;
+                case "CasinoHack":
+                    CasinoHackClick();
                     break;
                 case "SpeedMeter":
                     SpeedMeterClick();
@@ -192,6 +199,11 @@ public partial class GTA5View : UserControl
         AutoOpenWindow("OutfitsEditorWindow");
     }
 
+    private void CasinoHackClick()
+    {
+        AutoOpenWindow("CasinoHackWindow");
+    }
+
     private void SpeedMeterClick()
     {
         AutoOpenWindow("SpeedMeterWindow");
@@ -214,6 +226,7 @@ public partial class GTA5View : UserControl
             AutoCloseWindow("HeistsEditorWindow");
             AutoCloseWindow("StatsEditorWindow");
             AutoCloseWindow("OutfitsEditorWindow");
+            AutoCloseWindow("CasinoHackWindow");
             AutoCloseWindow("SpeedMeterWindow");
         });
     }

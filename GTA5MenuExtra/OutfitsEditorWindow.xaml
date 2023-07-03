@@ -42,7 +42,7 @@
                 <TextBlock
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="请选择服装槽位" />
+                    Text="服装槽" />
                 <ComboBox
                     x:Name="ComboBox_OutfitIndex"
                     Width="150"
@@ -71,7 +71,7 @@
                 <TextBlock
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="当前服装槽位名称" />
+                    Text="服装槽名称" />
                 <TextBox
                     x:Name="TextBox_OutfitName"
                     Width="200"

@@ -32,7 +32,7 @@
             Title="STAT Editor"
             Command="{Binding GTA5ViewClickCommand}"
             CommandParameter="StatsEditor"
-            Content="STAT 编辑器"
+            Content="STAT编辑器"
             Icon="&#xe67a;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
@@ -42,6 +42,14 @@
             CommandParameter="OutfitsEditor"
             Content="角色服装编辑器"
             Icon="&#xe8c7;"
+            Style="{StaticResource ButtonStyle_FuncModule}" />
+
+        <ui:ButtonIcon
+            Title="Casino Hack"
+            Command="{Binding GTA5ViewClickCommand}"
+            CommandParameter="CasinoHack"
+            Content="赌场黑客"
+            Icon="&#xe66f;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon

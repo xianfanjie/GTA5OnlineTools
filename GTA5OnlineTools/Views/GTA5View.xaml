@@ -29,10 +29,10 @@
             Style="{StaticResource ButtonStyle_FuncModule}" />
 
         <ui:ButtonIcon
-            Title="STAT Auto Scripts"
+            Title="STAT Editor"
             Command="{Binding GTA5ViewClickCommand}"
-            CommandParameter="StatScripts"
-            Content="STAT自动化脚本"
+            CommandParameter="StatsEditor"
+            Content="STAT 编辑器"
             Icon="&#xe67a;"
             Style="{StaticResource ButtonStyle_FuncModule}" />
 

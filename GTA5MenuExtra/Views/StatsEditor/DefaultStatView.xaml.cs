@@ -1,40 +1,24 @@
-﻿using GTA5Core.GTA.Enum;
+﻿using GTA5Core.Features;
 using GTA5Core.GTA.Stats;
-using GTA5Core.Features;
 using GTA5Shared.Helper;
 
-namespace GTA5MenuExtra;
+namespace GTA5MenuExtra.Views.StatsEditor;
 
 /// <summary>
-/// StatScriptsWindow.xaml 的交互逻辑
+/// DefaultStatView.xaml 的交互逻辑
 /// </summary>
-public partial class StatScriptsWindow
+public partial class DefaultStatView : UserControl
 {
-    public StatScriptsWindow()
+    public DefaultStatView()
     {
         InitializeComponent();
-    }
 
-    private void Window_StatScripts_Loaded(object sender, RoutedEventArgs e)
-    {
         // STAT列表
         foreach (var item in StatData.StatClasses)
         {
             ListBox_STATList.Items.Add(item.Name);
         }
         ListBox_STATList.SelectedIndex = 0;
-    }
-
-    private void Window_StatScripts_Closing(object sender, CancelEventArgs e)
-    {
-
-    }
-
-    private void Button_LoadSession_Click(object sender, RoutedEventArgs e)
-    {
-        AudioHelper.PlayClickSound();
-
-        Online.LoadSession((int)SessionType.Invite_Only);
     }
 
     private void AppendTextBox(string log)
@@ -52,10 +36,10 @@ public partial class StatScriptsWindow
 
         var item = ListBox_STATList.SelectedItem;
         if (item != null)
-            AutoScript(item.ToString());
+            STAT_SET_VALUE(item.ToString());
     }
 
-    private void AutoScript(string statClassName)
+    private void STAT_SET_VALUE(string statClassName)
     {
         TextBox_Logger.Clear();
 
@@ -66,7 +50,7 @@ public partial class StatScriptsWindow
                 var result = StatData.StatClasses.Find(t => t.Name == statClassName);
                 if (result != null)
                 {
-                    AppendTextBox($"正在执行 {result.Name} 脚本代码");
+                    AppendTextBox($"正在执行 {result.Name} STAT代码");
 
                     var count = result.StatInfos.Count;
                     for (int i = 0; i < count; i++)
@@ -76,7 +60,7 @@ public partial class StatScriptsWindow
                         await STATS.STAT_SET_INT(result.StatInfos[i].Hash, result.StatInfos[i].Value);
                     }
 
-                    AppendTextBox($"{result.Name} 脚本代码执行完毕");
+                    AppendTextBox($"{result.Name} STAT代码执行完毕");
                 }
             }
             catch (Exception ex)

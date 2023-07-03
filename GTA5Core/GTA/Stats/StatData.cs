@@ -18,7 +18,7 @@ public static class StatData
     /// <summary>
     /// 玩家护甲全满
     /// </summary>
-    public static List<StatInfo> _MP_CHAR_ARMOUR = new()
+    public static readonly List<StatInfo> _MP_CHAR_ARMOUR = new()
     {
         new StatInfo(){ Hash="MPx_MP_CHAR_ARMOUR_1_COUNT", Value=100 },
         new StatInfo(){ Hash="MPx_MP_CHAR_ARMOUR_2_COUNT", Value=100 },
@@ -30,7 +30,7 @@ public static class StatData
     /// <summary>
     /// 玩家零食全满
     /// </summary>
-    public static List<StatInfo> _NO_BOUGHT = new()
+    public static readonly List<StatInfo> _NO_BOUGHT = new()
     {
         new StatInfo(){ Hash="MPx_NO_BOUGHT_YUM_SNACKS", Value=100 },
         new StatInfo(){ Hash="MPx_NO_BOUGHT_HEALTH_SNACKS", Value=100 },
@@ -44,7 +44,7 @@ public static class StatData
     /// <summary>
     /// 玩家属性全满
     /// </summary>
-    public static List<StatInfo> _SCRIPT_INCREASE = new()
+    public static readonly List<StatInfo> _SCRIPT_INCREASE = new()
     {
         new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_STAM", Value=100 },
         new StatInfo(){ Hash="MPx_SCRIPT_INCREASE_SHO", Value=100 },
@@ -58,7 +58,7 @@ public static class StatData
     /// <summary>
     /// 玩家隐藏属性全满
     /// </summary>
-    public static List<StatInfo> _CHAR_ABILITY = new()
+    public static readonly List<StatInfo> _CHAR_ABILITY = new()
     {
         new StatInfo(){ Hash="MPx_CHAR_ABILITY_1_UNLCK", Value=-1 },
         new StatInfo(){ Hash="MPx_CHAR_ABILITY_2_UNLCK", Value=-1 },
@@ -71,7 +71,7 @@ public static class StatData
     /// <summary>
     /// 玩家性别修改（去重新捏脸）
     /// </summary>
-    public static List<StatInfo> _GENDER_CHANGE = new()
+    public static readonly List<StatInfo> _GENDER_CHANGE = new()
     {
         new StatInfo(){ Hash="MPx_ALLOW_GENDER_CHANGE", Value=52 },
     };
@@ -79,7 +79,7 @@ public static class StatData
     /// <summary>
     /// 设置玩家等级为1
     /// </summary>
-    public static List<StatInfo> _CHAR_SET_RP1 = new()
+    public static readonly List<StatInfo> _CHAR_SET_RP1 = new()
     {
         new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=0 },
     };
@@ -87,7 +87,7 @@ public static class StatData
     /// <summary>
     /// 设置玩家等级为30
     /// </summary>
-    public static List<StatInfo> _CHAR_SET_RP30 = new()
+    public static readonly List<StatInfo> _CHAR_SET_RP30 = new()
     {
         new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=177100 },
     };
@@ -95,7 +95,7 @@ public static class StatData
     /// <summary>
     /// 设置玩家等级为60
     /// </summary>
-    public static List<StatInfo> _CHAR_SET_RP60 = new()
+    public static readonly List<StatInfo> _CHAR_SET_RP60 = new()
     {
         new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=625400 },
     };
@@ -103,7 +103,7 @@ public static class StatData
     /// <summary>
     /// 设置玩家等级为90
     /// </summary>
-    public static List<StatInfo> _CHAR_SET_RP90 = new()
+    public static readonly List<StatInfo> _CHAR_SET_RP90 = new()
     {
         new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=1308100 },
     };
@@ -111,7 +111,7 @@ public static class StatData
     /// <summary>
     /// 设置玩家等级为120
     /// </summary>
-    public static List<StatInfo> _CHAR_SET_RP120 = new()
+    public static readonly List<StatInfo> _CHAR_SET_RP120 = new()
     {
         new StatInfo(){ Hash="MPx_CHAR_SET_RP_GIFT_ADMIN", Value=2165850 },
     };
@@ -121,7 +121,7 @@ public static class StatData
     /// <summary>
     /// 补满夜总会人气
     /// </summary>
-    public static List<StatInfo> _CLUB_POPULARITY = new()
+    public static readonly List<StatInfo> _CLUB_POPULARITY = new()
     {
         new StatInfo(){ Hash="MPx_CLUB_POPULARITY", Value=1000 },
     };
@@ -129,7 +129,7 @@ public static class StatData
     /// <summary>
     /// 设置车友会等级为1
     /// </summary>
-    public static List<StatInfo> _CAR_CLUB_REP = new()
+    public static readonly List<StatInfo> _CAR_CLUB_REP = new()
     {
         new StatInfo(){ Hash="MPx_CAR_CLUB_REP", Value=5 },
     };
@@ -139,7 +139,7 @@ public static class StatData
     /// <summary>
     /// 佩里科岛抢劫-玩家x1/100%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x2）
     /// </summary>
-    public static List<StatInfo> _H4CNF_1 = new()
+    public static readonly List<StatInfo> _H4CNF_1 = new()
     {
         new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=131071 },
         new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=63 },
@@ -165,7 +165,7 @@ public static class StatData
     /// <summary>
     /// 佩里科岛抢劫-玩家x2/50%50%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x4）
     /// </summary>
-    public static List<StatInfo> _H4CNF_2 = new()
+    public static readonly List<StatInfo> _H4CNF_2 = new()
     {
         new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=131071 },
         new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=63 },
@@ -191,7 +191,7 @@ public static class StatData
     /// <summary>
     /// 佩里科岛抢劫-玩家x3/35%35%30%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x6）
     /// </summary>
-    public static List<StatInfo> _H4CNF_3 = new()
+    public static readonly List<StatInfo> _H4CNF_3 = new()
     {
         new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=131071 },
         new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=63 },
@@ -217,7 +217,7 @@ public static class StatData
     /// <summary>
     /// 佩里科岛抢劫-玩家x4/100%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x7）
     /// </summary>
-    public static List<StatInfo> _H4CNF_4 = new()
+    public static readonly List<StatInfo> _H4CNF_4 = new()
     {
         new StatInfo(){ Hash="MPx_H4CNF_BS_GEN", Value=131071 },
         new StatInfo(){ Hash="MPx_H4CNF_BS_ENTR", Value=63 },
@@ -243,7 +243,7 @@ public static class StatData
     /// <summary>
     /// 赌场抢劫面板重置
     /// </summary>
-    public static List<StatInfo> _H3OPT = new()
+    public static readonly List<StatInfo> _H3OPT = new()
     {
         new StatInfo(){ Hash="MPx_H3OPT_BITSET1", Value=0 },
         new StatInfo(){ Hash="MPx_H3OPT_BITSET0", Value=0 },
@@ -255,7 +255,7 @@ public static class StatData
     /// <summary>
     /// 佩里克岛抢劫面板重置
     /// </summary>
-    public static List<StatInfo> _H4 = new()
+    public static readonly List<StatInfo> _H4 = new()
     {
         new StatInfo(){ Hash="MPx_H4_MISSIONS", Value=0 },
         new StatInfo(){ Hash="MPx_H4_PROGRESS", Value=0 },
@@ -268,7 +268,7 @@ public static class StatData
     /// <summary>
     /// 跳过公寓抢劫准备任务
     /// </summary>
-    public static List<StatInfo> _HEIST_PLANNING_STAGE = new()
+    public static readonly List<StatInfo> _HEIST_PLANNING_STAGE = new()
     {
         new StatInfo(){ Hash="MPx_HEIST_PLANNING_STAGE", Value=-1 },
     };
@@ -276,7 +276,7 @@ public static class StatData
     /// <summary>
     /// 取消抢劫并重新开始
     /// </summary>
-    public static List<StatInfo> _CAS_HEIST_NOTS = new()
+    public static readonly List<StatInfo> _CAS_HEIST_NOTS = new()
     {
         new StatInfo(){ Hash="MPx_CAS_HEIST_NOTS", Value=-1 },
         new StatInfo(){ Hash="MPx_CAS_HEIST_FLOW", Value=-1 },
@@ -285,7 +285,7 @@ public static class StatData
     /// <summary>
     /// 末日抢劫-1数据泄露（M键-设施管理-关闭/开启策划大屏）
     /// </summary>
-    public static List<StatInfo> _GANGOPS_FLOW_MISSION_PROG1 = new()
+    public static readonly List<StatInfo> _GANGOPS_FLOW_MISSION_PROG1 = new()
     {
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=503 },
         new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229383 },
@@ -295,7 +295,7 @@ public static class StatData
     /// <summary>
     /// 末日抢劫-2波格丹危机（M键-设施管理-关闭/开启策划大屏）
     /// </summary>
-    public static List<StatInfo> _GANGOPS_FLOW_MISSION_PROG2 = new()
+    public static readonly List<StatInfo> _GANGOPS_FLOW_MISSION_PROG2 = new()
     {
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=240 },
         new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229378 },
@@ -305,7 +305,7 @@ public static class StatData
     /// <summary>
     /// 末日抢劫-3末日将至（M键-设施管理-关闭/开启策划大屏）
     /// </summary>
-    public static List<StatInfo> _GANGOPS_FLOW_MISSION_PROG3 = new()
+    public static readonly List<StatInfo> _GANGOPS_FLOW_MISSION_PROG3 = new()
     {
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=16368 },
         new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229380 },
@@ -317,7 +317,7 @@ public static class StatData
     /// <summary>
     /// CEO办公室满地钱+小金人
     /// </summary>
-    public static List<StatInfo> _LIFETIME_BUY_UNDERTAKEN = new()
+    public static readonly List<StatInfo> _LIFETIME_BUY_UNDERTAKEN = new()
     {
         new StatInfo(){ Hash="MPx_LIFETIME_BUY_UNDERTAKEN", Value=1000 },
         new StatInfo(){ Hash="MPx_LIFETIME_BUY_COMPLETE", Value=1000 },
@@ -329,7 +329,7 @@ public static class StatData
     /// <summary>
     /// 解锁电话联系人功能
     /// </summary>
-    public static List<StatInfo> _FM_ACT_PHN = new()
+    public static readonly List<StatInfo> _FM_ACT_PHN = new()
     {
         new StatInfo(){ Hash="MPx_FM_ACT_PHN", Value=-1 },
         new StatInfo(){ Hash="MPx_FM_ACT_PH2", Value=-1 },
@@ -349,7 +349,7 @@ public static class StatData
     /// <summary>
     /// 限定载具节日涂装
     /// </summary>
-    public static List<StatInfo> MPPLY_XMASLIVERIES0 = new()
+    public static readonly List<StatInfo> MPPLY_XMASLIVERIES0 = new()
     {
         new StatInfo(){ Hash="MPPLY_XMASLIVERIES0", Value=-1 },
         new StatInfo(){ Hash="MPPLY_XMASLIVERIES1", Value=-1 },
@@ -377,7 +377,7 @@ public static class StatData
     /// <summary>
     /// 解锁-外星人纹身
     /// </summary>
-    public static List<StatInfo> _TATTOO_FM_CURRENT_32 = new()
+    public static readonly List<StatInfo> _TATTOO_FM_CURRENT_32 = new()
     {
         new StatInfo(){ Hash="MPx_TATTOO_FM_CURRENT_32", Value=-1 },
     };
@@ -385,7 +385,7 @@ public static class StatData
     /// <summary>
     /// 解锁-全部游艇任务
     /// </summary>
-    public static List<StatInfo> _YACHT_MISSION_PROG = new()
+    public static readonly List<StatInfo> _YACHT_MISSION_PROG = new()
     {
         new StatInfo(){ Hash="MPx_YACHT_MISSION_PROG", Value=0 },
         new StatInfo(){ Hash="MPx_YACHT_MISSION_FLOW", Value=21845 },
@@ -395,7 +395,7 @@ public static class StatData
     /// <summary>
     /// 解锁-载具金属质感喷漆与铬合金轮毂
     /// </summary>
-    public static List<StatInfo> _CHAR_FM_CARMOD_1_UNLCK = new()
+    public static readonly List<StatInfo> _CHAR_FM_CARMOD_1_UNLCK = new()
     {
         new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_1_UNLCK", Value=-1 },
         new StatInfo(){ Hash="MPx_CHAR_FM_CARMOD_2_UNLCK", Value=-1 },
@@ -428,7 +428,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-25级解锁出租车
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_AP_TIER25 = new()
+    public static readonly List<StatInfo> _ARENAWARS_AP_TIER25 = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=24 },
         new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=280 },
@@ -437,7 +437,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-50级解锁推土机
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_AP_TIER50 = new()
+    public static readonly List<StatInfo> _ARENAWARS_AP_TIER50 = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=49 },
         new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=530 },
@@ -446,7 +446,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-75级解锁小丑花车
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_AP_TIER75 = new()
+    public static readonly List<StatInfo> _ARENAWARS_AP_TIER75 = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=74 },
         new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=780 },
@@ -455,7 +455,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-100级解锁垃圾大王
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_AP_TIER100 = new()
+    public static readonly List<StatInfo> _ARENAWARS_AP_TIER100 = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=99 },
         new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=1030 },
@@ -464,7 +464,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-200级解锁地霸王拖车
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_AP_TIER200 = new()
+    public static readonly List<StatInfo> _ARENAWARS_AP_TIER200 = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=199 },
         new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=2030 },
@@ -473,7 +473,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-300级解锁混凝土搅拌车
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_AP_TIER300 = new()
+    public static readonly List<StatInfo> _ARENAWARS_AP_TIER300 = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=299 },
         new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=3030 },
@@ -482,7 +482,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-500级解锁星际码头
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_AP_TIER500 = new()
+    public static readonly List<StatInfo> _ARENAWARS_AP_TIER500 = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=499 },
         new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=5030 },
@@ -491,7 +491,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-1000级解锁老式拖拉机
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_AP_TIER1000 = new()
+    public static readonly List<StatInfo> _ARENAWARS_AP_TIER1000 = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_AP_TIER", Value=999 },
         new StatInfo(){ Hash="MPx_ARENAWARS_AP", Value=10030 },
@@ -500,7 +500,7 @@ public static class StatData
     /// <summary>
     /// 解锁-竞技场-冲冲猴旅行家购买权限
     /// </summary>
-    public static List<StatInfo> _ARENAWARS_SKILL_LEVEL = new()
+    public static readonly List<StatInfo> _ARENAWARS_SKILL_LEVEL = new()
     {
         new StatInfo(){ Hash="MPx_ARENAWARS_SKILL_LEVEL", Value=19 },
         new StatInfo(){ Hash="MPx_ARENAWARS_SP", Value=209 },
@@ -509,7 +509,7 @@ public static class StatData
     /// <summary>
     /// 解锁-解锁CEO特殊载具任务
     /// </summary>
-    public static List<StatInfo> _AT_FLOW_IMPEXP_NUM = new()
+    public static readonly List<StatInfo> _AT_FLOW_IMPEXP_NUM = new()
     {
         new StatInfo(){ Hash="MPx_AT_FLOW_IMPEXP_NUM", Value=32 },
     };
@@ -519,7 +519,7 @@ public static class StatData
     /// <summary>
     /// 解决赌场侦察拍照问题
     /// </summary>
-    public static List<StatInfo> _H3OPT_ACCESSPOINTS = new()
+    public static readonly List<StatInfo> _H3OPT_ACCESSPOINTS = new()
     {
         new StatInfo(){ Hash="MPx_H3OPT_ACCESSPOINTS", Value=0 },
         new StatInfo(){ Hash="MPx_H3OPT_POI", Value=0 },
@@ -528,7 +528,7 @@ public static class StatData
     /// <summary>
     /// 清除举报（建议单人战局使用）
     /// </summary>
-    public static List<StatInfo> MPPLY_REPORT_STRENGTH = new()
+    public static readonly List<StatInfo> MPPLY_REPORT_STRENGTH = new()
     {
         new StatInfo(){ Hash="MPPLY_REPORT_STRENGTH", Value=0 },
         new StatInfo(){ Hash="MPPLY_COMMEND_STRENGTH", Value=0 },
@@ -563,7 +563,7 @@ public static class StatData
     /// <summary>
     /// Stat数据分类列表
     /// </summary>
-    public static List<StatClass> StatClasses = new()
+    public static readonly List<StatClass> StatClasses = new()
     {
         new StatClass(){ Name="玩家-护甲全满", StatInfos=_MP_CHAR_ARMOUR },
         new StatClass(){ Name="玩家-零食全满", StatInfos=_NO_BOUGHT },

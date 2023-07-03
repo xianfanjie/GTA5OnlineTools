@@ -16,7 +16,7 @@ public static class STATS
 
     private static long StatGetIntHash()
     {
-        return Memory.Read<long>(Memory.Read<long>(Memory.GTA5ProBaseAddress + 0x2699E98) + 0xAE8);
+        return Memory.Read<long>(Memory.GTA5ProBaseAddress + 0x2699E98) + 0xAE8;
     }
 
     private static uint GET_STAT_HASH(string statName)
@@ -53,6 +53,11 @@ public static class STATS
         return hash;
     }
 
+    /// <summary>
+    /// 设置INT类型STAT值
+    /// </summary>
+    /// <param name="statName"></param>
+    /// <returns></returns>
     public static async Task STAT_SET_INT(string statName, int value)
     {
         await STAT_SET_INT2(statName, value);
@@ -115,7 +120,7 @@ public static class STATS
             if (Globals.ReadGA<int>(callStat + 3) != 3)
                 Globals.WriteGA(callStat + 3, 3);
 
-            await Task.Delay(1);
+            await Task.Delay(100);
 
             if (i > 5)
                 Globals.WriteGA(statGetIntValue, value);

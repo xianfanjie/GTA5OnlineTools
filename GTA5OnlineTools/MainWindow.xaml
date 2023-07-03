@@ -9,12 +9,11 @@
     Title="GTA5线上小助手"
     Width="1280"
     Height="720"
-    MinWidth="1280"
-    MinHeight="720"
     CaptionHeight="40"
     Closing="Window_Main_Closing"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_Main_Loaded"
+    ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"
     mc:Ignorable="d">
 

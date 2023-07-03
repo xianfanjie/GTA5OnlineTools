@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Features;
+using System;
 
 namespace GTA5MenuExtra.Views.HeistsEditor.Contract;
 
@@ -17,6 +18,8 @@ public partial class MissionView : UserControl
         await STATS.STAT_SET_INT(hash, value);
     }
 
+    ////////////////////////////////////////////////////
+
     private void Button_FIXER_GENERAL_BS_Click(object sender, RoutedEventArgs e)
     {
         STAT_SET_INT("MPx_FIXER_GENERAL_BS", -1);
@@ -25,11 +28,25 @@ public partial class MissionView : UserControl
 
     private void Button_TUNER_CURRENT_Click(object sender, RoutedEventArgs e)
     {
-        var index = ComboBox_TUNER_CURRENT.SelectedIndex;
+        var index = ListBox_TUNER_CURRENT.SelectedIndex;
         if (index == -1)
             return;
 
         STAT_SET_INT("MPx_TUNER_CURRENT", index);
         STAT_SET_INT("MPx_TUNER_GEN_BS", 65535);
+    }
+
+    ////////////////////////////////////////////////////
+
+    private void Button_Reset_FIXER_STORY_Click(object sender, RoutedEventArgs e)
+    {
+        STAT_SET_INT("MPx_FIXER_GENERAL_BS", -1);
+        STAT_SET_INT("MPx_FIXER_STORY_BS", 0);
+    }
+
+    private void Button_Reset_TUNER_STORY_Click(object sender, RoutedEventArgs e)
+    {
+        STAT_SET_INT("MPx_TUNER_CURRENT", -1);
+        STAT_SET_INT("MPx_TUNER_GEN_BS", 0);
     }
 }

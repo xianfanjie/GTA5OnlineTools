@@ -11,30 +11,57 @@
     mc:Ignorable="d">
 
     <UniformGrid Columns="3">
+        <!--  /////////////  -->
         <StackPanel Margin="5">
             <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="VIP合约" />
             <Button
                 x:Name="Button_FIXER_GENERAL_BS"
                 Click="Button_FIXER_GENERAL_BS_Click"
                 Content="跳过前置任务" />
+            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                提示：请等CD自然冷却好了再跳下一次前置，不要频繁跳前置
+            </TextBlock>
 
-            <TextBlock />
+            <Separator Margin="5,10,5,10" />
 
             <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="改装铺合约" />
-            <ComboBox x:Name="ComboBox_TUNER_CURRENT" SelectedIndex="0">
-                <ComboBoxItem Content="联合储蓄" />
-                <ComboBoxItem Content="大钞交易" />
-                <ComboBoxItem Content="银行合约" />
-                <ComboBoxItem Content="电控单元" />
-                <ComboBoxItem Content="监狱合约" />
-                <ComboBoxItem Content="IAA合约" />
-                <ComboBoxItem Content="失落摩托帮合约" />
-                <ComboBoxItem Content="数据合约" />
-            </ComboBox>
+            <ListBox
+                x:Name="ListBox_TUNER_CURRENT"
+                SelectedIndex="0"
+                Style="{StaticResource ListBoxStyle_Base}">
+                <ListBoxItem Content="联合储蓄" />
+                <ListBoxItem Content="大钞交易" />
+                <ListBoxItem Content="银行合约" />
+                <ListBoxItem Content="电控单元" />
+                <ListBoxItem Content="监狱合约" />
+                <ListBoxItem Content="IAA合约" />
+                <ListBoxItem Content="失落摩托帮合约" />
+                <ListBoxItem Content="数据合约" />
+            </ListBox>
+            <StackPanel Margin="0,2,0,0">
+                <Button
+                    x:Name="Button_TUNER_CURRENT"
+                    Click="Button_TUNER_CURRENT_Click"
+                    Content="跳过前置任务" />
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：第一次游玩建议手动完整过一遍任务，否则直接跳可能会导致问题
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <!--  /////////////  -->
+        <StackPanel Margin="5">
+            <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="高级选项" />
             <Button
-                x:Name="Button_TUNER_CURRENT"
-                Click="Button_TUNER_CURRENT_Click"
-                Content="跳过前置任务" />
+                x:Name="Button_Reset_FIXER_STORY"
+                Click="Button_Reset_FIXER_STORY_Click"
+                Content="重置VIP合约" />
+            <Button
+                x:Name="Button_Reset_TUNER_STORY"
+                Click="Button_Reset_TUNER_STORY_Click"
+                Content="重置改装铺合约" />
+            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                提示：如果你VIP合约或者改装铺合约卡任务，可以使用上面按钮重置
+            </TextBlock>
         </StackPanel>
     </UniformGrid>
 

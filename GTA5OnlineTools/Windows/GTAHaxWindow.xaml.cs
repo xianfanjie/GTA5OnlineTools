@@ -1,6 +1,7 @@
-﻿using GTA5Shared.Helper;
+﻿using GTA5OnlineTools.Utils;
+
+using GTA5Shared.Helper;
 using GTA5Core.GTA.Stats;
-using GTA5MenuExtra.Utils;
 
 namespace GTA5OnlineTools.Windows;
 
@@ -31,40 +32,29 @@ public partial class GTAHaxWindow
 
     }
 
-    private void TextBox_AppendText_MP(string str, string value)
+    private void TextBox_AppendText(string statName, int value)
     {
-        TextBox_PreviewGTAHax.AppendText($"$MPx{str}\n");
-        TextBox_PreviewGTAHax.AppendText($"{value}\n");
-    }
-
-    private void TextBox_AppendText_NoMP(string str, string value)
-    {
-        TextBox_PreviewGTAHax.AppendText($"${str}\n");
+        TextBox_PreviewGTAHax.AppendText($"${statName}\n");
         TextBox_PreviewGTAHax.AppendText($"{value}\n");
     }
 
     private void ListBox_GTAHaxClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var statClassName = ListBox_GTAHaxClass.SelectedItem.ToString();
-        int index = StatData.StatClasses.FindIndex(t => t.Name == statClassName);
-        if (index != -1)
+        if (ListBox_GTAHaxClass.SelectedItem is string statClassName)
         {
+            var result = StatData.StatClasses.Find(t => t.Name == statClassName);
+            if (result == null)
+                return;
+
             TextBox_PreviewGTAHax.Clear();
             TextBox_PreviewGTAHax.AppendText("INT32\n");
 
-            for (int i = 0; i < StatData.StatClasses[index].StatInfos.Count; i++)
+            for (var i = 0; i < result.StatInfos.Count; i++)
             {
-                var hash = StatData.StatClasses[index].StatInfos[i].Hash;
-                var value = StatData.StatClasses[index].StatInfos[i].Value;
+                var hash = result.StatInfos[i].Hash;
+                var value = result.StatInfos[i].Value;
 
-                if (hash.IndexOf("_") == 0)
-                {
-                    TextBox_AppendText_MP(hash, value.ToString());
-                }
-                else
-                {
-                    TextBox_AppendText_NoMP(hash, value.ToString());
-                }
+                TextBox_AppendText(hash, value);
             }
         }
     }

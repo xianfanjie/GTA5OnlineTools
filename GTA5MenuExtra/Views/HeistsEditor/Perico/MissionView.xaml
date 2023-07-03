@@ -11,229 +11,197 @@
     mc:Ignorable="d">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="0.8*" />
             <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
-        <!--  ////////////////////////  -->
-        <ScrollViewer Margin="5">
+        <!--  /////////////////  -->
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130" />
+                    <ColumnDefinition Width="135" />
+                    <ColumnDefinition Width="135" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="0.9*" />
+                </Grid.ColumnDefinitions>
+                <!--  /////////////  -->
+                <StackPanel Grid.Column="0" Margin="5">
+                    <CheckBox x:Name="CheckBox_H4CNF_BS_ENTR" Content="解锁所有入侵点" />
+                    <CheckBox x:Name="CheckBox_H4CNF_APPROACH" Content="解锁所有逃离点" />
+                    <CheckBox x:Name="CheckBox_H4CNF_BS_GEN" Content="解锁所有兴趣点" />
+                    <CheckBox x:Name="CheckBox_H4CNF_BS_ABIL" Content="解锁团队支持" />
+                </StackPanel>
+                <!--  /////////////  -->
+                <ListBox
+                    x:Name="ListBox_H4_PROGRESS"
+                    Grid.Column="1"
+                    Margin="5"
+                    SelectedIndex="0"
+                    Style="{StaticResource ListBoxStyle_Base}">
+                    <ListBoxItem Content="任务难度 - 未选择" />
+                    <ListBoxItem Content="普通模式" />
+                    <ListBoxItem Content="困难模式" />
+                </ListBox>
+                <!--  /////////////  -->
+                <ListBox
+                    x:Name="ListBox_H4CNF_TARGET"
+                    Grid.Column="2"
+                    Margin="5"
+                    SelectedIndex="0"
+                    Style="{StaticResource ListBoxStyle_Base}">
+                    <ListBoxItem Content="主要目标 - 未选择" />
+                    <ListBoxItem Content="西西米托龙舌兰" />
+                    <ListBoxItem Content="红宝石项链" />
+                    <ListBoxItem Content="不记名债券" />
+                    <ListBoxItem Content="粉钻" />
+                    <ListBoxItem Content="玛德拉索文件" />
+                    <ListBoxItem Content="猎豹雕像" />
+                </ListBox>
+                <!--  /////////////  -->
+                <StackPanel Grid.Column="3">
+                    <CheckBox
+                        x:Name="CheckBox_H4LOOT_Random"
+                        Margin="5"
+                        Content="随机次要目标" />
+                    <ListBox
+                        x:Name="ListBox_H4LOOT"
+                        Margin="5"
+                        SelectedIndex="0"
+                        Style="{StaticResource ListBoxStyle_Base}">
+                        <ListBoxItem Content="次要目标 - 未选择" />
+                        <ListBoxItem Content="已发现/侦察 现金（室内/室外）" />
+                        <ListBoxItem Content="已发现/侦察 大麻（室内/室外）" />
+                        <ListBoxItem Content="已发现/侦察 可可（室内/室外）" />
+                        <ListBoxItem Content="已发现/侦察 黄金（室内/室外）" />
+                    </ListBox>
+                </StackPanel>
+                <!--  /////////////  -->
+                <ListBox
+                    x:Name="ListBox_H4LOOT_PAINT"
+                    Grid.Column="4"
+                    Margin="5"
+                    SelectedIndex="0"
+                    Style="{StaticResource ListBoxStyle_Base}">
+                    <ListBoxItem Content="次要目标（画作） - 未选择" />
+                    <ListBoxItem Content="已发现/侦察 画作（室内/室外）" />
+                </ListBox>
+            </Grid>
+            <!--  /////////////  -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <ListBox
+                    x:Name="ListBox_H4_MISSIONS"
+                    Grid.Column="0"
+                    Margin="5"
+                    SelectedIndex="0"
+                    Style="{StaticResource ListBoxStyle_Base}">
+                    <ListBoxItem Content="接近载具 - 未选择" />
+                    <ListBoxItem Content="潜水艇：虎鲸" />
+                    <ListBoxItem Content="飞机：阿尔科诺斯特" />
+                    <ListBoxItem Content="飞机：梅杜莎" />
+                    <ListBoxItem Content="直升机：隐形歼灭者" />
+                    <ListBoxItem Content="船只：巡逻艇" />
+                    <ListBoxItem Content="船只：长鳍" />
+                    <ListBoxItem Content="全部载具可用" />
+                </ListBox>
+                <!--  /////////////  -->
+                <ListBox
+                    x:Name="ListBox_H4CNF_WEAPONS"
+                    Grid.Column="1"
+                    Margin="5"
+                    SelectedIndex="0"
+                    Style="{StaticResource ListBoxStyle_Base}">
+                    <ListBoxItem Content="武器装备 - 未选择" />
+                    <ListBoxItem Content="侵略者（连发散弹，连发手枪，手雷，砍刀）" />
+                    <ListBoxItem Content="阴谋者（军用步枪，单发手枪，粘弹，指虎）" />
+                    <ListBoxItem Content="神枪手（轻狙，连发手枪，燃烧瓶，小刀）" />
+                    <ListBoxItem Content="破坏者（MK2冲锋枪，单发手枪，土质炸弹，小刀）" />
+                    <ListBoxItem Content="神射手（MK2突击步枪，单发手枪，土质炸弹，砍刀）" />
+                </ListBox>
+                <!--  /////////////  -->
+                <ListBox
+                    x:Name="ListBox_H4CNF_TROJAN"
+                    Grid.Column="2"
+                    Margin="5"
+                    SelectedIndex="0"
+                    Style="{StaticResource ListBoxStyle_Base}">
+                    <ListBoxItem Content="运货卡车位置 - 未选择" />
+                    <ListBoxItem Content="机场" />
+                    <ListBoxItem Content="北船坞" />
+                    <ListBoxItem Content="主码头-东" />
+                    <ListBoxItem Content="主码头-西" />
+                    <ListBoxItem Content="混合粉" />
+                </ListBox>
+                <!--  /////////////  -->
+                <StackPanel Grid.Column="3" Margin="5">
+                    <TextBlock Margin="5" Text="干扰" />
+                    <CheckBox x:Name="CheckBox_H4CNF_WEP_DISRP" Content="武器" />
+                    <CheckBox x:Name="CheckBox_H4CNF_ARM_DISRP" Content="防弹衣" />
+                    <CheckBox x:Name="CheckBox_H4CNF_HEL_DISRP" Content="空中支援" />
+                    <!--  //////////  -->
+                    <TextBlock Margin="5" Text="其他" />
+                    <CheckBox x:Name="CheckBox_H4CNF_GRAPPEL" Content="解锁抓钩" />
+                    <CheckBox x:Name="CheckBox_H4CNF_UNIFORM" Content="解锁保安制服" />
+                    <CheckBox x:Name="CheckBox_H4CNF_BOLTCUT" Content="解锁螺栓切割器" />
+                    <!--  //////////  -->
+                    <TextBlock Margin="5" Text="必选" />
+                    <CheckBox
+                        x:Name="CheckBox_H4_PLAYTHROUGH_STATUS"
+                        Margin="5"
+                        Content="任务通过状态" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <!--  ///////////////////////////////  -->
+        <UniformGrid
+            Grid.Row="1"
+            Grid.Column="0"
+            Columns="2">
             <StackPanel>
-                <Border>
-                    <Border.Style>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="Margin" Value="5" />
-                            <Setter Property="Padding" Value="5" />
-                            <Setter Property="BorderThickness" Value="1" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=RadioButton_H4CNF_P1, Path=IsChecked}" Value="True">
-                                    <Setter Property="Background" Value="#EEEEEE" />
-                                    <Setter Property="BorderBrush" Value="#0078D4" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                    <RadioButton
-                        x:Name="RadioButton_H4CNF_P1"
-                        HorizontalAlignment="Center"
-                        Content="前置任务"
-                        FontSize="18"
-                        FontWeight="Bold"
-                        GroupName="RadioButton_H4CNF"
-                        IsChecked="True" />
-                </Border>
-
-                <CheckBox x:Name="CheckBox_H4CNF_BS_GEN" Content="解锁所有兴趣点" />
-                <CheckBox x:Name="CheckBox_H4CNF_BS_ENTR" Content="解锁所有入侵点" />
-                <CheckBox x:Name="CheckBox_H4CNF_BS_ABIL" Content="解锁团队支持" />
-                <CheckBox x:Name="CheckBox_H4CNF_APPROACH" Content="解锁所有逃离点" />
-
-                <ComboBox
-                    x:Name="ComboBox_H4_PROGRESS"
-                    Margin="5"
-                    SelectedIndex="0">
-                    <ComboBoxItem Content="任务难度 - 未选择" Foreground="#FF6666" />
-                    <ComboBoxItem Content="普通模式" />
-                    <ComboBoxItem Content="困难模式" />
-                </ComboBox>
-
-                <ComboBox
-                    x:Name="ComboBox_H4CNF_TARGET"
-                    Margin="5"
-                    SelectedIndex="0">
-                    <ComboBoxItem Content="主要目标 - 未选择" Foreground="#FF6666" />
-                    <ComboBoxItem Content="西西米托龙舌兰" />
-                    <ComboBoxItem Content="红宝石项链" />
-                    <ComboBoxItem Content="不记名债券" />
-                    <ComboBoxItem Content="粉钻" />
-                    <ComboBoxItem Content="玛德拉索文件" />
-                    <ComboBoxItem Content="猎豹雕像" />
-                </ComboBox>
-
-                <CheckBox x:Name="CheckBox_H4LOOT_Random" Content="随机次要目标" />
-                <ComboBox
-                    x:Name="ComboBox_H4LOOT"
-                    Margin="5"
-                    SelectedIndex="0">
-                    <ComboBoxItem Content="次要目标 - 未选择" Foreground="#FF6666" />
-                    <ComboBoxItem Content="已发现/侦察 现金（室内/室外）" />
-                    <ComboBoxItem Content="已发现/侦察 大麻（室内/室外）" />
-                    <ComboBoxItem Content="已发现/侦察 可可（室内/室外）" />
-                    <ComboBoxItem Content="已发现/侦察 黄金（室内/室外）" />
-                </ComboBox>
-                <ComboBox
-                    x:Name="ComboBox_H4LOOT_PAINT"
-                    Margin="5"
-                    SelectedIndex="0">
-                    <ComboBoxItem Content="次要目标（画作） - 未选择" Foreground="#FF6666" />
-                    <ComboBoxItem Content="已发现/侦察 画作（室内/室外）" />
-                </ComboBox>
-
-                <ComboBox
-                    x:Name="ComboBox_H4_MISSIONS"
-                    Margin="5"
-                    SelectedIndex="0">
-                    <ComboBoxItem Content="接近载具 - 未选择" Foreground="#FF6666" />
-                    <ComboBoxItem Content="潜水艇：虎鲸" />
-                    <ComboBoxItem Content="飞机：阿尔科诺斯特" />
-                    <ComboBoxItem Content="飞机：梅杜莎" />
-                    <ComboBoxItem Content="直升机：隐形歼灭者" />
-                    <ComboBoxItem Content="船只：巡逻艇" />
-                    <ComboBoxItem Content="船只：长鳍" />
-                    <ComboBoxItem Content="全部载具可用" />
-                </ComboBox>
-
-                <ComboBox
-                    x:Name="ComboBox_H4CNF_WEAPONS"
-                    Margin="5"
-                    SelectedIndex="0">
-                    <ComboBoxItem Content="武器装备 - 未选择" Foreground="#FF6666" />
-                    <ComboBoxItem Content="侵略者（连发散弹，连发手枪，手雷，砍刀）" />
-                    <ComboBoxItem Content="阴谋者（军用步枪，单发手枪，粘弹，指虎）" />
-                    <ComboBoxItem Content="神枪手（轻狙，连发手枪，燃烧瓶，小刀）" />
-                    <ComboBoxItem Content="破坏者（MK2冲锋枪，单发手枪，土质炸弹，小刀）" />
-                    <ComboBoxItem Content="神射手（MK2突击步枪，单发手枪，土质炸弹，砍刀）" />
-                </ComboBox>
-
-                <Expander
-                    Margin="5"
-                    Header="干扰"
-                    IsExpanded="False">
-                    <StackPanel Margin="5">
-                        <CheckBox x:Name="CheckBox_H4CNF_WEP_DISRP" Content="武器" />
-                        <CheckBox x:Name="CheckBox_H4CNF_ARM_DISRP" Content="防弹衣" />
-                        <CheckBox x:Name="CheckBox_H4CNF_HEL_DISRP" Content="空中支援" />
-                    </StackPanel>
-                </Expander>
-
-                <Expander
-                    Margin="5"
-                    Header="其他"
-                    IsExpanded="False">
-                    <StackPanel Margin="5">
-                        <CheckBox x:Name="CheckBox_H4CNF_GRAPPEL" Content="解锁抓钩" />
-                        <CheckBox x:Name="CheckBox_H4CNF_UNIFORM" Content="解锁保安制服" />
-                        <CheckBox x:Name="CheckBox_H4CNF_BOLTCUT" Content="解锁螺栓切割器" />
-                    </StackPanel>
-                </Expander>
-
-                <ComboBox
-                    x:Name="ComboBox_H4CNF_TROJAN"
-                    Margin="5"
-                    SelectedIndex="0">
-                    <ComboBoxItem Content="运货卡车位置 - 未选择" Foreground="#FF6666" />
-                    <ComboBoxItem Content="机场" />
-                    <ComboBoxItem Content="北船坞" />
-                    <ComboBoxItem Content="主码头-东" />
-                    <ComboBoxItem Content="主码头-西" />
-                    <ComboBoxItem Content="混合粉" />
-                </ComboBox>
-
-                <CheckBox x:Name="CheckBox_H4_PLAYTHROUGH_STATUS" Content="任务通过状态" />
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    1. 提示：第一次游玩佩里克岛，请手动完整通关一边，第二次再跳过，否则可能会导致任务bug<LineBreak />
+                    2. 跑到虎鲸直升机那里是为了刷新大厅的面板，要不然看不到修改结果<LineBreak />
+                    3. 每人所获取金额不得超过255W（包括精英10w），否则任务结束不会到账<LineBreak />
+                    4. 耐心等待任务CD，不可跳过CD，否则会导致钱不到账而且会产生风险</TextBlock>
             </StackPanel>
-        </ScrollViewer>
-        <!--  ////////////////////////  -->
-        <ScrollViewer Grid.Column="1" Margin="5">
             <StackPanel>
-                <Border>
-                    <Border.Style>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="Margin" Value="5" />
-                            <Setter Property="Padding" Value="5" />
-                            <Setter Property="BorderThickness" Value="1" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=RadioButton_H4CNF_P2, Path=IsChecked}" Value="True">
-                                    <Setter Property="Background" Value="#EEEEEE" />
-                                    <Setter Property="BorderBrush" Value="#0078D4" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                    <RadioButton
-                        x:Name="RadioButton_H4CNF_P2"
-                        HorizontalAlignment="Center"
-                        Content="高级"
-                        FontSize="18"
-                        FontWeight="Bold"
-                        GroupName="RadioButton_H4CNF" />
-                </Border>
-
-                <CheckBox
-                    x:Name="CheckBox_ResetEverything"
-                    Content="重置海岛面板"
-                    Foreground="Red" />
-
-                <TextBlock />
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：如果你是第一次玩这个任务，建议手动做几个前置后再跳过，否则可能出现未知的问题
-                </TextBlock>
-                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：每人所获取金额不得超过255W（包括精英10w），否则任务结束不会到账
-                </TextBlock>
-                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：耐心等待任务CD，不可跳过，否则会导致钱不到账而且会产生风险
-                </TextBlock>
-
-                <TextBlock />
-                <WrapPanel>
-                    <TextBlock Margin="5" TextWrapping="Wrap">
-                        ● 在潜艇开启任务佩里科岛抢劫，然后勾选上面需要的选项<LineBreak />
-                        ● 然后【生成GTAHax代码】，【批量导入GTAHax】<LineBreak />
-                        ● 我们跑到直升机那里等待GTAhax导入完毕，然后回来就可以开启终章了</TextBlock>
-                    <TextBlock Margin="5" TextWrapping="Wrap">
-                        ● 如果需要清理面板，我们勾选右边的【切换到生成高级功能代码】，勾选【重置海岛面板】<LineBreak />
-                        ● 然后【生成GTAHax代码】，【批量导入GTAHax】<LineBreak />
-                        ● 我们跑到直升机那里等待GTAhax导入完毕，然后回来海岛面板就已经重置了</TextBlock>
-                </WrapPanel>
-
-                <TextBlock />
-                <TextBlock
-                    Margin="5"
-                    VerticalAlignment="Center"
-                    ToolTip="网站基于GitHub，如果你无法访问GitHub请尝试使用 Steam++ 加速">
-                    <Hyperlink NavigateUri="https://beholdmystuff.github.io/heist-stat.txt-maker/" RequestNavigate="Hyperlink_RequestNavigate">
-                        代码自定义（Web网页）
-                    </Hyperlink>
-                </TextBlock>
+                    1. 在虎鲸开启任务佩里科岛抢劫，然后勾选上面需要的选项<LineBreak />
+                    2. 然后点击【生成STAT代码】，【执行生成的STAT代码】<LineBreak />
+                    3. 跑到直升机那里等待STAT代码执行完毕，回来等面板重启刷新，就可以开启终章了</TextBlock>
             </StackPanel>
-        </ScrollViewer>
-        <!--  ////////////////////////  -->
-        <DockPanel Grid.Column="2">
-            <UniformGrid Columns="2" DockPanel.Dock="Bottom">
-                <Button
-                    x:Name="Button_BuildGTAHax"
-                    Margin="5,5,2,5"
-                    Click="Button_BuildGTAHax_Click"
-                    Content="生成GTAHax代码" />
-                <Button
-                    x:Name="Button_ImportGTAHax"
-                    Margin="2,5,5,5"
-                    Click="Button_ImportGTAHax_Click"
-                    Content="批量导入GTAHax" />
-            </UniformGrid>
-            <TextBox
-                x:Name="TextBox_PreviewGTAHax"
+        </UniformGrid>
+        <!--  ///////////////////////////////  -->
+        <DockPanel
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="1">
+            <StackPanel
                 Margin="5,5,5,0"
+                DockPanel.Dock="Top"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="Button_STAT_Build"
+                    Click="Button_STAT_Build_Click"
+                    Content="生成STAT代码" />
+                <Button
+                    x:Name="Button_STAT_Run"
+                    Click="Button_STAT_Run_Click"
+                    Content="执行生成的STAT代码" />
+            </StackPanel>
+            <TextBox
+                x:Name="TextBox_Logger"
+                Margin="5"
                 AcceptsReturn="True"
                 IsReadOnly="False"
                 Style="{StaticResource TextBoxStyle_Logger}" />

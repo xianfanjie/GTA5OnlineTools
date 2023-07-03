@@ -40,9 +40,6 @@
       <Compile Update="Views\HeistsEditor\Casino\Mission2View.xaml.cs">
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="Views\HeistsEditor\Casino\MissionView.xaml.cs">
-        <SubType>Code</SubType>
-      </Compile>
       <Compile Update="Views\HeistsEditor\Casino\MoneyView.xaml.cs">
         <SubType>Code</SubType>
       </Compile>

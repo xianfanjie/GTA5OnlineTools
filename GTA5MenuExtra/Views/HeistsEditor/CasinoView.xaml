@@ -12,16 +12,16 @@
     mc:Ignorable="d">
 
     <TabControl Margin="5">
-        <ui:TabItemIcon Header="前置任务">
-            <views:MissionView />
-        </ui:TabItemIcon>
-        <!--  ///////////////////  -->
-        <ui:TabItemIcon Header="分红数据">
-            <views:MoneyView />
+        <ui:TabItemIcon Header="前置任务1">
+            <views:Mission1View />
         </ui:TabItemIcon>
         <!--  ///////////////////  -->
         <ui:TabItemIcon Header="前置任务2">
             <views:Mission2View />
+        </ui:TabItemIcon>
+        <!--  ///////////////////  -->
+        <ui:TabItemIcon Header="分红数据">
+            <views:MoneyView />
         </ui:TabItemIcon>
     </TabControl>
 

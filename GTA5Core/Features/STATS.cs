@@ -69,7 +69,7 @@ public static class STATS
     /// <param name="statName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static async Task STAT_SET_INT1(string statName, int value)
+    private static async Task STAT_SET_INT1(string statName, int value)
     {
         var hash = GET_STAT_HASH(statName);
 
@@ -92,7 +92,7 @@ public static class STATS
     /// <param name="statName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static async Task STAT_SET_INT2(string statName, int value)
+    private static async Task STAT_SET_INT2(string statName, int value)
     {
         var hash = GET_STAT_HASH(statName);
 

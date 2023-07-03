@@ -11,236 +11,165 @@
     mc:Ignorable="d">
 
     <UniformGrid Columns="3">
-        <ScrollViewer Margin="5">
-            <StackPanel>
-                <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="面板一" />
-
-                <ui:LabelIcon Content="前置任务" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_ACCESSPOINTS"
-                        Click="Button_H3OPT_ACCESSPOINTS_Click"
-                        Content="解锁所有侦察点" />
-                    <Button
-                        x:Name="Button_H3OPT_H3OPT_POI"
-                        Click="Button_H3OPT_H3OPT_POI_Click"
-                        Content="解锁所有兴趣点" />
-                </WrapPanel>
-
-                <ui:LabelIcon Content="抢劫方式" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_APPROACH_1"
-                        Click="Button_H3OPT_APPROACH_1_Click"
-                        Content="隐迹潜踪" />
-                    <Button
-                        x:Name="Button_H3OPT_APPROACH_2"
-                        Click="Button_H3OPT_APPROACH_2_Click"
-                        Content="兵不厌诈" />
-                    <Button
-                        x:Name="Button_H3OPT_APPROACH_3"
-                        Click="Button_H3OPT_APPROACH_3_Click"
-                        Content="气势汹汹" />
-                </WrapPanel>
-
-                <ui:LabelIcon Content="抢劫物品" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_TARGET_0"
-                        Click="Button_H3OPT_TARGET_0_Click"
-                        Content="现金" />
-                    <Button
-                        x:Name="Button_H3OPT_TARGET_1"
-                        Click="Button_H3OPT_TARGET_1_Click"
-                        Content="黄金" />
-                    <Button
-                        x:Name="Button_H3OPT_TARGET_2"
-                        Click="Button_H3OPT_TARGET_2_Click"
-                        Content="艺术品" />
-                    <Button
-                        x:Name="Button_H3OPT_TARGET_3"
-                        Click="Button_H3OPT_TARGET_3_Click"
-                        Content="钻石" />
-                </WrapPanel>
-
-            </StackPanel>
-        </ScrollViewer>
-        <!--  ///////////////////////  -->
-        <ScrollViewer Margin="0,5,5,5">
-            <StackPanel>
-                <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="面板二" />
-
-                <ui:LabelIcon Content="前置任务" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_DISRUPTSHIP"
-                        Click="Button_H3OPT_DISRUPTSHIP_Click"
-                        Content="撤走重型武装警卫" />
-                    <Button
-                        x:Name="Button_H3OPT_KEYLEVELS"
-                        Click="Button_H3OPT_KEYLEVELS_Click"
-                        Content="获得二级门禁卡" />
-                </WrapPanel>
-
-                <ui:LabelIcon Content="枪手等级" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_CREWWEAP_1"
-                        Click="Button_H3OPT_CREWWEAP_1_Click"
-                        Content="卡尔·阿不拉季 5％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWWEAP_2"
-                        Click="Button_H3OPT_CREWWEAP_2_Click"
-                        Content="古斯塔沃·莫塔 9％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWWEAP_3"
-                        Click="Button_H3OPT_CREWWEAP_3_Click"
-                        Content="查理·里德 7％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWWEAP_4"
-                        Click="Button_H3OPT_CREWWEAP_4_Click"
-                        Content="切斯特·麦考伊 10％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWWEAP_5"
-                        Click="Button_H3OPT_CREWWEAP_5_Click"
-                        Content="帕里克·麦克瑞利 8％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWWEAP_6"
-                        Click="Button_H3OPT_CREWWEAP_6_Click"
-                        Content="枪手零分红" />
-                </WrapPanel>
-
-                <ui:LabelIcon Content="车手等级" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_CREWDRIVER_1"
-                        Click="Button_H3OPT_CREWDRIVER_1_Click"
-                        Content="卡里姆·登茨 5％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWDRIVER_2"
-                        Click="Button_H3OPT_CREWDRIVER_2_Click"
-                        Content="塔丽娜·马丁内斯 7％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWDRIVER_3"
-                        Click="Button_H3OPT_CREWDRIVER_3_Click"
-                        Content="淘艾迪 9％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWDRIVER_4"
-                        Click="Button_H3OPT_CREWDRIVER_4_Click"
-                        Content="扎克·尼尔森 6％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWDRIVER_5"
-                        Click="Button_H3OPT_CREWDRIVER_5_Click"
-                        Content="切斯特·麦考伊 10％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWDRIVER_6"
-                        Click="Button_H3OPT_CREWDRIVER_6_Click"
-                        Content="车手零分红" />
-                </WrapPanel>
-
-                <ui:LabelIcon Content="黑客等级" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_CREWHACKER_1"
-                        Click="Button_H3OPT_CREWHACKER_1_Click"
-                        Content="里奇·卢肯斯 3％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWHACKER_2"
-                        Click="Button_H3OPT_CREWHACKER_2_Click"
-                        Content="克里斯汀·费尔兹 7％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWHACKER_3"
-                        Click="Button_H3OPT_CREWHACKER_3_Click"
-                        Content="尤汗·布莱尔 5％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWHACKER_4"
-                        Click="Button_H3OPT_CREWHACKER_4_Click"
-                        Content="阿维·施瓦茨曼 10％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWHACKER_5"
-                        Click="Button_H3OPT_CREWHACKER_5_Click"
-                        Content="佩奇·哈里斯 9％" />
-                    <Button
-                        x:Name="Button_H3OPT_CREWHACKER_6"
-                        Click="Button_H3OPT_CREWHACKER_6_Click"
-                        Content="黑客零分红" />
-                </WrapPanel>
-
-                <ui:LabelIcon Content="武器类型" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_WEAPS_0"
-                        Click="Button_H3OPT_WEAPS_0_Click"
-                        Content="类型一" />
-                    <Button
-                        x:Name="Button_H3OPT_WEAPS_1"
-                        Click="Button_H3OPT_WEAPS_1_Click"
-                        Content="类型二" />
-                    <Button
-                        x:Name="Button_H3OPT_WEAPS_2"
-                        Click="Button_H3OPT_WEAPS_2_Click"
-                        Content="类型三" />
-                    <Button
-                        x:Name="Button_H3OPT_WEAPS_3"
-                        Click="Button_H3OPT_WEAPS_3_Click"
-                        Content="类型四" />
-                    <Button
-                        x:Name="Button_H3OPT_WEAPS_4"
-                        Click="Button_H3OPT_WEAPS_4_Click"
-                        Content="类型五" />
-                </WrapPanel>
-
-                <ui:LabelIcon Content="逃亡载具" />
-                <WrapPanel Margin="5,0,5,0">
-                    <Button
-                        x:Name="Button_H3OPT_VEH_0"
-                        Click="Button_H3OPT_VEH_0_Click"
-                        Content="类型一" />
-                    <Button
-                        x:Name="Button_H3OPT_VEH_1"
-                        Click="Button_H3OPT_VEH_1_Click"
-                        Content="类型二" />
-                    <Button
-                        x:Name="Button_H3OPT_VEH_2"
-                        Click="Button_H3OPT_VEH_2_Click"
-                        Content="类型三" />
-                    <Button
-                        x:Name="Button_H3OPT_VEH_3"
-                        Click="Button_H3OPT_VEH_3_Click"
-                        Content="类型四" />
-                </WrapPanel>
-            </StackPanel>
-        </ScrollViewer>
+        <StackPanel>
+            <ui:LabelIcon Content="前置任务" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_H3OPT_DISRUPTSHIP"
+                    Click="Button_H3OPT_DISRUPTSHIP_Click"
+                    Content="撤走重型武装警卫" />
+                <Button
+                    x:Name="Button_H3OPT_KEYLEVELS"
+                    Click="Button_H3OPT_KEYLEVELS_Click"
+                    Content="获得二级门禁卡" />
+            </WrapPanel>
+            <!--  ///////////////  -->
+            <ui:LabelIcon Content="枪手等级" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_H3OPT_CREWWEAP_1"
+                    Click="Button_H3OPT_CREWWEAP_1_Click"
+                    Content="卡尔·阿不拉季 5％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWWEAP_2"
+                    Click="Button_H3OPT_CREWWEAP_2_Click"
+                    Content="古斯塔沃·莫塔 9％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWWEAP_3"
+                    Click="Button_H3OPT_CREWWEAP_3_Click"
+                    Content="查理·里德 7％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWWEAP_4"
+                    Click="Button_H3OPT_CREWWEAP_4_Click"
+                    Content="切斯特·麦考伊 10％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWWEAP_5"
+                    Click="Button_H3OPT_CREWWEAP_5_Click"
+                    Content="帕里克·麦克瑞利 8％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWWEAP_6"
+                    Click="Button_H3OPT_CREWWEAP_6_Click"
+                    Content="枪手零分红" />
+            </WrapPanel>
+            <!--  ///////////////  -->
+            <ui:LabelIcon Content="车手等级" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_H3OPT_CREWDRIVER_1"
+                    Click="Button_H3OPT_CREWDRIVER_1_Click"
+                    Content="卡里姆·登茨 5％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWDRIVER_2"
+                    Click="Button_H3OPT_CREWDRIVER_2_Click"
+                    Content="塔丽娜·马丁内斯 7％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWDRIVER_3"
+                    Click="Button_H3OPT_CREWDRIVER_3_Click"
+                    Content="淘艾迪 9％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWDRIVER_4"
+                    Click="Button_H3OPT_CREWDRIVER_4_Click"
+                    Content="扎克·尼尔森 6％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWDRIVER_5"
+                    Click="Button_H3OPT_CREWDRIVER_5_Click"
+                    Content="切斯特·麦考伊 10％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWDRIVER_6"
+                    Click="Button_H3OPT_CREWDRIVER_6_Click"
+                    Content="车手零分红" />
+            </WrapPanel>
+            <!--  ///////////////  -->
+            <ui:LabelIcon Content="黑客等级" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_H3OPT_CREWHACKER_1"
+                    Click="Button_H3OPT_CREWHACKER_1_Click"
+                    Content="里奇·卢肯斯 3％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWHACKER_2"
+                    Click="Button_H3OPT_CREWHACKER_2_Click"
+                    Content="克里斯汀·费尔兹 7％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWHACKER_3"
+                    Click="Button_H3OPT_CREWHACKER_3_Click"
+                    Content="尤汗·布莱尔 5％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWHACKER_4"
+                    Click="Button_H3OPT_CREWHACKER_4_Click"
+                    Content="阿维·施瓦茨曼 10％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWHACKER_5"
+                    Click="Button_H3OPT_CREWHACKER_5_Click"
+                    Content="佩奇·哈里斯 9％" />
+                <Button
+                    x:Name="Button_H3OPT_CREWHACKER_6"
+                    Click="Button_H3OPT_CREWHACKER_6_Click"
+                    Content="黑客零分红" />
+            </WrapPanel>
+            <!--  ///////////////  -->
+            <ui:LabelIcon Content="武器类型" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_H3OPT_WEAPS_0"
+                    Click="Button_H3OPT_WEAPS_0_Click"
+                    Content="类型一" />
+                <Button
+                    x:Name="Button_H3OPT_WEAPS_1"
+                    Click="Button_H3OPT_WEAPS_1_Click"
+                    Content="类型二" />
+                <Button
+                    x:Name="Button_H3OPT_WEAPS_2"
+                    Click="Button_H3OPT_WEAPS_2_Click"
+                    Content="类型三" />
+                <Button
+                    x:Name="Button_H3OPT_WEAPS_3"
+                    Click="Button_H3OPT_WEAPS_3_Click"
+                    Content="类型四" />
+                <Button
+                    x:Name="Button_H3OPT_WEAPS_4"
+                    Click="Button_H3OPT_WEAPS_4_Click"
+                    Content="类型五" />
+            </WrapPanel>
+            <!--  ///////////////  -->
+            <ui:LabelIcon Content="逃亡载具" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_H3OPT_VEH_0"
+                    Click="Button_H3OPT_VEH_0_Click"
+                    Content="类型一" />
+                <Button
+                    x:Name="Button_H3OPT_VEH_1"
+                    Click="Button_H3OPT_VEH_1_Click"
+                    Content="类型二" />
+                <Button
+                    x:Name="Button_H3OPT_VEH_2"
+                    Click="Button_H3OPT_VEH_2_Click"
+                    Content="类型三" />
+                <Button
+                    x:Name="Button_H3OPT_VEH_3"
+                    Click="Button_H3OPT_VEH_3_Click"
+                    Content="类型四" />
+            </WrapPanel>
+        </StackPanel>
         <!--  ///////////////////////  -->
         <ScrollViewer>
             <StackPanel>
-                <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="高级" />
+                <ui:LabelIcon Content="重置面板" />
+                <WrapPanel Margin="5,0,5,0">
+                    <Button
+                        x:Name="Button_H3OPT_BITSET0"
+                        Click="Button_H3OPT_BITSET0_Click"
+                        Content="重置面板二" />
+                    <Button
+                        x:Name="Button_CAS_HEIST_FLOW"
+                        Click="Button_CAS_HEIST_FLOW_Click"
+                        Content="解决赌场抢劫所有问题" />
+                </WrapPanel>
 
-                <Button
-                    x:Name="Button_H3OPT_ACCESSPOINTS_0"
-                    Click="Button_H3OPT_ACCESSPOINTS_0_Click"
-                    Content="取消解锁所有侦察点" />
-                <Button
-                    x:Name="Button_H3OPT_H3OPT_POI_0"
-                    Click="Button_H3OPT_H3OPT_POI_0_Click"
-                    Content="取消解锁所有兴趣点" />
-
-                <TextBlock />
-                <Button
-                    x:Name="Button_H3OPT_BITSET1"
-                    Click="Button_H3OPT_BITSET1_Click"
-                    Content="重置面板一" />
-                <Button
-                    x:Name="Button_H3OPT_BITSET0"
-                    Click="Button_H3OPT_BITSET0_Click"
-                    Content="重置面板二" />
-
-                <TextBlock />
-                <Button x:Name="Button_CAS_HEIST_FLOW" Click="Button_CAS_HEIST_FLOW_Click">
-                    <TextBlock TextAlignment="Center">
-                        解决赌场抢劫所有问题<LineBreak />
-                        （包括拍照和启动战局卡游戏厅视角）</TextBlock>
-                </Button>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：如果赌场抢劫遇到问题，请点此按钮，包括拍照和启动战局卡游戏厅视角
+                </TextBlock>
             </StackPanel>
         </ScrollViewer>
     </UniformGrid>

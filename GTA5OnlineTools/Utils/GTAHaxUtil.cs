@@ -1,7 +1,7 @@
 ﻿using GTA5Core.Native;
 using GTA5Shared.Helper;
 
-namespace GTA5MenuExtra.Utils;
+namespace GTA5OnlineTools.Utils;
 
 public static class GTAHaxUtil
 {
@@ -28,8 +28,8 @@ public static class GTAHaxUtil
                 await Task.Delay(250);
             }
 
-            IntPtr menuHandle = IntPtr.Zero;
-            IntPtr childHandle = IntPtr.Zero;
+            var menuHandle = IntPtr.Zero;
+            var childHandle = IntPtr.Zero;
             for (int i = 0; i < 8; i++)
             {
                 menuHandle = pGTAHax.MainWindowHandle;

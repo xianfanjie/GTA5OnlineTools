@@ -10,7 +10,7 @@ public static class OnlineData
 
     public static readonly List<OnlineInfo> Blips = new()
     {
-        new OnlineInfo(){ Name="街头毒贩", Value=133 },
+        new OnlineInfo(){ Name="街头毒贩", Value=47 },
         new OnlineInfo(){ Name="游艇", Value=455 },
         new OnlineInfo(){ Name="特种货物仓库", Value=473 },
         new OnlineInfo(){ Name="办公室", Value=475 },

@@ -1,4 +1,6 @@
-﻿using GTA5Core.Native;
+﻿using GTA5Core.Features;
+using GTA5Core.GTA.Rage;
+using GTA5Core.Native;
 using GTA5Core.Offsets;
 
 namespace GTA5Core;
@@ -232,11 +234,6 @@ public partial class GTA5InitWindow
         if (!Memory.IsValid(Pointers.UnkPTR))
             return false;
 
-        // 1.67更新后失效
-        // 此特征码仅在游戏世界加载完毕后可搜索（找不到不返回错误，在使用此功能时重新搜索）
-        //Pointers.HeightPTR = Memory.FindPattern(Mask.Height);
-        //Logger($"《GTA5》HeightPTR 0x{Pointers.HeightPTR:X}");
-
 #if DEBUG
         Test();
 #endif
@@ -246,6 +243,31 @@ public partial class GTA5InitWindow
 
     private void Test()
     {
+        var myV3 = Teleport.GetPlayerPosition();
 
+        for (var i = 1; i <= 2000; i++)
+        {
+            var pBlip = Memory.Read<long>(Pointers.BlipPTR + i * 0x08);
+            if (!Memory.IsValid(pBlip))
+                continue;
+
+            var dwIcon = Memory.Read<int>(pBlip + 0x40);
+            var dwColor = Memory.Read<byte>(pBlip + 0x48);
+            var vector3 = Memory.Read<Vector3>(pBlip + 0x10);
+
+            if (dwIcon < 0 || dwIcon > 1000)
+                continue;
+
+            if (vector3 == Vector3.Zero)
+                continue;
+
+            var distance = (float)Math.Sqrt(
+                Math.Pow(myV3.X - vector3.X, 2) +
+                Math.Pow(myV3.Y - vector3.Y, 2) +
+                Math.Pow(myV3.Z - vector3.Z, 2));
+
+            if (distance < 100)
+                Debug.WriteLine($"{dwIcon} {dwColor} {vector3}");
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GTA5Core.Native;
 using GTA5Core.Offsets;
+using System.Numerics;
 
 namespace GTA5Core.Features;
 
@@ -55,10 +56,14 @@ public static class Teleport
     /// </summary>
     public static void ToBlips(int blipId, byte blipColor = 0)
     {
+        Vector3 vector3;
+
         if (blipColor == 0)
-            SetTeleportPosition(GetBlipPosition(new int[] { blipId }));
+            vector3 = GetBlipPosition(new int[] { blipId });
         else
-            SetTeleportPosition(GetBlipPosition(new int[] { blipId }, new byte[] { blipColor }));
+            vector3 = GetBlipPosition(new int[] { blipId }, new byte[] { blipColor });
+
+        SetTeleportPosition(vector3);
     }
 
     /// <summary>
@@ -89,6 +94,8 @@ public static class Teleport
             Memory.Write(pCNavigation + CNavigation.PositionX, vector3);
         }
     }
+
+
 
     /// <summary>
     /// 获取Blip坐标

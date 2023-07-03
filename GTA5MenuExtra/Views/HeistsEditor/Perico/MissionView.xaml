@@ -43,7 +43,7 @@
                     Margin="5"
                     SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="任务难度 - 未选择" />
+                    <ListBoxItem Content="《任务难度》" FontWeight="Bold" />
                     <ListBoxItem Content="普通模式" />
                     <ListBoxItem Content="困难模式" />
                 </ListBox>
@@ -54,7 +54,7 @@
                     Margin="5"
                     SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="主要目标 - 未选择" />
+                    <ListBoxItem Content="《主要目标》" FontWeight="Bold" />
                     <ListBoxItem Content="西西米托龙舌兰" />
                     <ListBoxItem Content="红宝石项链" />
                     <ListBoxItem Content="不记名债券" />
@@ -73,7 +73,7 @@
                         Margin="5"
                         SelectedIndex="0"
                         Style="{StaticResource ListBoxStyle_Base}">
-                        <ListBoxItem Content="次要目标 - 未选择" />
+                        <ListBoxItem Content="《次要目标》" FontWeight="Bold" />
                         <ListBoxItem Content="已发现/侦察 现金（室内/室外）" />
                         <ListBoxItem Content="已发现/侦察 大麻（室内/室外）" />
                         <ListBoxItem Content="已发现/侦察 可可（室内/室外）" />
@@ -87,7 +87,7 @@
                     Margin="5"
                     SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="次要目标（画作） - 未选择" />
+                    <ListBoxItem Content="《次要目标（画作）》" FontWeight="Bold" />
                     <ListBoxItem Content="已发现/侦察 画作（室内/室外）" />
                 </ListBox>
             </Grid>
@@ -105,7 +105,7 @@
                     Margin="5"
                     SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="接近载具 - 未选择" />
+                    <ListBoxItem Content="《接近载具》" FontWeight="Bold" />
                     <ListBoxItem Content="潜水艇：虎鲸" />
                     <ListBoxItem Content="飞机：阿尔科诺斯特" />
                     <ListBoxItem Content="飞机：梅杜莎" />
@@ -121,7 +121,7 @@
                     Margin="5"
                     SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="武器装备 - 未选择" />
+                    <ListBoxItem Content="《武器装备》" FontWeight="Bold" />
                     <ListBoxItem Content="侵略者（连发散弹，连发手枪，手雷，砍刀）" />
                     <ListBoxItem Content="阴谋者（军用步枪，单发手枪，粘弹，指虎）" />
                     <ListBoxItem Content="神枪手（轻狙，连发手枪，燃烧瓶，小刀）" />
@@ -135,7 +135,7 @@
                     Margin="5"
                     SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="运货卡车位置 - 未选择" />
+                    <ListBoxItem Content="《运货卡车位置》" FontWeight="Bold" />
                     <ListBoxItem Content="机场" />
                     <ListBoxItem Content="北船坞" />
                     <ListBoxItem Content="主码头-东" />

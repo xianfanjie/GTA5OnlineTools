@@ -20,12 +20,6 @@ public partial class CasinoHackWindow
 
     private void Window_CasinoHack_Loaded(object sender, RoutedEventArgs e)
     {
-        for (int i = 0; i < 37; i++)
-        {
-            ComboBox_Roulette.Items.Add($"号码 {i}");
-        }
-        ComboBox_Roulette.Items.Add("号码 00");
-
         new Thread(CasinoHackMainThread)
         {
             Name = "CasinoHackMainThread",
@@ -42,112 +36,25 @@ public partial class CasinoHackWindow
     {
         while (!_disposed)
         {
-            // 黑杰克（21点）
-            if (CasinoHackModel.BlackjackIsCheck)
+            // 幸运轮盘
+            if (CasinoHackModel.IsEnabledLuckyWheel &&
+                CasinoHackModel.LuckyWheelSlot != -1)
             {
-                var pointer = Locals.LocalAddress("blackjack");
+                // https://www.unknowncheats.me/forum/grand-theft-auto-v/483416-gtavcsmm.html
+
+                var pointer = Locals.LocalAddress("casino_lucky_wheel");
                 if (Memory.IsValid(pointer))
                 {
                     pointer = Memory.Read<long>(pointer);
 
-                    var index = Memory.Read<int>(pointer + (2026 + 2 + 1 + 1 * 1) * 8);
-
-                    var builder = new StringBuilder();
-                    if ((index - 1) / 13 == 0)
-                        builder.Append($"♣梅花{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 1)
-                        builder.Append($"♦方块{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 2)
-                        builder.Append($"♥红心{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 3)
-                        builder.Append($"♠黑桃{(index - 1) % 13 + 1}");
-
-                    CasinoHackModel.BlackjackContent = builder.ToString();
-
-                    ///////////////////////////////////////////////////////
-
-                    var current_table = Memory.Read<int>(pointer + (1769 + (1 + Globals.ReadGA<int>(2703735) * 8) + 4) * 8);
-                    var nums = Memory.Read<int>(pointer + (109 + 1 + 1 + current_table * 211 + 209) * 8);
-
-                    index = Memory.Read<int>(pointer + (2026 + 2 + 1 + nums * 1) * 8);
-
-                    builder.Clear();
-                    if ((index - 1) / 13 == 0)
-                        builder.Append($"♣梅花{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 1)
-                        builder.Append($"♦方块{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 2)
-                        builder.Append($"♥红心{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 3)
-                        builder.Append($"♠黑桃{(index - 1) % 13 + 1}");
-
-                    CasinoHackModel.BlackjackNextContent = builder.ToString();
-                }
-            }
-
-            // 三张扑克
-            if (CasinoHackModel.PokerIsCheck)
-            {
-                var pointer = Locals.LocalAddress("three_card_poker");
-                if (Memory.IsValid(pointer))
-                {
-                    pointer = Memory.Read<long>(pointer);
-
-                    var index = Memory.Read<int>(pointer + (1033 + 799 + 2 + 1 + 2 * 1) * 8);
-
-                    var builder = new StringBuilder();
-                    if ((index - 1) / 13 == 0)
-                        builder.Append($"♣梅花{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 1)
-                        builder.Append($"♦方块{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 2)
-                        builder.Append($"♥红心{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 3)
-                        builder.Append($"♠黑桃{(index - 1) % 13 + 1}");
-                    builder.Append('\n');
-
-                    index = Memory.Read<int>(pointer + (1033 + 799 + 2 + 1 + 0 * 1) * 8);
-                    if ((index - 1) / 13 == 0)
-                        builder.Append($"♣梅花{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 1)
-                        builder.Append($"♦方块{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 2)
-                        builder.Append($"♥红心{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 3)
-                        builder.Append($"♠黑桃{(index - 1) % 13 + 1}");
-                    builder.Append('\n');
-
-                    index = Memory.Read<int>(pointer + (1033 + 799 + 2 + 1 + 1 * 1) * 8);
-                    if ((index - 1) / 13 == 0)
-                        builder.Append($"♣梅花{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 1)
-                        builder.Append($"♦方块{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 2)
-                        builder.Append($"♥红心{(index - 1) % 13 + 1}");
-                    if ((index - 1) / 13 == 3)
-                        builder.Append($"♠黑桃{(index - 1) % 13 + 1}");
-
-                    CasinoHackModel.PokerContent = builder.ToString();
-                }
-            }
-
-            // 轮盘
-            if (CasinoHackModel.RouletteIsCheck && CasinoHackModel.RouletteSelectedIndex != -1)
-            {
-                var pointer = Locals.LocalAddress("casinoroulette");
-                if (Memory.IsValid(pointer))
-                {
-                    pointer = Memory.Read<long>(pointer);
-
-                    for (var i = 0; i < 6; i++)
-                    {
-                        Memory.Write(pointer + (117 + 1357 + 153 + 1 + i * 1) * 8, CasinoHackModel.RouletteSelectedIndex);
-                    }
+                    var index = 276 + 14;
+                    Memory.Write(pointer + index * 8, CasinoHackModel.LuckyWheelSlot);
                 }
             }
 
             // 老虎机
-            if (CasinoHackModel.SlotMachineIsCheck && CasinoHackModel.SlotMachineSelectedIndex != -1)
+            if (CasinoHackModel.IsEnabledSlotMachine && 
+                CasinoHackModel.SlotMachineSlot != -1)
             {
                 var pointer = Locals.LocalAddress("casino_slots");
                 if (Memory.IsValid(pointer))
@@ -159,24 +66,9 @@ public partial class CasinoHackWindow
                         for (var j = 0; j < 64; j++)
                         {
                             var index = 1344 + 1 + 1 + i * 65 + 1 + j * 1;
-                            Memory.Write(pointer + index * 8, CasinoHackModel.SlotMachineSelectedIndex);
+                            Memory.Write(pointer + index * 8, CasinoHackModel.SlotMachineSlot);
                         }
                     }
-                }
-            }
-
-            // 幸运轮盘
-            if (CasinoHackModel.LuckyWheelIsCheck && CasinoHackModel.LuckyWheelSelectedIndex != -1)
-            {
-                // https://www.unknowncheats.me/forum/grand-theft-auto-v/483416-gtavcsmm.html
-
-                var pointer = Locals.LocalAddress("casino_lucky_wheel");
-                if (Memory.IsValid(pointer))
-                {
-                    pointer = Memory.Read<long>(pointer);
-
-                    var index = 276 + 14;
-                    Memory.Write(pointer + index * 8, CasinoHackModel.LuckyWheelSelectedIndex);
                 }
             }
 

@@ -6,6 +6,7 @@ using GTA5Inject;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
+using GTA5OnlineTools.Utils;
 
 namespace GTA5OnlineTools.Views;
 
@@ -181,6 +182,9 @@ public partial class HacksView : UserControl
             case "EditGTAHaxStat":
                 EditGTAHaxStatClick();
                 break;
+            case "RunGTAHaxStat":
+                RunGTAHaxStatClick();
+                break;
             case "DefaultGTAHaxStat":
                 DefaultGTAHaxStatClick();
                 break;
@@ -201,9 +205,6 @@ public partial class HacksView : UserControl
                 ResetYimMenuConfigClick();
                 break;
             #endregion
-            ////////////////////////////////////
-            default:
-                break;
         }
     }
 
@@ -495,6 +496,14 @@ public partial class HacksView : UserControl
     private void EditGTAHaxStatClick()
     {
         ProcessHelper.Notepad2EditTextFile(FileHelper.File_Cache_Stat);
+    }
+
+    /// <summary>
+    /// 运行GTAHax导入文件
+    /// </summary>
+    private void RunGTAHaxStatClick()
+    {
+        HackUtil.ImportGTAHax();
     }
 
     /// <summary>

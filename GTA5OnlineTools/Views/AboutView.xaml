@@ -10,7 +10,7 @@
     Style="{StaticResource UserControlStyle_Loaded}"
     mc:Ignorable="d">
 
-    <StackPanel Margin="5" Orientation="Vertical">
+    <StackPanel Margin="5">
         <Image
             Width="96"
             Height="96"

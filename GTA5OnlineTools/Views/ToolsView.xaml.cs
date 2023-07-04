@@ -45,11 +45,23 @@ public partial class ToolsView : UserControl
             case "InitCPDPath":
                 InitCPDPathClick();
                 break;
-            case "RestartApp":
-                RestartAppClick();
+            case "ReInitGTA5Mem":
+                ReInitGTA5MemClick();
+                break;
+            case "ManualGC":
+                ManualGCClick();
                 break;
             case "OpenUpdateWindow":
                 OpenUpdateWindowClick();
+                break;
+            #endregion
+            /////////////////////////
+            #region 分组2
+            case "StoryModeArchive":
+                StoryModeArchiveClick();
+                break;
+            case "RestartApp":
+                RestartAppClick();
                 break;
             case "ReNameAppCN":
                 ReNameAppCNClick();
@@ -57,18 +69,9 @@ public partial class ToolsView : UserControl
             case "ReNameAppEN":
                 ReNameAppENClick();
                 break;
-            case "StoryModeArchive":
-                StoryModeArchiveClick();
-                break;
-            case "ReInitGTA5Mem":
-                ReInitGTA5MemClick();
-                break;
-            case "ManualGC":
-                ManualGCClick();
-                break;
             #endregion
-            ////////////////////////////////////
-            #region 分组2
+            /////////////////////////
+            #region 分组3
             case "RefreshDNSCache":
                 RefreshDNSCacheClick();
                 break;
@@ -126,14 +129,28 @@ public partial class ToolsView : UserControl
     }
 
     /// <summary>
-    /// 重启程序
+    /// 重新初始化GTA5内存模块
     /// </summary>
-    private void RestartAppClick()
+    private void ReInitGTA5MemClick()
     {
-        ProcessHelper.CloseThirdProcess();
-        App.AppMainMutex.Dispose();
-        ProcessHelper.OpenProcess(FileUtil.File_MainApp);
-        Application.Current.Shutdown();
+        GTA5View.ActionCloseAllGTA5Window();
+
+        // GTA5内存模块初始化窗口
+        var gta5InitWindow = new GTA5InitWindow(false)
+        {
+            Owner = MainWindow.MainWindowInstance
+        };
+        gta5InitWindow.ShowDialog();
+    }
+
+    /// <summary>
+    /// GC垃圾回收
+    /// </summary>
+    private void ManualGCClick()
+    {
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        NotifierHelper.Show(NotifierType.Notification, "执行GC垃圾回收成功");
     }
 
     /// <summary>
@@ -147,6 +164,55 @@ public partial class ToolsView : UserControl
         };
         UpdateWindow.ShowDialog();
     }
+    #endregion
+
+    ////////////////////////////////////////////////////////////////////////
+
+    #region 分组2
+    /// <summary>
+    /// 故事模式完美存档
+    /// </summary>
+    private void StoryModeArchiveClick()
+    {
+        var path = Path.Combine(FileHelper.Dir_MyDocuments, "Rockstar Games\\GTA V\\Profiles");
+        if (!Directory.Exists(path))
+        {
+            NotifierHelper.Show(NotifierType.Error, "GTA5故事模式存档路径不存在，操作取消");
+            return;
+        }
+
+        if (MessageBox.Show("你确定替换GTA5故事模式存档吗？将替换GTA5正版故事模式默认存档（存档进度：100%）",
+            "警告", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+        {
+            try
+            {
+                var dirs = Directory.GetDirectories(path);
+                foreach (var dir in dirs)
+                {
+                    var dirIf = new DirectoryInfo(dir);
+                    var fullName = Path.Combine(dirIf.FullName, "SGTA50000");
+                    FileHelper.ExtractResFile(FileHelper.Res_Other_SGTA50000, fullName);
+                }
+
+                NotifierHelper.Show(NotifierType.Success, $"GTA5故事模式存档替换成功\n{path}");
+            }
+            catch (Exception ex)
+            {
+                NotifierHelper.ShowException(ex);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 重启程序
+    /// </summary>
+    private void RestartAppClick()
+    {
+        ProcessHelper.CloseThirdProcess();
+        App.AppMainMutex.Dispose();
+        ProcessHelper.OpenProcess(FileUtil.File_MainApp);
+        Application.Current.Shutdown();
+    }
 
     /// <summary>
     /// 重命名小助手为中文
@@ -155,7 +221,7 @@ public partial class ToolsView : UserControl
     {
         try
         {
-            string fileName = Path.GetFileName(FileUtil.File_MainApp);
+            var fileName = Path.GetFileName(FileUtil.File_MainApp);
             var name = $"{CoreUtil.MainAppWindowName}{CoreUtil.ClientVersion}.exe";
             if (fileName != name)
             {
@@ -186,7 +252,7 @@ public partial class ToolsView : UserControl
     {
         try
         {
-            string fileName = Path.GetFileName(FileUtil.File_MainApp);
+            var fileName = Path.GetFileName(FileUtil.File_MainApp);
             if (fileName != "GTA5OnlineTools.exe")
             {
                 FileUtil.FileReName(FileUtil.File_MainApp, "GTA5OnlineTools.exe");
@@ -208,69 +274,11 @@ public partial class ToolsView : UserControl
         }
     }
 
-    /// <summary>
-    /// 故事模式完美存档
-    /// </summary>
-    private void StoryModeArchiveClick()
-    {
-        var path = Path.Combine(FileHelper.Dir_MyDocuments, "Rockstar Games\\GTA V\\Profiles");
-        if (!Directory.Exists(path))
-        {
-            NotifierHelper.Show(NotifierType.Error, "GTA5故事模式存档路径不存在，操作取消");
-            return;
-        }
-
-        if (MessageBox.Show("你确定替换GTA5故事模式存档吗？将替换GTA5正版故事模式默认存档（存档进度：100%）",
-            "警告", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-        {
-            try
-            {
-                var dirs = Directory.GetDirectories(path);
-                foreach (var dir in dirs)
-                {
-                    var dirIf = new DirectoryInfo(dir);
-                    string fullName = Path.Combine(dirIf.FullName, "SGTA50000");
-                    FileHelper.ExtractResFile(FileHelper.Res_Other_SGTA50000, fullName);
-                }
-
-                NotifierHelper.Show(NotifierType.Success, $"GTA5故事模式存档替换成功\n{path}");
-            }
-            catch (Exception ex)
-            {
-                NotifierHelper.ShowException(ex);
-            }
-        }
-    }
-
-    /// <summary>
-    /// 重新初始化GTA5内存模块
-    /// </summary>
-    private void ReInitGTA5MemClick()
-    {
-        GTA5View.ActionCloseAllGTA5Window();
-
-        // GTA5内存模块初始化窗口
-        var gta5InitWindow = new GTA5InitWindow(false)
-        {
-            Owner = MainWindow.MainWindowInstance
-        };
-        gta5InitWindow.ShowDialog();
-    }
-
-    /// <summary>
-    /// GC垃圾回收
-    /// </summary>
-    private void ManualGCClick()
-    {
-        GC.Collect();
-        GC.WaitForPendingFinalizers();
-        NotifierHelper.Show(NotifierType.Notification, "执行GC垃圾回收成功");
-    }
     #endregion
 
     ////////////////////////////////////////////////////////////////////////
 
-    #region 分组2
+    #region 分组3
     /// <summary>
     /// 刷新DNS缓存
     /// </summary>

@@ -68,6 +68,6 @@ public partial class GTAHaxWindow
             return;
         }
 
-        GTAHaxUtil.ImportGTAHax(TextBox_PreviewGTAHax.Text);
+        HackUtil.ImportGTAHax(TextBox_PreviewGTAHax.Text);
     }
 }

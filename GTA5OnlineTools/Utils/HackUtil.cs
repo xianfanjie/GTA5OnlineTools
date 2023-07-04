@@ -3,13 +3,20 @@ using GTA5Shared.Helper;
 
 namespace GTA5OnlineTools.Utils;
 
-public static class GTAHaxUtil
+public static class HackUtil
 {
-    public static async void ImportGTAHax(string statTxt)
+    /// <summary>
+    /// 批量导入GTAHax代码
+    /// </summary>
+    /// <param name="statTxt"></param>
+    public static async void ImportGTAHax(string statTxt = "")
     {
         try
         {
-            File.WriteAllText(FileHelper.File_Cache_Stat, statTxt);
+            var isOnleyRun = string.IsNullOrWhiteSpace(statTxt);
+
+            if (!isOnleyRun)
+                File.WriteAllText(FileHelper.File_Cache_Stat, statTxt);
 
             if (!ProcessHelper.IsAppRun("GTAHax"))
                 ProcessHelper.OpenProcessWithWorkDir(FileHelper.File_Cache_GTAHax);
@@ -58,7 +65,8 @@ public static class GTAHaxUtil
                 _ = Win32.SendMessage(childHandle, Win32.WM_LBUTTONDOWN, IntPtr.Zero, null);
                 _ = Win32.SendMessage(childHandle, Win32.WM_LBUTTONUP, IntPtr.Zero, null);
 
-                NotifierHelper.Show(NotifierType.Success, "导入到GTAHax成功！代码正在执行，请返回GTAHax和GTA5游戏查看\n如果执行成功游戏内会出现大受好评奖章");
+                if (!isOnleyRun)
+                    NotifierHelper.Show(NotifierType.Success, "导入到GTAHax成功！游戏内应该会出现大受好评奖章\n如果无反应，请手动点击GTAHax程序左下角《导入》按钮");
             }
             else
             {

@@ -80,12 +80,12 @@
             <Button
                 x:Name="Button_Read"
                 Click="Button_Read_Click"
-                Content="读取" />
+                Content="读取数据" />
             <Button
                 x:Name="Button_Write"
                 Margin="0,5,5,5"
                 Click="Button_Write_Click"
-                Content="写入" />
+                Content="写入数据" />
         </WrapPanel>
         <!--  //////////////  -->
         <UniformGrid Grid.Row="1" Columns="2">

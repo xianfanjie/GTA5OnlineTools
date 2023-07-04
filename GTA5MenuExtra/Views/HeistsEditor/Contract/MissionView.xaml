@@ -19,10 +19,8 @@
                 Click="Button_FIXER_GENERAL_BS_Click"
                 Content="跳过前置任务" />
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：请等CD自然冷却好了再跳下一次前置，建议不要频繁跳前置
+                提示：请等CD自然冷却好了再跳下一次前置，建议不要频繁跳
             </TextBlock>
-
-            <Separator Margin="5,10,5,10" />
 
             <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="改装铺合约" />
             <ListBox

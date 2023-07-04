@@ -29,7 +29,7 @@
             <Button
                 x:Name="Button_ExecuteAutoScript"
                 Click="Button_ExecuteAutoScript_Click"
-                Content="执行选中脚本" />
+                Content="执行选中STAT脚本" />
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 提示：如果代码执行成功，游戏中会出现《大受好评》的奖章，并给予少于经验值
             </TextBlock>

@@ -44,7 +44,7 @@
                 Text="服装槽" />
             <ComboBox
                 x:Name="ComboBox_OutfitIndex"
-                Width="150"
+                Width="120"
                 SelectionChanged="ComboBox_OutfitIndex_SelectionChanged">
                 <ComboBoxItem Content="槽位01" />
                 <ComboBoxItem Content="槽位02" />
@@ -74,7 +74,7 @@
                 Text="服装槽名称" />
             <TextBox
                 x:Name="TextBox_OutfitName"
-                Width="150"
+                Width="120"
                 Margin="5" />
             <!--  //////////////  -->
             <Button
@@ -86,6 +86,12 @@
                 Margin="0,5,5,5"
                 Click="Button_Write_Click"
                 Content="写入数据" />
+            <!--  //////////////  -->
+            <TextBlock Margin="5" VerticalAlignment="Center">
+                <Hyperlink NavigateUri="https://wiki.rage.mp/index.php?title=Clothes" RequestNavigate="Hyperlink_RequestNavigate">
+                    服装数据表
+                </Hyperlink>
+            </TextBlock>
         </WrapPanel>
         <!--  //////////////  -->
         <UniformGrid Grid.Row="1" Columns="2">
@@ -288,6 +294,10 @@
                         Text="WRIST TEX" />
                     <TextBox x:Name="TextBox_WRIST_TEX" />
                 </UniformGrid>
+                <!--  //////////////  -->
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围大于等于0
+                </TextBlock>
             </StackPanel>
         </UniformGrid>
     </Grid>

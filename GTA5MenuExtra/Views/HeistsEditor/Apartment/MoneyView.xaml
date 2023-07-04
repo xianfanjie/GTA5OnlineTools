@@ -46,7 +46,7 @@
                 </UniformGrid>
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    类型：整数型INT，范围 0~21亿
+                    类型：整数型INT，范围大于等于0
                 </TextBlock>
             </StackPanel>
 
@@ -66,7 +66,7 @@
                 </UniformGrid>
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    类型：整数型INT，范围 0~21亿
+                    类型：整数型INT，范围大于等于0
                 </TextBlock>
             </StackPanel>
         </UniformGrid>

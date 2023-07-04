@@ -23,4 +23,26 @@ public class ButtonIcon : Button
     }
     public static readonly DependencyProperty TitleProperty =
         DependencyProperty.Register("Title", typeof(string), typeof(ButtonIcon), new PropertyMetadata(default));
+
+    /// <summary>
+    /// Description描述
+    /// </summary>
+    public string Description
+    {
+        get { return (string)GetValue(DescriptionProperty); }
+        set { SetValue(DescriptionProperty, value); }
+    }
+    public static readonly DependencyProperty DescriptionProperty =
+        DependencyProperty.Register("Description", typeof(string), typeof(ButtonIcon), new PropertyMetadata(default));
+
+    /// <summary>
+    /// Star推荐星级
+    /// </summary>
+    public string Star
+    {
+        get { return (string)GetValue(StarProperty); }
+        set { SetValue(StarProperty, value); }
+    }
+    public static readonly DependencyProperty StarProperty =
+        DependencyProperty.Register("Star", typeof(string), typeof(ButtonIcon), new PropertyMetadata(default));
 }

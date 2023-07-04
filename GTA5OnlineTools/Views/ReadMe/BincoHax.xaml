@@ -36,6 +36,13 @@
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
+                    数据
+                </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    服装数据表：<Hyperlink NavigateUri="https://wiki.rage.mp/index.php?title=Clothes" RequestNavigate="Hyperlink_RequestNavigate">https://wiki.rage.mp/index.php?title=Clothes</Hyperlink>
+                </Paragraph>
+
+                <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     更多
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">

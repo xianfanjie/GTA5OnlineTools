@@ -46,7 +46,7 @@
                 </UniformGrid>
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    类型：整数型INT，范围 0~21亿
+                    类型：整数型INT，范围大于等于0
                 </TextBlock>
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     提示：请在抢劫任务分红关组队界面读取数据，否则可能读取不到
@@ -71,7 +71,7 @@
                 </UniformGrid>
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    类型：整数型INT，范围 0~21亿
+                    类型：整数型INT，范围大于等于0
                 </TextBlock>
             </StackPanel>
 
@@ -82,7 +82,7 @@
                     <TextBox x:Name="TextBox_Cayo_LocalBagSize" />
                 </UniformGrid>
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    类型：整数型INT，范围 0~21亿
+                    类型：整数型INT，范围大于等于0
                 </TextBlock>
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="其他费用" />

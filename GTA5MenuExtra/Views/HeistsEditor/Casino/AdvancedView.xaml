@@ -12,6 +12,28 @@
 
     <UniformGrid Columns="3">
         <StackPanel>
+            <ui:LabelIcon Content="解锁" />
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_H3OPT_ACCESSPOINTS"
+                    Click="Button_H3OPT_ACCESSPOINTS_Click"
+                    Content="解锁所有侦察点" />
+                <Button
+                    x:Name="Button_H3OPT_H3OPT_POI"
+                    Click="Button_H3OPT_H3OPT_POI_Click"
+                    Content="解锁所有兴趣点" />
+            </WrapPanel>
+            <WrapPanel Margin="5,0,5,0">
+                <Button
+                    x:Name="Button_H3OPT_ACCESSPOINTS_0"
+                    Click="Button_H3OPT_ACCESSPOINTS_0_Click"
+                    Content="取消解锁所有侦察点" />
+                <Button
+                    x:Name="Button_H3OPT_H3OPT_POI_0"
+                    Click="Button_H3OPT_H3OPT_POI_0_Click"
+                    Content="取消解锁所有兴趣点" />
+            </WrapPanel>
+            <!--  //////////////  -->
             <ui:LabelIcon Content="重置" />
             <StackPanel Margin="5,0,5,0">
                 <Button

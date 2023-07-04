@@ -15,6 +15,8 @@ public partial class MissionView : UserControl
         InitializeComponent();
     }
 
+    ////////////////////////////////////////////////////
+
     private void ClearLogger()
     {
         TextBox_Logger.Clear();
@@ -32,6 +34,11 @@ public partial class MissionView : UserControl
     {
         TextBox_Logger.AppendText($"[{DateTime.Now:T}] {log}\n");
         TextBox_Logger.ScrollToEnd();
+    }
+
+    private bool IsValidIndex(int index)
+    {
+        return index != -1 && index != 0;
     }
 
     ////////////////////////////////////////////////////
@@ -55,7 +62,7 @@ public partial class MissionView : UserControl
 
         // 抢劫方式
         var index = ListBox_H3OPT_APPROACH.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
             AppendLogger("MPx_H3OPT_APPROACH", index);
 
@@ -69,7 +76,7 @@ public partial class MissionView : UserControl
 
         // 抢劫物品
         index = ListBox_H3OPT_TARGET.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
             AppendLogger("MPx_H3OPT_TARGET", index - 1);
         }
@@ -118,7 +125,7 @@ public partial class MissionView : UserControl
 
         // 门禁卡等级
         index = ListBox_H3OPT_KEYLEVELS.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
             AppendLogger("MPx_H3OPT_KEYLEVELS", index);
         }
@@ -128,37 +135,37 @@ public partial class MissionView : UserControl
 
         // 枪手队员
         index = ListBox_H3OPT_CREWWEAP.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
             AppendLogger("MPx_H3OPT_CREWWEAP", index);
         }
 
         // 车手队员
         index = ListBox_H3OPT_CREWDRIVER.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
             AppendLogger("MPx_H3OPT_CREWDRIVER", index);
         }
 
         // 黑客队员
         index = ListBox_H3OPT_CREWHACKER.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
             AppendLogger("MPx_H3OPT_CREWHACKER", index);
         }
 
         // 武器类型
         index = ListBox_H3OPT_WEAPS.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
-            AppendLogger("MPx_H3OPT_WEAPS", index);
+            AppendLogger("MPx_H3OPT_WEAPS", index - 1);
         }
 
         // 逃亡载具
         index = ListBox_H3OPT_VEHS.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
-            AppendLogger("MPx_H3OPT_VEHS", index);
+            AppendLogger("MPx_H3OPT_VEHS", index - 1);
         }
 
         /////////////////////////////
@@ -189,24 +196,26 @@ public partial class MissionView : UserControl
         // clean vehicle
         bitSet0 += 1 << 7;
 
-        // bugstars
-        bitSet0 += 1 << 8;
-
-        // sechs
-        bitSet0 += 1 << 10;
-
-        // sechs
-        bitSet0 += 1 << 12;
-
-        // noose exit disguise
         if (ListBox_H3OPT_APPROACH.SelectedIndex == 2)
-            bitSet0 += 1 << 14;
+        {
+            // bugstars
+            bitSet0 += 3 << 8;
 
-        // noose
-        bitSet0 += 1 << 16;
+            // sechs
+            bitSet0 += 3 << 10;
 
-        // firefighter
-        bitSet0 += 1 << 17;
+            // sechs
+            bitSet0 += 3 << 12;
+
+            // noose exit disguise
+            bitSet0 += 3 << 14;
+
+            // noose
+            bitSet0 += 1 << 16;
+
+            // firefighter
+            bitSet0 += 1 << 17;
+        }
 
         // highroller
         bitSet0 += 1 << 18;
@@ -225,7 +234,7 @@ public partial class MissionView : UserControl
 
         // 抢劫面具
         index = ListBox_H3OPT_MASKS.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
         {
             AppendLogger("MPx_H3OPT_MASKS", index);
         }
@@ -270,5 +279,93 @@ public partial class MissionView : UserControl
         Button_STAT_Run.IsEnabled = false;
         STAT_Run();
         Button_STAT_Run.IsEnabled = true;
+    }
+
+    private void ListBox_H3OPT_CREWWEAP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ListBox_H3OPT_WEAPS is null)
+            return;
+
+        var index = ListBox_H3OPT_WEAPS.SelectedIndex;
+        for (int i = ListBox_H3OPT_WEAPS.Items.Count - 1; i > 0; i--)
+        {
+            ListBox_H3OPT_WEAPS.Items.RemoveAt(i);
+        }
+        ListBox_H3OPT_WEAPS.SelectedIndex = index;
+
+        // 枪手队员
+        index = ListBox_H3OPT_CREWWEAP.SelectedIndex;
+        switch (index)
+        {
+            case 1:     // Karl  5%
+                ListBox_H3OPT_WEAPS.Items.Add("霰弹枪");          // Shotgun
+                ListBox_H3OPT_WEAPS.Items.Add("左轮手枪");        // Revolver
+                break;
+            case 2:     // Gustavo  9%
+                ListBox_H3OPT_WEAPS.Items.Add("步枪");           // Rifle 
+                ListBox_H3OPT_WEAPS.Items.Add("霰弹枪");          // Shotgun 
+                break;
+            case 3:     // Charlie  7%
+                ListBox_H3OPT_WEAPS.Items.Add("冲锋枪");          // SMG 
+                ListBox_H3OPT_WEAPS.Items.Add("霰弹枪");          // Shotgun 
+                break;
+            case 4:     // Chester  10%
+                ListBox_H3OPT_WEAPS.Items.Add("冲锋枪 MK2");      // SMG MK II
+                ListBox_H3OPT_WEAPS.Items.Add("步枪 MK2");        // Rifle MK II
+                break;
+            case 5:     // Patrick  8%
+                ListBox_H3OPT_WEAPS.Items.Add("霰弹枪");          // Shotgun
+                ListBox_H3OPT_WEAPS.Items.Add("战斗冲锋枪");       // Combat MG
+                break;
+        }
+    }
+
+    private void ListBox_H3OPT_CREWDRIVER_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ListBox_H3OPT_VEHS is null)
+            return;
+
+        var index = ListBox_H3OPT_VEHS.SelectedIndex;
+        for (int i = ListBox_H3OPT_VEHS.Items.Count - 1; i > 0; i--)
+        {
+            ListBox_H3OPT_VEHS.Items.RemoveAt(i);
+        }
+        ListBox_H3OPT_VEHS.SelectedIndex = index;
+
+        // 车手队员
+        index = ListBox_H3OPT_CREWDRIVER.SelectedIndex;
+        switch (index)
+        {
+            case 1:     // Karim
+                ListBox_H3OPT_VEHS.Items.Add("天威经典版");          // Issi Classic
+                ListBox_H3OPT_VEHS.Items.Add("反社会");             // Asbo
+                ListBox_H3OPT_VEHS.Items.Add("旅行家羽黑");          // Kanjo
+                ListBox_H3OPT_VEHS.Items.Add("卫士经典版");          // Sentinel Classic
+                break;
+            case 2:     // Taliana
+                ListBox_H3OPT_VEHS.Items.Add("随行者 MK2");       // Retinue MK II
+                ListBox_H3OPT_VEHS.Items.Add("约塞米蒂");          // Drift Yosemite
+                ListBox_H3OPT_VEHS.Items.Add("斯国一");            // Sugoi
+                ListBox_H3OPT_VEHS.Items.Add("扼喉");              // Jugular
+                break;
+            case 3:     // Eddie
+                ListBox_H3OPT_VEHS.Items.Add("王者经典版");        // Sultan Classic
+                ListBox_H3OPT_VEHS.Items.Add("铁腕经典版");        // Gauntlet Classic
+                ListBox_H3OPT_VEHS.Items.Add("爱利");             // Ellie
+                ListBox_H3OPT_VEHS.Items.Add("科莫达");           // Komoda
+                break;
+            case 4:     // Zach
+                ListBox_H3OPT_VEHS.Items.Add("曼切兹");           // Manchez
+                ListBox_H3OPT_VEHS.Items.Add("斯特德");           // Stryder
+                ListBox_H3OPT_VEHS.Items.Add("亵渎者");           // Defiler
+                ListBox_H3OPT_VEHS.Items.Add("雷克卓");           // Lectro
+                break;
+            case 5:     // Chester
+                ListBox_H3OPT_VEHS.Items.Add("炸吧");             // Zhaba
+                ListBox_H3OPT_VEHS.Items.Add("流浪者");           // Vagrant
+                ListBox_H3OPT_VEHS.Items.Add("不法之徒");         // Outlaw
+                ListBox_H3OPT_VEHS.Items.Add("埃弗伦");           // Everon
+                break;
+        }
     }
 }

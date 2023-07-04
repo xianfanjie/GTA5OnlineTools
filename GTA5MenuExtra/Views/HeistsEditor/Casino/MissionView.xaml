@@ -15,7 +15,7 @@
             <ColumnDefinition />
             <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
-        <!--  /////////////////  -->
+        <!--  ////////////////  -->
         <StackPanel Grid.Column="0">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -24,7 +24,7 @@
                 </Grid.ColumnDefinitions>
                 <!--  /////////////  -->
                 <StackPanel>
-                    <Grid>
+                    <Grid Height="230">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100" />
                             <ColumnDefinition Width="100" />
@@ -65,6 +65,7 @@
                             Grid.Column="2"
                             Margin="5"
                             SelectedIndex="0"
+                            SelectionChanged="ListBox_H3OPT_CREWWEAP_SelectionChanged"
                             Style="{StaticResource ListBoxStyle_Base}">
                             <ListBoxItem Content="《枪手队员》" FontWeight="Bold" />
                             <ListBoxItem Content="卡尔·阿不拉季 5％" />
@@ -79,6 +80,7 @@
                             Grid.Column="3"
                             Margin="5"
                             SelectedIndex="0"
+                            SelectionChanged="ListBox_H3OPT_CREWDRIVER_SelectionChanged"
                             Style="{StaticResource ListBoxStyle_Base}">
                             <ListBoxItem Content="《车手队员》" FontWeight="Bold" />
                             <ListBoxItem Content="卡里姆·登茨 5％" />
@@ -103,11 +105,11 @@
                         </ListBox>
                     </Grid>
                     <!--  /////////////  -->
-                    <Grid>
+                    <Grid Height="200">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="130" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="130" />
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
@@ -134,11 +136,6 @@
                             SelectedIndex="0"
                             Style="{StaticResource ListBoxStyle_Base}">
                             <ListBoxItem Content="《武器类型》" FontWeight="Bold" />
-                            <ListBoxItem Content="类型一" />
-                            <ListBoxItem Content="类型二" />
-                            <ListBoxItem Content="类型三" />
-                            <ListBoxItem Content="类型四" />
-                            <ListBoxItem Content="类型五" />
                         </ListBox>
                         <!--  /////////////  -->
                         <ListBox
@@ -148,10 +145,6 @@
                             SelectedIndex="0"
                             Style="{StaticResource ListBoxStyle_Base}">
                             <ListBoxItem Content="《逃亡载具》" FontWeight="Bold" />
-                            <ListBoxItem Content="类型一" />
-                            <ListBoxItem Content="类型二" />
-                            <ListBoxItem Content="类型三" />
-                            <ListBoxItem Content="类型四" />
                         </ListBox>
                     </Grid>
                 </StackPanel>
@@ -163,22 +156,31 @@
                     SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
                     <ListBoxItem Content="《抢劫面具》" FontWeight="Bold" />
-                    <ListBoxItem Content="类型一" />
-                    <ListBoxItem Content="类型二" />
-                    <ListBoxItem Content="类型三" />
-                    <ListBoxItem Content="类型四" />
-                    <ListBoxItem Content="类型五" />
-                    <ListBoxItem Content="类型六" />
-                    <ListBoxItem Content="类型七" />
-                    <ListBoxItem Content="类型八" />
-                    <ListBoxItem Content="类型九" />
-                    <ListBoxItem Content="类型十" />
-                    <ListBoxItem Content="类型十一" />
-                    <ListBoxItem Content="类型十二" />
+                    <ListBoxItem Content="几何" />
+                    <ListBoxItem Content="猎人" />
+                    <ListBoxItem Content="鬼半面" />
+                    <ListBoxItem Content="表情贴图" />
+                    <ListBoxItem Content="骷髅头" />
+                    <ListBoxItem Content="幸运水果" />
+                    <ListBoxItem Content="游击队" />
+                    <ListBoxItem Content="小丑" />
+                    <ListBoxItem Content="动物" />
+                    <ListBoxItem Content="暴徒" />
+                    <ListBoxItem Content="鬼" />
+                    <ListBoxItem Content="曲棍球" />
                 </ListBox>
             </Grid>
+            <!--  ////////////////  -->
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：执行生成的STAT代码成功后，屏幕会黑一下。如果出现需要侦察的情况，切换下战局就可以了
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：切换战局后如果面板还是有问题，再次点击《执行生成的STAT代码》即可
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
-        <!--  ///////////////////////////////  -->
+        <!--  ////////////////  -->
         <DockPanel Grid.Column="1">
             <StackPanel
                 Margin="5,5,5,0"

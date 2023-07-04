@@ -31,7 +31,7 @@
         </StackPanel>
     </ui:Window.TitleContent>
 
-    <Grid Margin="5">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -41,7 +41,7 @@
             <ListBox
                 x:Name="ListBox_LuckyWheel"
                 Margin="5"
-                SelectedIndex="{Binding CasinoHackModel.LuckyWheelSlot}"
+                SelectedIndex="0"
                 Style="{StaticResource ListBoxStyle_Base}">
                 <ListBoxItem Content="衣服(1)" />
                 <ListBoxItem Content="2500经验" />
@@ -67,7 +67,10 @@
             <!--  //////////  -->
             <StackPanel>
                 <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="幸运转盘" />
-                <CheckBox Content="操控中奖" IsChecked="{Binding CasinoHackModel.IsEnabledLuckyWheel}" />
+                <Button
+                    x:Name="Button_SetLuckyWheelSlot"
+                    Click="Button_SetLuckyWheelSlot_Click"
+                    Content="设置选中奖品" />
             </StackPanel>
         </UniformGrid>
         <!--  面板2  -->
@@ -76,29 +79,35 @@
                 <ListBox
                     x:Name="ListBox_SlotMachine"
                     Margin="5"
-                    SelectedIndex="{Binding CasinoHackModel.SlotMachineSlot}"
+                    SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="奖品一（不中奖）" />
-                    <ListBoxItem Content="奖品二" />
-                    <ListBoxItem Content="奖品三" />
-                    <ListBoxItem Content="奖品四" />
-                    <ListBoxItem Content="奖品五" />
-                    <ListBoxItem Content="奖品六" />
-                    <ListBoxItem Content="奖品七" />
-                    <ListBoxItem Content="奖品八" />
+                    <ListBoxItem Content="筹码倍数 x0" />
+                    <ListBoxItem Content="筹码倍数 x25" />
+                    <ListBoxItem Content="筹码倍数 x50" />
+                    <ListBoxItem Content="筹码倍数 x75" />
+                    <ListBoxItem Content="筹码倍数 x100" />
+                    <ListBoxItem Content="筹码倍数 x250" />
+                    <ListBoxItem Content="筹码倍数 x1000" />
+                    <ListBoxItem Content="筹码倍数 x500" />
                 </ListBox>
                 <!--  //////////  -->
-                <StackPanel>
+                <StackPanel Margin="0,0,5,0">
                     <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="老虎机" />
-                    <CheckBox Content="操控中奖" IsChecked="{Binding CasinoHackModel.IsEnabledSlotMachine}" />
+                    <Button
+                        x:Name="Button_SlotMachineSlot"
+                        Click="Button_SlotMachineSlot_Click"
+                        Content="设置选中奖品" />
                 </StackPanel>
             </UniformGrid>
 
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：比如我要使用幸运转盘，先去按E使用转盘，但是先不要转，然后勾选操控中奖并选择中奖奖品，这时回到游戏按S开始转动转盘即可。其他功能类似操作
+                提示：比如我要使用幸运转盘，先去按E使用转盘，但是先不要转，然后选择中奖奖品并点击设置选中奖品按钮，这时回到游戏按S开始转动转盘即可。其他功能类似操作
             </TextBlock>
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 建议：平时用来抽个展台车就可以了，不要把他当作刷钱功能，频繁使用和移除CD有封号风险
+            </TextBlock>
+            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                建议：请切换战局恢复赌场默认设置
             </TextBlock>
         </StackPanel>
     </Grid>

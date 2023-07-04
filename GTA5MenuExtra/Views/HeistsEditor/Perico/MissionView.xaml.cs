@@ -17,6 +17,8 @@ public partial class MissionView : UserControl
         TextBox_Logger.AppendText("INT32\n");
     }
 
+    ////////////////////////////////////////////////////
+
     private void ClearLogger()
     {
         TextBox_Logger.Clear();
@@ -36,6 +38,13 @@ public partial class MissionView : UserControl
         TextBox_Logger.ScrollToEnd();
     }
 
+    private bool IsValidIndex(int index)
+    {
+        return index != -1 && index != 0;
+    }
+
+    ////////////////////////////////////////////////////
+
     private void STAT_Build()
     {
         ClearLogger();
@@ -45,21 +54,25 @@ public partial class MissionView : UserControl
 
         //////////////////////////
 
-        // 解锁所有入侵点
-        if (CheckBox_H4CNF_BS_ENTR.IsChecked == true)
-            AppendLogger("MPx_H4CNF_BS_ENTR", 63);
-
-        // 解锁所有逃离点
-        if (CheckBox_H4CNF_APPROACH.IsChecked == true)
-            AppendLogger("MPx_H4CNF_APPROACH", -1);
+        // 下面这4句代码写入的时候要严格按照顺序来
 
         // 解锁所有兴趣点
         if (CheckBox_H4CNF_BS_GEN.IsChecked == true)
             AppendLogger("MPx_H4CNF_BS_GEN", 131071);
 
+        // 解锁所有入侵点
+        if (CheckBox_H4CNF_BS_ENTR.IsChecked == true)
+            AppendLogger("MPx_H4CNF_BS_ENTR", 63);
+
         // 解锁团队支援
         if (CheckBox_H4CNF_BS_ABIL.IsChecked == true)
             AppendLogger("MPx_H4CNF_BS_ABIL", 63);
+
+        // 解锁所有逃离点
+        if (CheckBox_H4CNF_APPROACH.IsChecked == true)
+            AppendLogger("MPx_H4CNF_APPROACH", -1);
+
+        //////////////////////////
 
         // 任务难度
         var index = ListBox_H4_PROGRESS.SelectedIndex;
@@ -70,7 +83,7 @@ public partial class MissionView : UserControl
 
         // 主要目标
         index = ListBox_H4CNF_TARGET.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
             AppendLogger("MPx_H4CNF_TARGET", index - 1);
 
         // 次要目标
@@ -209,12 +222,12 @@ public partial class MissionView : UserControl
 
         // 武器装备
         index = ListBox_H4CNF_WEAPONS.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
             AppendLogger("MPx_H4CNF_WEAPONS", index);
 
         // 运货卡车位置
         index = ListBox_H4CNF_TROJAN.SelectedIndex;
-        if (index != 0)
+        if (IsValidIndex(index))
             AppendLogger("MPx_H4CNF_TROJAN", index);
 
         // 武器

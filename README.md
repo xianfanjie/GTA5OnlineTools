@@ -30,6 +30,6 @@
 
 ## 预览
 
-![01](https://user-images.githubusercontent.com/28080853/222943567-4001a64d-7b7a-480a-95c6-1fccb299f2b5.png)
+![image](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/471a5fef-defd-4a58-bd75-61c0d60edc5b)
 
-![02](https://user-images.githubusercontent.com/28080853/222943570-446601f4-537d-476d-96ed-4a7d4594baf7.png)
+![image](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/7dd108c4-dc0f-4c43-be2d-c577d658291d)

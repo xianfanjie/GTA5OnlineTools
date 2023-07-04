@@ -23,7 +23,7 @@
                     Content="写入数据" />
             </WrapPanel>
         </Border>
-        <!--  ##########  -->
+        <!--  /////////////////  -->
         <UniformGrid Columns="4">
             <UniformGrid.Resources>
                 <Style TargetType="{x:Type TextBlock}">
@@ -32,6 +32,7 @@
                     <Setter Property="VerticalAlignment" Value="Center" />
                 </Style>
             </UniformGrid.Resources>
+            <!--  /////////////////  -->
             <StackPanel Margin="5">
                 <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="分红比例" />
                 <UniformGrid Columns="2">
@@ -45,8 +46,11 @@
                     <TextBox x:Name="TextBox_Doomsday_Player4" />
                 </UniformGrid>
 
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
             </StackPanel>
-
+            <!--  /////////////////  -->
             <StackPanel Margin="5">
                 <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="分红金额" />
                 <UniformGrid Columns="2">
@@ -57,6 +61,10 @@
                     <TextBlock Text="末日三" />
                     <TextBox x:Name="TextBox_Doomsday_ActIII" />
                 </UniformGrid>
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
             </StackPanel>
         </UniformGrid>
     </StackPanel>

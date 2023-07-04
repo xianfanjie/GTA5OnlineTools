@@ -38,40 +38,32 @@ public partial class MoneyView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        try
+        if (!int.TryParse(TextBox_Apart_Player1.Text, out int player1) ||
+            !int.TryParse(TextBox_Apart_Player2.Text, out int player2) ||
+            !int.TryParse(TextBox_Apart_Player3.Text, out int player3) ||
+            !int.TryParse(TextBox_Apart_Player4.Text, out int player4) ||
+
+            !int.TryParse(TextBox_Apart_Fleeca.Text, out int apart1) ||
+            !int.TryParse(TextBox_Apart_PrisonBreak.Text, out int apart2) ||
+            !int.TryParse(TextBox_Apart_HumaneLabs.Text, out int apart3) ||
+            !int.TryParse(TextBox_Apart_SeriesA.Text, out int apart4) ||
+            !int.TryParse(TextBox_Apart_PacificStandard.Text, out int apart5))
         {
-            if (TextBox_Apart_Player1.Text.Trim() != "" &&
-                TextBox_Apart_Player2.Text.Trim() != "" &&
-                TextBox_Apart_Player3.Text.Trim() != "" &&
-                TextBox_Apart_Player4.Text.Trim() != "" &&
-
-                TextBox_Apart_Fleeca.Text.Trim() != "" &&
-                TextBox_Apart_PrisonBreak.Text.Trim() != "" &&
-                TextBox_Apart_HumaneLabs.Text.Trim() != "" &&
-                TextBox_Apart_SeriesA.Text.Trim() != "" &&
-                TextBox_Apart_PacificStandard.Text.Trim() != "")
-            {
-                Globals.WriteGA(apart_ratio + 1, Convert.ToInt32(TextBox_Apart_Player1.Text.Trim()));
-                Globals.WriteGA(apart_ratio + 2, Convert.ToInt32(TextBox_Apart_Player2.Text.Trim()));
-                Globals.WriteGA(apart_ratio + 3, Convert.ToInt32(TextBox_Apart_Player3.Text.Trim()));
-                Globals.WriteGA(apart_ratio + 4, Convert.ToInt32(TextBox_Apart_Player4.Text.Trim()));
-
-                Globals.WriteGA(apart_money + 0, Convert.ToInt32(TextBox_Apart_Fleeca.Text.Trim()));
-                Globals.WriteGA(apart_money + 1, Convert.ToInt32(TextBox_Apart_PrisonBreak.Text.Trim()));
-                Globals.WriteGA(apart_money + 2, Convert.ToInt32(TextBox_Apart_HumaneLabs.Text.Trim()));
-                Globals.WriteGA(apart_money + 3, Convert.ToInt32(TextBox_Apart_SeriesA.Text.Trim()));
-                Globals.WriteGA(apart_money + 4, Convert.ToInt32(TextBox_Apart_PacificStandard.Text.Trim()));
-
-                NotifierHelper.Show(NotifierType.Success, "写入 公寓抢劫 玩家分红数据 成功");
-            }
-            else
-            {
-                NotifierHelper.Show(NotifierType.Warning, "部分数据为空，请检查后重新写入");
-            }
+            NotifierHelper.Show(NotifierType.Warning, "部分数据不合法，请检查后重新写入");
+            return;
         }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
-        }
+
+        Globals.WriteGA(apart_ratio + 1, player1);
+        Globals.WriteGA(apart_ratio + 2, player2);
+        Globals.WriteGA(apart_ratio + 3, player3);
+        Globals.WriteGA(apart_ratio + 4, player4);
+
+        Globals.WriteGA(apart_money + 0, apart1);
+        Globals.WriteGA(apart_money + 1, apart2);
+        Globals.WriteGA(apart_money + 2, apart3);
+        Globals.WriteGA(apart_money + 3, apart4);
+        Globals.WriteGA(apart_money + 4, apart5);
+
+        NotifierHelper.Show(NotifierType.Success, "写入 公寓抢劫 玩家分红数据 成功");
     }
 }

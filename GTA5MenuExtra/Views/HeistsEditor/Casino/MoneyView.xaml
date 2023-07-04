@@ -50,6 +50,10 @@
                     <TextBlock Text="莱斯特" />
                     <TextBox x:Name="TextBox_Casino_Lester" />
                 </UniformGrid>
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
             </StackPanel>
 
             <StackPanel Margin="5">
@@ -64,6 +68,10 @@
                     <TextBlock Text="钻石" />
                     <TextBox x:Name="TextBox_CasinoPotential_Diamonds" />
                 </UniformGrid>
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
             </StackPanel>
 
             <StackPanel Margin="5">
@@ -111,6 +119,10 @@
                     <TextBlock Text="佩奇·哈里斯" />
                     <TextBox x:Name="TextBox_CasinoAI_15" />
                 </UniformGrid>
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
             </StackPanel>
         </UniformGrid>
     </StackPanel>

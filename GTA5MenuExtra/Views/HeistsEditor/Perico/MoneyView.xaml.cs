@@ -54,52 +54,44 @@ public partial class MoneyView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        try
+        if (!int.TryParse(TextBox_Cayo_Player1.Text, out int player1) ||
+            !int.TryParse(TextBox_Cayo_Player2.Text, out int player2) ||
+            !int.TryParse(TextBox_Cayo_Player3.Text, out int player3) ||
+            !int.TryParse(TextBox_Cayo_Player4.Text, out int player4) ||
+
+            !int.TryParse(TextBox_Cayo_Tequila.Text, out int cayo1) ||
+            !int.TryParse(TextBox_Cayo_RubyNecklace.Text, out int cayo2) ||
+            !int.TryParse(TextBox_Cayo_BearerBonds.Text, out int cayo3) ||
+            !int.TryParse(TextBox_Cayo_PinkDiamond.Text, out int cayo4) ||
+            !int.TryParse(TextBox_Cayo_MadrazoFiles.Text, out int cayo5) ||
+            !int.TryParse(TextBox_Cayo_BlackPanther.Text, out int cayo6) ||
+
+            !int.TryParse(TextBox_Cayo_LocalBagSize.Text, out int bagsize) ||
+
+            !float.TryParse(TextBox_Cayo_FencingFee.Text, out float fencingfee) ||
+            !float.TryParse(TextBox_Cayo_PavelCut.Text, out float pavecut))
         {
-            if (TextBox_Cayo_Player1.Text.Trim() != "" &&
-                TextBox_Cayo_Player2.Text.Trim() != "" &&
-                TextBox_Cayo_Player3.Text.Trim() != "" &&
-                TextBox_Cayo_Player4.Text.Trim() != "" &&
-
-                TextBox_Cayo_Tequila.Text.Trim() != "" &&
-                TextBox_Cayo_RubyNecklace.Text.Trim() != "" &&
-                TextBox_Cayo_BearerBonds.Text.Trim() != "" &&
-                TextBox_Cayo_PinkDiamond.Text.Trim() != "" &&
-                TextBox_Cayo_MadrazoFiles.Text.Trim() != "" &&
-                TextBox_Cayo_BlackPanther.Text.Trim() != "" &&
-
-                TextBox_Cayo_LocalBagSize.Text.Trim() != "" &&
-
-                TextBox_Cayo_FencingFee.Text.Trim() != "" &&
-                TextBox_Cayo_PavelCut.Text.Trim() != "")
-            {
-                Globals.WriteGA(player_ratio + 1, Convert.ToInt32(TextBox_Cayo_Player1.Text.Trim()));
-                Globals.WriteGA(player_ratio + 2, Convert.ToInt32(TextBox_Cayo_Player2.Text.Trim()));
-                Globals.WriteGA(player_ratio + 3, Convert.ToInt32(TextBox_Cayo_Player3.Text.Trim()));
-                Globals.WriteGA(player_ratio + 4, Convert.ToInt32(TextBox_Cayo_Player4.Text.Trim()));
-
-                Globals.WriteGA(target_money + 0, Convert.ToInt32(TextBox_Cayo_Tequila.Text.Trim()));
-                Globals.WriteGA(target_money + 1, Convert.ToInt32(TextBox_Cayo_RubyNecklace.Text.Trim()));
-                Globals.WriteGA(target_money + 2, Convert.ToInt32(TextBox_Cayo_BearerBonds.Text.Trim()));
-                Globals.WriteGA(target_money + 3, Convert.ToInt32(TextBox_Cayo_PinkDiamond.Text.Trim()));
-                Globals.WriteGA(target_money + 4, Convert.ToInt32(TextBox_Cayo_MadrazoFiles.Text.Trim()));
-                Globals.WriteGA(target_money + 5, Convert.ToInt32(TextBox_Cayo_BlackPanther.Text.Trim()));
-
-                Globals.WriteGA(bag_size, Convert.ToInt32(TextBox_Cayo_LocalBagSize.Text.Trim()));
-
-                Globals.WriteGA(target_money + 9, Convert.ToSingle(TextBox_Cayo_FencingFee.Text.Trim()));
-                Globals.WriteGA(target_money + 10, Convert.ToSingle(TextBox_Cayo_PavelCut.Text.Trim()));
-
-                NotifierHelper.Show(NotifierType.Success, "写入 佩里克岛 玩家分红数据 成功");
-            }
-            else
-            {
-                NotifierHelper.Show(NotifierType.Warning, "部分数据为空，请检查后重新写入");
-            }
+            NotifierHelper.Show(NotifierType.Warning, "部分数据不合法，请检查后重新写入");
+            return;
         }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
-        }
+
+        Globals.WriteGA(player_ratio + 1, player1);
+        Globals.WriteGA(player_ratio + 2, player2);
+        Globals.WriteGA(player_ratio + 3, player3);
+        Globals.WriteGA(player_ratio + 4, player4);
+
+        Globals.WriteGA(target_money + 0, cayo1);
+        Globals.WriteGA(target_money + 1, cayo2);
+        Globals.WriteGA(target_money + 2, cayo3);
+        Globals.WriteGA(target_money + 3, cayo4);
+        Globals.WriteGA(target_money + 4, cayo5);
+        Globals.WriteGA(target_money + 5, cayo6);
+
+        Globals.WriteGA(bag_size, bagsize);
+
+        Globals.WriteGA(target_money + 9, fencingfee);
+        Globals.WriteGA(target_money + 10, pavecut);
+
+        NotifierHelper.Show(NotifierType.Success, "写入 佩里克岛 玩家分红数据 成功");
     }
 }

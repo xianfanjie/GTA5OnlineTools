@@ -36,36 +36,28 @@ public partial class MoneyView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        try
+        if (!int.TryParse(TextBox_Doomsday_Player1.Text, out int player1) ||
+           !int.TryParse(TextBox_Doomsday_Player2.Text, out int player2) ||
+           !int.TryParse(TextBox_Doomsday_Player3.Text, out int player3) ||
+           !int.TryParse(TextBox_Doomsday_Player4.Text, out int player4) ||
+
+           !int.TryParse(TextBox_Doomsday_ActI.Text, out int act1) ||
+           !int.TryParse(TextBox_Doomsday_ActII.Text, out int act2) ||
+           !int.TryParse(TextBox_Doomsday_ActIII.Text, out int act3))
         {
-            if (TextBox_Doomsday_Player1.Text.Trim() != "" &&
-                TextBox_Doomsday_Player2.Text.Trim() != "" &&
-                TextBox_Doomsday_Player3.Text.Trim() != "" &&
-                TextBox_Doomsday_Player4.Text.Trim() != "" &&
-
-                TextBox_Doomsday_ActI.Text.Trim() != "" &&
-                TextBox_Doomsday_ActII.Text.Trim() != "" &&
-                TextBox_Doomsday_ActIII.Text.Trim() != "")
-            {
-                Globals.WriteGA(player_ratio + 1, Convert.ToInt32(TextBox_Doomsday_Player1.Text.Trim()));
-                Globals.WriteGA(player_ratio + 2, Convert.ToInt32(TextBox_Doomsday_Player2.Text.Trim()));
-                Globals.WriteGA(player_ratio + 3, Convert.ToInt32(TextBox_Doomsday_Player3.Text.Trim()));
-                Globals.WriteGA(player_ratio + 4, Convert.ToInt32(TextBox_Doomsday_Player4.Text.Trim()));
-
-                Globals.WriteGA(player_money + 0, Convert.ToInt32(TextBox_Doomsday_ActI.Text.Trim()));
-                Globals.WriteGA(player_money + 1, Convert.ToInt32(TextBox_Doomsday_ActII.Text.Trim()));
-                Globals.WriteGA(player_money + 2, Convert.ToInt32(TextBox_Doomsday_ActIII.Text.Trim()));
-
-                NotifierHelper.Show(NotifierType.Success, "写入 末日抢劫 玩家分红数据 成功");
-            }
-            else
-            {
-                NotifierHelper.Show(NotifierType.Warning, "部分数据为空，请检查后重新写入");
-            }
+            NotifierHelper.Show(NotifierType.Warning, "部分数据不合法，请检查后重新写入");
+            return;
         }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
-        }
+
+        Globals.WriteGA(player_ratio + 1, player1);
+        Globals.WriteGA(player_ratio + 2, player2);
+        Globals.WriteGA(player_ratio + 3, player3);
+        Globals.WriteGA(player_ratio + 4, player4);
+
+        Globals.WriteGA(player_money + 0, act1);
+        Globals.WriteGA(player_money + 1, act2);
+        Globals.WriteGA(player_money + 2, act3);
+
+        NotifierHelper.Show(NotifierType.Success, "写入 末日抢劫 玩家分红数据 成功");
     }
 }

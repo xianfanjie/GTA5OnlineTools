@@ -26,23 +26,23 @@
                 <TextBox x:Name="TextBox_FIXER_Value" />
 
                 <TextBlock Text="联合储蓄 - 改装铺" />
-                <TextBox x:Name="TextBox_TUNER_Value0" />
-                <TextBlock Text="大钞交易 - 改装铺" />
                 <TextBox x:Name="TextBox_TUNER_Value1" />
-                <TextBlock Text="银行合约 - 改装铺" />
+                <TextBlock Text="大钞交易 - 改装铺" />
                 <TextBox x:Name="TextBox_TUNER_Value2" />
-                <TextBlock Text="电控单元 - 改装铺" />
+                <TextBlock Text="银行合约 - 改装铺" />
                 <TextBox x:Name="TextBox_TUNER_Value3" />
-                <TextBlock Text="监狱合约 - 改装铺" />
+                <TextBlock Text="电控单元 - 改装铺" />
                 <TextBox x:Name="TextBox_TUNER_Value4" />
-                <TextBlock Text="IAA合约 - 改装铺" />
+                <TextBlock Text="监狱合约 - 改装铺" />
                 <TextBox x:Name="TextBox_TUNER_Value5" />
-                <TextBlock Text="失落摩托帮合约 - 改装铺" />
+                <TextBlock Text="IAA合约 - 改装铺" />
                 <TextBox x:Name="TextBox_TUNER_Value6" />
-                <TextBlock Text="数据合约 - 改装铺" />
+                <TextBlock Text="失落摩托帮合约 - 改装铺" />
                 <TextBox x:Name="TextBox_TUNER_Value7" />
+                <TextBlock Text="数据合约 - 改装铺" />
+                <TextBox x:Name="TextBox_TUNER_Value8" />
             </UniformGrid>
-            <WrapPanel HorizontalAlignment="Center">
+            <WrapPanel Margin="5" HorizontalAlignment="Center">
                 <Button
                     x:Name="Button_Read"
                     Click="Button_Read_Click"
@@ -52,6 +52,9 @@
                     Click="Button_Write_Click"
                     Content="写入数据" />
             </WrapPanel>
+            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                类型：整数型INT，范围 0~21亿
+            </TextBlock>
         </StackPanel>
     </UniformGrid>
 

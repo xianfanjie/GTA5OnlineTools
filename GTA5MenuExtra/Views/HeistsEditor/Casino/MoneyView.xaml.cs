@@ -60,78 +60,70 @@ public partial class MoneyView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        try
+        if (!int.TryParse(TextBox_Casino_Player1.Text, out int player1) ||
+            !int.TryParse(TextBox_Casino_Player2.Text, out int player2) ||
+            !int.TryParse(TextBox_Casino_Player3.Text, out int player3) ||
+            !int.TryParse(TextBox_Casino_Player4.Text, out int player4) ||
+
+            !int.TryParse(TextBox_Casino_Lester.Text, out int lester) ||
+
+            !int.TryParse(TextBox_CasinoPotential_Money.Text, out int money) ||
+            !int.TryParse(TextBox_CasinoPotential_Artwork.Text, out int artwork) ||
+            !int.TryParse(TextBox_CasinoPotential_Gold.Text, out int gold) ||
+            !int.TryParse(TextBox_CasinoPotential_Diamonds.Text, out int diamonds) ||
+
+            !int.TryParse(TextBox_CasinoAI_1.Text, out int ai1) ||
+            !int.TryParse(TextBox_CasinoAI_2.Text, out int ai2) ||
+            !int.TryParse(TextBox_CasinoAI_3.Text, out int ai3) ||
+            !int.TryParse(TextBox_CasinoAI_4.Text, out int ai4) ||
+            !int.TryParse(TextBox_CasinoAI_5.Text, out int ai5) ||
+
+            !int.TryParse(TextBox_CasinoAI_6.Text, out int ai6) ||
+            !int.TryParse(TextBox_CasinoAI_7.Text, out int ai7) ||
+            !int.TryParse(TextBox_CasinoAI_8.Text, out int ai8) ||
+            !int.TryParse(TextBox_CasinoAI_9.Text, out int ai9) ||
+            !int.TryParse(TextBox_CasinoAI_10.Text, out int ai10) ||
+
+            !int.TryParse(TextBox_CasinoAI_11.Text, out int ai11) ||
+            !int.TryParse(TextBox_CasinoAI_12.Text, out int ai12) ||
+            !int.TryParse(TextBox_CasinoAI_12.Text, out int ai13) ||
+            !int.TryParse(TextBox_CasinoAI_12.Text, out int ai14) ||
+            !int.TryParse(TextBox_CasinoAI_12.Text, out int ai15))
         {
-            if (TextBox_Casino_Player1.Text.Trim() != "" &&
-                TextBox_Casino_Player2.Text.Trim() != "" &&
-                TextBox_Casino_Player3.Text.Trim() != "" &&
-                TextBox_Casino_Player4.Text.Trim() != "" &&
-
-                TextBox_Casino_Lester.Text.Trim() != "" &&
-
-                TextBox_CasinoPotential_Money.Text.Trim() != "" &&
-                TextBox_CasinoPotential_Artwork.Text.Trim() != "" &&
-                TextBox_CasinoPotential_Gold.Text.Trim() != "" &&
-                TextBox_CasinoPotential_Diamonds.Text.Trim() != "" &&
-
-                TextBox_CasinoAI_1.Text.Trim() != "" &&
-                TextBox_CasinoAI_2.Text.Trim() != "" &&
-                TextBox_CasinoAI_3.Text.Trim() != "" &&
-                TextBox_CasinoAI_4.Text.Trim() != "" &&
-                TextBox_CasinoAI_5.Text.Trim() != "" &&
-
-                TextBox_CasinoAI_6.Text.Trim() != "" &&
-                TextBox_CasinoAI_7.Text.Trim() != "" &&
-                TextBox_CasinoAI_8.Text.Trim() != "" &&
-                TextBox_CasinoAI_9.Text.Trim() != "" &&
-                TextBox_CasinoAI_10.Text.Trim() != "" &&
-
-                TextBox_CasinoAI_11.Text.Trim() != "" &&
-                TextBox_CasinoAI_12.Text.Trim() != "" &&
-                TextBox_CasinoAI_13.Text.Trim() != "" &&
-                TextBox_CasinoAI_14.Text.Trim() != "" &&
-                TextBox_CasinoAI_15.Text.Trim() != "")
-            {
-                Globals.WriteGA(player_ratio + 1, Convert.ToInt32(TextBox_Casino_Player1.Text.Trim()));
-                Globals.WriteGA(player_ratio + 2, Convert.ToInt32(TextBox_Casino_Player2.Text.Trim()));
-                Globals.WriteGA(player_ratio + 3, Convert.ToInt32(TextBox_Casino_Player3.Text.Trim()));
-                Globals.WriteGA(player_ratio + 4, Convert.ToInt32(TextBox_Casino_Player4.Text.Trim()));
-
-                Globals.WriteGA(lester_ratio, Convert.ToInt32(TextBox_Casino_Lester.Text.Trim()));
-
-                Globals.WriteGA(player_money + 1, Convert.ToInt32(TextBox_CasinoPotential_Money.Text.Trim()));
-                Globals.WriteGA(player_money + 2, Convert.ToInt32(TextBox_CasinoPotential_Artwork.Text.Trim()));
-                Globals.WriteGA(player_money + 3, Convert.ToInt32(TextBox_CasinoPotential_Gold.Text.Trim()));
-                Globals.WriteGA(player_money + 4, Convert.ToInt32(TextBox_CasinoPotential_Diamonds.Text.Trim()));
-
-                Globals.WriteGA(ai_ratio + 1, Convert.ToInt32(TextBox_CasinoAI_1.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 2, Convert.ToInt32(TextBox_CasinoAI_2.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 3, Convert.ToInt32(TextBox_CasinoAI_3.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 4, Convert.ToInt32(TextBox_CasinoAI_4.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 5, Convert.ToInt32(TextBox_CasinoAI_5.Text.Trim()));
-
-                Globals.WriteGA(ai_ratio + 6, Convert.ToInt32(TextBox_CasinoAI_6.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 7, Convert.ToInt32(TextBox_CasinoAI_7.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 8, Convert.ToInt32(TextBox_CasinoAI_8.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 9, Convert.ToInt32(TextBox_CasinoAI_9.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 10, Convert.ToInt32(TextBox_CasinoAI_10.Text.Trim()));
-
-                Globals.WriteGA(ai_ratio + 11, Convert.ToInt32(TextBox_CasinoAI_11.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 12, Convert.ToInt32(TextBox_CasinoAI_12.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 13, Convert.ToInt32(TextBox_CasinoAI_13.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 14, Convert.ToInt32(TextBox_CasinoAI_14.Text.Trim()));
-                Globals.WriteGA(ai_ratio + 15, Convert.ToInt32(TextBox_CasinoAI_15.Text.Trim()));
-
-                NotifierHelper.Show(NotifierType.Success, "写入 赌场抢劫 玩家分红数据 成功");
-            }
-            else
-            {
-                NotifierHelper.Show(NotifierType.Warning, "部分数据为空，请检查后重新写入");
-            }
+            NotifierHelper.Show(NotifierType.Warning, "部分数据不合法，请检查后重新写入");
+            return;
         }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
-        }
+
+        Globals.WriteGA(player_ratio + 1, player1);
+        Globals.WriteGA(player_ratio + 2, player2);
+        Globals.WriteGA(player_ratio + 3, player3);
+        Globals.WriteGA(player_ratio + 4, player4);
+
+        Globals.WriteGA(lester_ratio, lester);
+
+        Globals.WriteGA(player_money + 1, money);
+        Globals.WriteGA(player_money + 2, artwork);
+        Globals.WriteGA(player_money + 3, gold);
+        Globals.WriteGA(player_money + 4, diamonds);
+
+        Globals.WriteGA(ai_ratio + 1, ai1);
+        Globals.WriteGA(ai_ratio + 2, ai2);
+        Globals.WriteGA(ai_ratio + 3, ai3);
+        Globals.WriteGA(ai_ratio + 4, ai4);
+        Globals.WriteGA(ai_ratio + 5, ai5);
+
+        Globals.WriteGA(ai_ratio + 6, ai6);
+        Globals.WriteGA(ai_ratio + 7, ai7);
+        Globals.WriteGA(ai_ratio + 8, ai8);
+        Globals.WriteGA(ai_ratio + 9, ai9);
+        Globals.WriteGA(ai_ratio + 10, ai10);
+
+        Globals.WriteGA(ai_ratio + 11, ai11);
+        Globals.WriteGA(ai_ratio + 12, ai12);
+        Globals.WriteGA(ai_ratio + 13, ai13);
+        Globals.WriteGA(ai_ratio + 14, ai14);
+        Globals.WriteGA(ai_ratio + 15, ai15);
+
+        NotifierHelper.Show(NotifierType.Success, "写入 赌场抢劫 玩家分红数据 成功");
     }
 }

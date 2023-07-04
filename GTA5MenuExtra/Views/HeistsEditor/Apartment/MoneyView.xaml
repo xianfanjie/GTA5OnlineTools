@@ -44,6 +44,10 @@
                     <TextBlock Text="玩家4" />
                     <TextBox x:Name="TextBox_Apart_Player4" />
                 </UniformGrid>
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
             </StackPanel>
 
             <StackPanel Margin="5">
@@ -60,6 +64,10 @@
                     <TextBlock Text="太平洋" />
                     <TextBox x:Name="TextBox_Apart_PacificStandard" />
                 </UniformGrid>
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
             </StackPanel>
         </UniformGrid>
     </StackPanel>

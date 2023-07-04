@@ -45,7 +45,9 @@
                     <TextBox x:Name="TextBox_Cayo_Player4" />
                 </UniformGrid>
 
-                <TextBlock />
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     提示：请在抢劫任务分红关组队界面读取数据，否则可能读取不到
                 </TextBlock>
@@ -66,8 +68,11 @@
                     <TextBox x:Name="TextBox_Cayo_MadrazoFiles" />
                     <TextBlock Text="猎豹雕像" />
                     <TextBox x:Name="TextBox_Cayo_BlackPanther" />
-
                 </UniformGrid>
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
             </StackPanel>
 
             <StackPanel Margin="5">
@@ -76,6 +81,9 @@
                     <TextBlock Text="背包大小" />
                     <TextBox x:Name="TextBox_Cayo_LocalBagSize" />
                 </UniformGrid>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：整数型INT，范围 0~21亿
+                </TextBlock>
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="其他费用" />
                 <UniformGrid Columns="2">
@@ -83,8 +91,10 @@
                     <TextBox x:Name="TextBox_Cayo_FencingFee" />
                     <TextBlock Text="帕维尔费用" />
                     <TextBox x:Name="TextBox_Cayo_PavelCut" />
-
                 </UniformGrid>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    类型：小数型FLOAT，可为负数
+                </TextBlock>
             </StackPanel>
         </UniformGrid>
     </StackPanel>

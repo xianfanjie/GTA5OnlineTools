@@ -38,6 +38,7 @@
                                 x:Name="ListBox_H3OPT_APPROACH"
                                 Margin="5"
                                 SelectedIndex="0"
+                                SelectionChanged="ListBox_H3OPT_APPROACH_SelectionChanged"
                                 Style="{StaticResource ListBoxStyle_Base}">
                                 <ListBoxItem Content="《抢劫方式》" FontWeight="Bold" />
                                 <ListBoxItem Content="隐迹潜踪" />
@@ -108,8 +109,8 @@
                     <Grid Height="200">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="130" />
-                            <ColumnDefinition Width="130" />
-                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>

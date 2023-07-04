@@ -154,6 +154,12 @@
                         Content="任务通过状态" />
                 </StackPanel>
             </Grid>
+            <!--  /////////////  -->
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：跑到虎鲸直升机仓那里，然后在跑回来，虎鲸面板会自动刷新，否则看不到改动结果
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
         <!--  ///////////////////////////////  -->
         <DockPanel Grid.Column="1">

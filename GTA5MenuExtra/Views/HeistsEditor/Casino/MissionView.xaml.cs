@@ -281,6 +281,11 @@ public partial class MissionView : UserControl
         Button_STAT_Run.IsEnabled = true;
     }
 
+    private void ListBox_H3OPT_APPROACH_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ListBox_H3OPT_CREWWEAP_SelectionChanged(null, null);
+    }
+
     private void ListBox_H3OPT_CREWWEAP_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (ListBox_H3OPT_WEAPS is null)
@@ -293,29 +298,97 @@ public partial class MissionView : UserControl
         }
         ListBox_H3OPT_WEAPS.SelectedIndex = index;
 
+        // 抢劫方式
+        var APPROACH_INDEX = ListBox_H3OPT_APPROACH.SelectedIndex;
         // 枪手队员
-        index = ListBox_H3OPT_CREWWEAP.SelectedIndex;
-        switch (index)
+        var WEAPS_INDEX = ListBox_H3OPT_CREWWEAP.SelectedIndex;
+
+        switch (WEAPS_INDEX)
         {
             case 1:     // Karl  5%
-                ListBox_H3OPT_WEAPS.Items.Add("霰弹枪");          // Shotgun
-                ListBox_H3OPT_WEAPS.Items.Add("左轮手枪");        // Revolver
+                switch (APPROACH_INDEX)
+                {
+                    case 1:
+                        ListBox_H3OPT_WEAPS.Items.Add("微型冲锋枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("冲锋手枪装备");
+                        break;
+                    case 2:
+                        ListBox_H3OPT_WEAPS.Items.Add("微型冲锋枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        break;
+                    case 3:
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("左轮手枪装备");
+                        break;
+                }
                 break;
             case 2:     // Gustavo  9%
-                ListBox_H3OPT_WEAPS.Items.Add("步枪");           // Rifle 
-                ListBox_H3OPT_WEAPS.Items.Add("霰弹枪");          // Shotgun 
+                switch (APPROACH_INDEX)
+                {
+                    case 1:
+                        ListBox_H3OPT_WEAPS.Items.Add("步枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        break;
+                    case 2:
+                        ListBox_H3OPT_WEAPS.Items.Add("步枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        break;
+                    case 3:
+                        ListBox_H3OPT_WEAPS.Items.Add("步枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        break;
+                }
                 break;
             case 3:     // Charlie  7%
-                ListBox_H3OPT_WEAPS.Items.Add("冲锋枪");          // SMG 
-                ListBox_H3OPT_WEAPS.Items.Add("霰弹枪");          // Shotgun 
+                switch (APPROACH_INDEX)
+                {
+                    case 1:
+                        ListBox_H3OPT_WEAPS.Items.Add("冲锋枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        break;
+                    case 2:
+                        ListBox_H3OPT_WEAPS.Items.Add("冲锋手枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        break;
+                    case 3:
+                        ListBox_H3OPT_WEAPS.Items.Add("冲锋手枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        break;
+                }
                 break;
             case 4:     // Chester  10%
-                ListBox_H3OPT_WEAPS.Items.Add("冲锋枪 MK2");      // SMG MK II
-                ListBox_H3OPT_WEAPS.Items.Add("步枪 MK2");        // Rifle MK II
+                switch (APPROACH_INDEX)
+                {
+                    case 1:
+                        ListBox_H3OPT_WEAPS.Items.Add("MK2霰弹枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("MK2步枪装备");
+                        break;
+                    case 2:
+                        ListBox_H3OPT_WEAPS.Items.Add("MK2冲锋枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("MK2步枪装备");
+                        break;
+                    case 3:
+                        ListBox_H3OPT_WEAPS.Items.Add("MK2霰弹枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("MK2步枪装备");
+                        break;
+                }
                 break;
             case 5:     // Patrick  8%
-                ListBox_H3OPT_WEAPS.Items.Add("霰弹枪");          // Shotgun
-                ListBox_H3OPT_WEAPS.Items.Add("战斗冲锋枪");       // Combat MG
+                switch (APPROACH_INDEX)
+                {
+                    case 1:
+                        ListBox_H3OPT_WEAPS.Items.Add("作战自卫冲锋枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("步枪装备");
+                        break;
+                    case 2:
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("步枪装备");
+                        break;
+                    case 3:
+                        ListBox_H3OPT_WEAPS.Items.Add("霰弹枪装备");
+                        ListBox_H3OPT_WEAPS.Items.Add("战斗机枪装备");
+                        break;
+                }
                 break;
         }
     }
@@ -339,12 +412,12 @@ public partial class MissionView : UserControl
             case 1:     // Karim
                 ListBox_H3OPT_VEHS.Items.Add("天威经典版");          // Issi Classic
                 ListBox_H3OPT_VEHS.Items.Add("反社会");             // Asbo
-                ListBox_H3OPT_VEHS.Items.Add("旅行家羽黑");          // Kanjo
+                ListBox_H3OPT_VEHS.Items.Add("羽黑");               // Kanjo
                 ListBox_H3OPT_VEHS.Items.Add("卫士经典版");          // Sentinel Classic
                 break;
             case 2:     // Taliana
-                ListBox_H3OPT_VEHS.Items.Add("随行者 MK2");       // Retinue MK II
-                ListBox_H3OPT_VEHS.Items.Add("约塞米蒂");          // Drift Yosemite
+                ListBox_H3OPT_VEHS.Items.Add("随行者MK2");          // Retinue MK II
+                ListBox_H3OPT_VEHS.Items.Add("漂移约塞米蒂");        // Drift Yosemite
                 ListBox_H3OPT_VEHS.Items.Add("斯国一");            // Sugoi
                 ListBox_H3OPT_VEHS.Items.Add("扼喉");              // Jugular
                 break;

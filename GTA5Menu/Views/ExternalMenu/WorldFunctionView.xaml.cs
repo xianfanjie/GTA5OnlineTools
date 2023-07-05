@@ -32,13 +32,13 @@ public partial class WorldFunctionView : UserControl
     private void GTA5MenuWindow_LoopSpeedNormalEvent()
     {
         // 角色RP
-        if (_options.RPxN != 1.0)
+        if (_options.RPxN != 1.0f)
             Online.RPMultiplier(_options.RPxN);
         // 竞技场AP
-        if (_options.APxN != 1.0)
+        if (_options.APxN != 1.0f)
             Online.APMultiplier(_options.APxN);
         // 车友会RP
-        if (_options.REPxN != 1.0)
+        if (_options.REPxN != 1.0f)
             Online.REPMultiplier(_options.REPxN);
     }
 
@@ -48,29 +48,34 @@ public partial class WorldFunctionView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        var btnContent = (e.OriginalSource as Button).Content.ToString();
-        var index = OnlineData.LocalWeathers.FindIndex(t => t.Name == btnContent);
-        if (index != -1)
+        if (sender is Button button)
         {
-            World.SetLocalWeather(OnlineData.LocalWeathers[index].Value);
+            var btnContent = button.Content.ToString();
+
+            var weather = OnlineData.LocalWeathers.Find(t => t.Name == btnContent);
+            if (weather != null)
+                World.SetLocalWeather(weather.Value);
         }
     }
 
     private void Slider_RPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        _options.RPxN = (float)Slider_RPxN.Value;
+        var value = (float)Slider_RPxN.Value;
+        _options.RPxN = value == 0.0f ? 1.0f : value;
         Online.RPMultiplier(_options.RPxN);
     }
 
     private void Slider_APxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        _options.APxN = (float)Slider_APxN.Value;
+        var value = (float)Slider_APxN.Value;
+        _options.APxN = value == 0.0f ? 1.0f : value;
         Online.APMultiplier(_options.APxN);
     }
 
     private void Slider_REPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        _options.REPxN = (float)Slider_REPxN.Value;
+        var value = (float)Slider_REPxN.Value;
+        _options.REPxN = value == 0.0f ? 1.0f : value;
         Online.REPMultiplier(_options.REPxN);
     }
 

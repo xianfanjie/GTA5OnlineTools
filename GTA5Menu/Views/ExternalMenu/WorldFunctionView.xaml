@@ -39,26 +39,29 @@
                     x:Name="Slider_RPxN"
                     Title="角色RP"
                     Maximum="1000"
-                    Minimum="1"
+                    Minimum="0"
                     Style="{StaticResource SliderIconStyle_Int}"
+                    TickFrequency="50"
                     ValueChanged="Slider_RPxN_ValueChanged" />
                 <ui:SliderIcon
                     x:Name="Slider_APxN"
                     Title="竞技场AP"
                     Maximum="1000"
-                    Minimum="1"
+                    Minimum="0"
                     Style="{StaticResource SliderIconStyle_Int}"
+                    TickFrequency="50"
                     ValueChanged="Slider_APxN_ValueChanged" />
                 <ui:SliderIcon
                     x:Name="Slider_REPxN"
                     Title="车友会RP"
                     Maximum="1000"
-                    Minimum="1"
+                    Minimum="0"
                     Style="{StaticResource SliderIconStyle_Int}"
+                    TickFrequency="50"
                     ValueChanged="Slider_REPxN_ValueChanged" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：经验倍数不建议调整的太高，建议10~100倍左右，太高容易出现交易警告
+                    提示：经验倍数x0代表使用系统默认经验倍数，经验倍数不建议调整的太高，太高容易出现交易过多警告
                 </TextBlock>
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     提示：鼠标拖动或者点击滑块可粗略调整，使用键盘方向键左右可以精确调整

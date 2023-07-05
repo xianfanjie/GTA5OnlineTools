@@ -47,7 +47,7 @@
                 <ListBoxItem Content="2500经验" />
                 <ListBoxItem Content="20000美元" />
                 <ListBoxItem Content="10000筹码" />
-                <ListBoxItem Content="折扣" />
+                <ListBoxItem Content="载具折扣" />
                 <ListBoxItem Content="5000经验" />
                 <ListBoxItem Content="30000美元" />
                 <ListBoxItem Content="15000筹码" />
@@ -61,7 +61,7 @@
                 <ListBoxItem Content="25000筹码" />
                 <ListBoxItem Content="衣服(4)" />
                 <ListBoxItem Content="15000经验" />
-                <ListBoxItem Content="载具奖品" />
+                <ListBoxItem Content="展台载具" />
                 <ListBoxItem Content="50000美元" />
             </ListBox>
             <!--  //////////  -->
@@ -107,7 +107,7 @@
                 建议：平时用来抽个展台车就可以了，不要把他当作刷钱功能，频繁使用和移除CD有封号风险
             </TextBlock>
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                建议：请切换战局恢复赌场默认设置
+                提示：如果要恢复赌场默认设置，请切换战局
             </TextBlock>
         </StackPanel>
     </Grid>

@@ -72,7 +72,7 @@ public partial class GTA5InitWindow
                 Logger($"《GTA5》进程数量 {pArray.Length}");
                 foreach (var item in pArray)
                 {
-                    if (item.MainWindowTitle == "Grand Theft Auto V")
+                    if (item.MainModule.BaseAddress.ToInt64() > 0x7FF000000000)
                     {
                         Memory.GTA5Process = item;
                         break;

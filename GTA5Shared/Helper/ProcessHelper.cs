@@ -23,7 +23,7 @@ public static class ProcessHelper
         {
             foreach (var item in pArray)
             {
-                if (item.MainWindowTitle == "Grand Theft Auto V")
+                if (item.MainModule.BaseAddress.ToInt64() > 0x7FF000000000)
                     return true;
             }
         }

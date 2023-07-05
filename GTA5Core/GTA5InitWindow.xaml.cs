@@ -1,6 +1,4 @@
-﻿using GTA5Core.Features;
-using GTA5Core.GTA.Rage;
-using GTA5Core.Native;
+﻿using GTA5Core.Native;
 using GTA5Core.Offsets;
 
 namespace GTA5Core;
@@ -74,13 +72,10 @@ public partial class GTA5InitWindow
                 Logger($"《GTA5》进程数量 {pArray.Length}");
                 foreach (var item in pArray)
                 {
-                    for (int i = 0; i < item.Modules.Count; i++)
+                    if (item.MainWindowTitle == "Grand Theft Auto V")
                     {
-                        if (item.Modules[i].ModuleName.Equals("socialclub.dll"))
-                        {
-                            Memory.GTA5Process = item;
-                            break;
-                        }
+                        Memory.GTA5Process = item;
+                        break;
                     }
                 }
 

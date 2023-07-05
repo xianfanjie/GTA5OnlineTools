@@ -23,13 +23,8 @@ public static class ProcessHelper
         {
             foreach (var item in pArray)
             {
-                for (int i = 0; i < item.Modules.Count; i++)
-                {
-                    if (item.Modules[i].ModuleName.Equals("socialclub.dll"))
-                    {
-                        return true;
-                    }
-                }
+                if (item.MainWindowTitle == "Grand Theft Auto V")
+                    return true;
             }
         }
 

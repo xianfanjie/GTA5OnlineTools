@@ -67,68 +67,55 @@ public partial class GTA5InitWindow
         {
             Logger("开始初始化《GTA5》内存模块");
             var pArray = Process.GetProcessesByName("GTA5");
-            if (pArray.Length > 0)
-            {
-                Logger($"《GTA5》进程数量 {pArray.Length}");
-                foreach (var item in pArray)
-                {
-                    if (item.MainModule.BaseAddress.ToInt64() > 0x7FF000000000)
-                    {
-                        Memory.GTA5Process = item;
-                        break;
-                    }
-                }
+            Logger($"《GTA5》进程数量 {pArray.Length}");
 
-                if (Memory.GTA5Process == null)
-                {
-                    Logger("发生错误，未找到正确的《GTA5》进程");
-                    return false;
-                }
-
-                if (Memory.GTA5Process.MainWindowHandle == IntPtr.Zero)
-                {
-                    Logger("发生错误，《GTA5》窗口句柄为空");
-                    return false;
-                }
-                Memory.GTA5WinHandle = Memory.GTA5Process.MainWindowHandle;
-                Logger($"《GTA5》程序窗口句柄 {Memory.GTA5WinHandle}");
-
-                Logger($"《GTA5》程序窗口标题 {Memory.GTA5Process.MainWindowTitle}");
-
-                if (Memory.GTA5Process.Id == 0)
-                {
-                    Logger("发生错误，《GTA5》程序进程ID为空");
-                    return false;
-                }
-                Memory.GTA5ProId = Memory.GTA5Process.Id;
-                Logger($"《GTA5》程序进程ID {Memory.GTA5ProId}");
-
-                if (Memory.GTA5Process.MainModule != null)
-                {
-                    Memory.GTA5ProBaseAddress = Memory.GTA5Process.MainModule.BaseAddress.ToInt64();
-                    Logger($"《GTA5》程序主模块基址 0x{Memory.GTA5ProBaseAddress:X}");
-
-                    Memory.GTA5ProHandle = Win32.OpenProcess(ProcessAccessFlags.All, false, Memory.GTA5ProId);
-                    if (Memory.GTA5ProHandle == IntPtr.Zero)
-                    {
-                        Logger($"发生错误，《GTA5》程序进程句柄为空");
-                        return false;
-                    }
-
-                    Logger($"《GTA5》程序进程句柄 {Memory.GTA5ProHandle}");
-                    return true;
-                }
-                else
-                {
-                    Logger("发生错误，《GTA5》程序主模块基址为空");
-                    return false;
-                }
-            }
-            else
+            if (pArray.Length == 0)
             {
                 Logger("发生错误，未发现《GTA5》进程");
                 return false;
             }
+
+            Memory.GTA5Process = pArray.First();
+            Logger($"《GTA5》取第一个进程实例成功");
+
+            if (Memory.GTA5Process.MainWindowHandle == IntPtr.Zero)
+            {
+                Logger("发生错误，《GTA5》窗口句柄为空");
+                return false;
+            }
+
+            Memory.GTA5WinHandle = Memory.GTA5Process.MainWindowHandle;
+            Logger($"《GTA5》程序窗口句柄 {Memory.GTA5WinHandle}");
+
+            Logger($"《GTA5》程序窗口标题 {Memory.GTA5Process.MainWindowTitle}");
+
+            if (Memory.GTA5Process.Id == 0)
+            {
+                Logger("发生错误，《GTA5》程序进程ID为空");
+                return false;
+            }
+
+            Memory.GTA5ProId = Memory.GTA5Process.Id;
+            Logger($"《GTA5》程序进程ID {Memory.GTA5ProId}");
+
+            if (Memory.GTA5Process.MainModule is null)
+            {
+                Logger("发生错误，《GTA5》程序主模块基址为空");
+                return false;
+            }
+
+            Memory.GTA5ProBaseAddress = Memory.GTA5Process.MainModule.BaseAddress.ToInt64();
+            Logger($"《GTA5》程序主模块基址 0x{Memory.GTA5ProBaseAddress:X}");
+
+            Memory.GTA5ProHandle = Win32.OpenProcess(ProcessAccessFlags.All, false, Memory.GTA5ProId);
+            if (Memory.GTA5ProHandle == IntPtr.Zero)
+            {
+                Logger($"发生错误，《GTA5》程序进程句柄为空");
+                return false;
+            }
+
+            Logger($"《GTA5》程序进程句柄 {Memory.GTA5ProHandle}");
+            return true;
         }
         catch (Exception ex)
         {

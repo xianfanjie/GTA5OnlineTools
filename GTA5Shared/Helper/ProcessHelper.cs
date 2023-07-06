@@ -18,17 +18,7 @@ public static class ProcessHelper
     /// <returns>正在运行返回true，未运行返回false</returns>
     public static bool IsGTA5Run()
     {
-        var pArray = Process.GetProcessesByName("GTA5");
-        if (pArray.Length > 0)
-        {
-            foreach (var item in pArray)
-            {
-                if (item.MainModule.BaseAddress.ToInt64() > 0x7FF000000000)
-                    return true;
-            }
-        }
-
-        return false;
+        return IsAppRun("GTA5");
     }
 
     /// <summary>

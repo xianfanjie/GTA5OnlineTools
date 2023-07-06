@@ -30,22 +30,22 @@ public partial class MoneyView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        TextBox_Cayo_Player1.Text = Globals.ReadGA<int>(player_ratio + 1).ToString();
-        TextBox_Cayo_Player2.Text = Globals.ReadGA<int>(player_ratio + 2).ToString();
-        TextBox_Cayo_Player3.Text = Globals.ReadGA<int>(player_ratio + 3).ToString();
-        TextBox_Cayo_Player4.Text = Globals.ReadGA<int>(player_ratio + 4).ToString();
+        TextBox_Cayo_Player1.Text = Globals.Get_Global_Value<int>(player_ratio + 1).ToString();
+        TextBox_Cayo_Player2.Text = Globals.Get_Global_Value<int>(player_ratio + 2).ToString();
+        TextBox_Cayo_Player3.Text = Globals.Get_Global_Value<int>(player_ratio + 3).ToString();
+        TextBox_Cayo_Player4.Text = Globals.Get_Global_Value<int>(player_ratio + 4).ToString();
 
-        TextBox_Cayo_Tequila.Text = Globals.ReadGA<int>(target_money + 0).ToString();
-        TextBox_Cayo_RubyNecklace.Text = Globals.ReadGA<int>(target_money + 1).ToString();
-        TextBox_Cayo_BearerBonds.Text = Globals.ReadGA<int>(target_money + 2).ToString();
-        TextBox_Cayo_PinkDiamond.Text = Globals.ReadGA<int>(target_money + 3).ToString();
-        TextBox_Cayo_MadrazoFiles.Text = Globals.ReadGA<int>(target_money + 4).ToString();
-        TextBox_Cayo_BlackPanther.Text = Globals.ReadGA<int>(target_money + 5).ToString();
+        TextBox_Cayo_Tequila.Text = Globals.Get_Global_Value<int>(target_money + 0).ToString();
+        TextBox_Cayo_RubyNecklace.Text = Globals.Get_Global_Value<int>(target_money + 1).ToString();
+        TextBox_Cayo_BearerBonds.Text = Globals.Get_Global_Value<int>(target_money + 2).ToString();
+        TextBox_Cayo_PinkDiamond.Text = Globals.Get_Global_Value<int>(target_money + 3).ToString();
+        TextBox_Cayo_MadrazoFiles.Text = Globals.Get_Global_Value<int>(target_money + 4).ToString();
+        TextBox_Cayo_BlackPanther.Text = Globals.Get_Global_Value<int>(target_money + 5).ToString();
 
-        TextBox_Cayo_LocalBagSize.Text = Globals.ReadGA<int>(bag_size).ToString();
+        TextBox_Cayo_LocalBagSize.Text = Globals.Get_Global_Value<int>(bag_size).ToString();
 
-        TextBox_Cayo_FencingFee.Text = Globals.ReadGA<float>(target_money + 9).ToString();
-        TextBox_Cayo_PavelCut.Text = Globals.ReadGA<float>(target_money + 10).ToString();
+        TextBox_Cayo_FencingFee.Text = Globals.Get_Global_Value<float>(target_money + 9).ToString();
+        TextBox_Cayo_PavelCut.Text = Globals.Get_Global_Value<float>(target_money + 10).ToString();
 
         NotifierHelper.Show(NotifierType.Success, "读取 佩里克岛 玩家分红数据 成功");
     }
@@ -75,22 +75,22 @@ public partial class MoneyView : UserControl
             return;
         }
 
-        Globals.WriteGA(player_ratio + 1, player1);
-        Globals.WriteGA(player_ratio + 2, player2);
-        Globals.WriteGA(player_ratio + 3, player3);
-        Globals.WriteGA(player_ratio + 4, player4);
+        Globals.Set_Global_Value(player_ratio + 1, player1);
+        Globals.Set_Global_Value(player_ratio + 2, player2);
+        Globals.Set_Global_Value(player_ratio + 3, player3);
+        Globals.Set_Global_Value(player_ratio + 4, player4);
 
-        Globals.WriteGA(target_money + 0, cayo1);
-        Globals.WriteGA(target_money + 1, cayo2);
-        Globals.WriteGA(target_money + 2, cayo3);
-        Globals.WriteGA(target_money + 3, cayo4);
-        Globals.WriteGA(target_money + 4, cayo5);
-        Globals.WriteGA(target_money + 5, cayo6);
+        Globals.Set_Global_Value(target_money + 0, cayo1);
+        Globals.Set_Global_Value(target_money + 1, cayo2);
+        Globals.Set_Global_Value(target_money + 2, cayo3);
+        Globals.Set_Global_Value(target_money + 3, cayo4);
+        Globals.Set_Global_Value(target_money + 4, cayo5);
+        Globals.Set_Global_Value(target_money + 5, cayo6);
 
-        Globals.WriteGA(bag_size, bagsize);
+        Globals.Set_Global_Value(bag_size, bagsize);
 
-        Globals.WriteGA(target_money + 9, fencingfee);
-        Globals.WriteGA(target_money + 10, pavecut);
+        Globals.Set_Global_Value(target_money + 9, fencingfee);
+        Globals.Set_Global_Value(target_money + 10, pavecut);
 
         NotifierHelper.Show(NotifierType.Success, "写入 佩里克岛 玩家分红数据 成功");
     }

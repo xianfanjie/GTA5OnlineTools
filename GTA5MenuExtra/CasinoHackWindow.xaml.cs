@@ -66,11 +66,14 @@ public partial class CasinoHackWindow
         }
     }
 
-    private void Button_SetLuckyWheelSlot_Click(object sender, RoutedEventArgs e)
+    private void Button_LuckyWheelSlot_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         luckyWheelSlot = ListBox_LuckyWheel.SelectedIndex;
+
+        if (ListBox_LuckyWheel.SelectedItem is ListBoxItem item)
+            TextBlock_LuckyWheelValue.Text = $"奖品：{item.Content}";
     }
 
     private void Button_SlotMachineSlot_Click(object sender, RoutedEventArgs e)
@@ -78,5 +81,8 @@ public partial class CasinoHackWindow
         AudioHelper.PlayClickSound();
 
         slotMachineSlot = ListBox_SlotMachine.SelectedIndex;
+
+        if (ListBox_SlotMachine.SelectedItem is ListBoxItem item)
+            TextBlock_SlotMachineValue.Text = $"奖品：{item.Content}";
     }
 }

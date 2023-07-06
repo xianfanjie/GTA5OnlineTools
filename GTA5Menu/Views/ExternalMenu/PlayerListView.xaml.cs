@@ -88,7 +88,7 @@ public partial class PlayerListView : UserControl
             var isHost = hostToken1 == hostToken2;
 
             // 是否为脚本主机
-            var scriptHost = Globals.ReadGA<int>(2650208 + 1);
+            var scriptHost = Globals.Get_Global_Value<int>(2650208 + 1);
 
             ////////////////////////////////////////////
 
@@ -100,9 +100,9 @@ public partial class PlayerListView : UserControl
             var armor = Memory.Read<float>(pCPed + CPed.Armor);
             var noRagdoll = Memory.Read<byte>(pCPed + CPed.Ragdoll);
 
-            var rank = Globals.ReadGA<int>(1853988 + 1 + i * 867 + 205 + 6);
-            var money = Globals.ReadGA<long>(1853988 + 1 + i * 867 + 205 + 56);     // _MPPLY_STAT_SET_INT(joaat("MPPLY_GLOBALXP"), iParam0);
-            var cash = Globals.ReadGA<long>(1853988 + 1 + i * 867 + 205 + 3);
+            var rank = Globals.Get_Global_Value<int>(1853988 + 1 + i * 867 + 205 + 6);
+            var money = Globals.Get_Global_Value<long>(1853988 + 1 + i * 867 + 205 + 56);     // _MPPLY_STAT_SET_INT(joaat("MPPLY_GLOBALXP"), iParam0);
+            var cash = Globals.Get_Global_Value<long>(1853988 + 1 + i * 867 + 205 + 3);
 
             var rid = Memory.Read<long>(pCPlayerInfo + CPlayerInfo.RockstarID);
             var name = Memory.ReadString(pCPlayerInfo + CPlayerInfo.Name, 20);

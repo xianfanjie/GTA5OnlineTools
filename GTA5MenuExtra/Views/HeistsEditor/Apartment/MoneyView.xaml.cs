@@ -20,16 +20,16 @@ public partial class MoneyView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        TextBox_Apart_Player1.Text = Globals.ReadGA<int>(apart_ratio + 1).ToString();
-        TextBox_Apart_Player2.Text = Globals.ReadGA<int>(apart_ratio + 2).ToString();
-        TextBox_Apart_Player3.Text = Globals.ReadGA<int>(apart_ratio + 3).ToString();
-        TextBox_Apart_Player4.Text = Globals.ReadGA<int>(apart_ratio + 4).ToString();
+        TextBox_Apart_Player1.Text = Globals.Get_Global_Value<int>(apart_ratio + 1).ToString();
+        TextBox_Apart_Player2.Text = Globals.Get_Global_Value<int>(apart_ratio + 2).ToString();
+        TextBox_Apart_Player3.Text = Globals.Get_Global_Value<int>(apart_ratio + 3).ToString();
+        TextBox_Apart_Player4.Text = Globals.Get_Global_Value<int>(apart_ratio + 4).ToString();
 
-        TextBox_Apart_Fleeca.Text = Globals.ReadGA<int>(apart_money + 0).ToString();
-        TextBox_Apart_PrisonBreak.Text = Globals.ReadGA<int>(apart_money + 1).ToString();
-        TextBox_Apart_HumaneLabs.Text = Globals.ReadGA<int>(apart_money + 2).ToString();
-        TextBox_Apart_SeriesA.Text = Globals.ReadGA<int>(apart_money + 3).ToString();
-        TextBox_Apart_PacificStandard.Text = Globals.ReadGA<int>(apart_money + 4).ToString();
+        TextBox_Apart_Fleeca.Text = Globals.Get_Global_Value<int>(apart_money + 0).ToString();
+        TextBox_Apart_PrisonBreak.Text = Globals.Get_Global_Value<int>(apart_money + 1).ToString();
+        TextBox_Apart_HumaneLabs.Text = Globals.Get_Global_Value<int>(apart_money + 2).ToString();
+        TextBox_Apart_SeriesA.Text = Globals.Get_Global_Value<int>(apart_money + 3).ToString();
+        TextBox_Apart_PacificStandard.Text = Globals.Get_Global_Value<int>(apart_money + 4).ToString();
 
         NotifierHelper.Show(NotifierType.Success, "读取 公寓抢劫 玩家分红数据 成功");
     }
@@ -53,16 +53,16 @@ public partial class MoneyView : UserControl
             return;
         }
 
-        Globals.WriteGA(apart_ratio + 1, player1);
-        Globals.WriteGA(apart_ratio + 2, player2);
-        Globals.WriteGA(apart_ratio + 3, player3);
-        Globals.WriteGA(apart_ratio + 4, player4);
+        Globals.Set_Global_Value(apart_ratio + 1, player1);
+        Globals.Set_Global_Value(apart_ratio + 2, player2);
+        Globals.Set_Global_Value(apart_ratio + 3, player3);
+        Globals.Set_Global_Value(apart_ratio + 4, player4);
 
-        Globals.WriteGA(apart_money + 0, apart1);
-        Globals.WriteGA(apart_money + 1, apart2);
-        Globals.WriteGA(apart_money + 2, apart3);
-        Globals.WriteGA(apart_money + 3, apart4);
-        Globals.WriteGA(apart_money + 4, apart5);
+        Globals.Set_Global_Value(apart_money + 0, apart1);
+        Globals.Set_Global_Value(apart_money + 1, apart2);
+        Globals.Set_Global_Value(apart_money + 2, apart3);
+        Globals.Set_Global_Value(apart_money + 3, apart4);
+        Globals.Set_Global_Value(apart_money + 4, apart5);
 
         NotifierHelper.Show(NotifierType.Success, "写入 公寓抢劫 玩家分红数据 成功");
     }

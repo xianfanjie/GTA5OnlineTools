@@ -115,7 +115,7 @@ public static class Vehicle
         {
             if (Game.GetCVehicle(out long pCVehicle))
             {
-                Globals.WriteGA(Base.oVMYCar + 899, 1);       // if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_BRU_BOX", PLAYER::PLAYER_ID(), true, 0))
+                Globals.Set_Global_Value(Base.oVMYCar + 899, 1);       // if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_BRU_BOX", PLAYER::PLAYER_ID(), true, 0))
 
                 await Task.Delay(1000);
 
@@ -161,8 +161,8 @@ public static class Vehicle
 
                 await Task.Delay(1000);
 
-                if (Globals.ReadGA<int>(Base.oNETTimeHelp + 3690) != 0)
-                    Globals.WriteGA(Base.oNETTimeHelp + 3690, -1);
+                if (Globals.Get_Global_Value<int>(Base.oNETTimeHelp + 3690) != 0)
+                    Globals.Set_Global_Value(Base.oNETTimeHelp + 3690, -1);
             }
         });
     }
@@ -173,8 +173,8 @@ public static class Vehicle
     /// <param name="index"></param>
     public static void RequestPersonalVehicle(int index)
     {
-        Globals.WriteGA(Base.oVMYCar + 992, index);
-        Globals.WriteGA(Base.oVMYCar + 989, 1);
+        Globals.Set_Global_Value(Base.oVMYCar + 992, index);
+        Globals.Set_Global_Value(Base.oVMYCar + 989, 1);
     }
 
     /// <summary>
@@ -182,17 +182,17 @@ public static class Vehicle
     /// </summary>
     public static void Unlock167Vehicle()
     {
-        Globals.WriteGA(Base.Default + 35462, 1);         // walton
-        Globals.WriteGA(Base.Default + 35463, 1);         // vapid ratel
-        Globals.WriteGA(Base.Default + 35464, 1);         // maibatsu
-        Globals.WriteGA(Base.Default + 35465, 1);         // vapid vagon
-        Globals.WriteGA(Base.Default + 35466, 1);         // stinger
-        Globals.WriteGA(Base.Default + 35467, 1);         // streame216
-        Globals.WriteGA(Base.Default + 35468, 1);         // f-160
-        Globals.WriteGA(Base.Default + 35469, 1);         // buffalo5
-        Globals.WriteGA(Base.Default + 35471, 1);         // penaud
-        Globals.WriteGA(Base.Default + 35472, 1);         // conada
-        Globals.WriteGA(Base.Default + 35473, 1);         // bravodo hotring
-        Globals.WriteGA(Base.Default + 35474, 1);         // albany brigrham
+        Globals.Set_Global_Value(Base.Default + 35462, 1);         // walton
+        Globals.Set_Global_Value(Base.Default + 35463, 1);         // vapid ratel
+        Globals.Set_Global_Value(Base.Default + 35464, 1);         // maibatsu
+        Globals.Set_Global_Value(Base.Default + 35465, 1);         // vapid vagon
+        Globals.Set_Global_Value(Base.Default + 35466, 1);         // stinger
+        Globals.Set_Global_Value(Base.Default + 35467, 1);         // streame216
+        Globals.Set_Global_Value(Base.Default + 35468, 1);         // f-160
+        Globals.Set_Global_Value(Base.Default + 35469, 1);         // buffalo5
+        Globals.Set_Global_Value(Base.Default + 35471, 1);         // penaud
+        Globals.Set_Global_Value(Base.Default + 35472, 1);         // conada
+        Globals.Set_Global_Value(Base.Default + 35473, 1);         // bravodo hotring
+        Globals.Set_Global_Value(Base.Default + 35474, 1);         // albany brigrham
     }
 }

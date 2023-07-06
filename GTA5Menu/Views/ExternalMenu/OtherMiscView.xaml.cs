@@ -35,7 +35,7 @@ public partial class OtherMiscView : UserControl
 
         var index = ListBox_PedModel.SelectedIndex;
         if (index != -1)
-            Online.ModelChange(STATS.Joaat(PedHash.PedHashData[index].Value));
+            Online.ModelChange(STATS.JOATT(PedHash.PedHashData[index].Value));
     }
 
     private void ListBox_PedModel_MouseDoubleClick(object sender, MouseButtonEventArgs e)

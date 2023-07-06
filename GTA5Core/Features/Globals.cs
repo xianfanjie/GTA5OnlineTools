@@ -21,7 +21,7 @@ public static class Globals
     /// <typeparam name="T"></typeparam>
     /// <param name="index"></param>
     /// <returns></returns>
-    public static T ReadGA<T>(int index) where T : struct
+    public static T Get_Global_Value<T>(int index) where T : struct
     {
         return Memory.Read<T>(GlobalAddress(index));
     }
@@ -32,7 +32,7 @@ public static class Globals
     /// <typeparam name="T"></typeparam>
     /// <param name="index"></param>
     /// <param name="vaule"></param>
-    public static void WriteGA<T>(int index, T vaule) where T : struct
+    public static void Set_Global_Value<T>(int index, T vaule) where T : struct
     {
         Memory.Write(GlobalAddress(index), vaule);
     }
@@ -43,7 +43,7 @@ public static class Globals
     /// <param name="index"></param>
     /// <param name="length"></param>
     /// <returns></returns>
-    public static string ReadGAString(int index, int length = 20)
+    public static string Get_Global_String(int index, int length = 20)
     {
         return Memory.ReadString(GlobalAddress(index), length);
     }
@@ -53,7 +53,7 @@ public static class Globals
     /// </summary>
     /// <param name="index"></param>
     /// <param name="str"></param>
-    public static void WriteGAString(int index, string str)
+    public static void Set_Global_String(int index, string str)
     {
         Memory.WriteString(GlobalAddress(index), str);
     }
@@ -66,7 +66,7 @@ public static class Globals
     /// <returns></returns>
     public static bool IsOnlineMode()
     {
-        return ReadGA<int>(113810 + 2366 + 539 + 4321) == 145;
+        return Get_Global_Value<int>(113810 + 2366 + 539 + 4321) == 145;
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public static class Globals
     /// <returns></returns>
     public static int GetNetworkTime()
     {
-        return ReadGA<int>(1574757 + 11);
+        return Get_Global_Value<int>(1574757 + 11);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public static class Globals
     /// <returns></returns>
     public static int GetPlayerID()
     {
-        return ReadGA<int>(Base.oPlayerGA);
+        return Get_Global_Value<int>(Base.oPlayerGA);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public static class Globals
     /// <returns></returns>
     public static int GetPlayerIndex()
     {
-        return ReadGA<int>(1574918);
+        return Get_Global_Value<int>(1574918);
     }
 
     /// <summary>
@@ -118,17 +118,17 @@ public static class Globals
             if (string.IsNullOrEmpty(pickup))
                 return;
 
-            uint pickupHash = STATS.Joaat(pickup);
+            uint pickupHash = STATS.JOATT(pickup);
 
             Vector3 vector3 = Teleport.GetPlayerPosition();
 
-            WriteGA(2764405 + 3, vector3.X);
-            WriteGA(2764405 + 4, vector3.Y);
-            WriteGA(2764405 + 5, vector3.Z + 3.0f);
-            WriteGA(2764405 + 1, 9999);
+            Set_Global_Value(2764405 + 3, vector3.X);
+            Set_Global_Value(2764405 + 4, vector3.Y);
+            Set_Global_Value(2764405 + 5, vector3.Z + 3.0f);
+            Set_Global_Value(2764405 + 1, 9999);
 
-            WriteGA(4535172 + 1 + ReadGA<int>(2764405) * 85 + 66 + 2, 2);
-            WriteGA(2764405 + 6, 1);
+            Set_Global_Value(4535172 + 1 + Get_Global_Value<int>(2764405) * 85 + 66 + 2, 2);
+            Set_Global_Value(2764405 + 6, 1);
 
             await Task.Delay(200);
 

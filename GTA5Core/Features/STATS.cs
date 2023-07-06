@@ -27,7 +27,7 @@ public static class STATS
             statName = statName.Replace("MPx_", $"MP{index}_");
         }
 
-        return Joaat(statName);
+        return JOATT(statName);
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ public static class STATS
     /// </summary>
     /// <param name="statName"></param>
     /// <returns></returns>
-    public static uint Joaat(string statName)
+    public static uint JOATT(string statName)
     {
         var hash = 0u;
 
@@ -73,17 +73,17 @@ public static class STATS
     {
         var hash = GET_STAT_HASH(statName);
 
-        var oldHash = Globals.ReadGA<uint>(statSetIntHash);             // if (STATS::STAT_GET_INT(statHash,
-        var oldValue = Globals.ReadGA<int>(statSetIntValue);
+        var oldHash = Globals.Get_Global_Value<uint>(statSetIntHash);             // if (STATS::STAT_GET_INT(statHash,
+        var oldValue = Globals.Get_Global_Value<int>(statSetIntValue);
 
-        Globals.WriteGA(statSetIntHash, hash);
-        Globals.WriteGA(statSetIntValue, value);
-        Globals.WriteGA(statSetIntMinusOne, -1);
+        Globals.Set_Global_Value(statSetIntHash, hash);
+        Globals.Set_Global_Value(statSetIntValue, value);
+        Globals.Set_Global_Value(statSetIntMinusOne, -1);
 
         await Task.Delay(1000);
 
-        Globals.WriteGA(statSetIntHash, oldHash);
-        Globals.WriteGA(statSetIntValue, oldValue);
+        Globals.Set_Global_Value(statSetIntHash, oldHash);
+        Globals.Set_Global_Value(statSetIntValue, oldValue);
     }
 
     /// <summary>
@@ -96,40 +96,40 @@ public static class STATS
     {
         var hash = GET_STAT_HASH(statName);
 
-        var oldGetIntHash = Memory.Read<uint>(StatGetIntHash() + Globals.ReadGA<int>(characterSlot) * 4);
-        var oldGetIntValue = Globals.ReadGA<int>(statGetIntValue);
+        var oldGetIntHash = Memory.Read<uint>(StatGetIntHash() + Globals.Get_Global_Value<int>(characterSlot) * 4);
+        var oldGetIntValue = Globals.Get_Global_Value<int>(statGetIntValue);
 
-        var oldSetIntHash = Globals.ReadGA<uint>(statSetIntHash);
-        var oldSetIntValue = Globals.ReadGA<int>(statSetIntValue);
+        var oldSetIntHash = Globals.Get_Global_Value<uint>(statSetIntHash);
+        var oldSetIntValue = Globals.Get_Global_Value<int>(statSetIntValue);
 
-        Memory.Write(StatGetIntHash() + Globals.ReadGA<int>(characterSlot), hash);
+        Memory.Write(StatGetIntHash() + Globals.Get_Global_Value<int>(characterSlot), hash);
 
-        Globals.WriteGA(statSetIntHash, hash);
-        Globals.WriteGA(statSetIntValue, value);
+        Globals.Set_Global_Value(statSetIntHash, hash);
+        Globals.Set_Global_Value(statSetIntValue, value);
 
-        Globals.WriteGA(statGetIntValue, value - 1);
+        Globals.Set_Global_Value(statGetIntValue, value - 1);
 
         for (var i = 0; i < 10; i++)
         {
-            if (Globals.ReadGA<int>(statGetIntValue) == value)
+            if (Globals.Get_Global_Value<int>(statGetIntValue) == value)
                 break;
 
-            if (Globals.ReadGA<int>(callStat) != 9)
-                Globals.WriteGA(callStat, 9);
+            if (Globals.Get_Global_Value<int>(callStat) != 9)
+                Globals.Set_Global_Value(callStat, 9);
 
-            if (Globals.ReadGA<int>(callStat + 3) != 3)
-                Globals.WriteGA(callStat + 3, 3);
+            if (Globals.Get_Global_Value<int>(callStat + 3) != 3)
+                Globals.Set_Global_Value(callStat + 3, 3);
 
             await Task.Delay(100);
 
             if (i > 5)
-                Globals.WriteGA(statGetIntValue, value);
+                Globals.Set_Global_Value(statGetIntValue, value);
         }
 
-        Memory.Write(StatGetIntHash() + Globals.ReadGA<int>(characterSlot), oldGetIntHash);
-        Globals.WriteGA(statGetIntValue, oldGetIntValue);
+        Memory.Write(StatGetIntHash() + Globals.Get_Global_Value<int>(characterSlot), oldGetIntHash);
+        Globals.Set_Global_Value(statGetIntValue, oldGetIntValue);
 
-        Globals.WriteGA(statSetIntHash, oldSetIntHash);
-        Globals.WriteGA(statSetIntValue, oldSetIntValue);
+        Globals.Set_Global_Value(statSetIntHash, oldSetIntHash);
+        Globals.Set_Global_Value(statSetIntValue, oldSetIntValue);
     }
 }

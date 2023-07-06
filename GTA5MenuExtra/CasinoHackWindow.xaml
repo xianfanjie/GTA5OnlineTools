@@ -68,9 +68,14 @@
             <StackPanel>
                 <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="幸运转盘" />
                 <Button
-                    x:Name="Button_SetLuckyWheelSlot"
-                    Click="Button_SetLuckyWheelSlot_Click"
+                    x:Name="Button_LuckyWheelSlot"
+                    Click="Button_LuckyWheelSlot_Click"
                     Content="设置选中奖品" />
+                <TextBlock
+                    x:Name="TextBlock_LuckyWheelValue"
+                    Margin="5"
+                    Text="奖品：随机"
+                    TextWrapping="Wrap" />
             </StackPanel>
         </UniformGrid>
         <!--  面板2  -->
@@ -97,11 +102,16 @@
                         x:Name="Button_SlotMachineSlot"
                         Click="Button_SlotMachineSlot_Click"
                         Content="设置选中奖品" />
+                    <TextBlock
+                        x:Name="TextBlock_SlotMachineValue"
+                        Margin="5"
+                        Text="奖品：随机"
+                        TextWrapping="Wrap" />
                 </StackPanel>
             </UniformGrid>
 
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：比如我要使用幸运转盘，先去按E使用转盘，但是先不要转，然后选择中奖奖品并点击设置选中奖品按钮，这时回到游戏按S开始转动转盘即可。其他功能类似操作
+                提示：进入赌场后，先设置奖品，然后去操作对应目标就可以了
             </TextBlock>
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 建议：平时用来抽个展台车就可以了，不要把他当作刷钱功能，频繁使用和移除CD有封号风险

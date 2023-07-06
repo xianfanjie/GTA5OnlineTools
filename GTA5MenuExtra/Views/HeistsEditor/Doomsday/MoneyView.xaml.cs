@@ -20,14 +20,14 @@ public partial class MoneyView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        TextBox_Doomsday_Player1.Text = Globals.ReadGA<int>(player_ratio + 1).ToString();
-        TextBox_Doomsday_Player2.Text = Globals.ReadGA<int>(player_ratio + 2).ToString();
-        TextBox_Doomsday_Player3.Text = Globals.ReadGA<int>(player_ratio + 3).ToString();
-        TextBox_Doomsday_Player4.Text = Globals.ReadGA<int>(player_ratio + 4).ToString();
+        TextBox_Doomsday_Player1.Text = Globals.Get_Global_Value<int>(player_ratio + 1).ToString();
+        TextBox_Doomsday_Player2.Text = Globals.Get_Global_Value<int>(player_ratio + 2).ToString();
+        TextBox_Doomsday_Player3.Text = Globals.Get_Global_Value<int>(player_ratio + 3).ToString();
+        TextBox_Doomsday_Player4.Text = Globals.Get_Global_Value<int>(player_ratio + 4).ToString();
 
-        TextBox_Doomsday_ActI.Text = Globals.ReadGA<int>(player_money + 0).ToString();
-        TextBox_Doomsday_ActII.Text = Globals.ReadGA<int>(player_money + 1).ToString();
-        TextBox_Doomsday_ActIII.Text = Globals.ReadGA<int>(player_money + 2).ToString();
+        TextBox_Doomsday_ActI.Text = Globals.Get_Global_Value<int>(player_money + 0).ToString();
+        TextBox_Doomsday_ActII.Text = Globals.Get_Global_Value<int>(player_money + 1).ToString();
+        TextBox_Doomsday_ActIII.Text = Globals.Get_Global_Value<int>(player_money + 2).ToString();
 
         NotifierHelper.Show(NotifierType.Success, "读取 末日抢劫 玩家分红数据 成功");
     }
@@ -49,14 +49,14 @@ public partial class MoneyView : UserControl
             return;
         }
 
-        Globals.WriteGA(player_ratio + 1, player1);
-        Globals.WriteGA(player_ratio + 2, player2);
-        Globals.WriteGA(player_ratio + 3, player3);
-        Globals.WriteGA(player_ratio + 4, player4);
+        Globals.Set_Global_Value(player_ratio + 1, player1);
+        Globals.Set_Global_Value(player_ratio + 2, player2);
+        Globals.Set_Global_Value(player_ratio + 3, player3);
+        Globals.Set_Global_Value(player_ratio + 4, player4);
 
-        Globals.WriteGA(player_money + 0, act1);
-        Globals.WriteGA(player_money + 1, act2);
-        Globals.WriteGA(player_money + 2, act3);
+        Globals.Set_Global_Value(player_money + 0, act1);
+        Globals.Set_Global_Value(player_money + 1, act2);
+        Globals.Set_Global_Value(player_money + 2, act3);
 
         NotifierHelper.Show(NotifierType.Success, "写入 末日抢劫 玩家分红数据 成功");
     }

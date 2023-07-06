@@ -74,7 +74,7 @@ public static class Teleport
             return;
 
         // 禁用越界死亡
-        Globals.WriteGA(2794162 + 6881, 1);     // freemode - joaat("TRI_WARP")
+        Globals.Set_Global_Value(2794162 + 6881, 1);     // freemode - joaat("TRI_WARP")
 
         var pCPed = Game.GetCPed();
 

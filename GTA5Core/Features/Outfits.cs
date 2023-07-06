@@ -23,7 +23,7 @@ public static class Outfits
     /// <returns></returns>
     public static string GetOutfitNameByIndex()
     {
-        return Globals.ReadGAString(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 1126 - OutfitIndex * 5);
+        return Globals.Get_Global_String(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 1126 - OutfitIndex * 5);
     }
 
     /// <summary>
@@ -33,147 +33,147 @@ public static class Outfits
     /// <param name="name"></param>
     public static void SetOutfitNameByIndex(string name)
     {
-        Globals.WriteGAString(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 1126 - OutfitIndex * 5, name);
+        Globals.Set_Global_String(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 1126 - OutfitIndex * 5, name);
     }
 
     //////////////////////// TOP ////////////////////////
 
     public static int TOP
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 14);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 14, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 14);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 14, value);
     }
 
     public static int TOP_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 14);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 14, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 14);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 14, value);
     }
 
     //////////////////////// UNDERSHIRT ////////////////////////
 
     public static int UNDERSHIRT
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 11);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 11, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 11);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 11, value);
     }
 
     public static int UNDERSHIRT_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 11);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 11, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 11);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 11, value);
     }
 
     //////////////////////// LEGS ////////////////////////
 
     public static int LEGS
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 7);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 7, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 7);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 7, value);
     }
 
     public static int LEGS_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 7);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 7, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 7);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 7, value);
     }
 
     //////////////////////// FEET ////////////////////////
 
     public static int FEET
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 9);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 9, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 9);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 9, value);
     }
 
     public static int FEET_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 9);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 9, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 9);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 9, value);
     }
 
     //////////////////////// ACCESSORIES ////////////////////////
 
     public static int ACCESSORIES
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 10);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 10, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 10);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 10, value);
     }
 
     public static int ACCESSORIES_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 10);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 10, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 10);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 10, value);
     }
 
     //////////////////////// BAGS ////////////////////////
 
     public static int BAGS
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 8);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 8, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 8);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 8, value);
     }
 
     public static int BAGS_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 8);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 8, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 8);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 8, value);
     }
 
     //////////////////////// GLOVES ////////////////////////
 
     public static int GLOVES
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 6);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 6, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 6);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 6, value);
     }
 
     public static int GLOVES_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 6);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 6, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 6);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 6, value);
     }
 
     //////////////////////// DECALS ////////////////////////
 
     public static int DECALS
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 13);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 13, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 13);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 13, value);
     }
 
     public static int DECALS_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 13);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 13, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 13);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 13, value);
     }
 
     //////////////////////// MASK ////////////////////////
 
     public static int MASK
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 4);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 4, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 4);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 4, value);
     }
 
     public static int MASK_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 4);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 4, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 4);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 4, value);
     }
 
     //////////////////////// ARMOR ////////////////////////
 
     public static int ARMOR
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 12);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 12, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 12);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponent + OutfitIndex * 13 + 12, value);
     }
 
     public static int ARMOR_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 12);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 12, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 12);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWComponentTex + OutfitIndex * 13 + 12, value);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -182,69 +182,69 @@ public static class Outfits
 
     public static int HATS
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 3);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 3, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 3);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 3, value);
     }
 
     public static int HATS_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 3);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 3, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 3);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 3, value);
     }
 
     //////////////////////// GLASSES ////////////////////////
 
     public static int GLASSES
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 4);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 4, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 4);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 4, value);
     }
 
     public static int GLASSES_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 4);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 4, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 4);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 4, value);
     }
 
     //////////////////////// EARS ////////////////////////
 
     public static int EARS
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 5);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 5, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 5);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 5, value);
     }
 
     public static int EARS_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 5);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 5, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 5);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 5, value);
     }
 
     //////////////////////// WATCHES ////////////////////////
 
     public static int WATCHES
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 9);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 9, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 9);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 9, value);
     }
 
     public static int WATCHES_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 9);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 9, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 9);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 9, value);
     }
 
     //////////////////////// WRIST ////////////////////////
 
     public static int WRIST
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 10);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 10, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 10);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWProp + OutfitIndex * 10 + 10, value);
     }
 
     public static int WRIST_TEX
     {
-        get => Globals.ReadGA<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 10);
-        set => Globals.WriteGA(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 10, value);
+        get => Globals.Get_Global_Value<int>(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 10);
+        set => Globals.Set_Global_Value(oWardrobeG + 0 * oWPointA + oWPointB + oWPropTex + OutfitIndex * 10 + 10, value);
     }
 }

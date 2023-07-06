@@ -20,16 +20,16 @@ public partial class MoneyView : UserControl
     {
         AudioHelper.PlayClickSound();
 
-        TextBox_FIXER_Value.Text = Globals.ReadGA<int>(fixer_ratio).ToString();
+        TextBox_FIXER_Value.Text = Globals.Get_Global_Value<int>(fixer_ratio).ToString();
 
-        TextBox_TUNER_Value1.Text = Globals.ReadGA<int>(tuner_ratio + 1).ToString();
-        TextBox_TUNER_Value2.Text = Globals.ReadGA<int>(tuner_ratio + 2).ToString();
-        TextBox_TUNER_Value3.Text = Globals.ReadGA<int>(tuner_ratio + 3).ToString();
-        TextBox_TUNER_Value4.Text = Globals.ReadGA<int>(tuner_ratio + 4).ToString();
-        TextBox_TUNER_Value5.Text = Globals.ReadGA<int>(tuner_ratio + 5).ToString();
-        TextBox_TUNER_Value6.Text = Globals.ReadGA<int>(tuner_ratio + 6).ToString();
-        TextBox_TUNER_Value7.Text = Globals.ReadGA<int>(tuner_ratio + 7).ToString();
-        TextBox_TUNER_Value8.Text = Globals.ReadGA<int>(tuner_ratio + 8).ToString();
+        TextBox_TUNER_Value1.Text = Globals.Get_Global_Value<int>(tuner_ratio + 1).ToString();
+        TextBox_TUNER_Value2.Text = Globals.Get_Global_Value<int>(tuner_ratio + 2).ToString();
+        TextBox_TUNER_Value3.Text = Globals.Get_Global_Value<int>(tuner_ratio + 3).ToString();
+        TextBox_TUNER_Value4.Text = Globals.Get_Global_Value<int>(tuner_ratio + 4).ToString();
+        TextBox_TUNER_Value5.Text = Globals.Get_Global_Value<int>(tuner_ratio + 5).ToString();
+        TextBox_TUNER_Value6.Text = Globals.Get_Global_Value<int>(tuner_ratio + 6).ToString();
+        TextBox_TUNER_Value7.Text = Globals.Get_Global_Value<int>(tuner_ratio + 7).ToString();
+        TextBox_TUNER_Value8.Text = Globals.Get_Global_Value<int>(tuner_ratio + 8).ToString();
 
         NotifierHelper.Show(NotifierType.Success, "读取 事所合约 玩家分红数据 成功");
     }
@@ -53,16 +53,16 @@ public partial class MoneyView : UserControl
             return;
         }
 
-        Globals.WriteGA(fixer_ratio, fixer);
+        Globals.Set_Global_Value(fixer_ratio, fixer);
 
-        Globals.WriteGA(tuner_ratio + 1, tuner1);
-        Globals.WriteGA(tuner_ratio + 2, tuner2);
-        Globals.WriteGA(tuner_ratio + 3, tuner3);
-        Globals.WriteGA(tuner_ratio + 4, tuner4);
-        Globals.WriteGA(tuner_ratio + 5, tuner5);
-        Globals.WriteGA(tuner_ratio + 6, tuner6);
-        Globals.WriteGA(tuner_ratio + 7, tuner7);
-        Globals.WriteGA(tuner_ratio + 8, tuner8);
+        Globals.Set_Global_Value(tuner_ratio + 1, tuner1);
+        Globals.Set_Global_Value(tuner_ratio + 2, tuner2);
+        Globals.Set_Global_Value(tuner_ratio + 3, tuner3);
+        Globals.Set_Global_Value(tuner_ratio + 4, tuner4);
+        Globals.Set_Global_Value(tuner_ratio + 5, tuner5);
+        Globals.Set_Global_Value(tuner_ratio + 6, tuner6);
+        Globals.Set_Global_Value(tuner_ratio + 7, tuner7);
+        Globals.Set_Global_Value(tuner_ratio + 8, tuner8);
 
         NotifierHelper.Show(NotifierType.Success, "写入 事所合约 玩家分红数据 成功");
     }

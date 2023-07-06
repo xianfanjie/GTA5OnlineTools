@@ -40,9 +40,14 @@ public partial class PlayerListView : UserControl
         TextBox_PlayerInfo.AppendText($"{msg}\n");
     }
 
-    private string BoolToString(bool value)
+    private string BoolToONString(bool value)
     {
         return value ? "ON" : "OFF";
+    }
+
+    private string BoolToYESString(bool value)
+    {
+        return value ? "YES" : "NO";
     }
 
     private void Button_RefreshPlayerList_Click(object sender, RoutedEventArgs e)
@@ -82,6 +87,9 @@ public partial class PlayerListView : UserControl
             // 是否为战局主机
             var isHost = hostToken1 == hostToken2;
 
+            // 是否为脚本主机
+            var scriptHost = Globals.ReadGA<int>(2650208 + 1);
+
             ////////////////////////////////////////////
 
             var god = Memory.Read<byte>(pCPed + CPed.God);
@@ -114,6 +122,7 @@ public partial class PlayerListView : UserControl
                 Index = index++,
                 Avatar = $"https://prod.cloud.rockstargames.com/members/sc/5605/{rid}/publish/gta5/mpchars/0.png",
                 IsHost = isHost,
+                IsScriptHost = i == scriptHost,
 
                 Rank = rank,
                 RockstarId = rid,
@@ -142,7 +151,7 @@ public partial class PlayerListView : UserControl
                 ClanMotto = clanMotto,
 
                 ClanTagUpper = clanTag.ToUpper(),
-                GodModeFlag = BoolToString(godMode)
+                GodModeFlag = BoolToONString(godMode)
             });
         }
     }
@@ -170,6 +179,10 @@ public partial class PlayerListView : UserControl
             AppendPlayerInfo($"R星ID : {info.RockstarId}");
             AppendPlayerInfo();
 
+            AppendPlayerInfo($"战局主机 : {BoolToYESString(info.IsHost)}");
+            AppendPlayerInfo($"脚本主机 : {BoolToYESString(info.IsScriptHost)}");
+            AppendPlayerInfo();
+
             AppendPlayerInfo($"帮会标签 : {info.ClanTag}");
             AppendPlayerInfo($"帮会名称 : {info.ClanName}");
             AppendPlayerInfo($"帮会描述 : {info.ClanMotto}");
@@ -185,8 +198,8 @@ public partial class PlayerListView : UserControl
             AppendPlayerInfo($"最大生命值 : {info.HealthMax:0.0}");
             AppendPlayerInfo();
 
-            AppendPlayerInfo($"无敌状态 : {BoolToString(info.GodMode)}");
-            AppendPlayerInfo($"无布娃娃 : {BoolToString(info.NoRagdoll)}");
+            AppendPlayerInfo($"无敌状态 : {BoolToONString(info.GodMode)}");
+            AppendPlayerInfo($"无布娃娃 : {BoolToONString(info.NoRagdoll)}");
             AppendPlayerInfo($"通缉等级 : {info.WantedLevel}");
             AppendPlayerInfo();
 

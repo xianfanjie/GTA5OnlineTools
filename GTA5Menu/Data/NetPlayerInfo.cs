@@ -5,6 +5,7 @@ public class NetPlayerInfo
     public int Index { get; set; }
     public string Avatar { get; set; }
     public bool IsHost { get; set; }
+    public bool IsScriptHost { get; set; }
 
     public int Rank { get; set; }
     public long RockstarId { get; set; }

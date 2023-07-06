@@ -89,7 +89,7 @@
                                 <Border
                                     Width="22"
                                     Height="22"
-                                    Margin="7,0,0,0"
+                                    Margin="10,0,0,0"
                                     VerticalAlignment="Center"
                                     Background="#FCAF17"
                                     CornerRadius="11"
@@ -101,6 +101,22 @@
                                         FontWeight="Bold"
                                         Foreground="White"
                                         Text="H" />
+                                </Border>
+                                <Border
+                                    Width="22"
+                                    Height="22"
+                                    Margin="5,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Background="#FCAF17"
+                                    CornerRadius="11"
+                                    Visibility="{Binding IsScriptHost, Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="13"
+                                        FontWeight="Bold"
+                                        Foreground="White"
+                                        Text="S" />
                                 </Border>
                             </StackPanel>
                             <!--  ////////////  -->

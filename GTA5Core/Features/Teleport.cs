@@ -1,6 +1,5 @@
 ﻿using GTA5Core.Native;
 using GTA5Core.Offsets;
-using System.Numerics;
 
 namespace GTA5Core.Features;
 
@@ -74,6 +73,9 @@ public static class Teleport
         if (vector3 == Vector3.Zero)
             return;
 
+        // 禁用越界死亡
+        Globals.WriteGA(2794162 + 6881, 1);     // freemode - joaat("TRI_WARP")
+
         var pCPed = Game.GetCPed();
 
         if (Vehicle.IsInVehicle(pCPed))
@@ -94,8 +96,6 @@ public static class Teleport
             Memory.Write(pCNavigation + CNavigation.PositionX, vector3);
         }
     }
-
-
 
     /// <summary>
     /// 获取Blip坐标

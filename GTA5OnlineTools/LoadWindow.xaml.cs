@@ -26,8 +26,6 @@ public partial class LoadWindow
 
     private void Window_Load_Loaded(object sender, RoutedEventArgs e)
     {
-        this.DataContext = this;
-
         Task.Run(() =>
         {
             try

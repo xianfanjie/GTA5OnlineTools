@@ -121,6 +121,9 @@
                     x:Name="CheckBox_PayphoneHitCooldown"
                     Click="CheckBox_PayphoneHitCooldown_Click"
                     Content="移除公共电话任务合约冷却" />
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：移除冷却一般在任务开始前勾选，如果任务已经进入CD，此时在勾选可能不会生效
+                </TextBlock>
             </StackPanel>
 
         </StackPanel>

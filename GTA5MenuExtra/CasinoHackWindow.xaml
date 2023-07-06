@@ -114,10 +114,10 @@
                 提示：进入赌场后，先设置奖品，然后去操作对应目标就可以了
             </TextBlock>
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                建议：平时用来抽个展台车就可以了，不要把他当作刷钱功能，频繁使用和移除CD有封号风险
+                建议：平时用来抽个展台车就可以了，不要把他当作刷钱工具，频繁使用和绕过CD限制有封号风险
             </TextBlock>
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：如果要恢复赌场默认设置，请切换战局
+                提示：如果要恢复赌场默认设置，请退出赌场黑客并切换战局
             </TextBlock>
         </StackPanel>
     </Grid>

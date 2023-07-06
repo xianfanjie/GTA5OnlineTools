@@ -31,6 +31,8 @@ public partial class OutfitsEditorWindow
         e.Handled = true;
     }
 
+    ///////////////////////////////////////////////////////////////////////
+
     private void ReadOutfitsData()
     {
         if (ComboBox_OutfitIndex is null)
@@ -44,35 +46,41 @@ public partial class OutfitsEditorWindow
 
         TextBox_OutfitName.Text = Outfits.GetOutfitNameByIndex();
 
-        TextBox_TOP.Text = Outfits.TOP.ToString();
-        TextBox_TOP_TEX.Text = Outfits.TOP_TEX.ToString();
+        TextBox_HEAD.Text = Outfits.HEAD.ToString();
+        TextBox_HEAD_TEX.Text = Outfits.HEAD_TEX.ToString();
 
-        TextBox_UNDERSHIRT.Text = Outfits.UNDERSHIRT.ToString();
-        TextBox_UNDERSHIRT_TEX.Text = Outfits.UNDERSHIRT_TEX.ToString();
+        TextBox_MASKS.Text = Outfits.MASKS.ToString();
+        TextBox_MASKS_TEX.Text = Outfits.MASKS_TEX.ToString();
+
+        TextBox_HAIR.Text = Outfits.HAIR.ToString();
+        TextBox_HAIR_TEX.Text = Outfits.HAIR_TEX.ToString();
+
+        TextBox_TORSOS.Text = Outfits.TORSOS.ToString();
+        TextBox_TORSOS_TEX.Text = Outfits.TORSOS_TEX.ToString();
 
         TextBox_LEGS.Text = Outfits.LEGS.ToString();
         TextBox_LEGS_TEX.Text = Outfits.LEGS_TEX.ToString();
 
-        TextBox_FEET.Text = Outfits.FEET.ToString();
-        TextBox_FEET_TEX.Text = Outfits.FEET_TEX.ToString();
+        TextBox_BAGS.Text = Outfits.BAGS.ToString();
+        TextBox_BAGS_TEX.Text = Outfits.BAGS_TEX.ToString();
+
+        TextBox_SHOES.Text = Outfits.SHOES.ToString();
+        TextBox_SHOES_TEX.Text = Outfits.SHOES_TEX.ToString();
 
         TextBox_ACCESSORIES.Text = Outfits.ACCESSORIES.ToString();
         TextBox_ACCESSORIES_TEX.Text = Outfits.ACCESSORIES_TEX.ToString();
 
-        TextBox_BAGS.Text = Outfits.BAGS.ToString();
-        TextBox_BAGS_TEX.Text = Outfits.BAGS_TEX.ToString();
+        TextBox_UNDERSHIRTS.Text = Outfits.UNDERSHIRTS.ToString();
+        TextBox_UNDERSHIRTS_TEX.Text = Outfits.UNDERSHIRTS_TEX.ToString();
 
-        TextBox_GLOVES.Text = Outfits.GLOVES.ToString();
-        TextBox_GLOVES_TEX.Text = Outfits.GLOVES_TEX.ToString();
+        TextBox_ARMORS.Text = Outfits.ARMORS.ToString();
+        TextBox_ARMORS_TEX.Text = Outfits.ARMORS_TEX.ToString();
 
         TextBox_DECALS.Text = Outfits.DECALS.ToString();
         TextBox_DECALS_TEX.Text = Outfits.DECALS_TEX.ToString();
 
-        TextBox_MASK.Text = Outfits.MASK.ToString();
-        TextBox_MASK_TEX.Text = Outfits.MASK_TEX.ToString();
-
-        TextBox_ARMOR.Text = Outfits.ARMOR.ToString();
-        TextBox_ARMOR_TEX.Text = Outfits.ARMOR_TEX.ToString();
+        TextBox_TOPS.Text = Outfits.TOPS.ToString();
+        TextBox_TOPS_TEX.Text = Outfits.TOPS_TEX.ToString();
 
         ///////////////////////////////////////////////////////////////////////
 
@@ -88,8 +96,8 @@ public partial class OutfitsEditorWindow
         TextBox_WATCHES.Text = Outfits.WATCHES.ToString();
         TextBox_WATCHES_TEX.Text = Outfits.WATCHES_TEX.ToString();
 
-        TextBox_WRIST.Text = Outfits.WRIST.ToString();
-        TextBox_WRIST_TEX.Text = Outfits.WRIST_TEX.ToString();
+        TextBox_BRACELETS.Text = Outfits.BRACELETS.ToString();
+        TextBox_BRACELETS_TEX.Text = Outfits.BRACELETS_TEX.ToString();
     }
 
     private void WriteOutfitsData()
@@ -105,35 +113,41 @@ public partial class OutfitsEditorWindow
 
         Outfits.SetOutfitNameByIndex(TextBox_OutfitName.Text);
 
-        Outfits.TOP = Convert.ToInt32(TextBox_TOP.Text);
-        Outfits.TOP_TEX = Convert.ToInt32(TextBox_TOP_TEX.Text);
+        Outfits.HEAD = Convert.ToInt32(TextBox_HEAD.Text);
+        Outfits.HEAD_TEX = Convert.ToInt32(TextBox_HEAD_TEX.Text);
 
-        Outfits.UNDERSHIRT = Convert.ToInt32(TextBox_UNDERSHIRT.Text);
-        Outfits.UNDERSHIRT_TEX = Convert.ToInt32(TextBox_UNDERSHIRT_TEX.Text);
+        Outfits.MASKS = Convert.ToInt32(TextBox_MASKS.Text);
+        Outfits.MASKS_TEX = Convert.ToInt32(TextBox_MASKS_TEX.Text);
+
+        Outfits.HAIR = Convert.ToInt32(TextBox_HAIR.Text);
+        Outfits.HAIR_TEX = Convert.ToInt32(TextBox_HAIR_TEX.Text);
+
+        Outfits.TORSOS = Convert.ToInt32(TextBox_TORSOS.Text);
+        Outfits.TORSOS_TEX = Convert.ToInt32(TextBox_TORSOS_TEX.Text);
 
         Outfits.LEGS = Convert.ToInt32(TextBox_LEGS.Text);
         Outfits.LEGS_TEX = Convert.ToInt32(TextBox_LEGS_TEX.Text);
 
-        Outfits.FEET = Convert.ToInt32(TextBox_FEET.Text);
-        Outfits.FEET_TEX = Convert.ToInt32(TextBox_FEET_TEX.Text);
+        Outfits.BAGS = Convert.ToInt32(TextBox_BAGS.Text);
+        Outfits.BAGS_TEX = Convert.ToInt32(TextBox_BAGS_TEX.Text);
+
+        Outfits.SHOES = Convert.ToInt32(TextBox_SHOES.Text);
+        Outfits.SHOES_TEX = Convert.ToInt32(TextBox_SHOES_TEX.Text);
 
         Outfits.ACCESSORIES = Convert.ToInt32(TextBox_ACCESSORIES.Text);
         Outfits.ACCESSORIES_TEX = Convert.ToInt32(TextBox_ACCESSORIES_TEX.Text);
 
-        Outfits.BAGS = Convert.ToInt32(TextBox_BAGS.Text);
-        Outfits.BAGS_TEX = Convert.ToInt32(TextBox_BAGS_TEX.Text);
+        Outfits.UNDERSHIRTS = Convert.ToInt32(TextBox_UNDERSHIRTS.Text);
+        Outfits.UNDERSHIRTS_TEX = Convert.ToInt32(TextBox_UNDERSHIRTS_TEX.Text);
 
-        Outfits.GLOVES = Convert.ToInt32(TextBox_GLOVES.Text);
-        Outfits.GLOVES_TEX = Convert.ToInt32(TextBox_GLOVES_TEX.Text);
+        Outfits.ARMORS = Convert.ToInt32(TextBox_ARMORS.Text);
+        Outfits.ARMORS_TEX = Convert.ToInt32(TextBox_ARMORS_TEX.Text);
 
         Outfits.DECALS = Convert.ToInt32(TextBox_DECALS.Text);
         Outfits.DECALS_TEX = Convert.ToInt32(TextBox_DECALS_TEX.Text);
 
-        Outfits.MASK = Convert.ToInt32(TextBox_MASK.Text);
-        Outfits.MASK_TEX = Convert.ToInt32(TextBox_MASK_TEX.Text);
-
-        Outfits.ARMOR = Convert.ToInt32(TextBox_ARMOR.Text);
-        Outfits.ARMOR_TEX = Convert.ToInt32(TextBox_ARMOR_TEX.Text);
+        Outfits.TOPS = Convert.ToInt32(TextBox_TOPS.Text);
+        Outfits.TOPS_TEX = Convert.ToInt32(TextBox_TOPS_TEX.Text);
 
         ///////////////////////////////////////////////////////////////////////
 
@@ -149,8 +163,8 @@ public partial class OutfitsEditorWindow
         Outfits.WATCHES = Convert.ToInt32(TextBox_WATCHES.Text);
         Outfits.WATCHES_TEX = Convert.ToInt32(TextBox_WATCHES_TEX.Text);
 
-        Outfits.WRIST = Convert.ToInt32(TextBox_WRIST.Text);
-        Outfits.WRIST_TEX = Convert.ToInt32(TextBox_WRIST_TEX.Text);
+        Outfits.BRACELETS = Convert.ToInt32(TextBox_BRACELETS.Text);
+        Outfits.BRACELETS_TEX = Convert.ToInt32(TextBox_BRACELETS_TEX.Text);
     }
 
     ///////////////////////////////////////////////////////////////////////

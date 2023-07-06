@@ -60,22 +60,19 @@ public partial class WorldFunctionView : UserControl
 
     private void Slider_RPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        var value = (float)Slider_RPxN.Value;
-        _options.RPxN = value == 0.0f ? 1.0f : value;
+        _options.RPxN = (float)Slider_RPxN.Value;
         Online.RPMultiplier(_options.RPxN);
     }
 
     private void Slider_APxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        var value = (float)Slider_APxN.Value;
-        _options.APxN = value == 0.0f ? 1.0f : value;
+        _options.APxN = (float)Slider_APxN.Value;
         Online.APMultiplier(_options.APxN);
     }
 
     private void Slider_REPxN_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        var value = (float)Slider_REPxN.Value;
-        _options.REPxN = value == 0.0f ? 1.0f : value;
+        _options.REPxN = (float)Slider_REPxN.Value;
         Online.REPMultiplier(_options.REPxN);
     }
 

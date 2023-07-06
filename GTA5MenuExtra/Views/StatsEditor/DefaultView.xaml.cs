@@ -5,11 +5,11 @@ using GTA5Shared.Helper;
 namespace GTA5MenuExtra.Views.StatsEditor;
 
 /// <summary>
-/// DefaultStatView.xaml 的交互逻辑
+/// DefaultView.xaml 的交互逻辑
 /// </summary>
-public partial class DefaultStatView : UserControl
+public partial class DefaultView : UserControl
 {
-    public DefaultStatView()
+    public DefaultView()
     {
         InitializeComponent();
 

@@ -84,6 +84,7 @@
         <Setter Property="TickFrequency" Value="1" />
         <Setter Property="Background" Value="LightGray" />
         <Setter Property="Foreground" Value="#1E88E5" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:SliderIcon}">
@@ -165,6 +166,7 @@
         <Setter Property="TickFrequency" Value="0.1" />
         <Setter Property="Background" Value="LightGray" />
         <Setter Property="Foreground" Value="#1E88E5" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:SliderIcon}">

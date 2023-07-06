@@ -51,12 +51,17 @@
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
-                    CommandParameter="DefaultStatView"
+                    CommandParameter="DefaultView"
                     Content="预设STAT"
                     Style="{StaticResource NavMenuStyle_Normal}" />
                 <ui:NavMenu
                     Command="{Binding NavigateCommand}"
-                    CommandParameter="EditStatView"
+                    CommandParameter="UserfulView"
+                    Content="常用STAT"
+                    Style="{StaticResource NavMenuStyle_Normal}" />
+                <ui:NavMenu
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="EditView"
                     Content="编辑STAT"
                     Style="{StaticResource NavMenuStyle_Normal}" />
             </StackPanel>

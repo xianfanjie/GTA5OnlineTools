@@ -199,8 +199,6 @@
             <TextBox
                 x:Name="TextBox_Logger"
                 Margin="5"
-                AcceptsReturn="True"
-                IsReadOnly="False"
                 Style="{StaticResource TextBoxStyle_Logger}" />
         </DockPanel>
     </Grid>

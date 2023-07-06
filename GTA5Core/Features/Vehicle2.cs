@@ -7,6 +7,22 @@ namespace GTA5Core.Features;
 public static class Vehicle2
 {
     /// <summary>
+    /// 具有Mod黑名单的载具列表
+    /// </summary>
+    private readonly static List<string> ModBlackLists = new()
+    {
+        "banshee",
+        "sentinel",
+        "turismo2" ,
+        "deveste",
+        "hakuchou2",
+        "entity3",
+        "issi8",
+        "brioso",
+        "monstrociti"
+    };
+
+    /// <summary>
     /// 刷出线上载具
     /// </summary>
     /// <param name="model"></param>
@@ -78,14 +94,7 @@ public static class Vehicle2
         // 值设置-1代表载具默认配置
 
         // 过滤会崩溃的载具mod
-        if (model == "banshee" ||
-            model == "sentinel" ||
-            model == "turismo2" ||
-            model == "deveste" ||
-            model == "hakuchou2" ||
-            model == "entity3" ||
-            model == "issi8" ||
-            model == "brioso")
+        if (ModBlackLists.Contains(model))
             return;
 
         ////////////////////////////////////////////////////

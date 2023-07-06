@@ -93,6 +93,8 @@ public partial class GTA5InitWindow
                 Memory.GTA5WinHandle = Memory.GTA5Process.MainWindowHandle;
                 Logger($"《GTA5》程序窗口句柄 {Memory.GTA5WinHandle}");
 
+                Logger($"《GTA5》程序窗口标题 {Memory.GTA5Process.MainWindowTitle}");
+
                 if (Memory.GTA5Process.Id == 0)
                 {
                     Logger("发生错误，《GTA5》程序进程ID为空");

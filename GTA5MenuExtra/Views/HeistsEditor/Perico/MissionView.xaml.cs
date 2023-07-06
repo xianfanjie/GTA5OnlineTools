@@ -76,10 +76,15 @@ public partial class MissionView : UserControl
 
         // 任务难度
         var index = ListBox_H4_PROGRESS.SelectedIndex;
-        if (index == 1)
-            AppendLogger("MPx_H4_PROGRESS", 126823);
-        else
-            AppendLogger("MPx_H4_PROGRESS", 131055);
+        switch (index)
+        {
+            case 1:
+                AppendLogger("MPx_H4_PROGRESS", 126823);
+                break;
+            case 2:
+                AppendLogger("MPx_H4_PROGRESS", 131055);
+                break;
+        }
 
         // 主要目标
         index = ListBox_H4CNF_TARGET.SelectedIndex;

@@ -46,7 +46,7 @@
                     更多
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    ● 详细使用教程，请前往小助手官方网站查看&#160;<Hyperlink NavigateUri="https://crazyzhang.cn" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn/</Hyperlink>
+                    ● 详细使用教程，请前往小助手官方网站查看&#160;<Hyperlink NavigateUri="https://crazyzhang.cn" RequestNavigate="Hyperlink_RequestNavigate">https://crazyzhang.cn</Hyperlink>
                 </Paragraph>
 
             </FlowDocument>

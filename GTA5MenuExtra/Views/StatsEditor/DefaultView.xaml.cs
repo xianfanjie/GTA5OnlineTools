@@ -16,9 +16,9 @@ public partial class DefaultView : UserControl
         // STAT列表
         foreach (var item in StatData.StatClasses)
         {
-            ListBox_STATList.Items.Add(item.Name);
+            ListBox_STATClass.Items.Add(item.Name);
         }
-        ListBox_STATList.SelectedIndex = 0;
+        ListBox_STATClass.SelectedIndex = 0;
     }
 
     private void AppendTextBox(string log)
@@ -30,13 +30,40 @@ public partial class DefaultView : UserControl
         });
     }
 
+    private void AppendTextBox(string statName, int value)
+    {
+        TextBox_Logger.AppendText($"${statName}\n");
+        TextBox_Logger.AppendText($"{value}\n");
+    }
+
     private void Button_ExecuteAutoScript_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        var item = ListBox_STATList.SelectedItem;
+        var item = ListBox_STATClass.SelectedItem;
         if (item != null)
             STAT_SET_VALUE(item.ToString());
+    }
+
+    private void ListBox_STATClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ListBox_STATClass.SelectedItem is string statClassName)
+        {
+            var result = StatData.StatClasses.Find(t => t.Name == statClassName);
+            if (result == null)
+                return;
+
+            TextBox_Logger.Clear();
+            TextBox_Logger.AppendText("INT32\n");
+
+            for (var i = 0; i < result.StatInfos.Count; i++)
+            {
+                var hash = result.StatInfos[i].Hash;
+                var value = result.StatInfos[i].Value;
+
+                AppendTextBox(hash, value);
+            }
+        }
     }
 
     private void STAT_SET_VALUE(string statClassName)

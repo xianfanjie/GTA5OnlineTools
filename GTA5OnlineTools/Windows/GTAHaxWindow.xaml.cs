@@ -32,7 +32,7 @@ public partial class GTAHaxWindow
 
     }
 
-    private void TextBox_AppendText(string statName, int value)
+    private void AppendTextBox(string statName, int value)
     {
         TextBox_PreviewGTAHax.AppendText($"${statName}\n");
         TextBox_PreviewGTAHax.AppendText($"{value}\n");
@@ -54,7 +54,7 @@ public partial class GTAHaxWindow
                 var hash = result.StatInfos[i].Hash;
                 var value = result.StatInfos[i].Value;
 
-                TextBox_AppendText(hash, value);
+                AppendTextBox(hash, value);
             }
         }
     }

@@ -36,11 +36,11 @@
         </StackPanel>
         <!--  /////////////////  -->
         <ListBox
-            x:Name="ListBox_STATList"
+            x:Name="ListBox_STATClass"
             Grid.Row="1"
             Grid.Column="0"
             Margin="5,0,5,5"
-            DockPanel.Dock="Bottom"
+            SelectionChanged="ListBox_STATClass_SelectionChanged"
             Style="{StaticResource ListBoxStyle_Base}" />
         <!--  /////////////////  -->
         <TextBox

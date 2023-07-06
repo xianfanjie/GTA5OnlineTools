@@ -43,25 +43,25 @@ public partial class Kiddion2Window
         var textLists = new List<string>();
 
         var pArray = Process.GetProcessesByName("Kiddion");
-        if (pArray.Length > 0)
+        if (pArray.Length == 0)
+            return textLists;
+
+        var main_handle = pArray.First().MainWindowHandle;
+
+        var button_handle = Win32.FindWindowEx(main_handle, IntPtr.Zero, "Button", null);
+        while (button_handle != IntPtr.Zero)
         {
-            var main_handle = pArray[0].MainWindowHandle;
+            var length = Win32.GetWindowTextLength(button_handle);
+            var build = new StringBuilder(length + 1);
+            _ = Win32.GetWindowText(button_handle, build, build.Capacity);
 
-            var button_handle = Win32.FindWindowEx(main_handle, IntPtr.Zero, "Button", null);
-            while (button_handle != IntPtr.Zero)
-            {
-                var length = Win32.GetWindowTextLength(button_handle);
-                var build = new StringBuilder(length + 1);
-                _ = Win32.GetWindowText(button_handle, build, build.Capacity);
+            var text = build.ToString();
+            var split = text.IndexOf("|");
+            if (split != -1)
+                text = text[..split];
 
-                var text = build.ToString();
-                var split = text.IndexOf("|");
-                if (split != -1)
-                    text = text[..split];
-
-                button_handle = Win32.FindWindowEx(main_handle, button_handle, "Button", null);
-                textLists.Add($"{text}");
-            }
+            button_handle = Win32.FindWindowEx(main_handle, button_handle, "Button", null);
+            textLists.Add($"{text}");
         }
 
         return textLists;

@@ -1,4 +1,5 @@
 ﻿using GTA5Core.Native;
+using GTA5OnlineTools.Views.ReadMe;
 using GTA5Shared.Helper;
 
 namespace GTA5OnlineTools.Utils;
@@ -22,17 +23,24 @@ public static class HackUtil
                 ProcessHelper.OpenProcessWithWorkDir(FileHelper.File_Cache_GTAHax);
 
             Process pGTAHax = null;
+
             for (int i = 0; i < 8; i++)
             {
-                // 拿到GTAHax进程
+                // 尝试获取GTAHax进程
                 var pArray = Process.GetProcessesByName("GTAHax");
                 if (pArray.Length > 0)
-                    pGTAHax = pArray[0];
+                    pGTAHax = pArray.First();
 
                 if (pGTAHax != null)
                     break;
 
                 await Task.Delay(250);
+            }
+
+            if (pGTAHax is null)
+            {
+                NotifierHelper.Show(NotifierType.Error, "发生错误，无法获取GTAHax进程信息");
+                return;
             }
 
             var menuHandle = IntPtr.Zero;
@@ -42,7 +50,8 @@ public static class HackUtil
                 menuHandle = pGTAHax.MainWindowHandle;
                 childHandle = Win32.FindWindowEx(menuHandle, IntPtr.Zero, "Static", null);
 
-                if (menuHandle != IntPtr.Zero && childHandle != IntPtr.Zero)
+                if (menuHandle != IntPtr.Zero && 
+                    childHandle != IntPtr.Zero)
                     break;
 
                 await Task.Delay(250);
@@ -60,18 +69,17 @@ public static class HackUtil
 
             childHandle = Win32.FindWindowEx(menuHandle, childHandle, "Button", null);
 
-            if (childHandle != IntPtr.Zero)
-            {
-                _ = Win32.SendMessage(childHandle, Win32.WM_LBUTTONDOWN, IntPtr.Zero, null);
-                _ = Win32.SendMessage(childHandle, Win32.WM_LBUTTONUP, IntPtr.Zero, null);
-
-                if (!isOnleyRun)
-                    NotifierHelper.Show(NotifierType.Success, "导入到GTAHax成功！游戏内应该会出现大受好评奖章\n如果无反应，请手动点击GTAHax程序左下角《导入》按钮");
-            }
-            else
+            if (childHandle == IntPtr.Zero)
             {
                 NotifierHelper.Show(NotifierType.Error, "GTAHax按键模拟失败，请手动点击GTAHax程序左下角《导入》按钮");
+                return;
             }
+
+            _ = Win32.SendMessage(childHandle, Win32.WM_LBUTTONDOWN, IntPtr.Zero, null);
+            _ = Win32.SendMessage(childHandle, Win32.WM_LBUTTONUP, IntPtr.Zero, null);
+
+            if (!isOnleyRun)
+                NotifierHelper.Show(NotifierType.Success, "导入到GTAHax成功！游戏内应该会出现大受好评奖章\n如果无反应，请手动点击GTAHax程序左下角《导入》按钮");
         }
         catch (Exception ex)
         {

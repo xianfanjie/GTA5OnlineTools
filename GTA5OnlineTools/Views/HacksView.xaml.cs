@@ -1,4 +1,5 @@
-﻿using GTA5OnlineTools.Models;
+﻿using GTA5OnlineTools.Utils;
+using GTA5OnlineTools.Models;
 using GTA5OnlineTools.Windows;
 using GTA5OnlineTools.Views.ReadMe;
 
@@ -6,7 +7,7 @@ using GTA5Inject;
 using GTA5Shared.Helper;
 
 using CommunityToolkit.Mvvm.Input;
-using GTA5OnlineTools.Utils;
+using GTA5Core.Native;
 
 namespace GTA5OnlineTools.Views;
 
@@ -204,7 +205,7 @@ public partial class HacksView : UserControl
             case "ResetYimMenuConfig":
                 ResetYimMenuConfigClick();
                 break;
-            #endregion
+                #endregion
         }
     }
 
@@ -236,12 +237,13 @@ public partial class HacksView : UserControl
         ProcessHelper.OpenProcessWithWorkDir(FileHelper.File_Kiddion_Kiddion);
 
         Process pKiddion = null;
+
         for (int i = 0; i < 8; i++)
         {
-            // 拿到Kiddion进程
+            // 尝试获取Kiddion进程
             var pArray = Process.GetProcessesByName("Kiddion");
             if (pArray.Length > 0)
-                pKiddion = pArray[0];
+                pKiddion = pArray.First();
 
             if (pKiddion != null)
                 break;
@@ -249,15 +251,17 @@ public partial class HacksView : UserControl
             await Task.Delay(250);
         }
 
+        if (pKiddion is null)
+        {
+            NotifierHelper.Show(NotifierType.Error, "发生错误，无法获取Kiddion进程信息");
+            return;
+        }
+
         var result = Injector.DLLInjector(pKiddion.Id, FileHelper.File_Kiddion_KiddionChs, false);
         if (result.IsSuccess)
-        {
             NotifierHelper.Show(NotifierType.Success, "Kiddion汉化加载成功");
-        }
         else
-        {
             NotifierHelper.Show(NotifierType.Error, $"Kiddion汉化加载失败\n错误信息：{result.Content}");
-        }
     }
 
     /// <summary>
@@ -310,27 +314,19 @@ public partial class HacksView : UserControl
             LoggerHelper.Error($"释放Yimmenu官中语言文件失败，异常信息：{ex.Message}");
         }
 
-        Process GTA5Process = null;
-
-        foreach (var item in Process.GetProcessesByName("GTA5"))
+        // 由于玩家可能只使用YimMenu，GTA5Core模块不会初始化，这里要单独处理
+        Process gta5Process;
+        if (Memory.GTA5ProId == 0)
         {
-            if (item.MainWindowHandle == IntPtr.Zero)
-                continue;
-
-            if (item.MainModule.FileVersionInfo.LegalCopyright.Contains("Rockstar Games Inc."))
-            {
-                GTA5Process = item;
-                break;
-            }
+            var pArray = Process.GetProcessesByName("GTA5");
+            gta5Process = pArray.First();
+        }
+        else
+        {
+            gta5Process = Memory.GTA5Process;
         }
 
-        if (GTA5Process == null)
-        {
-            NotifierHelper.Show(NotifierType.Warning, "未发现正确的《GTA5》进程");
-            return;
-        }
-
-        var result = Injector.DLLInjector(GTA5Process.Id, FileHelper.File_YimMenu_DLL, true);
+        var result = Injector.DLLInjector(gta5Process.Id, FileHelper.File_YimMenu_DLL, true);
         if (result.IsSuccess)
             NotifierHelper.Show(NotifierType.Success, "YimMenu菜单注入成功");
         else

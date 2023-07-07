@@ -13,20 +13,29 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="260" />
         </Grid.ColumnDefinitions>
         <!--  /////////////////  -->
         <StackPanel Grid.Column="0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130" />
-                    <ColumnDefinition Width="110" />
-                    <ColumnDefinition Width="135" />
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="140" />
                     <ColumnDefinition />
-                    <ColumnDefinition Width="0.9*" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <!--  /////////////  -->
                 <StackPanel Grid.Column="0" Margin="5">
+                    <ListBox
+                        x:Name="ListBox_H4_PROGRESS"
+                        Margin="5"
+                        SelectedIndex="0"
+                        Style="{StaticResource ListBoxStyle_Base}">
+                        <ListBoxItem Content="《任务难度》" FontWeight="Bold" />
+                        <ListBoxItem Content="普通模式" />
+                        <ListBoxItem Content="困难模式" />
+                    </ListBox>
+                    <!--  /////////////  -->
                     <CheckBox x:Name="CheckBox_H4CNF_BS_ENTR" Content="解锁所有入侵点" />
                     <CheckBox x:Name="CheckBox_H4CNF_APPROACH" Content="解锁所有逃离点" />
                     <CheckBox x:Name="CheckBox_H4CNF_BS_GEN" Content="解锁所有兴趣点" />
@@ -34,19 +43,8 @@
                 </StackPanel>
                 <!--  /////////////  -->
                 <ListBox
-                    x:Name="ListBox_H4_PROGRESS"
-                    Grid.Column="1"
-                    Margin="5"
-                    SelectedIndex="0"
-                    Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="《任务难度》" FontWeight="Bold" />
-                    <ListBoxItem Content="普通模式" />
-                    <ListBoxItem Content="困难模式" />
-                </ListBox>
-                <!--  /////////////  -->
-                <ListBox
                     x:Name="ListBox_H4CNF_TARGET"
-                    Grid.Column="2"
+                    Grid.Column="1"
                     Margin="5"
                     SelectedIndex="0"
                     Style="{StaticResource ListBoxStyle_Base}">
@@ -59,7 +57,7 @@
                     <ListBoxItem Content="猎豹雕像" />
                 </ListBox>
                 <!--  /////////////  -->
-                <StackPanel Grid.Column="3">
+                <StackPanel Grid.Column="2">
                     <ListBox
                         x:Name="ListBox_H4LOOT"
                         Margin="5"
@@ -74,23 +72,24 @@
                     <CheckBox x:Name="CheckBox_H4LOOT_Random" Content="随机次要目标" />
                 </StackPanel>
                 <!--  /////////////  -->
-                <ListBox
-                    x:Name="ListBox_H4LOOT_PAINT"
-                    Grid.Column="4"
-                    Margin="5"
-                    SelectedIndex="0"
-                    Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="《次要目标（画作）》" FontWeight="Bold" />
-                    <ListBoxItem Content="已发现/侦察 画作（室内/室外）" />
-                </ListBox>
+                <StackPanel Grid.Column="3">
+                    <ListBox
+                        x:Name="ListBox_H4LOOT_PAINT"
+                        Margin="5"
+                        SelectedIndex="0"
+                        Style="{StaticResource ListBoxStyle_Base}">
+                        <ListBoxItem Content="《次要目标（画作）》" FontWeight="Bold" />
+                        <ListBoxItem Content="已发现/侦察 画作（室内/室外）" />
+                    </ListBox>
+                </StackPanel>
             </Grid>
             <!--  /////////////  -->
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="140" />
                     <ColumnDefinition />
-                    <ColumnDefinition Width="150" />
-                    <ColumnDefinition Width="150" />
                 </Grid.ColumnDefinitions>
                 <ListBox
                     x:Name="ListBox_H4_MISSIONS"
@@ -108,19 +107,27 @@
                     <ListBoxItem Content="全部载具可用" />
                 </ListBox>
                 <!--  /////////////  -->
-                <ListBox
-                    x:Name="ListBox_H4CNF_WEAPONS"
-                    Grid.Column="1"
-                    Margin="5"
-                    SelectedIndex="0"
-                    Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="《武器装备》" FontWeight="Bold" />
-                    <ListBoxItem Content="侵略者（连发散弹，连发手枪，手雷，砍刀）" />
-                    <ListBoxItem Content="阴谋者（军用步枪，单发手枪，粘弹，指虎）" />
-                    <ListBoxItem Content="神枪手（轻狙，连发手枪，燃烧瓶，小刀）" />
-                    <ListBoxItem Content="破坏者（MK2冲锋枪，单发手枪，土质炸弹，小刀）" />
-                    <ListBoxItem Content="神射手（MK2突击步枪，单发手枪，土质炸弹，砍刀）" />
-                </ListBox>
+                <StackPanel Grid.Column="1">
+                    <ListBox
+                        x:Name="ListBox_H4CNF_WEAPONS"
+                        Margin="5"
+                        SelectedIndex="0"
+                        Style="{StaticResource ListBoxStyle_Base}">
+                        <ListBoxItem Content="《武器装备》" FontWeight="Bold" />
+                        <ListBoxItem Content="侵略者（连发散弹，连发手枪，手雷，砍刀）" />
+                        <ListBoxItem Content="阴谋者（军用步枪，单发手枪，粘弹，指虎）" />
+                        <ListBoxItem Content="神枪手（轻狙，连发手枪，燃烧瓶，小刀）" />
+                        <ListBoxItem Content="破坏者（MK2冲锋枪，单发手枪，土质炸弹，小刀）" />
+                        <ListBoxItem Content="神射手（MK2突击步枪，单发手枪，土质炸弹，砍刀）" />
+                    </ListBox>
+                    <!--  /////////////  -->
+                    <TextBlock Margin="5" Text="干扰" />
+                    <WrapPanel>
+                        <CheckBox x:Name="CheckBox_H4CNF_WEP_DISRP" Content="武器" />
+                        <CheckBox x:Name="CheckBox_H4CNF_ARM_DISRP" Content="防弹衣" />
+                        <CheckBox x:Name="CheckBox_H4CNF_HEL_DISRP" Content="空中支援" />
+                    </WrapPanel>
+                </StackPanel>
                 <!--  /////////////  -->
                 <ListBox
                     x:Name="ListBox_H4CNF_TROJAN"
@@ -137,10 +144,7 @@
                 </ListBox>
                 <!--  /////////////  -->
                 <StackPanel Grid.Column="3" Margin="5">
-                    <TextBlock Margin="5" Text="干扰" />
-                    <CheckBox x:Name="CheckBox_H4CNF_WEP_DISRP" Content="武器" />
-                    <CheckBox x:Name="CheckBox_H4CNF_ARM_DISRP" Content="防弹衣" />
-                    <CheckBox x:Name="CheckBox_H4CNF_HEL_DISRP" Content="空中支援" />
+
                     <!--  //////////  -->
                     <TextBlock Margin="5" Text="其他" />
                     <CheckBox x:Name="CheckBox_H4CNF_GRAPPEL" Content="解锁抓钩" />
@@ -156,8 +160,8 @@
             </Grid>
             <!--  /////////////  -->
             <StackPanel>
-                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：跑到虎鲸直升机仓那里，然后在跑回来，虎鲸面板会自动刷新，否则看不到改动结果
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}" TextWrapping="Wrap">
+                    提示：导入完成后，跑到虎鲸直升机仓那里，然后在跑回来，虎鲸面板会自动刷新，否则看不到改动结果
                 </TextBlock>
             </StackPanel>
         </StackPanel>

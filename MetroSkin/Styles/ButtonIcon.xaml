@@ -67,8 +67,8 @@
                 <ControlTemplate TargetType="{x:Type controls:ButtonIcon}">
                     <Border
                         Name="border"
-                        Width="300"
-                        Height="150"
+                        Width="265"
+                        Height="125"
                         Margin="{TemplateBinding Margin}"
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
@@ -76,33 +76,36 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="5"
                         SnapsToDevicePixels="True">
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <controls:IconFont
-                                Margin="0,0,20,0"
-                                VerticalAlignment="Center"
-                                FontSize="50"
-                                Foreground="#2196F3"
-                                Icon="{TemplateBinding Icon}" />
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <TextBlock
-                                    FontSize="18"
-                                    FontWeight="Bold"
-                                    Text="{TemplateBinding Title}" />
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal">
                                 <controls:IconFont
-                                    Margin="0,5,0,5"
-                                    HorizontalAlignment="Left"
-                                    FontSize="14"
-                                    Icon="{TemplateBinding Star}" />
-                                <TextBlock
-                                    Height="45"
-                                    FontSize="12"
-                                    Text="{TemplateBinding Description}"
-                                    TextWrapping="WrapWithOverflow" />
+                                    Margin="10,0,15,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="40"
+                                    Foreground="#2196F3"
+                                    Icon="{TemplateBinding Icon}" />
+                                <StackPanel>
+                                    <TextBlock
+                                        FontSize="18"
+                                        FontWeight="Bold"
+                                        Text="{TemplateBinding Title}" />
+                                    <controls:IconFont
+                                        Margin="0,5,0,0"
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Icon="{TemplateBinding Star}" />
+                                </StackPanel>
                             </StackPanel>
+                            <TextBlock
+                                Grid.Row="1"
+                                Margin="5,10,5,5"
+                                FontSize="12"
+                                Text="{TemplateBinding Description}"
+                                TextWrapping="WrapWithOverflow" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -135,8 +138,8 @@
                 <ControlTemplate TargetType="{x:Type controls:ButtonIcon}">
                     <Border
                         Name="border"
-                        Width="200"
-                        Height="100"
+                        Width="175"
+                        Height="90"
                         Margin="{TemplateBinding Margin}"
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"

@@ -43,6 +43,10 @@
                     x:Name="Button_GetInOnlinePV"
                     Click="Button_GetInOnlinePV_Click"
                     Content="坐进个人载具" />
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：只能呼叫技工可以送的车，帕加索斯载具无法呼叫
+                </TextBlock>
             </StackPanel>
         </DockPanel>
         <!--  ////////////////////////////////////  -->

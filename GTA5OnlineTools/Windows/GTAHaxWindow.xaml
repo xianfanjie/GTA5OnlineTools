@@ -51,7 +51,7 @@
             <Button
                 x:Name="Button_ImportGTAHax"
                 Click="Button_ImportGTAHax_Click"
-                Content="导入GTAHax" />
+                Content="导入GTAHax的stat.txt文件并执行" />
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 提示：如果代码执行成功，游戏中会出现《大受好评》的奖章，并给予少于经验值
             </TextBlock>

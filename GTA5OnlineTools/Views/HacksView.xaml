@@ -43,17 +43,17 @@
                         CommandParameter="KiddionKey104"
                         Content="104键" />
                     <Button
-                        Background="#F36838"
+                        Background="#4285F4"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="KiddionKey87"
                         Content="87键" />
                     <Button
-                        Background="#009AD6"
+                        Background="#FFB100"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="KiddionConfigDirectory"
                         Content="配置目录" />
                     <Button
-                        Background="#00AE9D"
+                        Background="#FFB100"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="KiddionScriptsDirectory"
                         Content="脚本目录" />
@@ -69,7 +69,7 @@
                         CommandParameter="EditKiddionConfig"
                         Content="配置文件" />
                     <Button
-                        Background="#1685A9"
+                        Background="#34A853"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="EditKiddionTheme"
                         Content="主题文件" />
@@ -79,7 +79,7 @@
                         CommandParameter="EditKiddionTP"
                         Content="自定传送" />
                     <Button
-                        Background="#4C8DAE"
+                        Background="#34A853"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="EditKiddionVC"
                         Content="自定载具" />
@@ -88,12 +88,7 @@
                         Background="#EA4335"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="ResetKiddionConfig"
-                        Content="重置Kiddion配置文件" />
-                    <Button
-                        Background="#2397DA"
-                        Command="{Binding ExtraClickCommand}"
-                        CommandParameter="KiddionChsPolish"
-                        Content="汉化修正" />
+                        Content="重置配置文件" />
                 </WrapPanel>
             </ui:GroupBoxHack.DescriptionContent>
         </ui:GroupBoxHack>
@@ -127,12 +122,12 @@
                         CommandParameter="EditGTAHaxStat"
                         Content="导入文件" />
                     <Button
-                        Background="#F36838"
+                        Background="#CA64EA"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="RunGTAHaxStat"
                         Content="运行导入文件" />
                     <Button
-                        Background="#34A853"
+                        Background="#00AE9D"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="DefaultGTAHaxStat"
                         Content="预设代码" />
@@ -214,12 +209,12 @@
                 <StackPanel>
                     <WrapPanel>
                         <Button
-                            Background="#009AD6"
+                            Background="#FFB100"
                             Command="{Binding ExtraClickCommand}"
                             CommandParameter="YimMenuDirectory"
                             Content="配置目录" />
                         <Button
-                            Background="#00AE9D"
+                            Background="#FFB100"
                             Command="{Binding ExtraClickCommand}"
                             CommandParameter="YimMenuScriptsDirectory"
                             Content="脚本目录" />
@@ -237,7 +232,7 @@
                             Background="#EA4335"
                             Command="{Binding ExtraClickCommand}"
                             CommandParameter="ResetYimMenuConfig"
-                            Content="重置YimMenu配置文件" />
+                            Content="重置配置文件" />
                     </WrapPanel>
                 </StackPanel>
             </ui:GroupBoxHack.DescriptionContent>

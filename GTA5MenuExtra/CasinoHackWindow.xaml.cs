@@ -30,7 +30,7 @@ public partial class CasinoHackWindow
 
     private void Window_CasinoHack_Closing(object sender, CancelEventArgs e)
     {
-
+        _disposed = true;
     }
 
     private void CasinoHackLoopThread()

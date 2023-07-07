@@ -8,7 +8,7 @@
     x:Name="Window_GTA5Menu"
     Title="GTA5线上小助手 - 外置菜单"
     Width="1100"
-    Height="600"
+    Height="620"
     Closing="Window_GTA5Menu_Closing"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_GTA5Menu_Loaded"

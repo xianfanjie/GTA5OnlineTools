@@ -45,7 +45,7 @@
                 DockPanel.Dock="Right"
                 Orientation="Horizontal">
                 <Button
-                    Background="#E6B428"
+                    Background="#FFB100"
                     Command="{Binding LuaScriptClickCommand}"
                     CommandParameter="LuaScriptDir"
                     Content="打开脚本目录" />

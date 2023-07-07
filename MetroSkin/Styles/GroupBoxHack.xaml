@@ -18,8 +18,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:GroupBoxHack}">
                     <Border
-                        Width="600"
-                        Height="200"
+                        Width="535"
+                        Height="180"
                         Margin="5,5,1,1"
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
@@ -29,7 +29,7 @@
                         SnapsToDevicePixels="True">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="135" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <!--  预览图片  -->
@@ -94,7 +94,7 @@
                                     Text="{TemplateBinding Description}"
                                     TextWrapping="Wrap" />
                                 <!--  描述 额外功能  -->
-                                <ContentPresenter Content="{TemplateBinding DescriptionContent}" DockPanel.Dock="Top" />
+                                <ContentPresenter Content="{TemplateBinding DescriptionContent}" DockPanel.Dock="Bottom" />
                             </DockPanel>
                         </Grid>
                     </Border>

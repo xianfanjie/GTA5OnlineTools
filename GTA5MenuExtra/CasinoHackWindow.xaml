@@ -111,7 +111,10 @@
             </UniformGrid>
 
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：进入赌场后，先设置奖品，然后去操作对应目标就可以了
+                提示：进入赌场后在使用此功能，在操作对应目标前先设置奖品
+            </TextBlock>
+            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                提示：有时候转盘显示内容不是我们指定的奖品，但是实际奖品是我们修改的一致（最终结果为实际奖励为准）
             </TextBlock>
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 建议：平时用来抽个展台车就可以了，不要把他当作刷钱工具，频繁使用和绕过CD限制有封号风险

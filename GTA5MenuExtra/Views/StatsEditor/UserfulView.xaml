@@ -30,10 +30,18 @@
                     x:Name="Button_CHAR_ABILITY"
                     Click="Button_CHAR_ABILITY_Click"
                     Content="隐藏属性全满" />
+            </WrapPanel>
+
+            <ui:LabelIcon Content="性别" />
+            <WrapPanel Margin="5,0,5,0">
                 <Button
                     x:Name="Button_CHAR_ABILITY0"
                     Click="Button_CHAR_ABILITY0_Click"
                     Content="重置隐藏属性" />
+                <Button
+                    x:Name="Button_PLAYER_MENTAL_STATE"
+                    Click="Button_PLAYER_MENTAL_STATE_Click"
+                    Content="清除精神状态" />
             </WrapPanel>
 
             <ui:LabelIcon Content="性别" />

@@ -58,11 +58,20 @@ public partial class UserfulView : UserControl
         STAT_SET_INT(StatData.CHAR_ABILITY);
     }
 
+    ////////////////////////////////////////////////////
+
     private void Button_CHAR_ABILITY0_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         STAT_SET_INT(StatData.CHAR_ABILITY0);
+    }
+
+    private void Button_PLAYER_MENTAL_STATE_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        STATS.STAT_SET_FLOAT("MPx_PLAYER_MENTAL_STATE", 0);
     }
 
     ////////////////////////////////////////////////////

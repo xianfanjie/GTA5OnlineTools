@@ -42,7 +42,7 @@
                     Click="Button_TUNER_CURRENT_Click"
                     Content="跳过前置任务" />
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：第个警局偷车任务玩家需要自己做
+                    提示：初始的警局偷车任务玩家需要自己做
                 </TextBlock>
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     提示：使用跳过改装铺前置任务后，离开改装铺再进来面板就会刷新

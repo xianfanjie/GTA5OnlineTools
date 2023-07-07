@@ -29,6 +29,10 @@
 		<DebugType>full</DebugType>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <None Remove="Assets\Hints\StartupMeta.png" />
+	</ItemGroup>
+
     <ItemGroup>
         <ProjectReference Include="..\GTA5Inject\GTA5Inject.csproj" />
         <ProjectReference Include="..\GTA5MenuExtra\GTA5MenuExtra.csproj" />
@@ -46,6 +50,7 @@
         <Resource Include="Assets\Hacks\Kiddion.png" />
         <Resource Include="Assets\Hacks\LSCHax.png" />
         <Resource Include="Assets\Hacks\YimMenu.png" />
+        <Resource Include="Assets\Hints\StartupMeta.png" />
         <Resource Include="Assets\Launch.png" />
     </ItemGroup>
 

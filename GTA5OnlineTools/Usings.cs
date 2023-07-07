@@ -17,3 +17,4 @@ global using System.Windows.Navigation;
 global using System.Windows.Shell;
 global using System.Windows.Threading;
 global using System.Security.Principal;
+global using Microsoft.Win32;

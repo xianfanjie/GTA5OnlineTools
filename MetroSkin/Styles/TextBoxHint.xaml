@@ -9,21 +9,20 @@
     <Style TargetType="{x:Type controls:TextBoxHint}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="ContextMenu" Value="{x:Null}" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderBrush" Value="Gray" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="AllowDrop" Value="true" />
-        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="Padding" Value="8" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="Icon" Value="&#xe8d6;" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:TextBoxHint}">
@@ -38,7 +37,7 @@
                             <controls:IconFont
                                 Margin="10,0,0,0"
                                 FontSize="16"
-                                Icon="&#xe8d6;" />
+                                Icon="{TemplateBinding Icon}" />
                             <Grid>
                                 <ScrollViewer
                                     x:Name="PART_ContentHost"

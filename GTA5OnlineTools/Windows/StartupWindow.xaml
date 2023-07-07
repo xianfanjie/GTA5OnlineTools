@@ -8,7 +8,7 @@
     x:Name="Window_Startup"
     Title="GTA5线上小助手 - 生成带密码战局文件"
     Width="500"
-    Height="400"
+    Height="250"
     Closing="Window_Startup_Closing"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_Startup_Loaded"
@@ -32,6 +32,42 @@
         </StackPanel>
     </ui:Window.TitleContent>
 
-    <Grid />
+    <StackPanel Margin="5">
+        <WrapPanel>
+            <Button
+                x:Name="Button_StringToBase64"
+                Click="Button_StringToBase64_Click"
+                Content="密码转Base64"
+                IsEnabled="{Binding ElementName=TextBox_Password, Path=Text, Converter={StaticResource IsNullOrEmpty2Converter}}" />
+            <Button
+                x:Name="Button_BuildStartup"
+                Click="Button_BuildStartup_Click"
+                Content="生成 startup.meta 文件"
+                IsEnabled="{Binding ElementName=TextBox_Password, Path=Text, Converter={StaticResource IsNullOrEmpty2Converter}}" />
+            <TextBlock
+                Margin="5"
+                VerticalAlignment="Center"
+                Foreground="#21A366"
+                Text="鼠标悬浮我预览位置截图">
+                <TextBlock.ToolTip>
+                    <Image Source="/Assets/Hints/StartupMeta.png" />
+                </TextBlock.ToolTip>
+            </TextBlock>
+        </WrapPanel>
+        <ui:TextBoxHint
+            x:Name="TextBox_Password"
+            Hint="请输入你要设置的战局密码"
+            Icon="&#xe64c;" />
+
+        <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+            位置：Grand Theft Auto V \ x64 \ data
+        </TextBlock>
+        <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+            提示：只有与你拥有相同startup.meta文件的玩家才可以进入你的战局，其余玩家均无法进入
+        </TextBlock>
+        <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+            提示：startup.meta文件放到对应目录后，再启动GTA5游戏。如果想解除限制，直接删除startup.meta文件重启游戏即可
+        </TextBlock>
+    </StackPanel>
 
 </ui:Window>

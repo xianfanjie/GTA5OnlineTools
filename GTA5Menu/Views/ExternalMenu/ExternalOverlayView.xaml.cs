@@ -15,7 +15,7 @@ public partial class ExternalOverlayView : UserControl
     public ExternalOverlayView()
     {
         InitializeComponent();
-        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent; ;
+        GTA5MenuWindow.WindowClosingEvent += GTA5MenuWindow_WindowClosingEvent;
     }
 
     private void GTA5MenuWindow_WindowClosingEvent()
@@ -23,6 +23,8 @@ public partial class ExternalOverlayView : UserControl
         CloseESP();
         // 重置ESP按键
         Setting.Reset();
+
+        GTA5MenuWindow.WindowClosingEvent -= GTA5MenuWindow_WindowClosingEvent;
     }
 
     /////////////////////////////////////////////////
@@ -172,7 +174,7 @@ public partial class ExternalOverlayView : UserControl
     }
 
     ///////////////////////////////////////////////////////////////////
-    
+
     private void CheckBox_ESP_Pickup_Click(object sender, RoutedEventArgs e)
     {
         Setting.ESP_Pickup = CheckBox_ESP_Pickup.IsChecked == true;

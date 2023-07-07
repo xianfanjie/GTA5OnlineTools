@@ -39,7 +39,7 @@ public partial class FindVehicleView : UserControl
 
     private void GTA5MenuWindow_WindowClosingEvent()
     {
-
+        GTA5MenuWindow.WindowClosingEvent -= GTA5MenuWindow_WindowClosingEvent;
     }
 
     /////////////////////////////////////////////////

@@ -31,7 +31,7 @@ public partial class SpawnWeaponView : UserControl
 
     private void ExternalMenuWindow_WindowClosingEvent()
     {
-
+        GTA5MenuWindow.WindowClosingEvent -= ExternalMenuWindow_WindowClosingEvent;
     }
 
     /////////////////////////////////////////////////////

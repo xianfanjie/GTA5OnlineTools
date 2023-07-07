@@ -30,6 +30,8 @@ public partial class MyVehicleView : UserControl
     private void GTA5MenuWindow_WindowClosingEvent()
     {
         SaveConfig();
+
+        GTA5MenuWindow.WindowClosingEvent -= GTA5MenuWindow_WindowClosingEvent;
     }
 
     /////////////////////////////////////////////////

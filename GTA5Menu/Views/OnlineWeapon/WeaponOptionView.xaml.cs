@@ -37,7 +37,8 @@ public partial class WeaponOptionView : UserControl
 
     private void GTA5MenuWindow_WindowClosingEvent()
     {
-
+        GTA5MenuWindow.WindowClosingEvent -= GTA5MenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.LoopSpeedNormalEvent -= GTA5MenuWindow_LoopSpeedNormalEvent;
     }
 
     /////////////////////////////////////////////////////

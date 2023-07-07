@@ -174,7 +174,7 @@ public static class StatData
 
     #region 资产
     /// <summary>
-    /// 补满夜总会人气
+    /// 补满夜总会人气（使用后切换战局）
     /// </summary>
     public static readonly List<StatInfo> CLUB_POPULARITY = new()
     {
@@ -195,7 +195,7 @@ public static class StatData
     };
 
     /// <summary>
-    /// 取消摩托帮和地堡自动进货（使用完切换战局）
+    /// 取消摩托帮和地堡自动进货（使用后切换战局）
     /// </summary>
     public static readonly List<StatInfo> PAYRESUPPLYTIMER0 = new()
     {
@@ -708,9 +708,9 @@ public static class StatData
         new StatClass(){ Name="车友会-修改等级为200", StatInfos=CAR_CLUB_REP200 },
         new StatClass(){ Name="车友会-修改等级为500", StatInfos=CAR_CLUB_REP500 },
 
-        new StatClass(){ Name="资产-补满夜总会人气", StatInfos=CLUB_POPULARITY },
-        new StatClass(){ Name="资产-摩托帮和地堡自动进货（使用完切换战局）", StatInfos=PAYRESUPPLYTIMER },
-        new StatClass(){ Name="资产-取消摩托帮和地堡自动进货（使用完切换战局）", StatInfos=PAYRESUPPLYTIMER0 },
+        new StatClass(){ Name="资产-补满夜总会人气（使用后切换战局）", StatInfos=CLUB_POPULARITY },
+        new StatClass(){ Name="资产-摩托帮和地堡自动进货（使用后切换战局）", StatInfos=PAYRESUPPLYTIMER },
+        new StatClass(){ Name="资产-取消摩托帮和地堡自动进货（使用后切换战局）", StatInfos=PAYRESUPPLYTIMER0 },
 
         new StatClass(){ Name="佩里科岛抢劫-玩家x1/100%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x2）", StatInfos=H4CNF_1 },
         new StatClass(){ Name="佩里科岛抢劫-玩家x2/50%50%分红/困难模式/无精英/不拿保险柜/人均245W（粉钻x1+画作x4）", StatInfos=H4CNF_2 },

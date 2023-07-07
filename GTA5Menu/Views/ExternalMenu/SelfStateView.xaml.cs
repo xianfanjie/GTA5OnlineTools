@@ -96,6 +96,10 @@ public partial class SelfStateView : UserControl
         HotKeys.KeyDownEvent -= HotKeys_KeyDownEvent;
 
         SaveConfig();
+
+        GTA5MenuWindow.WindowClosingEvent -= GTA5MenuWindow_WindowClosingEvent;
+        GTA5MenuWindow.LoopSpeedNormalEvent -= GTA5MenuWindow_LoopSpeedNormalEvent;
+        GTA5MenuWindow.LoopSpeedFastEvent -= GTA5MenuWindow_LoopSpeedFastEvent;
     }
 
     /////////////////////////////////////////////////

@@ -28,6 +28,8 @@ public partial class MyBlipView : UserControl
     private void GTA5MenuWindow_WindowClosingEvent()
     {
         SaveConfig();
+
+        GTA5MenuWindow.WindowClosingEvent -= GTA5MenuWindow_WindowClosingEvent;
     }
 
     /////////////////////////////////////////////////

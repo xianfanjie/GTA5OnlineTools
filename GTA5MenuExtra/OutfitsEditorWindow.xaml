@@ -46,6 +46,7 @@
                 x:Name="ComboBox_OutfitIndex"
                 Width="120"
                 SelectionChanged="ComboBox_OutfitIndex_SelectionChanged">
+                <ComboBoxItem Content="槽位00" />
                 <ComboBoxItem Content="槽位01" />
                 <ComboBoxItem Content="槽位02" />
                 <ComboBoxItem Content="槽位03" />
@@ -65,7 +66,6 @@
                 <ComboBoxItem Content="槽位17" />
                 <ComboBoxItem Content="槽位18" />
                 <ComboBoxItem Content="槽位19" />
-                <ComboBoxItem Content="槽位20" />
             </ComboBox>
             <!--  //////////////  -->
             <TextBlock

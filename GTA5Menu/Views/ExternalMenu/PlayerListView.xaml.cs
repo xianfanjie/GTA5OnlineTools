@@ -40,12 +40,7 @@ public partial class PlayerListView : UserControl
         TextBox_PlayerInfo.AppendText($"{msg}\n");
     }
 
-    private string BoolToONString(bool value)
-    {
-        return value ? "ON" : "OFF";
-    }
-
-    private string BoolToYESString(bool value)
+    private string BoolToYES(bool value)
     {
         return value ? "YES" : "NO";
     }
@@ -151,7 +146,7 @@ public partial class PlayerListView : UserControl
                 ClanMotto = clanMotto,
 
                 ClanTagUpper = clanTag.ToUpper(),
-                GodModeFlag = BoolToONString(godMode)
+                GodModeFlag = BoolToYES(godMode)
             });
         }
     }
@@ -179,8 +174,8 @@ public partial class PlayerListView : UserControl
             AppendPlayerInfo($"R星ID : {info.RockstarId}");
             AppendPlayerInfo();
 
-            AppendPlayerInfo($"战局主机 : {BoolToYESString(info.IsHost)}");
-            AppendPlayerInfo($"脚本主机 : {BoolToYESString(info.IsScriptHost)}");
+            AppendPlayerInfo($"战局主机 : {BoolToYES(info.IsHost)}");
+            AppendPlayerInfo($"脚本主机 : {BoolToYES(info.IsScriptHost)}");
             AppendPlayerInfo();
 
             AppendPlayerInfo($"帮会标签 : {info.ClanTag}");
@@ -198,8 +193,8 @@ public partial class PlayerListView : UserControl
             AppendPlayerInfo($"最大生命值 : {info.HealthMax:0.0}");
             AppendPlayerInfo();
 
-            AppendPlayerInfo($"无敌状态 : {BoolToONString(info.GodMode)}");
-            AppendPlayerInfo($"无布娃娃 : {BoolToONString(info.NoRagdoll)}");
+            AppendPlayerInfo($"无敌状态 : {BoolToYES(info.GodMode)}");
+            AppendPlayerInfo($"无布娃娃 : {BoolToYES(info.NoRagdoll)}");
             AppendPlayerInfo($"通缉等级 : {info.WantedLevel}");
             AppendPlayerInfo();
 

@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
-    d:DesignHeight="720"
-    d:DesignWidth="1280"
+    d:DesignHeight="620"
+    d:DesignWidth="1100"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Style="{StaticResource UserControlStyle_Loaded}"
     mc:Ignorable="d">

@@ -1,4 +1,5 @@
 ﻿using GTA5OnlineTools.Data;
+using GTA5OnlineTools.Windows;
 
 using GTA5Core;
 using GTA5Core.Native;
@@ -61,9 +62,23 @@ public partial class GTA5View : UserControl
         {
             Type = typeof(CasinoHackWindow),
             Window = null
-        }); NavDictionary.Add("SpeedMeterWindow", new()
+        });
+        NavDictionary.Add("SpeedMeterWindow", new()
         {
             Type = typeof(SpeedMeterWindow),
+            Window = null
+        });
+
+        /////////////////////////////////////////////////
+
+        NavDictionary.Add("Kiddion2Window", new()
+        {
+            Type = typeof(Kiddion2Window),
+            Window = null
+        });
+        NavDictionary.Add("StartupWindow", new()
+        {
+            Type = typeof(StartupWindow),
             Window = null
         });
     }
@@ -74,7 +89,7 @@ public partial class GTA5View : UserControl
     }
 
     [RelayCommand]
-    private void GTA5ViewClick(string modelName)
+    private void GTA5ViewClick(string viewName)
     {
         AudioHelper.PlayClickSound();
 
@@ -91,7 +106,7 @@ public partial class GTA5View : UserControl
                     return;
             }
 
-            switch (modelName)
+            switch (viewName)
             {
                 case "ExternalMenu":
                     ExternalMenuClick();
@@ -116,6 +131,22 @@ public partial class GTA5View : UserControl
         else
         {
             NotifierHelper.Show(NotifierType.Warning, "未发现《GTA5》进程，请先运行《GTA5》游戏");
+        }
+    }
+
+    [RelayCommand]
+    private void GTA5FuncClick(string funcName)
+    {
+        AudioHelper.PlayClickSound();
+
+        switch (funcName)
+        {
+            case "KiddionChs":
+                KiddionChsClick();
+                break;
+            case "StartupMeta":
+                StartupMetaClick();
+                break;
         }
     }
 
@@ -229,5 +260,23 @@ public partial class GTA5View : UserControl
             AutoCloseWindow("CasinoHackWindow");
             AutoCloseWindow("SpeedMeterWindow");
         });
+    }
+
+    ///////////////////////////////////////////////////////////////////
+
+    /// <summary>
+    /// Kiddion汉化润色修正
+    /// </summary>
+    private void KiddionChsClick()
+    {
+        AutoOpenWindow("Kiddion2Window");
+    }
+
+    /// <summary>
+    /// 生成带密码战局文件
+    /// </summary>
+    private void StartupMetaClick()
+    {
+        AutoOpenWindow("StartupWindow");
     }
 }

@@ -7,8 +7,8 @@
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_GTAHax"
     Title="GTA5线上小助手 - GTAHax预设代码"
-    Width="1000"
-    Height="600"
+    Width="900"
+    Height="550"
     Closing="Window_GTAHax_Closing"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_GTAHax_Loaded"
@@ -39,7 +39,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="260" />
         </Grid.ColumnDefinitions>
         <!--  ///////////  -->
         <StackPanel
@@ -51,7 +51,7 @@
             <Button
                 x:Name="Button_ImportGTAHax"
                 Click="Button_ImportGTAHax_Click"
-                Content="导入GTAHax的stat.txt文件并执行" />
+                Content="导入GTAHax并执行" />
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 提示：如果代码执行成功，游戏中会出现《大受好评》的奖章，并给予少于经验值
             </TextBlock>

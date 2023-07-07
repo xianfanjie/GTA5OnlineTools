@@ -33,7 +33,3 @@
 ![image](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/28f23916-a67c-461f-8707-e7184639707d)
 
 ![image](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/6b529296-8534-4faa-9fb0-293afc48d3ff)
-
-## Star历史
-
-[![Star History Chart](https://api.star-history.com/svg?repos=CrazyZhang666/GTA5OnlineTools&type=Date)](https://star-history.com/#CrazyZhang666/GTA5OnlineTools&Date)

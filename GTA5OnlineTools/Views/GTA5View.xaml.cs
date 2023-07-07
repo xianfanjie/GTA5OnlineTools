@@ -81,6 +81,11 @@ public partial class GTA5View : UserControl
             Type = typeof(StartupWindow),
             Window = null
         });
+        NavDictionary.Add("ProfilesWindow", new()
+        {
+            Type = typeof(ProfilesWindow),
+            Window = null
+        });
     }
 
     private void MainWindow_WindowClosingEvent()
@@ -146,6 +151,9 @@ public partial class GTA5View : UserControl
                 break;
             case "StartupMeta":
                 StartupMetaClick();
+                break;
+            case "StoryProfiles":
+                StoryProfilesWindowClick();
                 break;
         }
     }
@@ -278,5 +286,13 @@ public partial class GTA5View : UserControl
     private void StartupMetaClick()
     {
         AutoOpenWindow("StartupWindow");
+    }
+
+    /// <summary>
+    /// 替换故事模式完美存档
+    /// </summary>
+    private void StoryProfilesWindowClick()
+    {
+        AutoOpenWindow("ProfilesWindow");
     }
 }

@@ -26,6 +26,19 @@ public partial class Kiddion2Window
 
     }
 
+    /////////////////////////////////////////////////////
+
+    private void ClearLogger()
+    {
+        TextBox_Logger.Clear();
+    }
+
+    private void AppendLogger(string log = "")
+    {
+        TextBox_Logger.AppendText($"{log}\n");
+        TextBox_Logger.ScrollToEnd();
+    }
+
     /// <summary>
     /// 超链接请求导航事件
     /// </summary>
@@ -37,13 +50,15 @@ public partial class Kiddion2Window
         e.Handled = true;
     }
 
-    private List<string> GetKiddionUIList()
+    /////////////////////////////////////////////////////
+
+    private List<string> GetKiddionUITextInfos()
     {
-        var textLists = new List<string>();
+        var textInfos = new List<string>();
 
         var pArray = Process.GetProcessesByName("Kiddion");
         if (pArray.Length == 0)
-            return textLists;
+            return textInfos;
 
         var main_handle = pArray.First().MainWindowHandle;
 
@@ -51,31 +66,25 @@ public partial class Kiddion2Window
         while (button_handle != IntPtr.Zero)
         {
             var length = Win32.GetWindowTextLength(button_handle);
-            var build = new StringBuilder(length + 1);
-            _ = Win32.GetWindowText(button_handle, build, build.Capacity);
+            var builder = new StringBuilder(length + 1);
+            _ = Win32.GetWindowText(button_handle, builder, builder.Capacity);
 
-            var text = build.ToString();
+            var text = builder.ToString();
             var split = text.IndexOf("|");
             if (split != -1)
                 text = text[..split];
 
             button_handle = Win32.FindWindowEx(main_handle, button_handle, "Button", null);
-            textLists.Add($"{text}");
+            textInfos.Add($"{text}");
         }
 
-        return textLists;
-    }
-
-    private void AppendText(string str)
-    {
-        TextBox_UIText.AppendText($"{str}\n");
+        return textInfos;
     }
 
     /// <summary>
     /// 获取Kiddion文本
     /// </summary>
-    [RelayCommand]
-    private async Task GetKiddionUI()
+    private async void Button_GetKiddionUI_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
@@ -85,10 +94,10 @@ public partial class Kiddion2Window
             return;
         }
 
-        TextBox_UIText.Clear();
-        foreach (var text in GetKiddionUIList())
+        ClearLogger();
+        foreach (var text in GetKiddionUITextInfos())
         {
-            AppendText($"{{ L\"{text}\", L\"中文翻译\" }},");
+            AppendLogger($"{{ L\"{text}\", L\"中文翻译\" }},");
             await Task.Delay(1);
         }
     }
@@ -96,8 +105,7 @@ public partial class Kiddion2Window
     /// <summary>
     /// 批量翻译
     /// </summary>
-    [RelayCommand]
-    private async Task BatchTranslation()
+    private async void Button_BatchTranslation_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
@@ -107,11 +115,11 @@ public partial class Kiddion2Window
             return;
         }
 
-        TextBox_UIText.Clear();
-        foreach (var text in GetKiddionUIList())
+        ClearLogger();
+        foreach (var text in GetKiddionUITextInfos())
         {
             var chs = await WebAPI.GetYouDaoContent(text);
-            AppendText($"{{ L\"{text}\", L\"{chs}\" }},");
+            AppendLogger($"{{ L\"{text}\", L\"{chs}\" }},");
         }
     }
 }

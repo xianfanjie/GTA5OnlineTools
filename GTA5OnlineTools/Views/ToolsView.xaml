@@ -54,12 +54,6 @@
         <WrapPanel>
             <ui:ButtonIcon
                 Command="{Binding ToolsButtonClickCommand}"
-                CommandParameter="StoryModeArchive"
-                Content="替换故事模式完美存档"
-                Icon="&#xe64d;"
-                Style="{StaticResource ButtonStyle_Tools}" />
-            <ui:ButtonIcon
-                Command="{Binding ToolsButtonClickCommand}"
                 CommandParameter="RestartApp"
                 Content="重启程序"
                 Icon="&#xe7cb;"

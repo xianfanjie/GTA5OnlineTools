@@ -83,6 +83,12 @@
                 CommandParameter="StartupMeta"
                 Icon="&#xe64c;"
                 Style="{StaticResource ButtonStyle_GTA5Func}" />
+            <ui:ButtonIcon
+                Title="替换故事模式完美存档"
+                Command="{Binding GTA5FuncClickCommand}"
+                CommandParameter="StoryProfiles"
+                Icon="&#xe602;"
+                Style="{StaticResource ButtonStyle_GTA5Func}" />
         </WrapPanel>
     </StackPanel>
 

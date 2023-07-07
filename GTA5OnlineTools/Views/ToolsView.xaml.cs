@@ -57,9 +57,6 @@ public partial class ToolsView : UserControl
             #endregion
             /////////////////////////
             #region 分组2
-            case "StoryModeArchive":
-                StoryModeArchiveClick();
-                break;
             case "RestartApp":
                 RestartAppClick();
                 break;
@@ -169,40 +166,6 @@ public partial class ToolsView : UserControl
     ////////////////////////////////////////////////////////////////////////
 
     #region 分组2
-    /// <summary>
-    /// 故事模式完美存档
-    /// </summary>
-    private void StoryModeArchiveClick()
-    {
-        var path = Path.Combine(FileHelper.Dir_MyDocuments, "Rockstar Games\\GTA V\\Profiles");
-        if (!Directory.Exists(path))
-        {
-            NotifierHelper.Show(NotifierType.Error, "GTA5故事模式存档路径不存在，操作取消");
-            return;
-        }
-
-        if (MessageBox.Show("你确定替换GTA5故事模式存档吗？将替换GTA5正版故事模式默认存档（存档进度：100%）",
-            "警告", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-        {
-            try
-            {
-                var dirs = Directory.GetDirectories(path);
-                foreach (var dir in dirs)
-                {
-                    var dirIf = new DirectoryInfo(dir);
-                    var fullName = Path.Combine(dirIf.FullName, "SGTA50000");
-                    FileHelper.ExtractResFile(FileHelper.Res_Other_SGTA50000, fullName);
-                }
-
-                NotifierHelper.Show(NotifierType.Success, $"GTA5故事模式存档替换成功\n{path}");
-            }
-            catch (Exception ex)
-            {
-                NotifierHelper.ShowException(ex);
-            }
-        }
-    }
-
     /// <summary>
     /// 重启程序
     /// </summary>

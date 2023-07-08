@@ -264,7 +264,7 @@ public partial class MissionView : UserControl
             AppendLogger("MPx_H4_PLAYTHROUGH_STATUS", 10);
     }
 
-    private async void STAT_Run()
+    private async Task STAT_Run()
     {
         if (STAT_DIC.Count == 0)
         {
@@ -291,17 +291,21 @@ public partial class MissionView : UserControl
     {
         AudioHelper.PlayClickSound();
 
+        Button_STAT_Run.IsEnabled = false;
         Button_STAT_Build.IsEnabled = false;
         STAT_Build();
+        Button_STAT_Run.IsEnabled = true;
         Button_STAT_Build.IsEnabled = true;
     }
 
-    private void Button_STAT_Run_Click(object sender, RoutedEventArgs e)
+    private async void Button_STAT_Run_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         Button_STAT_Run.IsEnabled = false;
-        STAT_Run();
+        Button_STAT_Build.IsEnabled = false;
+        await STAT_Run();
         Button_STAT_Run.IsEnabled = true;
+        Button_STAT_Build.IsEnabled = true;
     }
 }

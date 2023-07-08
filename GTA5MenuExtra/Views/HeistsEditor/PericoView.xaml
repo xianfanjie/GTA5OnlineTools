@@ -12,6 +12,10 @@
     mc:Ignorable="d">
 
     <TabControl Margin="5">
+        <ui:TabItemIcon Header="预设代码">
+            <views:DefaultView />
+        </ui:TabItemIcon>
+        <!--  ///////////////////  -->
         <ui:TabItemIcon Header="前置任务">
             <views:MissionView />
         </ui:TabItemIcon>

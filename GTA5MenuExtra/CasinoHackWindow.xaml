@@ -7,7 +7,7 @@
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_CasinoHack"
     Title="GTA5线上小助手 - 赌场黑客"
-    Width="700"
+    Width="800"
     Height="500"
     Closing="Window_CasinoHack_Closing"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
@@ -32,12 +32,31 @@
     </ui:Window.TitleContent>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <!--  面板1  -->
-        <UniformGrid Columns="2">
+        <DockPanel Grid.Column="0">
+            <StackPanel Margin="5,0,5,0" DockPanel.Dock="Top">
+                <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="幸运转盘" />
+                <Button
+                    x:Name="Button_LuckyWheelSlot"
+                    Click="Button_LuckyWheelSlot_Click"
+                    Content="设置奖品" />
+                <TextBlock
+                    x:Name="TextBlock_LuckyWheelValue"
+                    Margin="5"
+                    Text="奖品：随机"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <!--  //////////  -->
             <ListBox
                 x:Name="ListBox_LuckyWheel"
                 Margin="5"
@@ -64,63 +83,129 @@
                 <ListBoxItem Content="展台载具" />
                 <ListBoxItem Content="50000美元" />
             </ListBox>
-            <!--  //////////  -->
-            <StackPanel>
-                <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="幸运转盘" />
+        </DockPanel>
+        <!--  面板2  -->
+        <DockPanel Grid.Column="1">
+            <StackPanel Margin="5,0,5,0" DockPanel.Dock="Top">
+                <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="老虎机" />
                 <Button
-                    x:Name="Button_LuckyWheelSlot"
-                    Click="Button_LuckyWheelSlot_Click"
-                    Content="设置选中奖品" />
+                    x:Name="Button_SlotMachineSlot"
+                    Click="Button_SlotMachineSlot_Click"
+                    Content="设置奖品" />
                 <TextBlock
-                    x:Name="TextBlock_LuckyWheelValue"
+                    x:Name="TextBlock_SlotMachineValue"
                     Margin="5"
                     Text="奖品：随机"
                     TextWrapping="Wrap" />
             </StackPanel>
-        </UniformGrid>
-        <!--  面板2  -->
-        <StackPanel Grid.Column="1">
-            <UniformGrid Columns="2">
-                <ListBox
-                    x:Name="ListBox_SlotMachine"
+            <!--  //////////  -->
+            <ListBox
+                x:Name="ListBox_SlotMachine"
+                Margin="5"
+                SelectedIndex="0"
+                Style="{StaticResource ListBoxStyle_Base}">
+                <ListBoxItem Content="筹码倍数 x0" />
+                <ListBoxItem Content="筹码倍数 x25" />
+                <ListBoxItem Content="筹码倍数 x50" />
+                <ListBoxItem Content="筹码倍数 x75" />
+                <ListBoxItem Content="筹码倍数 x100" />
+                <ListBoxItem Content="筹码倍数 x250" />
+                <ListBoxItem Content="筹码倍数 x1000" />
+                <ListBoxItem Content="筹码倍数 x500" />
+            </ListBox>
+        </DockPanel>
+        <!--  面板3  -->
+        <DockPanel Grid.Column="2">
+            <StackPanel Margin="5,0,5,0" DockPanel.Dock="Top">
+                <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="轮盘赌" />
+                <Button
+                    x:Name="Button_RouletteSlot"
+                    Click="Button_RouletteSlot_Click"
+                    Content="设置中奖号码" />
+                <TextBlock
+                    x:Name="TextBlock_RouletteValue"
                     Margin="5"
-                    SelectedIndex="0"
-                    Style="{StaticResource ListBoxStyle_Base}">
-                    <ListBoxItem Content="筹码倍数 x0" />
-                    <ListBoxItem Content="筹码倍数 x25" />
-                    <ListBoxItem Content="筹码倍数 x50" />
-                    <ListBoxItem Content="筹码倍数 x75" />
-                    <ListBoxItem Content="筹码倍数 x100" />
-                    <ListBoxItem Content="筹码倍数 x250" />
-                    <ListBoxItem Content="筹码倍数 x1000" />
-                    <ListBoxItem Content="筹码倍数 x500" />
-                </ListBox>
-                <!--  //////////  -->
-                <StackPanel Margin="0,0,5,0">
-                    <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="老虎机" />
-                    <Button
-                        x:Name="Button_SlotMachineSlot"
-                        Click="Button_SlotMachineSlot_Click"
-                        Content="设置选中奖品" />
-                    <TextBlock
-                        x:Name="TextBlock_SlotMachineValue"
-                        Margin="5"
-                        Text="奖品：随机"
-                        TextWrapping="Wrap" />
-                </StackPanel>
-            </UniformGrid>
+                    Text="中奖号码：随机"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <!--  //////////  -->
+            <ListBox
+                x:Name="ListBox_Roulette"
+                Margin="5"
+                Style="{StaticResource ListBoxStyle_Base}" />
+        </DockPanel>
+        <!--  面板4  -->
+        <StackPanel Grid.Column="3">
+            <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="黑杰克（21点）" />
+            <DockPanel>
+                <TextBlock
+                    Width="50"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Text="庄家底牌" />
+                <TextBox
+                    Cursor="Arrow"
+                    IsReadOnly="True"
+                    Text="{Binding CasinoHackModel.BlackjackContent}" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock
+                    Width="50"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Text="下一张牌" />
+                <TextBox
+                    Cursor="Arrow"
+                    IsReadOnly="True"
+                    Text="{Binding CasinoHackModel.BlackjackNextContent}" />
+            </DockPanel>
 
+            <TextBlock Style="{StaticResource TextBlockStyle_Title}" Text="三张扑克" />
+            <DockPanel>
+                <TextBlock
+                    Width="50"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Text="您的牌1" />
+                <TextBox
+                    Cursor="Arrow"
+                    IsReadOnly="True"
+                    Text="{Binding CasinoHackModel.Poker1Content}" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock
+                    Width="50"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Text="您的牌2" />
+                <TextBox
+                    Cursor="Arrow"
+                    IsReadOnly="True"
+                    Text="{Binding CasinoHackModel.Poker2Content}" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock
+                    Width="50"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Text="您的牌3" />
+                <TextBox
+                    Cursor="Arrow"
+                    IsReadOnly="True"
+                    Text="{Binding CasinoHackModel.Poker3Content}" />
+            </DockPanel>
+        </StackPanel>
+        <!--  ////////////////////  -->
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="5">
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：进入赌场后在使用此功能，在操作对应目标前先设置奖品
+                提示：进入赌场后在使用此功能，在操作对应目标前先设置奖品。如果要恢复赌场默认设置，请退出赌场黑客并切换战局
             </TextBlock>
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：有时候转盘显示内容不是我们指定的奖品，但是实际奖品是我们修改的一致（最终结果为实际奖励为准）
-            </TextBlock>
-            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                建议：平时用来抽个展台车就可以了，不要把他当作刷钱工具，频繁使用和绕过CD限制有封号风险
-            </TextBlock>
-            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                提示：如果要恢复赌场默认设置，请退出赌场黑客并切换战局
+                建议：平时用来抽个展台车就可以了，不要把它当作刷钱工具，频繁使用和绕过CD限制有封号风险
             </TextBlock>
         </StackPanel>
     </Grid>

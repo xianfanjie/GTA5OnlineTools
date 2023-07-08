@@ -33,3 +33,8 @@
 ![image](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/28f23916-a67c-461f-8707-e7184639707d)
 
 ![image](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/6b529296-8534-4faa-9fb0-293afc48d3ff)
+
+
+## 鸣谢
+
+感谢 Aure、Alice等对小助手功能的贡献

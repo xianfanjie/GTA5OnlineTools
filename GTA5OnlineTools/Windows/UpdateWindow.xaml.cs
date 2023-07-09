@@ -137,7 +137,7 @@ public partial class UpdateWindow
 
             TextBlock_DonloadInfo.Text = $"下载开始 文件大小 {e.TotalBytesToReceive / 1024.0f / 1024:0.0}MB";
 
-            TextBlock_Percentage.Text = $"{LongToString(e.ReceivedBytesSize)}/{LongToString(e.TotalBytesToReceive)}";
+            TextBlock_Percentage.Text = $"{GetFileSize(e.ReceivedBytesSize)}/{GetFileSize(e.TotalBytesToReceive)}";
 
             TaskbarItemInfo.ProgressValue = ProgressBar_Update.Value / ProgressBar_Update.Maximum;
         });
@@ -199,11 +199,11 @@ public partial class UpdateWindow
     /// <summary>
     /// 文件大小转换
     /// </summary>
-    /// <param name="num"></param>
+    /// <param name="size"></param>
     /// <returns></returns>
-    private string LongToString(long num)
+    private string GetFileSize(long size)
     {
-        var kb = num / 1024.0f;
+        var kb = size / 1024.0f;
 
         if (kb > 1024)
             return $"{kb / 1024:0.0}MB";

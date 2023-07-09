@@ -36,20 +36,20 @@
                     注意事项
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    现版本YimMenu文件使用了游戏缓存来获取载具、Ped等数据，这个是导致崩溃的主要原因
+                    现版本YimMenu文件使用了游戏缓存来获取载具、武器、Ped等数据，这个是导致崩溃的主要原因
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    YimMenu建议在线上模式注入，推荐邀请战局（因为他需要读取Social Club相关信息，如果读取不到就会导致崩溃）
+                    YimMenu建议在线上模式注入，推荐邀请战局（因为他需要读取Social Club相关信息，如果读取不到就可能会导致崩溃）
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    小助手汉化版本YimMenu默认关闭全部功能，YimMenu官方英文版本会默认开启部分功能，如果两则都使用，注意配置文件
+                    小助手汉化版本YimMenu默认关闭全部功能，YimMenu官方英文版本会默认开启部分功能，如果两则都使用，注意配置文件冲突
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">
                     崩溃问题
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    如果注入后立刻就崩溃，这一般是缓存导致的，请重启游戏，并清空YimMenu配置文件（就是那个YimMenu文件夹），然后进入邀请战局（不要去公共战局），这时再注入YimMenu，然后按照提示在线上模式更新游戏缓存即可
+                    如果注入后立刻就崩溃，这一般是缓存导致的，请重启游戏，并清空YimMenu配置文件（就是那个YimMenu文件夹），然后进入邀请战局（不建议去公共战局），这时再注入YimMenu，然后按照提示在线上模式更新游戏缓存即可
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">

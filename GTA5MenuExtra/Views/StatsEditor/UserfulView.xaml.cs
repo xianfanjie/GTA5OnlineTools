@@ -1,6 +1,6 @@
 ﻿using GTA5Core.Features;
-using GTA5Core.GTA.Onlines;
 using GTA5Core.GTA.Stats;
+using GTA5Core.GTA.Onlines;
 using GTA5Shared.Helper;
 
 namespace GTA5MenuExtra.Views.StatsEditor;
@@ -113,5 +113,47 @@ public partial class UserfulView : UserControl
 
         var rank = (int)Slider_ClubRank.Value;
         STAT_SET_INT("MPx_CAR_CLUB_REP", Levels.ClubRank[rank - 1]);
+    }
+
+    ////////////////////////////////////////////////////
+
+    private void Button_ChangeCrew1Rank_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        var rank = (int)Slider_Crew1Rank.Value;
+        STAT_SET_INT("MPPLY_CREW_LOCAL_XP_1", Levels.PlayerRank[rank - 1]);
+    }
+
+    private void Button_ChangeCrew2Rank_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        var rank = (int)Slider_Crew2Rank.Value;
+        STAT_SET_INT("MPPLY_CREW_LOCAL_XP_2", Levels.PlayerRank[rank - 1]);
+    }
+
+    private void Button_ChangeCrew3Rank_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        var rank = (int)Slider_Crew3Rank.Value;
+        STAT_SET_INT("MPPLY_CREW_LOCAL_XP_3", Levels.PlayerRank[rank - 1]);
+    }
+
+    private void Button_ChangeCrew4Rank_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        var rank = (int)Slider_Crew4Rank.Value;
+        STAT_SET_INT("MPPLY_CREW_LOCAL_XP_4", Levels.PlayerRank[rank - 1]);
+    }
+
+    private void Button_ChangeCrew5Rank_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        var rank = (int)Slider_Crew5Rank.Value;
+        STAT_SET_INT("MPPLY_CREW_LOCAL_XP_5", Levels.PlayerRank[rank - 1]);
     }
 }

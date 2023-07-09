@@ -7,8 +7,8 @@
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_Load"
     Title="GTA5线上小助手 初始化窗口"
-    Width="600"
-    Height="350"
+    Width="520"
+    Height="320"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_Load_Loaded"
     ResizeMode="NoResize"
@@ -88,7 +88,7 @@
                             Content="退出程序" />
                     </StackPanel>
                     <TextBlock Margin="10,5,10,5" Style="{StaticResource TextBlockStyle_Hint}">
-                        提示：一般初始化异常，大部分原因都是小助手部分文件被杀毒占用或者删除导致的。
+                        提示：一般初始化异常，大部分原因都是小助手部分文件被杀毒占用或删除导致的。
                         可以尝试暂时关闭杀毒软件后重试
                     </TextBlock>
                 </StackPanel>

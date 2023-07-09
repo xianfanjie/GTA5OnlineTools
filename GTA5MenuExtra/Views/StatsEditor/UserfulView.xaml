@@ -59,7 +59,9 @@
                     Click="Button_ChangeAppearanceCooldown_Click"
                     Content="移除捏脸CD" />
             </WrapPanel>
-
+        </StackPanel>
+        <!--  //////////////////////  -->
+        <StackPanel>
             <ui:LabelIcon Content="等级" />
             <StackPanel Margin="5,0,5,0">
                 <DockPanel>
@@ -85,6 +87,72 @@
                         x:Name="Slider_ClubRank"
                         Title="车友会等级"
                         Maximum="1000"
+                        Minimum="1"
+                        Style="{StaticResource SliderIconStyle_Int}" />
+                </DockPanel>
+                <Separator Margin="5" />
+                <DockPanel>
+                    <Button
+                        x:Name="Button_ChangeCrew1Rank"
+                        Click="Button_ChangeCrew1Rank_Click"
+                        Content="修改"
+                        DockPanel.Dock="Right" />
+                    <ui:SliderIcon
+                        x:Name="Slider_Crew1Rank"
+                        Title="帮会1等级"
+                        Maximum="8000"
+                        Minimum="1"
+                        Style="{StaticResource SliderIconStyle_Int}" />
+                </DockPanel>
+                <DockPanel>
+                    <Button
+                        x:Name="Button_ChangeCrew2Rank"
+                        Click="Button_ChangeCrew2Rank_Click"
+                        Content="修改"
+                        DockPanel.Dock="Right" />
+                    <ui:SliderIcon
+                        x:Name="Slider_Crew2Rank"
+                        Title="帮会2等级"
+                        Maximum="8000"
+                        Minimum="1"
+                        Style="{StaticResource SliderIconStyle_Int}" />
+                </DockPanel>
+                <DockPanel>
+                    <Button
+                        x:Name="Button_ChangeCrew3Rank"
+                        Click="Button_ChangeCrew3Rank_Click"
+                        Content="修改"
+                        DockPanel.Dock="Right" />
+                    <ui:SliderIcon
+                        x:Name="Slider_Crew3Rank"
+                        Title="帮会3等级"
+                        Maximum="8000"
+                        Minimum="1"
+                        Style="{StaticResource SliderIconStyle_Int}" />
+                </DockPanel>
+                <DockPanel>
+                    <Button
+                        x:Name="Button_ChangeCrew4Rank"
+                        Click="Button_ChangeCrew4Rank_Click"
+                        Content="修改"
+                        DockPanel.Dock="Right" />
+                    <ui:SliderIcon
+                        x:Name="Slider_Crew4Rank"
+                        Title="帮会4等级"
+                        Maximum="8000"
+                        Minimum="1"
+                        Style="{StaticResource SliderIconStyle_Int}" />
+                </DockPanel>
+                <DockPanel>
+                    <Button
+                        x:Name="Button_ChangeCrew5Rank"
+                        Click="Button_ChangeCrew5Rank_Click"
+                        Content="修改"
+                        DockPanel.Dock="Right" />
+                    <ui:SliderIcon
+                        x:Name="Slider_Crew5Rank"
+                        Title="帮会5等级"
+                        Maximum="8000"
                         Minimum="1"
                         Style="{StaticResource SliderIconStyle_Int}" />
                 </DockPanel>

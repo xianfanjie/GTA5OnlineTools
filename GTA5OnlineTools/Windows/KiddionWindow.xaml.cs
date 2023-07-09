@@ -46,9 +46,6 @@ public partial class KiddionWindow
                 case "AliceLua":
                     AliceLuaClick();
                     break;
-                case "IdealLua":
-                    IdealLuaClick();
-                    break;
             }
         }
         catch (Exception ex)
@@ -93,13 +90,5 @@ public partial class KiddionWindow
     private void AliceLuaClick()
     {
         ReleaseLua("AliceLua");
-    }
-
-    /// <summary>
-    /// 释放 Ideal Lua脚本
-    /// </summary>
-    private void IdealLuaClick()
-    {
-        ReleaseLua("IdealLua");
     }
 }

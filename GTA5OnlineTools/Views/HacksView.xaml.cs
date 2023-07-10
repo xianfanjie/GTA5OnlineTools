@@ -138,70 +138,80 @@ public partial class HacksView : UserControl
     [RelayCommand]
     private void ExtraClick(string funcName)
     {
-        AudioHelper.PlayClickSound();
-
-        switch (funcName)
+        try
         {
-            #region Kiddion额外功能
-            case "KiddionKey104":
-                KiddionKey104Click();
-                break;
-            case "KiddionKey87":
-                KiddionKey87Click();
-                break;
-            case "KiddionConfigDirectory":
-                KiddionConfigDirectoryClick();
-                break;
-            case "KiddionScriptsDirectory":
-                KiddionScriptsDirectoryClick();
-                break;
-            case "KiddionScriptsManage":
-                KiddionScriptsManageClick();
-                break;
-            case "EditKiddionConfig":
-                EditKiddionConfigClick();
-                break;
-            case "EditKiddionTheme":
-                EditKiddionThemeClick();
-                break;
-            case "EditKiddionTP":
-                EditKiddionTPClick();
-                break;
-            case "EditKiddionVC":
-                EditKiddionVCClick();
-                break;
-            case "ResetKiddionConfig":
-                ResetKiddionConfigClick();
-                break;
-            #endregion
-            ////////////////////////////////////
-            #region 其他额外功能
-            case "EditGTAHaxStat":
-                EditGTAHaxStatClick();
-                break;
-            case "RunGTAHaxStat":
-                RunGTAHaxStatClick();
-                break;
-            case "DefaultGTAHaxStat":
-                DefaultGTAHaxStatClick();
-                break;
-            //////////////
-            case "YimMenuDirectory":
-                YimMenuDirectoryClick();
-                break;
-            case "YimMenuScriptsDirectory":
-                YimMenuScriptsDirectoryClick();
-                break;
-            case "EditYimMenuConfig":
-                EditYimMenuConfigClick();
-                break;
-            case "Xenos64Injector":
-                Xenos64InjectorClick();
-                break;
-            case "ResetYimMenuConfig":
-                ResetYimMenuConfigClick();
-                break;
+            AudioHelper.PlayClickSound();
+
+            switch (funcName)
+            {
+                #region Kiddion额外功能
+                case "KiddionKey104":
+                    KiddionKey104Click();
+                    break;
+                case "KiddionKey87":
+                    KiddionKey87Click();
+                    break;
+                case "KiddionConfigDirectory":
+                    KiddionConfigDirectoryClick();
+                    break;
+                case "KiddionScriptsDirectory":
+                    KiddionScriptsDirectoryClick();
+                    break;
+                case "KiddionScriptsManage":
+                    KiddionScriptsManageClick();
+                    break;
+                case "EditKiddionConfig":
+                    EditKiddionConfigClick();
+                    break;
+                case "EditKiddionTheme":
+                    EditKiddionThemeClick();
+                    break;
+                case "EditKiddionTP":
+                    EditKiddionTPClick();
+                    break;
+                case "EditKiddionVC":
+                    EditKiddionVCClick();
+                    break;
+                case "ResetKiddionConfig":
+                    ResetKiddionConfigClick();
+                    break;
                 #endregion
+                ////////////////////////////////////
+                #region 其他额外功能
+                case "EditGTAHaxStat":
+                    EditGTAHaxStatClick();
+                    break;
+                case "RunGTAHaxStat":
+                    RunGTAHaxStatClick();
+                    break;
+                case "DefaultGTAHaxStat":
+                    DefaultGTAHaxStatClick();
+                    break;
+                //////////////
+                case "YimMenuDirectory":
+                    YimMenuDirectoryClick();
+                    break;
+                case "YimMenuScriptsDirectory":
+                    YimMenuScriptsDirectoryClick();
+                    break;
+                case "EditYimMenuConfig":
+                    EditYimMenuConfigClick();
+                    break;
+                case "Xenos64Injector":
+                    Xenos64InjectorClick();
+                    break;
+                case "ResetYimMenuConfig":
+                    ResetYimMenuConfigClick();
+                    break;
+                case "YimMenuGTACache":
+                    YimMenuGTACacheClick();
+                    break;
+                    #endregion
+            }
+        }
+        catch (Exception ex)
+        {
+            NotifierHelper.ShowException(ex);
         }
     }
 
@@ -555,6 +565,24 @@ public partial class HacksView : UserControl
         {
             NotifierHelper.ShowException(ex);
         }
+    }
+
+    /// <summary>
+    /// YimMenu预设缓存
+    /// </summary>
+    private void YimMenuGTACacheClick()
+    {
+        var lua = $"{FileHelper.ResFiles}.YimMenu.cache.zip";
+        var file = $"{FileHelper.Dir_AppData_YimMenu}\\cache.zip";
+
+        FileHelper.ExtractResFile(lua, file);
+
+        using var archive = ZipFile.OpenRead(file);
+        archive.ExtractToDirectory(FileHelper.Dir_AppData_YimMenu);
+        archive.Dispose();
+
+        File.Delete(file);
+        NotifierHelper.Show(NotifierType.Success, "释放YimMenu预设缓存成功，再次尝试启动YimMenu");
     }
     #endregion
 }

@@ -17,6 +17,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Files\YimMenu\cache.zip" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
 		<PackageReference Include="NLog" Version="5.2.2" />
 		<PackageReference Include="Notification.Wpf" Version="7.0.0" />
@@ -41,6 +45,7 @@
 
     <ItemGroup>
         <EmbeddedResource Include="Files\Cache\BincoHax.exe" />
+        <EmbeddedResource Include="Files\YimMenu\cache.zip" />
         <EmbeddedResource Include="Files\YimMenu\zh_CN.json" />
         <EmbeddedResource Include="Files\YimMenu\index.json" />
         <EmbeddedResource Include="Files\Cache\GTAHax.exe" />

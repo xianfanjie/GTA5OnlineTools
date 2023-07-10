@@ -76,7 +76,26 @@ public static class CoreUtil
     {
         var current = WindowsIdentity.GetCurrent();
         var windowsPrincipal = new WindowsPrincipal(current);
+
         // WindowsBuiltInRole可以枚举出很多权限，例如系统用户、User、Guest等等
         return windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator);
+    }
+
+    /// <summary>
+    /// 获取未下载完临时文件路径
+    /// </summary>
+    /// <returns></returns>
+    public static string GetHalfwayFilePath()
+    {
+        return FileUtil.GetCurrFullPath(HalfwayAppName);
+    }
+
+    /// <summary>
+    /// 获取已下载完真实文件路径
+    /// </summary>
+    /// <returns></returns>
+    public static string GetFullFilePath()
+    {
+        return FileUtil.GetCurrFullPath(FullAppName());
     }
 }

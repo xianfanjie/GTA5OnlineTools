@@ -41,7 +41,6 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <!--  //////////////////////  -->
         <DockPanel>
@@ -70,36 +69,34 @@
                 Style="{StaticResource ListBoxStyle_Base}" />
         </DockPanel>
         <!--  //////////////////////  -->
-        <TextBlock
-            x:Name="TextBlock_DonloadInfo"
-            Grid.Row="1"
-            Margin="5"
-            VerticalAlignment="Center"
-            DockPanel.Dock="Left"
-            Text="下载信息"
-            TextTrimming="CharacterEllipsis"
-            TextWrapping="NoWrap" />
-        <!--  //////////////////////  -->
-        <Grid Grid.Row="2">
-            <ProgressBar
-                Name="ProgressBar_Update"
-                Grid.Row="1"
-                Height="40"
+        <StackPanel Grid.Row="1">
+            <TextBlock
+                x:Name="TextBlock_DonloadInfo"
                 Margin="5"
                 VerticalAlignment="Center"
-                Background="White"
-                BorderBrush="#808080"
-                SmallChange="1" />
-            <TextBlock
-                Name="TextBlock_Percentage"
-                Grid.Row="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Text="0KB / 0MB" />
-        </Grid>
+                Text="下载信息"
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="NoWrap" />
+            <!--  ///////////////  -->
+            <Grid>
+                <ProgressBar
+                    Name="ProgressBar_Update"
+                    Height="40"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Background="White"
+                    BorderBrush="#808080"
+                    SmallChange="1" />
+                <TextBlock
+                    Name="TextBlock_Percentage"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="0KB / 0MB" />
+            </Grid>
+        </StackPanel>
         <!--  //////////////////////  -->
-        <DockPanel Grid.Row="3" LastChildFill="False">
-            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+        <DockPanel Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
                 <TextBlock
                     Margin="5"
                     VerticalAlignment="Center"
@@ -122,24 +119,27 @@
                     </Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <Button
-                x:Name="Button_CancelUpdate"
-                Click="Button_CancelUpdate_Click"
-                Content="取消更新"
+            <!--  /////////////  -->
+            <StackPanel
+                HorizontalAlignment="Right"
                 DockPanel.Dock="Right"
-                IsEnabled="False" />
-            <Button
-                x:Name="Button_Update"
-                Margin="5,5,0,5"
-                Click="Button_Update_Click"
-                Content="下载更新"
-                DockPanel.Dock="Right" />
-            <TextBlock
-                Margin="5"
-                VerticalAlignment="Center"
-                DockPanel.Dock="Right"
-                Foreground="Green"
-                Text="提示：若速度慢，请手动下载更新" />
+                Orientation="Horizontal">
+                <TextBlock
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Foreground="Green"
+                    Text="提示：若速度慢，请手动下载更新" />
+                <Button
+                    x:Name="Button_StartUpdate"
+                    Margin="5,5,0,5"
+                    Click="Button_StartUpdate_Click"
+                    Content="下载更新" />
+                <Button
+                    x:Name="Button_CancelUpdate"
+                    Click="Button_CancelUpdate_Click"
+                    Content="取消更新"
+                    IsEnabled="False" />
+            </StackPanel>
         </DockPanel>
     </Grid>
 

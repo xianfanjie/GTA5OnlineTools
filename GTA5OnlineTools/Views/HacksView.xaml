@@ -234,6 +234,15 @@
                 </WrapPanel>
             </ui:GroupBoxHack.DescriptionContent>
         </ui:GroupBoxHack>
+
+        <ui:ButtonIcon
+            Title="下载Lua脚本"
+            Command="{Binding HacksFuncClickCommand}"
+            CommandParameter="OnlineLua"
+            Description="从服务器下载Kiddion和YimMenu脚本"
+            Icon="&#xe72e;"
+            Style="{StaticResource ButtonStyle_HacksFunc}" />
+
     </WrapPanel>
 
 </UserControl>

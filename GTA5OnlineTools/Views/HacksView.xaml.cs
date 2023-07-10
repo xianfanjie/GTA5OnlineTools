@@ -28,6 +28,7 @@ public partial class HacksView : UserControl
     private readonly YimMenu YimMenu = new();
 
     private GTAHaxWindow GTAHaxWindow = null;
+    private OnlineLuaWindow OnlineLuaWindow = null;
 
     public HacksView()
     {
@@ -127,6 +128,19 @@ public partial class HacksView : UserControl
                 break;
             case "YimMenu":
                 ShowReadMe(YimMenu);
+                break;
+        }
+    }
+
+    [RelayCommand]
+    private void HacksFuncClick(string funcName)
+    {
+        AudioHelper.PlayClickSound();
+
+        switch (funcName)
+        {
+            case "OnlineLua":
+                OnlineLuaClick();
                 break;
         }
     }
@@ -564,4 +578,35 @@ public partial class HacksView : UserControl
         }
     }
     #endregion
+
+    /// <summary>
+    /// 打开在线下载Lua脚本窗口
+    /// </summary>
+    private void OnlineLuaClick()
+    {
+        if (OnlineLuaWindow == null)
+        {
+            OnlineLuaWindow = new OnlineLuaWindow();
+            OnlineLuaWindow.Show();
+        }
+        else
+        {
+            if (OnlineLuaWindow.IsVisible)
+            {
+                if (!OnlineLuaWindow.Topmost)
+                {
+                    OnlineLuaWindow.Topmost = true;
+                    OnlineLuaWindow.Topmost = false;
+                }
+
+                OnlineLuaWindow.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                OnlineLuaWindow = null;
+                OnlineLuaWindow = new OnlineLuaWindow();
+                OnlineLuaWindow.Show();
+            }
+        }
+    }
 }

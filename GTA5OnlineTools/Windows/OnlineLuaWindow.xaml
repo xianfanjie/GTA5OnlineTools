@@ -6,9 +6,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_OnlineLua"
-    Title="GTA5线上小助手 - 在线Lua脚本下载"
-    Width="1000"
-    Height="600"
+    Title="GTA5线上小助手 - 在线下载Lua脚本"
+    Width="800"
+    Height="500"
     Closing="Window_OnlineLua_Closing"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_OnlineLua_Loaded"
@@ -17,6 +17,66 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
-    <Grid />
+    <ui:Window.TitleContent>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <Image
+                Height="20"
+                Margin="5"
+                Source="/Assets/Favicon.ico"
+                Style="{StaticResource ImageStyle_HighQuality}" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="14"
+                FontWeight="Bold"
+                Text="{Binding ElementName=Window_OnlineLua, Path=Title}" />
+        </StackPanel>
+    </ui:Window.TitleContent>
+
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo ProgressState="Normal" />
+    </Window.TaskbarItemInfo>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!--  //////////////////////  -->
+        <DockPanel Margin="5">
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <Button Content="下载脚本" />
+                <Button Content="取消下载" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="刷新Kiddion脚本列表" />
+                <Button Content="刷新YimMenu脚本列表" />
+            </StackPanel>
+        </DockPanel>
+        <!--  //////////////////////  -->
+        <ListBox
+            x:Name="ListBox_DownloadAddress"
+            Grid.Row="1"
+            Margin="5,0,5,0"
+            Style="{StaticResource ListBoxStyle_Base}" />
+        <!--  //////////////////////  -->
+        <Grid Grid.Row="2">
+            <ProgressBar
+                Name="ProgressBar_Update"
+                Grid.Row="1"
+                Height="40"
+                Margin="5"
+                VerticalAlignment="Center"
+                Background="White"
+                BorderBrush="#808080"
+                SmallChange="1" />
+            <TextBlock
+                Name="TextBlock_Percentage"
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="0KB / 0MB" />
+        </Grid>
+    </Grid>
 
 </ui:Window>

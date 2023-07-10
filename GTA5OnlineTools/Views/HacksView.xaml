@@ -205,42 +205,33 @@
                 </StackPanel>
             </ui:GroupBoxHack.TitleContent>
             <ui:GroupBoxHack.DescriptionContent>
-                <StackPanel>
-                    <WrapPanel>
-                        <Button
-                            Background="#FE780A"
-                            Command="{Binding ExtraClickCommand}"
-                            CommandParameter="YimMenuDirectory"
-                            Content="配置目录" />
-                        <Button
-                            Background="#FE780A"
-                            Command="{Binding ExtraClickCommand}"
-                            CommandParameter="YimMenuScriptsDirectory"
-                            Content="脚本目录" />
-                        <Button
-                            Background="#34A853"
-                            Command="{Binding ExtraClickCommand}"
-                            CommandParameter="EditYimMenuConfig"
-                            Content="配置文件" />
-                        <Button
-                            Background="#009AD6"
-                            Command="{Binding ExtraClickCommand}"
-                            CommandParameter="Xenos64Injector"
-                            Content="Xenos64注入器" />
-                    </WrapPanel>
-                    <WrapPanel>
-                        <Button
-                            Background="#EA4335"
-                            Command="{Binding ExtraClickCommand}"
-                            CommandParameter="ResetYimMenuConfig"
-                            Content="重置配置文件" />
-                        <Button
-                            Background="#CA64EA"
-                            Command="{Binding ExtraClickCommand}"
-                            CommandParameter="YimMenuGTACache"
-                            Content="预设缓存" />
-                    </WrapPanel>
-                </StackPanel>
+                <WrapPanel>
+                    <Button
+                        Background="#FE780A"
+                        Command="{Binding ExtraClickCommand}"
+                        CommandParameter="YimMenuDirectory"
+                        Content="配置目录" />
+                    <Button
+                        Background="#FE780A"
+                        Command="{Binding ExtraClickCommand}"
+                        CommandParameter="YimMenuScriptsDirectory"
+                        Content="脚本目录" />
+                    <Button
+                        Background="#34A853"
+                        Command="{Binding ExtraClickCommand}"
+                        CommandParameter="EditYimMenuConfig"
+                        Content="配置文件" />
+                    <Button
+                        Background="#009AD6"
+                        Command="{Binding ExtraClickCommand}"
+                        CommandParameter="Xenos64Injector"
+                        Content="Xenos64注入器" />
+                    <Button
+                        Background="#EA4335"
+                        Command="{Binding ExtraClickCommand}"
+                        CommandParameter="ResetYimMenuConfig"
+                        Content="重置配置文件" />
+                </WrapPanel>
             </ui:GroupBoxHack.DescriptionContent>
         </ui:GroupBoxHack>
     </WrapPanel>

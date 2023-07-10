@@ -203,9 +203,6 @@ public partial class HacksView : UserControl
                 case "ResetYimMenuConfig":
                     ResetYimMenuConfigClick();
                     break;
-                case "YimMenuGTACache":
-                    YimMenuGTACacheClick();
-                    break;
                     #endregion
             }
         }
@@ -565,24 +562,6 @@ public partial class HacksView : UserControl
         {
             NotifierHelper.ShowException(ex);
         }
-    }
-
-    /// <summary>
-    /// YimMenu预设缓存
-    /// </summary>
-    private void YimMenuGTACacheClick()
-    {
-        var lua = $"{FileHelper.ResFiles}.YimMenu.cache.zip";
-        var file = $"{FileHelper.Dir_AppData_YimMenu}\\cache.zip";
-
-        FileHelper.ExtractResFile(lua, file);
-
-        using var archive = ZipFile.OpenRead(file);
-        archive.ExtractToDirectory(FileHelper.Dir_AppData_YimMenu);
-        archive.Dispose();
-
-        File.Delete(file);
-        NotifierHelper.Show(NotifierType.Success, "释放YimMenu预设缓存成功，再次尝试启动YimMenu");
     }
     #endregion
 }

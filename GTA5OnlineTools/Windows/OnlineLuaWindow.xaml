@@ -177,12 +177,18 @@
             </Grid>
         </DockPanel>
         <!--  //////////////////////  -->
-        <TextBox
-            x:Name="TextBox_Logger"
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="0,0,5,5"
-            Style="{StaticResource TextBoxStyle_Logger}" />
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <ListBox
+                x:Name="ListBox_DownloadNode"
+                Height="105"
+                Margin="0,0,5,5"
+                DockPanel.Dock="Top"
+                Style="{StaticResource ListBoxStyle_DownloadNode}" />
+            <TextBox
+                x:Name="TextBox_Logger"
+                Margin="0,0,5,5"
+                Style="{StaticResource TextBoxStyle_Logger}" />
+        </DockPanel>
     </Grid>
 
 </ui:Window>

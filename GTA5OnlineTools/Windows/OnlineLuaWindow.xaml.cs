@@ -30,16 +30,21 @@ public partial class OnlineLuaWindow
 
     private void Window_OnlineLua_Loaded(object sender, RoutedEventArgs e)
     {
+        var downloadOpt = new DownloadConfiguration()
+        {
+            ClearPackageOnCompletionWithFailure = true,
+            ReserveStorageSpaceBeforeStartingDownload = true
+        };
+
         // 初始化下载库
-        _downloader = new();
+        _downloader = new(downloadOpt);
 
         RadioButton_Kiddion.IsChecked = true;
     }
 
-    private async void Window_OnlineLua_Closing(object sender, CancelEventArgs e)
+    private void Window_OnlineLua_Closing(object sender, CancelEventArgs e)
     {
-        await _downloader.Clear();
-        _downloader.Dispose();
+        _downloader.CancelAsync();
     }
 
     //////////////////////////////////////////////////////////
@@ -92,19 +97,28 @@ public partial class OnlineLuaWindow
                 }
             }
 
-            Button_StartDownload.IsEnabled = true;
-            Button_CancelDownload.IsEnabled = false;
-
-            LoadingSpinner_Refush.IsLoading = false;
+            ListBox_DownloadNode.Items.Clear();
+            for (int i = 0; i < OnlineLuas.First().Download.Count; i++)
+            {
+                ListBox_DownloadNode.Items.Add($"节点{i + 1}");
+            }
+            ListBox_DownloadNode.SelectedIndex = 0;
         }
         catch (Exception ex)
         {
             AppendLogger($"获取服务器Lua列表异常：{ex.Message}");
             NotifierHelper.Show(NotifierType.Error, $"获取服务器Lua列表异常\n{ex.Message}");
         }
+        finally
+        {
+            Button_StartDownload.IsEnabled = true;
+            Button_CancelDownload.IsEnabled = false;
+
+            LoadingSpinner_Refush.IsLoading = false;
+        }
     }
 
-    private void Button_StartDownload_Click(object sender, RoutedEventArgs e)
+    private async void Button_StartDownload_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
@@ -116,6 +130,14 @@ public partial class OnlineLuaWindow
             return;
         }
 
+        var index2 = ListBox_DownloadNode.SelectedIndex;
+        if (index2 == -1)
+        {
+            AppendLogger("请选择下载节点，操作取消");
+            NotifierHelper.Show(NotifierType.Warning, "请选择下载节点，操作取消");
+            return;
+        }
+
         ClearLogger();
 
         StackPanel_ToggleOption.IsEnabled = false;
@@ -124,10 +146,14 @@ public partial class OnlineLuaWindow
 
         ResetUIState();
 
-        var adddress = OnlineLuas[index].Download;
+        var adddress = OnlineLuas[index].Download[index2];
 
         AppendLogger($"Lua名称：{OnlineLuas[index].Name}");
         AppendLogger($"Lua大小: {OnlineLuas[index].Size}");
+
+        _downloader.DownloadStarted -= DownloadStarted;
+        _downloader.DownloadProgressChanged -= DownloadProgressChanged;
+        _downloader.DownloadFileCompleted -= DownloadFileCompleted;
 
         _downloader.DownloadStarted += DownloadStarted;
         _downloader.DownloadProgressChanged += DownloadProgressChanged;
@@ -139,15 +165,18 @@ public partial class OnlineLuaWindow
             tempPath = Path.Combine(FileHelper.Dir_AppData_YimMenu_Scripts, "GTA5OnlineLua.zip");
 
         AppendLogger("开始下载中...");
-        _downloader.DownloadFileTaskAsync(adddress, tempPath);
+        await _downloader.DownloadFileTaskAsync(adddress, tempPath);
     }
 
-    private async void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
+    private void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
+        StackPanel_ToggleOption.IsEnabled = false;
+        Button_StartDownload.IsEnabled = false;
+        Button_CancelDownload.IsEnabled = false;
+
         _downloader.CancelAsync();
-        await _downloader.Clear();
 
         ResetUIState();
         AppendLogger("下载取消");

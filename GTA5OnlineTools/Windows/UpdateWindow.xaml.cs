@@ -39,7 +39,7 @@ public partial class UpdateWindow
             if (CoreUtil.UpdateInfo == null)
             {
                 Button_StartDownload.IsEnabled = false;
-                Button_CancelDownload.IsEnabled = false; 
+                Button_CancelDownload.IsEnabled = false;
                 return;
             }
 
@@ -69,10 +69,9 @@ public partial class UpdateWindow
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private async void Window_Update_Closing(object sender, CancelEventArgs e)
+    private void Window_Update_Closing(object sender, CancelEventArgs e)
     {
-        await _downloader.Clear();
-        _downloader.Dispose();
+        _downloader.CancelAsync();
     }
 
     /// <summary>
@@ -93,7 +92,7 @@ public partial class UpdateWindow
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Button_StartDownload_Click(object sender, RoutedEventArgs e)
+    private async void Button_StartDownload_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
@@ -114,11 +113,15 @@ public partial class UpdateWindow
         // 获取未下载完临时文件路径
         var tempPath = CoreUtil.GetHalfwayFilePath(); ;
 
+        _downloader.DownloadStarted -= DownloadStarted;
+        _downloader.DownloadProgressChanged -= DownloadProgressChanged;
+        _downloader.DownloadFileCompleted -= DownloadFileCompleted;
+
         _downloader.DownloadStarted += DownloadStarted;
         _downloader.DownloadProgressChanged += DownloadProgressChanged;
         _downloader.DownloadFileCompleted += DownloadFileCompleted;
 
-        _downloader.DownloadFileTaskAsync(CoreUtil.UpdateAddress, tempPath);
+        await _downloader.DownloadFileTaskAsync(CoreUtil.UpdateAddress, tempPath);
     }
 
     /// <summary>
@@ -126,12 +129,14 @@ public partial class UpdateWindow
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private async void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
+    private void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
+        Button_StartDownload.IsEnabled = false;
+        Button_CancelDownload.IsEnabled = false;
+
         _downloader.CancelAsync();
-        await _downloader.Clear();
 
         ResetUIState("下载取消");
 

@@ -6,15 +6,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://crazyzhang.cn/ui/2023/xaml"
     x:Name="Window_Kiddion"
-    Title="GTA5线上小助手 - Kiddion脚本管理"
-    Width="600"
-    Height="350"
+    Title="GTA5线上小助手 - Kiddion汉化润色修正"
+    Width="500"
+    Height="500"
     Closing="Window_Kiddion_Closing"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     Loaded="Window_Kiddion_Loaded"
-    ResizeMode="NoResize"
+    ResizeMode="CanMinimize"
     Style="{StaticResource SystemWindowStyle}"
-    WindowStartupLocation="CenterOwner"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
     <ui:Window.TitleContent>
@@ -36,55 +36,33 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <!--  ///////////////////////  -->
-        <DockPanel Margin="5,5,5,0">
-            <StackPanel
-                Margin="5,0,5,0"
-                DockPanel.Dock="Right"
-                Orientation="Horizontal">
-                <Button
-                    Background="#FFB100"
-                    Command="{Binding LuaScriptClickCommand}"
-                    CommandParameter="LuaScriptDir"
-                    Content="脚本目录" />
-                <Button
-                    Background="#EA4335"
-                    Command="{Binding LuaScriptClickCommand}"
-                    CommandParameter="ClearScriptDir"
-                    Content="清空脚本目录" />
-            </StackPanel>
-            <TextBlock
-                Margin="5,0,5,0"
-                VerticalAlignment="Center"
-                FontSize="20"
-                FontWeight="Bold"
-                Text="注意备份和更新Lua脚本" />
-        </DockPanel>
-        <!--  ///////////////////////  -->
-        <WrapPanel Grid.Row="1" Margin="5">
+        <WrapPanel Margin="5,5,5,0" Orientation="Horizontal">
             <Button
-                Background="#4285F4"
-                Command="{Binding LuaScriptClickCommand}"
-                CommandParameter="AliceLua"
-                Content="Alice Lua脚本" />
+                x:Name="Button_GetKiddionUI"
+                Click="Button_GetKiddionUI_Click"
+                Content="获取Kiddion文本" />
+            <Button
+                x:Name="Button_BatchTranslation"
+                Click="Button_BatchTranslation_Click"
+                Content="批量机器翻译" />
+
+            <TextBlock Margin="5" VerticalAlignment="Center">
+                <Hyperlink NavigateUri="https://github.com/CrazyZhang666/GTA5OnlineTools/discussions/new?category=general" RequestNavigate="Hyperlink_RequestNavigate">
+                    汉化请反馈到GitHub
+                </Hyperlink>
+            </TextBlock>
         </WrapPanel>
         <!--  ///////////////////////  -->
-        <StackPanel Grid.Row="2" Margin="5">
-            <TextBlock
-                Margin="5,0,5,5"
-                Style="{StaticResource TextBlockStyle_Hint}"
-                Text="提示：以上脚本为小助手收集的Kiddion Lua脚本，每次小助手更新，脚本也会更新到最新版本" />
-            <TextBlock
-                Margin="5,0,5,5"
-                Style="{StaticResource TextBlockStyle_Hint}"
-                Text="提示：玩家如果要更新脚本，需要将旧脚本手动删除，然后点击上述对应按钮释放最新版本脚本（小助手不会主动更新用户脚本，需要玩家手动替换）" />
-            <TextBlock
-                Margin="5,0,5,5"
-                Style="{StaticResource TextBlockStyle_Hint}"
-                Text="提示：如果你有重要脚本，注意做好备份，避免误删导致脚本丢失，具体可以打开脚本目录查看Lua文件" />
-        </StackPanel>
+        <TextBox
+            x:Name="TextBox_Logger"
+            Grid.Row="1"
+            Margin="5"
+            FontFamily="Consolas"
+            FontSize="16"
+            IsReadOnly="False"
+            Style="{StaticResource TextBoxStyle_Logger}" />
     </Grid>
 
 </ui:Window>

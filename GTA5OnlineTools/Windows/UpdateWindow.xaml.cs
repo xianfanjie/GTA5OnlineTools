@@ -107,6 +107,12 @@ public partial class UpdateWindow
         Button_StartDownload.IsEnabled = false;
         Button_CancelDownload.IsEnabled = true;
 
+        ProgressBar_Download.Minimum = 0;
+        ProgressBar_Download.Maximum = 1024;
+        ProgressBar_Download.Value = 0;
+
+        TaskbarItemInfo.ProgressValue = 0;
+
         TextBlock_DonloadInfo.Text = "下载开始";
         TextBlock_Percentage.Text = "0KB / 0MB";
 

@@ -56,11 +56,6 @@
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="KiddionScriptsDirectory"
                         Content="脚本目录" />
-                    <Button
-                        Background="#CA64EA"
-                        Command="{Binding ExtraClickCommand}"
-                        CommandParameter="KiddionScriptsManage"
-                        Content="LUA脚本管理" />
                     <!--  /////////////////  -->
                     <Button
                         Background="#34A853"
@@ -239,7 +234,7 @@
             Title="下载Lua脚本"
             Command="{Binding HacksFuncClickCommand}"
             CommandParameter="OnlineLua"
-            Description="从服务器下载Kiddion和YimMenu脚本"
+            Description="在线下载Kiddion和YimMenu脚本"
             Icon="&#xe72e;"
             Style="{StaticResource ButtonStyle_HacksFunc}" />
 

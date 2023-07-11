@@ -171,9 +171,6 @@ public partial class HacksView : UserControl
                 case "KiddionScriptsDirectory":
                     KiddionScriptsDirectoryClick();
                     break;
-                case "KiddionScriptsManage":
-                    KiddionScriptsManageClick();
-                    break;
                 case "EditKiddionConfig":
                     EditKiddionConfigClick();
                     break;
@@ -386,18 +383,6 @@ public partial class HacksView : UserControl
     private void KiddionScriptsDirectoryClick()
     {
         ProcessHelper.OpenDir(FileHelper.Dir_Kiddion_Scripts);
-    }
-
-    /// <summary>
-    /// Kiddion LUA脚本管理
-    /// </summary>
-    private void KiddionScriptsManageClick()
-    {
-        var kiddionWindow = new KiddionWindow
-        {
-            Owner = MainWindow.MainWindowInstance
-        };
-        kiddionWindow.ShowDialog();
     }
 
     /// <summary>

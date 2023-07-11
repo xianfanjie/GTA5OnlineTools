@@ -45,19 +45,13 @@ public partial class OnlineLuaWindow
 
     private void ClearLogger()
     {
-        this.Dispatcher.Invoke(() =>
-        {
-            TextBox_Logger.Clear();
-        });
+        TextBox_Logger.Clear();
     }
 
     private void AppendLogger(string log)
     {
-        this.Dispatcher.Invoke(() =>
-        {
-            TextBox_Logger.AppendText($"{log}\n");
-            TextBox_Logger.ScrollToEnd();
-        });
+        TextBox_Logger.AppendText($"{log}\n");
+        TextBox_Logger.ScrollToEnd();
     }
 
     //////////////////////////////////////////////////////////
@@ -123,9 +117,12 @@ public partial class OnlineLuaWindow
         Button_StartDownload.IsEnabled = false;
         Button_CancelDownload.IsEnabled = true;
 
-        ResetState();
+        ResetUIState();
 
         var adddress = OnlineLuas[index].Download;
+
+        AppendLogger($"Lua名称：{OnlineLuas[index].Name}");
+        AppendLogger($"Lua大小: {OnlineLuas[index].Size}");
 
         _downloader.DownloadStarted += DownloadStarted;
         _downloader.DownloadProgressChanged += DownloadProgressChanged;
@@ -146,7 +143,7 @@ public partial class OnlineLuaWindow
         _downloader.CancelAsync();
         await _downloader.Clear();
 
-        ResetState();
+        ResetUIState();
         AppendLogger("下载取消");
 
         StackPanel_ToggleOption.IsEnabled = true;
@@ -156,9 +153,11 @@ public partial class OnlineLuaWindow
 
     //////////////////////////////////////////////////////////
 
-    private void ResetState()
+    /// <summary>
+    /// 重置UI显示
+    /// </summary>
+    private void ResetUIState()
     {
-        ProgressBar_Download.Minimum = 0;
         ProgressBar_Download.Maximum = 1024;
         ProgressBar_Download.Value = 0;
 
@@ -171,9 +170,6 @@ public partial class OnlineLuaWindow
     {
         this.Dispatcher.Invoke(() =>
         {
-            AppendLogger($"下载开始 文件大小 {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}");
-
-            ProgressBar_Download.Minimum = 0;
             ProgressBar_Download.Maximum = e.TotalBytesToReceive;
         });
     }
@@ -182,31 +178,34 @@ public partial class OnlineLuaWindow
     {
         this.Dispatcher.Invoke(() =>
         {
-            TextBlock_Percentage.Text = $"{CoreUtil.GetFileForamtSize(e.ReceivedBytesSize)} / {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
-
             ProgressBar_Download.Value = e.ReceivedBytesSize;
+
             TaskbarItemInfo.ProgressValue = ProgressBar_Download.Value / ProgressBar_Download.Maximum;
+
+            TextBlock_Percentage.Text = $"{CoreUtil.GetFileForamtSize(e.ReceivedBytesSize)} / {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
         });
     }
 
     private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
     {
-        this.Dispatcher.Invoke(() =>
+        this.Dispatcher.Invoke(async () =>
         {
             if (e.Error != null)
             {
-                ResetState();
+                ResetUIState();
                 StackPanel_ToggleOption.IsEnabled = true;
                 Button_StartDownload.IsEnabled = true;
                 Button_CancelDownload.IsEnabled = false;
 
-                AppendLogger($"下载失败 {e.Error.Message}");
+                AppendLogger("下载失败");
+                AppendLogger($"错误信息：{e.Error.Message}");
                 return;
             }
 
             try
             {
-                AppendLogger("下载成功，开始解压中...");
+                AppendLogger("下载成功");
+                AppendLogger("开始解压Lua中...");
 
                 using var archive = ZipFile.OpenRead(tempPath);
 
@@ -215,14 +214,21 @@ public partial class OnlineLuaWindow
                 else
                     archive.ExtractToDirectory(FileHelper.Dir_AppData_YimMenu_Scripts);
 
+                await Task.Delay(100);
                 archive.Dispose();
-                AppendLogger("解压成功，开始删除临时文件中...");
+
+                AppendLogger("解压成功");
+                AppendLogger("开始删除临时文件中...");
+
+                await Task.Delay(100);
                 File.Delete(tempPath);
+
                 AppendLogger("删除临时文件成功，操作结束");
             }
             catch (Exception ex)
             {
-                AppendLogger($"解压时发生异常：{ex.Message}");
+                AppendLogger("解压时发生异常");
+                AppendLogger($"异常信息：{ex.Message}");
             }
             finally
             {

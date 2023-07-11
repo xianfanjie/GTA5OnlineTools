@@ -71,9 +71,9 @@ public partial class GTA5View : UserControl
 
         /////////////////////////////////////////////////
 
-        NavDictionary.Add("Kiddion2Window", new()
+        NavDictionary.Add("KiddionWindow", new()
         {
-            Type = typeof(Kiddion2Window),
+            Type = typeof(KiddionWindow),
             Window = null
         });
         NavDictionary.Add("StartupWindow", new()
@@ -277,7 +277,7 @@ public partial class GTA5View : UserControl
     /// </summary>
     private void KiddionChsClick()
     {
-        AutoOpenWindow("Kiddion2Window");
+        AutoOpenWindow("KiddionWindow");
     }
 
     /// <summary>

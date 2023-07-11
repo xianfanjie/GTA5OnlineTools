@@ -1,10 +1,10 @@
-﻿using GTA5Shared.Helper;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using GTA5Core.Native;
+using GTA5Shared.API;
+using GTA5Shared.Helper;
 
 namespace GTA5OnlineTools.Windows;
 
-/// <summary>
+/// <summary> 
 /// KiddionWindow.xaml 的交互逻辑
 /// </summary>
 public partial class KiddionWindow
@@ -24,71 +24,100 @@ public partial class KiddionWindow
 
     }
 
-    /// <summary>
-    /// Lua脚本按钮点击
-    /// </summary>
-    /// <param name="Name"></param>
-    [RelayCommand]
-    private void LuaScriptClick(string Name)
+    /////////////////////////////////////////////////////
+
+    private void ClearLogger()
     {
-        try
+        TextBox_Logger.Clear();
+    }
+
+    private void AppendLogger(string log = "")
+    {
+        TextBox_Logger.AppendText($"{log}\n");
+        TextBox_Logger.ScrollToEnd();
+    }
+
+    /// <summary>
+    /// 超链接请求导航事件
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+    {
+        ProcessHelper.OpenLink(e.Uri.OriginalString);
+        e.Handled = true;
+    }
+
+    /////////////////////////////////////////////////////
+
+    private List<string> GetKiddionUITextInfos()
+    {
+        var textInfos = new List<string>();
+
+        var pArray = Process.GetProcessesByName("Kiddion");
+        if (pArray.Length == 0)
+            return textInfos;
+
+        var main_handle = pArray.First().MainWindowHandle;
+
+        var button_handle = Win32.FindWindowEx(main_handle, IntPtr.Zero, "Button", null);
+        while (button_handle != IntPtr.Zero)
         {
-            AudioHelper.PlayClickSound();
+            var length = Win32.GetWindowTextLength(button_handle);
+            var builder = new StringBuilder(length + 1);
+            _ = Win32.GetWindowText(button_handle, builder, builder.Capacity);
 
-            switch (Name)
-            {
-                case "LuaScriptDir":
-                    ProcessHelper.OpenDir(FileHelper.Dir_Kiddion_Scripts);
-                    break;
-                case "ClearScriptDir":
-                    ClearScriptDirClick();
-                    break;
-                case "AliceLua":
-                    AliceLuaClick();
-                    break;
-            }
+            var text = builder.ToString();
+            var split = text.IndexOf("|");
+            if (split != -1)
+                text = text[..split];
+
+            button_handle = Win32.FindWindowEx(main_handle, button_handle, "Button", null);
+            textInfos.Add($"{text}");
         }
-        catch (Exception ex)
+
+        return textInfos;
+    }
+
+    /// <summary>
+    /// 获取Kiddion文本
+    /// </summary>
+    private async void Button_GetKiddionUI_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        if (!ProcessHelper.IsAppRun("Kiddion"))
         {
-            NotifierHelper.ShowException(ex);
+            NotifierHelper.Show(NotifierType.Warning, "未发现《Kiddion》进程，请先运行《Kiddion》程序");
+            return;
+        }
+
+        ClearLogger();
+        foreach (var text in GetKiddionUITextInfos())
+        {
+            AppendLogger($"{{ L\"{text}\", L\"中文翻译\" }},");
+            await Task.Delay(1);
         }
     }
 
     /// <summary>
-    /// 是否清空脚本目录
+    /// 批量翻译
     /// </summary>
-    private void ClearScriptDirClick()
+    private async void Button_BatchTranslation_Click(object sender, RoutedEventArgs e)
     {
-        ProcessHelper.CloseProcess("Kiddion");
-        FileHelper.ClearDirectory(FileHelper.Dir_Kiddion_Scripts);
+        AudioHelper.PlayClickSound();
 
-        FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
-        NotifierHelper.Show(NotifierType.Success, "清空Kiddion Lua脚本文件夹成功");
-    }
+        if (!ProcessHelper.IsAppRun("Kiddion"))
+        {
+            NotifierHelper.Show(NotifierType.Warning, "未发现《Kiddion》进程，请先运行《Kiddion》程序");
+            return;
+        }
 
-    /// <summary>
-    /// 释放Lua脚本
-    /// </summary>
-    private void ReleaseLua(string luaName)
-    {
-        var lua = $"{FileHelper.ResFiles}.Kiddion.scripts.{luaName}.zip";
-        var file = $"{FileHelper.Dir_Kiddion_Scripts}\\{luaName}.zip";
-
-        FileHelper.ExtractResFile(lua, file);
-
-        using var archive = ZipFile.OpenRead(file);
-        archive.ExtractToDirectory(FileHelper.Dir_Kiddion_Scripts);
-        archive.Dispose();
-
-        File.Delete(file);
-        NotifierHelper.Show(NotifierType.Success, "脚本替换成功，请重新启动Kiddion查看");
-    }
-
-    /// <summary>
-    /// 释放 Alice Lua脚本
-    /// </summary>
-    private void AliceLuaClick()
-    {
-        ReleaseLua("AliceLua");
+        ClearLogger();
+        foreach (var text in GetKiddionUITextInfos())
+        {
+            var chs = await WebAPI.GetYouDaoContent(text);
+            AppendLogger($"{{ L\"{text}\", L\"{chs}\" }},");
+        }
     }
 }

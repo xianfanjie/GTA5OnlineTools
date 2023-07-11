@@ -43,7 +43,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="260" />
         </Grid.ColumnDefinitions>
         <!--  //////////////////////  -->
         <StackPanel
@@ -102,6 +102,8 @@
                     VerticalAlignment="Center"
                     Background="White"
                     BorderBrush="#ABADB3"
+                    Maximum="1024"
+                    Minimum="0"
                     SmallChange="1" />
                 <TextBlock
                     Name="TextBlock_Percentage"

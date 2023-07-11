@@ -27,8 +27,14 @@ public partial class UpdateWindow
     {
         try
         {
+            var downloadOpt = new DownloadConfiguration()
+            {
+                ClearPackageOnCompletionWithFailure = true,
+                ReserveStorageSpaceBeforeStartingDownload = true
+            };
+
             // 初始化下载库
-            _downloader = new();
+            _downloader = new(downloadOpt);
 
             // 删除未下载完的文件
             var tempPath = CoreUtil.GetHalfwayFilePath();

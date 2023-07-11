@@ -59,8 +59,6 @@ public static class FileHelper
     public static string File_Cache_LSCHax { get; private set; }
     public static string File_Cache_Stat { get; private set; }
     public static string File_Cache_Notepad2 { get; private set; }
-    public static string File_Cache_Xenos64 { get; private set; }
-    public static string File_Cache_Xenos64Profile { get; private set; }
 
     public static string File_YimMenu_DLL { get; private set; }
     public static string File_YimMenu_Index { get; private set; }
@@ -122,8 +120,6 @@ public static class FileHelper
         File_Cache_LSCHax = Path.Combine(Dir_Cache, "LSCHax.exe");
         File_Cache_Stat = Path.Combine(Dir_Cache, "stat.txt");
         File_Cache_Notepad2 = Path.Combine(Dir_Cache, "Notepad2.exe");
-        File_Cache_Xenos64 = Path.Combine(Dir_Cache, "Xenos64.exe");
-        File_Cache_Xenos64Profile = Path.Combine(Dir_Cache, "XenosCurrentProfile.xpr");
 
         File_YimMenu_DLL = Path.Combine(Dir_YimMenu, "YimMenu.dll");
 

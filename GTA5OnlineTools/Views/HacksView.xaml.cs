@@ -211,9 +211,6 @@ public partial class HacksView : UserControl
                 case "YimMenuGTACache":
                     YimMenuGTACacheClick();
                     break;
-                case "Xenos64Injector":
-                    Xenos64InjectorClick();
-                    break;
                 case "ResetYimMenuConfig":
                     ResetYimMenuConfigClick();
                     break;
@@ -540,14 +537,6 @@ public partial class HacksView : UserControl
 
         File.Delete(file_cache);
         NotifierHelper.Show(NotifierType.Success, "释放YimMenu预设缓存成功，请再次尝试启动YimMenu");
-    }
-
-    /// <summary>
-    /// Xenos64注入器
-    /// </summary>
-    private void Xenos64InjectorClick()
-    {
-        ProcessHelper.OpenProcess(FileHelper.File_Cache_Xenos64);
     }
 
     /// <summary>

@@ -49,7 +49,10 @@
                     崩溃问题
                 </Paragraph>
                 <Paragraph Style="{StaticResource ParagraphStyle_Content}">
-                    如果注入后立刻就崩溃，这一般是缓存导致的，请重启游戏，并清空YimMenu配置文件（就是那个YimMenu文件夹），然后进入邀请战局（不建议去公共战局），这时再注入YimMenu，然后按照提示在线上模式更新游戏缓存即可
+                    如果注入后立刻就崩溃，这一般是缓存导致的，请重启游戏，并清空YimMenu配置文件（就是那个YimMenu文件夹），然后进入邀请战局（不建议去公共战局，故事模式也可以），这时再注入YimMenu，然后按照提示在线上模式更新游戏缓存即可
+                </Paragraph>
+                <Paragraph Style="{StaticResource ParagraphStyle_Content}">
+                    如果更新缓存会导致崩溃游戏，可以使用预设GTA缓存功能（这是释放不会崩溃的GTA缓存文件），然后再进入游戏就不需要更新缓存了
                 </Paragraph>
 
                 <Paragraph Style="{StaticResource ParagraphStyle_Title}">

@@ -222,11 +222,6 @@
                         CommandParameter="YimMenuGTACache"
                         Content="预设GTA缓存" />
                     <Button
-                        Background="#009AD6"
-                        Command="{Binding ExtraClickCommand}"
-                        CommandParameter="Xenos64Injector"
-                        Content="Xenos64" />
-                    <Button
                         Background="#EA4335"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="ResetYimMenuConfig"

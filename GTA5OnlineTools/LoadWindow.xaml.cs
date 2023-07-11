@@ -88,8 +88,6 @@ public partial class LoadWindow
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Stat, FileHelper.File_Cache_Stat);
 
                 FileHelper.ExtractResFile(FileHelper.Res_Cache_Notepad2, FileHelper.File_Cache_Notepad2);
-                FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64, FileHelper.File_Cache_Xenos64);
-                FileHelper.ExtractResFile(FileHelper.Res_Cache_Xenos64Profile, FileHelper.File_Cache_Xenos64Profile);
 
                 // 判断YimMenu.dll文件是否存在 是否被占用
                 if (!File.Exists(FileHelper.File_YimMenu_DLL) ||
@@ -102,14 +100,6 @@ public partial class LoadWindow
                 {
                     LoggerHelper.Warn("YimMenu.dll文件正在被占用，跳过释放");
                 }
-
-                // 修改Xenos64配置文件
-                var xmlDoc = new XmlDocument();
-                xmlDoc.Load(FileHelper.File_Cache_Xenos64Profile);
-                var xmlRoot = xmlDoc.DocumentElement;
-                xmlRoot.SelectSingleNode("imagePath").InnerText = FileHelper.File_YimMenu_DLL;
-                xmlDoc.Save(FileHelper.File_Cache_Xenos64Profile);
-                LoggerHelper.Info("修改Xenos64配置文件成功");
 
                 // 初始化简繁字库
                 ChsHelper.PreHeat();

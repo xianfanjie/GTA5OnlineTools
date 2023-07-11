@@ -208,6 +208,9 @@ public partial class HacksView : UserControl
                 case "EditYimMenuConfig":
                     EditYimMenuConfigClick();
                     break;
+                case "YimMenuGTACache":
+                    YimMenuGTACacheClick();
+                    break;
                 case "Xenos64Injector":
                     Xenos64InjectorClick();
                     break;
@@ -519,6 +522,24 @@ public partial class HacksView : UserControl
     private void EditYimMenuConfigClick()
     {
         ProcessHelper.Notepad2EditTextFile(FileHelper.File_AppData_YimMenu_Settings);
+    }
+
+    /// <summary>
+    /// YimMenu预设缓存
+    /// </summary>
+    private void YimMenuGTACacheClick()
+    {
+        var res_cache = $"{FileHelper.ResFiles}.YimMenu.cache.zip";
+        var file_cache = $"{FileHelper.Dir_AppData_YimMenu}\\cache.zip";
+
+        FileHelper.ExtractResFile(res_cache, file_cache);
+
+        using var archive = ZipFile.OpenRead(file_cache);
+        archive.ExtractToDirectory(FileHelper.Dir_AppData_YimMenu);
+        archive.Dispose();
+
+        File.Delete(file_cache);
+        NotifierHelper.Show(NotifierType.Success, "释放YimMenu预设缓存成功，请再次尝试启动YimMenu");
     }
 
     /// <summary>

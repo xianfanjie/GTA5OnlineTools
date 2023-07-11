@@ -17,6 +17,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Files\YimMenu\cache.zip" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
         <PackageReference Include="NLog" Version="5.2.2" />
         <PackageReference Include="Notification.Wpf" Version="7.0.0" />
@@ -55,6 +59,7 @@
         <EmbeddedResource Include="Files\Kiddion\teleports.json" />
         <EmbeddedResource Include="Files\Kiddion\themes.json" />
         <EmbeddedResource Include="Files\Kiddion\vehicles.json" />
+        <EmbeddedResource Include="Files\YimMenu\cache.zip" />
         <EmbeddedResource Include="Files\YimMenu\YimMenu.dll" />
         <EmbeddedResource Include="Files\YimMenu\zh_CN.json" />
         <EmbeddedResource Include="Files\YimMenu\index.json" />

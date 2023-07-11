@@ -17,8 +17,9 @@ public partial class OnlineLuaWindow
     private bool isUseKiddion = true;
     private string tempPath = string.Empty;
 
-    private const string kiddion = "https://api.crazyzhang.cn/lua/Kiddion.json";
-    private const string yimMenu = "https://api.crazyzhang.cn/lua/YimMenu.json";
+    private const string host = "https://api.crazyzhang.cn/lua";
+    private const string kiddion = $"{host}/Kiddion.json";
+    private const string yimMenu = $"{host}/YimMenu.json";
 
     public ObservableCollection<LuaInfo> OnlineLuas { get; set; } = new();
 
@@ -215,9 +216,9 @@ public partial class OnlineLuaWindow
                 using var archive = ZipFile.OpenRead(tempPath);
 
                 if (isUseKiddion)
-                    archive.ExtractToDirectory(FileHelper.Dir_Kiddion_Scripts);
+                    archive.ExtractToDirectory(FileHelper.Dir_Kiddion_Scripts, true);
                 else
-                    archive.ExtractToDirectory(FileHelper.Dir_AppData_YimMenu_Scripts);
+                    archive.ExtractToDirectory(FileHelper.Dir_AppData_YimMenu_Scripts, true);
 
                 await Task.Delay(100);
                 archive.Dispose();

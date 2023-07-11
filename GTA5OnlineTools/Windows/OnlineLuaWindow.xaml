@@ -47,33 +47,40 @@
         </Grid.ColumnDefinitions>
         <!--  //////////////////////  -->
         <StackPanel
-            x:Name="StackPanel_ToggleOption"
             Grid.Row="0"
             Grid.Column="0"
             Margin="5"
             Orientation="Horizontal">
-            <RadioButton
-                x:Name="RadioButton_Kiddion"
-                Checked="RadioButton_ScriptMode_Checked"
-                Content="Kiddion" />
-            <RadioButton
-                x:Name="RadioButton_YimMenu"
-                Checked="RadioButton_ScriptMode_Checked"
-                Content="YimMenu" />
-            <Button
-                x:Name="Button_RefushList"
-                Click="Button_RefushList_Click"
-                Content="刷新列表" />
-            <Button
-                x:Name="Button_ScriptDir"
-                Background="#FE780A"
-                Click="Button_ScriptDir_Click"
-                Content="脚本目录" />
-            <Button
-                x:Name="Button_ClearScriptDir"
-                Background="#EA4335"
-                Click="Button_ClearScriptDir_Click"
-                Content="清空脚本目录" />
+            <StackPanel x:Name="StackPanel_ToggleOption" Orientation="Horizontal">
+                <RadioButton
+                    x:Name="RadioButton_Kiddion"
+                    Checked="RadioButton_ScriptMode_Checked"
+                    Content="Kiddion" />
+                <RadioButton
+                    x:Name="RadioButton_YimMenu"
+                    Checked="RadioButton_ScriptMode_Checked"
+                    Content="YimMenu" />
+                <Button
+                    x:Name="Button_RefushList"
+                    Click="Button_RefushList_Click"
+                    Content="刷新列表" />
+                <Button
+                    x:Name="Button_ClearScriptDir"
+                    Background="#EA4335"
+                    Click="Button_ClearScriptDir_Click"
+                    Content="清空脚本目录" />
+            </StackPanel>
+            <!--  ////////////////  -->
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    x:Name="Button_ScriptDir"
+                    Background="#FE780A"
+                    Click="Button_ScriptDir_Click"
+                    Content="脚本目录" />
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：玩家需要手动删除旧版本Lua后重新下载最新版本
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
         <!--  //////////////////////  -->
         <StackPanel
@@ -131,7 +138,10 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <!--  ////////////  -->
-                                    <ui:IconFont FontSize="36" Icon="&#xebfd;" />
+                                    <ui:IconFont
+                                        FontSize="36"
+                                        Foreground="#000"
+                                        Icon="&#xebfd;" />
                                     <!--  ////////////  -->
                                     <StackPanel Grid.Column="1" Margin="13,0,10,0">
                                         <TextBlock Text="{Binding Name, StringFormat='名称：{0}'}" />

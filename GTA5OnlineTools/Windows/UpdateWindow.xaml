@@ -80,12 +80,12 @@
             <!--  ///////////////  -->
             <Grid>
                 <ProgressBar
-                    Name="ProgressBar_Update"
-                    Height="40"
+                    Name="ProgressBar_Download"
+                    Height="35"
                     Margin="5"
                     VerticalAlignment="Center"
                     Background="White"
-                    BorderBrush="#808080"
+                    BorderBrush="#ABADB3"
                     SmallChange="1" />
                 <TextBlock
                     Name="TextBlock_Percentage"
@@ -125,18 +125,19 @@
                 DockPanel.Dock="Right"
                 Orientation="Horizontal">
                 <TextBlock
-                    Margin="5"
+                    Margin="0,5,5,5"
                     VerticalAlignment="Center"
                     Foreground="Green"
                     Text="提示：若速度慢，请手动下载更新" />
                 <Button
-                    x:Name="Button_StartUpdate"
-                    Margin="5,5,0,5"
-                    Click="Button_StartUpdate_Click"
+                    x:Name="Button_StartDownload"
+                    Margin="0,5,5,5"
+                    Click="Button_StartDownload_Click"
                     Content="下载更新" />
                 <Button
-                    x:Name="Button_CancelUpdate"
-                    Click="Button_CancelUpdate_Click"
+                    x:Name="Button_CancelDownload"
+                    Margin="0,5,5,5"
+                    Click="Button_CancelDownload_Click"
                     Content="取消更新"
                     IsEnabled="False" />
             </StackPanel>

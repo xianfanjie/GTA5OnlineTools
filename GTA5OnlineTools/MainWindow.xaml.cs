@@ -224,52 +224,55 @@ public partial class MainWindow
 
             // 检测版本更新
             var config = await HttpHelper.DownloadString("https://api.crazyzhang.cn/update/config.json");
-            if (!string.IsNullOrEmpty(config))
-            {
-                // 解析web返回的数据
-                CoreUtil.UpdateInfo = JsonHelper.JsonDese<UpdateInfo>(config);
-                // 获取对应数据
-                CoreUtil.ServerVersion = Version.Parse(CoreUtil.UpdateInfo.Version);
-
-                // 如果线上版本号大于本地版本号，则提示更新
-                if (CoreUtil.ServerVersion > CoreUtil.ClientVersion)
-                {
-                    // 打开更新对话框
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        var UpdateWindow = new UpdateWindow
-                        {
-                            // 设置父窗口
-                            Owner = this
-                        };
-                        // 以对话框形式显示更新窗口
-                        UpdateWindow.ShowDialog();
-                    });
-                }
-                else
-                {
-                    LoggerHelper.Info($"当前已是最新版本 {CoreUtil.ServerVersion}");
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        NotifierHelper.Show(NotifierType.Notification, $"当前已是最新版本 {CoreUtil.ServerVersion}");
-                    });
-                }
-            }
-            else
+            if (string.IsNullOrEmpty(config))
             {
                 LoggerHelper.Error("网络异常");
                 this.Dispatcher.Invoke(() =>
                 {
                     NotifierHelper.Show(NotifierType.Error, "网络异常，这并不影响小助手程序使用");
                 });
+                return;
             }
+
+            // 解析web返回的数据
+            CoreUtil.UpdateInfo = JsonHelper.JsonDese<UpdateInfo>(config);
+            // 获取对应数据
+            CoreUtil.ServerVersion = Version.Parse(CoreUtil.UpdateInfo.Version);
+
+#if DEBUG
+            if (CoreUtil.ServerVersion < CoreUtil.ClientVersion)
+                return;
+#endif
+
+            // 如果线上版本号等于本地版本号，则不提示更新
+            if (CoreUtil.ServerVersion == CoreUtil.ClientVersion)
+            {
+                LoggerHelper.Info($"当前已是最新版本 {CoreUtil.ServerVersion}");
+                this.Dispatcher.Invoke(() =>
+                {
+                    NotifierHelper.Show(NotifierType.Notification, $"当前已是最新版本 {CoreUtil.ServerVersion}");
+                });
+                return;
+            }
+
+            // 打开更新对话框
+            this.Dispatcher.Invoke(() =>
+            {
+                var UpdateWindow = new UpdateWindow
+                {
+                    // 设置父窗口
+                    Owner = this
+                };
+                // 以对话框形式显示更新窗口
+                UpdateWindow.ShowDialog();
+            });
         }
         catch (Exception ex)
         {
-            LoggerHelper.Error($"初始化错误", ex);
+            LoggerHelper.Error($"初始化异常", ex);
             this.Dispatcher.Invoke(() =>
             {
-                NotifierHelper.Show(NotifierType.Error, $"初始化错误\n{ex.Message}");
+                NotifierHelper.Show(NotifierType.Error, $"初始化异常\n{ex.Message}");
             });
         }
     }

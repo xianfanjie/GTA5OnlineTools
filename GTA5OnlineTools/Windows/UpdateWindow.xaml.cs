@@ -38,8 +38,8 @@ public partial class UpdateWindow
             // 防止未获取到更新信息情况
             if (CoreUtil.UpdateInfo == null)
             {
-                Button_StartUpdate.IsEnabled = false;
-                Button_CancelUpdate.IsEnabled = false; 
+                Button_StartDownload.IsEnabled = false;
+                Button_CancelDownload.IsEnabled = false; 
                 return;
             }
 
@@ -93,16 +93,19 @@ public partial class UpdateWindow
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Button_StartUpdate_Click(object sender, RoutedEventArgs e)
+    private void Button_StartDownload_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         var index = ListBox_DownloadAddress.SelectedIndex;
         if (index == -1)
+        {
+            NotifierHelper.Show(NotifierType.Warning, "请选择要下载的内容，操作取消");
             return;
+        }
 
-        Button_StartUpdate.IsEnabled = false;
-        Button_CancelUpdate.IsEnabled = true;
+        Button_StartDownload.IsEnabled = false;
+        Button_CancelDownload.IsEnabled = true;
 
         TextBlock_DonloadInfo.Text = "下载开始";
         TextBlock_Percentage.Text = "0KB / 0MB";
@@ -112,7 +115,7 @@ public partial class UpdateWindow
         // 获取未下载完临时文件路径
         var tempPath = CoreUtil.GetHalfwayFilePath(); ;
 
-        _downloader.DownloadStarted += Downloader_DownloadStarted;
+        _downloader.DownloadStarted += DownloadStarted;
         _downloader.DownloadProgressChanged += DownloadProgressChanged;
         _downloader.DownloadFileCompleted += DownloadFileCompleted;
 
@@ -124,15 +127,15 @@ public partial class UpdateWindow
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private async void Button_CancelUpdate_Click(object sender, RoutedEventArgs e)
+    private async void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         _downloader.CancelAsync();
         await _downloader.Clear();
 
-        Button_StartUpdate.IsEnabled = true;
-        Button_CancelUpdate.IsEnabled = false;
+        Button_StartDownload.IsEnabled = true;
+        Button_CancelDownload.IsEnabled = false;
 
         ResetState("下载取消");
     }
@@ -141,9 +144,9 @@ public partial class UpdateWindow
 
     private void ResetState(string reson)
     {
-        ProgressBar_Update.Minimum = 0;
-        ProgressBar_Update.Maximum = 1024;
-        ProgressBar_Update.Value = 0;
+        ProgressBar_Download.Minimum = 0;
+        ProgressBar_Download.Maximum = 1024;
+        ProgressBar_Download.Value = 0;
 
         TaskbarItemInfo.ProgressValue = 0;
 
@@ -157,14 +160,14 @@ public partial class UpdateWindow
     /// <param name="sender"></param>
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
-    private void Downloader_DownloadStarted(object sender, DownloadStartedEventArgs e)
+    private void DownloadStarted(object sender, DownloadStartedEventArgs e)
     {
         this.Dispatcher.Invoke(() =>
         {
-            TextBlock_DonloadInfo.Text = $"下载开始 文件大小 {GetFileForamtSize(e.TotalBytesToReceive)}";
+            TextBlock_DonloadInfo.Text = $"下载开始 文件大小 {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
 
-            ProgressBar_Update.Minimum = 0;
-            ProgressBar_Update.Maximum = e.TotalBytesToReceive;
+            ProgressBar_Download.Minimum = 0;
+            ProgressBar_Download.Maximum = e.TotalBytesToReceive;
         });
     }
 
@@ -177,10 +180,10 @@ public partial class UpdateWindow
     {
         this.Dispatcher.Invoke(() =>
         {
-            TextBlock_Percentage.Text = $"{GetFileForamtSize(e.ReceivedBytesSize)} / {GetFileForamtSize(e.TotalBytesToReceive)}";
+            TextBlock_Percentage.Text = $"{CoreUtil.GetFileForamtSize(e.ReceivedBytesSize)} / {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
 
-            ProgressBar_Update.Value = e.ReceivedBytesSize;
-            TaskbarItemInfo.ProgressValue = ProgressBar_Update.Value / ProgressBar_Update.Maximum;
+            ProgressBar_Download.Value = e.ReceivedBytesSize;
+            TaskbarItemInfo.ProgressValue = ProgressBar_Download.Value / ProgressBar_Download.Maximum;
         });
     }
 
@@ -230,22 +233,5 @@ public partial class UpdateWindow
                 NotifierHelper.ShowException(ex);
             }
         });
-    }
-
-    //////////////////////////////////////////////////////////
-
-    /// <summary>
-    /// 文件大小转换
-    /// </summary>
-    /// <param name="size"></param>
-    /// <returns></returns>
-    private string GetFileForamtSize(long size)
-    {
-        var kb = size / 1024.0f;
-
-        if (kb > 1024.0f)
-            return $"{kb / 1024.0f:0.00}MB";
-        else
-            return $"{kb:0.00}KB";
     }
 }

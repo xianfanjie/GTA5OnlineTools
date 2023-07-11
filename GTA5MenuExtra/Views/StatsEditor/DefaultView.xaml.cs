@@ -21,7 +21,7 @@ public partial class DefaultView : UserControl
         ListBox_STATClass.SelectedIndex = 0;
     }
 
-    private void AppendTextBox(string log)
+    private void AppendLogger(string log)
     {
         this.Dispatcher.Invoke(() =>
         {
@@ -30,7 +30,7 @@ public partial class DefaultView : UserControl
         });
     }
 
-    private void AppendTextBox(string statName, int value)
+    private void AppendLogger(string statName, int value)
     {
         TextBox_Logger.AppendText($"${statName}\n");
         TextBox_Logger.AppendText($"{value}\n");
@@ -61,7 +61,7 @@ public partial class DefaultView : UserControl
                 var hash = result.StatInfos[i].Hash;
                 var value = result.StatInfos[i].Value;
 
-                AppendTextBox(hash, value);
+                AppendLogger(hash, value);
             }
         }
     }
@@ -77,22 +77,22 @@ public partial class DefaultView : UserControl
                 var result = StatData.StatClasses.Find(t => t.Name == statClassName);
                 if (result != null)
                 {
-                    AppendTextBox($"正在执行 {result.Name} STAT代码");
+                    AppendLogger($"正在执行 {result.Name} STAT代码");
 
                     var count = result.StatInfos.Count;
                     for (int i = 0; i < count; i++)
                     {
-                        AppendTextBox($"正在执行 第 {i + 1}/{count} 条代码");
+                        AppendLogger($"正在执行 第 {i + 1}/{count} 条代码");
 
                         await STATS.STAT_SET_INT(result.StatInfos[i].Hash, result.StatInfos[i].Value);
                     }
 
-                    AppendTextBox($"{result.Name} STAT代码执行完毕");
+                    AppendLogger($"{result.Name} STAT代码执行完毕");
                 }
             }
             catch (Exception ex)
             {
-                AppendTextBox($"错误：{ex.Message}");
+                AppendLogger($"错误：{ex.Message}");
             }
         });
     }

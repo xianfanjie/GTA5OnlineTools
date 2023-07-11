@@ -20,8 +20,6 @@ public partial class LoadWindow
     public LoadWindow()
     {
         InitializeComponent();
-
-        CoreUtil.IsAdministrator();
     }
 
     private void Window_Load_Loaded(object sender, RoutedEventArgs e)

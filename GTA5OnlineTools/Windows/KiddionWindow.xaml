@@ -48,7 +48,7 @@
                     Background="#FFB100"
                     Command="{Binding LuaScriptClickCommand}"
                     CommandParameter="LuaScriptDir"
-                    Content="打开脚本目录" />
+                    Content="脚本目录" />
                 <Button
                     Background="#EA4335"
                     Command="{Binding LuaScriptClickCommand}"

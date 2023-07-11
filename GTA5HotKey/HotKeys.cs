@@ -21,6 +21,11 @@ public static class HotKeys
     public static event Action<Keys> KeyDownEvent;
 
     /// <summary>
+    /// 线程锁，防止溢出异常（Destination array is not long enough to copy all the items in the collection. Check array index and length.）
+    /// </summary>
+    private static object Lock = new object();
+
+    /// <summary>
     /// 初始化
     /// </summary>
     static HotKeys()
@@ -38,8 +43,11 @@ public static class HotKeys
     /// <param name="key"></param>
     public static void AddKey(Keys key)
     {
-        if (!HotKeyDirts.ContainsKey(key))
-            HotKeyDirts.Add(key, new KeyInfo() { Key = key });
+        lock (Lock)
+        {
+            if (!HotKeyDirts.ContainsKey(key))
+                HotKeyDirts.Add(key, new KeyInfo() { Key = key });
+        }
     }
 
     /// <summary>
@@ -48,8 +56,11 @@ public static class HotKeys
     /// <param name="key"></param>
     public static void RemoveKey(Keys key)
     {
-        if (HotKeyDirts.ContainsKey(key))
-            HotKeyDirts.Remove(key);
+        lock (Lock)
+        {
+            if (HotKeyDirts.ContainsKey(key))
+                HotKeyDirts.Remove(key);
+        }
     }
 
     /// <summary>
@@ -57,7 +68,10 @@ public static class HotKeys
     /// </summary>
     public static void ClearKeys()
     {
-        HotKeyDirts.Clear();
+        lock (Lock)
+        {
+            HotKeyDirts.Clear();
+        }
     }
 
     /// <summary>

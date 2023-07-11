@@ -532,7 +532,7 @@ public partial class HacksView : UserControl
         FileHelper.ExtractResFile(res_cache, file_cache);
 
         using var archive = ZipFile.OpenRead(file_cache);
-        archive.ExtractToDirectory(FileHelper.Dir_AppData_YimMenu);
+        archive.ExtractToDirectory(FileHelper.Dir_AppData_YimMenu, true);
         archive.Dispose();
 
         File.Delete(file_cache);

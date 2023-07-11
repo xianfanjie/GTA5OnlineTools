@@ -107,14 +107,7 @@ public partial class UpdateWindow
         Button_StartDownload.IsEnabled = false;
         Button_CancelDownload.IsEnabled = true;
 
-        ProgressBar_Download.Minimum = 0;
-        ProgressBar_Download.Maximum = 1024;
-        ProgressBar_Download.Value = 0;
-
-        TaskbarItemInfo.ProgressValue = 0;
-
-        TextBlock_DonloadInfo.Text = "下载开始";
-        TextBlock_Percentage.Text = "0KB / 0MB";
+        ResetUIState("下载开始");
 
         CoreUtil.UpdateAddress = CoreUtil.UpdateInfo.Download[index].Url;
 
@@ -140,17 +133,16 @@ public partial class UpdateWindow
         _downloader.CancelAsync();
         await _downloader.Clear();
 
+        ResetUIState("下载取消");
+
         Button_StartDownload.IsEnabled = true;
         Button_CancelDownload.IsEnabled = false;
-
-        ResetState("下载取消");
     }
 
     //////////////////////////////////////////////////////////
 
-    private void ResetState(string reson)
+    private void ResetUIState(string reson)
     {
-        ProgressBar_Download.Minimum = 0;
         ProgressBar_Download.Maximum = 1024;
         ProgressBar_Download.Value = 0;
 
@@ -170,10 +162,9 @@ public partial class UpdateWindow
     {
         this.Dispatcher.Invoke(() =>
         {
-            TextBlock_DonloadInfo.Text = $"下载开始 文件大小 {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
-
-            ProgressBar_Download.Minimum = 0;
             ProgressBar_Download.Maximum = e.TotalBytesToReceive;
+
+            TextBlock_DonloadInfo.Text = $"下载开始 文件大小 {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
         });
     }
 
@@ -186,10 +177,10 @@ public partial class UpdateWindow
     {
         this.Dispatcher.Invoke(() =>
         {
-            TextBlock_Percentage.Text = $"{CoreUtil.GetFileForamtSize(e.ReceivedBytesSize)} / {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
-
             ProgressBar_Download.Value = e.ReceivedBytesSize;
             TaskbarItemInfo.ProgressValue = ProgressBar_Download.Value / ProgressBar_Download.Maximum;
+
+            TextBlock_Percentage.Text = $"{CoreUtil.GetFileForamtSize(e.ReceivedBytesSize)} / {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
         });
     }
 
@@ -204,7 +195,10 @@ public partial class UpdateWindow
         {
             if (e.Error != null)
             {
-                ResetState($"下载失败 {e.Error.Message}");
+                ResetUIState($"下载失败 {e.Error.Message}");
+
+                Button_StartDownload.IsEnabled = true;
+                Button_CancelDownload.IsEnabled = false;
                 return;
             }
 

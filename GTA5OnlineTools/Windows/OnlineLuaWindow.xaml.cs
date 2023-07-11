@@ -133,6 +133,7 @@ public partial class OnlineLuaWindow
         else
             tempPath = Path.Combine(FileHelper.Dir_AppData_YimMenu_Scripts, "GTA5OnlineLua.zip");
 
+        AppendLogger("开始下载中...");
         _downloader.DownloadFileTaskAsync(adddress, tempPath);
     }
 
@@ -179,7 +180,6 @@ public partial class OnlineLuaWindow
         this.Dispatcher.Invoke(() =>
         {
             ProgressBar_Download.Value = e.ReceivedBytesSize;
-
             TaskbarItemInfo.ProgressValue = ProgressBar_Download.Value / ProgressBar_Download.Maximum;
 
             TextBlock_Percentage.Text = $"{CoreUtil.GetFileForamtSize(e.ReceivedBytesSize)} / {CoreUtil.GetFileForamtSize(e.TotalBytesToReceive)}";
@@ -193,6 +193,7 @@ public partial class OnlineLuaWindow
             if (e.Error != null)
             {
                 ResetUIState();
+
                 StackPanel_ToggleOption.IsEnabled = true;
                 Button_StartDownload.IsEnabled = true;
                 Button_CancelDownload.IsEnabled = false;
@@ -223,7 +224,8 @@ public partial class OnlineLuaWindow
                 await Task.Delay(100);
                 File.Delete(tempPath);
 
-                AppendLogger("删除临时文件成功，操作结束");
+                AppendLogger("删除临时文件成功");
+                AppendLogger("操作结束");
             }
             catch (Exception ex)
             {
@@ -262,9 +264,7 @@ public partial class OnlineLuaWindow
 
         if (isUseKiddion)
         {
-            ProcessHelper.CloseProcess("Kiddion");
             FileHelper.ClearDirectory(FileHelper.Dir_Kiddion_Scripts);
-
             FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
             NotifierHelper.Show(NotifierType.Success, "清空Kiddion Lua脚本文件夹成功");
         }

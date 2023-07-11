@@ -86,6 +86,8 @@
                     VerticalAlignment="Center"
                     Background="White"
                     BorderBrush="#ABADB3"
+                    Maximum="1024"
+                    Minimum="0"
                     SmallChange="1" />
                 <TextBlock
                     Name="TextBlock_Percentage"
@@ -137,6 +139,7 @@
                 <Button
                     x:Name="Button_CancelDownload"
                     Margin="0,5,5,5"
+                    Background="#EA4335"
                     Click="Button_CancelDownload_Click"
                     Content="取消更新"
                     IsEnabled="False" />

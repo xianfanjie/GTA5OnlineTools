@@ -88,6 +88,7 @@
                 Content="下载脚本" />
             <Button
                 x:Name="Button_CancelDownload"
+                Background="#EA4335"
                 Click="Button_CancelDownload_Click"
                 Content="取消下载"
                 IsEnabled="False" />

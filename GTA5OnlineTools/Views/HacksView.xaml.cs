@@ -422,36 +422,29 @@ public partial class HacksView : UserControl
     /// </summary>
     private async void ResetKiddionConfigClick()
     {
-        try
+        if (MessageBox.Show("你确定要重置Kiddion配置文件吗？如有重要文件请提前备份\n\n" +
+            $"程序会自动重置此文件夹：\n{FileHelper.Dir_Kiddion}",
+            "重置Kiddion配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
         {
-            if (MessageBox.Show("你确定要重置Kiddion配置文件吗？如有重要文件请提前备份\n\n" +
-                $"程序会自动重置此文件夹：\n{FileHelper.Dir_Kiddion}",
-                "重置Kiddion配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                ProcessHelper.CloseProcess("Kiddion");
-                ProcessHelper.CloseProcess("Notepad2");
-                await Task.Delay(100);
+            ProcessHelper.CloseProcess("Kiddion");
+            ProcessHelper.CloseProcess("Notepad2");
+            await Task.Delay(100);
 
-                FileHelper.ClearDirectory(FileHelper.Dir_Kiddion);
-                Directory.CreateDirectory(FileHelper.Dir_Kiddion_Scripts);
-                await Task.Delay(100);
+            FileHelper.ClearDirectory(FileHelper.Dir_Kiddion);
+            Directory.CreateDirectory(FileHelper.Dir_Kiddion_Scripts);
+            await Task.Delay(100);
 
-                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Kiddion, FileHelper.File_Kiddion_Kiddion);
-                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_KiddionChs, FileHelper.File_Kiddion_KiddionChs);
+            FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Kiddion, FileHelper.File_Kiddion_Kiddion);
+            FileHelper.ExtractResFile(FileHelper.Res_Kiddion_KiddionChs, FileHelper.File_Kiddion_KiddionChs);
 
-                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Config, FileHelper.File_Kiddion_Config);
-                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Themes, FileHelper.File_Kiddion_Themes);
-                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Teleports, FileHelper.File_Kiddion_Teleports);
-                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Vehicles, FileHelper.File_Kiddion_Vehicles);
+            FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Config, FileHelper.File_Kiddion_Config);
+            FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Themes, FileHelper.File_Kiddion_Themes);
+            FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Teleports, FileHelper.File_Kiddion_Teleports);
+            FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Vehicles, FileHelper.File_Kiddion_Vehicles);
 
-                FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
+            FileHelper.ExtractResFile(FileHelper.Res_Kiddion_Scripts_Readme, FileHelper.File_Kiddion_Scripts_Readme);
 
-                NotifierHelper.Show(NotifierType.Success, "重置Kiddion配置文件成功");
-            }
-        }
-        catch (Exception ex)
-        {
-            NotifierHelper.ShowException(ex);
+            NotifierHelper.Show(NotifierType.Success, "重置Kiddion配置文件成功");
         }
     }
     #endregion
@@ -541,25 +534,18 @@ public partial class HacksView : UserControl
     /// </summary>
     private void ResetYimMenuConfigClick()
     {
-        try
+        if (FileHelper.IsOccupied(FileHelper.File_YimMenu_DLL))
         {
-            if (FileHelper.IsOccupied(FileHelper.File_YimMenu_DLL))
-            {
-                NotifierHelper.Show(NotifierType.Warning, "YimMenu被占用，请先卸载YimMenu菜单后再执行操作");
-                return;
-            }
-
-            if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileHelper.Dir_AppData_YimMenu}」文件夹，如有重要文件请提前备份",
-                "重置YimMenu配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                FileHelper.ClearDirectory(FileHelper.Dir_AppData_YimMenu);
-
-                NotifierHelper.Show(NotifierType.Success, "重置YimMenu配置文件成功");
-            }
+            NotifierHelper.Show(NotifierType.Warning, "YimMenu被占用，请先卸载YimMenu菜单后再执行操作");
+            return;
         }
-        catch (Exception ex)
+
+        if (MessageBox.Show($"你确定要重置YimMenu配置文件吗？\n\n将清空「{FileHelper.Dir_AppData_YimMenu}」文件夹，如有重要文件请提前备份",
+            "重置YimMenu配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
         {
-            NotifierHelper.ShowException(ex);
+            FileHelper.ClearDirectory(FileHelper.Dir_AppData_YimMenu);
+
+            NotifierHelper.Show(NotifierType.Success, "重置YimMenu配置文件成功");
         }
     }
     #endregion

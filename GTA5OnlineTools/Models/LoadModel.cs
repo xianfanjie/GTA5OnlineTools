@@ -27,4 +27,10 @@ public partial class LoadModel : ObservableObject
     /// </summary>
     [ObservableProperty]
     private bool isInitError;
+
+    /// <summary>
+    /// 是否显示加载动画
+    /// </summary>
+    [ObservableProperty]
+    private bool isShowLoading;
 }

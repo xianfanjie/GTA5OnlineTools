@@ -61,8 +61,9 @@
                 <ui:LoadingSpinner
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
+                    d:IsLoading="true"
                     Diameter="40"
-                    IsLoading="True"
+                    IsLoading="{Binding LoadModel.IsShowLoading}"
                     Thickness="4"
                     Color="{StaticResource BlueColor}" />
                 <TextBlock

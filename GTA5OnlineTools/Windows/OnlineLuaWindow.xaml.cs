@@ -67,6 +67,8 @@ public partial class OnlineLuaWindow
             Button_StartDownload.IsEnabled = false;
             Button_CancelDownload.IsEnabled = false;
 
+            LoadingSpinner_Refush.IsLoading = true;
+
             string content;
             if (isUseKiddion)
                 content = await HttpHelper.DownloadString(kiddion);
@@ -91,6 +93,8 @@ public partial class OnlineLuaWindow
 
             Button_StartDownload.IsEnabled = true;
             Button_CancelDownload.IsEnabled = false;
+
+            LoadingSpinner_Refush.IsLoading = false;
         }
         catch (Exception ex)
         {

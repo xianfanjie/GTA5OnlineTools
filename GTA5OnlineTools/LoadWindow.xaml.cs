@@ -32,6 +32,7 @@ public partial class LoadWindow
                 ProcessHelper.CloseThirdProcess();
 
                 LoadModel.LoadState = "正在初始化工具...";
+                LoadModel.IsShowLoading = true;
 
                 LoggerHelper.Info("开始初始化程序...");
                 LoggerHelper.Info($"当前程序版本号 {CoreUtil.ClientVersion}");
@@ -130,6 +131,7 @@ public partial class LoadWindow
             catch (Exception ex)
             {
                 LoadModel.LoadState = $"初始化错误，发生了未知异常！\n{ex.Message}";
+                LoadModel.IsShowLoading = false;
                 LoadModel.IsInitError = true;
                 LoggerHelper.Error("初始化错误，发生了未知异常", ex);
             }

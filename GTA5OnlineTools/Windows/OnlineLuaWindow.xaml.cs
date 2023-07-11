@@ -42,9 +42,9 @@ public partial class OnlineLuaWindow
         RadioButton_Kiddion.IsChecked = true;
     }
 
-    private void Window_OnlineLua_Closing(object sender, CancelEventArgs e)
+    private async void Window_OnlineLua_Closing(object sender, CancelEventArgs e)
     {
-        _downloader.CancelAsync();
+        await _downloader.CancelTaskAsync();
     }
 
     //////////////////////////////////////////////////////////
@@ -168,7 +168,7 @@ public partial class OnlineLuaWindow
         await _downloader.DownloadFileTaskAsync(adddress, tempPath);
     }
 
-    private void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
+    private async void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
@@ -176,7 +176,7 @@ public partial class OnlineLuaWindow
         Button_StartDownload.IsEnabled = false;
         Button_CancelDownload.IsEnabled = false;
 
-        _downloader.CancelAsync();
+        await _downloader.CancelTaskAsync();
 
         ResetUIState();
         AppendLogger("下载取消");

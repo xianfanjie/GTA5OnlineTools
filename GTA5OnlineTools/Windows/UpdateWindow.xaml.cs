@@ -75,9 +75,9 @@ public partial class UpdateWindow
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Window_Update_Closing(object sender, CancelEventArgs e)
+    private async void Window_Update_Closing(object sender, CancelEventArgs e)
     {
-        _downloader.CancelAsync();
+        await _downloader.CancelTaskAsync();
     }
 
     /// <summary>
@@ -135,14 +135,14 @@ public partial class UpdateWindow
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
+    private async void Button_CancelDownload_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
         Button_StartDownload.IsEnabled = false;
         Button_CancelDownload.IsEnabled = false;
 
-        _downloader.CancelAsync();
+        await _downloader.CancelTaskAsync();
 
         ResetUIState("下载取消");
 
@@ -216,6 +216,9 @@ public partial class UpdateWindow
             try
             {
                 AudioHelper.SP_DownloadOK.Play();
+
+                Button_StartDownload.IsEnabled = false;
+                Button_CancelDownload.IsEnabled = false;
 
                 // 下载临时文件完整路径
                 var oldPath = CoreUtil.GetHalfwayFilePath();

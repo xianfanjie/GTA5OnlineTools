@@ -78,7 +78,7 @@
                     Click="Button_ScriptDir_Click"
                     Content="脚本目录" />
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                    提示：下载最Lua方式默认是直接覆盖旧版本
+                    提示：在线下载Lua脚本模式是直接强制覆盖旧版本
                 </TextBlock>
             </StackPanel>
         </StackPanel>

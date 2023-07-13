@@ -239,13 +239,8 @@ public partial class MainWindow
             // 获取对应数据
             CoreUtil.ServerVersion = Version.Parse(CoreUtil.UpdateInfo.Version);
 
-#if DEBUG
-            if (CoreUtil.ServerVersion < CoreUtil.ClientVersion)
-                return;
-#endif
-
-            // 如果线上版本号等于本地版本号，则不提示更新
-            if (CoreUtil.ServerVersion == CoreUtil.ClientVersion)
+            // 如果线上版本号小于等于本地版本号，则不提示更新
+            if (CoreUtil.ServerVersion <= CoreUtil.ClientVersion)
             {
                 LoggerHelper.Info($"当前已是最新版本 {CoreUtil.ServerVersion}");
                 this.Dispatcher.Invoke(() =>

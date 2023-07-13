@@ -89,8 +89,8 @@
                             Content="退出程序" />
                     </StackPanel>
                     <TextBlock Margin="10,5,10,5" Style="{StaticResource TextBlockStyle_Hint}">
-                        提示：一般初始化异常，大部分原因都是小助手部分文件被杀毒占用或删除导致的。
-                        可以尝试暂时关闭杀毒软件后重试
+                        提示：一般初始化异常，大部分原因都是小助手释放的部分文件被杀毒占用或删除导致的。
+                        可以尝试暂时关闭杀毒软件后重新打开小助手
                     </TextBlock>
                 </StackPanel>
             </StackPanel>

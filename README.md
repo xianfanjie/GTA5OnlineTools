@@ -30,11 +30,10 @@
 
 ## 预览
 
-![image](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/28f23916-a67c-461f-8707-e7184639707d)
+![02](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/0e16eeb4-1774-4939-9152-6c756b971948)
 
-![image](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/6b529296-8534-4faa-9fb0-293afc48d3ff)
-
+![03](https://github.com/CrazyZhang666/GTA5OnlineTools/assets/28080853/7ca772f3-31b4-40f3-8c67-6bb90bb0e77c)
 
 ## 鸣谢
 
-感谢 Aure、Alice等对小助手功能的贡献
+感谢 Aure、Alice、sch等对小助手功能的贡献（排名不分先后）

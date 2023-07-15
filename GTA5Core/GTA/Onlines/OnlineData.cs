@@ -44,6 +44,7 @@ public static class OnlineData
         new OnlineInfo(){ Name="杰拉德包裹", Value=842 },
         new OnlineInfo(){ Name="枪支厢型车", Value=844 },
         new OnlineInfo(){ Name="藏匿屋", Value=845 },
+        new OnlineInfo(){ Name="怪胎店", Value=847 },
         new OnlineInfo(){ Name="好麦坞车友俱乐部", Value=857 },
     };
 

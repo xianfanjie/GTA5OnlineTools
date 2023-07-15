@@ -362,7 +362,7 @@ public static class StatData
     public static readonly List<StatInfo> GANGOPS_FLOW_MISSION_PROG1 = new()
     {
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=503 },
-        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229383 },
+        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=-229383 },
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
     };
 
@@ -372,7 +372,7 @@ public static class StatData
     public static readonly List<StatInfo> GANGOPS_FLOW_MISSION_PROG2 = new()
     {
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=240 },
-        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229378 },
+        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=-229382 },
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
     };
 
@@ -382,7 +382,7 @@ public static class StatData
     public static readonly List<StatInfo> GANGOPS_FLOW_MISSION_PROG3 = new()
     {
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_MISSION_PROG", Value=16368 },
-        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=229380 },
+        new StatInfo(){ Hash="MPx_GANGOPS_HEIST_STATUS", Value=-229380 },
         new StatInfo(){ Hash="MPx_GANGOPS_FLOW_NOTIFICATIONS", Value=1557 },
     };
     #endregion

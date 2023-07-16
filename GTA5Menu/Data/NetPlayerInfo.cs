@@ -35,4 +35,8 @@ public class NetPlayerInfo
 
     public string ClanTagUpper { get; set; }
     public string GodModeFlag { get; set; }
+
+    public string RelayIP { get; set; }
+    public string ExternalIP { get; set; }
+    public string InternalIP { get; set; }
 }

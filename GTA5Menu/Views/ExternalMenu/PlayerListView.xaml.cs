@@ -45,6 +45,8 @@ public partial class PlayerListView : UserControl
         return value ? "YES" : "NO";
     }
 
+    /////////////////////////////////////////////////
+
     private void Button_RefreshPlayerList_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
@@ -84,6 +86,30 @@ public partial class PlayerListView : UserControl
 
             // 是否为脚本主机
             var scriptHost = Globals.Get_Global_Value<int>(2650208 + 1);
+
+            ////////////////////////////////////////////
+
+            var relayIP = new byte[4];
+            var externalIP = new byte[4];
+            var internalIP = new byte[4];
+
+            for (int j = 0; j < 4; j++)
+            {
+                relayIP[j] = Memory.Read<byte>(pCPlayerInfo + CPlayerInfo.RelayIP + j);
+            }
+            short relayPort = Memory.Read<short>(pCPlayerInfo + CPlayerInfo.RelayPort);
+
+            for (int j = 0; j < 4; j++)
+            {
+                externalIP[j] = Memory.Read<byte>(pCPlayerInfo + CPlayerInfo.ExternalIP + j);
+            }
+            short externalPort = Memory.Read<short>(pCPlayerInfo + CPlayerInfo.ExternalPort);
+
+            for (int j = 0; j < 4; j++)
+            {
+                internalIP[j] = Memory.Read<byte>(pCPlayerInfo + CPlayerInfo.InternalIP + j);
+            }
+            short internalPort = Memory.Read<short>(pCPlayerInfo + CPlayerInfo.InternalPort);
 
             ////////////////////////////////////////////
 
@@ -146,7 +172,11 @@ public partial class PlayerListView : UserControl
                 ClanMotto = clanMotto,
 
                 ClanTagUpper = clanTag.ToUpper(),
-                GodModeFlag = BoolToYES(godMode)
+                GodModeFlag = BoolToYES(godMode),
+
+                RelayIP = $"{relayIP[3]}.{relayIP[2]}.{relayIP[1]}.{relayIP[0]} : {relayPort}",
+                ExternalIP = $"{externalIP[3]}.{externalIP[2]}.{externalIP[1]}.{externalIP[0]} : {externalPort}",
+                InternalIP = $"{internalIP[3]}.{internalIP[2]}.{internalIP[1]}.{internalIP[0]} : {internalPort}",
             });
         }
     }
@@ -176,6 +206,11 @@ public partial class PlayerListView : UserControl
 
             AppendPlayerInfo($"战局主机 : {BoolToYES(info.IsHost)}");
             AppendPlayerInfo($"脚本主机 : {BoolToYES(info.IsScriptHost)}");
+            AppendPlayerInfo();
+
+            AppendPlayerInfo($"中继IP地址 : {info.RelayIP}");
+            AppendPlayerInfo($"外部IP地址 : {info.ExternalIP}");
+            AppendPlayerInfo($"内部IP地址 : {info.InternalIP}");
             AppendPlayerInfo();
 
             AppendPlayerInfo($"帮会标签 : {info.ClanTag}");

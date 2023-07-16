@@ -71,14 +71,13 @@ public struct CVehicle                                  // 0xD10
 
 public struct CPlayerInfo                               // 0x10A8
 {
-    public const int RlGamerInfo = 0x80;
-    public const int RockstarId = 0x88;                 // int64
-    public const int RelayIP = 0xC4;                    // byte
-    public const int RelayPort = 0xC8;                  // short
-    public const int ExternalIP = 0xCC;
-    public const int ExternalPort = 0xD0;
-    public const int InternalIP = 0xD4;
-    public const int InternalPort = 0xD8;
+    public const int RelayIP = 0x70;                    // byte
+    public const int RelayPort = 0x74;                  // short
+    public const int ExternalIP = 0xC8;
+    public const int ExternalPort = 0xCC;
+    public const int InternalIP = 0xD0;
+    public const int InternalPort = 0xD4;
+
     public const int HostToken = 0xE0;                  // int64
     public const int RockstarID = 0xE8;
     public const int Name = 0xFC;                       // string[20]

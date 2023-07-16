@@ -403,6 +403,8 @@
   "KARMA": "因果（回击一次相同攻击）",
   "KEEP_PLAYER_CLEAN": "保持整洁",
   "KEEP_PLAYER_CLEAN_DESC": "让您始终没有水渍和伤痕",
+  "KEEP_VEHICLE_CLEAN": "保持车辆清洁已开启，禁用它以更改污垢等级",
+  "KEEP_VEHICLE_REPAIRED": "保持车辆修复已开启，禁用它以更改车辆健康",
   "KICK": "踢出",
   "KICKED": "被踢出战局",
   "KICK_ALL_FROM_INTERIORS": "把每个人踢出室内",

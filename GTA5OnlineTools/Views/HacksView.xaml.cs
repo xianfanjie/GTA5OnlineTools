@@ -35,9 +35,9 @@ public partial class HacksView : UserControl
         InitializeComponent();
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
 
-        new Thread(CheckCheatsIsRun)
+        new Thread(CheckHacksIsRun)
         {
-            Name = "CheckCheatsIsRun",
+            Name = "CheckHacksIsRun",
             IsBackground = true
         }.Start();
     }
@@ -50,7 +50,7 @@ public partial class HacksView : UserControl
     /// <summary>
     /// 检查第三方辅助是否正在运行线程
     /// </summary>
-    private void CheckCheatsIsRun()
+    private void CheckHacksIsRun()
     {
         while (MainWindow.IsAppRunning)
         {
@@ -72,7 +72,7 @@ public partial class HacksView : UserControl
     /// </summary>
     /// <param name="hackName"></param>
     [RelayCommand]
-    private void CheatsClick(string hackName)
+    private void HacksClick(string hackName)
     {
         AudioHelper.PlayClickSound();
 
@@ -314,7 +314,7 @@ public partial class HacksView : UserControl
     /// <summary>
     /// YimMenu点击事件
     /// </summary>
-    private void YimMenuClick()
+    private async void YimMenuClick()
     {
         try
         {
@@ -327,6 +327,8 @@ public partial class HacksView : UserControl
         {
             LoggerHelper.Error($"释放Yimmenu官中语言文件失败，异常信息：{ex.Message}");
         }
+
+        await Task.Delay(100);
 
         // 由于玩家可能只使用YimMenu，GTA5Core模块不会初始化，这里要单独处理
         Process gta5Process;

@@ -28,7 +28,7 @@
                     <ToggleButton Margin="5,0,5,0" IsChecked="{Binding HacksModel.KiddionIsRun}">
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
-                                <b:InvokeCommandAction Command="{Binding CheatsClickCommand}" CommandParameter="Kiddion" />
+                                <b:InvokeCommandAction Command="{Binding HacksClickCommand}" CommandParameter="Kiddion" />
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </ToggleButton>
@@ -102,7 +102,7 @@
                     <ToggleButton Margin="5,0,5,0" IsChecked="{Binding HacksModel.GTAHaxIsRun}">
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
-                                <b:InvokeCommandAction Command="{Binding CheatsClickCommand}" CommandParameter="GTAHax" />
+                                <b:InvokeCommandAction Command="{Binding HacksClickCommand}" CommandParameter="GTAHax" />
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </ToggleButton>
@@ -144,7 +144,7 @@
                     <ToggleButton Margin="5,0,5,0" IsChecked="{Binding HacksModel.BincoHaxIsRun}">
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
-                                <b:InvokeCommandAction Command="{Binding CheatsClickCommand}" CommandParameter="BincoHax" />
+                                <b:InvokeCommandAction Command="{Binding HacksClickCommand}" CommandParameter="BincoHax" />
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </ToggleButton>
@@ -170,7 +170,7 @@
                     <ToggleButton Margin="5,0,5,0" IsChecked="{Binding HacksModel.LSCHaxIsRun}">
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
-                                <b:InvokeCommandAction Command="{Binding CheatsClickCommand}" CommandParameter="LSCHax" />
+                                <b:InvokeCommandAction Command="{Binding HacksClickCommand}" CommandParameter="LSCHax" />
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </ToggleButton>
@@ -194,7 +194,7 @@
                         </Hyperlink>
                     </TextBlock>
                     <Button
-                        Command="{Binding CheatsClickCommand}"
+                        Command="{Binding HacksClickCommand}"
                         CommandParameter="YimMenu"
                         Content="注入DLL" />
                 </StackPanel>

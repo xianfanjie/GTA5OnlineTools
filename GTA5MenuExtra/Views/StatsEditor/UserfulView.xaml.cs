@@ -76,11 +76,18 @@ public partial class UserfulView : UserControl
 
     ////////////////////////////////////////////////////
 
-    private void Button_GENDER_CHANGE_Click(object sender, RoutedEventArgs e)
+    private void Button_GENDER_CHANGE_ON_Click(object sender, RoutedEventArgs e)
     {
         AudioHelper.PlayClickSound();
 
-        STAT_SET_INT(StatData.GENDER_CHANGE);
+        STAT_SET_INT(StatData.GENDER_CHANGE_ON);
+    }
+
+    private void Button_GENDER_CHANGE_OFF_Click(object sender, RoutedEventArgs e)
+    {
+        AudioHelper.PlayClickSound();
+
+        STAT_SET_INT(StatData.GENDER_CHANGE_OFF);
     }
 
     private void Button_FreeChangeAppearance_Click(object sender, RoutedEventArgs e)

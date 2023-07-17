@@ -47,9 +47,13 @@
             <ui:LabelIcon Content="性别" />
             <WrapPanel Margin="5,0,5,0">
                 <Button
-                    x:Name="Button_GENDER_CHANGE"
-                    Click="Button_GENDER_CHANGE_Click"
-                    Content="性别修改" />
+                    x:Name="Button_GENDER_CHANGE_ON"
+                    Click="Button_GENDER_CHANGE_ON_Click"
+                    Content="开启性别修改" />
+                <Button
+                    x:Name="Button_GENDER_CHANGE_OFF"
+                    Click="Button_GENDER_CHANGE_OFF_Click"
+                    Content="关闭性别修改" />
                 <Button
                     x:Name="Button_FreeChangeAppearance"
                     Click="Button_FreeChangeAppearance_Click"

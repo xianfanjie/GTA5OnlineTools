@@ -82,11 +82,19 @@ public static class StatData
     };
 
     /// <summary>
-    /// 玩家性别修改（去重新捏脸）
+    /// 开启玩家性别修改（去重新捏脸）
     /// </summary>
-    public static readonly List<StatInfo> GENDER_CHANGE = new()
+    public static readonly List<StatInfo> GENDER_CHANGE_ON = new()
     {
         new StatInfo(){ Hash="MPx_ALLOW_GENDER_CHANGE", Value=52 },
+    };
+
+    /// <summary>
+    /// 关闭玩家性别修改（去重新捏脸）
+    /// </summary>
+    public static readonly List<StatInfo> GENDER_CHANGE_OFF = new()
+    {
+        new StatInfo(){ Hash="MPx_ALLOW_GENDER_CHANGE", Value=0 },
     };
 
     /// <summary>
@@ -695,7 +703,8 @@ public static class StatData
         new StatClass(){ Name="玩家-属性全满", StatInfos=SCRIPT_INCREASE },
         new StatClass(){ Name="玩家-隐藏属性全满", StatInfos=CHAR_ABILITY },
         new StatClass(){ Name="玩家-重置隐藏属性", StatInfos=CHAR_ABILITY0 },
-        new StatClass(){ Name="玩家-性别修改（去重新捏脸）", StatInfos=GENDER_CHANGE },
+        new StatClass(){ Name="玩家-启用性别修改（去重新捏脸）", StatInfos=GENDER_CHANGE_ON },
+        new StatClass(){ Name="玩家-关闭性别修改（去重新捏脸）", StatInfos=GENDER_CHANGE_OFF },
         new StatClass(){ Name="玩家-修改等级为1", StatInfos=CHAR_SET_RP1 },
         new StatClass(){ Name="玩家-修改等级为30", StatInfos=CHAR_SET_RP30 },
         new StatClass(){ Name="玩家-修改等级为60", StatInfos=CHAR_SET_RP60 },

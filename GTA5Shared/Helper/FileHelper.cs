@@ -32,7 +32,7 @@ public static class FileHelper
 
     public static string Dir_MyDocuments { get; private set; }
 
-    public static string Dir_Default { get; private set; }
+    public static string Dir_Base { get; private set; }
 
     public static string Dir_Kiddion { get; private set; }
     public static string Dir_YimMenu { get; private set; }
@@ -84,25 +84,38 @@ public static class FileHelper
 
     static FileHelper()
     {
-        Dir_AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         Dir_MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        Dir_AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        Dir_Default = Path.Combine(Dir_MyDocuments, "GTA5OnlineTools");
+        Initialization(Dir_MyDocuments);
+    }
 
-        Dir_Kiddion = Path.Combine(Dir_Default, "Kiddion");
-        Dir_YimMenu = Path.Combine(Dir_Default, "YimMenu");
-        Dir_Cache = Path.Combine(Dir_Default, "Cache");
-        Dir_Config = Path.Combine(Dir_Default, "Config");
-        Dir_Logger = Path.Combine(Dir_Default, "Logger");
+    /// <summary>
+    /// 初始化配置文件夹
+    /// </summary>
+    /// <param name="baseDir"></param>
+    private static void Initialization(string baseDir)
+    {
+        // 文件夹路径拼接，结尾加上 \\ ，以免出现同名文件导致不会正确打开文件夹
 
-        Dir_Kiddion_Scripts = Path.Combine(Dir_Kiddion, "scripts");
+        Dir_Base = Path.Combine(baseDir, "GTA5OnlineTools\\");
+        Dir_AppData_YimMenu = Path.Combine(Dir_AppData, "YimMenu\\");
 
-        Dir_Log_Crash = Path.Combine(Dir_Logger, "Crash");
-        Dir_Log_NLog = Path.Combine(Dir_Logger, "NLog");
+        Dir_Kiddion = Path.Combine(Dir_Base, "Kiddion\\");
+        Dir_YimMenu = Path.Combine(Dir_Base, "YimMenu\\");
+        Dir_Cache = Path.Combine(Dir_Base, "Cache\\");
+        Dir_Config = Path.Combine(Dir_Base, "Config\\");
+        Dir_Logger = Path.Combine(Dir_Base, "Logger\\");
 
-        Dir_AppData_YimMenu = Path.Combine(Dir_AppData, "YimMenu");
-        Dir_AppData_YimMenu_Scripts = Path.Combine(Dir_AppData_YimMenu, "scripts");
-        Dir_AppData_YimMenu_Translations = Path.Combine(Dir_AppData_YimMenu, "translations");
+        Dir_Kiddion_Scripts = Path.Combine(Dir_Kiddion, "scripts\\");
+
+        Dir_Log_Crash = Path.Combine(Dir_Logger, "Crash\\");
+        Dir_Log_NLog = Path.Combine(Dir_Logger, "NLog\\");
+
+        Dir_AppData_YimMenu_Scripts = Path.Combine(Dir_AppData_YimMenu, "scripts\\");
+        Dir_AppData_YimMenu_Translations = Path.Combine(Dir_AppData_YimMenu, "translations\\");
+
+        ////////////////////////////////////////////////////////////
 
         File_AppData_YimMenu_Settings = Path.Combine(Dir_AppData_YimMenu, "settings.json");
 
@@ -129,6 +142,15 @@ public static class FileHelper
         File_Config_Vehicles = Path.Combine(Dir_Config, "Vehicles.json");
         File_Config_Teleports = Path.Combine(Dir_Config, "Teleports.json");
         File_Config_Blips = Path.Combine(Dir_Config, "Blips.json");
+    }
+
+    /// <summary>
+    /// 重新设置初始化文件夹（一般用于启动参数）
+    /// </summary>
+    /// <param name="baseDir"></param>
+    public static void ResetBaseDir(string baseDir)
+    {
+        Initialization(baseDir);
     }
 
     /// <summary>

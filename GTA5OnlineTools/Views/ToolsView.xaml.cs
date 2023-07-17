@@ -95,7 +95,7 @@ public partial class ToolsView : UserControl
     /// </summary>
     private void ReleaseDirectoryClick()
     {
-        ProcessHelper.OpenDir(FileHelper.Dir_Default);
+        ProcessHelper.OpenDir(FileHelper.Dir_Base);
     }
 
     /// <summary>
@@ -106,12 +106,12 @@ public partial class ToolsView : UserControl
         try
         {
             if (MessageBox.Show("你确定要初始化配置文件吗？将恢复小助手全部配置文件为默认版本，对于修复崩溃问题很有帮助\n\n" +
-                $"程序会自动重置此文件夹：\n{FileHelper.Dir_Default}",
+                $"程序会自动重置此文件夹：\n{FileHelper.Dir_Base}",
                 "初始化配置文件", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 ProcessHelper.CloseThirdProcess();
                 await Task.Delay(100);
-                FileHelper.ClearDirectory(FileHelper.Dir_Default);
+                FileHelper.ClearDirectory(FileHelper.Dir_Base);
                 await Task.Delay(100);
 
                 App.AppMainMutex.Dispose();

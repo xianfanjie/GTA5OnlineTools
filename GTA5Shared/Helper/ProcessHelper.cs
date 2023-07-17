@@ -36,18 +36,18 @@ public static class ProcessHelper
     /// <summary>
     /// 打开文件夹路径
     /// </summary>
-    /// <param name="path"></param>
-    public static void OpenDir(string path)
+    /// <param name="dir"></param>
+    public static void OpenDir(string dir)
     {
-        if (!Directory.Exists(path))
+        if (!Directory.Exists(dir))
         {
-            NotifierHelper.Show(NotifierType.Error, $"要打开的文件夹路径不存在\n{path}");
+            NotifierHelper.Show(NotifierType.Error, $"要打开的文件夹路径不存在\n{dir}");
             return;
         }
 
         try
         {
-            Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(dir) { UseShellExecute = true });
         }
         catch (Exception ex)
         {

@@ -25,8 +25,15 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         AppMainMutex = new Mutex(true, AppName, out var createdNew);
+
         if (createdNew)
         {
+            // 如果加入启动参数 -d ，则配置目录为当前exe所在目录
+            if (e.Args.Length > 0 && e.Args[0] == "-d")
+            {
+                FileHelper.ResetBaseDir(FileUtil.Dir_MainApp);
+            }
+
             RegisterEvents();
             base.OnStartup(e);
         }

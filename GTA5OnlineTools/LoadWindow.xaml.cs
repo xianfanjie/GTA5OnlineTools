@@ -134,7 +134,7 @@ public partial class LoadWindow
         switch (name)
         {
             case "OpenDefaultPath":
-                ProcessHelper.OpenProcess(FileHelper.Dir_Default);
+                ProcessHelper.OpenProcess(FileHelper.Dir_Base);
                 break;
             case "ExitAPP":
                 Application.Current.Shutdown();

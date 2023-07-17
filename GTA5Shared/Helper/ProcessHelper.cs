@@ -83,9 +83,27 @@ public static class ProcessHelper
     /// <param name="path">程序路径</param>
     public static void OpenProcessWithWorkDir(string path)
     {
-        var workDir = Path.GetDirectoryName(path);
-        Directory.SetCurrentDirectory(workDir);
-        OpenProcess(path);
+        if (!File.Exists(path))
+        {
+            NotifierHelper.Show(NotifierType.Error, $"要打开的文件路径不存在\n{path}");
+            return;
+        }
+
+        try
+        {
+            var processInfo = new ProcessStartInfo
+            {
+                FileName = path,
+                Verb = "runas",
+                WorkingDirectory = Path.GetDirectoryName(path)
+            };
+
+            Process.Start(processInfo);
+        }
+        catch (Exception ex)
+        {
+            NotifierHelper.ShowException(ex);
+        }
     }
 
     /// <summary>
@@ -111,7 +129,9 @@ public static class ProcessHelper
     {
         var pArray = Process.GetProcessesByName(processName);
         foreach (var process in pArray)
+        {
             process.Kill();
+        }
     }
 
     /// <summary>

@@ -61,6 +61,8 @@ public partial class GTAHaxWindow
 
     private void Button_ImportGTAHax_Click(object sender, RoutedEventArgs e)
     {
+        AudioHelper.PlayClickSound();
+
         var stat = TextBox_PreviewGTAHax.Text;
         if (string.IsNullOrWhiteSpace(stat))
         {

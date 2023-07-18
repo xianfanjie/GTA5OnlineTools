@@ -78,6 +78,7 @@ public partial class UpdateWindow
     private async void Window_Update_Closing(object sender, CancelEventArgs e)
     {
         await _downloader.CancelTaskAsync();
+        _downloader.Dispose();
     }
 
     /// <summary>

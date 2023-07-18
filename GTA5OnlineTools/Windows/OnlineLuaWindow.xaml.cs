@@ -45,6 +45,7 @@ public partial class OnlineLuaWindow
     private async void Window_OnlineLua_Closing(object sender, CancelEventArgs e)
     {
         await _downloader.CancelTaskAsync();
+        _downloader.Dispose();
     }
 
     //////////////////////////////////////////////////////////

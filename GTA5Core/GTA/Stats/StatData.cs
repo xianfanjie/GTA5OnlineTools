@@ -688,6 +688,10 @@ public static class StatData
         new StatInfo(){ Hash="MPPLY_PLAYER_MENTAL_STATE", Value=0 },
         new StatInfo(){ Hash="MPPLY_PLAYERMADE_TITLE", Value=0 },
         new StatInfo(){ Hash="MPPLY_PLAYERMADE_DESC", Value=0 },
+        new StatInfo(){ Hash="MPPLY_ISPUNISHED", Value=0 },
+        new StatInfo(){ Hash="MPPLY_WAS_I_BAD_SPORT", Value=0 },
+        new StatInfo(){ Hash="MPPLY_WAS_I_CHEATER", Value=0 },
+        new StatInfo(){ Hash="MPPLY_CHAR_IS_BADSPORT", Value=0 },
         new StatInfo(){ Hash="MPPLY_OVERALL_BADSPORT", Value=0 },
         new StatInfo(){ Hash="MPPLY_OVERALL_CHEAT", Value=0 },
     };

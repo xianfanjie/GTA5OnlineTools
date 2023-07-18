@@ -104,32 +104,5 @@ namespace GTA5Shared.Properties {
                 return ResourceManager.GetStream("Click_05", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream DownloadOK {
-            get {
-                return ResourceManager.GetStream("DownloadOK", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream GTA5_Email {
-            get {
-                return ResourceManager.GetStream("GTA5_Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream GTA5_Job {
-            get {
-                return ResourceManager.GetStream("GTA5_Job", resourceCulture);
-            }
-        }
     }
 }

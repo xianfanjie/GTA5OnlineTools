@@ -49,10 +49,6 @@ public partial class UpdateWindow
                 return;
             }
 
-            // 如果需要更新，则播放提示音
-            if (CoreUtil.ServerVersion > CoreUtil.ClientVersion)
-                AudioHelper.SP_GTA5Email.Play();
-
             // 显示最新的更新日期和时间
             TextBlock_LatestUpdateInfo.Text = $"{CoreUtil.UpdateInfo.Latest.Date}\n{CoreUtil.UpdateInfo.Latest.Change}";
             // 加载更新日志
@@ -216,8 +212,6 @@ public partial class UpdateWindow
 
             try
             {
-                AudioHelper.SP_DownloadOK.Play();
-
                 Button_StartDownload.IsEnabled = false;
                 Button_CancelDownload.IsEnabled = false;
 

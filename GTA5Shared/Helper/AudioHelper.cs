@@ -8,10 +8,6 @@ public static class AudioHelper
     public static readonly SoundPlayer SP_Click04 = new(Properties.Resources.Click_04);
     public static readonly SoundPlayer SP_Click05 = new(Properties.Resources.Click_05);
 
-    public static readonly SoundPlayer SP_GTA5Email = new(Properties.Resources.GTA5_Email);
-    public static readonly SoundPlayer SP_GTA5Job = new(Properties.Resources.GTA5_Job);
-    public static readonly SoundPlayer SP_DownloadOK = new(Properties.Resources.DownloadOK);
-
     /// <summary>
     /// 点击提示音索引
     /// </summary>

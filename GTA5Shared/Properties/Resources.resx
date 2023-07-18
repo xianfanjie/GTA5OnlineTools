@@ -133,13 +133,4 @@
   <data name="Click_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Click_05.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DownloadOK" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DownloadOK.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GTA5_Email" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GTA5_Email.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GTA5_Job" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GTA5_Job.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
 </root>

@@ -80,7 +80,7 @@ public partial class ProfilesWindow
         catch (Exception ex)
         {
             AppendLogger();
-            AppendLogger($"发生了未知的一次，操作结束。异常信息：{ex.Message}");
+            AppendLogger($"发生了未知的异常，操作结束。异常信息：{ex.Message}");
         }
     }
 }

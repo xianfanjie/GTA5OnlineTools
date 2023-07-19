@@ -49,6 +49,9 @@
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     类型：整数型INT，范围大于等于0
                 </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    提示：需要是房主修改才有效
+                </TextBlock>
             </StackPanel>
             <!--  /////////////////  -->
             <StackPanel Margin="5">

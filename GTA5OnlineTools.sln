@@ -40,7 +40,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5MenuExtra", "GTA5MenuEx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTA5Overlay", "GTA5Overlay\GTA5Overlay.csproj", "{D063A21B-4657-4528-A12C-7E156C840525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLauncher", "Misc\AppLauncher\AppLauncher.csproj", "{C4B3AE86-7F04-48F8-A757-8DD29E441D09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppLauncher", "Misc\AppLauncher\AppLauncher.csproj", "{C4B3AE86-7F04-48F8-A757-8DD29E441D09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,7 +73,6 @@ Global
 		{3E066EF2-BB7F-48E6-B853-E87825CE0060}.Release|x64.ActiveCfg = Release|x64
 		{3E066EF2-BB7F-48E6-B853-E87825CE0060}.Release|x64.Build.0 = Release|x64
 		{86788F13-9FF1-4DB8-90DF-4262B4861157}.Debug|x64.ActiveCfg = Debug|x64
-		{86788F13-9FF1-4DB8-90DF-4262B4861157}.Debug|x64.Build.0 = Debug|x64
 		{86788F13-9FF1-4DB8-90DF-4262B4861157}.Release|x64.ActiveCfg = Release|x64
 		{86788F13-9FF1-4DB8-90DF-4262B4861157}.Release|x64.Build.0 = Release|x64
 		{4B7591AB-2408-4645-941D-5C51D516BCA4}.Debug|x64.ActiveCfg = Debug|x64
@@ -85,7 +84,6 @@ Global
 		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Release|x64.ActiveCfg = Release|x64
 		{206FEE5B-B0AC-40A6-AC9E-D7095B912699}.Release|x64.Build.0 = Release|x64
 		{3A372EA6-09BE-489E-B10A-D5D5884AD32B}.Debug|x64.ActiveCfg = Debug|x64
-		{3A372EA6-09BE-489E-B10A-D5D5884AD32B}.Debug|x64.Build.0 = Debug|x64
 		{3A372EA6-09BE-489E-B10A-D5D5884AD32B}.Release|x64.ActiveCfg = Release|x64
 		{3A372EA6-09BE-489E-B10A-D5D5884AD32B}.Release|x64.Build.0 = Release|x64
 		{75346AB5-1A44-4D10-8DB4-E31FC816C41F}.Debug|x64.ActiveCfg = Debug|x64
@@ -105,8 +103,8 @@ Global
 		{D063A21B-4657-4528-A12C-7E156C840525}.Release|x64.ActiveCfg = Release|x64
 		{D063A21B-4657-4528-A12C-7E156C840525}.Release|x64.Build.0 = Release|x64
 		{C4B3AE86-7F04-48F8-A757-8DD29E441D09}.Debug|x64.ActiveCfg = Debug|x64
-		{C4B3AE86-7F04-48F8-A757-8DD29E441D09}.Debug|x64.Build.0 = Debug|x64
 		{C4B3AE86-7F04-48F8-A757-8DD29E441D09}.Release|x64.ActiveCfg = Release|x64
+		{C4B3AE86-7F04-48F8-A757-8DD29E441D09}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

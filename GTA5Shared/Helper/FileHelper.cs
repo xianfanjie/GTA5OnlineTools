@@ -73,6 +73,7 @@ public static class FileHelper
     public static string Dir_AppData_YimMenu_Translations { get; private set; }
 
     public static string File_AppData_YimMenu_Settings { get; private set; }
+    public static string File_AppData_YimMenu_Logger { get; private set; }
 
     //////////////////////////////////////////////////////////////////
 
@@ -118,6 +119,7 @@ public static class FileHelper
         ////////////////////////////////////////////////////////////
 
         File_AppData_YimMenu_Settings = Path.Combine(Dir_AppData_YimMenu, "settings.json");
+        File_AppData_YimMenu_Logger = Path.Combine(Dir_AppData_YimMenu, "cout.log");
 
         File_Kiddion_Kiddion = Path.Combine(Dir_Kiddion, "Kiddion.exe");
         File_Kiddion_KiddionChs = Path.Combine(Dir_Kiddion, "KiddionChs.dll");

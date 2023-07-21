@@ -208,6 +208,9 @@ public partial class HacksView : UserControl
                 case "EditYimMenuConfig":
                     EditYimMenuConfigClick();
                     break;
+                case "ViewYimMenuLogger":
+                    ViewYimMenuLoggerClick();
+                    break;
                 case "YimMenuGTACache":
                     YimMenuGTACacheClick();
                     break;
@@ -521,6 +524,14 @@ public partial class HacksView : UserControl
     private void EditYimMenuConfigClick()
     {
         ProcessHelper.Notepad2EditTextFile(FileHelper.File_AppData_YimMenu_Settings);
+    }
+
+    /// <summary>
+    /// YimMenu错误日志
+    /// </summary>
+    private void ViewYimMenuLoggerClick()
+    {
+        ProcessHelper.Notepad2EditTextFile(FileHelper.File_AppData_YimMenu_Logger);
     }
 
     /// <summary>

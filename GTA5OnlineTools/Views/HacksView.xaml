@@ -217,6 +217,11 @@
                         CommandParameter="EditYimMenuConfig"
                         Content="配置文件" />
                     <Button
+                        Background="#34A853"
+                        Command="{Binding ExtraClickCommand}"
+                        CommandParameter="ViewYimMenuLogger"
+                        Content="错误日志" />
+                    <Button
                         Background="#CA64EA"
                         Command="{Binding ExtraClickCommand}"
                         CommandParameter="YimMenuGTACache"

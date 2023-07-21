@@ -71,9 +71,9 @@ public class Overlay : IDisposable
             IsVisible = true
         };
 
-        _window.DrawGraphics += _window_DrawGraphics;
-        _window.DestroyGraphics += _window_DestroyGraphics;
         _window.SetupGraphics += _window_SetupGraphics;
+        _window.DestroyGraphics += _window_DestroyGraphics;
+        _window.DrawGraphics += _window_DrawGraphics;
 
         SetViewSize();
         Draw.SetGraphicsIns(gfx);

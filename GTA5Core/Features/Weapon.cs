@@ -63,6 +63,10 @@ public static class Weapon
             var ammo_2 = Memory.Read<int>(offset_2 + 0x34);
 
             var max_ammo = Math.Max(ammo_1, ammo_2);
+
+            if (max_ammo <= 0 || max_ammo > 9999)
+                continue;
+
             Memory.Write(offset_1 + 0x20, max_ammo);
 
             count++;

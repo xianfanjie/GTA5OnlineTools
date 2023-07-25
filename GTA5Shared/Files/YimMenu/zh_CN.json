@@ -498,6 +498,8 @@
   "NOTIFY": "通知",
   "NO_CLIP": "自由移动",
   "NO_CLIP_DESC": "在世界中自由移动",
+  "NOCLIP_AIM_SPEED_MULTIPLIER": "瞄准时移动速度倍率",
+  "NOCLIP_SPEED_MULTIPLIER": "移动速度倍率",
   "NO_COLLISION": "无碰撞",
   "NO_COLLISION_DESC": "穿过载具和大部分障碍物",
   "NO_IDLE_KICK": "挂机防踢",

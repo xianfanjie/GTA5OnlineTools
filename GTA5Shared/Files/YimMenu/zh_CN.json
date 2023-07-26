@@ -414,6 +414,7 @@
   "KICK_FROM_INTERIOR": "踢出室内",
   "KICK_FROM_INTERIOR_DESC": "将玩家从室内踢出去",
   "KICK_HOST_ON_JOIN": "加入战局时踢出主机",
+  "KICK_HOST_ON_JOIN_DESC": "加入新战局时踢出原主机，以便抢占主机",
   "KILL_ALL": "杀死所有人",
   "KILL_LIST": "杀戮名单",
   "KILL_LOOP": "循环击杀玩家",

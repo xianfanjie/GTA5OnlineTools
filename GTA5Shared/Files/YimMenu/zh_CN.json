@@ -503,6 +503,7 @@
   "NO_COLLISION": "无碰撞",
   "NO_COLLISION_DESC": "穿过载具和大部分障碍物",
   "NO_IDLE_KICK": "挂机防踢",
+  "NO_IDLE_KICK_DESC": "防止你在空闲时被踢",
   "NO_PERSONAL_VEHICLES": "没有找到个人载具,\n请进入线上模式",
   "NO_RAGDOLL": "无布娃娃",
   "NO_RAGDOLL_DESC": "防止跌倒",

@@ -561,7 +561,7 @@
   "NO_RAGDOLL_DESC": "防止跌倒",
   "NO_SESSIONS": "没有战局",
   "NO_STORED_PLAYERS": "没有已记录的玩家",
-  "NO_VEHICLE_IN_REGISTRY": "登记处没有载具.",
+  "NO_VEHICLE_IN_REGISTRY": "Yimmenu没有读取到载具.请尝试重置配置文件或使用小助手的内置缓存功能.",
   "NO_WEAPONS": "没有武器",
   "NULL_FUNCTION_KICK": "无效函数踢",
   "NULL_FUNCTION_KICK_DESC": "可能花费15秒",

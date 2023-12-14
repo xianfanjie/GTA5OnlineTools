@@ -3,34 +3,51 @@ using GTA5Core.Offsets;
 
 namespace GTA5Core.Features;
 
+public enum MPStatTypes
+{
+    TYPE_INT = 0,
+    TYPE_FLOAT,
+    TYPE_BOOL,
+    TYPE_STRING,
+    TYPE_LABEL,
+    TYPE_DATE,
+    TYPE_POS,
+    TYPE_USERID,
+    TYPE_INT_AWD,
+    TYPE_FLOAT_AWD,
+    TYPE_BOOL_AWD
+};
+
 public static class STATS
 {
-    private const int statGetIntValue = 2805862 + 267;
+    private const int hashindex = 0x026b1578;
 
-    private const int characterSlot = 1574918;
-    private const int callStat = 1654054 + 1136;
+    private const int statGetIntValue = 2750546 + 267;
 
-    private const int statSetIntHash = 1665476 + 1 + 3;
-    private const int statSetIntValue = 980531 + 5525;
+    private const int characterSlot = 1574925;
+    private const int callStat = 1668317 + 1136;
 
-    private const int statSetIntMinusOne = 1654054 + 1139;   // https://pastebin.com/VbfAmLYB 
+    private const int statSetIntHash = 1679796 + 1 + 3;
+    private const int statSetIntValue = 982384 + 5587;
 
-    private const int statBoolHash = 1665484 + 1 + 17;
-    private const int statBoolValue = 2694581;
+    private const int statSetIntMinusOne = 1668317 + 1139;   // https://pastebin.com/VbfAmLYB 
+
+    private const int statBoolHash = 1679804 + 1 + 17;
+    private const int statBoolValue = 2695956;
 
     private static long StatGetIntHash()
     {
-        return Memory.Read<long>(Memory.GTA5ProBaseAddress + 0x269cd78) + 0xAE8;
+        return Memory.Read<long>(Memory.GTA5ProBaseAddress + (hashindex + ((int)MPStatTypes.TYPE_INT * 0x18))) + 0xAE8;
     }
 
     private static long StatSetFloatHash()
     {
-        return Memory.Read<long>(Memory.GTA5ProBaseAddress + 0x269cd90) + 0x568;
+        return Memory.Read<long>(Memory.GTA5ProBaseAddress + (hashindex + ((int)MPStatTypes.TYPE_FLOAT * 0x18))) + 0x568;
     }
 
     private static long StatBoolMaskHash()
     {
-        return Memory.Read<long>(Memory.GTA5ProBaseAddress + 0x269cda8) + 0xCD8;
+        return Memory.Read<long>(Memory.GTA5ProBaseAddress + (hashindex + ((int)MPStatTypes.TYPE_BOOL * 0x18))) + 0xCD8;
     }
 
     private static long ShopControllerMask()

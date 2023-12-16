@@ -1,4 +1,4 @@
-﻿using GTA5Core.Native;
+using GTA5Core.Native;
 using GTA5Core.Offsets;
 
 namespace GTA5Core.Features;
@@ -173,7 +173,7 @@ public static class Online
         // timeDifference = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME(), Global_2672524.f_57);
         Globals.Set_Global_Value(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 463 + 210, isEnable ? 1 : 0);
         if (isEnable)
-            Globals.Set_Global_Value(Base.oNETTimeHelp + 57, Globals.GetNetworkTime() + 3600000);
+            Globals.Set_Global_Value(Base.oNETTimeHelp + 58, Globals.GetNetworkTime() + 3600000);
         Globals.Set_Global_Value(Base.oVMYCar + 4667, isEnable ? 3 : 0);
     }
 
@@ -185,7 +185,7 @@ public static class Online
     {
         Globals.Set_Global_Value(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 463 + 210, isEnable ? 1 : 0);
         if (isEnable)
-            Globals.Set_Global_Value(Base.oNETTimeHelp + 57, Globals.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
+            Globals.Set_Global_Value(Base.oNETTimeHelp + 58, Globals.GetNetworkTime() + 3600000);        // iVar0 = NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME()
         Globals.Set_Global_Value(Base.oVMYCar + 4667, isEnable ? 4 : 0);
     }
 
@@ -218,7 +218,7 @@ public static class Online
     public static void RevealPlayers(bool isEnable)
     {
         Globals.Set_Global_Value(Base.oPlayerIDHelp + 1 + Globals.GetPlayerID() * 463 + 213, isEnable ? 1 : 0);
-        Globals.Set_Global_Value(Base.oNETTimeHelp + 58, isEnable ? Globals.GetNetworkTime() + 3600000 : 0);
+        Globals.Set_Global_Value(Base.oNETTimeHelp + 59, isEnable ? Globals.GetNetworkTime() + 3600000 : 0);
     }
 
     /// <summary>
@@ -262,12 +262,12 @@ public static class Online
     public static void InstantBullShark(bool isEnable)
     {
         if (isEnable)
-            Globals.Set_Global_Value(Base.oNETTimeHelp + 3690, 1);
+            Globals.Set_Global_Value(Base.oNETTimeHelp + 3694, 1);
         else
         {
-            var temp = Globals.Get_Global_Value<int>(Base.oNETTimeHelp + 3690);
+            var temp = Globals.Get_Global_Value<int>(Base.oNETTimeHelp + 3694);
             if (temp != 0)
-                Globals.Set_Global_Value(Base.oNETTimeHelp + 3690, 5);
+                Globals.Set_Global_Value(Base.oNETTimeHelp + 3694, 5);
         }
     }
 

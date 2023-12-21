@@ -1,4 +1,4 @@
-﻿using GTA5Core.Features;
+using GTA5Core.Features;
 using GTA5Shared.Helper;
 
 namespace GTA5MenuExtra.Views.HeistsEditor.Casino;
@@ -30,10 +30,10 @@ public partial class MoneyView : UserControl
 
         TextBox_Casino_Lester.Text = Globals.Get_Global_Value<int>(lester_ratio).ToString();
 
-        TextBox_CasinoPotential_Money.Text = Globals.Get_Global_Value<int>(player_money + 1).ToString();
-        TextBox_CasinoPotential_Artwork.Text = Globals.Get_Global_Value<int>(player_money + 2).ToString();
-        TextBox_CasinoPotential_Gold.Text = Globals.Get_Global_Value<int>(player_money + 3).ToString();
-        TextBox_CasinoPotential_Diamonds.Text = Globals.Get_Global_Value<int>(player_money + 4).ToString();
+        TextBox_CasinoPotential_Money.Text = Globals.Get_Global_Value<int>(player_money + 0).ToString();
+        TextBox_CasinoPotential_Artwork.Text = Globals.Get_Global_Value<int>(player_money + 1).ToString();
+        TextBox_CasinoPotential_Gold.Text = Globals.Get_Global_Value<int>(player_money + 2).ToString();
+        TextBox_CasinoPotential_Diamonds.Text = Globals.Get_Global_Value<int>(player_money + 3).ToString();
 
         TextBox_CasinoAI_1.Text = Globals.Get_Global_Value<int>(ai_ratio + 1).ToString();
         TextBox_CasinoAI_2.Text = Globals.Get_Global_Value<int>(ai_ratio + 2).ToString();
@@ -101,10 +101,10 @@ public partial class MoneyView : UserControl
 
         Globals.Set_Global_Value(lester_ratio, lester);
 
-        Globals.Set_Global_Value(player_money + 1, money);
-        Globals.Set_Global_Value(player_money + 2, artwork);
-        Globals.Set_Global_Value(player_money + 3, gold);
-        Globals.Set_Global_Value(player_money + 4, diamonds);
+        Globals.Set_Global_Value(player_money + 0, money);
+        Globals.Set_Global_Value(player_money + 1, artwork);
+        Globals.Set_Global_Value(player_money + 2, gold);
+        Globals.Set_Global_Value(player_money + 3, diamonds);
 
         Globals.Set_Global_Value(ai_ratio + 1, ai1);
         Globals.Set_Global_Value(ai_ratio + 2, ai2);

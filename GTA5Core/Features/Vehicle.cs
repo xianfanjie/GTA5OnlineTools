@@ -180,7 +180,7 @@ public static class Vehicle
     /// <summary>
     /// 提前解锁1.67 and 1.68新载具（避免刷出消失）
     /// </summary>
-    public static void Unlock167Vehicle()
+    public static void Unlock168Vehicle()
     {
         Globals.Set_Global_Value(Base.Default + 35462, 1);         // walton
         Globals.Set_Global_Value(Base.Default + 35463, 1);         // vapid ratel

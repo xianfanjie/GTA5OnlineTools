@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-
-namespace GTA5Core.GTA.Vehicles;
+﻿namespace GTA5Core.GTA.Vehicles;
 
 public static class VehicleHash
 {

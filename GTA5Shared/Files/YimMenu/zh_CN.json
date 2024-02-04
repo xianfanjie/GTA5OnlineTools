@@ -543,6 +543,8 @@
   "GODMODE_DESC": "让你免受任何伤害",
   "GOD_MODE": "载具无敌",
   "GOLF": "高尔夫",
+  "GRACEFUL_LANDING": "优雅着陆",
+  "GRACEFUL_LANDING_DESC": "避免在落地时摔倒",
   "GRAVITY_EARTH": "地球",
   "GRAVITY_JUPITER": "木星",
   "GRAVITY_LEVEL": "重力等级",

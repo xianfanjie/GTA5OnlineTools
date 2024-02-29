@@ -507,4 +507,36 @@ public static class Online
     {
         Globals.Set_Global_Value(Base.Default + 30464, isEnable ? 0 : 60000); // joaat("IH_SUBMARINE_MISSILES_COOLDOWN")
     }
+
+    /// <summary>
+    /// 即时完成fm_mission_controller
+    /// </summary>
+    /// <param name="isEnable"></param>
+    public static void instant_fm_mission_controller()
+    {
+        if (Locals.LocalAddress("fm_mission_controller") != 0)
+        {
+            if (Locals.ReadLocalAddress<int>("fm_mission_controller", 0x6510/8) != 0)
+            {
+                Locals.WriteLocalAddress<int>("fm_mission_controller", 0x3DDC0/8, 264666);
+                Locals.WriteLocalAddress<int>("fm_mission_controller", 0x26880/8, 12);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 即时完成fm_mission_controller_2020
+    /// </summary>
+    /// <param name="isEnable"></param>
+    public static void instant_fm_mission_controller_2020()
+    {
+        if (Locals.LocalAddress("fm_mission_controller_2020") != 0)
+        {
+            if (Locals.ReadLocalAddress<int>("fm_mission_controller_2020", 0x24FF8/8) != 0)
+            {
+                Locals.WriteLocalAddress<int>("fm_mission_controller_2020", 0x3DDC0/8, 264666);
+                Locals.WriteLocalAddress<int>("fm_mission_controller_2020", 0x62338/8, 9);
+            }
+        }
+    }
 }

@@ -20,6 +20,7 @@ public partial class HacksView : UserControl
     /// 数据模型绑定
     /// </summary>
     public HacksModel HacksModel { get; set; } = new();
+    public bool IsTraditional { get; private set; } = IniHelper.ReadBoolValue("Options", "IsTraditional");
 
     private readonly Kiddion Kiddion = new();
     private readonly GTAHax GTAHax = new();
@@ -34,6 +35,7 @@ public partial class HacksView : UserControl
     {
         InitializeComponent();
         MainWindow.WindowClosingEvent += MainWindow_WindowClosingEvent;
+        CheckBox_IsTraditional.IsChecked = IsTraditional;
 
         new Thread(CheckHacksIsRun)
         {
@@ -142,6 +144,25 @@ public partial class HacksView : UserControl
             case "OnlineLua":
                 OnlineLuaClick();
                 break;
+        }
+    }
+
+    /// <summary>
+    /// Yimmenu语言是否为繁体中文
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void CheckBox_IsTraditional_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckBox_IsTraditional.IsChecked == true)
+        {
+            this.IsTraditional = true;
+            IniHelper.WriteBoolValue("Options", "IsTraditional", true);
+        }
+        else
+        {
+            this.IsTraditional = false;
+            IniHelper.WriteBoolValue("Options", "IsTraditional", false);
         }
     }
 
@@ -323,8 +344,12 @@ public partial class HacksView : UserControl
         {
             // 释放Yimmenu官中语言文件
             FileHelper.CreateDirectory(FileHelper.Dir_AppData_YimMenu_Translations);
-            FileHelper.ExtractResFile(FileHelper.Res_YimMenu_Index, FileHelper.File_YimMenu_Index);
+            FileHelper.ExtractResFile(FileHelper.Res_YimMenu_IndexCN, FileHelper.File_YimMenu_IndexCN);
             FileHelper.ExtractResFile(FileHelper.Res_YimMenu_ZHCN, FileHelper.File_YimMenu_ZHCN);
+            FileHelper.ExtractResFile(FileHelper.Res_YimMenu_ZHTW, FileHelper.File_YimMenu_ZHTW);
+            if (IsTraditional)
+                FileHelper.ExtractResFile(FileHelper.Res_YimMenu_IndexTW, FileHelper.File_YimMenu_IndexTW);
+
         }
         catch (Exception ex)
         {

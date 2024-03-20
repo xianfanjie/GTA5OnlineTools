@@ -188,10 +188,7 @@
             Image="pack://application:,,,/GTA5OnlineTools;component/Assets/Hacks/YimMenu.png">
             <ui:GroupBoxHack.TitleContent>
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox
-                        x:Name="CheckBox_IsTraditional"
-                        Click="CheckBox_IsTraditional_Click"
-                        Content="繁体" IsChecked="False"/>
+                    <CheckBox Content="繁体" IsChecked="{Binding HacksModel.IsYimMenuLangZhTw}" />
                     <TextBlock Margin="5,0,5,0" VerticalAlignment="Center">
                         <Hyperlink Command="{Binding ReadMeClickCommand}" CommandParameter="YimMenu">
                             使用说明

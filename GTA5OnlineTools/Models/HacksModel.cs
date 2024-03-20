@@ -27,4 +27,10 @@ public partial class HacksModel : ObservableObject
     /// </summary>
     [ObservableProperty]
     private bool lSCHaxIsRun;
+
+    /// <summary>
+    /// YimMenu是否使用繁体中文
+    /// </summary>
+    [ObservableProperty]
+    private bool isYimMenuLangZhTw;
 }

@@ -23,8 +23,10 @@ public static class FileHelper
     public const string Res_Cache_Xenos64 = $"{ResFiles}.Cache.Xenos64.exe";
 
     public const string Res_YimMenu_YimMenu = $"{ResFiles}.YimMenu.YimMenu.dll";
-    public const string Res_YimMenu_Index = $"{ResFiles}.YimMenu.index.json";
+    public const string Res_YimMenu_IndexCN = $"{ResFiles}.YimMenu.index_cn.json";
+    public const string Res_YimMenu_IndexTW = $"{ResFiles}.YimMenu.index_tw.json";
     public const string Res_YimMenu_ZHCN = $"{ResFiles}.YimMenu.zh_CN.json";
+    public const string Res_YimMenu_ZHTW = $"{ResFiles}.YimMenu.zh_TW.json";
 
     public const string Res_Other_SGTA50000 = $"{ResFiles}.Other.SGTA50000";
 
@@ -61,8 +63,10 @@ public static class FileHelper
     public static string File_Cache_Notepad2 { get; private set; }
 
     public static string File_YimMenu_DLL { get; private set; }
-    public static string File_YimMenu_Index { get; private set; }
+    public static string File_YimMenu_IndexCN { get; private set; }
+    public static string File_YimMenu_IndexTW { get; private set; }
     public static string File_YimMenu_ZHCN { get; private set; }
+    public static string File_YimMenu_ZHTW { get; private set; }
 
     //////////////////////////////////////////////////////////////////
 
@@ -138,8 +142,10 @@ public static class FileHelper
 
         File_YimMenu_DLL = Path.Combine(Dir_YimMenu, "YimMenu.dll");
 
-        File_YimMenu_Index = Path.Combine(Dir_AppData_YimMenu_Translations, "index.json");
+        File_YimMenu_IndexCN = Path.Combine(Dir_AppData_YimMenu_Translations, "index.json");
+        File_YimMenu_IndexTW = Path.Combine(Dir_AppData_YimMenu_Translations, "index.json");
         File_YimMenu_ZHCN = Path.Combine(Dir_AppData_YimMenu_Translations, "zh_CN.json");
+        File_YimMenu_ZHTW = Path.Combine(Dir_AppData_YimMenu_Translations, "zh_TW.json");
 
         File_Config_Vehicles = Path.Combine(Dir_Config, "Vehicles.json");
         File_Config_Teleports = Path.Combine(Dir_Config, "Teleports.json");

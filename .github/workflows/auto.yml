@@ -1,0 +1,57 @@
+name: Auto Exe Build and Publish
+
+on:
+  workflow_dispatch: # 手动触发
+  # schedule:
+  #   - cron: '0 0 * * *' # 每天 UTC 时间 00:00 触发
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.0.x'
+         
+    - name: Publish
+      run: |
+       cd GTA5OnlineTools 
+       dotnet publish -c Release -r win-x64 -o release --self-contained true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableWindowsTargeting=true -p:PublishSingleFile=true -p:DebugType=None
+       mv ./release/GTA5OnlineTools.exe ./release/GTA5OnlineTools_selfcontained.exe
+       dotnet publish -c Release -r win-x64 -o release --self-contained false -p:EnableWindowsTargeting=true -p:PublishSingleFile=true -p:DebugType=None
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: GTA5OnlineTools
+        path: GTA5OnlineTools/release
+
+    - name: Create Release tag
+      id: tag
+      run: |
+        release_time=$(date +"%Y-%m-%d-%H%M")
+        echo "release_time=$release_time" >> $GITHUB_ENV
+             
+    - name: Upload Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: GTA5OnlineTools/release/*
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: "${{ env.release_time }} 自动构建生成"
+        tag_name: ${{ env.release_time }}
+        body: |
+          🎉 **自动构建发布版本**
+        
+          这是一个自动构建的发布版本，包含了两个应用程序：
+        
+          🚀 **原始应用程序：** [GTA5OnlineTools.exe](https://github.com/${{ github.repository }}/releases/download/${{ env.release_time }}/GTA5OnlineTools.exe)
+          🌟 **包含运行时环境的应用程序：** [GTA5OnlineTools_selfcontained.exe](https://github.com/${{ github.repository }}/releases/download/${{ env.release_time }}/GTA5OnlineTools_selfcontained.exe)
